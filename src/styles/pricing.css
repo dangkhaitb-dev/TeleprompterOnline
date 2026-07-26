@@ -205,29 +205,52 @@
   outline-offset: 2px;
 }
 
-/* Small line directly under a CTA — the day-pass hint and the annual-billing
-   offer that keeps the yearly plan available without giving it its own card. */
-.plan-cta-note,
-.plan-cta-offer {
+/* Hint under the day-pass CTA. */
+.plan-cta-note {
   margin: 0.7rem 0 0;
   font-size: 0.8rem;
+  font-style: italic;
   line-height: 1.45;
   text-align: center;
   color: var(--ink-muted);
 }
 
-.plan-cta-note {
-  font-style: italic;
+/* The annual plan has no card of its own, so its offer has to read as a real
+   second option inside the Pro card — a tinted block, not a footnote. */
+.plan-cta-offer {
+  margin: 0.9rem 0 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--brand-soft);
+  border-radius: var(--radius-md);
+  background: var(--brand-tint);
+  font-size: 0.88rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--ink-soft);
+}
+
+.plan-cta-offer .text-link {
+  display: inline-block;
+  margin-top: 0.15rem;
+  font-size: 1.02rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.plan-cta-offer .text-link:hover {
+  color: var(--ink);
+  text-decoration: underline;
 }
 
 .plan-save {
   display: inline-block;
-  padding: 0.1rem 0.45rem;
+  margin-left: 0.35rem;
+  padding: 0.15rem 0.5rem;
   border-radius: var(--radius-pill);
-  background: var(--brand-tint);
-  color: var(--brand-strong);
-  font-size: 0.72rem;
-  font-weight: 600;
+  background: var(--brand-strong);
+  color: var(--accent-contrast);
+  font-size: 0.75rem;
+  font-weight: 700;
   white-space: nowrap;
 }
 
@@ -261,15 +284,6 @@
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--brand-strong);
-}
-
-.plans-footnote {
-  max-width: 44rem;
-  margin: 2rem auto 0;
-  font-size: 0.8rem;
-  line-height: 1.55;
-  text-align: center;
-  color: var(--ink-muted);
 }
 
 /* ===== TRUST BAND ===== */

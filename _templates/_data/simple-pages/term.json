@@ -194,7 +194,7 @@
     { "type": "paragraph", "html": "If there is a conflict concerning billing or refunds, the Billing and Refund Policy controls for that issue." },
 
     { "type": "heading", "text": "14. Fair Use Policy" },
-    { "type": "paragraph", "html": "Features described as unlimited, such as unlimited AI Scroll or unlimited cloud scripts, are intended for normal individual creator use." },
+    { "type": "paragraph", "html": "Usage allowances such as AI Scroll rate limits and cloud storage, together with any feature described as unlimited, are intended for normal individual creator use." },
     { "type": "paragraph", "html": "To keep the Service reliable for everyone, we may apply reasonable limits, throttling or temporary suspension where usage is:" },
     { "type": "list", "items": [
       "Extremely excessive compared with typical individual use.",

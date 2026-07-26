@@ -1,10 +1,10 @@
 {
   "seo": {
     "title": "Pricing — Day Pass, Pro and Lifetime | VTeleprompter",
-    "description": "VTeleprompter early adopter pricing: a $3.99 one-day pass, Pro at $6.99 per month or $59 a year, and a $149 lifetime plan. AI Scroll, cloud sync and remote control included.",
+    "description": "VTeleprompter early adopter pricing: a $3.99 one-day pass, Pro at $6.99 per month or $49 a year, and a $169 lifetime plan. AI Scroll, cloud sync and remote control included.",
     "canonical": "/pricing",
     "ogTitle": "VTeleprompter Pricing — Lock In Your Price Forever",
-    "ogDescription": "Early adopter pricing: One-Day Pass $3.99, Pro $6.99/month, Lifetime $149. Prices go up as we add more premium features.",
+    "ogDescription": "Early adopter pricing: One-Day Pass $3.99, Pro $6.99/month, Lifetime $169. Prices go up as we add more premium features.",
     "ogType": "website",
     "ogImage": "/og-vteleprompter.jpg"
   },
@@ -14,7 +14,7 @@
     "currency": "USD"
   },
   "hero": {
-    "eyebrow": "🚀 Early Adopter Pricing",
+    "eyebrow": "Early Adopter Pricing",
     "title": "Lock In Your Price Forever",
     "description": "Prices will increase as we add more premium features. Whatever you pay today is the price you keep.",
     "note": "Limited-time launch pricing"
@@ -33,9 +33,9 @@
         "featured": false,
         "features": [
           "AI Scroll",
+          "More generous rate limits",
           "Cloud Sync",
           "100 GB Cloud Storage",
-          "Unlimited Cloud Scripts",
           "Remote Control",
           "Premium Themes",
           "Mirror and Fullscreen Mode"
@@ -51,12 +51,12 @@
         "priceWas": "$9.99",
         "priceNote": "per month",
         "amount": "6.99",
-        "badge": "⭐ Most Popular",
+        "badge": "Most Popular",
         "featured": true,
         "features": [
-          "Unlimited AI Scroll*",
+          "AI Scroll",
+          "More generous rate limits",
           "100 GB Cloud Storage",
-          "Unlimited Cloud Scripts",
           "Sync Across Devices",
           "Remote Control",
           "Premium Themes",
@@ -66,9 +66,9 @@
         "cta": { "label": "Start Pro", "url": "#" },
         "ctaOffer": {
           "text": "Prefer annual billing?",
-          "link": { "label": "Get Pro for $59/year", "url": "#" },
-          "note": "Save $24",
-          "amount": "59",
+          "link": { "label": "Get Pro for $49/year", "url": "#" },
+          "note": "Save $34",
+          "amount": "49",
           "name": "Pro Annual"
         }
       },
@@ -76,14 +76,15 @@
         "id": "lifetime",
         "name": "Lifetime",
         "description": "Pay once. Use forever.",
-        "price": "$149",
+        "price": "$169",
         "priceWas": "$199",
         "priceNote": "One-time payment",
-        "amount": "149",
-        "badge": "👑 Best Value",
+        "amount": "169",
+        "badge": "Best Value",
         "featured": false,
         "features": [
           "Everything in Pro",
+          "More generous rate limits",
           "Lifetime Updates",
           "Future Premium Features",
           "Founder Badge",
@@ -91,8 +92,7 @@
         ],
         "cta": { "label": "Get Lifetime", "url": "#" }
       }
-    ],
-    "footnote": "* Unlimited AI Scroll covers normal individual creator use. Extremely excessive, automated or abusive usage may be limited under our Fair Use Policy."
+    ]
   },
   "trust": {
     "items": [
@@ -108,8 +108,8 @@
     "items": [
       {
         "anchor": "faq-fair-use",
-        "q": "What does \"Unlimited AI Scroll\" mean?",
-        "a": "Unlimited AI Scroll is designed for normal individual creator usage. To ensure reliable service for everyone, extremely excessive, automated or abusive usage may be limited under our Fair Use Policy."
+        "q": "What are the AI Scroll rate limits?",
+        "a": "AI Scroll limits are sized for normal individual creator usage. To ensure reliable service for everyone, extremely excessive, automated or abusive usage may be limited under our Fair Use Policy."
       },
       {
         "anchor": "faq-price-increase",

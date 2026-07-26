@@ -247,6 +247,7 @@
       {
         "title": "Produkto",
         "links": [
+          { "label": "Presyo", "url": "/pricing" },
           { "label": "Mga Feature", "url": "#features" },
           { "label": "Paano Ito Gumagana", "url": "#how-it-works" },
           { "label": "AI Voice Scroll", "url": "#voice-scroll" },

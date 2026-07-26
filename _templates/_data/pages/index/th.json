@@ -247,6 +247,7 @@
       {
         "title": "ผลิตภัณฑ์",
         "links": [
+          { "label": "ราคา", "url": "/pricing" },
           { "label": "ฟีเจอร์", "url": "#features" },
           { "label": "วิธีการทำงาน", "url": "#how-it-works" },
           { "label": "เลื่อนตามเสียง AI", "url": "#voice-scroll" },

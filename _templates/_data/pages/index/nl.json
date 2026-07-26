@@ -247,6 +247,7 @@
       {
         "title": "Product",
         "links": [
+          { "label": "Prijzen", "url": "/pricing" },
           { "label": "Functies", "url": "#features" },
           { "label": "Hoe het werkt", "url": "#how-it-works" },
           { "label": "AI-stemscrollen", "url": "#voice-scroll" },

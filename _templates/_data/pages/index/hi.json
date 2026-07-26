@@ -247,6 +247,7 @@
       {
         "title": "प्रोडक्ट",
         "links": [
+          { "label": "मूल्य", "url": "/pricing" },
           { "label": "सुविधाएँ", "url": "#features" },
           { "label": "यह कैसे काम करता है", "url": "#how-it-works" },
           { "label": "AI वॉइस स्क्रॉल", "url": "#voice-scroll" },

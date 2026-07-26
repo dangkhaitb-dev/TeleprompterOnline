@@ -247,6 +247,7 @@
       {
         "title": "Producto",
         "links": [
+          { "label": "Precios", "url": "/pricing" },
           { "label": "Funciones", "url": "#features" },
           { "label": "Cómo funciona", "url": "#how-it-works" },
           { "label": "Desplazamiento por voz IA", "url": "#voice-scroll" },

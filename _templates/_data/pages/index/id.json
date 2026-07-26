@@ -247,6 +247,7 @@
       {
         "title": "Produk",
         "links": [
+          { "label": "Harga", "url": "/pricing" },
           { "label": "Fitur", "url": "#features" },
           { "label": "Cara Kerja", "url": "#how-it-works" },
           { "label": "Gulir Suara AI", "url": "#voice-scroll" },

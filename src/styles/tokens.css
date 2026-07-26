@@ -86,6 +86,12 @@
   --danger-bg: #fef2f2;
   --danger-line: #fee2e2;
 
+  /* Pricing plan cards (/pricing) — surface + elevation ladder. */
+  --plan-surface: #ffffff;
+  --plan-shadow: 0 2px 10px rgb(28 25 23 / 4%);
+  --plan-shadow-hover: 0 12px 30px rgb(28 25 23 / 8%);
+  --plan-shadow-featured: 0 20px 48px rgb(28 25 23 / 12%);
+
   /* ===== Teleprompter studio palette (ported verbatim from the demo :root).
      Light values are the default; dark overrides live in the [data-theme="dark"]
      block below. hex allowed here (tokens.css is exempt from color-no-hex). ===== */

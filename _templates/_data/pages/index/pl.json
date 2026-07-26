@@ -247,6 +247,7 @@
       {
         "title": "Produkt",
         "links": [
+          { "label": "Cennik", "url": "/pricing" },
           { "label": "Funkcje", "url": "#features" },
           { "label": "Jak to działa", "url": "#how-it-works" },
           { "label": "Przewijanie głosem AI", "url": "#voice-scroll" },

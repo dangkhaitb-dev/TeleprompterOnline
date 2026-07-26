@@ -247,6 +247,7 @@
       {
         "title": "Produto",
         "links": [
+          { "label": "Preços", "url": "/pricing" },
           { "label": "Recursos", "url": "#features" },
           { "label": "Como funciona", "url": "#how-it-works" },
           { "label": "Rolagem por voz com IA", "url": "#voice-scroll" },

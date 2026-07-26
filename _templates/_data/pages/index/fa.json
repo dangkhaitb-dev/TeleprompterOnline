@@ -247,6 +247,7 @@
       {
         "title": "محصول",
         "links": [
+          { "label": "قیمت‌گذاری", "url": "/pricing" },
           { "label": "ویژگی‌ها", "url": "#features" },
           { "label": "چگونه کار می‌کند", "url": "#how-it-works" },
           { "label": "اسکرول صوتی هوش مصنوعی", "url": "#voice-scroll" },

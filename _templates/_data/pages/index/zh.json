@@ -247,6 +247,7 @@
       {
         "title": "产品",
         "links": [
+          { "label": "定价", "url": "/pricing" },
           { "label": "功能", "url": "#features" },
           { "label": "工作原理", "url": "#how-it-works" },
           { "label": "AI 语音滚动", "url": "#voice-scroll" },

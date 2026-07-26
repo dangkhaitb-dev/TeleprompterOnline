@@ -105,7 +105,9 @@ Các file `.html` ở root (vd `index.html`) **được 11ty sinh tự động**
 - Layout: `_templates/_includes/base.njk`
 - Trang: `_templates/pages/*.njk` (hiện chỉ `index.njk`)
 - Nội dung/text: file JSON trong `_templates/_data/pages/<page>/en.json` — **không hardcode text trong `.njk`**.
-- Trang mới: thêm entry vào `_templates/_data/indexPages.cjs` (pageKey/lang/permalink) + tạo data JSON + template `.njk`. Sau khi sửa template → chạy lại build.
+- Trang mới **1 ngôn ngữ** (about, pricing…): tạo `_templates/pages/<key>.njk` với front matter `layout` + `permalink: /<key>.html` + `pageKey` + `lang`, và data `_templates/_data/pages/<key>/en.json`. Chrome (nav/footer) lấy từ `i18nPages['index']['en']`. **KHÔNG** thêm vào `indexPages.cjs` — file đó chỉ để phân trang bản đa ngữ của `index`. Sitemap + vite input tự nhận file `.html` mới ở root; nginx `try_files` lo clean URL nên canonical để `/<key>`.
+- `partials/json-ld.njk` là **schema riêng của index** (hardcode `pageData.howItWorks.steps` + `faq.items`) — khai báo `pageData.schema` ở trang khác sẽ làm build fail. Trang khác cần structured data → viết partial riêng, tự guard bằng key data của chính nó (xem `partials/pricing-json-ld.njk`), rồi include thêm 1 dòng ở layout.
+- Sau khi sửa template → chạy lại build.
 
 Pipeline build: `build:11ty` (sinh HTML → root) → `gen:sitemap` → `vite build`. `vite.config.js` tự phát hiện mọi `*.html` ở root làm input.
 

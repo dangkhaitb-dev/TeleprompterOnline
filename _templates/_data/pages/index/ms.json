@@ -247,6 +247,7 @@
       {
         "title": "Produk",
         "links": [
+          { "label": "Harga", "url": "/pricing" },
           { "label": "Ciri", "url": "#features" },
           { "label": "Cara Ia Berfungsi", "url": "#how-it-works" },
           { "label": "Skrol Suara AI", "url": "#voice-scroll" },

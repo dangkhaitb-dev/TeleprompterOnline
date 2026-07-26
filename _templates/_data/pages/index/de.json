@@ -247,6 +247,7 @@
       {
         "title": "Produkt",
         "links": [
+          { "label": "Preise", "url": "/pricing" },
           { "label": "Funktionen", "url": "#features" },
           { "label": "So funktioniert's", "url": "#how-it-works" },
           { "label": "KI-Sprachscrolling", "url": "#voice-scroll" },

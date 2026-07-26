@@ -8,7 +8,7 @@
     "description": "Learn about VTeleprompter subscriptions, renewals, cancellations, free trials, payment processing and eligibility for refunds."
   },
   "content": [
-    { "type": "paragraph", "html": "<strong>Effective date: July 17, 2026</strong><br><strong>Last updated: July 17, 2026</strong>" },
+    { "type": "paragraph", "html": "<strong>Effective date: July 17, 2026</strong><br><strong>Last updated: July 26, 2026</strong>" },
     { "type": "paragraph", "html": "This Billing, Subscription, Cancellation and Refund Policy applies to paid products and services offered by VTeleprompter through:" },
     { "type": "list", "items": [
       "https://vteleprompter.com",
@@ -56,7 +56,37 @@
     ] },
     { "type": "paragraph", "html": "You are responsible for canceling before the next renewal date if you do not want the subscription to continue." },
 
-    { "type": "heading", "text": "4. Free Trials and Promotional Periods" },
+    { "type": "heading", "text": "4. Lifetime and One-Time Purchases" },
+    { "type": "paragraph", "html": "A Lifetime plan is a single payment for continued access to the paid features of VTeleprompter. It is not a subscription: it does not renew and it is not billed again." },
+    { "type": "paragraph", "html": "<strong>\u201cLifetime\u201d means the lifetime of the product, not the lifetime of the purchaser.</strong> No online service can promise that it will exist forever. Lifetime access lasts for as long as VTeleprompter remains commercially available and operated by us." },
+    { "type": "paragraph", "html": "A Lifetime plan includes:" },
+    { "type": "list", "items": [
+      "The paid features described on the pricing page at the time of purchase.",
+      "Updates, improvements and premium features released for VTeleprompter while we operate the Service.",
+      "No recurring charge, no renewal and no exposure to later price increases."
+    ] },
+    { "type": "paragraph", "html": "A Lifetime plan does not include:" },
+    { "type": "list", "items": [
+      "A guarantee that the Service will remain available indefinitely.",
+      "Separate products, brands or applications that we may release in the future.",
+      "Third-party services, marketplaces, hardware or processing provided by others.",
+      "Unlimited use of metered features whose cost depends on third-party processing; fair-use limits and usage credits may apply.",
+      "A right to resell, rent, share, transfer or assign the plan."
+    ] },
+    { "type": "paragraph", "html": "A Lifetime plan is granted to one personal account and is non-transferable, except where transfer cannot lawfully be excluded." },
+    { "type": "paragraph", "html": "Features may be added, changed, replaced or removed over time. We are not obliged to develop, keep or restore any specific feature, provided the Service as a whole remains reasonably equivalent to what was described at purchase." },
+    { "type": "paragraph", "html": "If we permanently discontinue VTeleprompter, or discontinue the Lifetime plan, we will where reasonably possible:" },
+    { "type": "list", "items": [
+      "Give advance notice by email or inside the Service, normally at least 60 days before access ends.",
+      "Keep export of your scripts and recordings available during the notice period.",
+      "Consider a credit, a partial refund or migration to a reasonably equivalent service, taking into account the price paid and how long the plan was used."
+    ] },
+    { "type": "paragraph", "html": "These voluntary measures may not be possible in an insolvency, a forced shutdown or another event outside our reasonable control. They do not limit any mandatory consumer right." },
+    { "type": "paragraph", "html": "If VTeleprompter is acquired or its assets are transferred, we will use reasonable efforts to have Lifetime entitlements honored by the new operator." },
+    { "type": "paragraph", "html": "The 7-day refund guarantee described in this Policy applies to a Lifetime purchase in the same way as to any other first purchase. After that period, a Lifetime purchase is generally non-refundable except where required by law or expressly stated in this Policy." },
+    { "type": "paragraph", "html": "A Lifetime plan may be terminated without refund if the account is terminated for fraud, abuse or a serious breach of the Terms of Service." },
+
+    { "type": "heading", "text": "5. Free Trials and Promotional Periods" },
     { "type": "paragraph", "html": "VTeleprompter may offer free trials or discounted introductory periods." },
     { "type": "paragraph", "html": "The checkout page will disclose, where applicable:" },
     { "type": "list", "items": [
@@ -79,7 +109,7 @@
     ] },
     { "type": "paragraph", "html": "VTeleprompter may cancel promotional access obtained through fraud, duplicate accounts or policy abuse." },
 
-    { "type": "heading", "text": "5. Canceling a Subscription" },
+    { "type": "heading", "text": "6. Canceling a Subscription" },
     { "type": "paragraph", "html": "You may cancel a subscription through the account billing settings where available." },
     { "type": "paragraph", "html": "You may also request cancellation by emailing: <a href=\"mailto:contact.vpromter@gmail.com\" rel=\"nofollow\">contact.vpromter@gmail.com</a>" },
     { "type": "paragraph", "html": "A clear email cancellation request will be treated as submitted at the time shown in the email, even if our team processes it later." },
@@ -100,11 +130,11 @@
     ] },
     { "type": "paragraph", "html": "Canceling a subscription does not automatically delete your account." },
 
-    { "type": "heading", "text": "6. Mandatory Consumer Rights" },
+    { "type": "heading", "text": "7. Mandatory Consumer Rights" },
     { "type": "paragraph", "html": "Nothing in this Policy limits any statutory refund, withdrawal, cancellation, warranty or consumer rights that cannot lawfully be waived." },
     { "type": "paragraph", "html": "Where the law applicable to you provides a longer period or stronger remedy than this voluntary 7-day refund guarantee, the applicable legal right will prevail." },
 
-    { "type": "heading", "text": "7. 7-Day Refund Guarantee" },
+    { "type": "heading", "text": "8. 7-Day Refund Guarantee" },
     { "type": "paragraph", "html": "Unless otherwise stated at checkout, VTeleprompter offers a voluntary 7-day refund guarantee for eligible purchases made directly through VTeleprompter." },
     { "type": "paragraph", "html": "You may request a refund within seven calendar days from the date of your initial purchase if:" },
     { "type": "list", "items": [
@@ -118,7 +148,7 @@
     { "type": "paragraph", "html": "VTeleprompter may deny a voluntary refund where there is evidence of refund abuse, repeated refund claims across multiple accounts, substantial use of paid resources, fraudulent activity or violation of the Terms of Service." },
     { "type": "paragraph", "html": "This voluntary 7-day guarantee does not limit any refund, withdrawal, cancellation, warranty or consumer rights that cannot be excluded under applicable law." },
 
-    { "type": "heading", "text": "8. Accidental Subscription Renewal" },
+    { "type": "heading", "text": "9. Accidental Subscription Renewal" },
     { "type": "paragraph", "html": "For a subscription renewed directly through VTeleprompter, you may request review of an accidental renewal charge within three calendar days after renewal." },
     { "type": "paragraph", "html": "We will generally approve a refund when:" },
     { "type": "list", "items": [
@@ -130,12 +160,12 @@
     { "type": "paragraph", "html": "If paid features were materially used after renewal, we may deny the refund or provide a partial refund where appropriate." },
     { "type": "paragraph", "html": "This voluntary rule does not replace any stronger right provided by law." },
 
-    { "type": "heading", "text": "9. Technical Issues" },
+    { "type": "heading", "text": "10. Technical Issues" },
     { "type": "paragraph", "html": "You should report a material technical issue within seven calendar days of the relevant purchase or renewal." },
     { "type": "paragraph", "html": "Where a core paid feature is materially unavailable because of a verified VTeleprompter defect, we may provide a full refund, partial refund, account credit, subscription extension or restored usage credits, depending on the circumstances." },
     { "type": "paragraph", "html": "This time limit does not restrict any mandatory rights or remedies available under applicable consumer law." },
 
-    { "type": "heading", "text": "10. Duplicate and Incorrect Charges" },
+    { "type": "heading", "text": "11. Duplicate and Incorrect Charges" },
     { "type": "paragraph", "html": "We will refund verified:" },
     { "type": "list", "items": [
       "Duplicate charges.",
@@ -146,7 +176,7 @@
     { "type": "paragraph", "html": "Report billing errors promptly to: <a href=\"mailto:contact.vpromter@gmail.com\" rel=\"nofollow\">contact.vpromter@gmail.com</a>" },
     { "type": "paragraph", "html": "Include a receipt, invoice or screenshot showing the charge." },
 
-    { "type": "heading", "text": "11. Unauthorized Charges" },
+    { "type": "heading", "text": "12. Unauthorized Charges" },
     { "type": "paragraph", "html": "If you believe a purchase was unauthorized:" },
     { "type": "list", "items": [
       "Contact us promptly.",
@@ -158,7 +188,7 @@
     { "type": "paragraph", "html": "A refund may be issued when the transaction is reasonably verified as unauthorized and the request is not connected to account sharing, failure to protect credentials, friendly fraud or policy abuse." },
     { "type": "paragraph", "html": "Nothing in this section limits rights provided by your bank, card issuer or applicable law." },
 
-    { "type": "heading", "text": "12. Generally Non-Refundable Purchases" },
+    { "type": "heading", "text": "13. Generally Non-Refundable Purchases" },
     { "type": "paragraph", "html": "Except where required by law or expressly stated in this Policy, the following are generally non-refundable:" },
     { "type": "list", "items": [
       "Charges requested after the applicable refund period.",
@@ -176,7 +206,7 @@
     ] },
     { "type": "paragraph", "html": "This section does not override mandatory consumer rights." },
 
-    { "type": "heading", "text": "13. Partial Refunds" },
+    { "type": "heading", "text": "14. Partial Refunds" },
     { "type": "paragraph", "html": "VTeleprompter does not normally provide prorated refunds merely because a subscription is canceled during a billing period." },
     { "type": "paragraph", "html": "A partial refund may be provided when:" },
     { "type": "list", "items": [
@@ -187,7 +217,7 @@
       "We determine that a partial refund is a fair resolution."
     ] },
 
-    { "type": "heading", "text": "14. Usage Credits and Metered Purchases" },
+    { "type": "heading", "text": "15. Usage Credits and Metered Purchases" },
     { "type": "paragraph", "html": "Paid credits may be used for features that generate third-party processing or infrastructure costs." },
     { "type": "paragraph", "html": "Unless otherwise stated:" },
     { "type": "list", "items": [
@@ -201,7 +231,7 @@
     ] },
     { "type": "paragraph", "html": "If processing fails because of a confirmed VTeleprompter error, we may automatically restore the affected credits." },
 
-    { "type": "heading", "text": "15. App Store and Marketplace Purchases" },
+    { "type": "heading", "text": "16. App Store and Marketplace Purchases" },
     { "type": "paragraph", "html": "Purchases billed through Apple, Google Play or another marketplace are subject to that marketplace’s billing and refund process." },
     { "type": "paragraph", "html": "VTeleprompter may be unable to directly refund a transaction when the marketplace controls the payment." },
     { "type": "paragraph", "html": "For those purchases:" },
@@ -213,7 +243,7 @@
     ] },
     { "type": "paragraph", "html": "Where a marketplace directs you to VTeleprompter or allows developer-managed resolution, contact: <a href=\"mailto:contact.vpromter@gmail.com\" rel=\"nofollow\">contact.vpromter@gmail.com</a>" },
 
-    { "type": "heading", "text": "16. European and Other Withdrawal Rights" },
+    { "type": "heading", "text": "17. European and Other Withdrawal Rights" },
     { "type": "paragraph", "html": "Consumers in certain jurisdictions may have a legal cooling-off or withdrawal period for online services." },
     { "type": "paragraph", "html": "Where such rights apply, VTeleprompter will honor them." },
     { "type": "paragraph", "html": "At checkout, we may ask you to:" },
@@ -225,7 +255,7 @@
     { "type": "paragraph", "html": "Any such acknowledgement will not remove rights that cannot lawfully be waived." },
     { "type": "paragraph", "html": "Where legally permitted, a consumer who withdraws after requesting that a service begin immediately may be responsible for a proportionate amount corresponding to the service already supplied." },
 
-    { "type": "heading", "text": "17. How to Request a Refund" },
+    { "type": "heading", "text": "18. How to Request a Refund" },
     { "type": "paragraph", "html": "Send the request to: <a href=\"mailto:contact.vpromter@gmail.com\" rel=\"nofollow\">contact.vpromter@gmail.com</a>" },
     { "type": "paragraph", "html": "Use the subject: <strong>Refund Request — VTeleprompter</strong>" },
     { "type": "paragraph", "html": "Include:" },
@@ -249,7 +279,7 @@
     ] },
     { "type": "paragraph", "html": "We may request additional information to verify the account and transaction." },
 
-    { "type": "heading", "text": "18. Review and Decision" },
+    { "type": "heading", "text": "19. Review and Decision" },
     { "type": "paragraph", "html": "We aim to review refund requests fairly and consistently." },
     { "type": "paragraph", "html": "A refund may be:" },
     { "type": "list", "items": [
@@ -261,7 +291,7 @@
     ] },
     { "type": "paragraph", "html": "Complex cases may require additional time, particularly where fraud, app-store billing or payment-provider investigation is involved." },
 
-    { "type": "heading", "text": "19. Refund Method and Timing" },
+    { "type": "heading", "text": "20. Refund Method and Timing" },
     { "type": "paragraph", "html": "Approved refunds are normally issued to the original payment method." },
     { "type": "paragraph", "html": "We generally cannot send a refund to:" },
     { "type": "list", "items": [
@@ -275,7 +305,7 @@
     { "type": "paragraph", "html": "After VTeleprompter approves and submits a refund, the time required for the funds to appear depends on the payment provider, bank, card network, marketplace and country." },
     { "type": "paragraph", "html": "Currency conversion or bank fees may cause the amount received to differ slightly from the original local-currency amount. VTeleprompter is not responsible for fees or exchange rates imposed by third parties." },
 
-    { "type": "heading", "text": "20. Chargebacks and Payment Disputes" },
+    { "type": "heading", "text": "21. Chargebacks and Payment Disputes" },
     { "type": "paragraph", "html": "You retain the right to contact your bank or payment provider." },
     { "type": "paragraph", "html": "We encourage you to contact VTeleprompter first so that we can investigate and attempt to resolve the issue." },
     { "type": "paragraph", "html": "When a chargeback is opened:" },
@@ -288,13 +318,14 @@
     { "type": "paragraph", "html": "Fraudulent or abusive chargebacks may result in account termination." },
     { "type": "paragraph", "html": "This section does not limit legitimate rights to dispute unauthorized or incorrect charges." },
 
-    { "type": "heading", "text": "21. Price Changes" },
+    { "type": "heading", "text": "22. Price Changes" },
     { "type": "paragraph", "html": "VTeleprompter may change subscription prices." },
     { "type": "paragraph", "html": "For existing recurring subscriptions, material price changes will apply no earlier than the next permitted renewal after notice required by law or the applicable payment platform." },
     { "type": "paragraph", "html": "You may cancel before the new price takes effect." },
     { "type": "paragraph", "html": "Continuing the subscription after the effective date authorizes renewal at the new disclosed price where permitted by law." },
+    { "type": "paragraph", "html": "Promotional, launch or early adopter prices are limited-time offers. While a subscription bought at such a price stays active without interruption, we will keep charging that price at renewal until we notify you of a change as described in this section. If the subscription is canceled, lapses or is not renewed, the promotional price is no longer available and the then-current price applies." },
 
-    { "type": "heading", "text": "22. Changes to Plans or Discontinuation" },
+    { "type": "heading", "text": "23. Changes to Plans or Discontinuation" },
     { "type": "paragraph", "html": "We may change features or discontinue a paid plan." },
     { "type": "paragraph", "html": "If a paid service is discontinued before the end of your prepaid period, we may:" },
     { "type": "list", "items": [
@@ -305,13 +336,13 @@
       "Provide another remedy required by law."
     ] },
 
-    { "type": "heading", "text": "23. Taxes" },
+    { "type": "heading", "text": "24. Taxes" },
     { "type": "paragraph", "html": "Prices may be subject to VAT, sales tax, withholding tax or other governmental charges." },
     { "type": "paragraph", "html": "Where required, VTeleprompter or its payment provider may collect tax based on billing information or location." },
     { "type": "paragraph", "html": "You are responsible for taxes not collected at checkout where applicable." },
     { "type": "paragraph", "html": "Business customers requesting tax documentation must provide accurate legal and tax information." },
 
-    { "type": "heading", "text": "24. Policy Abuse" },
+    { "type": "heading", "text": "25. Policy Abuse" },
     { "type": "paragraph", "html": "We may reject a voluntary refund or restrict accounts involved in:" },
     { "type": "list", "items": [
       "Repeated refund claims across multiple accounts.",
@@ -325,7 +356,7 @@
     ] },
     { "type": "paragraph", "html": "Policy-abuse restrictions do not remove mandatory rights for legitimate transactions." },
 
-    { "type": "heading", "text": "25. Changes to This Policy" },
+    { "type": "heading", "text": "26. Changes to This Policy" },
     { "type": "paragraph", "html": "We may update this Policy to reflect:" },
     { "type": "list", "items": [
       "New plans.",
@@ -338,7 +369,7 @@
     { "type": "paragraph", "html": "Changes will not retroactively reduce refund rights already attached to a completed purchase unless required by law." },
     { "type": "paragraph", "html": "The version displayed at the time of purchase generally applies to that purchase, together with any mandatory law." },
 
-    { "type": "heading", "text": "26. Contact" },
+    { "type": "heading", "text": "27. Contact" },
     { "type": "paragraph", "html": "Billing, cancellation and refund requests may be sent to:" },
     { "type": "paragraph", "html": "<strong>VTeleprompter</strong><br>Website: <a href=\"https://vteleprompter.com\">https://vteleprompter.com</a><br>Email: <a href=\"mailto:contact.vpromter@gmail.com\" rel=\"nofollow\">contact.vpromter@gmail.com</a><br>Country of operation: Vietnam" }
   ]

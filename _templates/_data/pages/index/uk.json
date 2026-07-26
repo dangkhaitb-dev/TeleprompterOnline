@@ -247,6 +247,7 @@
       {
         "title": "Продукт",
         "links": [
+          { "label": "Ціни", "url": "/pricing" },
           { "label": "Можливості", "url": "#features" },
           { "label": "Як це працює", "url": "#how-it-works" },
           { "label": "Голосове прокручування ШІ", "url": "#voice-scroll" },

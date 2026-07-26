@@ -247,6 +247,7 @@
       {
         "title": "Prodotto",
         "links": [
+          { "label": "Prezzi", "url": "/pricing" },
           { "label": "Funzioni", "url": "#features" },
           { "label": "Come funziona", "url": "#how-it-works" },
           { "label": "Scorrimento vocale IA", "url": "#voice-scroll" },

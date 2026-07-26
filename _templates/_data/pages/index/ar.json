@@ -247,6 +247,7 @@
       {
         "title": "المنتج",
         "links": [
+          { "label": "التسعير", "url": "/pricing" },
           { "label": "الميزات", "url": "#features" },
           { "label": "كيف يعمل", "url": "#how-it-works" },
           { "label": "التمرير الصوتي بالذكاء الاصطناعي", "url": "#voice-scroll" },

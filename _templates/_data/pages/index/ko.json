@@ -247,6 +247,7 @@
       {
         "title": "제품",
         "links": [
+          { "label": "요금제", "url": "/pricing" },
           { "label": "기능", "url": "#features" },
           { "label": "작동 방식", "url": "#how-it-works" },
           { "label": "AI 음성 스크롤", "url": "#voice-scroll" },

@@ -1,0 +1,92 @@
+{#- Build-time JSON-LD for the pricing page.
+
+    Kept separate from partials/json-ld.njk (which is index-shaped: it hardcodes
+    pageData.howItWorks / pageData.faq of the home page). Everything here is
+    assembled from the page's own data so the structured data can never drift
+    from the visible copy:
+      - Offer entries   loop over pageData.plans.items (price = plan.amount)
+      - FAQ entries     loop over pageData.faq.items
+
+    No-op on every page that doesn't declare `pageData.pricingSchema`. -#}
+{%- if pageData.pricingSchema -%}
+{%- set s = pageData.seo -%}
+{%- set ps = pageData.pricingSchema -%}
+{%- set base = site.url -%}
+{%- set home = base + "/" -%}
+{%- set canonicalUrl = base + (s.canonical or "/") -%}
+{%- set langCode = lang or 'en' -%}
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "{{ canonicalUrl }}#webpage",
+      "url": "{{ canonicalUrl }}",
+      "name": "{{ s.title | jsonString | safe }}",
+      "description": "{{ s.description | jsonString | safe }}",
+      "isPartOf": { "@id": "{{ home }}#website" },
+      "publisher": { "@id": "{{ home }}#organization" },
+      "about": { "@id": "{{ canonicalUrl }}#product" },
+      "mainEntity": { "@id": "{{ canonicalUrl }}#product" },
+      "inLanguage": "{{ langCode }}"
+    },
+    {
+      "@type": "Product",
+      "@id": "{{ canonicalUrl }}#product",
+      "name": "{{ ps.productName | jsonString | safe }}",
+      "description": "{{ ps.productDescription | jsonString | safe }}",
+      "url": "{{ canonicalUrl }}",
+      "brand": { "@id": "{{ home }}#brand" },
+      "offers": [
+        {%- for plan in pageData.plans.items %}
+        {
+          "@type": "Offer",
+          "@id": "{{ canonicalUrl }}#offer-{{ plan.id }}",
+          "name": "{{ plan.name | jsonString | safe }}",
+          "description": "{{ plan.description | jsonString | safe }}",
+          "url": "{{ canonicalUrl }}",
+          "price": "{{ plan.amount | jsonString | safe }}",
+          "priceCurrency": "{{ ps.currency | jsonString | safe }}",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "{{ home }}#organization" }
+        }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+        {%- for plan in pageData.plans.items %}{% if plan.ctaOffer %},
+        {
+          "@type": "Offer",
+          "@id": "{{ canonicalUrl }}#offer-{{ plan.id }}-annual",
+          "name": "{{ plan.ctaOffer.name | jsonString | safe }}",
+          "url": "{{ canonicalUrl }}",
+          "price": "{{ plan.ctaOffer.amount | jsonString | safe }}",
+          "priceCurrency": "{{ ps.currency | jsonString | safe }}",
+          "availability": "https://schema.org/InStock",
+          "seller": { "@id": "{{ home }}#organization" }
+        }{% endif %}{%- endfor %}
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{ canonicalUrl }}#faq",
+      "url": "{{ canonicalUrl }}#faq",
+      "name": "{{ pageData.faq.title | jsonString | safe }}",
+      "isPartOf": { "@id": "{{ canonicalUrl }}#webpage" },
+      "mainEntity": [
+        {%- for item in pageData.faq.items %}
+        {
+          "@type": "Question",
+          "@id": "{{ canonicalUrl }}#{{ item.anchor }}",
+          "name": "{{ item.q | jsonString | safe }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ item.a | jsonString | safe }}"
+          }
+        }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ],
+      "inLanguage": "{{ langCode }}"
+    }
+  ]
+}
+    </script>
+{%- endif -%}

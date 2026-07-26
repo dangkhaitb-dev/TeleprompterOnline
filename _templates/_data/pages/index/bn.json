@@ -247,6 +247,7 @@
       {
         "title": "প্রোডাক্ট",
         "links": [
+          { "label": "মূল্য", "url": "/pricing" },
           { "label": "ফিচার", "url": "#features" },
           { "label": "কীভাবে কাজ করে", "url": "#how-it-works" },
           { "label": "AI ভয়েস স্ক্রল", "url": "#voice-scroll" },

@@ -1,0 +1,160 @@
+---
+layout: home-base.njk
+permalink: /pricing.html
+pageKey: pricing
+lang: en
+---
+{%- set pageData = i18nPages['pricing']['en'] -%}
+{%- set chrome = i18nPages['index']['en'] -%}
+{%- from "partials/logo.njk" import brandLogo -%}
+{%- set logoSvg = brandLogo('currentColor') -%}
+
+<!-- NAV -->
+<header class="nav">
+    <div class="nav-inner">
+        <div class="nav-left">
+            <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="brand-text">VTeleprompter</span></a>
+            <nav class="nav-menu" aria-label="Primary">
+                {%- for item in chrome.nav.items %}
+                {%- set navHref = ('/' + item.url) if '#' in item.url else item.url %}
+                <a href="{{ navHref }}" class="nav-item">{{ item.label }}</a>
+                {%- endfor %}
+            </nav>
+        </div>
+        <div class="nav-right">
+            <a href="{{ chrome.nav.cta.url }}" class="btn btn-workspaces">{{ chrome.nav.cta.label }}</a>
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav-scrim" id="mobileNavScrim"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <div class="mobile-nav-head">
+        <span class="mobile-nav-title">{{ chrome.footer.brand }}</span>
+        <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+    </div>
+    <ul class="mobile-nav-list">
+        {%- for item in chrome.nav.items %}
+        {%- set navHref = ('/' + item.url) if '#' in item.url else item.url %}
+        <li><a href="{{ navHref }}" class="mobile-nav-link">{{ item.label }}</a></li>
+        {%- endfor %}
+    </ul>
+    <a href="{{ chrome.nav.cta.url }}" class="btn btn-workspaces mobile-nav-cta">{{ chrome.nav.cta.label }}</a>
+</nav>
+
+<!-- HERO + MAIN -->
+<main id="main" tabindex="-1">
+    <section class="hero hero--pricing">
+        <div class="hero-inner">
+            <p class="eyebrow">{{ pageData.hero.eyebrow }}</p>
+            <h1 class="hero-title">{{ pageData.hero.title }}</h1>
+            <p class="hero-desc">{{ pageData.hero.description }}</p>
+            {%- if pageData.hero.note %}
+            <p class="hero-note">{{ pageData.hero.note }}</p>
+            {%- endif %}
+        </div>
+    </section>
+
+    {%- set plans = pageData.plans %}
+    <section class="section plans" id="plans">
+        <div class="section-inner plans-inner">
+            <h2 class="visually-hidden">Plans and pricing</h2>
+            <ul class="plan-grid">
+                {%- for plan in plans.items %}
+                <li class="plan-card{% if plan.featured %} plan-card--featured{% endif %}">
+                    {%- if plan.badge %}
+                    <p class="plan-badge{% if not plan.featured %} plan-badge--quiet{% endif %}">{{ plan.badge }}</p>
+                    {%- endif %}
+                    <h3 class="plan-name">{{ plan.name }}</h3>
+                    <p class="plan-desc">{{ plan.description }}</p>
+                    <p class="plan-price">{{ plan.price }}{% if plan.priceWas %}<span class="plan-price-was"><span class="visually-hidden">Regular price </span><s>{{ plan.priceWas }}</s></span>{% endif %}</p>
+                    <p class="plan-price-note">{{ plan.priceNote }}</p>
+                    <a class="btn plan-cta{% if plan.featured %} btn-primary{% else %} plan-cta--ghost{% endif %}" href="{{ plan.cta.url }}" data-plan="{{ plan.id }}">{{ plan.cta.label }}</a>
+                    {%- if plan.ctaNote %}
+                    <p class="plan-cta-note">{{ plan.ctaNote }}</p>
+                    {%- endif %}
+                    {%- if plan.ctaOffer %}
+                    <p class="plan-cta-offer">{{ plan.ctaOffer.text }} <a class="text-link" href="{{ plan.ctaOffer.link.url }}" data-plan="{{ plan.id }}-annual">{{ plan.ctaOffer.link.label }}</a>{% if plan.ctaOffer.note %} <span class="plan-save">{{ plan.ctaOffer.note }}</span>{% endif %}</p>
+                    {%- endif %}
+                    <ul class="plan-features">
+                        {%- for feature in plan.features %}
+                        <li>{{ feature }}</li>
+                        {%- endfor %}
+                    </ul>
+                </li>
+                {%- endfor %}
+            </ul>
+            {%- if plans.footnote %}
+            <p class="plans-footnote">{{ plans.footnote }}</p>
+            {%- endif %}
+        </div>
+    </section>
+
+    <section class="section section-alt trust-band">
+        <div class="section-inner">
+            <h2 class="visually-hidden">Included in every plan</h2>
+            <ul class="trust-row">
+                {%- for item in pageData.trust.items %}
+                <li class="trust-item">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    {{ item }}
+                </li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {%- set faq = pageData.faq %}
+    <section class="section" id="faq">
+        <div class="section-inner section-narrow">
+            <div class="section-head">
+                <p class="eyebrow">{{ faq.eyebrow }}</p>
+                <h2 class="section-title">{{ faq.title }}</h2>
+            </div>
+            <div class="faq">
+                {%- for item in faq.items %}
+                <details class="faq-item" id="{{ item.anchor }}">
+                    <summary class="faq-q">{{ item.q }}</summary>
+                    <p class="faq-a">{{ item.a }}</p>
+                </details>
+                {%- endfor %}
+            </div>
+            <p class="section-support">{{ faq.supporting.text }} <a class="text-link" href="{{ faq.supporting.link.url }}">{{ faq.supporting.link.label }}</a></p>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="footer-logo-text">{{ chrome.footer.brand }}</span></a>
+                <p class="footer-desc">{{ chrome.footer.description }}</p>
+            </div>
+            <div class="footer-cols">
+                {%- for column in chrome.footer.columns %}
+                <div class="footer-col">
+                    <h3 class="footer-col-title">{{ column.title }}</h3>
+                    <ul class="footer-col-links">
+                        {%- for link in column.links %}
+                        <li><a href="{{ link.url }}" class="footer-link">{{ link.label }}</a></li>
+                        {%- endfor %}
+                    </ul>
+                </div>
+                {%- endfor %}
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">{{ chrome.footer.copyright }}</p>
+        </div>
+    </div>
+</footer>

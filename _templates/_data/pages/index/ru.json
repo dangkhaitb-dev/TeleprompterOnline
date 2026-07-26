@@ -247,6 +247,7 @@
       {
         "title": "Продукт",
         "links": [
+          { "label": "Цены", "url": "/pricing" },
           { "label": "Возможности", "url": "#features" },
           { "label": "Как это работает", "url": "#how-it-works" },
           { "label": "Голосовая прокрутка ИИ", "url": "#voice-scroll" },

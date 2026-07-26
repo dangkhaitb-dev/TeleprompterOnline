@@ -1,0 +1,150 @@
+{
+  "seo": {
+    "title": "Pricing — Day Pass, Pro and Lifetime | VTeleprompter",
+    "description": "VTeleprompter early adopter pricing: a $3.99 one-day pass, Pro at $6.99 per month or $59 a year, and a $149 lifetime plan. AI Scroll, cloud sync and remote control included.",
+    "canonical": "/pricing",
+    "ogTitle": "VTeleprompter Pricing — Lock In Your Price Forever",
+    "ogDescription": "Early adopter pricing: One-Day Pass $3.99, Pro $6.99/month, Lifetime $149. Prices go up as we add more premium features.",
+    "ogType": "website",
+    "ogImage": "/og-vteleprompter.jpg"
+  },
+  "pricingSchema": {
+    "productName": "VTeleprompter",
+    "productDescription": "Online AI teleprompter with voice-following scroll, notch mode, remote control and 4K recording.",
+    "currency": "USD"
+  },
+  "hero": {
+    "eyebrow": "🚀 Early Adopter Pricing",
+    "title": "Lock In Your Price Forever",
+    "description": "Prices will increase as we add more premium features. Whatever you pay today is the price you keep.",
+    "note": "Limited-time launch pricing"
+  },
+  "plans": {
+    "items": [
+      {
+        "id": "day",
+        "name": "One-Day Pass",
+        "description": "24-hour access to Pro features.",
+        "price": "$3.99",
+        "priceWas": "$5.99",
+        "priceNote": "24-hour access",
+        "amount": "3.99",
+        "badge": null,
+        "featured": false,
+        "features": [
+          "AI Scroll",
+          "Cloud Sync",
+          "100 GB Cloud Storage",
+          "Unlimited Cloud Scripts",
+          "Remote Control",
+          "Premium Themes",
+          "Mirror and Fullscreen Mode"
+        ],
+        "cta": { "label": "Buy Day Pass", "url": "#" },
+        "ctaNote": "Perfect for one-time recordings."
+      },
+      {
+        "id": "pro",
+        "name": "Pro",
+        "description": "Everything creators need.",
+        "price": "$6.99",
+        "priceWas": "$9.99",
+        "priceNote": "per month",
+        "amount": "6.99",
+        "badge": "⭐ Most Popular",
+        "featured": true,
+        "features": [
+          "Unlimited AI Scroll*",
+          "100 GB Cloud Storage",
+          "Unlimited Cloud Scripts",
+          "Sync Across Devices",
+          "Remote Control",
+          "Premium Themes",
+          "Script History",
+          "Priority Support"
+        ],
+        "cta": { "label": "Start Pro", "url": "#" },
+        "ctaOffer": {
+          "text": "Prefer annual billing?",
+          "link": { "label": "Get Pro for $59/year", "url": "#" },
+          "note": "Save $24",
+          "amount": "59",
+          "name": "Pro Annual"
+        }
+      },
+      {
+        "id": "lifetime",
+        "name": "Lifetime",
+        "description": "Pay once. Use forever.",
+        "price": "$149",
+        "priceWas": "$199",
+        "priceNote": "One-time payment",
+        "amount": "149",
+        "badge": "👑 Best Value",
+        "featured": false,
+        "features": [
+          "Everything in Pro",
+          "Lifetime Updates",
+          "Future Premium Features",
+          "Founder Badge",
+          "Early Feature Access"
+        ],
+        "cta": { "label": "Get Lifetime", "url": "#" }
+      }
+    ],
+    "footnote": "* Unlimited AI Scroll covers normal individual creator use. Extremely excessive, automated or abusive usage may be limited under our Fair Use Policy."
+  },
+  "trust": {
+    "items": [
+      "7-day refund guarantee",
+      "Cancel anytime",
+      "No ads, ever",
+      "No watermark on your videos"
+    ]
+  },
+  "faq": {
+    "eyebrow": "Billing",
+    "title": "Questions About Payment",
+    "items": [
+      {
+        "anchor": "faq-fair-use",
+        "q": "What does \"Unlimited AI Scroll\" mean?",
+        "a": "Unlimited AI Scroll is designed for normal individual creator usage. To ensure reliable service for everyone, extremely excessive, automated or abusive usage may be limited under our Fair Use Policy."
+      },
+      {
+        "anchor": "faq-price-increase",
+        "q": "Will these prices go up?",
+        "a": "Yes. These are early adopter prices and they will increase as we add more premium features. While your subscription stays active without interruption, you keep the price you signed up at; a Lifetime purchase is a one-time payment that is never affected by later price changes."
+      },
+      {
+        "anchor": "faq-lifetime-cover",
+        "q": "What does the Lifetime plan actually cover?",
+        "a": "A single payment for the Pro features, plus every update and premium feature we release for VTeleprompter, with no renewal. Lifetime refers to the lifetime of the product, not the lifetime of the purchaser — it lasts for as long as VTeleprompter is commercially operated by us. The full terms are in the Billing and Refund Policy."
+      },
+      {
+        "anchor": "faq-cancel",
+        "q": "Can I cancel my subscription?",
+        "a": "Yes. Cancel at any time from your account billing settings, or email contact.vpromter@gmail.com. Automatic renewal stops immediately and you keep paid access until the end of the billing period you already paid for."
+      },
+      {
+        "anchor": "faq-refund",
+        "q": "Do you offer refunds?",
+        "a": "We offer a voluntary 7-day refund guarantee on your first purchase made directly through VTeleprompter, subject to the conditions in the Billing and Refund Policy. Mandatory consumer rights in your country always apply on top of it."
+      },
+      {
+        "anchor": "faq-day-pass",
+        "q": "What happens when the One-Day Pass expires?",
+        "a": "Pro features simply stop after 24 hours and the pass does not renew. Your scripts and recordings stay where they are, and you can buy another pass or move to Pro whenever you want."
+      },
+      {
+        "anchor": "faq-taxes",
+        "q": "Do the prices include tax?",
+        "a": "Unless stated otherwise, displayed prices exclude taxes that must be collected separately. The final amount, currency and any applicable VAT or sales tax are shown before you confirm the payment."
+      }
+    ],
+    "supporting": {
+      "text": "Full terms for renewals, cancellations, lifetime access and refunds:",
+      "link": { "label": "Billing and Refund Policy", "url": "/billing" }
+    }
+  }
+}

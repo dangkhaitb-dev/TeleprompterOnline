@@ -247,6 +247,7 @@
       {
         "title": "Product",
         "links": [
+          { "label": "Pricing", "url": "/pricing" },
           { "label": "Features", "url": "#features" },
           { "label": "How It Works", "url": "#how-it-works" },
           { "label": "AI Voice Scroll", "url": "#voice-scroll" },

@@ -247,6 +247,7 @@
       {
         "title": "製品",
         "links": [
+          { "label": "料金", "url": "/pricing" },
           { "label": "機能", "url": "#features" },
           { "label": "使い方", "url": "#how-it-works" },
           { "label": "AI音声スクロール", "url": "#voice-scroll" },

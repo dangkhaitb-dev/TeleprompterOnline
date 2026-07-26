@@ -247,6 +247,7 @@
       {
         "title": "Sản phẩm",
         "links": [
+          { "label": "Bảng giá", "url": "/pricing" },
           { "label": "Tính năng", "url": "#features" },
           { "label": "Cách hoạt động", "url": "#how-it-works" },
           { "label": "Cuộn Theo Giọng Nói AI", "url": "#voice-scroll" },

@@ -247,6 +247,7 @@
       {
         "title": "Ürün",
         "links": [
+          { "label": "Fiyatlandırma", "url": "/pricing" },
           { "label": "Özellikler", "url": "#features" },
           { "label": "Nasıl Çalışır", "url": "#how-it-works" },
           { "label": "Yapay Zekâ Sesli Kaydırma", "url": "#voice-scroll" },

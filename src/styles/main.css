@@ -1,0 +1,85 @@
+/* main.css — teleprompter base shell.
+   A deliberately small, intentional starting layout: a centered stage with a
+   scrolling reading area placeholder. Replace #teleprompter's contents with the
+   real feature. */
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: 1.6;
+  color: var(--text);
+  background:
+    radial-gradient(120% 80% at 50% -10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 60%),
+    var(--bg);
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  max-width: var(--maxw-content);
+  margin-inline: auto;
+  padding: var(--space-16) var(--space-6);
+  display: grid;
+  gap: var(--space-8);
+}
+
+.stage__eyebrow {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stage__title {
+  margin: 0;
+  font-size: clamp(2rem, 6vw, var(--text-2xl));
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.stage__title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.stage__lead {
+  margin: 0;
+  max-width: 46ch;
+  font-size: var(--text-lg);
+  color: var(--text-muted);
+}
+
+/* Reading area — the mount point for the teleprompter feature. */
+#teleprompter {
+  position: relative;
+  min-height: 40vh;
+  padding: var(--space-12) var(--space-8);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  box-shadow: 0 20px 60px -30px rgb(0 0 0 / 35%);
+  overflow: hidden;
+}
+
+#teleprompter::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 30%;
+  background: linear-gradient(to top, var(--surface), transparent);
+  pointer-events: none;
+}
+
+.prompter-line {
+  margin: 0 0 var(--space-4);
+  font-size: clamp(1.25rem, 3.2vw, var(--text-xl));
+  font-weight: 600;
+  color: var(--text);
+}
+
+.prompter-line--dim { color: var(--text-muted); }

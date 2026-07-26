@@ -1,0 +1,111 @@
+/* components/prompt-popup.css — shared single-field text dialog. Centered card
+   over a darkened scrim (no blur), --z-modal. Mirrors confirm-popup. */
+.prompt-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  overflow-y: auto;
+  background: var(--confirm-scrim);
+  animation: prompt-fade var(--dur-fast) ease;
+}
+
+.prompt-overlay .prompt-box {
+  width: 100%;
+  max-width: 380px;
+  padding: 22px;
+  background: var(--confirm-surface);
+  border: 1px solid var(--confirm-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--confirm-shadow);
+  animation: prompt-pop var(--dur-fast) var(--ease-out);
+}
+
+.prompt-title {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--confirm-title);
+}
+
+.prompt-input {
+  width: 100%;
+  margin: 6px 0 18px;
+  padding: 11px 13px;
+  border: 1.5px solid var(--confirm-border);
+  border-radius: 10px;
+  background: var(--ws-bg-page);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--confirm-title);
+  outline: none;
+  transition:
+    border-color var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease;
+}
+
+.prompt-input:focus {
+  border-color: var(--confirm-accent);
+  box-shadow: 0 0 0 3px var(--ws-accent-soft);
+}
+
+.prompt-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.prompt-btn {
+  padding: 9px 16px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.prompt-cancel {
+  background: var(--confirm-cancel-bg);
+  color: var(--confirm-text);
+}
+
+.prompt-cancel:hover {
+  background: var(--confirm-cancel-hover);
+}
+
+.prompt-ok {
+  background: var(--confirm-accent);
+  color: var(--confirm-accent-ink);
+}
+
+.prompt-ok:hover {
+  background: var(--confirm-accent-hover);
+  color: var(--confirm-on-accent);
+}
+
+@keyframes prompt-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes prompt-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

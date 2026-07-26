@@ -1,0 +1,39 @@
+{%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
+<!DOCTYPE html>
+<html lang="{{ lang or 'en' }}" dir="{{ (lang or 'en') | langDir }}" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ pageData.seo.description }}">
+    <meta name="robots" content="index, follow">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fbfcfd">
+    <meta property="og:title" content="{{ pageData.seo.ogTitle or pageData.seo.title }}">
+    <meta property="og:description" content="{{ pageData.seo.ogDescription or pageData.seo.description }}">
+    <meta property="og:type" content="{{ pageData.seo.ogType or 'website' }}">
+    <meta property="og:url" content="{{ site.url }}{{ pageData.seo.canonical or '/' }}">
+    {%- if pageData.seo.ogImage %}
+    <meta property="og:image" content="{{ site.url }}{{ pageData.seo.ogImage }}">
+    {%- endif %}
+    <link rel="canonical" href="{{ site.url }}{{ pageData.seo.canonical or '/' }}">
+    {%- if pageKey == 'index' %}
+    {#- hreflang cluster is the multilingual home only; single-language pages
+        (e.g. about) reuse this layout but have no translations, so they must
+        not emit these alternates. -#}
+    {%- for l in site.languages %}
+    <link rel="alternate" hreflang="{{ l.code }}" href="{{ site.url }}{{ l.homePath }}">
+    {%- endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}/">
+    {%- endif %}
+    <title>{{ pageData.seo.title }}</title>
+    {% include "partials/head-icons.njk" %}
+    {% include "partials/json-ld.njk" %}
+</head>
+
+<body class="home">
+    {{ content | safe }}
+    <script type="module" src="/src/script/home-main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,106 @@
+---
+layout: blog-base.njk
+permalink: /blog.html
+pageKey: blog
+lang: en
+---
+{%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
+{%- from "partials/logo.njk" import brandLogo -%}
+{%- set logoSvg = brandLogo('currentColor') -%}
+
+<a class="skip-link" href="#main">Skip to articles</a>
+
+<header class="nav blog-nav">
+    <div class="nav-inner">
+        <div class="nav-left">
+            <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="brand-text">VTeleprompter</span></a>
+            <nav class="nav-menu" aria-label="Primary">
+                {%- for item in pageData.nav.items %}
+                <a href="{{ item.url }}" class="nav-item{% if item.label == 'Blog' %} nav-item-current{% endif %}"{% if item.label == 'Blog' %} aria-current="page"{% endif %}>{{ item.label }}</a>
+                {%- endfor %}
+            </nav>
+        </div>
+        <div class="nav-right">
+            <a href="/workspaces" class="btn btn-workspaces">{{ pageData.nav.workspaces }}</a>
+        </div>
+    </div>
+</header>
+
+<main id="main" class="blog-main" tabindex="-1">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            "@id": "{{ site.url }}/blog/#blog",
+            "name": "{{ pageData.heading | jsonString | safe }}",
+            "description": "{{ pageData.seo.description | jsonString | safe }}",
+            "url": "{{ site.url }}/blog",
+            "inLanguage": "en-US",
+            "publisher": {
+                "@type": "Organization",
+                "name": "{{ site.name }}",
+                "url": "{{ site.url }}"
+            },
+            "blogPost": [
+                {%- for article in blogArticles %}
+                {
+                    "@type": "BlogPosting",
+                    "@id": "{{ site.url }}/blog/{{ article.slug }}/#article",
+                    "headline": "{{ article.title | jsonString | safe }}",
+                    "description": "{{ article.seo.description | jsonString | safe }}",
+                    "url": "{{ site.url }}/blog/{{ article.slug }}/",
+                    "image": "{{ article.seo.image }}",
+                    "datePublished": "{{ article.date }}",
+                    "dateModified": "{{ article.modified }}",
+                    "author": {
+                        "@type": "Person",
+                        "name": "{{ article.author.name | jsonString | safe }}"
+                    }
+                }{% if not loop.last %},{% endif %}
+                {%- endfor %}
+            ]
+        }
+    </script>
+    <section class="blog-posts-section" aria-labelledby="articles-heading">
+        <h1 id="articles-heading" class="blog-heading">{{ pageData.heading }}</h1>
+
+        <div class="blog-posts">
+            {%- for article in blogArticles %}
+            <article class="blog-post">
+                <a class="blog-post-item" href="/blog/{{ article.slug }}/">
+                    <div class="blog-post-image">
+                        <img
+                            src="{{ article.hero.src }}"
+                            width="{{ article.hero.width }}"
+                            height="{{ article.hero.height }}"
+                            alt="{{ article.hero.alt }}"
+                            loading="lazy"
+                            fetchpriority="auto"
+                            decoding="async"
+                            class="blog-post-thumbnail">
+                    </div>
+                    <div class="blog-post-content">
+                        <time class="blog-meta" datetime="{{ article.date }}">{{ article.dateDisplay }}</time>
+                        <h2 class="blog-post-title">{{ article.title }}</h2>
+                    </div>
+                </a>
+            </article>
+            {%- endfor %}
+        </div>
+    </section>
+</main>
+
+<footer class="footer blog-footer">
+    <div class="footer-inner">
+        <div class="footer-logo">
+            <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="footer-logo-text">VTeleprompter</span></a>
+            <span class="footer-version">{{ pageData.footer.version }}</span>
+        </div>
+        <div class="footer-links">
+            {%- for link in pageData.footer.links %}
+            <a href="{{ link.url }}" class="footer-link{% if link.label == 'Blog' %} footer-link-current{% endif %}"{% if link.label == 'Blog' %} aria-current="page"{% endif %}>{{ link.label }}</a>
+            {%- endfor %}
+        </div>
+        <div class="footer-copyright">{{ pageData.footer.copyright }}</div>
+    </div>
+</footer>

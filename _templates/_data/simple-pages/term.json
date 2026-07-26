@@ -1,0 +1,301 @@
+{
+  "$schema": "../schemas/simple-page/simple-page.schema.json",
+  "slug": "term",
+  "published": true,
+  "title": "Terms of Service",
+  "seo": {
+    "title": "Terms of Service | VTeleprompter",
+    "description": "Read the terms governing access to and use of VTeleprompter, including user content, recordings, acceptable use, paid services and limitations of liability."
+  },
+  "content": [
+    { "type": "paragraph", "html": "<strong>Effective date: July 17, 2026</strong><br><strong>Last updated: July 17, 2026</strong>" },
+    { "type": "paragraph", "html": "These Terms of Service (“Terms”) govern your access to and use of VTeleprompter, including the website located at <a href=\"https://vteleprompter.com\">https://vteleprompter.com</a>, its web application, mobile applications, software, features and related services collectively referred to as the “Service.”" },
+    { "type": "paragraph", "html": "In these Terms, “VTeleprompter,” “we,” “us” and “our” refer to the person or entity operating VTeleprompter from Vietnam. “You” and “your” refer to the individual or organization accessing or using the Service." },
+    { "type": "paragraph", "html": "By accessing or using VTeleprompter, creating an account, purchasing a paid plan or otherwise indicating your acceptance, you agree to these Terms. If you do not agree, do not use the Service." },
+
+    { "type": "heading", "text": "1. Eligibility" },
+    { "type": "paragraph", "html": "You must be at least 13 years old to use VTeleprompter." },
+    { "type": "paragraph", "html": "If the law where you live requires you to be older to enter into a binding agreement or use an online service without parental consent, the higher age requirement applies." },
+    { "type": "paragraph", "html": "If you are under the age of legal majority where you live, you may use the Service only with the permission and supervision of a parent or legal guardian." },
+    { "type": "paragraph", "html": "If you use VTeleprompter on behalf of a company, school, production team or other organization, you represent that you have authority to bind that organization to these Terms." },
+
+    { "type": "heading", "text": "2. The VTeleprompter Service" },
+    { "type": "paragraph", "html": "VTeleprompter provides tools that may allow users to:" },
+    { "type": "list", "items": [
+      "Create, paste, upload, edit and organize scripts.",
+      "Display scripts in a teleprompter interface.",
+      "Use manual, fixed-speed or voice-assisted scrolling.",
+      "Position scripts near a camera using Notch Mode.",
+      "Control teleprompter sessions from another device.",
+      "Access camera and microphone features.",
+      "Record, preview, store, manage or export video and audio.",
+      "Use AI-assisted or automated presentation features.",
+      "Access other features introduced over time."
+    ] },
+    { "type": "paragraph", "html": "Some features may be free, while others may require an account, payment, subscription, supported browser, compatible device, camera, microphone or internet connection." },
+    { "type": "paragraph", "html": "Features, limits and availability may vary by plan, device, operating system, browser, country and technical capability." },
+
+    { "type": "heading", "text": "3. Accounts" },
+    { "type": "paragraph", "html": "Some features may require an account." },
+    { "type": "paragraph", "html": "You agree to:" },
+    { "type": "list", "items": [
+      "Provide accurate and current account information.",
+      "Keep your login credentials confidential.",
+      "Use a secure password where password authentication is available.",
+      "Promptly notify us if you suspect unauthorized access.",
+      "Remain responsible for activity performed through your account unless prohibited by applicable law."
+    ] },
+    { "type": "paragraph", "html": "You may not sell, rent, transfer or share access to your account in a way that bypasses account limits or paid plan restrictions." },
+    { "type": "paragraph", "html": "We may require verification before processing sensitive account requests, including account recovery, data export, deletion, billing changes or refunds." },
+
+    { "type": "heading", "text": "4. Camera and Microphone Permissions" },
+    { "type": "paragraph", "html": "VTeleprompter may request permission to access your camera or microphone when you use recording, preview, voice scrolling or related features." },
+    { "type": "paragraph", "html": "You control these permissions through your browser, device or operating system." },
+    { "type": "paragraph", "html": "You are responsible for:" },
+    { "type": "list", "items": [
+      "Confirming that you have permission to record every person included in a recording.",
+      "Complying with local notice and consent requirements.",
+      "Avoiding recording private conversations without permission.",
+      "Avoiding the capture of confidential, personal or sensitive information without authorization.",
+      "Reviewing your camera frame and microphone input before recording."
+    ] },
+    { "type": "paragraph", "html": "VTeleprompter does not grant you permission to record another person. Laws governing audio and video recording differ by jurisdiction, and you are responsible for determining which rules apply to your use." },
+
+    { "type": "heading", "text": "5. AI Voice Scroll and Automated Features" },
+    { "type": "paragraph", "html": "VTeleprompter may use speech recognition, text matching, timing analysis or other automated technology to move through a script or support your presentation." },
+    { "type": "paragraph", "html": "Automated features may:" },
+    { "type": "list", "items": [
+      "Mishear words.",
+      "Lose the speaker’s position.",
+      "Scroll too quickly or too slowly.",
+      "Behave differently because of noise, accents, microphone quality or network conditions.",
+      "Produce inaccurate or incomplete results.",
+      "Be temporarily unavailable."
+    ] },
+    { "type": "paragraph", "html": "You are responsible for reviewing the script, monitoring the teleprompter and maintaining an alternative method when uninterrupted presentation is important." },
+    { "type": "paragraph", "html": "VTeleprompter does not guarantee that voice scrolling or any AI-assisted feature will be error-free, uninterrupted or suitable for every speaker, environment or production." },
+
+    { "type": "heading", "text": "6. User Content" },
+    { "type": "paragraph", "html": "“User Content” includes scripts, text, documents, audio, video, images, recordings, prompts, filenames, comments and other content that you upload, create, store, process or transmit through the Service." },
+    { "type": "paragraph", "html": "<strong>Your ownership</strong>" },
+    { "type": "paragraph", "html": "You retain ownership of your User Content." },
+    { "type": "paragraph", "html": "These Terms do not transfer ownership of your scripts or recordings to VTeleprompter." },
+    { "type": "paragraph", "html": "<strong>Permission required to operate the Service</strong>" },
+    { "type": "paragraph", "html": "You grant VTeleprompter a limited, non-exclusive, worldwide and royalty-free license to host, store, reproduce, transmit, process, display, convert and otherwise use your User Content only as reasonably necessary to:" },
+    { "type": "list", "items": [
+      "Provide the features you request.",
+      "Synchronize content across devices.",
+      "Generate previews, recordings or exports.",
+      "Maintain, secure and troubleshoot the Service.",
+      "Prevent abuse or comply with legal obligations.",
+      "Perform other actions you expressly authorize."
+    ] },
+    { "type": "paragraph", "html": "This license ends when your content is deleted from active systems, subject to reasonable backup retention, legal obligations and technical limitations." },
+    { "type": "paragraph", "html": "<strong>Your responsibility</strong>" },
+    { "type": "paragraph", "html": "You represent that:" },
+    { "type": "list", "items": [
+      "You own your User Content or have permission to use it.",
+      "Your content does not violate copyright, privacy, publicity, confidentiality or other rights.",
+      "Your content is not unlawful or harmful.",
+      "Uploading and processing the content through VTeleprompter is legally permitted."
+    ] },
+    { "type": "paragraph", "html": "We are not responsible for disputes arising from content you upload without appropriate permission." },
+
+    { "type": "heading", "text": "7. Content Storage and Backups" },
+    { "type": "paragraph", "html": "VTeleprompter may offer script or recording storage, but the Service is not intended to be your only backup system." },
+    { "type": "paragraph", "html": "You should maintain independent copies of important scripts and recordings." },
+    { "type": "paragraph", "html": "We do not guarantee that:" },
+    { "type": "list", "items": [
+      "User Content will be stored forever.",
+      "Every recording will complete successfully.",
+      "Deleted content can be recovered.",
+      "A corrupted, interrupted or failed recording can be restored.",
+      "Content will remain available after account termination or plan expiration."
+    ] },
+    { "type": "paragraph", "html": "Storage limits may depend on your plan. We may delete content that exceeds applicable limits after providing reasonable notice where practical." },
+
+    { "type": "heading", "text": "8. Acceptable Use" },
+    { "type": "paragraph", "html": "You may not use VTeleprompter to:" },
+    { "type": "list", "items": [
+      "Violate any law or regulation.",
+      "Infringe copyright, trademark, privacy, publicity or other rights.",
+      "Record people without legally required permission.",
+      "Impersonate another person for fraud, harassment or deception.",
+      "Create deceptive content intended to cause material harm.",
+      "Threaten, harass, exploit or abuse another person.",
+      "Distribute malware, malicious code or harmful files.",
+      "Attempt unauthorized access to accounts, systems or networks.",
+      "Probe, scan or test system vulnerabilities without written authorization.",
+      "Interfere with the Service or impose an unreasonable technical load.",
+      "Circumvent plan limits, access controls, security measures or payment requirements.",
+      "Use automated scraping, bots or extraction systems except where we expressly permit them.",
+      "Resell, sublicense or commercially redistribute the Service without authorization.",
+      "Reverse engineer the Service except where applicable law expressly permits it.",
+      "Use another person’s payment method without authorization.",
+      "Submit fraudulent refund requests or payment disputes.",
+      "Use VTeleprompter in a manner that creates a material safety, legal or security risk."
+    ] },
+    { "type": "paragraph", "html": "We may investigate suspected abuse and restrict or suspend access when reasonably necessary to protect users, third parties or the Service." },
+
+    { "type": "heading", "text": "9. Intellectual Property" },
+    { "type": "paragraph", "html": "The Service, including its software, interface, design, branding, icons, graphics, text, documentation and underlying technology, is owned by VTeleprompter or its licensors and is protected by applicable intellectual property laws." },
+    { "type": "paragraph", "html": "Subject to these Terms, VTeleprompter grants you a limited, revocable, non-exclusive, non-transferable license to use the Service for lawful personal or internal business purposes." },
+    { "type": "paragraph", "html": "This license does not permit you to:" },
+    { "type": "list", "items": [
+      "Copy or redistribute the Service.",
+      "Use VTeleprompter trademarks without permission.",
+      "Remove ownership notices.",
+      "Create a competing service by copying protected elements.",
+      "Sell access to the Service.",
+      "Use source code that has not been publicly licensed."
+    ] },
+    { "type": "paragraph", "html": "No rights are granted except those expressly stated in these Terms." },
+
+    { "type": "heading", "text": "10. Feedback" },
+    { "type": "paragraph", "html": "You may send suggestions, ideas or feedback about VTeleprompter." },
+    { "type": "paragraph", "html": "You grant us permission to use that feedback without restriction or payment, provided that we do not publicly identify you as the source without permission." },
+    { "type": "paragraph", "html": "This does not give us ownership of your scripts, recordings or other User Content." },
+
+    { "type": "heading", "text": "11. Copyright Complaints" },
+    { "type": "paragraph", "html": "We respect intellectual property rights." },
+    { "type": "paragraph", "html": "A copyright complaint should include:" },
+    { "type": "list", "items": [
+      "Identification of the copyrighted work.",
+      "Identification and location of the allegedly infringing material.",
+      "Your name and contact information.",
+      "A statement explaining why you believe the use is unauthorized.",
+      "A statement that the information provided is accurate.",
+      "Your physical or electronic signature."
+    ] },
+    { "type": "paragraph", "html": "Send copyright complaints to: <a href=\"mailto:contact.vpromter@gmail.com\" rel=\"nofollow\">contact.vpromter@gmail.com</a>" },
+    { "type": "paragraph", "html": "We may remove or restrict content when we reasonably believe it infringes intellectual property rights. We may also terminate repeat infringers where appropriate." },
+    { "type": "paragraph", "html": "Submitting a knowingly false complaint may create legal liability." },
+
+    { "type": "heading", "text": "12. Third-Party Services" },
+    { "type": "paragraph", "html": "VTeleprompter may rely on or integrate with third-party services, including:" },
+    { "type": "list", "items": [
+      "Cloud hosting.",
+      "Authentication providers.",
+      "Payment processors.",
+      "Analytics services.",
+      "File storage.",
+      "Speech recognition.",
+      "Camera and browser APIs.",
+      "App stores.",
+      "Customer support tools."
+    ] },
+    { "type": "paragraph", "html": "Third-party services may be governed by their own terms and privacy policies." },
+    { "type": "paragraph", "html": "We are not responsible for third-party services that we do not control, including outages, policy changes, account restrictions or data handling by those providers." },
+
+    { "type": "heading", "text": "13. Free and Paid Features" },
+    { "type": "paragraph", "html": "VTeleprompter may provide free features, paid subscriptions, one-time purchases, usage credits or other paid services." },
+    { "type": "paragraph", "html": "Prices, billing periods, usage limits and included features will be displayed before purchase." },
+    { "type": "paragraph", "html": "Paid services are also governed by the VTeleprompter Billing, Subscription, Cancellation and Refund Policy." },
+    { "type": "paragraph", "html": "If there is a conflict concerning billing or refunds, the Billing and Refund Policy controls for that issue." },
+
+    { "type": "heading", "text": "14. Beta and Experimental Features" },
+    { "type": "paragraph", "html": "Some features may be labeled beta, preview, early access or experimental." },
+    { "type": "paragraph", "html": "These features may:" },
+    { "type": "list", "items": [
+      "Contain errors.",
+      "Change without notice.",
+      "Be removed.",
+      "Produce incomplete results.",
+      "Have reduced support or availability."
+    ] },
+    { "type": "paragraph", "html": "You use experimental features at your own risk and should not rely on them for critical productions without a backup plan." },
+
+    { "type": "heading", "text": "15. Service Changes" },
+    { "type": "paragraph", "html": "We may modify, improve, limit, suspend or discontinue part of the Service." },
+    { "type": "paragraph", "html": "Where a change materially reduces a paid feature during an active billing period, we may provide continued access, an alternative feature, account credit or an appropriate refund, depending on the circumstances and applicable law." },
+    { "type": "paragraph", "html": "We are not required to maintain every free feature indefinitely." },
+
+    { "type": "heading", "text": "16. Suspension and Termination" },
+    { "type": "paragraph", "html": "You may stop using VTeleprompter at any time." },
+    { "type": "paragraph", "html": "You may delete your account through available account settings or by contacting us." },
+    { "type": "paragraph", "html": "We may suspend or terminate access when:" },
+    { "type": "list", "items": [
+      "You materially violate these Terms.",
+      "Your use creates a security or legal risk.",
+      "Payment is overdue or reversed.",
+      "We are required to do so by law.",
+      "We discontinue the Service.",
+      "Your account has remained inactive for an extended period and prior notice is provided where practical."
+    ] },
+    { "type": "paragraph", "html": "Where appropriate, we may provide notice and an opportunity to correct the issue. Immediate action may be taken for fraud, security threats, unlawful conduct or serious abuse." },
+    { "type": "paragraph", "html": "After termination, your right to use the Service ends. Provisions concerning ownership, payment obligations, disclaimers, liability and disputes continue where their nature requires." },
+
+    { "type": "heading", "text": "17. Disclaimers" },
+    { "type": "paragraph", "html": "To the maximum extent permitted by law, VTeleprompter is provided on an “as is” and “as available” basis." },
+    { "type": "paragraph", "html": "We do not guarantee that:" },
+    { "type": "list", "items": [
+      "The Service will always be available.",
+      "The Service will be error-free.",
+      "Voice scrolling will perfectly match your speech.",
+      "Recordings will always complete or export successfully.",
+      "Files will be compatible with every device or application.",
+      "The Service will meet every professional or production requirement.",
+      "Data loss, corruption or interruption will never occur.",
+      "Every feature will remain free."
+    ] },
+    { "type": "paragraph", "html": "You are responsible for testing your setup before an important presentation or recording and maintaining backups and alternative methods." },
+    { "type": "paragraph", "html": "Nothing in these Terms excludes warranties or consumer rights that cannot lawfully be excluded." },
+
+    { "type": "heading", "text": "18. Limitation of Liability" },
+    { "type": "paragraph", "html": "To the maximum extent permitted by law, VTeleprompter and its operators, affiliates, contractors and service providers will not be liable for indirect, incidental, special, consequential, exemplary or punitive damages, including:" },
+    { "type": "list", "items": [
+      "Lost profits.",
+      "Lost revenue.",
+      "Lost business opportunities.",
+      "Lost or corrupted recordings.",
+      "Lost scripts or data.",
+      "Production delays.",
+      "Reputational harm.",
+      "Substitute service costs."
+    ] },
+    { "type": "paragraph", "html": "To the maximum extent permitted by law, VTeleprompter’s total liability arising from the Service will not exceed the greater of the amount you paid to VTeleprompter during the 12 months before the event giving rise to the claim, or USD $100." },
+    { "type": "paragraph", "html": "These limitations do not apply where prohibited by law, including liability that cannot legally be limited for fraud, intentional misconduct, personal injury or mandatory consumer protections." },
+
+    { "type": "heading", "text": "19. Business User Indemnification" },
+    { "type": "paragraph", "html": "If you use VTeleprompter on behalf of a business or organization, that organization agrees, to the extent permitted by law, to defend and indemnify VTeleprompter against third-party claims arising from:" },
+    { "type": "list", "items": [
+      "Its User Content.",
+      "Its unlawful recording activity.",
+      "Its violation of these Terms.",
+      "Its infringement of another person’s rights.",
+      "Its misuse of the Service."
+    ] },
+    { "type": "paragraph", "html": "This section does not apply to individual consumers where such an obligation is prohibited by applicable law." },
+
+    { "type": "heading", "text": "20. Governing Law and Disputes" },
+    { "type": "paragraph", "html": "These Terms are governed by the laws of Vietnam, without regard to conflict-of-law principles." },
+    { "type": "paragraph", "html": "Any dispute that cannot be resolved informally may be brought before a competent court in Vietnam." },
+    { "type": "paragraph", "html": "If you are a consumer, this section does not remove any mandatory rights or jurisdictional protections provided by the laws of your country of residence." },
+    { "type": "paragraph", "html": "Before filing a formal claim, you are encouraged to contact us so that we can attempt to resolve the issue." },
+
+    { "type": "heading", "text": "21. Changes to These Terms" },
+    { "type": "paragraph", "html": "We may update these Terms to reflect:" },
+    { "type": "list", "items": [
+      "New features.",
+      "Changes in law.",
+      "Security requirements.",
+      "Billing changes.",
+      "Operational changes.",
+      "Improvements in clarity."
+    ] },
+    { "type": "paragraph", "html": "We will update the “Last updated” date when changes are made." },
+    { "type": "paragraph", "html": "For material changes, we may provide additional notice through the Service, by email or by another reasonable method." },
+    { "type": "paragraph", "html": "Continued use after the effective date of updated Terms constitutes acceptance where permitted by law. Where affirmative consent is legally required, we will request it." },
+
+    { "type": "heading", "text": "22. General Provisions" },
+    { "type": "paragraph", "html": "These Terms and any policies incorporated by reference form the agreement between you and VTeleprompter concerning the Service." },
+    { "type": "paragraph", "html": "If part of these Terms is found unenforceable, the remaining provisions remain in effect." },
+    { "type": "paragraph", "html": "Our failure to enforce a provision is not a waiver of our right to enforce it later." },
+    { "type": "paragraph", "html": "You may not assign these Terms without our permission. We may assign them as part of a merger, acquisition, restructuring or transfer of the Service, subject to applicable law." },
+    { "type": "paragraph", "html": "Headings are provided for convenience and do not affect interpretation." },
+
+    { "type": "heading", "text": "23. Contact" },
+    { "type": "paragraph", "html": "Questions about these Terms may be sent to:" },
+    { "type": "paragraph", "html": "<strong>VTeleprompter</strong><br>Website: <a href=\"https://vteleprompter.com\">https://vteleprompter.com</a><br>Email: <a href=\"mailto:contact.vpromter@gmail.com\" rel=\"nofollow\">contact.vpromter@gmail.com</a><br>Country of operation: Vietnam" }
+  ]
+}

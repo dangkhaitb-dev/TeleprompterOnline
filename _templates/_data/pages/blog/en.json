@@ -1,0 +1,28 @@
+{
+  "seo": {
+    "title": "Blog — VTeleprompter",
+    "description": "Read the latest articles, research and product news from VTeleprompter."
+  },
+  "nav": {
+    "items": [
+      { "label": "About", "url": "/about" },
+      { "label": "Blog", "url": "/blog" },
+      { "label": "Workspaces", "url": "/workspaces" },
+      { "label": "Terms", "url": "/term" }
+    ],
+    "workspaces": "Workspaces"
+  },
+  "heading": "VTeleprompter Blog",
+  "footer": {
+    "version": "- v1.2.0",
+    "links": [
+      { "label": "About", "url": "/about" },
+      { "label": "Blog", "url": "/blog" },
+      { "label": "Workspaces", "url": "/workspaces" },
+      { "label": "Terms", "url": "/term" },
+      { "label": "Privacy", "url": "/policy" },
+      { "label": "Billing", "url": "/billing" }
+    ],
+    "copyright": "© 2026 VTeleprompter. All rights reserved. 100% Client-side privacy guaranteed."
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "header": {
+    "logoText": "FreeDub.com",
+    "logoAriaLabel": "FreeDub",
+    "menuAriaLabel": "FreeDub menu",
+    "menuIconAriaLabel": "Menu icon",
+    "closeMenuAriaLabel": "Close menu",
+    "premiumAriaLabel": "License options",
+    "premiumButton": "Lifetime Supporter",
+    "mobileLinks": {
+      "about": "About"
+    }
+  },
+  "heroForm": {
+    "urlPlaceholder": "Paste YouTube video URL here...",
+    "suggestionsAriaLabel": "Search suggestions",
+    "pasteIconAriaLabel": "Paste icon",
+    "clearIconAriaLabel": "Clear icon",
+    "qualityAriaLabel": "Audio quality",
+    "qualityDefault": "Choose quality",
+    "qualityOptions": [
+      {
+        "value": "mp3-128",
+        "label": "MP3 - 128kbps"
+      },
+      {
+        "value": "mp3-320",
+        "label": "MP3 - 320kbps"
+      },
+      {
+        "value": "ogg-128",
+        "label": "OGG"
+      },
+      {
+        "value": "wav-128",
+        "label": "WAV - Lossless"
+      },
+      {
+        "value": "opus-128",
+        "label": "Opus"
+      }
+    ],
+    "audioTooltip": "Select available audio track from YouTube video",
+    "audioDefaultLabel": "Origin",
+    "languageSearchPlaceholder": "Search language...",
+    "formats": [
+      {
+        "value": "mp3",
+        "label": "MP3"
+      },
+      {
+        "value": "mp4",
+        "label": "MP4"
+      }
+    ],
+    "convertButton": "Convert"
+  },
+  "footer": {
+    "tagline": "&copy; 2026 FreeDub | Professional AI Subtitle Generator with Integrated Native Voices for Voice Dubbing",
+    "links": [
+      {
+        "href": "/about",
+        "label": "About"
+      },
+      {
+        "href": "/contact",
+        "label": "Contact"
+      },
+      {
+        "href": "/copyright-claims",
+        "label": "Copyright Claims"
+      },
+      {
+        "href": "/privacy-policy",
+        "label": "Privacy Policy"
+      },
+      {
+        "href": "/terms-of-use",
+        "label": "Terms of Use"
+      },
+      {
+        "href": "/faq",
+        "label": "FAQ"
+      },
+      {
+        "href": "/how-to-install",
+        "label": "How to Install"
+      }
+    ]
+  }
+}

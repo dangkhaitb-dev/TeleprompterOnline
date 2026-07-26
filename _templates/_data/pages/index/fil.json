@@ -1,0 +1,278 @@
+{
+  "seo": {
+    "title": "Libreng Online Teleprompter na may AI Voice Scroll | VTeleprompter",
+    "description": "Gamitin ang VTeleprompter, isang libreng online teleprompter na may AI voice scroll, notch mode, remote control at 4K recording. Walang ads o watermark.",
+    "canonical": "/fil/",
+    "ogTitle": "Libreng AI Online Teleprompter — VTeleprompter",
+    "ogDescription": "Mag-present nang natural gamit ang AI voice scroll, notch mode, remote control at propesyonal na video recording.",
+    "ogType": "website",
+    "ogImage": "/og-vteleprompter.jpg"
+  },
+  "schema": {
+    "orgDescription": "Nagbibigay ang VTeleprompter ng libreng AI online teleprompter para sa natural na presentasyon at propesyonal na video recording.",
+    "brandDescription": "Ang VTeleprompter ay isang AI online teleprompter na dinisenyo para sa natural na presentasyon at propesyonal na video recording.",
+    "websiteDescription": "Isang libreng online teleprompter na may AI voice scroll, notch mode, remote control at propesyonal na video recording.",
+    "webpageName": "Libreng Online Teleprompter na may AI Voice Scroll | VTeleprompter",
+    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "logoUrl": "/logo.png",
+    "logoCaption": "VTeleprompter",
+    "primaryImage": "/og-vteleprompter.jpg",
+    "primaryImageCaption": "VTeleprompter libreng AI online teleprompter",
+    "appAlternateName": "VTeleprompter Online Teleprompter",
+    "appDescription": "Isang libreng AI online teleprompter na may voice-activated scrolling, notch mode, remote control, script management at propesyonal na Full HD at 4K video recording.",
+    "applicationCategory": "MultimediaApplication",
+    "applicationSubCategory": "Online Teleprompter",
+    "operatingSystem": "Anumang operating system na may modernong web browser",
+    "browserRequirements": "Kailangan ng JavaScript at modernong web browser. Kailangan ng access sa camera at mikropono para sa recording at AI voice scroll na mga feature.",
+    "availableOnDevice": ["Desktop", "Laptop", "Tablet", "Smartphone"],
+    "featureList": [
+      "AI voice-activated scrolling",
+      "Manual na teleprompter scrolling",
+      "Fixed-speed na automatic scrolling",
+      "Notch teleprompter mode",
+      "Remote control mula sa ibang device",
+      "Full HD video recording",
+      "4K video recording",
+      "Paggawa at pag-edit ng script",
+      "Script management",
+      "Recording management",
+      "Responsive na mobile interface",
+      "Suporta sa desktop at mobile browser",
+      "Walang advertisement",
+      "Walang video watermark"
+    ],
+    "offerDescription": "Libreng access sa mga feature ng VTeleprompter online teleprompter.",
+    "howToName": "Paano Gamitin ang VTeleprompter",
+    "howToDescription": "Alamin kung paano magdagdag ng script, pumili ng scroll mode, i-customize ang iyong teleprompter at magsimulang mag-present o mag-record gamit ang VTeleprompter.",
+    "faqName": "Mga Madalas Itanong tungkol sa VTeleprompter",
+    "faqDescription": "Mga madalas itanong tungkol sa VTeleprompter, AI Voice Scroll, notch mode, remote control, mga suportadong device at video recording."
+  },
+  "nav": {
+    "items": [
+      { "label": "Mga Feature", "url": "#features" },
+      { "label": "Notch Mode", "url": "#notch" },
+      { "label": "Voice Scroll", "url": "#voice-scroll" },
+      { "label": "Remote", "url": "#remote" }
+    ],
+    "cta": { "label": "Mga Workspace", "url": "/workspaces" }
+  },
+  "hero": {
+    "eyebrow": "VTeleprompter — AI Teleprompter",
+    "title": "Libreng Online Teleprompter",
+    "subtitle": "Mag-present nang natural gamit ang AI voice scroll, notch mode, remote control at propesyonal na 4K recording.",
+    "placeholder": "I-paste ang iyong script o mag-upload ng file para magsimula...",
+    "uploadLabel": "Mag-upload ng File",
+    "uploadLabelShort": "Upload",
+    "startLabel": "Simulan ang Pag-present",
+    "startLabelShort": "Simulan",
+    "supportedText": "Sumusuporta sa TXT, DOCX at Markdown",
+    "dropTitle": "I-drop ang file dito para mag-upload",
+    "dropHint": "Sumusuporta sa TXT, DOCX at Markdown"
+  },
+  "messages": {
+    "errorEmpty": "Pakilagay ang nilalaman ng iyong script bago simulan ang Teleprompter.",
+    "errorRead": "Hindi suportadong format. Pumili ng .txt o .md na file."
+  },
+  "features": {
+    "eyebrow": "Lahat ng Kailangan Mo para Mas Mahusay na Mag-present",
+    "title": "Isang Teleprompter para sa Bawat Recording",
+    "description": "Pinagsasama ng VTeleprompter ang online teleprompter, AI voice scroll, notch mode, remote control, script management at propesyonal na video recording sa isang simpleng workspace.",
+    "items": [
+      { "title": "AI Voice Scroll", "description": "Sinusundan ng VTeleprompter ang iyong pagsasalita at awtomatikong nag-i-scroll sa iyong script ayon sa natural mong bilis ng pagsasalita." },
+      { "title": "Notch Teleprompter", "description": "Panatilihin ang iyong script malapit sa camera para mabawasan ang nakikitang paggalaw ng mata at mapanatili ang mas natural na eye contact." },
+      { "title": "Remote Control", "description": "Gumamit ng ibang telepono, tablet o computer para kontrolin ang pag-scroll, maglakbay sa iyong script at pamahalaan ang presentasyon nang remote." },
+      { "title": "Full HD at 4K Recording", "description": "Mag-record ng propesyonal na video habang binabasa ang iyong script direkta mula sa teleprompter." },
+      { "title": "Script Management", "description": "Gumawa, mag-upload, mag-edit, mag-organisa at muling gamitin ang lahat ng iyong script mula sa isang maginhawang workspace." },
+      { "title": "Recording Library", "description": "I-save, suriin at pamahalaan ang iyong mga recording kasama ang mga script na ginamit sa paggawa ng mga ito." },
+      { "title": "Ginawa para sa Mobile", "description": "Gamitin ang VTeleprompter nang komportable sa telepono, tablet, laptop at desktop computer gamit ang responsive na interface na dinisenyo para sa bawat screen." },
+      { "title": "Walang Ads o Watermark", "description": "Mag-present at mag-record nang walang nakakaabalang advertisement o branded na watermark sa iyong mga video." }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "Simple Mula sa Unang Take",
+    "title": "Paano Gumagana ang VTeleprompter",
+    "description": "Gawing maayos na presentasyon o propesyonal na recording ang anumang script sa ilang hakbang lamang.",
+    "steps": [
+      { "anchor": "step-add-script", "title": "Idagdag ang Iyong Script", "description": "I-paste ang iyong teksto direkta sa VTeleprompter o mag-upload ng umiiral na script mula sa iyong device." },
+      { "anchor": "step-choose-scroll-mode", "title": "Piliin ang Iyong Scroll Mode", "description": "Magtakda ng fixed na scroll speed, kontrolin ang script nang manu-mano o i-activate ang AI Voice Scroll." },
+      { "anchor": "step-customize-view", "title": "I-customize ang Iyong View", "description": "I-adjust ang font, laki ng teksto, line spacing, reading area at posisyon ng teleprompter para sa komportableng pagbabasa." },
+      { "anchor": "step-start-presenting", "title": "Simulan ang Pag-present", "description": "Buksan ang teleprompter, kumonekta ng remote kung kailangan at simulan ang pag-present o pag-record." }
+    ]
+  },
+  "voiceScroll": {
+    "eyebrow": "Mag-scroll ayon sa Bilis ng Iyong Boses",
+    "title": "AI Voice Scroll na Sumusunod sa Iyo",
+    "description": "Itigil ang pag-adjust ng iyong bilis ng pagsasalita para tumugma sa fixed na scroll speed. Sinusundan ng VTeleprompter ang iyong boses para makapag-focus ka sa natural na paghahatid ng mensahe.",
+    "benefits": [
+      { "title": "Magsalita nang Natural", "description": "Magbasa sa iyong sariling bilis nang hindi mukhang nagmamadali, mabagal o parang robot." },
+      { "title": "Huminto Kapag Kailangan", "description": "Huminga, magbigay-diin sa isang ideya o huminto sa pagitan ng mga seksyon nang hindi agad nawawala sa iyong kinaroroonan." },
+      { "title": "Manatiling Nakatuon", "description": "Panatilihing nakikita ang tamang bahagi ng iyong script habang nakatuon sa iyong paghahatid." },
+      { "title": "Bawasan ang Mga Retake", "description": "Iwasan ang mga pagkakamali dahil sa script na masyadong mabilis o mabagal na gumagalaw habang nagre-record." }
+    ],
+    "supporting": "Mas gusto ang tradisyonal na online autocue? Palaging available ang manual at fixed-speed na scroll controls.",
+    "cta": { "label": "Subukan ang AI Voice Scroll", "url": "/workspaces" }
+  },
+  "notch": {
+    "eyebrow": "Natural na Eye Contact",
+    "title": "Panatilihin ang Iyong Script Malapit sa Camera",
+    "description": "Naglalagay ang notch mode ng VTeleprompter ng compact na reading area malapit sa iyong camera, na tumutulong sa iyong mata na manatiling nakatuon nang mas malapit sa lens.",
+    "items": [
+      "Bawasan ang halatang paggalaw ng mata pakaliwa't pakanan.",
+      "Ilagay ang script malapit sa iyong webcam o camera ng telepono.",
+      "Baguhin ang laki ng reading area para ipakita lamang ang mga linyang kailangan mo.",
+      "Ilipat ang teleprompter saanman sa iyong screen.",
+      "Mapanatili ang mas natural na eye contact habang nagre-record at nasa video call."
+    ],
+    "supporting": "Perpekto ang notch mode para sa mga interbyu, presentasyon, product demo, online na aralin, video call at talking-head na nilalaman.",
+    "cta": { "label": "Buksan ang Notch Mode", "url": "/workspaces" }
+  },
+  "remote": {
+    "eyebrow": "Kontrolin Mula Saanman",
+    "title": "Gamitin ang Anumang Device bilang Teleprompter Remote",
+    "description": "Kumonekta ng ibang telepono, tablet o computer at kontrolin ang iyong teleprompter nang hindi hinahawakan ang pangunahing recording device.",
+    "items": [
+      { "title": "Simulan at I-pause", "description": "Kontrolin ang teleprompter nang mahinahon habang nag-present." },
+      { "title": "I-adjust ang Scroll Speed", "description": "Dagdagan o bawasan ang bilis mula sa iyong nakakonektang remote device." },
+      { "title": "Mag-navigate sa Iyong Script", "description": "Sumulong, bumalik o tumalon sa ibang seksyon ng iyong script." },
+      { "title": "Pamahalaan ang Recording", "description": "Simulan o ihinto ang recording nang remote kapag sinusuportahan ng iyong device at browser." }
+    ],
+    "supporting": "Perpekto para sa mga solo creator, tagapagsalita, studio, production team at remote na presentasyon.",
+    "cta": { "label": "Kumonekta ng Remote", "url": "/workspaces" }
+  },
+  "recording": {
+    "eyebrow": "Mag-record Habang Nagbabasa",
+    "title": "Gumawa ng Propesyonal na Video sa Full HD o 4K",
+    "description": "Gamitin ang iyong camera at teleprompter sa isang maayos na workflow. Magbasa nang natural, subaybayan ang iyong framing at mag-record nang hindi lumilipat sa magkaibang application.",
+    "items": [
+      { "title": "Live Camera Preview", "description": "Tingnan ang iyong posisyon, framing at itsura bago at habang nagre-record." },
+      { "title": "Full HD Recording", "description": "Gumawa ng malinaw at de-kalidad na video para sa social media, mga aralin, presentasyon at nilalaman ng negosyo." },
+      { "title": "4K Recording", "description": "Kumuha ng propesyonal na high-resolution na video kapag sinusuportahan ito ng iyong camera, browser at device." },
+      { "title": "Walang Watermark", "description": "Mag-export ng malinis na recording nang walang logo ng VTeleprompter o branded na overlay." },
+      { "title": "Recording Library", "description": "Panatilihing organisado ang iyong mga take at mabilis na hanapin ang recording na nauugnay sa bawat script." }
+    ],
+    "cta": { "label": "Simulan ang Pag-record", "url": "/workspaces" }
+  },
+  "workspace": {
+    "eyebrow": "Ang Iyong Content Workspace",
+    "title": "Pamahalaan ang Mga Script at Recording nang Magkasama",
+    "description": "Itigil ang paghahanap sa iba't ibang folder, dokumento at hiwalay na application. Pinananatili ng VTeleprompter ang iyong mga script at recording sa isang organisadong workspace.",
+    "items": [
+      { "title": "Gumawa at Mag-edit ng Script", "description": "Magsulat ng bagong script o i-update ang umiiral na nilalaman direkta sa loob ng VTeleprompter." },
+      { "title": "Mag-upload ng Umiiral na Nilalaman", "description": "Mag-import ng mga script mula sa suportadong dokumento sa halip na kopyahin ang bawat seksyon nang manu-mano." },
+      { "title": "I-organisa ang Iyong Library", "description": "Panatilihing organisado ang mga script at recording para handa sa mga susunod na presentasyon." },
+      { "title": "Muling Gamitin ang Iyong Script", "description": "Buksan ang mga naunang script, gumawa ng mabilisang pagbabago at mag-record ng bagong bersyon nang hindi na nagsisimula muli." },
+      { "title": "I-access Mula sa Anumang Screen", "description": "Magpatuloy sa pagtatrabaho mula sa iyong telepono, tablet, laptop o desktop computer." }
+    ]
+  },
+  "mobile": {
+    "eyebrow": "Dinisenyo para sa Bawat Screen",
+    "title": "Isang Mobile-Friendly na Online Teleprompter",
+    "description": "Dinisenyo ang VTeleprompter para maging mabilis, malinaw at madaling kontrolin sa parehong desktop at mobile device.",
+    "items": [
+      { "title": "Responsive na Interface", "description": "Nananatiling madaling abutin ang mahahalagang kontrol sa iba't ibang laki at orientation ng screen." },
+      { "title": "Portrait at Landscape", "description": "Piliin ang orientation ng screen na pinakaangkop sa iyong recording setup." },
+      { "title": "Touch-Friendly na Kontrol", "description": "I-adjust nang komportable ang teksto, pag-scroll at recording settings mula sa touchscreen." },
+      { "title": "Walang Kailangang I-install", "description": "Buksan ang VTeleprompter sa suportadong browser at simulang gamitin ang teleprompter online." }
+    ],
+    "supporting": "Gamitin ang VTeleprompter bilang mobile teleprompter, desktop teleprompter o browser-based na online autocue."
+  },
+  "useCases": {
+    "eyebrow": "Ginawa para sa Bawat Presenter",
+    "title": "Para Kanino ang VTeleprompter?",
+    "items": [
+      { "title": "Mga Content Creator", "description": "Mag-record ng mga TikTok video, YouTube video, Shorts, Reels at iba pang social content nang hindi kinakabisado ang bawat linya." },
+      { "title": "Mga YouTuber", "description": "Maghatid ng mga review, tutorial, explainer at talking-head na video nang mas maayos at may mas malaking tiwala." },
+      { "title": "Mga Podcaster", "description": "Sundan ang mga panimula, mensahe ng sponsor, mga nakaayos na tanong at tala ng episode habang nagre-record." },
+      { "title": "Mga Guro at Edukador", "description": "Ihatid ang mga online na aralin, video ng kurso at nilalamang pang-edukasyon nang malinaw at pare-pareho." },
+      { "title": "Mga Propesyonal sa Negosyo", "description": "Maghanda ng mga product demo, update ng kumpanya, webinar, sales presentation at training video." },
+      { "title": "Mga Public Speaker", "description": "Magsanay ng mga talumpati, mag-ensayo ng presentasyon at maghatid ng mga inihandang mensahe nang may tiwala." },
+      { "title": "Mga Mamamahayag at Interbyuwer", "description": "Sundan ang mga script, tanong at mahahalagang punto habang nananatiling nakatuon sa camera." },
+      { "title": "Mga Remote Team", "description": "Gamitin ang notch mode sa mga video call, online na presentasyon at remote na interbyu." }
+    ]
+  },
+  "comparison": {
+    "eyebrow": "Bakit VTeleprompter?",
+    "title": "Isang Mas Kumpletong Libreng Teleprompter",
+    "description": "Ginawa ang VTeleprompter para magbigay ng kumpletong karanasan sa teleprompter nang hindi pinipilit ang mga user na pagsamahin ang maraming application o magbayad para sa mga pangunahing feature.",
+    "items": [
+      "AI voice-activated scrolling",
+      "Notch teleprompter mode",
+      "Remote control mula sa ibang device",
+      "Full HD at 4K video recording",
+      "Script at recording management",
+      "Suporta sa desktop at mobile",
+      "Walang advertising",
+      "Walang video watermark",
+      "Simple at modernong user experience",
+      "Libreng access sa mahahalagang feature ng teleprompter"
+    ],
+    "supporting": "Mula sa pagsusulat ng iyong script hanggang sa pag-record ng huling take, binibigyan ka ng VTeleprompter ng mga tool na kailangan mo sa isang lugar."
+  },
+  "about": {
+    "eyebrow": "Tungkol sa VTeleprompter",
+    "title": "Ginawa para Maging Natural ang Pakiramdam ng Pag-present",
+    "paragraphs": [
+      "Ang VTeleprompter ay isang AI teleprompter na ginawa para sa mga taong nais magsalita nang may tiwala nang hindi kinakabisado ang bawat salita o palaging pinamamahalaan ang scroll controls.",
+      "Layunin naming gawin ang pinakakumpleto at pinakamadaling maabot na karanasan sa online teleprompter, na pinagsasama ang maaasahang AI scrolling, maingat na disenyo, mga tool para sa natural na eye contact at propesyonal na recording features.",
+      "Man ay nagre-record ka mula sa telepono, nag-present mula sa laptop o kumokontrol ng studio setup nang remote, tinutulungan ka ng VTeleprompter na manatiling nakatuon sa iyong audience sa halip na sa software."
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Handa na Bang Mag-present?",
+    "title": "Simulang Gamitin ang VTeleprompter",
+    "description": "Idagdag ang iyong script, piliin ang iyong nais na reading mode at simulang mag-present nang natural.",
+    "cta": { "label": "Buksan ang Libreng Teleprompter", "url": "/workspaces" },
+    "supporting": "Walang ads. Walang watermark. Walang kumplikadong setup."
+  },
+  "faq": {
+    "eyebrow": "Mga Tanong at Sagot",
+    "title": "Mga Madalas Itanong",
+    "items": [
+      { "anchor": "faq-is-vteleprompter-free", "q": "Libre bang gamitin ang VTeleprompter?", "a": "Sa kasalukuyan ay libreng gamitin ang VTeleprompter. Maa-access mo ang mahahalagang feature nito sa teleprompter, script at recording nang walang advertisement o branded na video watermark." },
+      { "anchor": "faq-what-is-ai-voice-scroll", "q": "Ano ang AI Voice Scroll?", "a": "Pinakikinggan ng AI Voice Scroll ang iyong pagsasalita at gumagalaw sa script batay sa natural mong bilis ng pagsasalita. Tumutulong ito sa iyong huminto, magpatuloy at mag-present nang hindi palaging ina-adjust ang fixed na scroll speed." },
+      { "anchor": "faq-what-is-notch-mode", "q": "Ano ang VTeleprompter Notch Mode?", "a": "Naglalagay ang Notch Mode ng compact na teleprompter reading area malapit sa iyong camera. Nakakatulong ito na mabawasan ang nakikitang paggalaw ng mata at gawing mas natural ang iyong eye contact habang nagre-record, nag-present at nasa video call." },
+      { "anchor": "faq-mobile-devices", "q": "Magagamit ko ba ang VTeleprompter sa telepono o tablet?", "a": "Oo. May responsive na interface ang VTeleprompter na dinisenyo para sa mga smartphone, tablet, laptop at desktop computer. Maaaring depende sa browser, camera at kakayahan ng device ang mga available na feature." },
+      { "anchor": "faq-installation", "q": "Kailangan ko bang i-install ang VTeleprompter?", "a": "Walang kailangang i-install para sa web version. Maaari mong buksan ang VTeleprompter sa suportadong modernong browser, idagdag ang iyong script at magsimulang mag-present online." },
+      { "anchor": "faq-remote-control", "q": "Makokontrol ko ba ang VTeleprompter mula sa ibang device?", "a": "Oo. Ang remote control ng VTeleprompter ay nagbibigay-daan sa iyong gumamit ng ibang telepono, tablet o computer para simulan o i-pause ang teleprompter, i-adjust ang pag-scroll at mag-navigate sa iyong script." },
+      { "anchor": "faq-4k-recording", "q": "Makakapag-record ba ng video sa 4K ang VTeleprompter?", "a": "Sinusuportahan ng VTeleprompter ang Full HD at 4K recording kapag sinusuportahan ng camera, browser at device ang piniling resolution. Ang aktwal na kalidad ng recording ay depende sa kakayahan at pahintulot ng iyong device." },
+      { "anchor": "faq-watermark", "q": "Naglalagay ba ng watermark ang VTeleprompter sa mga recording?", "a": "Hindi naglalagay ang VTeleprompter ng branded na watermark sa mga video na iyong nire-record." },
+      { "anchor": "faq-supported-files", "q": "Anong mga format ng script file ang sinusuportahan ng VTeleprompter?", "a": "Sinusuportahan ng VTeleprompter ang direktang pag-paste ng teksto at pag-upload ng mga suportadong script na dokumento tulad ng TXT, DOCX, PDF at Markdown na file." },
+      { "anchor": "faq-online-autocue", "q": "Magagamit ba ang VTeleprompter bilang online autocue?", "a": "Oo. Magagamit ang VTeleprompter bilang browser-based na online autocue na may manual scrolling, fixed-speed na automatic scrolling at AI voice-activated scrolling." }
+    ]
+  },
+  "footer": {
+    "brand": "VTeleprompter",
+    "description": "Isang libreng AI online teleprompter para sa natural na presentasyon at propesyonal na video recording.",
+    "columns": [
+      {
+        "title": "Produkto",
+        "links": [
+          { "label": "Mga Feature", "url": "#features" },
+          { "label": "Paano Ito Gumagana", "url": "#how-it-works" },
+          { "label": "AI Voice Scroll", "url": "#voice-scroll" },
+          { "label": "Notch Mode", "url": "#notch" },
+          { "label": "Remote Control", "url": "#remote" },
+          { "label": "4K Recording", "url": "#recording" }
+        ]
+      },
+      {
+        "title": "Mga Mapagkukunan",
+        "links": [
+          { "label": "Paano Gamitin", "url": "#how-it-works" },
+          { "label": "Gabay sa Teleprompter", "url": "/teleprompter-guide" },
+          { "label": "Blog", "url": "/blog" },
+          { "label": "Tungkol Sa", "url": "/about" }
+        ]
+      },
+      {
+        "title": "Legal",
+        "links": [
+          { "label": "Patakaran sa Privacy", "url": "/policy" },
+          { "label": "Mga Tuntunin ng Serbisyo", "url": "/term" },
+          { "label": "Pagsingil at Refund", "url": "/billing" }
+        ]
+      }
+    ],
+    "copyright": "© 2026 VTeleprompter."
+  }
+}

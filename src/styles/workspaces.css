@@ -1,0 +1,1593 @@
+/* workspaces.css — Workspaces script library. Ported from the demo
+   workspaces.html (Drive-style app-bar + flat sidebar + welcome + script grid),
+   stripped of FreeDub bits, .ws-* namespaced, tokenized, mobile-first, no blur. */
+
+.ws-body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: var(--font-brand);
+  background: var(--ws-bg-page);
+  color: var(--ws-text);
+}
+
+.ws-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.ws-body-row {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+}
+
+/* ===== App bar ===== */
+.ws-appbar {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-sticky);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  height: 64px;
+  padding: 0 20px;
+  background: var(--ws-appbar-bg);
+}
+
+.ws-appbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  width: 248px;
+}
+
+.ws-mobile-switch {
+  display: none;
+  align-items: center;
+  background: rgba(0, 36, 56, 0.05);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+  border: 1px solid rgba(0, 36, 56, 0.04);
+}
+
+.ws-switch-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: transparent;
+  color: var(--ws-text-secondary);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    box-shadow var(--dur-fast) var(--ease-out);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.ws-switch-btn:hover {
+  color: var(--ws-text);
+}
+
+.ws-switch-btn.active {
+  background: var(--ws-surface);
+  color: var(--ws-text);
+  box-shadow: 0 2px 6px rgba(0, 36, 56, 0.12), 0 1px 2px rgba(0, 36, 56, 0.04);
+}
+
+.ws-appbar-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 6px;
+  border-radius: 8px;
+  color: var(--ws-logo-ink);
+  text-decoration: none;
+}
+
+.ws-appbar-logo svg {
+  width: 38px;
+  height: auto;
+  flex-shrink: 0;
+}
+
+.ws-appbar-logo svg rect,
+.ws-appbar-logo svg path {
+  fill: var(--ws-logo-ink);
+}
+
+.ws-appbar-logo-text {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ws-logo-ink);
+}
+
+.ws-appbar .ws-content-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.ws-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 18px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.ws-action-btn svg {
+  width: 17px;
+  height: 17px;
+  flex-shrink: 0;
+}
+
+.ws-action-btn--primary {
+  background: var(--ws-primary);
+  color: var(--ws-primary-ink);
+}
+
+.ws-action-btn--primary:hover {
+  background: var(--ws-primary-hover);
+  color: var(--ws-on-primary);
+}
+
+.ws-action-btn--secondary {
+  background: var(--ws-surface);
+  color: var(--ws-text);
+  border-color: var(--ws-border-light);
+}
+
+.ws-action-btn--secondary:hover {
+  background: var(--ws-surface-soft);
+  border-color: var(--ws-border);
+}
+
+/* Cold-cache open of the teleprompter overlay: the chunk/markup may still be
+   loading, so the trigger shows a small inline spinner until it mounts. */
+.ws-action-btn.is-loading {
+  pointer-events: none;
+  opacity: 0.75;
+}
+
+.ws-action-btn.is-loading::after {
+  content: "";
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  border: 2px solid currentcolor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: ws-action-btn-spin 0.6s linear infinite;
+}
+
+@keyframes ws-action-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Sidebar (flat, Drive-style) ===== */
+.ws-sidebar {
+  position: sticky;
+  top: 64px;
+  align-self: flex-start;
+  width: 248px;
+  height: calc(100vh - 64px);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--ws-appbar-bg);
+  overflow-y: auto;
+}
+
+.ws-sidebar-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  padding: 0 16px 16px;
+}
+
+.ws-workspace-switcher {
+  padding: 20px 0;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--ws-border-light);
+}
+
+.ws-workspace-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+}
+
+.ws-workspace-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  background: var(--ws-avatar-bg);
+}
+
+.ws-workspace-avatar-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ws-on-primary);
+}
+
+.ws-workspace-info {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.ws-workspace-name {
+  display: block;
+  overflow: hidden;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--ws-text);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ws-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ws-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  height: 40px;
+  padding: 0 12px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ws-text);
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.ws-nav-item:hover {
+  background: var(--ws-surface-soft);
+}
+
+.ws-nav-item.active {
+  background: var(--ws-accent-soft);
+  color: var(--ws-primary-hover);
+  font-weight: 600;
+}
+
+.ws-nav-item.active svg {
+  color: var(--ws-primary-hover);
+}
+
+.ws-nav-item svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.ws-nav-item-label {
+  flex: 1;
+  overflow: hidden;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.ws-credits-card {
+  margin-top: auto;
+  padding: 12px;
+  border: 1px solid var(--ws-credits-border);
+  border-radius: 10px;
+  background: var(--ws-credits-bg);
+}
+
+.ws-credits-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ws-credits-icon {
+  display: inline-flex;
+  height: 18px;
+  color: var(--ws-logo-ink);
+}
+
+.ws-credits-icon svg {
+  width: auto;
+  height: 18px;
+}
+
+.ws-credits-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ws-credits-label);
+}
+
+.ws-credits-text {
+  margin: 8px 0 0;
+  font-size: 11px;
+  line-height: 1.4;
+  color: var(--ws-credits-text);
+}
+
+.ws-credits-text strong {
+  color: var(--ws-credits-label);
+}
+
+/* ===== Mobile sidebar overlay ===== */
+.ws-sidebar-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-overlay);
+  display: none;
+  opacity: 0;
+  background: var(--ws-overlay-scrim);
+  transition: opacity var(--dur-normal) ease;
+}
+
+.ws-sidebar-overlay.visible {
+  display: block;
+  opacity: 1;
+}
+
+/* ===== Main panel ===== */
+.ws-main {
+  flex: 1;
+  min-width: 0;
+  min-height: calc(100vh - 64px);
+  background: var(--ws-surface);
+  border-top-left-radius: 16px;
+}
+
+.ws-content {
+  padding: 26px 40px 56px;
+}
+
+.ws-content-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 26px;
+  flex-wrap: wrap;
+}
+
+.ws-content-header .ws-welcome {
+  margin-bottom: 0;
+}
+
+.ws-content-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.ws-welcome {
+  margin: 0 0 26px;
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--ws-text);
+}
+
+/* ===== Section header ===== */
+.ws-scripts-section {
+  max-width: 1600px;
+  margin: 0 0 22px;
+}
+
+.ws-section-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 14px;
+}
+
+.ws-section-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ws-text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    transform var(--dur-normal) ease;
+}
+
+.ws-section-toggle svg {
+  width: 22px;
+  height: 22px;
+}
+
+.ws-section-toggle:hover {
+  background: var(--ws-hover-scrim);
+}
+
+.ws-section-title {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ws-text);
+}
+
+.is-collapsed .ws-section-toggle {
+  transform: rotate(-90deg);
+}
+
+.is-collapsed .ws-section-body {
+  display: none;
+}
+
+/* ===== Script cards ===== */
+.ws-video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  gap: 16px;
+}
+
+.ws-video-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--ws-card);
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: var(--ws-shadow-card);
+
+  /* Skip layout/paint for cards outside the viewport — the library grid is
+   * unbounded and each card lays out a rich-text preview. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 240px;
+  transition:
+    background var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease,
+    transform var(--dur-fast) ease;
+}
+
+.ws-video-card:hover {
+  background: var(--ws-card-hover);
+  box-shadow: var(--ws-shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.ws-video-card.is-selected,
+.ws-recording-card.is-selected {
+  background: var(--ws-accent-soft);
+  box-shadow: 0 0 0 2px var(--ws-primary-hover), var(--ws-shadow-card);
+}
+
+/* Checkbox is discoverable on hover/focus; selection mode reveals every one. */
+.ws-item-checkbox {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: var(--z-base);
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid var(--ws-on-primary);
+  border-radius: 7px;
+  opacity: 0;
+  background: var(--ws-more-scrim);
+  box-shadow: 0 2px 8px var(--ws-overlay-scrim);
+  cursor: pointer;
+  transform: scale(0.86);
+  transition:
+    opacity var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) ease,
+    background var(--dur-fast) ease;
+}
+
+.ws-item-checkbox::after {
+  width: 9px;
+  height: 5px;
+  border-bottom: 2px solid var(--ws-on-primary);
+  border-left: 2px solid var(--ws-on-primary);
+  content: "";
+  opacity: 0;
+  transform: translateY(-1px) rotate(-45deg) scale(0.6);
+  transition:
+    opacity var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.ws-item-checkbox[aria-checked="true"] {
+  border-color: var(--ws-primary-hover);
+  opacity: 1;
+  background: var(--ws-primary-hover);
+}
+
+.ws-item-checkbox[aria-checked="true"]::after {
+  opacity: 1;
+  transform: translateY(-1px) rotate(-45deg) scale(1);
+}
+
+.ws-item-checkbox:focus-visible {
+  outline: 2px solid var(--ws-primary-hover);
+  outline-offset: 2px;
+}
+
+.ws-video-card:hover .ws-item-checkbox,
+.ws-video-card:focus-within .ws-item-checkbox,
+.ws-recording-card:hover .ws-item-checkbox,
+.ws-recording-card:focus-within .ws-item-checkbox,
+[data-ws-selection-view="scripts"] .ws-video-card .ws-item-checkbox,
+[data-ws-selection-view="recordings"] .ws-recording-card .ws-item-checkbox {
+  opacity: 1;
+  transform: scale(1);
+}
+
+[data-ws-selection-view="scripts"] .ws-video-card,
+[data-ws-selection-view="recordings"] .ws-recording-card {
+  user-select: none;
+}
+
+[data-ws-selection-view="scripts"] .ws-card-more--onthumb,
+[data-ws-selection-view="recordings"] .ws-recording-more {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ws-video-card:focus-visible {
+  outline: 2px solid var(--ws-primary-hover);
+  outline-offset: 2px;
+}
+
+.ws-video-thumb {
+  position: relative;
+  overflow: hidden;
+}
+
+.ws-script-thumb {
+  aspect-ratio: 16 / 9;
+  background: var(--ws-thumb-bg);
+}
+
+.ws-script-preview {
+  position: absolute;
+  inset: 0;
+  padding: 16px;
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.32;
+  color: var(--ws-thumb-preview);
+  white-space: pre-wrap;
+  word-break: break-word;
+  -webkit-mask-image: var(--ws-mask-fade);
+  mask-image: var(--ws-mask-fade);
+}
+
+.ws-script-preview:empty::after {
+  content: attr(data-empty);
+  color: var(--ws-thumb-empty);
+  font-weight: 600;
+}
+
+.ws-card-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border: none;
+  border-radius: 7px;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    opacity var(--dur-fast) ease,
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.ws-card-more svg {
+  width: 15px;
+  height: 15px;
+}
+
+.ws-card-more--onthumb {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 26px;
+  height: 26px;
+  opacity: 0;
+  background: var(--ws-more-scrim);
+  color: var(--ws-on-primary);
+}
+
+.ws-video-card:hover .ws-card-more--onthumb,
+.ws-video-card:focus-within .ws-card-more--onthumb {
+  opacity: 1;
+}
+
+.ws-card-more--onthumb:hover {
+  background: var(--ws-more-scrim-hover);
+  color: var(--ws-on-primary);
+}
+
+.ws-video-info {
+  padding: 11px 13px 13px;
+}
+
+.ws-video-title {
+  margin: 0;
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ws-text);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ws-script-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.ws-local-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ws-local-fg);
+  background: var(--ws-local-bg);
+}
+
+.ws-local-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ws-local-dot);
+}
+
+.ws-video-updated {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ws-text-muted);
+  line-height: 1;
+}
+
+/* ===== Empty state ===== */
+.ws-scripts-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 56px 24px;
+  text-align: center;
+  border: 1px dashed var(--ws-border-light);
+  border-radius: 12px;
+  background: var(--ws-bg-page);
+}
+
+.ws-scripts-empty[hidden] {
+  display: none;
+}
+
+.ws-empty-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--ws-text);
+}
+
+.ws-empty-body {
+  max-width: 42ch;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ws-text-muted);
+}
+
+/* ===== Card context menu (Open / Delete) ===== */
+.ws-ctx-menu {
+  position: fixed;
+  z-index: var(--z-menu);
+  min-width: 150px;
+  padding: 6px;
+  border: 1px solid var(--ws-border-light);
+  border-radius: 10px;
+  background: var(--ws-menu-bg);
+  box-shadow: var(--ws-menu-shadow);
+}
+
+.ws-ctx-item {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 7px;
+  background: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  text-align: left;
+  color: var(--ws-text);
+  cursor: pointer;
+}
+
+.ws-ctx-item:hover {
+  background: var(--ws-surface-soft);
+}
+
+.ws-ctx-item--danger {
+  color: var(--ws-danger);
+}
+
+.ws-ctx-item--danger:hover {
+  background: var(--ws-danger-soft);
+}
+
+/* ===== Breadcrumb (inside a folder) ===== */
+.ws-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin: 4px 0 18px;
+}
+
+.ws-breadcrumb[hidden] {
+  display: none;
+}
+
+.ws-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 11px 5px 8px;
+  border: 1px solid var(--ws-border-light);
+  border-radius: 8px;
+  background: var(--ws-surface-soft);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ws-text);
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    border-color var(--dur-fast) ease;
+}
+
+.ws-back-btn:hover {
+  background: var(--ws-card-hover);
+  border-color: var(--ws-border);
+}
+
+.ws-back-btn svg {
+  width: 15px;
+  height: 15px;
+}
+
+.ws-crumb {
+  padding: 4px 8px;
+  border: none;
+  border-radius: 7px;
+  background: none;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ws-text-muted);
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.ws-crumb:last-child {
+  color: var(--ws-text);
+}
+
+.ws-crumb:hover {
+  background: var(--ws-surface-soft);
+  color: var(--ws-text);
+}
+
+.ws-crumb-sep {
+  color: var(--ws-text-muted);
+  opacity: 0.6;
+}
+
+.ws-crumb.ws-drop-target {
+  background: var(--ws-accent-soft);
+  color: var(--ws-primary-hover);
+  box-shadow: inset 0 0 0 1.5px var(--ws-primary);
+}
+
+/* ===== Folders section ===== */
+.ws-folders-section {
+  max-width: 1600px;
+  margin: 0 0 22px;
+}
+
+.ws-section-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  margin-left: 4px;
+  border: none;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ws-text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.ws-section-add:hover {
+  background: var(--ws-hover-scrim);
+  color: var(--ws-text);
+}
+
+.ws-section-add svg {
+  width: 15px;
+  height: 15px;
+}
+
+.ws-folder-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 10px;
+}
+
+.ws-folder-grid:empty {
+  display: none;
+}
+
+.ws-folder-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 8px 12px 16px;
+  border-radius: 12px;
+  background: var(--ws-card);
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease;
+}
+
+.ws-folder-card:hover {
+  background: var(--ws-card-hover);
+}
+
+.ws-folder-card:focus-visible {
+  outline: 2px solid var(--ws-primary-hover);
+  outline-offset: 2px;
+}
+
+.ws-folder-icon {
+  display: flex;
+  flex-shrink: 0;
+  color: var(--ws-text-secondary);
+}
+
+.ws-folder-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.ws-folder-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.ws-folder-name {
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--ws-text);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ws-folder-sub {
+  overflow: hidden;
+  font-size: 14px;
+  color: var(--ws-text-muted);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ws-folder-card .ws-card-more {
+  flex-shrink: 0;
+  opacity: 1;
+  color: var(--ws-text-secondary);
+}
+
+.ws-folder-card .ws-card-more:hover {
+  background: var(--ws-hover-scrim);
+  color: var(--ws-text);
+}
+
+.ws-folder-card .ws-card-more svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* Drop target highlight (folder card + crumb) while dragging over it. */
+.ws-folder-card.ws-drop-target {
+  background: var(--ws-accent-soft);
+  border-color: var(--ws-primary);
+  box-shadow: 0 0 0 2px var(--ws-accent-soft);
+}
+
+/* Small drag-ghost image shown under the pointer during a card drag. */
+.ws-drag-ghost {
+  position: fixed;
+  top: -1000px;
+  left: -1000px;
+  z-index: -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 104px;
+  pointer-events: none;
+}
+
+.ws-drag-ghost--touch {
+  top: 0;
+  left: 0;
+  z-index: calc(var(--z-modal) + 1);
+  width: 112px;
+  opacity: 0.94;
+  will-change: transform;
+}
+
+.ws-touch-drag-active,
+.ws-touch-drag-active * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.ws-touch-drag-active {
+  overscroll-behavior: none;
+}
+
+.ws-drag-ghost-icon {
+  display: flex;
+}
+
+.ws-drag-ghost-icon svg {
+  width: 44px;
+  height: auto;
+}
+
+.ws-drag-ghost-icon--folder {
+  color: var(--ws-text-secondary);
+}
+
+.ws-drag-ghost-icon--script {
+  color: var(--ws-thumb-bg);
+}
+
+.ws-drag-ghost-label {
+  max-width: 104px;
+  padding: 2px 9px;
+  border-radius: 6px;
+  background: var(--ws-drag-pill);
+  color: var(--ws-on-primary);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Touch "pick up": the card lifts the instant the long-press arms, before any
+   movement, so the drag gesture is discoverable. Transform/opacity only. */
+.ws-video-card.ws-armed,
+.ws-folder-card.ws-armed {
+  transform: scale(1.06);
+  box-shadow: var(--ws-shadow-card-hover);
+  z-index: var(--z-base);
+}
+
+.ws-video-card.ws-dragging,
+.ws-folder-card.ws-dragging {
+  opacity: 0.5;
+}
+
+/* ===== Storage meter ===== */
+.ws-storage {
+  max-width: 1600px;
+  margin: 0 0 22px;
+  padding: 12px 14px;
+  border: 1px solid var(--ws-border-light);
+  border-radius: 12px;
+  background: var(--ws-card);
+}
+
+.ws-storage[hidden] {
+  display: none;
+}
+
+.ws-storage-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.ws-storage-label {
+  margin-right: auto;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ws-text-secondary);
+}
+
+.ws-storage-edit {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding: 0 11px;
+  border: 1px solid var(--ws-border);
+  border-radius: 999px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ws-text-secondary);
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    border-color var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.ws-storage-edit:hover {
+  background: var(--ws-surface-soft);
+  border-color: var(--ws-text-muted);
+  color: var(--ws-text);
+}
+
+.ws-storage-edit:focus-visible {
+  outline: 2px solid var(--ws-primary-hover);
+  outline-offset: 2px;
+}
+
+.ws-storage-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ws-text-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.ws-storage-bar {
+  height: 6px;
+  overflow: hidden;
+  border-radius: 99px;
+  /* Dim full-width track = the 100% reference behind the active fill. */
+  background: var(--ws-primary-soft);
+}
+
+.ws-storage-fill {
+  width: 0;
+  height: 100%;
+  border-radius: 99px;
+  background: var(--ws-primary-hover);
+  transition:
+    width var(--dur-normal) var(--ease-out),
+    background var(--dur-fast) ease;
+}
+
+.ws-storage-note {
+  margin: 8px 0 0;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ws-text-muted);
+}
+
+.ws-storage-note[hidden] {
+  display: none;
+}
+
+.ws-storage.is-warn .ws-storage-bar {
+  background: var(--ws-warn-soft);
+}
+
+.ws-storage.is-warn .ws-storage-fill {
+  background: var(--ws-warn);
+}
+
+.ws-storage.is-warn .ws-storage-note {
+  color: var(--ws-warn);
+}
+
+.ws-storage.is-full .ws-storage-bar {
+  background: var(--ws-danger-soft);
+}
+
+.ws-storage.is-full .ws-storage-fill {
+  background: var(--ws-danger);
+}
+
+.ws-storage.is-full .ws-storage-value,
+.ws-storage.is-full .ws-storage-note {
+  color: var(--ws-danger);
+}
+
+/* ===== Recordings view ===== */
+.ws-view[hidden] {
+  display: none;
+}
+
+.ws-recordings-section {
+  max-width: 1600px;
+  margin: 0 0 22px;
+}
+
+/* Day sections (Today / Yesterday / date), media-library style. */
+.ws-recording-days {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.ws-recording-daygroup {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.ws-recording-dayhead {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ws-text-secondary);
+}
+
+.ws-recording-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(224px, 1fr));
+  gap: 16px;
+}
+
+.ws-recording-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--ws-card);
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: var(--ws-shadow-card);
+
+  /* Same off-screen rendering skip as .ws-video-card. */
+  content-visibility: auto;
+  contain-intrinsic-size: auto 240px;
+  transition:
+    background var(--dur-fast) ease,
+    box-shadow var(--dur-fast) ease,
+    transform var(--dur-fast) ease;
+}
+
+.ws-recording-card:hover {
+  background: var(--ws-card-hover);
+  box-shadow: var(--ws-shadow-card-hover);
+  transform: translateY(-2px);
+}
+
+.ws-recording-thumb {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  background: var(--ws-thumb-bg);
+  color: var(--ws-on-primary);
+}
+
+.ws-recording-thumb.is-audio {
+  background: var(--se-audio-gradient);
+}
+
+.ws-recording-thumb.has-thumb {
+  background-size: cover;
+  background-position: center;
+}
+
+.ws-recording-thumb.has-thumb .ws-recording-kind {
+  display: none;
+}
+
+.ws-recording-kind svg {
+  width: 34px;
+  height: 34px;
+  opacity: 0.9;
+}
+
+.ws-recording-duration {
+  position: absolute;
+  right: 8px;
+  bottom: 8px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--ws-more-scrim);
+  color: var(--ws-on-primary);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.ws-recording-info {
+  padding: 11px 13px 13px;
+}
+
+.ws-recording-title {
+  margin: 0;
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ws-text);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.ws-recording-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+  flex-wrap: wrap;
+}
+
+.ws-recording-date {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ws-text-muted);
+  line-height: 1;
+}
+
+.ws-recording-more {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0;
+  background: var(--ws-more-scrim);
+  color: var(--ws-on-primary);
+}
+
+.ws-recording-card:hover .ws-recording-more,
+.ws-recording-card:focus-within .ws-recording-more {
+  opacity: 1;
+}
+
+.ws-recording-more:hover {
+  background: var(--ws-more-scrim-hover);
+  color: var(--ws-on-primary);
+}
+
+/* ===== Floating multi-select toolbar ===== */
+.ws-selection-bar {
+  position: fixed;
+  bottom: max(32px, calc(env(safe-area-inset-bottom) + 16px));
+  left: 50%;
+  z-index: var(--z-menu);
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  padding: 8px 12px;
+  border: 1px solid var(--ws-border-light);
+  border-radius: 18px;
+  opacity: 1;
+  background: var(--ws-surface);
+  box-shadow: var(--ws-menu-shadow);
+  transform: translateX(-50%) translateY(0);
+  transition:
+    opacity var(--dur-fast) ease,
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.ws-selection-bar[hidden] {
+  display: none;
+}
+
+.ws-selection-bar-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 132px;
+  min-height: 48px;
+  padding: 8px 16px;
+  border: 0;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--ws-text-secondary);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    transform var(--dur-fast) ease;
+}
+
+.ws-selection-bar-btn[hidden] {
+  display: none;
+}
+
+.ws-selection-bar-btn:hover {
+  background: var(--ws-surface-soft);
+  color: var(--ws-text);
+}
+
+.ws-selection-bar-btn:active {
+  transform: scale(0.98);
+}
+
+.ws-selection-bar-btn:focus-visible {
+  outline: 2px solid var(--ws-primary-hover);
+  outline-offset: 1px;
+}
+
+.ws-selection-bar-btn:disabled {
+  opacity: 0.42;
+  cursor: not-allowed;
+}
+
+.ws-selection-bar-btn:disabled:active {
+  transform: none;
+}
+
+.ws-selection-bar-btn--danger {
+  color: var(--ws-danger);
+}
+
+.ws-selection-bar-btn--danger:hover:not(:disabled) {
+  background: var(--ws-danger-soft);
+  color: var(--ws-danger);
+}
+
+.ws-selection-bar-divider {
+  width: 1px;
+  margin: 8px 2px;
+  background: var(--ws-border-light);
+}
+
+@media (max-width: 600px) {
+  .ws-recording-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .ws-recording-more {
+    opacity: 1;
+  }
+
+  .ws-selection-bar {
+    bottom: max(16px, calc(env(safe-area-inset-bottom) + 10px));
+    width: calc(100% - 32px);
+    max-width: 420px;
+    padding: 7px;
+  }
+
+  .ws-selection-bar-btn {
+    flex: 1;
+    min-width: 0;
+    min-height: 46px;
+    padding: 7px 10px;
+    font-size: 14px;
+  }
+}
+
+/* ===== Drag & drop overlay ===== */
+.ws-drag-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  opacity: 1;
+  background: var(--ws-drag-scrim);
+  transition: opacity var(--dur-normal) ease;
+}
+
+.ws-drag-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.ws-drag-overlay-content {
+  position: fixed;
+  inset: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  border: 3px dashed var(--ws-drag-border);
+  border-radius: 24px;
+  background: var(--ws-drag-surface);
+  color: var(--ws-drag-title);
+}
+
+.ws-drag-overlay-content svg {
+  width: 64px;
+  height: 64px;
+  color: var(--ws-drag-title);
+}
+
+.ws-drag-overlay-content h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ws-drag-title);
+}
+
+.ws-drag-overlay-content p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--ws-drag-hint);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .ws-appbar {
+    gap: 8px;
+    padding: 0 8px;
+  }
+
+  .ws-mobile-switch {
+    display: inline-flex;
+    order: 2;
+  }
+
+  .ws-appbar-brand {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .ws-appbar-logo {
+    order: 1;
+  }
+
+  .ws-appbar-logo-text {
+    display: none;
+  }
+
+  .ws-main {
+    min-height: 0;
+    border-top-left-radius: 0;
+  }
+
+  .ws-content {
+    padding: 20px 16px 48px;
+  }
+
+  .ws-welcome {
+    margin-bottom: 18px;
+    font-size: 23px;
+  }
+
+  /* Sidebar becomes an off-canvas drawer. */
+  .ws-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--z-menu);
+    width: 280px;
+    height: 100vh;
+    height: 100dvh;
+    padding: 12px;
+    background: var(--ws-surface);
+    box-shadow: none;
+    transform: translateX(-100%);
+    transition: transform var(--dur-normal) ease;
+  }
+
+  .ws-sidebar.open {
+    transform: translateX(0);
+    box-shadow: 0 12px 48px rgb(0 0 0 / 28%);
+  }
+
+  .ws-nav-item.active {
+    flex-direction: row-reverse;
+  }
+}
+
+@media (max-width: 600px) {
+  .ws-content-header {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 12px;
+    margin-bottom: 18px;
+  }
+
+  .ws-content-actions {
+    width: 100%;
+  }
+
+  .ws-content-actions .ws-action-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .ws-video-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .ws-script-preview {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .ws-card-more--onthumb {
+    opacity: 1;
+  }
+
+  
+
+  .ws-action-btn {
+    padding: 0 12px;
+  }
+}

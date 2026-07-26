@@ -1,0 +1,30 @@
+{#- Language switcher — native <details> disclosure so it works without JS and
+    stays keyboard-accessible. Renders the full language registry (site.languages);
+    each link points at that language's home page (l.homePath). Styling is driven
+    by the ancestor context: `.nav-right .lang-switcher` (desktop) vs
+    `.mobile-nav .lang-switcher` (drawer). See src/styles/home.css. -#}
+{%- set currentLang = lang or 'en' -%}
+{%- set currentEndonym = '' -%}
+{%- for l in site.languages -%}{%- if l.code == currentLang -%}{%- set currentEndonym = l.endonym -%}{%- endif -%}{%- endfor -%}
+<details class="lang-switcher">
+    <summary class="lang-switcher-toggle" aria-label="Change language, current language {{ currentEndonym }}">
+        <span class="lang-switcher-current">{{ currentEndonym }}</span>
+        <svg class="lang-switcher-caret" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+    </summary>
+    <div class="lang-switcher-panel">
+        <p class="lang-switcher-heading">Choose language</p>
+        <ul class="lang-switcher-list">
+            {%- for l in site.languages %}
+            <li>
+                <a href="{{ l.homePath }}" hreflang="{{ l.code }}" lang="{{ l.code }}" dir="{{ l.dir }}" class="lang-switcher-item{% if l.code == currentLang %} is-current{% endif %}"{% if l.code == currentLang %} aria-current="true"{% endif %}>
+                    <span class="lang-switcher-endonym">{{ l.endonym }}</span>
+                    <span class="lang-switcher-name">{{ l.name }}</span>
+                    {%- if l.code == currentLang %}
+                    <svg class="lang-switcher-check" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+                    {%- endif %}
+                </a>
+            </li>
+            {%- endfor %}
+        </ul>
+    </div>
+</details>

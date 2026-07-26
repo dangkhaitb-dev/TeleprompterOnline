@@ -1,0 +1,278 @@
+{
+  "seo": {
+    "title": "Gratis Online Teleprompter met AI-stemscrollen | VTeleprompter",
+    "description": "Gebruik VTeleprompter, een gratis online teleprompter met AI-stemscrollen, notch-modus, afstandsbediening en 4K-opname. Geen advertenties of watermerk.",
+    "canonical": "/nl/",
+    "ogTitle": "Gratis Online AI-teleprompter — VTeleprompter",
+    "ogDescription": "Presenteer natuurlijk met AI-stemscrollen, notch-modus, afstandsbediening en professionele video-opname.",
+    "ogType": "website",
+    "ogImage": "/og-vteleprompter.jpg"
+  },
+  "schema": {
+    "orgDescription": "VTeleprompter biedt een gratis online AI-teleprompter voor natuurlijke presentaties en professionele video-opname.",
+    "brandDescription": "VTeleprompter is een online AI-teleprompter ontworpen voor natuurlijke presentaties en professionele video-opname.",
+    "websiteDescription": "Een gratis online teleprompter met AI-stemscrollen, notch-modus, afstandsbediening en professionele video-opname.",
+    "webpageName": "Gratis Online Teleprompter met AI-stemscrollen | VTeleprompter",
+    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "logoUrl": "/logo.png",
+    "logoCaption": "VTeleprompter",
+    "primaryImage": "/og-vteleprompter.jpg",
+    "primaryImageCaption": "VTeleprompter gratis online AI-teleprompter",
+    "appAlternateName": "VTeleprompter Online Teleprompter",
+    "appDescription": "Een gratis online AI-teleprompter met spraakgestuurd scrollen, notch-modus, afstandsbediening, scriptbeheer en professionele Full HD- en 4K-video-opname.",
+    "applicationCategory": "MultimediaApplication",
+    "applicationSubCategory": "Online Teleprompter",
+    "operatingSystem": "Elk besturingssysteem met een moderne webbrowser",
+    "browserRequirements": "Vereist JavaScript en een moderne webbrowser. Camera- en microfoontoegang zijn nodig voor opname en AI-stemscrollen.",
+    "availableOnDevice": ["Desktop", "Laptop", "Tablet", "Smartphone"],
+    "featureList": [
+      "AI-spraakgestuurd scrollen",
+      "Handmatig teleprompter-scrollen",
+      "Automatisch scrollen met vaste snelheid",
+      "Notch-teleprompter-modus",
+      "Bediening vanaf een ander apparaat",
+      "Full HD-video-opname",
+      "4K-video-opname",
+      "Scripts maken en bewerken",
+      "Scriptbeheer",
+      "Opnamebeheer",
+      "Responsieve mobiele interface",
+      "Ondersteuning voor desktop- en mobiele browsers",
+      "Geen advertenties",
+      "Geen videowatermerk"
+    ],
+    "offerDescription": "Gratis toegang tot de functies van de VTeleprompter online teleprompter.",
+    "howToName": "Hoe gebruik je VTeleprompter",
+    "howToDescription": "Leer hoe je een script toevoegt, een scrollmodus kiest, je teleprompter aanpast en begint met presenteren of opnemen met VTeleprompter.",
+    "faqName": "VTeleprompter Veelgestelde Vragen",
+    "faqDescription": "Veelgestelde vragen over VTeleprompter, AI-stemscrollen, notch-modus, afstandsbediening, ondersteunde apparaten en video-opname."
+  },
+  "nav": {
+    "items": [
+      { "label": "Functies", "url": "#features" },
+      { "label": "Notch-modus", "url": "#notch" },
+      { "label": "Stemscrollen", "url": "#voice-scroll" },
+      { "label": "Op afstand", "url": "#remote" }
+    ],
+    "cta": { "label": "Werkruimtes", "url": "/workspaces" }
+  },
+  "hero": {
+    "eyebrow": "VTeleprompter — AI-teleprompter",
+    "title": "Gratis Online Teleprompter",
+    "subtitle": "Presenteer natuurlijk met AI-stemscrollen, notch-modus, afstandsbediening en professionele 4K-opname.",
+    "placeholder": "Plak je script of upload een bestand om te beginnen...",
+    "uploadLabel": "Bestand uploaden",
+    "uploadLabelShort": "Uploaden",
+    "startLabel": "Begin met presenteren",
+    "startLabelShort": "Start",
+    "supportedText": "Ondersteunt TXT, DOCX en Markdown",
+    "dropTitle": "Sleep hier een bestand om te uploaden",
+    "dropHint": "Ondersteunt TXT, DOCX en Markdown"
+  },
+  "messages": {
+    "errorEmpty": "Voer eerst de inhoud van je script in voordat je de teleprompter start.",
+    "errorRead": "Niet-ondersteund formaat. Selecteer een .txt- of .md-bestand."
+  },
+  "features": {
+    "eyebrow": "Alles wat je nodig hebt om beter te presenteren",
+    "title": "Eén teleprompter voor elke opname",
+    "description": "VTeleprompter combineert een online teleprompter, AI-stemscrollen, notch-modus, afstandsbediening, scriptbeheer en professionele video-opname in één eenvoudige werkruimte.",
+    "items": [
+      { "title": "AI-stemscrollen", "description": "VTeleprompter volgt je spraak en scrollt automatisch door je script op je natuurlijke spreektempo." },
+      { "title": "Notch-teleprompter", "description": "Houd je script dicht bij de camera om zichtbare oogbewegingen te verminderen en natuurlijker oogcontact te behouden." },
+      { "title": "Afstandsbediening", "description": "Gebruik een andere telefoon, tablet of computer om het scrollen te bedienen, door je script te navigeren en je presentatie op afstand te beheren." },
+      { "title": "Full HD- en 4K-opname", "description": "Neem professionele video's op terwijl je je script rechtstreeks van de teleprompter leest." },
+      { "title": "Scriptbeheer", "description": "Maak, upload, bewerk, organiseer en hergebruik al je scripts vanuit één handige werkruimte." },
+      { "title": "Opnamebibliotheek", "description": "Bewaar, bekijk en beheer je opnames samen met de scripts waarmee ze zijn gemaakt." },
+      { "title": "Gemaakt voor mobiel", "description": "Gebruik VTeleprompter comfortabel op telefoons, tablets, laptops en desktopcomputers met een responsieve interface voor elk scherm." },
+      { "title": "Geen advertenties of watermerk", "description": "Presenteer en neem op zonder storende advertenties of merkwatermerken op je video's." }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "Eenvoudig vanaf de eerste take",
+    "title": "Hoe VTeleprompter werkt",
+    "description": "Verander elk script in een vloeiende presentatie of professionele opname in slechts een paar stappen.",
+    "steps": [
+      { "anchor": "step-add-script", "title": "Voeg je script toe", "description": "Plak je tekst rechtstreeks in VTeleprompter of upload een bestaand script vanaf je apparaat." },
+      { "anchor": "step-choose-scroll-mode", "title": "Kies je scrollmodus", "description": "Stel een vaste scrollsnelheid in, bedien het script handmatig of activeer AI-stemscrollen." },
+      { "anchor": "step-customize-view", "title": "Pas je weergave aan", "description": "Pas het lettertype, de tekstgrootte, regelafstand, het leesgebied en de teleprompterpositie aan voor comfortabel lezen." },
+      { "anchor": "step-start-presenting", "title": "Begin met presenteren", "description": "Open de teleprompter, verbind indien nodig een afstandsbediening en begin met presenteren of opnemen." }
+    ]
+  },
+  "voiceScroll": {
+    "eyebrow": "Scrol op het tempo van je stem",
+    "title": "AI-stemscrollen dat jou volgt",
+    "description": "Stop met het aanpassen van je spreektempo aan een vaste scrollsnelheid. VTeleprompter volgt je stem zodat je je kunt concentreren op het natuurlijk overbrengen van je boodschap.",
+    "benefits": [
+      { "title": "Spreek natuurlijk", "description": "Lees op je eigen tempo zonder gehaast, traag of robotachtig te klinken." },
+      { "title": "Pauzeer wanneer nodig", "description": "Haal adem, benadruk een idee of pauzeer tussen secties zonder direct je plek kwijt te raken." },
+      { "title": "Blijf gefocust", "description": "Houd het juiste deel van je script zichtbaar terwijl je je concentreert op je presentatie." },
+      { "title": "Minder herkansingen", "description": "Vermijd fouten doordat scripts te snel of te langzaam bewegen tijdens het opnemen." }
+    ],
+    "supporting": "Liever een traditionele online autocue? Handmatige scrollbediening en scrollen met vaste snelheid zijn altijd beschikbaar.",
+    "cta": { "label": "Probeer AI-stemscrollen", "url": "/workspaces" }
+  },
+  "notch": {
+    "eyebrow": "Natuurlijk oogcontact",
+    "title": "Houd je script dicht bij de camera",
+    "description": "De notch-modus van VTeleprompter plaatst een compact leesgebied dicht bij je camera, zodat je ogen dichter bij de lens gefocust blijven.",
+    "items": [
+      "Verminder duidelijke zijwaartse oogbewegingen.",
+      "Plaats het script dicht bij je webcam of telefooncamera.",
+      "Pas de grootte van het leesgebied aan om alleen de regels te tonen die je nodig hebt.",
+      "Verplaats de teleprompter naar elke plek op je scherm.",
+      "Behoud natuurlijker oogcontact tijdens opnames en videogesprekken."
+    ],
+    "supporting": "De notch-modus is ideaal voor interviews, presentaties, productdemo's, online lessen, videogesprekken en talking-head-content.",
+    "cta": { "label": "Open notch-modus", "url": "/workspaces" }
+  },
+  "remote": {
+    "eyebrow": "Bedien vanaf overal",
+    "title": "Gebruik elk apparaat als teleprompter-afstandsbediening",
+    "description": "Verbind een andere telefoon, tablet of computer en bedien je teleprompter zonder het hoofdopnameapparaat aan te raken.",
+    "items": [
+      { "title": "Starten en pauzeren", "description": "Bedien de teleprompter discreet terwijl je presenteert." },
+      { "title": "Scrollsnelheid aanpassen", "description": "Verhoog of verlaag de snelheid vanaf je verbonden afstandsbediening." },
+      { "title": "Navigeer door je script", "description": "Ga vooruit, ga terug of spring naar een ander deel van je script." },
+      { "title": "Opname beheren", "description": "Start of stop de opname op afstand wanneer je apparaat en browser dit ondersteunen." }
+    ],
+    "supporting": "Perfect voor solomakers, sprekers, studio's, productieteams en presentaties op afstand.",
+    "cta": { "label": "Verbind een afstandsbediening", "url": "/workspaces" }
+  },
+  "recording": {
+    "eyebrow": "Neem op terwijl je leest",
+    "title": "Maak professionele video's in Full HD of 4K",
+    "description": "Gebruik je camera en teleprompter in één gestroomlijnde workflow. Lees natuurlijk, controleer je kadrering en neem op zonder tussen verschillende applicaties te wisselen.",
+    "items": [
+      { "title": "Live camerapreview", "description": "Controleer je positie, kadrering en uiterlijk voor en tijdens je opname." },
+      { "title": "Full HD-opname", "description": "Maak heldere, hoogwaardige video's voor sociale media, lessen, presentaties en zakelijke content." },
+      { "title": "4K-opname", "description": "Leg professionele video op in hoge resolutie wanneer je camera, browser en apparaat dit ondersteunen." },
+      { "title": "Geen watermerk", "description": "Exporteer schone opnames zonder VTeleprompter-logo of merkoverlay." },
+      { "title": "Opnamebibliotheek", "description": "Houd je takes georganiseerd en vind snel de opname die bij elk script hoort." }
+    ],
+    "cta": { "label": "Begin met opnemen", "url": "/workspaces" }
+  },
+  "workspace": {
+    "eyebrow": "Jouw contentwerkruimte",
+    "title": "Beheer scripts en opnames samen",
+    "description": "Stop met zoeken in mappen, documenten en aparte applicaties. VTeleprompter houdt je scripts en opnames in één georganiseerde werkruimte.",
+    "items": [
+      { "title": "Scripts maken en bewerken", "description": "Schrijf nieuwe scripts of werk bestaande content rechtstreeks in VTeleprompter bij." },
+      { "title": "Bestaande content uploaden", "description": "Importeer scripts uit ondersteunde documenten in plaats van elke sectie handmatig te kopiëren." },
+      { "title": "Organiseer je bibliotheek", "description": "Houd scripts en opnames georganiseerd zodat ze klaar zijn voor toekomstige presentaties." },
+      { "title": "Hergebruik je scripts", "description": "Open eerdere scripts, breng snelle wijzigingen aan en neem nieuwe versies op zonder opnieuw te beginnen." },
+      { "title": "Toegang vanaf elk scherm", "description": "Werk verder vanaf je telefoon, tablet, laptop of desktopcomputer." }
+    ]
+  },
+  "mobile": {
+    "eyebrow": "Ontworpen voor elk scherm",
+    "title": "Een mobielvriendelijke online teleprompter",
+    "description": "VTeleprompter is ontworpen om snel, helder en gemakkelijk te bedienen aan te voelen op zowel desktop- als mobiele apparaten.",
+    "items": [
+      { "title": "Responsieve interface", "description": "Essentiële bedieningselementen blijven gemakkelijk bereikbaar bij verschillende schermgroottes en oriëntaties." },
+      { "title": "Portret en landschap", "description": "Kies de schermoriëntatie die het best past bij je opname-opstelling." },
+      { "title": "Aanraakvriendelijke bediening", "description": "Pas tekst-, scroll- en opname-instellingen comfortabel aan vanaf een touchscreen." },
+      { "title": "Geen installatie nodig", "description": "Open VTeleprompter in een ondersteunde browser en begin met de teleprompter online te gebruiken." }
+    ],
+    "supporting": "Gebruik VTeleprompter als mobiele teleprompter, desktop-teleprompter of browsergebaseerde online autocue."
+  },
+  "useCases": {
+    "eyebrow": "Gemaakt voor elke presentator",
+    "title": "Voor wie is VTeleprompter?",
+    "items": [
+      { "title": "Contentmakers", "description": "Neem TikTok-video's, YouTube-video's, Shorts, Reels en andere sociale content op zonder elke regel uit je hoofd te leren." },
+      { "title": "YouTubers", "description": "Presenteer reviews, tutorials, uitlegvideo's en talking-head-video's met een vlottere, zelfverzekerdere presentatie." },
+      { "title": "Podcasters", "description": "Volg introducties, sponsorboodschappen, gestructureerde vragen en afleveringsnotities tijdens het opnemen." },
+      { "title": "Leraren en docenten", "description": "Presenteer online lessen, cursusvideo's en educatieve content helder en consistent." },
+      { "title": "Zakelijke professionals", "description": "Bereid productdemo's, bedrijfsupdates, webinars, verkooppresentaties en trainingsvideo's voor." },
+      { "title": "Sprekers", "description": "Oefen toespraken, repeteer presentaties en breng voorbereide boodschappen met vertrouwen over." },
+      { "title": "Journalisten en interviewers", "description": "Volg scripts, vragen en belangrijke gesprekspunten terwijl je gefocust blijft op de camera." },
+      { "title": "Teams op afstand", "description": "Gebruik de notch-modus tijdens videogesprekken, online presentaties en interviews op afstand." }
+    ]
+  },
+  "comparison": {
+    "eyebrow": "Waarom VTeleprompter?",
+    "title": "Een completere gratis teleprompter",
+    "description": "VTeleprompter is gebouwd om een complete teleprompter-ervaring te bieden zonder gebruikers te dwingen meerdere applicaties te combineren of te betalen voor basisfuncties.",
+    "items": [
+      "AI-spraakgestuurd scrollen",
+      "Notch-teleprompter-modus",
+      "Bediening vanaf een ander apparaat",
+      "Full HD- en 4K-video-opname",
+      "Script- en opnamebeheer",
+      "Ondersteuning voor desktop en mobiel",
+      "Geen advertenties",
+      "Geen videowatermerk",
+      "Eenvoudige en moderne gebruikerservaring",
+      "Gratis toegang tot essentiële teleprompterfuncties"
+    ],
+    "supporting": "Van het schrijven van je script tot het opnemen van de definitieve take: VTeleprompter geeft je de tools die je nodig hebt op één plek."
+  },
+  "about": {
+    "eyebrow": "Over VTeleprompter",
+    "title": "Gebouwd om presenteren natuurlijk te laten voelen",
+    "paragraphs": [
+      "VTeleprompter is een AI-teleprompter gemaakt voor mensen die zelfverzekerd willen spreken zonder elk woord uit hun hoofd te leren of voortdurend scrollbediening te moeten beheren.",
+      "Ons doel is om de meest complete en toegankelijke online teleprompter-ervaring te creëren, met betrouwbaar AI-scrollen, doordacht ontwerp, tools voor natuurlijk oogcontact en professionele opnamefuncties.",
+      "Of je nu opneemt vanaf een telefoon, presenteert vanaf een laptop of een studio-opstelling op afstand bedient, VTeleprompter helpt je gefocust te blijven op je publiek in plaats van op de software."
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Klaar om te presenteren?",
+    "title": "Begin met VTeleprompter",
+    "description": "Voeg je script toe, kies je voorkeursleesmodus en begin natuurlijk te presenteren.",
+    "cta": { "label": "Open gratis teleprompter", "url": "/workspaces" },
+    "supporting": "Geen advertenties. Geen watermerk. Geen ingewikkelde installatie."
+  },
+  "faq": {
+    "eyebrow": "Vragen en antwoorden",
+    "title": "Veelgestelde vragen",
+    "items": [
+      { "anchor": "faq-is-vteleprompter-free", "q": "Is VTeleprompter gratis te gebruiken?", "a": "VTeleprompter is momenteel gratis te gebruiken. Je kunt de essentiële teleprompter-, script- en opnamefuncties gebruiken zonder advertenties of een merkwatermerk op video's." },
+      { "anchor": "faq-what-is-ai-voice-scroll", "q": "Wat is AI-stemscrollen?", "a": "AI-stemscrollen luistert naar je spraak en beweegt door het script op basis van je natuurlijke spreektempo. Het helpt je te pauzeren, door te gaan en te presenteren zonder voortdurend een vaste scrollsnelheid aan te passen." },
+      { "anchor": "faq-what-is-notch-mode", "q": "Wat is de VTeleprompter notch-modus?", "a": "De notch-modus plaatst een compact leesgebied van de teleprompter dicht bij je camera. Dit helpt zichtbare oogbewegingen te verminderen en laat je oogcontact natuurlijker lijken tijdens opnames, presentaties en videogesprekken." },
+      { "anchor": "faq-mobile-devices", "q": "Kan ik VTeleprompter op een telefoon of tablet gebruiken?", "a": "Ja. VTeleprompter heeft een responsieve interface ontworpen voor smartphones, tablets, laptops en desktopcomputers. Beschikbare functies kunnen afhangen van de browser, camera en mogelijkheden van het apparaat." },
+      { "anchor": "faq-installation", "q": "Moet ik VTeleprompter installeren?", "a": "Voor de webversie is geen installatie nodig. Je kunt VTeleprompter openen in een ondersteunde moderne browser, je script toevoegen en online beginnen met presenteren." },
+      { "anchor": "faq-remote-control", "q": "Kan ik VTeleprompter vanaf een ander apparaat bedienen?", "a": "Ja. Met de afstandsbediening van VTeleprompter kun je een andere telefoon, tablet of computer gebruiken om de teleprompter te starten of pauzeren, het scrollen aan te passen en door je script te navigeren." },
+      { "anchor": "faq-4k-recording", "q": "Kan VTeleprompter video's opnemen in 4K?", "a": "VTeleprompter ondersteunt Full HD- en 4K-opname wanneer de camera, browser en het apparaat de gekozen resolutie ondersteunen. De werkelijke opnamekwaliteit hangt af van de mogelijkheden en machtigingen van je apparaat." },
+      { "anchor": "faq-watermark", "q": "Voegt VTeleprompter een watermerk toe aan opnames?", "a": "VTeleprompter voegt geen merkwatermerk toe aan je opgenomen video's." },
+      { "anchor": "faq-supported-files", "q": "Welke scriptbestandsformaten ondersteunt VTeleprompter?", "a": "VTeleprompter ondersteunt het rechtstreeks plakken van tekst en het uploaden van ondersteunde scriptdocumenten zoals TXT-, DOCX-, PDF- en Markdown-bestanden." },
+      { "anchor": "faq-online-autocue", "q": "Kan VTeleprompter als online autocue worden gebruikt?", "a": "Ja. VTeleprompter kan worden gebruikt als browsergebaseerde online autocue met handmatig scrollen, automatisch scrollen met vaste snelheid en AI-spraakgestuurd scrollen." }
+    ]
+  },
+  "footer": {
+    "brand": "VTeleprompter",
+    "description": "Een gratis online AI-teleprompter voor natuurlijke presentaties en professionele video-opname.",
+    "columns": [
+      {
+        "title": "Product",
+        "links": [
+          { "label": "Functies", "url": "#features" },
+          { "label": "Hoe het werkt", "url": "#how-it-works" },
+          { "label": "AI-stemscrollen", "url": "#voice-scroll" },
+          { "label": "Notch-modus", "url": "#notch" },
+          { "label": "Afstandsbediening", "url": "#remote" },
+          { "label": "4K-opname", "url": "#recording" }
+        ]
+      },
+      {
+        "title": "Bronnen",
+        "links": [
+          { "label": "Hoe te gebruiken", "url": "#how-it-works" },
+          { "label": "Teleprompter-gids", "url": "/teleprompter-guide" },
+          { "label": "Blog", "url": "/blog" },
+          { "label": "Over ons", "url": "/about" }
+        ]
+      },
+      {
+        "title": "Juridisch",
+        "links": [
+          { "label": "Privacybeleid", "url": "/policy" },
+          { "label": "Servicevoorwaarden", "url": "/term" },
+          { "label": "Facturering en terugbetalingen", "url": "/billing" }
+        ]
+      }
+    ],
+    "copyright": "© 2026 VTeleprompter."
+  }
+}

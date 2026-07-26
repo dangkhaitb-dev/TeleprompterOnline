@@ -1,0 +1,26 @@
+{%- set canonical = site.url + '/' + simplePage.slug -%}
+<!DOCTYPE html>
+<html lang="{{ lang or 'en' }}" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ simplePage.seo.description }}">
+    <meta name="robots" content="index, follow">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#fbfcfd">
+    <meta property="og:title" content="{{ simplePage.seo.title }}">
+    <meta property="og:description" content="{{ simplePage.seo.description }}">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ canonical }}">
+    <link rel="canonical" href="{{ canonical }}">
+    <title>{{ simplePage.seo.title }}</title>
+    {% include "partials/head-icons.njk" %}
+</head>
+
+<body class="home simple-page">
+    {{ content | safe }}
+    <script type="module" src="/src/script/simple-page-main.js"></script>
+</body>
+
+</html>

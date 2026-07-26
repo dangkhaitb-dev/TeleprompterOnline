@@ -1,0 +1,29 @@
+{%- set canonical = site.url + '/blog/' + article.slug + '/' -%}
+<!DOCTYPE html>
+<html lang="{{ lang or 'en' }}" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ article.seo.description }}">
+    <meta name="robots" content="index, follow">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#fbfcfd">
+    <meta name="author" content="{{ article.author.name }}">
+    <meta property="og:title" content="{{ article.seo.title }}">
+    <meta property="og:description" content="{{ article.seo.description }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ canonical }}">
+    <meta property="og:image" content="{{ article.seo.image }}">
+    <meta property="article:published_time" content="{{ article.date }}">
+    <link rel="canonical" href="{{ canonical }}">
+    <title>{{ article.seo.title }}</title>
+    {% include "partials/head-icons.njk" %}
+</head>
+
+<body class="home blog-article-page">
+    {{ content | safe }}
+    <script type="module" src="/src/script/blog-article-main.js"></script>
+</body>
+
+</html>

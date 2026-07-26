@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Your saved teleprompter scripts. Open a workspace to record, or start a new script — everything stays private on your device.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f9fafd">
+    <title>Workspaces — VTeleprompter</title>
+    
+<script>if ("scrollRestoration" in history) history.scrollRestoration = "manual";</script><link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+</head>
+
+<body class="ws-body">
+    <script type="application/json" id="wsCopy">{
+  "untitled": "Untitled script",
+  "emptyScript": "Empty script",
+  "localBadge": "Local",
+  "updatedPrefix": "Updated",
+  "itemOne": "item",
+  "itemMany": "items",
+  "moreAria": "More actions",
+  "openLabel": "Open",
+  "renameLabel": "Rename",
+  "deleteLabel": "Delete",
+  "exportJsonLabel": "Export",
+  "confirmDeleteTitle": "Delete script",
+  "confirmDeleteMessage": "Delete “{title}”? This also removes its recordings and cannot be undone.",
+  "confirmLabel": "Delete",
+  "cancelLabel": "Cancel",
+  "renameScriptTitle": "Rename script",
+  "backLabel": "Back",
+  "backAria": "Back to parent folder",
+  "allLabel": "All",
+  "folderNewTitle": "New folder",
+  "folderNewDefault": "New Folder",
+  "folderCreateLabel": "Create",
+  "folderNamePlaceholder": "Folder name",
+  "folderRenameTitle": "Rename folder",
+  "folderSaveLabel": "Save",
+  "folderDeleteTitle": "Delete folder",
+  "folderDeleteMessage": "Delete this folder? This cannot be undone.",
+  "folderDeleteMessageWithCounts": "Delete this folder and everything inside ({counts})? This cannot be undone.",
+  "folderOne": "folder",
+  "folderMany": "folders",
+  "scriptOne": "script",
+  "scriptMany": "scripts",
+  "toastDeleted": "Script deleted",
+  "toastDeleteError": "Could not delete that script",
+  "toastFolderDeleted": "Folder deleted",
+  "toastMoved": "Moved",
+  "toastUploadUnsupported": "Unsupported format. Choose a .txt, .md, or .json file.",
+  "toastUploadEmpty": "That file looks empty. Add some text and try again.",
+  "toastReadError": "Could not read that file.",
+  "toastExportedJson": "Script exported as JSON",
+  "toastExportError": "Could not export that script",
+  "toastJsonImported": "Workspace imported",
+  "toastJsonInvalid": "That workspace JSON is invalid or unsupported.",
+  "toastJsonTooLarge": "That JSON file is too large.",
+  "backupPreparingMessage": "Packaging the selected script JSON files. Keep this page open.",
+  "backupReadyMessage": "Your selected scripts are ready.",
+  "backupFailedMessage": "Could not export the selected scripts.",
+  "recVideoBadge": "Video",
+  "recAudioBadge": "Audio",
+  "recPreviewLabel": "Preview",
+  "recPreviewCloseAria": "Close preview",
+  "recPreviewMissing": "This recording is unavailable.",
+  "recDeleteLabel": "Delete",
+  "recMoreAria": "More actions",
+  "recDeleteTitle": "Delete recording",
+  "recDeleteMessage": "Delete this recording? This cannot be undone.",
+  "recDeleted": "Recording deleted",
+  "recDeleteError": "Could not delete that recording",
+  "recUnknownScript": "Untitled script",
+  "recDownloadLabel": "Download",
+  "recToday": "Today",
+  "recYesterday": "Yesterday",
+  "selectionSelectAll": "Select All",
+  "selectionUnselectAll": "Unselect All",
+  "selectionDownload": "Download",
+  "selectionPreparingDownload": "Creating ZIP…",
+  "selectionDownloadReady": "Selected recordings downloaded",
+  "selectionDownloadError": "Could not download selected recordings",
+  "selectionDownloadTooLarge": "This ZIP is too large for this browser to create safely.",
+  "close": "Close",
+  "zipPreparingTitle": "Preparing your ZIP",
+  "zipPreparingMessage": "Packaging the original recordings. Keep this page open.",
+  "zipFile": "File",
+  "zipFiles": "files",
+  "zipReadyTitle": "ZIP is ready",
+  "zipReadyMessage": "Your original recordings have been packaged successfully.",
+  "zipFailedTitle": "Could not create ZIP",
+  "zipFailedMessage": "Something went wrong while packaging your recordings.",
+  "download": "Download",
+  "retry": "Retry",
+  "selectionDelete": "Delete",
+  "selectionSelectScriptAria": "Select script",
+  "selectionSelectRecordingAria": "Select recording",
+  "selectionDeleteScriptsTitle": "Delete selected scripts",
+  "selectionDeleteScriptsMessage": "Delete {count} selected scripts? Their recordings will also be removed. This cannot be undone.",
+  "selectionDeleteRecordingsTitle": "Delete selected recordings",
+  "selectionDeleteRecordingsMessage": "Delete {count} selected recordings? This cannot be undone.",
+  "selectionScriptsDeleted": "Selected scripts deleted",
+  "selectionRecordingsDeleted": "Selected recordings deleted",
+  "selectionDeleteError": "Some selected items could not be deleted",
+  "storageUsage": "{used} / {limit} GB",
+  "storageWarn": "Almost full — delete old recordings to free space.",
+  "storageFull": "Storage is full — delete recordings to record more.",
+  "storageEditHint": "Up to {max} GB available on this device",
+  "storageEditSave": "Save",
+  "storageUpdated": "Storage limit set to {limit} GB",
+  "storageSettingsTitle": "Local storage",
+  "storageSettingsIntro": "Recordings are saved on this device only — nothing is uploaded. They stay until you delete them or clear the browser.",
+  "storageSaveToggle": "Save recordings on this device",
+  "storageSaveToggleHint": "Turn off to record without keeping the take on this device.",
+  "storageLimitLabel": "Max local storage"
+}</script>
+
+<div class="ws-layout">
+  <!-- Sidebar overlay (mobile) -->
+  <div class="ws-sidebar-overlay" id="wsSidebarOverlay"></div>
+
+  <!-- Top app bar -->
+  <header class="ws-appbar">
+    <div class="ws-appbar-brand">
+      <div class="ws-mobile-switch">
+        <button type="button" class="ws-switch-btn active" data-view="scripts">
+          <span>Scripts</span>
+        </button>
+        <button type="button" class="ws-switch-btn" data-view="recordings">
+          <span>Recordings</span>
+        </button>
+      </div>
+      <a href="/" class="ws-appbar-logo" aria-label="VTeleprompter home">
+        <svg xmlns="http://www.w3.org/2000/svg" width="27" height="20" viewBox="0 0 2316 1686" fill="none" aria-hidden="true"><rect width="1075" height="350.587" rx="175.294" transform="matrix(0.659364 0.751824 -0.757404 0.652947 265.536 0)" fill="#8EDB4D"/><path d="M233.194 1594.88C150.094 1545.08 123.649 1437.68 174.126 1354.99L551.45 736.885C601.927 654.197 710.213 627.534 793.312 677.332C876.412 727.13 902.857 834.531 852.38 917.22L475.056 1535.32C424.579 1618.01 316.293 1644.68 233.194 1594.88Z" fill="#8EDB4D"/><rect width="689.56" height="240" rx="120" transform="matrix(0.999937 -0.0112537 0.0114486 0.999934 792.53 1145.79)" fill="#8EDB4D"/><rect width="1252.21" height="240" rx="120" transform="matrix(0.999937 -0.0112537 0.0114486 0.999934 974.356 699.09)" fill="#8EDB4D"/><path d="M793.42 371.637C792.661 305.367 845.768 251.04 912.038 250.294L2193.21 235.875C2259.48 235.13 2313.81 288.247 2314.57 354.517C2315.33 420.787 2262.22 475.114 2195.96 475.86L914.786 490.278C848.516 491.024 794.178 437.906 793.42 371.637Z" fill="#8EDB4D"/></svg>
+        <span class="ws-appbar-logo-text">VTeleprompter</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="ws-body-row">
+    <!-- Sidebar -->
+    <nav class="ws-sidebar" id="wsSidebar" aria-label="Workspace navigation">
+      <div class="ws-sidebar-content">
+        <div class="ws-workspace-switcher">
+          <div class="ws-workspace-btn">
+            <span class="ws-workspace-avatar">
+              <span class="ws-workspace-avatar-text">M</span>
+            </span>
+            <span class="ws-workspace-info">
+              <span class="ws-workspace-name">My Workspace</span>
+            </span>
+          </div>
+        </div>
+
+        <nav class="ws-sidebar-nav" aria-label="Sections">
+          <button type="button" class="ws-nav-item active" data-view="scripts" aria-current="page">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M2 4.5A1.5 1.5 0 0 1 3.5 3h9A1.5 1.5 0 0 1 14 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 11.5v-7Z"/>
+              <path stroke="currentColor" stroke-linecap="round" d="M5.5 7v2m2.5-2v2m2.5-2v2"/>
+            </svg>
+            <span class="ws-nav-item-label">Scripts</span>
+          </button>
+          <button type="button" class="ws-nav-item" data-view="recordings">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+              <rect x="2" y="3.5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-linejoin="round"/>
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m11 7 3-1.5v5L11 9"/>
+            </svg>
+            <span class="ws-nav-item-label">Recordings</span>
+          </button>
+        </nav>
+
+        <!-- Hidden file input (Upload) -->
+        <input type="file" accept=".txt,.md,.markdown,.fountain,.text,.json,text/plain,application/json" hidden id="wsFileInput">
+
+        <div class="ws-credits-card ws-credits-card--free">
+          <div class="ws-credits-header">
+            <span class="ws-credits-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="27" height="20" viewBox="0 0 2316 1686" fill="none" aria-hidden="true"><rect width="1075" height="350.587" rx="175.294" transform="matrix(0.659364 0.751824 -0.757404 0.652947 265.536 0)" fill="currentColor"/><path d="M233.194 1594.88C150.094 1545.08 123.649 1437.68 174.126 1354.99L551.45 736.885C601.927 654.197 710.213 627.534 793.312 677.332C876.412 727.13 902.857 834.531 852.38 917.22L475.056 1535.32C424.579 1618.01 316.293 1644.68 233.194 1594.88Z" fill="currentColor"/><rect width="689.56" height="240" rx="120" transform="matrix(0.999937 -0.0112537 0.0114486 0.999934 792.53 1145.79)" fill="currentColor"/><rect width="1252.21" height="240" rx="120" transform="matrix(0.999937 -0.0112537 0.0114486 0.999934 974.356 699.09)" fill="currentColor"/><path d="M793.42 371.637C792.661 305.367 845.768 251.04 912.038 250.294L2193.21 235.875C2259.48 235.13 2313.81 288.247 2314.57 354.517C2315.33 420.787 2262.22 475.114 2195.96 475.86L914.786 490.278C848.516 491.024 794.178 437.906 793.42 371.637Z" fill="currentColor"/></svg></span>
+            <span class="ws-credits-label">VTeleprompter</span>
+          </div>
+          <p class="ws-credits-text"><strong>Free</strong>, <strong>no ads</strong> — your scripts and recordings stay private on your device.</p>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="ws-main">
+      <div class="ws-content">
+        <div class="ws-content-header">
+          <h1 class="ws-welcome">Welcome to VTeleprompter</h1>
+          <div class="ws-content-actions">
+            <button type="button" id="wsNewScriptBtn" class="ws-action-btn ws-action-btn--primary">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <span>New script</span>
+            </button>
+            <button type="button" id="wsUploadBtn" class="ws-action-btn ws-action-btn--secondary">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>Upload</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scripts view (folders + scripts library) -->
+        <div class="ws-view" id="wsScriptsView">
+        <!-- Breadcrumb (shown inside a folder) -->
+        <nav class="ws-breadcrumb" id="wsBreadcrumb" aria-label="Folder path" hidden></nav>
+
+        <section class="ws-folders-section" id="wsFoldersSection">
+          <div class="ws-section-head">
+            <button type="button" class="ws-section-toggle" data-section-toggle aria-label="Collapse folders">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <h2 class="ws-section-title">Folders</h2>
+            <button type="button" class="ws-section-add" id="wsAddFolderBtn" aria-label="New folder" title="New folder">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+          <div class="ws-section-body">
+            <div class="ws-folder-grid" id="wsFolderGrid"></div>
+          </div>
+        </section>
+
+        <section class="ws-scripts-section" id="wsScriptsSection">
+          <div class="ws-section-head">
+            <button type="button" class="ws-section-toggle" data-section-toggle aria-label="Collapse scripts">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <h2 class="ws-section-title">Scripts</h2>
+          </div>
+          <div class="ws-section-body">
+            <div class="ws-video-grid" id="videoGrid"></div>
+            <div class="ws-scripts-empty" id="wsScriptsEmpty" hidden>
+              <h3 class="ws-empty-title">No scripts yet</h3>
+              <p class="ws-empty-body">Create a new script or upload a .txt / .md file to start your first teleprompter recording.</p>
+            </div>
+          </div>
+        </section>
+        </div>
+
+        <!-- Recordings view (all recorded takes, separate from scripts) -->
+        <div class="ws-view" id="wsRecordingsView" hidden>
+          <!-- Local storage budget meter (persistent) — record page only -->
+          <div class="ws-storage" id="wsStorage" hidden>
+            <div class="ws-storage-head">
+              <span class="ws-storage-label">Storage</span>
+              <span class="ws-storage-value" id="wsStorageValue"></span>
+              <button type="button" class="ws-storage-edit" id="wsStorageEdit" title="Manage local storage">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span>Manage</span>
+              </button>
+            </div>
+            <div class="ws-storage-bar" role="progressbar" aria-label="Storage">
+              <div class="ws-storage-fill" id="wsStorageFill"></div>
+            </div>
+            <p class="ws-storage-note" id="wsStorageNote" hidden></p>
+          </div>
+
+          <section class="ws-recordings-section">
+            <div class="ws-section-head">
+              <button type="button" class="ws-section-toggle" data-section-toggle aria-label="Recordings">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <h2 class="ws-section-title">Recordings</h2>
+            </div>
+            <div class="ws-section-body">
+              <div class="ws-recording-days" id="wsRecordingGrid"></div>
+              <div class="ws-scripts-empty" id="wsRecordingsEmpty" hidden>
+                <h3 class="ws-empty-title">No recordings yet</h3>
+                <p class="ws-empty-body">Open a script and record — your takes will show up here.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Multi-select actions (shown after checking or long-pressing an item) -->
+<div class="ws-selection-bar" id="wsSelectionToolbar" hidden aria-label="Selection actions">
+  <button type="button" class="ws-selection-bar-btn" id="wsSelectAllBtn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+      <polyline points="9 11 12 14 22 4"></polyline>
+    </svg>
+    <span class="ws-select-all-label">Select All</span>
+  </button>
+  <button type="button" class="ws-selection-bar-btn" id="wsExportSelectedBtn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 3v12m0 0 4-4m-4 4-4-4"></path><path d="M5 19h14"></path>
+    </svg>
+    <span>Export selected</span>
+  </button>
+  <div class="ws-selection-bar-divider" aria-hidden="true"></div>
+  <button type="button" class="ws-selection-bar-btn" id="wsDownloadSelectedBtn" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <polyline points="7 10 12 15 17 10"></polyline>
+      <line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+    <span class="ws-download-selected-label">Download</span>
+  </button>
+  <button type="button" class="ws-selection-bar-btn ws-selection-bar-btn--danger" id="wsDeleteSelectedBtn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+    </svg>
+    <span>Delete</span>
+  </button>
+</div>
+
+<!-- Drag & drop overlay -->
+<div id="wsDragOverlay" class="ws-drag-overlay hidden" aria-hidden="true" hidden>
+  <div class="ws-drag-overlay-content">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="17 8 12 3 7 8"/>
+      <line x1="12" y1="3" x2="12" y2="15"/>
+    </svg>
+    <h2>Drop your script here</h2>
+    <p>Plain text or Markdown (.txt, .md)</p>
+  </div>
+</div>
+
+    <script type="module" src="/src/script/workspaces-main.js"></script>
+</body>
+
+</html>

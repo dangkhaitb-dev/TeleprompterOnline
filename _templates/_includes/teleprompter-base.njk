@@ -1,0 +1,53 @@
+{%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
+<!DOCTYPE html>
+<html lang="{{ lang or 'en' }}" data-theme="dark" class="tp-page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="{{ pageData.seo.description }}">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0c0e12">
+    <title>{{ pageData.seo.title }}</title>
+    {% include "partials/head-icons.njk" %}
+    <script>
+      // Apply the saved Studio theme before CSS/JS renders to prevent flashing.
+      // A missing or invalid preference always falls back to dark.
+      (() => {
+        let theme = 'dark';
+
+        try {
+          const workspaceId = new URLSearchParams(location.search).get('ws');
+          const workspaces = JSON.parse(localStorage.getItem('vteleprompter:workspaces') || '[]');
+          const workspace = Array.isArray(workspaces)
+            ? workspaces.find((item) => item && item.id === workspaceId)
+            : null;
+          const globalSettings = JSON.parse(
+            localStorage.getItem('global_setting_promter') || '{}',
+          );
+          const savedTheme = workspace && workspace.settings
+            && Object.keys(workspace.settings).length > 0
+            ? workspace.settings.pageTheme
+            : globalSettings.pageTheme;
+
+          if (savedTheme === 'light') theme = 'light';
+        } catch {
+          // Storage can be unavailable or contain stale data; dark remains safe.
+        }
+
+        document.documentElement.dataset.theme = theme;
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) {
+          themeColor.content = theme === 'light' ? '#f9fafd' : '#0c0e12';
+        }
+      })();
+    </script>
+</head>
+
+<body class="tp">
+    {{ content | safe }}
+    <script type="module" src="/src/script/teleprompter-main.js"></script>
+</body>
+
+</html>

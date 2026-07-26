@@ -1,0 +1,165 @@
+{
+  "seo": {
+    "title": "Workspaces — VTeleprompter",
+    "description": "Your saved teleprompter scripts. Open a workspace to record, or start a new script — everything stays private on your device."
+  },
+  "appbar": {
+    "menuAria": "Open menu",
+    "brandAria": "VTeleprompter home",
+    "brandText": "VTeleprompter",
+    "newScript": "New script",
+    "upload": "Upload"
+  },
+  "sidebar": {
+    "workspaceName": "My Workspace",
+    "workspaceInitial": "M",
+    "navScripts": "Scripts",
+    "navRecordings": "Recordings",
+    "creditsLabel": "VTeleprompter",
+    "creditsText": "<strong>Free</strong>, <strong>no ads</strong> — your scripts and recordings stay private on your device."
+  },
+  "content": {
+    "welcome": "Welcome to VTeleprompter",
+    "foldersTitle": "Folders",
+    "foldersCollapseAria": "Collapse folders",
+    "addFolderAria": "New folder",
+    "scriptsTitle": "Scripts",
+    "collapseAria": "Collapse scripts",
+    "recordingsTitle": "Recordings"
+  },
+  "empty": {
+    "title": "No scripts yet",
+    "body": "Create a new script or upload a .txt / .md file to start your first teleprompter recording."
+  },
+  "recordings": {
+    "emptyTitle": "No recordings yet",
+    "emptyBody": "Open a script and record — your takes will show up here.",
+    "videoBadge": "Video",
+    "audioBadge": "Audio",
+    "previewLabel": "Preview",
+    "previewCloseAria": "Close preview",
+    "previewMissing": "This recording is unavailable.",
+    "downloadLabel": "Download",
+    "deleteLabel": "Delete",
+    "moreAria": "More actions",
+    "deleteTitle": "Delete recording",
+    "deleteMessage": "Delete this recording? This cannot be undone.",
+    "deleted": "Recording deleted",
+    "deleteError": "Could not delete that recording",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "unknownScript": "Untitled script"
+  },
+  "card": {
+    "untitled": "Untitled script",
+    "emptyScript": "Empty script",
+    "localBadge": "Local",
+    "updatedPrefix": "Updated",
+    "itemOne": "item",
+    "itemMany": "items",
+    "moreAria": "More actions",
+    "openLabel": "Open",
+    "exportJsonLabel": "Export",
+    "renameLabel": "Rename",
+    "deleteLabel": "Delete"
+  },
+  "breadcrumb": {
+    "backLabel": "Back",
+    "allLabel": "All",
+    "backAria": "Back to parent folder"
+  },
+  "folders": {
+    "newTitle": "New folder",
+    "newDefault": "New Folder",
+    "createLabel": "Create",
+    "namePlaceholder": "Folder name",
+    "renameTitle": "Rename folder",
+    "saveLabel": "Save",
+    "deleteTitle": "Delete folder",
+    "deleteMessage": "Delete this folder? This cannot be undone.",
+    "deleteMessageWithCounts": "Delete this folder and everything inside ({counts})? This cannot be undone.",
+    "folderOne": "folder",
+    "folderMany": "folders",
+    "scriptOne": "script",
+    "scriptMany": "scripts"
+  },
+  "rename": {
+    "scriptTitle": "Rename script"
+  },
+  "confirm": {
+    "deleteTitle": "Delete script",
+    "deleteMessage": "Delete “{title}”? This also removes its recordings and cannot be undone.",
+    "confirmLabel": "Delete",
+    "cancelLabel": "Cancel"
+  },
+  "selection": {
+    "exportSelected": "Export selected",
+    "selectAll": "Select All",
+    "unselectAll": "Unselect All",
+    "download": "Download",
+    "preparingDownload": "Creating ZIP…",
+    "downloadReady": "Selected recordings downloaded",
+    "downloadError": "Could not download selected recordings",
+    "downloadTooLarge": "This ZIP is too large for this browser to create safely.",
+    "close": "Close",
+    "cancel": "Cancel",
+    "zipPreparingTitle": "Preparing your ZIP",
+    "zipPreparingMessage": "Packaging the original recordings. Keep this page open.",
+    "zipFile": "File",
+    "zipFiles": "files",
+    "zipReadyTitle": "ZIP is ready",
+    "zipReadyMessage": "Your original recordings have been packaged successfully.",
+    "zipFailedTitle": "Could not create ZIP",
+    "zipFailedMessage": "Something went wrong while packaging your recordings.",
+    "retry": "Retry",
+    "delete": "Delete",
+    "selectScriptAria": "Select script",
+    "selectRecordingAria": "Select recording",
+    "deleteScriptsTitle": "Delete selected scripts",
+    "deleteScriptsMessage": "Delete {count} selected scripts? Their recordings will also be removed. This cannot be undone.",
+    "deleteRecordingsTitle": "Delete selected recordings",
+    "deleteRecordingsMessage": "Delete {count} selected recordings? This cannot be undone.",
+    "scriptsDeleted": "Selected scripts deleted",
+    "recordingsDeleted": "Selected recordings deleted",
+    "deleteError": "Some selected items could not be deleted"
+  },
+  "toast": {
+    "deleted": "Script deleted",
+    "deleteError": "Could not delete that script",
+    "folderDeleted": "Folder deleted",
+    "moved": "Moved",
+    "uploadUnsupported": "Unsupported format. Choose a .txt, .md, or .json file.",
+    "uploadEmpty": "That file looks empty. Add some text and try again.",
+    "readError": "Could not read that file.",
+    "exportedJson": "Script exported as JSON",
+    "exportError": "Could not export that script",
+    "jsonImported": "Workspace imported",
+    "jsonInvalid": "That workspace JSON is invalid or unsupported.",
+    "jsonTooLarge": "That JSON file is too large."
+  },
+  "backup": {
+    "preparingMessage": "Packaging the selected script JSON files. Keep this page open.",
+    "readyMessage": "Your selected scripts are ready.",
+    "failedMessage": "Could not export the selected scripts."
+  },
+  "drag": {
+    "dropTitle": "Drop your script here",
+    "dropHint": "Plain text or Markdown (.txt, .md)"
+  },
+  "storage": {
+    "label": "Storage",
+    "usage": "{used} / {limit} GB",
+    "warn": "Almost full — delete old recordings to free space.",
+    "full": "Storage is full — delete recordings to record more.",
+    "editAria": "Manage local storage",
+    "settingsAction": "Manage",
+    "settingsTitle": "Local storage",
+    "settingsIntro": "Recordings are saved on this device only — nothing is uploaded. They stay until you delete them or clear the browser.",
+    "saveToggle": "Save recordings on this device",
+    "saveToggleHint": "Turn off to record without keeping the take on this device.",
+    "limitLabel": "Max local storage",
+    "editHint": "Up to {max} GB available on this device",
+    "editSave": "Save",
+    "updated": "Storage limit set to {limit} GB"
+  }
+}

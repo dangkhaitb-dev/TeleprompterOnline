@@ -1,0 +1,14 @@
+# Pre-commit backstop: chặn commit khi lint có ERROR (warning legacy không chặn).
+# AI agents: khi bị chặn, sửa lỗi lint rồi commit lại — TUYỆT ĐỐI KHÔNG dùng --no-verify
+# (lệnh đó cũng đã bị deny trong .claude/settings.json).
+pre-commit:
+  parallel: true
+  commands:
+    eslint:
+      glob: "*.js"
+      run: npx eslint --quiet --no-warn-ignored {staged_files}
+      fail_text: "ESLint error — sửa hết lỗi trước khi commit. AI: không dùng --no-verify."
+    stylelint:
+      glob: "*.css"
+      run: npx stylelint --quiet {staged_files}
+      fail_text: "Stylelint error — sửa hết lỗi trước khi commit. AI: không dùng --no-verify."

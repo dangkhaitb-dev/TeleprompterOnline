@@ -1,0 +1,219 @@
+/* Shared ZIP export progress/status popup. */
+
+.export-status-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: var(--export-status-scrim);
+}
+
+.export-status-overlay[hidden] {
+  display: none;
+}
+
+.export-status {
+  position: relative;
+  width: min(400px, 100%);
+  height: 278px;
+  padding: 26px;
+  border: 1px solid var(--export-status-border);
+  border-radius: 14px;
+  background: var(--export-status-surface);
+  color: var(--export-status-text);
+  box-shadow: var(--export-status-shadow);
+  text-align: center;
+}
+
+.export-status-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  border: 0;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--export-status-muted);
+  cursor: pointer;
+  transition: background 150ms ease, color 150ms ease, transform 120ms ease;
+}
+
+.export-status-close[hidden] {
+  display: none;
+}
+
+.export-status-close:hover {
+  background: var(--export-status-hover);
+  color: var(--export-status-text);
+}
+
+.export-status-close:active {
+  transform: scale(0.96);
+}
+
+.export-status-close:focus-visible,
+.export-status-btn:focus-visible {
+  outline: 2px solid var(--export-status-progress);
+  outline-offset: 2px;
+}
+
+.export-status-close svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.export-status-mark {
+  width: 42px;
+  height: 42px;
+  margin: 0 auto 16px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--export-status-success-tint);
+  color: var(--export-status-success);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.export-status-mark svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.export-status-overlay[data-state="processing"] .export-status-mark {
+  background: color-mix(in srgb, var(--export-status-progress) 13%, transparent);
+  color: var(--export-status-progress);
+}
+
+.export-status-spinner circle {
+  opacity: 0.25;
+}
+
+.export-status-spinner path {
+  opacity: 1;
+}
+
+.export-status-spinner {
+  animation: export-status-spin 850ms linear infinite;
+}
+
+.export-status-overlay[data-state="error"] .export-status-mark {
+  background: color-mix(in srgb, var(--export-status-danger) 12%, transparent);
+  color: var(--export-status-danger);
+}
+
+.export-status-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 650;
+  letter-spacing: -0.015em;
+}
+
+.export-status-message {
+  min-height: 40px;
+  margin: 7px 0 22px;
+  color: var(--export-status-muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+@keyframes export-status-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .export-status-spinner {
+    animation-duration: 1600ms;
+  }
+
+  .export-progress-track span {
+    transition: none;
+  }
+}
+
+.export-progress-meta {
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--export-status-muted);
+  font-size: 12px;
+}
+
+.export-progress-meta strong {
+  color: var(--export-status-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.export-progress-track {
+  height: 8px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: var(--export-status-hover);
+}
+
+.export-progress-track span {
+  display: block;
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--export-status-progress);
+  transition: width 120ms linear;
+}
+
+.export-status-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.export-status-actions[hidden] {
+  display: none;
+}
+
+.export-status-btn {
+  width: min(210px, 100%);
+  height: 40px;
+  border: 1px solid var(--export-status-border);
+  border-radius: 9px;
+  background: var(--export-status-button-surface);
+  color: var(--export-status-text);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 150ms ease, transform 120ms ease;
+}
+
+.export-status-btn:hover {
+  background: var(--export-status-hover);
+}
+
+.export-status-btn:active {
+  transform: translateY(1px);
+}
+
+.export-status-btn.primary {
+  border-color: transparent;
+  background: var(--export-status-brand);
+  color: var(--export-status-brand-ink);
+}
+
+.export-status-btn.primary:hover {
+  background: var(--export-status-brand-hover);
+}

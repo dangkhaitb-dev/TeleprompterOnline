@@ -1,0 +1,102 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.*.json
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage
+coverage/
+.nyc_output/
+
+# Build output
+dist/
+build/
+_11ty-output/
+
+# Caches
+.cache/
+.parcel-cache/
+.eslintcache
+.stylelintcache
+.rpt2_cache/
+.rts2_cache_*/
+*.tsbuildinfo
+
+# Vite cache
+node_modules/.vite/
+.vite/
+
+# Dependencies
+node_modules/
+
+# Optional npm cache directory
+.npm/
+
+# Yarn integrity file
+.yarn-integrity
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Editors/IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# macOS
+.DS_Store
+
+# Misc
+*.tgz
+
+# Backups
+backup/
+
+# Claude Code: share settings.json + hooks/ + rules/ qua git; phần còn lại (settings.local.json...) vẫn ignore
+.claude/*
+!.claude/settings.json
+!.claude/hooks/
+!.claude/rules/
+
+# Temp/template demo pages
+temp-demo-page/
+
+# Local test pages (not part of production build)
+public/test-poppurchase.html
+
+
+
+# Test artifacts (Playwright)
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Screenshots and videos from failed tests
+tests/screenshots/
+tests/videos/
+
+# Test logs and reports
+test-results/
+playwright-report/
+coverage/
+*.test-results.json
+deploy-key-2.md
+deploy-keys.md

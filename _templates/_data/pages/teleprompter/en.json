@@ -1,0 +1,210 @@
+{
+  "seo": {
+    "title": "VTeleprompter — Teleprompter Studio",
+    "description": "Read your script with auto-scroll and record yourself in a clean, distraction-free web teleprompter studio."
+  },
+  "header": {
+    "logoAria": "Logo",
+    "back": "Go Back",
+    "backAria": "Go back"
+  },
+  "format": {
+    "toolbarAria": "Text formatting",
+    "fontSizeLabel": "Font size",
+    "fontSizes": [
+      { "value": "16", "label": "16px" },
+      { "value": "18", "label": "18px" },
+      { "value": "20", "label": "20px" },
+      { "value": "24", "label": "24px", "selected": true },
+      { "value": "28", "label": "28px" },
+      { "value": "32", "label": "32px" },
+      { "value": "36", "label": "36px" },
+      { "value": "42", "label": "42px" },
+      { "value": "48", "label": "48px" }
+    ],
+    "boldTitle": "Bold (Ctrl+B)",
+    "italicTitle": "Italic (Ctrl+I)",
+    "underlineTitle": "Underline (Ctrl+U)",
+    "applyColor": "Apply last text color",
+    "chooseColor": "Choose color",
+    "alignLeft": "Align left",
+    "alignCenter": "Align center",
+    "alignRight": "Align right"
+  },
+  "record": {
+    "pause": "Pause",
+    "resume": "Play",
+    "play": "Play",
+    "playAria": "Play",
+    "back": "Back",
+    "backAria": "Exit playback",
+    "restart": "To start",
+    "restartAria": "Return script to the beginning",
+    "record": "Record",
+    "stop": "Record"
+  },
+  "camera": {
+    "starting": "Starting camera…",
+    "unsupported": "Your browser does not support the camera. Open this page over https or localhost.",
+    "errorPrefix": "Couldn't access the camera (",
+    "errorSuffix": "). Grant camera permission and reload the page.",
+    "noMicAudio": "Couldn't get the microphone — the video will have no sound.",
+    "noDevice": "No camera or microphone available to record.",
+    "unsupportedRecording": "Your browser does not support audio or video recording.",
+    "micDenied": "Microphone permission is needed to record.",
+    "inUse": "Your camera or microphone is being used by another app. Close it and try again.",
+    "overconstrained": "The selected camera settings aren't supported. Try a lower resolution."
+  },
+  "permission": {
+    "cameraTitle": "Camera access is blocked",
+    "micTitle": "Microphone access is blocked",
+    "bothTitle": "Camera & microphone are blocked",
+    "close": "Got it",
+    "steps": {
+      "desktopChromium": [
+        "Click the lock / info icon (red box) at the left of the address bar.",
+        "Turn on Camera and Microphone, or click Reset permissions.",
+        "Reload the page."
+      ],
+      "desktopEdge": [
+        "Click the info icon (red box) at the left of the address bar.",
+        "Turn on Camera and Microphone, or click Reset to default.",
+        "Reload the page."
+      ],
+      "desktopFirefox": [
+        "Click the permissions icon at the left of the address bar.",
+        "Clear the block for Camera and Microphone.",
+        "Reload the page."
+      ],
+      "desktopSafari": [
+        "Safari menu → Settings for This Website.",
+        "Set Camera and Microphone to Allow.",
+        "Reload the page."
+      ],
+      "iosSafari": [
+        "Tap the page-settings button (red box) at the left of the address bar.",
+        "Open Website Settings, then set Camera and Microphone to Allow.",
+        "Reload the page."
+      ],
+      "iosOther": [
+        "Open Settings → this browser → turn on Camera and Microphone.",
+        "Come back and reload the page."
+      ],
+      "android": [
+        "Tap the tune icon (red box) at the left of the address bar.",
+        "Tap Permissions.",
+        "Turn on Camera and Microphone.",
+        "Reload the page."
+      ],
+      "fallback": [
+        "Open your browser's site settings.",
+        "Allow Camera and Microphone, then reload."
+      ]
+    }
+  },
+  "prompter": {
+    "placeholder": "Start typing or paste text here...",
+    "closeAria": "Close",
+    "speedUnit": "WPM",
+    "themeAria": "Change Background Color"
+  },
+  "toolbar": {
+    "studioAria": "Studio controls",
+    "showCam": "Show Cam",
+    "hideCam": "Hide Cam",
+    "muteMic": "Mute Mic",
+    "unmuteMic": "Unmute Mic",
+    "prompter": "Prompter",
+    "mirror": "Mirror",
+    "mirrorAria": "Mirror prompter text",
+    "notch": "Notch",
+    "notchAria": "Show prompter at the MacBook notch",
+    "notchTitle": "Read the script right next to the camera",
+    "layout": "Layout",
+    "layoutAria": "Toggle layout guides",
+    "speed": "Speed",
+    "speedAria": "Autoscroll speed: 110 words per minute",
+    "speedTitle": "Change autoscroll speed",
+    "settings": "Settings"
+  },
+  "layout": {
+    "marginLeftAria": "Move left text boundary",
+    "marginRightAria": "Move right text boundary",
+    "marginLabel": "Margin",
+    "eyeLineAria": "Eye level line: drag to move, click to hide or show",
+    "eyeLineTitle": "Drag to move · click to hide/show",
+    "eyeLineLabel": "Eye line"
+  },
+  "speedMenu": {
+    "title": "Autoscroll speed",
+    "scrollSpeed": "Scroll speed",
+    "customValue": "Custom value",
+    "unit": "WPM"
+  },
+  "settingsMenu": {
+    "title": "Settings",
+    "shortcuts": "Shortcuts",
+    "countdown": "Countdown",
+    "fullscreen": "Fullscreen",
+    "notchFullscreen": "Fullscreen when enabling Notch",
+    "microphone": "Microphone",
+    "micOn": "On",
+    "micOff": "Off",
+    "darkTheme": "Dark theme",
+    "lightThemeAria": "Light Theme",
+    "darkThemeAria": "Dark Theme",
+    "themeGroupAria": "Theme selection"
+  },
+  "shortcutsMenu": {
+    "title": "Shortcuts",
+    "rows": [
+      { "label": "Play / Pause", "keys": ["Space"] },
+      { "label": "Speed", "keys": ["←", "→"] },
+      { "label": "Scroll", "keys": ["↑", "↓"] },
+      { "label": "Next paragraph", "keys": ["↵"] }
+    ]
+  },
+  "cameraMenu": {
+    "title": "Camera",
+    "action": "Show Camera",
+    "hideAction": "Hide Camera"
+  },
+  "micMenu": {
+    "title": "Microphone",
+    "action": "Mute Microphone",
+    "unmuteAction": "Unmute Microphone"
+  },
+  "notch": {
+    "guideBenefit": "Read with Notch to keep your eyes close to the camera.",
+    "guideAction": "Click Play in the top-right to start.",
+    "editAria": "Edit script text",
+    "editTitle": "Edit script",
+    "toolbarAria": "Notch text formatting",
+    "fontSizes": [
+      { "value": "14", "label": "14px" },
+      { "value": "16", "label": "16px" },
+      { "value": "18", "label": "18px" },
+      { "value": "20", "label": "20px" },
+      { "value": "24", "label": "24px", "selected": true },
+      { "value": "28", "label": "28px" },
+      { "value": "32", "label": "32px" }
+    ],
+    "editPlaceholder": "Edit script…",
+    "editTextAria": "Edit notch script text"
+  },
+  "toast": {
+    "notchOn": "Notch prompter on",
+    "notchOff": "Notch prompter off"
+  },
+  "review": {
+    "title": "Your take",
+    "subtitle": "Play it back, then record another take or head home.",
+    "recordAgain": "Record again",
+    "backHome": "Back to home"
+  },
+  "empty": {
+    "title": "No script to prompt",
+    "body": "We couldn't find that workspace. Start a new script from the home page.",
+    "cta": "Go to home"
+  }
+}

@@ -1,0 +1,169 @@
+/* components/permission-popup.css — camera/mic "permission blocked" guidance
+   dialog. Centered card over a darkened scrim (no blur), --z-modal. Reuses the
+   shared --confirm-* tokens so it themes with the confirm dialog. */
+.permission-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: var(--confirm-scrim);
+  animation: permission-fade var(--dur-fast) ease;
+}
+
+.permission-box {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  max-height: 78vh;
+  max-height: 78dvh;
+  overflow-y: auto;
+  padding: 20px 22px 20px;
+  background: var(--confirm-surface);
+  border: 1px solid var(--confirm-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--confirm-shadow);
+  text-align: center;
+  animation: permission-pop var(--dur-fast) var(--ease-out);
+}
+
+@media (max-width: 540px) {
+  .permission-box {
+    max-height: 68dvh;
+  }
+}
+
+.permission-x {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: var(--confirm-text);
+  cursor: pointer;
+  transition: background var(--dur-fast) ease;
+}
+
+.permission-x:hover {
+  background: var(--confirm-icon-bg);
+}
+
+.permission-x svg {
+  width: 16px;
+  height: 16px;
+}
+
+.permission-title {
+  margin: 0 0 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--confirm-title);
+}
+
+.permission-steps {
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+  counter-reset: permission-step;
+  text-align: left;
+}
+
+.permission-step {
+  position: relative;
+  margin: 0 0 14px;
+  padding-left: 30px;
+  counter-increment: permission-step;
+}
+
+.permission-step:last-child {
+  margin-bottom: 0;
+}
+
+.permission-step-head {
+  font-size: 13.5px;
+  line-height: 1.45;
+  color: var(--confirm-text);
+}
+
+.permission-step::before {
+  content: counter(permission-step);
+  position: absolute;
+  left: 0;
+  top: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 21px;
+  height: 21px;
+  border-radius: 50%;
+  background: var(--confirm-icon-bg);
+  color: var(--confirm-title);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.permission-step-fig {
+  margin: 8px 0 2px;
+  border: 1px solid var(--confirm-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+
+.permission-step-fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.permission-btn {
+  width: 100%;
+  padding: 11px 16px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease;
+}
+
+.permission-close {
+  background: var(--confirm-accent);
+  color: var(--confirm-accent-ink);
+}
+
+.permission-close:hover {
+  background: var(--confirm-accent-hover);
+  color: var(--confirm-on-accent);
+}
+
+@keyframes permission-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes permission-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

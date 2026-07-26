@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" class="tp-page">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="description" content="Read your script with auto-scroll and record yourself in a clean, distraction-free web teleprompter studio.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="dark light">
+    <meta name="theme-color" content="#0c0e12">
+    <title>VTeleprompter — Teleprompter Studio</title>
+    
+<script>if ("scrollRestoration" in history) history.scrollRestoration = "manual";</script><link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+    <script>
+      // Apply the saved Studio theme before CSS/JS renders to prevent flashing.
+      // A missing or invalid preference always falls back to dark.
+      (() => {
+        let theme = 'dark';
+
+        try {
+          const workspaceId = new URLSearchParams(location.search).get('ws');
+          const workspaces = JSON.parse(localStorage.getItem('vteleprompter:workspaces') || '[]');
+          const workspace = Array.isArray(workspaces)
+            ? workspaces.find((item) => item && item.id === workspaceId)
+            : null;
+          const globalSettings = JSON.parse(
+            localStorage.getItem('global_setting_promter') || '{}',
+          );
+          const savedTheme = workspace && workspace.settings
+            && Object.keys(workspace.settings).length > 0
+            ? workspace.settings.pageTheme
+            : globalSettings.pageTheme;
+
+          if (savedTheme === 'light') theme = 'light';
+        } catch {
+          // Storage can be unavailable or contain stale data; dark remains safe.
+        }
+
+        document.documentElement.dataset.theme = theme;
+        const themeColor = document.querySelector('meta[name="theme-color"]');
+        if (themeColor) {
+          themeColor.content = theme === 'light' ? '#f9fafd' : '#0c0e12';
+        }
+      })();
+    </script>
+</head>
+
+<body class="tp">
+    <script type="application/json" id="tpCopy">{
+  "cameraStarting": "Starting camera…",
+  "cameraErrorPrefix": "Couldn't access the camera (",
+  "cameraErrorSuffix": "). Grant camera permission and reload the page.",
+  "micDenied": "Microphone permission is needed to record.",
+  "cameraNoDevice": "No camera or microphone available to record.",
+  "cameraInUse": "Your camera or microphone is being used by another app. Close it and try again.",
+  "cameraOverconstrained": "The selected camera settings aren't supported. Try a lower resolution.",
+  "permission": {
+    "cameraTitle": "Camera access is blocked",
+    "micTitle": "Microphone access is blocked",
+    "bothTitle": "Camera & microphone are blocked",
+    "close": "Got it",
+    "steps": {
+      "desktopChromium": [
+        "Click the lock / info icon (red box) at the left of the address bar.",
+        "Turn on Camera and Microphone, or click Reset permissions.",
+        "Reload the page."
+      ],
+      "desktopEdge": [
+        "Click the info icon (red box) at the left of the address bar.",
+        "Turn on Camera and Microphone, or click Reset to default.",
+        "Reload the page."
+      ],
+      "desktopFirefox": [
+        "Click the permissions icon at the left of the address bar.",
+        "Clear the block for Camera and Microphone.",
+        "Reload the page."
+      ],
+      "desktopSafari": [
+        "Safari menu → Settings for This Website.",
+        "Set Camera and Microphone to Allow.",
+        "Reload the page."
+      ],
+      "iosSafari": [
+        "Tap the page-settings button (red box) at the left of the address bar.",
+        "Open Website Settings, then set Camera and Microphone to Allow.",
+        "Reload the page."
+      ],
+      "iosOther": [
+        "Open Settings → this browser → turn on Camera and Microphone.",
+        "Come back and reload the page."
+      ],
+      "android": [
+        "Tap the tune icon (red box) at the left of the address bar.",
+        "Tap Permissions.",
+        "Turn on Camera and Microphone.",
+        "Reload the page."
+      ],
+      "fallback": [
+        "Open your browser's site settings.",
+        "Allow Camera and Microphone, then reload."
+      ]
+    }
+  },
+  "showCam": "Show Cam",
+  "hideCam": "Hide Cam",
+  "muteMic": "Mute Mic",
+  "unmuteMic": "Unmute Mic",
+  "record": "Record",
+  "pause": "Pause",
+  "resume": "Play",
+  "notchOn": "Notch prompter on",
+  "notchOff": "Notch prompter off"
+}</script>
+
+<!-- Empty-state: shown when no workspace was found (JS toggles hidden). -->
+<section id="tpEmptyState" class="tp-empty" hidden>
+  <div class="tp-empty__card">
+    <h1 class="tp-empty__title">No script to prompt</h1>
+    <p class="tp-empty__body">We couldn&#39;t find that workspace. Start a new script from the home page.</p>
+    <a class="tp-btn tp-btn--primary" href="/">Go to home</a>
+  </div>
+</section>
+
+<main class="app" id="app">
+  <header class="app-header" aria-label="Header">
+    <div class="header-left">
+      <button class="logo-btn" type="button" aria-label="Logo">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="22" viewBox="0 0 2316 1686" fill="none"><rect width="1075" height="350.587" rx="175.294" transform="matrix(0.659364 0.751824 -0.757404 0.652947 265.536 0)" fill="currentColor"/><path d="M233.194 1594.88C150.094 1545.08 123.649 1437.68 174.126 1354.99L551.45 736.885C601.927 654.197 710.213 627.534 793.312 677.332C876.412 727.13 902.857 834.531 852.38 917.22L475.056 1535.32C424.579 1618.01 316.293 1644.68 233.194 1594.88Z" fill="currentColor"/><rect width="689.56" height="240" rx="120" transform="matrix(0.999937 -0.0112537 0.0114486 0.999934 792.53 1145.79)" fill="currentColor"/><rect width="1252.21" height="240" rx="120" transform="matrix(0.999937 -0.0112537 0.0114486 0.999934 974.356 699.09)" fill="currentColor"/><path d="M793.42 371.637C792.661 305.367 845.768 251.04 912.038 250.294L2193.21 235.875C2259.48 235.13 2313.81 288.247 2314.57 354.517C2315.33 420.787 2262.22 475.114 2195.96 475.86L914.786 490.278C848.516 491.024 794.178 437.906 793.42 371.637Z" fill="currentColor"/></svg>
+      </button>
+      <span class="header-divider" aria-hidden="true"></span>
+      <button class="back-btn" data-testid="back-btn" type="button" aria-label="Go back">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" style="stroke-width:1.5px"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M10 4 6 8l4 4"></path></svg>
+        Go Back
+      </button>
+    </div>
+
+    <!-- Format toolbar: desktop pill, centered while editing (pre-record). -->
+    <div class="format-toolbar" id="formatToolbar" role="toolbar" aria-label="Text formatting">
+      <select id="fontSizeSelect" class="ft-font-size" title="Font size" aria-label="Font size"><option value="16">16px</option><option value="18">18px</option><option value="20">20px</option><option value="24" selected>24px</option><option value="28">28px</option><option value="32">32px</option><option value="36">36px</option><option value="42">42px</option><option value="48">48px</option>
+      </select>
+      <span class="ft-divider"></span>
+      <div class="ft-bi-group">
+        <button type="button" class="ft-bold" data-cmd="bold" title="Bold (Ctrl+B)">B</button>
+        <button type="button" class="ft-italic" data-cmd="italic" title="Italic (Ctrl+I)">I</button>
+        <button type="button" class="ft-underline" data-cmd="underline" title="Underline (Ctrl+U)">U</button>
+      </div>
+      <span class="ft-divider"></span>
+      <div class="ft-color-split-group">
+        <button type="button" class="ft-color" id="fontColorApplyBtn" title="Apply last text color" aria-label="Apply last text color">
+          <span class="ft-color-a">A</span>
+          <span class="ft-color-bar" id="fontColorBar"></span>
+        </button>
+        <button type="button" class="ft-color-picker-btn" id="fontColorTrigger" title="Choose color" aria-label="Choose color" aria-haspopup="true" aria-expanded="false">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="ft-caret"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+      </div>
+      <span class="ft-divider"></span>
+      <div class="ft-align-group">
+        <button type="button" class="ft-align active" data-align="left" title="Align left" aria-label="Align left" aria-pressed="true">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M3 8h9M3 12h14M3 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="ft-align" data-align="center" title="Align center" aria-label="Align center" aria-pressed="false">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M5.5 8h9M3 12h14M6 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="ft-align" data-align="right" title="Align right" aria-label="Align right" aria-pressed="false">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M8 8h9M3 12h14M9 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="record-controls">
+      <button class="reading-action-button exit-playback-button" id="exitPlaybackButton" type="button" aria-label="Exit playback">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m15 18-6-6 6-6"/>
+        </svg>
+        <span>Back</span>
+      </button>
+      <button class="reading-action-button restart-reading-button" id="restartReadingButton" type="button" aria-label="Return script to the beginning" title="Return script to the beginning">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 5v14"/>
+          <path d="m19 6-9 6 9 6V6Z"/>
+        </svg>
+        <span>To start</span>
+      </button>
+      <button data-testid="pause-btn" class="pause-button" id="pauseButton" type="button">
+        <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><rect width="4.7" height="18.9" x="5" y="2.5" fill="currentColor" rx="2.4"></rect><rect width="4.7" height="18.9" x="13.3" y="2.5" fill="currentColor" rx="2.4"></rect></svg>
+        <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 4.03c0-1.9 2.07-3.07 3.7-2.1l12.13 7.26a2.45 2.45 0 010 4.2L11.2 20.65c-1.63.98-3.7-.2-3.7-2.1V4.03z" transform="scale(0.82) translate(1.5 1.8)"></path></svg>
+        <span class="pause-label">Pause</span>
+      </button>
+      <button class="header-play-button" id="headerPlayButton" type="button" aria-label="Play">
+        <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5v14l11-7z"></path></svg>
+        <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M7 5h4v14H7zM13 5h4v14h-4z"></path></svg>
+        <span class="header-play-label">Play</span>
+      </button>
+      <button class="record-button" id="recordButton" type="button">
+        <span class="record-dot"></span>
+        <span class="record-label">Record</span>
+      </button>
+    </div>
+
+  </header>
+
+  <!-- Mobile format-toolbar (≤768px): own bar below the header, scrolls horizontally. -->
+  <div class="format-toolbar mobile-format-toolbar" id="mobileFormatToolbar" role="toolbar" aria-label="Text formatting">
+    <select class="ft-font-size" title="Font size" aria-label="Font size"><option value="16">16px</option><option value="18">18px</option><option value="20">20px</option><option value="24" selected>24px</option><option value="28">28px</option><option value="32">32px</option><option value="36">36px</option><option value="42">42px</option><option value="48">48px</option>
+    </select>
+    <span class="ft-divider"></span>
+    <div class="ft-bi-group">
+      <button type="button" class="ft-bold" data-cmd="bold" title="Bold (Ctrl+B)">B</button>
+      <button type="button" class="ft-italic" data-cmd="italic" title="Italic (Ctrl+I)">I</button>
+      <button type="button" class="ft-underline" data-cmd="underline" title="Underline (Ctrl+U)">U</button>
+    </div>
+    <span class="ft-divider"></span>
+    <div class="ft-color-split-group">
+      <button type="button" class="ft-color" title="Apply last text color" aria-label="Apply last text color">
+        <span class="ft-color-a">A</span>
+        <span class="ft-color-bar"></span>
+      </button>
+      <button type="button" class="ft-color-picker-btn" title="Choose color" aria-label="Choose color" aria-haspopup="true" aria-expanded="false">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="ft-caret"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </button>
+    </div>
+    <span class="ft-divider"></span>
+    <div class="ft-align-group">
+      <button type="button" class="ft-align active" data-align="left" title="Align left" aria-label="Align left" aria-pressed="true">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M3 8h9M3 12h14M3 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <button type="button" class="ft-align" data-align="center" title="Align center" aria-label="Align center" aria-pressed="false">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M5.5 8h9M3 12h14M6 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <button type="button" class="ft-align" data-align="right" title="Align right" aria-label="Align right" aria-pressed="false">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M8 8h9M3 12h14M9 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Scroll affordances: show at the left/right of the mobile format toolbar
+       when its content overflows horizontally (toggled by updateMffMore in
+       teleprompter.ui.js). Decorative — the real buttons stay keyboard-reachable. -->
+  <button type="button" class="mff-more mff-more-left" id="mffMoreLeft" aria-hidden="true" tabindex="-1">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m17 6-6 6 6 6M11 6l-6 6 6 6"/>
+    </svg>
+  </button>
+  <button type="button" class="mff-more" id="mffMore" aria-hidden="true" tabindex="-1">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m7 6 6 6-6 6M13 6l6 6-6 6"/>
+    </svg>
+  </button>
+
+  <section class="stage">
+    <!-- Cam ON: camera feed background (UI preview 2) -->
+    <div class="camera-canvas" id="cameraCanvas">
+      <video class="camera-feed" id="cameraFeed" autoplay playsinline muted></video>
+      <div class="camera-placeholder" id="cameraPlaceholder">
+        <svg width="46" height="46" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M22.208 3.64h.992a4.8 4.8 0 014.8 4.8v9.76a4.8 4.8 0 01-4.8 4.8H8.8A4.8 4.8 0 014 18.2V8.44a4.8 4.8 0 014.8-4.8h.992A4.8 4.8 0 0114.08 1h3.84a4.8 4.8 0 014.288 2.64z"/>
+        </svg>
+        <span id="cameraPlaceholderText">Starting camera…</span>
+      </div>
+    </div>
+
+    <p class="notch-mode-guide">
+      <span>Read with Notch to keep your eyes close to the camera.</span>
+      <span>Click Play in the top-right to start.</span>
+    </p>
+
+    <!-- Cam OFF: prompt box (UI preview 1) -->
+    <div class="prompt-box" id="promptBox" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="false" data-placeholder="Start typing or paste text here..."></div>
+
+    <!-- Cam ON: teleprompter overlay panel (UI preview 2) -->
+    <div class="panel" id="prompterPanel">
+      <div class="resize-handle" data-resize="n"></div>
+      <div class="resize-handle" data-resize="s"></div>
+      <div class="resize-handle" data-resize="e"></div>
+      <div class="resize-handle" data-resize="w"></div>
+      <div class="resize-handle" data-resize="nw"></div>
+      <div class="resize-handle" data-resize="ne"></div>
+      <div class="resize-handle" data-resize="sw"></div>
+      <div class="resize-handle" data-resize="se"></div>
+
+      <div class="drag-handle" id="dragHandle">
+        <span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span>
+      </div>
+
+      
+      <button class="close-btn" id="closePanel" aria-label="Close"></button>
+
+      <div class="teleprompter" id="teleprompterText" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="false" data-placeholder="Start typing or paste text here..."></div>
+
+      <div class="countdown" id="countdown">3</div>
+
+      <div class="control-bar">
+        <div class="side">
+          <div class="bar-speed" title="Autoscroll speed">
+            <svg class="bar-speed-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 20a8 8 0 1 1 8-8"/>
+              <path d="M12 12l4-3"/>
+            </svg>
+            <span class="bar-speed-value"><span id="barSpeedValue">110</span> WPM</span>
+          </div>
+        </div>
+        <div class="center">
+          <button class="play-btn" id="playBtn" aria-label="Play">
+            <svg width="20" height="20" viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z"/></svg>
+          </button>
+        </div>
+        <div class="side">
+          <button class="panel-edit-btn" id="panelEditButton" type="button" aria-pressed="false" aria-label="Edit script text" title="Edit script">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+              <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+            </svg>
+          </button>
+          <button class="theme-btn-bar" id="barThemeBtn" type="button" aria-label="Change Background Color" title="Change Background Color">
+            <svg class="icon-contrast" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"></circle>
+              <path d="M12 18a6 6 0 0 0 0-12v12z" fill="currentColor"></path>
+            </svg>
+          </button>
+        </div>
+        <div class="control-bar-resize" id="panelResizeHandle" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 3h-6m6 0v6m0-6-8 8"/>
+            <path d="M3 21h6m-6 0v-6m0 6 8-8"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shared floating studio toolbar -->
+    <div class="toolbar-shell">
+      <div class="toolbar" role="toolbar" aria-label="Studio controls">
+        <button class="item is-off" type="button" data-toggle="camera" aria-pressed="false">
+          <div class="icon-wrap">
+            <div class="toggle-btn">
+              <svg width="32" height="26" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--tp-green-dark)" fill-rule="evenodd" clip-rule="evenodd" d="M22.208 3.64h.992a4.8 4.8 0 014.8 4.8v9.76a4.8 4.8 0 01-4.8 4.8H8.8A4.8 4.8 0 014 18.2V8.44a4.8 4.8 0 014.8-4.8h.992A4.8 4.8 0 0114.08 1h3.84a4.8 4.8 0 014.288 2.64z"/>
+                <path fill="var(--tp-white)" d="M16 19a6 6 0 100-12 6 6 0 000 12z"/>
+              </svg>
+            </div>
+            <div class="caret">
+              <svg width="8" height="8" viewBox="0 0 16 16" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="m4 6 4 4 4-4"/></svg>
+            </div>
+          </div>
+          <span class="label">Show Cam</span>
+        </button>
+
+        <button class="item active" type="button" data-toggle="mic" aria-pressed="true">
+          <div class="icon-wrap">
+            <div class="toggle-btn">
+              <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="var(--tp-green-dark)" d="M5.04 9C4.464 9 4 9.465 4 10.04v4.89a5.5 5.5 0 005.5 5.5v1.07a3.5 3.5 0 107 0v-1.07a5.5 5.5 0 005.5-5.5v-4.89A1.04 1.04 0 0020.961 9H5.04z"/>
+                <path fill="var(--tp-white)" d="M9 5a4 4 0 018 0v8a4 4 0 01-8 0V5z"/>
+              </svg>
+            </div>
+            <div class="caret">
+              <svg width="8" height="8" viewBox="0 0 16 16" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="m4 6 4 4 4-4"/></svg>
+            </div>
+          </div>
+          <span class="label">Mute Mic</span>
+        </button>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <button class="item selected" type="button" data-action="Prompter">
+          <div class="icon-wrap">
+            <div class="action-btn">
+              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="currentColor" d="M8 17.6c0-3.36 0-5.04.654-6.324a6 6 0 0 1 2.622-2.622C12.56 8 14.24 8 17.6 8h4.8c3.36 0 5.04 0 6.324.654a6 6 0 0 1 2.622 2.622C32 12.56 32 14.24 32 17.6v1.16c0 1.713 0 2.569-.193 3.375a7 7 0 0 1-.838 2.023c-.433.706-1.039 1.312-2.25 2.522l-2.039 2.04c-1.21 1.21-1.816 1.816-2.522 2.249a7 7 0 0 1-2.023.838C21.329 32 20.473 32 18.76 32H17.6c-3.36 0-5.04 0-6.324-.654a6 6 0 0 1-2.622-2.622C8 27.44 8 25.76 8 22.4z"/>
+                <rect width="6" height="4" x="12" y="18" fill="var(--tp-icon-fg)" rx="2"/>
+                <rect width="8" height="4" x="20" y="18" fill="var(--tp-icon-fg)" rx="2"/>
+                <rect width="10" height="4" x="12" y="24" fill="var(--tp-icon-fg)" rx="2"/>
+                <rect width="10" height="4" x="12" y="12" fill="var(--tp-icon-fg)" rx="2"/>
+                <rect width="4" height="4" x="24" y="12" fill="var(--tp-icon-fg)" rx="2"/>
+              </svg>
+            </div>
+          </div>
+          <span class="label">Prompter</span>
+        </button>
+
+        <div class="divider" aria-hidden="true"></div>
+
+        <button class="item" id="mirrorControl" type="button" aria-pressed="false" aria-label="Mirror prompter text">
+          <div class="icon-wrap">
+            <div class="action-btn">
+              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
+                <path d="M18.5 13V28.5H12L18.5 13Z" fill="none" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M21.5 13V28.5H28L21.5 13Z" fill="var(--tp-icon-fg)" fill-opacity="0.5" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+          <span class="label">Mirror</span>
+        </button>
+
+        <button class="item" id="notchControl" type="button" aria-pressed="false" aria-label="Show prompter at the MacBook notch" title="Read the script right next to the camera">
+          <div class="icon-wrap">
+            <div class="action-btn">
+              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
+                <path d="M11 13h4v2.5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V13h4" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13 22.5h14M16 26.5h8" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <span class="label">Notch</span>
+        </button>
+
+        <button class="item" id="layoutControl" type="button" aria-pressed="false" aria-label="Toggle layout guides">
+          <div class="icon-wrap">
+            <div class="action-btn">
+              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
+                <path d="M13 13h4M13 13v4M27 13h-4M27 13v4M13 27h4M13 27v-4M27 27h-4M27 27v-4" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+          </div>
+          <span class="label">Layout</span>
+        </button>
+
+        <button class="item" id="speedControl" type="button" aria-label="Autoscroll speed: 110 words per minute" title="Change autoscroll speed" aria-haspopup="dialog" aria-expanded="false">
+          <div class="icon-wrap">
+            <span class="toolbar-value" id="speedValue">110</span>
+            <div class="action-btn">
+              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
+                <path d="M13 24a8 8 0 1 1 14 0M20 20l4-4" stroke="var(--tp-icon-fg)" stroke-width="2" stroke-linecap="round"/>
+                <circle cx="20" cy="20" r="1.8" fill="var(--tp-icon-fg)"/>
+              </svg>
+            </div>
+          </div>
+          <span class="label">Speed</span>
+        </button>
+
+        <button class="item" id="settingsControl" type="button" aria-label="Settings" title="Settings" aria-haspopup="dialog" aria-expanded="false">
+          <div class="icon-wrap">
+            <div class="action-btn">
+              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                <path fill="currentColor" fill-rule="evenodd" d="M11.078 12.325c.41-.51 1.055-.736 1.694-.664l1.208.136c.914.103 1.788-.419 2.159-1.289l.491-1.152c.26-.608.771-1.073 1.405-1.185a11.3 11.3 0 0 1 3.93 0c.634.112 1.145.577 1.405 1.185l.491 1.152c.371.87 1.245 1.392 2.16 1.289l1.207-.136c.639-.072 1.283.153 1.694.664a12.1 12.1 0 0 1 1.97 3.521c.223.623.089 1.312-.29 1.848l-.72 1.017a2.24 2.24 0 0 0 0 2.578l.72 1.017c.379.536.513 1.225.29 1.848a12.1 12.1 0 0 1-1.97 3.521c-.41.51-1.055.736-1.694.664l-1.208-.136c-.914-.103-1.788.419-2.159 1.289l-.491 1.152c-.26.608-.771 1.073-1.405 1.185a11.3 11.3 0 0 1-3.93 0c-.634-.112-1.145-.577-1.405-1.185l-.491-1.152c-.371-.87-1.245-1.392-2.16-1.289l-1.207.136c-.639.072-1.283-.153-1.694-.663a12.1 12.1 0 0 1-1.97-3.522c-.223-.623-.089-1.312.29-1.848l.72-1.017a2.24 2.24 0 0 0 0-2.578l-.72-1.017c-.379-.536-.513-1.225-.29-1.848a12.1 12.1 0 0 1 1.97-3.521" clip-rule="evenodd"/>
+                <g filter="url(#settingsIconShadow)"><circle cx="20" cy="20" r="4" fill="var(--tp-icon-fg)"/></g>
+                <defs>
+                  <filter id="settingsIconShadow" width="12" height="12" x="14" y="15" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" result="hardAlpha" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
+                    <feOffset dy="1"/>
+                    <feGaussianBlur stdDeviation="1"/>
+                    <feColorMatrix values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
+                    <feBlend in2="BackgroundImageFix" mode="multiply" result="settingsIconShadowBlend"/>
+                    <feBlend in="SourceGraphic" in2="settingsIconShadowBlend" result="shape"/>
+                  </filter>
+                </defs>
+              </svg>
+            </div>
+          </div>
+          <span class="label">Settings</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="layout-frame" id="layoutFrame" aria-hidden="true">
+      <button class="layout-handle left" type="button" data-layout-edge="left" aria-label="Move left text boundary">
+        <span class="layout-grip">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 5L1 8L4 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.5 4.5V11.5M9.5 4.5V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+            <path d="M12 5L15 8L12 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      <button class="layout-handle right" type="button" data-layout-edge="right" aria-label="Move right text boundary">
+        <span class="layout-grip">
+          <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M4 5L1 8L4 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M6.5 4.5V11.5M9.5 4.5V11.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.75"/>
+            <path d="M12 5L15 8L12 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      </button>
+      <button class="layout-eyeline" type="button" id="layoutEyeLine" aria-label="Eye level line: drag to move, click to hide or show" title="Drag to move · click to hide/show">
+        <span class="layout-eye-grip">
+          <svg class="eye-icon-on" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+            <path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            <circle cx="8" cy="8" r="2" fill="currentColor"/>
+          </svg>
+          <svg class="eye-icon-off" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="stroke-width:1.5px;">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M9.47 3.83a6.2 6.2 0 0 0-1.305-.135c-2.745 0-4.748 1.8-5.852 3.128a2.16 2.16 0 0 0 0 2.784q.173.208.36.409m4.175-.605c.17.167.376.3.605.393a2.02 2.02 0 0 0 1.457.023c.232-.085.443-.212.62-.373.177-.16.316-.352.41-.563a1.56 1.56 0 0 0-.026-1.325 1.7 1.7 0 0 0-.432-.55M15 2 1.33 14.427m3.144-2.858a6.67 6.67 0 0 0 3.691 1.164c2.743 0 4.745-1.798 5.85-3.126a2.16 2.16 0 0 0-.002-2.787 11 11 0 0 0-2.157-1.962z"/>
+          </svg>
+          <span class="layout-grip-label">Eye line</span>
+        </span>
+      </button>
+    </div>
+
+    <div class="quick-menu speed-menu" id="speedMenu" role="dialog" aria-label="Autoscroll speed">
+      <div class="popup-title">Autoscroll speed</div>
+      <div class="speed-editor">
+        <label class="speed-editor-header" for="speedRange">
+          <span>Scroll speed</span>
+          <output id="speedOutput" for="speedRange speedInput">110 WPM</output>
+        </label>
+        <input class="speed-range" id="speedRange" type="range" min="1" max="400" step="1" value="110" aria-label="Change autoscroll speed">
+        <div class="speed-input-row">
+          <label for="speedInput">Custom value</label>
+          <div class="speed-number-wrap">
+            <input class="speed-number-input" id="speedInput" type="number" min="1" max="1000" step="1" value="110" inputmode="numeric" aria-label="Custom value">
+            <span>WPM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Settings popup -->
+    <div class="quick-menu settings-quick" id="settingsMenu" role="dialog" aria-label="Settings">
+      <div class="popup-title">Settings</div>
+      <button type="button" class="settings-row settings-row-nav" id="shortcutsControl" aria-haspopup="dialog" aria-expanded="false">
+        <span class="settings-row-title">Shortcuts</span>
+        <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <label class="settings-row">
+        <span class="settings-row-title">Countdown</span>
+        <span class="settings-switch"><input type="checkbox" id="toggleCountdown" checked><span class="settings-switch-track"></span></span>
+      </label>
+      <label class="settings-row">
+        <span class="settings-row-title">Fullscreen</span>
+        <span class="settings-switch"><input type="checkbox" id="toggleFullscreen"><span class="settings-switch-track"></span></span>
+      </label>
+      <label class="settings-row">
+        <span class="settings-row-title">Fullscreen when enabling Notch</span>
+        <span class="settings-switch"><input type="checkbox" id="toggleNotchFullscreen" checked><span class="settings-switch-track"></span></span>
+      </label>
+      <button type="button" class="settings-row settings-row-nav" id="mobileMicSettingsRow" aria-haspopup="menu" aria-expanded="false">
+        <span class="settings-row-title">Microphone</span>
+        <span class="settings-row-value" id="mobileMicSettingsValue">On</span>
+        <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+      <div class="settings-row theme-row">
+        <span class="settings-row-title">Dark theme</span>
+        <div class="theme-toggle-group" role="radiogroup" aria-label="Theme selection">
+          <button type="button" class="theme-btn" id="themeLightBtn" role="radio" aria-checked="false" aria-label="Light Theme" title="Light Theme">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </button>
+          <button type="button" class="theme-btn" id="themeDarkBtn" role="radio" aria-checked="true" aria-label="Dark Theme" title="Dark Theme">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shortcuts popup -->
+    <div class="quick-menu shortcuts-quick" id="shortcutsMenu" role="dialog" aria-label="Shortcuts">
+      <div class="popup-title">Shortcuts</div>
+      <div class="shortcut-row">
+        <span class="shortcut-row-label">Play / Pause</span>
+        <span class="shortcut-row-keys"><span class="shortcut-key">Space</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span class="shortcut-row-label">Speed</span>
+        <span class="shortcut-row-keys"><span class="shortcut-key">←</span><span class="shortcut-key">→</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span class="shortcut-row-label">Scroll</span>
+        <span class="shortcut-row-keys"><span class="shortcut-key">↑</span><span class="shortcut-key">↓</span></span>
+      </div>
+      <div class="shortcut-row">
+        <span class="shortcut-row-label">Next paragraph</span>
+        <span class="shortcut-row-keys"><span class="shortcut-key">↵</span></span>
+      </div>
+    </div>
+
+    <!-- Camera device popup -->
+    <div class="device-menu" id="cameraMenu" role="menu" aria-label="Camera settings">
+      <div class="popup-title">Camera</div>
+      <div class="device-options" data-device-type="camera">
+        <div class="device-status" role="status">Loading cameras…</div>
+      </div>
+      <div class="device-menu-divider"></div>
+      <button class="device-action" type="button" role="menuitem" id="cameraMenuAction">Show Camera</button>
+    </div>
+
+    <!-- Microphone device popup -->
+    <div class="device-menu" id="micMenu" role="menu" aria-label="Microphone settings">
+      <div class="popup-title">Microphone</div>
+      <div class="device-options" data-device-type="mic">
+        <div class="device-status" role="status">Loading microphones…</div>
+      </div>
+      <div class="device-menu-divider"></div>
+      <button class="device-action" type="button" role="menuitem" id="micMenuAction">Mute Microphone</button>
+    </div>
+
+    <!-- Full-screen 3-2-1 countdown before recording -->
+    <div class="record-countdown" id="recordCountdown" aria-hidden="true">
+      <div class="count-box" id="recordCountBox"></div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+    <!-- Phone (≤600px): tabbed studio bar. Panels are filled at runtime by
+         moving the real controls in (applyPhoneLayout in teleprompter.ui.js).
+         Empty + hidden on desktop. -->
+    <div class="m-studio-bar" id="mStudioBar" aria-hidden="true">
+      <div class="m-tabs" role="tablist">
+        <button type="button" class="m-tab active" data-tab="main" role="tab" aria-selected="true">Record</button>
+        <button type="button" class="m-tab" data-tab="tools" role="tab" aria-selected="false">Prompter</button>
+      </div>
+      <div class="m-tab-panels">
+        <div class="m-tab-panel active" id="mPanelMain" data-panel="main"></div>
+        <div class="m-tab-panel" id="mPanelTools" data-panel="tools"></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- Notch prompter: read the script in the black block next to the MacBook notch/camera -->
+<div class="notch-prompter" id="notchPrompter" aria-hidden="true">
+  <div class="notch-body">
+    <div class="notch-fade" aria-hidden="true"></div>
+    <div class="notch-scroll" id="notchScroll">
+      <div class="notch-text" id="notchText"></div>
+    </div>
+  </div>
+  <div class="notch-resize" data-notch-resize="e" aria-hidden="true"></div>
+  <div class="notch-resize" data-notch-resize="w" aria-hidden="true"></div>
+  <div class="notch-resize" data-notch-resize="s" aria-hidden="true"></div>
+  <div class="notch-resize" data-notch-resize="se" aria-hidden="true"></div>
+  <div class="notch-resize" data-notch-resize="sw" aria-hidden="true"></div>
+
+  <button class="notch-edit-btn" id="notchEditBtn" type="button" aria-pressed="false" aria-label="Edit script text" title="Edit script">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" />
+      <path d="M18.5 2.5a2.121 2.121 0 1 1 3 3L12 15l-4 1 1-4 9.5-9.5z" />
+    </svg>
+  </button>
+  <div class="notch-edit-panel" id="notchEditPanel">
+    <div class="notch-edit-resize" data-notch-edit-resize="nw" aria-hidden="true"></div>
+    <div class="notch-edit-resize" data-notch-edit-resize="ne" aria-hidden="true"></div>
+    <div class="notch-edit-resize" data-notch-edit-resize="se" aria-hidden="true"></div>
+    <div class="notch-edit-resize" data-notch-edit-resize="sw" aria-hidden="true"></div>
+    <div class="notch-edit-body" id="notchEditBody">
+      <div class="notch-edit-toolbar" id="notchEditToolbar" role="toolbar" aria-label="Notch text formatting">
+        <select class="notch-edit-select" id="notchEditFontSize" title="Font size" aria-label="Font size"><option value="14">14px</option><option value="16">16px</option><option value="18">18px</option><option value="20">20px</option><option value="24" selected>24px</option><option value="28">28px</option><option value="32">32px</option>
+        </select>
+        <span class="notch-edit-divider" aria-hidden="true"></span>
+        <button type="button" class="notch-edit-cmd" data-cmd="bold" title="Bold (Ctrl+B)" aria-label="Bold"><b>B</b></button>
+        <button type="button" class="notch-edit-cmd" data-cmd="italic" title="Italic (Ctrl+I)" aria-label="Italic"><i>I</i></button>
+        <button type="button" class="notch-edit-cmd" data-cmd="underline" title="Underline (Ctrl+U)" aria-label="Underline"><u>U</u></button>
+        <span class="notch-edit-divider" aria-hidden="true"></span>
+        <div class="notch-edit-color-split-group">
+          <button type="button" class="notch-edit-color" id="notchEditColorApplyBtn" title="Apply last text color" aria-label="Apply last text color">
+            <span class="notch-edit-color-a">A</span>
+            <span class="notch-edit-color-bar" id="notchEditColorBar"></span>
+          </button>
+          <button type="button" class="notch-edit-color-picker-btn" id="notchEditColorTrigger" title="Choose color" aria-label="Choose color" aria-haspopup="true" aria-expanded="false">
+            <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="notch-edit-caret"><polyline points="6 9 12 15 18 9"></polyline></svg>
+          </button>
+        </div>
+        <span class="notch-edit-divider" aria-hidden="true"></span>
+        <button type="button" class="notch-edit-align active" data-align="left" title="Align left" aria-label="Align left" aria-pressed="true">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M3 8h9M3 12h14M3 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="notch-edit-align" data-align="center" title="Align center" aria-label="Align center" aria-pressed="false">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M5.5 8h9M3 12h14M6 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="notch-edit-align" data-align="right" title="Align right" aria-label="Align right" aria-pressed="false">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M8 8h9M3 12h14M9 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+      </div>
+      <div class="notch-edit-textarea" id="notchEditText" contenteditable="true" spellcheck="false" data-placeholder="Edit script…" aria-label="Edit notch script text"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Stage-2 scene-editor mount container (kept present but empty/hidden) -->
+<div id="sceneEditorView" class="tp-scene-editor" hidden></div>
+
+    <script type="module" src="/src/script/teleprompter-main.js"></script>
+</body>
+
+</html>

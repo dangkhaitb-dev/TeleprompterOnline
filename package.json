@@ -1,0 +1,66 @@
+{
+  "name": "vpromter",
+  "version": "1.0.0",
+  "description": "Teleprompter web app — base (Vite + 11ty, vanilla JS ES modules)",
+  "main": "index.js",
+  "scripts": {
+    "prepare": "lefthook install",
+    "lint": "npm run lint:js && npm run lint:css",
+    "lint:js": "eslint src/script",
+    "lint:css": "stylelint \"src/**/*.css\"",
+    "test": "vitest run --passWithNoTests",
+    "test:locks": "node scripts/test-web-locks-browser.mjs",
+    "knip": "knip",
+    "dev": "vite",
+    "build:11ty": "eleventy",
+    "serve:11ty": "eleventy --serve",
+    "clean:11ty": "node -e \"require('fs').rmSync('_11ty-output',{recursive:true,force:true})\"",
+    "gen:sitemap": "node scripts/generate-sitemap.js",
+    "build": "npm run build:11ty && npm run gen:sitemap && vite build",
+    "build:no-critical": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DangVanKhanh2003/project3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "bugs": {
+    "url": "https://github.com/DangVanKhanh2003/project3/issues"
+  },
+  "homepage": "https://github.com/DangVanKhanh2003/project3#readme",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.5",
+    "@eslint/js": "^10.0.1",
+    "cheerio": "^1.0.0",
+    "critical": "^7.2.1",
+    "critters": "^0.0.23",
+    "eslint": "^10.6.0",
+    "glob": "^10.3.10",
+    "globals": "^17.7.0",
+    "knip": "^6.23.0",
+    "lefthook": "^2.1.9",
+    "minify-html-literals": "^1.3.5",
+    "rollup-plugin-critical": "^1.0.15",
+    "rollup-plugin-minify-html-literals": "^1.2.6",
+    "stylelint": "^17.14.0",
+    "terser": "^5.44.0",
+    "vite": "^7.1.10",
+    "vite-plugin-html-minifier": "^1.0.5",
+    "vite-plugin-purgecss": "^0.2.13",
+    "vite-plugin-static-copy": "^3.1.4",
+    "vitest": "^4.1.9"
+  },
+  "dependencies": {
+    "@rocicorp/undo": "^0.2.1",
+    "fflate": "^0.8.3",
+    "firebase": "^12.5.0",
+    "jsdom": "^27.3.0"
+  }
+}

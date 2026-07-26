@@ -1,0 +1,235 @@
+---
+layout: home-base.njk
+permalink: /about.html
+pageKey: about
+lang: en
+---
+{%- set pageData = i18nPages['about']['en'] -%}
+{%- set chrome = i18nPages['index']['en'] -%}
+{%- from "partials/logo.njk" import brandLogo -%}
+{%- set logoSvg = brandLogo('currentColor') -%}
+
+<!-- NAV -->
+<header class="nav">
+    <div class="nav-inner">
+        <div class="nav-left">
+            <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="brand-text">VTeleprompter</span></a>
+            <nav class="nav-menu" aria-label="Primary">
+                {%- for item in chrome.nav.items %}
+                {%- set navHref = ('/' + item.url) if '#' in item.url else item.url %}
+                <a href="{{ navHref }}" class="nav-item">{{ item.label }}</a>
+                {%- endfor %}
+            </nav>
+        </div>
+        <div class="nav-right">
+            <a href="{{ chrome.nav.cta.url }}" class="btn btn-workspaces">{{ chrome.nav.cta.label }}</a>
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- MOBILE NAV DRAWER -->
+<div class="mobile-nav-scrim" id="mobileNavScrim"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+    <div class="mobile-nav-head">
+        <span class="mobile-nav-title">{{ chrome.footer.brand }}</span>
+        <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+    </div>
+    <ul class="mobile-nav-list">
+        {%- for item in chrome.nav.items %}
+        {%- set navHref = ('/' + item.url) if '#' in item.url else item.url %}
+        <li><a href="{{ navHref }}" class="mobile-nav-link">{{ item.label }}</a></li>
+        {%- endfor %}
+    </ul>
+    <a href="{{ chrome.nav.cta.url }}" class="btn btn-workspaces mobile-nav-cta">{{ chrome.nav.cta.label }}</a>
+</nav>
+
+<!-- HERO + MAIN -->
+<main id="main" tabindex="-1">
+    <section class="hero">
+        <div class="hero-inner">
+            <p class="eyebrow">{{ pageData.hero.eyebrow }}</p>
+            <h1 class="hero-title">{{ pageData.hero.title }}</h1>
+            <p class="hero-desc">{{ pageData.hero.description }}</p>
+        </div>
+    </section>
+
+    {%- set why = pageData.why %}
+    <section class="section section-alt" id="why">
+        <div class="section-inner section-narrow">
+            <div class="section-head">
+                <p class="eyebrow">{{ why.eyebrow }}</p>
+                <h2 class="section-title">{{ why.title }}</h2>
+            </div>
+            <div class="prose">
+                {%- for paragraph in why.paragraphs %}
+                <p>{{ paragraph }}</p>
+                {%- endfor %}
+            </div>
+        </div>
+    </section>
+
+    {%- set mission = pageData.mission %}
+    <section class="section" id="mission">
+        <div class="section-inner">
+            <div class="section-head">
+                <p class="eyebrow">{{ mission.eyebrow }}</p>
+                <h2 class="section-title">{{ mission.title }}</h2>
+                <p class="section-desc">{{ mission.description }}</p>
+            </div>
+            <ul class="card-grid">
+                {%- for item in mission.items %}
+                <li class="card">
+                    <h3 class="card-title">{{ item.title }}</h3>
+                    <p class="card-desc">{{ item.description }}</p>
+                </li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {%- set differences = pageData.differences %}
+    <section class="section section-alt" id="different">
+        <div class="section-inner">
+            <div class="section-head">
+                <p class="eyebrow">{{ differences.eyebrow }}</p>
+                <h2 class="section-title">{{ differences.title }}</h2>
+                <p class="section-desc">{{ differences.description }}</p>
+            </div>
+            <ul class="card-grid">
+                {%- for item in differences.items %}
+                <li class="card">
+                    <h3 class="card-title">{{ item.title }}</h3>
+                    <p class="card-desc">{{ item.description }}</p>
+                </li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {%- set principles = pageData.principles %}
+    <section class="section" id="principles">
+        <div class="section-inner">
+            <div class="section-head">
+                <p class="eyebrow">{{ principles.eyebrow }}</p>
+                <h2 class="section-title">{{ principles.title }}</h2>
+            </div>
+            <ul class="card-grid">
+                {%- for item in principles.items %}
+                <li class="card">
+                    <h3 class="card-title">{{ item.title }}</h3>
+                    <p class="card-desc">{{ item.description }}</p>
+                </li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {%- set audiences = pageData.audiences %}
+    <section class="section section-alt" id="audience">
+        <div class="section-inner">
+            <div class="section-head">
+                <p class="eyebrow">{{ audiences.eyebrow }}</p>
+                <h2 class="section-title">{{ audiences.title }}</h2>
+                <p class="section-desc">{{ audiences.description }}</p>
+            </div>
+            <ul class="card-grid">
+                {%- for item in audiences.items %}
+                <li class="card">
+                    <h3 class="card-title">{{ item.title }}</h3>
+                    <p class="card-desc">{{ item.description }}</p>
+                </li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </section>
+
+    {%- set commitment = pageData.commitment %}
+    <section class="section" id="commitment">
+        <div class="section-inner section-narrow">
+            <div class="section-head">
+                <p class="eyebrow">{{ commitment.eyebrow }}</p>
+                <h2 class="section-title">{{ commitment.title }}</h2>
+            </div>
+            <div class="prose">
+                {%- for paragraph in commitment.paragraphs %}
+                <p>{{ paragraph }}</p>
+                {%- endfor %}
+            </div>
+        </div>
+    </section>
+
+    {%- set future = pageData.future %}
+    <section class="section section-alt" id="future">
+        <div class="section-inner section-narrow">
+            <div class="section-head">
+                <p class="eyebrow">{{ future.eyebrow }}</p>
+                <h2 class="section-title">{{ future.title }}</h2>
+            </div>
+            <div class="prose">
+                {%- for paragraph in future.paragraphs %}
+                <p>{{ paragraph }}</p>
+                {%- endfor %}
+            </div>
+        </div>
+    </section>
+
+    {%- set ecosystem = pageData.ecosystem %}
+    <section class="section" id="ecosystem">
+        <div class="section-inner section-narrow">
+            <div class="section-head">
+                <p class="eyebrow">{{ ecosystem.eyebrow }}</p>
+                <h2 class="section-title">{{ ecosystem.title }}</h2>
+            </div>
+            <div class="prose">
+                {%- for paragraph in ecosystem.paragraphs %}
+                <p>{{ paragraph }}</p>
+                {%- endfor %}
+            </div>
+        </div>
+    </section>
+
+    {%- set finalCta = pageData.finalCta %}
+    <section class="section section-alt final-cta" id="start">
+        <div class="section-inner section-narrow">
+            <p class="eyebrow">{{ finalCta.eyebrow }}</p>
+            <h2 class="section-title">{{ finalCta.title }}</h2>
+            <p class="section-desc">{{ finalCta.description }}</p>
+            <div class="section-cta"><a class="btn btn-primary btn-lg" href="{{ finalCta.cta.url }}">{{ finalCta.cta.label }}</a></div>
+            <p class="section-support">{{ finalCta.supporting }}</p>
+        </div>
+    </section>
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="footer-logo-text">{{ chrome.footer.brand }}</span></a>
+                <p class="footer-desc">{{ chrome.footer.description }}</p>
+            </div>
+            <div class="footer-cols">
+                {%- for column in chrome.footer.columns %}
+                <div class="footer-col">
+                    <h3 class="footer-col-title">{{ column.title }}</h3>
+                    <ul class="footer-col-links">
+                        {%- for link in column.links %}
+                        <li><a href="{{ link.url }}" class="footer-link">{{ link.label }}</a></li>
+                        {%- endfor %}
+                    </ul>
+                </div>
+                {%- endfor %}
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p class="footer-copyright">{{ chrome.footer.copyright }}</p>
+        </div>
+    </div>
+</footer>

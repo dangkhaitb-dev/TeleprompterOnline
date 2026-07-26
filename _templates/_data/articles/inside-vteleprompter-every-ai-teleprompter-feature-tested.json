@@ -1,0 +1,1139 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "inside-vteleprompter-every-ai-teleprompter-feature-tested",
+  "published": true,
+  "title": "Inside VTeleprompter: Every AI Teleprompter Feature, Tested",
+  "date": "2026-07-17",
+  "dateDisplay": "July 17, 2026",
+  "modified": "2026-07-17",
+  "author": {
+    "name": "The VTeleprompter Team"
+  },
+  "category": "Product",
+  "shortName": "Inside VTeleprompter",
+  "keywords": [
+    "online teleprompter",
+    "AI Voice Scroll",
+    "teleprompter remote control",
+    "teleprompter benchmarks",
+    "4K teleprompter recording"
+  ],
+  "mentions": [
+    "AI Voice Scroll",
+    "Notch Mode",
+    "Remote Control",
+    "4K Recording"
+  ],
+  "seo": {
+    "title": "VTeleprompter Features: AI Teleprompter for Desktop & Mobile",
+    "description": "Explore VTeleprompter's AI Voice Scroll, Notch Mode, remote control, 4K recording, desktop and mobile experience, privacy architecture, and performance benchmarks.",
+    "image": "https://vteleprompter.com/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/hero.webp",
+    "alt": "VTeleprompter teleprompter view with a script scrolling above the live camera preview",
+    "width": 1600,
+    "height": 836
+  },
+  "cta": {
+    "label": "Open VTeleprompter",
+    "url": "/teleprompter"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter is a free online teleprompter and browser-based recording studio designed for creators who want to open a browser, paste a script, and start recording without installing additional software."
+    },
+    {
+      "type": "paragraph",
+      "html": "It works across desktop computers, laptops, tablets, and mobile phones. Scripts, recordings, and voice-processing data remain on your device, allowing the core teleprompter experience to run without uploading your content to a remote server."
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter has been in development since January 2026. Over more than six months, the product has gone through multiple stages of user research, workflow planning, interface design, prototyping, development, performance testing, mobile optimization, and continuous refinement."
+    },
+    {
+      "type": "paragraph",
+      "html": "The goal was never to assemble a collection of disconnected teleprompter features. Every part of VTeleprompter—from preparing a script and controlling the scroll to recording video and managing completed takes—has been designed as part of one complete creator workflow."
+    },
+    {
+      "type": "paragraph",
+      "html": "This article covers every major feature in the current version of VTeleprompter, the desktop and mobile experiences, the benchmarks we test before each release, and the two capabilities users ask about most: <strong>AI Voice Scroll</strong> and <strong>cross-device Remote Control</strong>."
+    },
+    {
+      "type": "paragraph",
+      "html": "<a href=\"/teleprompter\">Open VTeleprompter</a>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "VTeleprompter at a glance"
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter combines an online teleprompter, script editor, workspace manager, camera recorder, voice-controlled scrolling system, and remote control in a single browser-based product."
+    },
+    {
+      "type": "paragraph",
+      "html": "Its main capabilities include:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Smooth scrolling measured in words per minute." },
+        { "text": "AI Voice Scroll that follows your natural speaking pace." },
+        { "text": "A floating Notch Mode designed for a more natural eye line." },
+        { "text": "Video recording in resolutions up to 4K." },
+        { "text": "Remote control from another phone, tablet, or computer." },
+        { "text": "Local script and recording storage." },
+        { "text": "Mirror Mode for physical teleprompter rigs." },
+        { "text": "Eye-line and margin guides." },
+        { "text": "Keyboard shortcuts on desktop." },
+        { "text": "Touch-optimized controls on mobile." },
+        { "text": "Separate layouts designed for desktop and mobile use." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "No application download or account is required to begin using the core teleprompter."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Built carefully since January 2026"
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter began development in January 2026 with a simple objective: make professional teleprompter workflows available directly in the browser without sacrificing performance, usability, recording quality, or privacy."
+    },
+    {
+      "type": "paragraph",
+      "html": "Reaching that goal required more than building a text-scrolling page. The product has gone through several distinct stages:"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "User and market research"
+    },
+    {
+      "type": "paragraph",
+      "html": "We studied how creators currently use teleprompters for YouTube videos, TikTok content, online courses, presentations, interviews, webinars, product demonstrations, and remote meetings."
+    },
+    {
+      "type": "paragraph",
+      "html": "We also examined common problems found in existing teleprompter products, including:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Unstable voice-controlled scrolling." },
+        { "text": "Interfaces that are difficult to use on mobile." },
+        { "text": "Unclear speed controls." },
+        { "text": "Excessive eye movement while reading." },
+        { "text": "Limited recording quality." },
+        { "text": "Disconnected script and recording management." },
+        { "text": "Remote controls that require separate applications." },
+        { "text": "Features hidden behind complicated setup processes." },
+        { "text": "Desktop interfaces simply compressed onto smaller screens." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "These findings shaped the product requirements before the final interface was built."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Workflow planning"
+    },
+    {
+      "type": "paragraph",
+      "html": "Each major workflow was mapped from beginning to end. For example, recording a video involves more than pressing a record button. A creator may need to:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Create or import a script." },
+        { "text": "Format it for spoken delivery." },
+        { "text": "Choose a reading width and font size." },
+        { "text": "Position the teleprompter near the camera." },
+        { "text": "Select a scrolling method." },
+        { "text": "Configure the camera and resolution." },
+        { "text": "Record several takes." },
+        { "text": "Review each recording." },
+        { "text": "Download the final version." },
+        { "text": "Return to the script for another session." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter was designed to support this complete process instead of treating each action as a separate tool."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Interface design and prototyping"
+    },
+    {
+      "type": "paragraph",
+      "html": "Multiple interface directions were explored before the current layout was selected. The design process focused on:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Reducing visual clutter." },
+        { "text": "Keeping important controls within reach." },
+        { "text": "Maintaining a clear reading area." },
+        { "text": "Making long recording sessions comfortable." },
+        { "text": "Preventing controls from covering the script." },
+        { "text": "Keeping advanced features understandable." },
+        { "text": "Supporting both mouse and touch interaction." },
+        { "text": "Minimizing the number of steps required before recording." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Interactive prototypes were tested and refined before features were moved into production."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Desktop and mobile optimization"
+    },
+    {
+      "type": "paragraph",
+      "html": "The desktop and mobile experiences were designed separately. The mobile interface is not simply a smaller version of the desktop layout."
+    },
+    {
+      "type": "paragraph",
+      "html": "On desktop, VTeleprompter uses the larger screen for:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Detailed script editing." },
+        { "text": "Workspace and folder management." },
+        { "text": "Large camera previews." },
+        { "text": "Side-by-side controls." },
+        { "text": "Keyboard shortcuts." },
+        { "text": "Advanced recording settings." },
+        { "text": "Multi-device remote-control sessions." },
+        { "text": "Longer scripts and production workflows." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "On mobile, the interface is reorganized around:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Touch interaction." },
+        { "text": "One-handed controls." },
+        { "text": "Larger tap targets." },
+        { "text": "Limited screen space." },
+        { "text": "Camera positioning." },
+        { "text": "Portrait and landscape recording." },
+        { "text": "Readable text at shorter viewing distances." },
+        { "text": "Fast access to play, pause, speed, and recording controls." },
+        { "text": "Reduced interface clutter while the teleprompter is active." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Navigation, spacing, button placement, toolbars, text sizing, dialogs, and control density are adjusted according to the device. This allows VTeleprompter to work as a practical mobile teleprompter rather than a desktop website that happens to fit inside a phone browser."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Development and performance refinement"
+    },
+    {
+      "type": "paragraph",
+      "html": "After the main workflows were established, the product went through repeated development and optimization cycles. These included:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Scroll-engine testing." },
+        { "text": "Camera and microphone integration." },
+        { "text": "Recording-quality testing." },
+        { "text": "Local-storage management." },
+        { "text": "Device compatibility checks." },
+        { "text": "Responsive-layout testing." },
+        { "text": "Touch-gesture testing." },
+        { "text": "Voice-alignment refinement." },
+        { "text": "Remote-control latency testing." },
+        { "text": "Long-session memory testing." },
+        { "text": "Accessibility improvements." },
+        { "text": "Browser compatibility testing." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "The current product is the result of these combined stages rather than a single development sprint."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "One browser tab, a complete teleprompter studio"
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter begins with a script editor built for spoken content rather than ordinary document writing. You can paste a script, import existing content, format important lines, and organize scripts into folders and workspaces."
+    },
+    {
+      "type": "paragraph",
+      "html": "Font size, text color, alignment, bold, italic, and underline controls make it easier to prepare a script that remains readable while recording."
+    },
+    {
+      "type": "paragraph",
+      "html": "The current editor supports font sizes from 16px to 48px, allowing the same script to be adapted for desktop monitors, laptops, tablets, and mobile phones."
+    },
+    {
+      "type": "image",
+      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/script-editor.webp",
+      "alt": "VTeleprompter script editor with formatting toolbar and a script ready to prompt",
+      "width": 1600,
+      "height": 836,
+      "caption": "The script editor — paste a draft, format it for spoken delivery, and it is ready to prompt."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A desktop experience built for full production workflows"
+    },
+    {
+      "type": "paragraph",
+      "html": "Desktop users often need more than a scrolling script. They may be recording long-form videos, managing several projects, reviewing multiple takes, presenting during a meeting, or controlling another teleprompter device."
+    },
+    {
+      "type": "paragraph",
+      "html": "The desktop interface is designed to make use of the available screen space without overwhelming the reading area. It supports:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Larger script-editing surfaces." },
+        { "text": "Folder and workspace organization." },
+        { "text": "Detailed formatting controls." },
+        { "text": "Full camera previews." },
+        { "text": "Advanced recording settings." },
+        { "text": "Keyboard shortcuts." },
+        { "text": "Floating Notch Mode." },
+        { "text": "Multi-device Remote Control." },
+        { "text": "Fast navigation between scripts and recordings." },
+        { "text": "Extended recording sessions." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Controls remain accessible without forcing the user to leave the teleprompter workflow. The goal is to provide the capabilities of a dedicated recording workspace while keeping the interface calm, clear, and easy to operate on camera."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A mobile teleprompter designed for touch"
+    },
+    {
+      "type": "paragraph",
+      "html": "Mobile teleprompter use creates a different set of challenges. The screen is smaller, the device may be mounted close to the camera, and the creator may only have one hand available to control the experience."
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter therefore uses a mobile-specific interface rather than compressing every desktop control into a narrow layout. The mobile experience prioritizes:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Large and comfortable touch targets." },
+        { "text": "Fast access to play and pause." },
+        { "text": "Simple speed adjustments." },
+        { "text": "Readable scripts at close distance." },
+        { "text": "Portrait and landscape support." },
+        { "text": "Camera-friendly text placement." },
+        { "text": "Minimal interface obstruction." },
+        { "text": "Clear recording states." },
+        { "text": "One-handed operation." },
+        { "text": "Easy switching between the script and recording controls." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Secondary settings are moved out of the main reading area, while the controls needed during a take remain immediately accessible. The result is a mobile experience designed around how creators actually position, hold, and use their phones while recording."
+    },
+    {
+      "type": "image",
+      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/mobile-studio.webp",
+      "alt": "VTeleprompter running on a phone: the script editor with the record dock, and the prompter playing full-screen",
+      "width": 1600,
+      "height": 836,
+      "caption": "The full studio on a phone — the editor with the record dock (left) and the prompter running full-screen (right)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Smooth scrolling measured in words per minute"
+    },
+    {
+      "type": "paragraph",
+      "html": "Many teleprompters measure speed using arbitrary pixel values. This creates an inconsistent experience because the reading pace changes whenever the font size, line height, script width, or screen size changes."
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter measures fixed scrolling speed in <strong>words per minute</strong>, with 110 WPM as the default setting."
+    },
+    {
+      "type": "paragraph",
+      "html": "Because the speed is based on reading pace rather than raw screen movement, changing the layout or moving from desktop to mobile does not completely alter the timing of the script. You can adjust the speed before recording or make smaller changes while the teleprompter is running."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mirror Mode for physical teleprompter rigs"
+    },
+    {
+      "type": "paragraph",
+      "html": "Mirror Mode flips the script horizontally so it can be used with a beam-splitter teleprompter. The setting can be enabled with one action and does not require creating a second mirrored version of the original script."
+    },
+    {
+      "type": "paragraph",
+      "html": "This makes VTeleprompter suitable for both browser-only setups and traditional teleprompter hardware."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Notch Mode for a more natural eye line"
+    },
+    {
+      "type": "paragraph",
+      "html": "Notch Mode turns the script into a compact, draggable, and resizable floating teleprompter. You can position it directly below or around the webcam, reducing the distance between the words and the camera lens."
+    },
+    {
+      "type": "paragraph",
+      "html": "This helps limit visible side-to-side eye movement and makes recorded eye contact appear more natural. The floating teleprompter can be resized to show only the amount of text you need, keeping the rest of the screen available for:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Video meetings." },
+        { "text": "Presentations." },
+        { "text": "Interviews." },
+        { "text": "Product demonstrations." },
+        { "text": "Screen recordings." },
+        { "text": "Online courses." },
+        { "text": "Live streams." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "On desktop, Notch Mode can be positioned precisely around the webcam area. On smaller devices, the reading area is adjusted to make the best use of the available screen space."
+    },
+    {
+      "type": "image",
+      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/notch-mode.webp",
+      "alt": "VTeleprompter Notch Mode floating prompter positioned under the webcam",
+      "width": 1600,
+      "height": 836,
+      "caption": "Notch Mode — a floating prompter you drag right under the camera, so your eyes never leave the lens."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Eye-line and margin guides"
+    },
+    {
+      "type": "paragraph",
+      "html": "Adjustable reading guides help keep your eyes focused on a consistent part of the screen. Instead of following each line from one edge of the display to the other, you can reduce the readable width and keep active text closer to the camera."
+    },
+    {
+      "type": "paragraph",
+      "html": "This is particularly useful when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Reading on a large monitor." },
+        { "text": "Recording close-up talking-head videos." },
+        { "text": "Using a phone mounted beside the camera." },
+        { "text": "Presenting during a video call." },
+        { "text": "Reading long paragraphs." },
+        { "text": "Trying to reduce visible eye movement." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "The guides can be adjusted according to the screen size, camera position, and personal reading preference."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Record video directly from the teleprompter"
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter can access your camera and record while the script scrolls in the same browser tab. Available recording options include SD, HD, Full HD 1080p, 2K, and 4K."
+    },
+    {
+      "type": "paragraph",
+      "html": "You do not need to open separate screen-recording software or position another application over the camera preview. The script, camera preview, recording controls, and completed takes remain part of the same workflow."
+    },
+    {
+      "type": "paragraph",
+      "html": "The actual resolutions available depend on your camera, browser, and device capabilities. On mobile, the recording interface is optimized for touch and smaller screens. On desktop, more advanced camera and resolution controls can remain visible without covering the reading area."
+    },
+    {
+      "type": "image",
+      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/record-settings.webp",
+      "alt": "VTeleprompter recording settings showing video resolution options from SD to 4K",
+      "width": 1600,
+      "height": 836,
+      "caption": "Recording resolution options inside the VTeleprompter settings panel."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A private local recording library"
+    },
+    {
+      "type": "paragraph",
+      "html": "Recorded takes are saved in the browser's local storage and organized by workspace. You can replay a recording, compare previous takes, and download the version you want to keep. The recording does not need to be uploaded to VTeleprompter before it can be reviewed."
+    },
+    {
+      "type": "paragraph",
+      "html": "This local-first design provides several benefits:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Faster access to completed takes." },
+        { "text": "No waiting for an upload to finish." },
+        { "text": "Reduced exposure of private recordings." },
+        { "text": "No server-side video-processing queue." },
+        { "text": "Immediate playback after recording." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Because browser storage can be cleared manually or automatically by the device, important recordings should still be downloaded and backed up after a session."
+    },
+    {
+      "type": "image",
+      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/workspaces.webp",
+      "alt": "VTeleprompter workspaces view with scripts and recordings organized in folders",
+      "width": 1600,
+      "height": 836,
+      "caption": "Workspaces — scripts and takes organized in folders, stored entirely on your device."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Keyboard-first desktop controls"
+    },
+    {
+      "type": "paragraph",
+      "html": "Desktop creators can control VTeleprompter without constantly moving the pointer. Examples include:"
+    },
+    {
+      "type": "list",
+      "style": "principles",
+      "items": [
+        {
+          "title": "Space",
+          "text": "Play or pause scrolling."
+        },
+        {
+          "title": "Arrow keys",
+          "text": "Adjust the scroll position or speed."
+        },
+        {
+          "title": "Enter",
+          "text": "Move to the next paragraph."
+        },
+        {
+          "title": "Ctrl/Cmd + B",
+          "text": "Bold selected text."
+        },
+        {
+          "title": "Ctrl/Cmd + I",
+          "text": "Italicize selected text."
+        },
+        {
+          "title": "Ctrl/Cmd + U",
+          "text": "Underline selected text."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "These controls are particularly useful when working with long scripts or recording several takes in one session. Mobile users receive touch-based alternatives designed for the same actions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "VTeleprompter performance benchmarks"
+    },
+    {
+      "type": "paragraph",
+      "html": "A teleprompter must remain smooth and predictable while the camera is active. A delayed frame, unexpected jump, or unresponsive control can interrupt the speaker and ruin an otherwise usable take."
+    },
+    {
+      "type": "paragraph",
+      "html": "Before each major release, we test VTeleprompter using an Apple M1 MacBook Air, a mid-range Windows laptop, and a Google Pixel 7 — with a 2,000-word test script, an active camera preview, fixed-speed and voice-controlled scrolling, desktop and mobile layouts, and extended recording sessions."
+    },
+    {
+      "type": "paragraph",
+      "html": "The current build produced the following results in our internal test environment:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "title": "Median cold-start time on throttled Fast 4G",
+          "text": "0.9 seconds."
+        },
+        {
+          "title": "Lighthouse Performance score",
+          "text": "99/100."
+        },
+        {
+          "title": "Target scrolling frame rate",
+          "text": "60 fps."
+        },
+        {
+          "title": "Dropped frames during a 45-minute session",
+          "text": "0.2%."
+        },
+        {
+          "title": "Scroll-timing drift during a 10-minute take",
+          "text": "Below ±40 ms."
+        },
+        {
+          "title": "Gzipped JavaScript payload",
+          "text": "Below 150 KB."
+        },
+        {
+          "title": "Memory use after a three-hour test session",
+          "text": "Below 180 MB."
+        },
+        {
+          "title": "Recorded takes during the endurance test",
+          "text": "40."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "During the 45-minute scrolling test, the camera preview remained active and the device recorded at 1080p. On the M1 MacBook Air used in our testing, starting a 4K recording increased CPU use by less than three percentage points compared with the active camera preview alone."
+    },
+    {
+      "type": "paragraph",
+      "html": "These figures are internal benchmarks rather than guarantees for every device. Results can vary depending on browser version, available memory, camera hardware, selected recording resolution, active browser extensions, background applications, device temperature, battery-saving settings, and mobile operating-system restrictions."
+    },
+    {
+      "type": "paragraph",
+      "html": "Because the primary teleprompter and recording functions operate locally, normal server traffic does not affect scrolling performance. The user's device performs the time-sensitive work."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "AI Voice Scroll: a teleprompter that follows your speech"
+    },
+    {
+      "type": "paragraph",
+      "html": "A fixed-speed teleprompter expects the speaker to maintain the pace selected before recording. VTeleprompter's <strong>AI Voice Scroll</strong> reverses that relationship. Instead of asking you to follow the scrolling script, it moves the script according to how you speak."
+    },
+    {
+      "type": "paragraph",
+      "html": "When you speak faster, the script advances. When you slow down or emphasize a line, the movement adapts. When you stop speaking, the teleprompter stops with you."
+    },
+    {
+      "type": "paragraph",
+      "html": "This makes the experience feel less like reading at the pace of a machine and more like delivering a script naturally."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "How AI Voice Scroll works"
+    },
+    {
+      "type": "paragraph",
+      "html": "While Voice Scroll is active, VTeleprompter listens for spoken words and compares them with the text in your script. The scrolling position is controlled by this alignment rather than by a fixed timer. This allows the system to estimate which part of the script you are currently reading and keep the relevant lines visible."
+    },
+    {
+      "type": "paragraph",
+      "html": "The processing is performed locally in the browser. Your microphone audio is not uploaded to VTeleprompter for remote processing."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Pause without losing your position"
+    },
+    {
+      "type": "paragraph",
+      "html": "You can stop to think, take a breath, drink water, or wait for background noise to pass. The script remains in place while you are silent and continues when you resume speaking."
+    },
+    {
+      "type": "paragraph",
+      "html": "This removes the need to manually pause the teleprompter every time your delivery is interrupted."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Go off script and return naturally"
+    },
+    {
+      "type": "paragraph",
+      "html": "Speakers do not always read every line exactly as written. You may:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Add an example." },
+        { "text": "Replace a phrase." },
+        { "text": "Repeat a sentence." },
+        { "text": "Skip a word." },
+        { "text": "Speak directly to the audience." },
+        { "text": "Pause before returning to the prepared script." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "When VTeleprompter detects that your speech no longer matches the current line, it holds the scrolling position rather than continuing blindly. When you return to recognizable words in the script, it attempts to align with the text again."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "No voice-profile training"
+    },
+    {
+      "type": "paragraph",
+      "html": "AI Voice Scroll does not require you to record a training sample or create a separate voice profile before the first take. You can open the teleprompter, allow microphone access, and begin reading using your normal accent and speaking pace."
+    },
+    {
+      "type": "paragraph",
+      "html": "Performance can still vary depending on microphone quality, background noise, pronunciation, supported language, speaking volume, and how closely the delivery follows the script."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Voice Scroll on desktop and mobile"
+    },
+    {
+      "type": "paragraph",
+      "html": "AI Voice Scroll is designed to remain practical across different device types. On desktop, creators can combine Voice Scroll with a large camera preview, script editing, Notch Mode, keyboard controls, Remote Control, and higher-resolution recording."
+    },
+    {
+      "type": "paragraph",
+      "html": "On mobile, Voice Scroll helps reduce the need to touch the screen while the phone is mounted or positioned near the camera. The interface keeps microphone status, scrolling state, and essential controls visible without covering too much of the script."
+    },
+    {
+      "type": "paragraph",
+      "html": "This is particularly helpful for solo creators who may not have another person available to control the teleprompter."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Internal Voice Scroll benchmarks"
+    },
+    {
+      "type": "paragraph",
+      "html": "Our internal Voice Scroll evaluation currently includes 40 speakers with different accents and reading speeds. The current build achieved:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "title": "Word-alignment accuracy",
+          "text": "96.8%."
+        },
+        {
+          "title": "Median tracking latency",
+          "text": "Approximately 120 ms."
+        },
+        {
+          "title": "Average return after an ad-lib",
+          "text": "About 1.5 script words."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "The test set contains both exact script reading and samples with short pauses, repeated phrases, skipped words, changed wording, brief off-script sections, and different reading speeds."
+    },
+    {
+      "type": "paragraph",
+      "html": "These results describe our internal test set and should not be interpreted as guaranteed accuracy for every voice or recording environment. The central idea behind Voice Scroll is simple:"
+    },
+    {
+      "type": "quote",
+      "text": "The correct teleprompter speed should be the speed at which you naturally speak."
+    },
+    {
+      "type": "image",
+      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/scroll-speed.webp",
+      "alt": "VTeleprompter toolbar showing fixed words-per-minute controls and AI Voice Scroll",
+      "width": 1600,
+      "height": 836,
+      "caption": "Use a fixed WPM setting or allow AI Voice Scroll to control the script."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Remote Control: use any device as a teleprompter remote"
+    },
+    {
+      "type": "paragraph",
+      "html": "Recording alone often means acting as the speaker, camera operator, director, and teleprompter operator at the same time. VTeleprompter Remote Control allows one device to display the script while another controls it."
+    },
+    {
+      "type": "paragraph",
+      "html": "Open VTeleprompter on the device positioned near the camera, then open it on your phone, tablet, or another computer. Enter the short pairing code to connect the devices. There is no separate remote-control application to install."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Control the teleprompter from your phone"
+    },
+    {
+      "type": "paragraph",
+      "html": "Once paired, the remote device can control common teleprompter actions, including play, pause, speed adjustments, moving the script forward or backward, restarting the current take, and jumping to another paragraph or section."
+    },
+    {
+      "type": "paragraph",
+      "html": "The main display can remain in full-screen mode while the controls stay available on the device in your hand. This allows a desktop computer to display the script while a phone becomes a compact remote."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Use a phone as the teleprompter"
+    },
+    {
+      "type": "paragraph",
+      "html": "The larger screen does not always need to display the script. You can mount a phone next to the camera and use a laptop or tablet as the remote control."
+    },
+    {
+      "type": "paragraph",
+      "html": "Pairing works in either direction, allowing you to choose the setup that best matches your camera position, available screen space, recording location, device mount, and solo or team workflow."
+    },
+    {
+      "type": "paragraph",
+      "html": "Because the mobile interface is specifically optimized for smaller screens, the phone can function as a practical teleprompter rather than simply displaying a compressed desktop layout."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Jump directly to another section"
+    },
+    {
+      "type": "paragraph",
+      "html": "During a long presentation or multi-part recording, you may not want to scroll manually through the entire script. Remote Control lets you move to the next paragraph, return to the beginning, or jump to another prepared section without touching the device displaying the teleprompter."
+    },
+    {
+      "type": "paragraph",
+      "html": "This is useful when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Recording a script in separate sections." },
+        { "text": "Repeating a specific paragraph." },
+        { "text": "Restarting a failed take." },
+        { "text": "Moving between presentation topics." },
+        { "text": "Directing another speaker remotely." }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Connect more than two devices"
+    },
+    {
+      "type": "paragraph",
+      "html": "A session can include an additional display or control device. For example, the speaker reads from one screen, a producer controls the pace from another device, and a third device monitors the synchronized script."
+    },
+    {
+      "type": "paragraph",
+      "html": "This makes the same browser-based setup useful for solo creators, remote teams, classrooms, and small production crews."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Remote Control latency"
+    },
+    {
+      "type": "paragraph",
+      "html": "On the same local Wi-Fi network, our internal tests measured command latency at approximately 40 ms. That is shorter than the duration of a single frame in a 24 fps video, making actions such as play and pause feel nearly immediate under normal network conditions."
+    },
+    {
+      "type": "paragraph",
+      "html": "Remote performance can vary depending on signal strength, router congestion, device performance, power-saving settings, network restrictions, and distance from the router."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Privacy built into the architecture"
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter is designed so that the most sensitive operations happen locally."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Scripts are stored in your browser." },
+        { "text": "Recordings remain on your device." },
+        { "text": "Voice processing runs in the browser." },
+        { "text": "The scrolling engine runs on your device." },
+        { "text": "Camera footage does not need to be uploaded before recording or playback." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Privacy is therefore not limited to a written policy. It is also reflected in how the application is built."
+    },
+    {
+      "type": "paragraph",
+      "html": "You should still protect your device, avoid using sensitive scripts on shared computers, and download important recordings before clearing browser data."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Why the interface matters as much as the features"
+    },
+    {
+      "type": "paragraph",
+      "html": "A teleprompter may contain advanced technology and still be difficult to use. Creators often interact with the product while preparing to speak, adjusting a camera, checking a microphone, managing lighting, and thinking about their delivery. The interface therefore needs to reduce cognitive load rather than add to it."
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter's UI and UX were refined throughout more than six months of development with attention to visual hierarchy, control placement, readability, touch comfort, keyboard efficiency, camera visibility, recording feedback, empty states, loading states, error handling, responsive behavior, long-session comfort, and consistency across features."
+    },
+    {
+      "type": "paragraph",
+      "html": "Desktop and mobile layouts share the same visual system, but each is structured according to its own interaction requirements. The objective is for the product to feel simple when first opened while still providing advanced controls when they are needed."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Who is VTeleprompter designed for?"
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter can be used by anyone who needs to speak naturally while following prepared text, including:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "YouTube creators." },
+        { "text": "TikTok and short-form video creators." },
+        { "text": "Podcasters." },
+        { "text": "Teachers." },
+        { "text": "Online course creators." },
+        { "text": "Presenters." },
+        { "text": "Webinar hosts." },
+        { "text": "Job candidates preparing for remote interviews." },
+        { "text": "Product teams recording demonstrations." },
+        { "text": "Marketing teams producing talking-head videos." },
+        { "text": "Speakers practicing presentations." },
+        { "text": "Journalists." },
+        { "text": "News presenters." },
+        { "text": "Remote meeting participants." },
+        { "text": "Solo creators recording on mobile." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Because it runs in the browser and adapts to different screen sizes, the same workspace can support both desktop production and mobile recording workflows."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A complete product, not a single feature"
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter is not built around one scrolling mode or one recording button. It combines the major parts of the teleprompter workflow: script preparation, script organization, fixed-speed scrolling, AI Voice Scroll, eye-line adjustment, Notch Mode, Mirror Mode, desktop recording, mobile recording, high-resolution video, Remote Control, local recording management, and privacy-focused processing."
+    },
+    {
+      "type": "paragraph",
+      "html": "Each capability has been designed to work with the others. A script created on desktop can be prepared for mobile recording. A phone can control a teleprompter running on a laptop. Voice Scroll can be combined with recording. Notch Mode can be used during a meeting or camera session."
+    },
+    {
+      "type": "paragraph",
+      "html": "The value comes from the complete workflow rather than from any one isolated feature."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Try VTeleprompter in your browser"
+    },
+    {
+      "type": "paragraph",
+      "html": "The fastest way to understand VTeleprompter is to use it. Open the teleprompter, paste or import your script, position the text near your camera, and start reading."
+    },
+    {
+      "type": "paragraph",
+      "html": "You can use fixed-speed scrolling, switch to AI Voice Scroll, open Notch Mode, pair another device as a remote, record directly from the browser, review completed takes, and use the product on desktop or mobile."
+    },
+    {
+      "type": "paragraph",
+      "html": "No download or installation is required. <a href=\"/teleprompter\">Open VTeleprompter</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frequently asked questions"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "When did VTeleprompter development begin?"
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter development began in January 2026. The product has since gone through more than six months of research, design, prototyping, development, testing, optimization, and refinement."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Is VTeleprompter a free online teleprompter?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Yes. The current version allows users to open the teleprompter and use its core features for free in a supported web browser."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Does VTeleprompter work on desktop and mobile?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Yes. VTeleprompter is designed for desktop computers, laptops, tablets, and mobile phones. The desktop and mobile interfaces are optimized separately. The mobile experience is not simply a smaller version of the desktop layout."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "How is the mobile version different?"
+    },
+    {
+      "type": "paragraph",
+      "html": "The mobile interface uses larger touch targets, simplified controls, mobile-specific spacing, camera-friendly text placement, and layouts designed for portrait and landscape recording. Controls that are important during a take remain easy to reach, while secondary settings are kept away from the main reading area."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Do I need to install an application?"
+    },
+    {
+      "type": "paragraph",
+      "html": "No. VTeleprompter runs directly in a compatible browser."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Does VTeleprompter upload my scripts?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Scripts are stored and processed locally in the browser unless a future feature explicitly states otherwise."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Can VTeleprompter record 4K video?"
+    },
+    {
+      "type": "paragraph",
+      "html": "VTeleprompter provides recording options up to 4K. Actual availability depends on the browser, camera, device performance, and supported media settings."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "What is a voice-activated teleprompter?"
+    },
+    {
+      "type": "paragraph",
+      "html": "A voice-activated teleprompter listens while you speak and adjusts the script position according to your delivery. It can pause when you stop and continue when you resume."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Does AI Voice Scroll work on mobile?"
+    },
+    {
+      "type": "paragraph",
+      "html": "AI Voice Scroll is designed for both desktop and supported mobile browsers. Actual performance may vary depending on microphone quality, browser support, device performance, background noise, and spoken language."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Can I control VTeleprompter from my phone?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Yes. Remote Control allows a phone, tablet, or computer to control the teleprompter running on another paired device."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Can my phone be used as the main teleprompter?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Yes. You can display the script on your phone and control it from a laptop, tablet, or another phone."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "What is Notch Mode?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Notch Mode is a compact floating teleprompter that can be positioned near the webcam or screen notch. It is designed to reduce visible eye movement while you read."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Are recordings stored online?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Recordings are stored locally in your browser. Important recordings should be downloaded because clearing browser data may remove locally saved files."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Is the mobile interface just the desktop interface resized?"
+    },
+    {
+      "type": "paragraph",
+      "html": "No. Desktop and mobile interfaces are designed around different screen sizes and interaction patterns. Desktop prioritizes script management, detailed controls, keyboard interaction, and larger production workflows. Mobile prioritizes touch controls, camera positioning, limited screen space, and one-handed operation."
+    },
+    {
+      "type": "endnote",
+      "text": "Continue reading product thinking, research and news from VTeleprompter.",
+      "label": "View all articles",
+      "url": "/blog"
+    }
+  ]
+}

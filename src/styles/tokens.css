@@ -1,0 +1,378 @@
+/* tokens.css — design tokens for the teleprompter base.
+   Add/adjust tokens here; components must reference var(--...) (stylelint
+   forbids raw hex outside this file). Theme-scoped values switch on
+   [data-theme]. */
+
+:root {
+  /* Typography */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.375rem;
+  --text-xl: 2rem;
+  --text-2xl: 3rem;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --radius-sm: 6px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
+
+  --maxw-content: 68rem;
+
+  /* Brand — teleprompter green (from the product design). Theme-independent. */
+  --brand: #5ea500;
+  --brand-strong: #437a00; /* AA-readable green: ≥4.8:1 as text on light, ≥5.2:1 under white */
+  --brand-soft: #8edb4d;
+  --brand-tint: color-mix(in srgb, var(--brand) 14%, transparent);
+
+  /* Feedback */
+  --danger: #e5484d;
+  --danger-strong: #ef4d62;
+  --success: var(--brand);
+
+  /* z-index ladder — keep layering intentional, never ad-hoc numbers. */
+  --z-base: 1;
+  --z-sticky: 50;
+  --z-overlay: 100;
+  --z-notch: 200;
+  --z-menu: 300;
+  --z-toast: 400;
+  --z-modal: 500;
+
+  /* Motion */
+  --dur-fast: 140ms;
+  --dur-normal: 260ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Teleprompter reading surface (theme-independent — always a dark studio).
+     Declared here so component CSS references tokens instead of raw hex. */
+  --tp-reading-bg: #101318;
+  --tp-reading-text: #f4f6f9;
+  --tp-video-bg: #000000;
+
+  /* Home / landing palette — ported from the product design (demo home).
+     Warm stone greys + brand greens; hex allowed here (tokens.css is exempt). */
+  --font-brand: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-brand-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --home-bg: #fbfcfd;
+  --ink: #1c1917;
+  --ink-soft: #44403c;
+  --ink-muted: #6d655f; /* AA-readable muted: ≥5.1:1 on tinted section-alt bg, ≥5.5:1 on white */
+  --ink-faint: #a8a29e;
+  --line: #e7e5e4;
+  --line-soft: #f5f5f4;
+  --composer-text: #17181b;
+  --upload-text: #475569;
+  --brand-vivid: #75dd28;
+  --upload-border: #cbd5e1;
+  --placeholder: #94a3b8;
+  --dot-red: #ff5f57;
+  --dot-yellow: #febc2e;
+  --dot-green: #28c840;
+  --danger-text: #ef4444;
+  --danger-bg: #fef2f2;
+  --danger-line: #fee2e2;
+
+  /* ===== Teleprompter studio palette (ported verbatim from the demo :root).
+     Light values are the default; dark overrides live in the [data-theme="dark"]
+     block below. hex allowed here (tokens.css is exempt from color-no-hex). ===== */
+  --tp-green: #75dd28;
+  --tp-green-dark: #5ea500;
+  --tp-green-light: #eaf8dc;
+  --tp-square-bg: #a5a7ad;
+  --tp-icon-fg: #ffffff;
+  --tp-gray-text: #61636a;
+  --tp-divider: #ececef;
+  --tp-sidebar-bg: #f1f2f3;
+  --tp-blue: #4598e7;
+  --tp-record: #ef4d62;
+  --tp-record-btn: #ff5454;
+  --tp-record-dot: #ffcdcd;
+  --tp-top-border: #3f3f40;
+  --tp-page-bg: #ffffff;
+  --tp-page-text: #303136;
+  --tp-prompt-text: #46474d;
+  --tp-surface: #ffffff;
+  --tp-surface-hover: #f4f5f6;
+  --tp-control-border: #dcdee2;
+  --tp-caret-bg: #ffffff;
+  --tp-toggle-off-bg: #f1f1f2;
+  --tp-track-bg: #e4e6ea;
+  --tp-scrollbar-thumb: #d7d9dc;
+
+  /* Fixed studio hues (theme-independent) used inline in the demo CSS. */
+  --tp-camera-bg: #17181b;
+  --tp-camera-placeholder-bg: #202227;
+  --tp-black: #000000;
+  --tp-white: #ffffff;
+  --tp-panel-scrim: rgba(111, 111, 111, 0.62);
+  --tp-panel-bg-dark-60: rgba(24, 25, 27, 0.6);
+  --tp-panel-bg-light-60: rgba(245, 245, 245, 0.6);
+  --tp-panel-bg-light-30: rgba(245, 245, 245, 0.3);
+  --tp-panel-bg-dark-30: rgba(24, 25, 27, 0.3);
+  --tp-teleprompter-text: #ffffff;
+  --tp-control-bar-bg: #101010;
+  --tp-caret-arrow: #8a8d95;
+  --tp-eyeline: rgba(240, 161, 50, 0.95);
+  --tp-eyeline-grip: #f0a132;
+  --tp-margin-guide: rgba(244, 99, 94, 0.9);
+  --tp-margin-grip: #f4635e;
+  --tp-bar-muted: #cfd1d6;
+  --tp-kbd: #d5d8dd;
+  --tp-kbd-label: #8b9098;
+  --tp-toast-bg: rgba(35, 36, 40, 0.9);
+  --tp-quality-hover: #c3c6cc;
+  --tp-size-ratio: #8a8d95;
+  --tp-theme-active-bg: #ffffff;
+  --tp-theme-active-fg: #1a1c20;
+  --tp-switch-off: #d6d8dc;
+  --tp-color-popup-dark-bg: #1c1d21;
+  --tp-panel-light-text: #26272b;
+  --tp-panel-light-bar: #f1f2f3;
+  --tp-panel-light-icon: #1a1c20;
+  --tp-panel-light-label: #6a6f77;
+  --tp-notch-active-fg: #16330a;
+  --tp-green-active-bg: rgba(117, 221, 40, 0.22);
+  --tp-hue-gradient: linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
+
+  /* Countdown / prompter font scale (tokens so large screens can scale). */
+  --tp-font-countdown: clamp(92px, 14vw, 140px);
+  --tp-font-prompt: clamp(24px, 2.3vw, 30px);
+  --tp-font-teleprompter: 32px;
+
+  /* ===== Scene editor (post-record) — ported from demo preview.html :root.
+     Namespaced --se-* so it never clashes with app/teleprompter tokens. ===== */
+  --se-page-bg: #ffffff;
+  --se-text: #24272a;
+  --se-muted: #6d7074;
+  --se-icon: #35383b;
+  --se-hover: #f7f7f7;
+  --se-border: #f0f1f1;
+  --se-surface: #fbfbfb;
+  --se-surface-hover: #f5f5f5;
+  --se-card-bg: #ffffff;
+  --se-faint: #a5a8aa;
+  --se-scrollbar-thumb: #d9dadb;
+  --se-green: #5da42f;
+  --se-green-hover: #55992b;
+  --se-blue: #4598e7;
+  --se-blue-hover: #2e7fd4;
+  --se-brand: #8edb4d;
+  --se-brand-hover: #75dd28;
+  --se-brand-ink: #17181b;
+  --se-danger: #ef4d62;
+  --se-record-dot: #e5484d;
+  --se-viewer-bg: #161616;
+  --se-play-bg: #f4f4ef;
+  --se-play-fg: #000000;
+  --se-time-fg: #f4f4ef;
+  --se-viewer-radius: 8px;
+  --se-scene-radius: 4px;
+  --se-header-height: 36px;
+  --se-viewer-width: 828px;
+  --se-sidebar-width: 165px;
+  --se-column-gap: 24px;
+
+  /* Trim editor (accent + track surfaces). Green matches --se-green. */
+  --se-trim-accent: #5da42f;
+  --se-trim-accent-tint: #eaf3e2;
+  --se-trim-track-bg: #e8ebe5;
+  --se-trim-tick: #c7c9c4;
+  --se-trim-frame-divider: rgb(255 255 255 / 42%);
+  --se-trim-shade: rgb(32 35 30 / 42%);
+  --se-trim-playhead-line: #1f2123;
+  --se-trim-handle-grip: #22231f;
+
+  /* Media chrome (theme-independent — drawn over dark media/letterbox). */
+  --se-empty-bg: #171815;
+  --se-media-letterbox: #111;
+  --se-audio-gradient: linear-gradient(180deg, #173c4c 0%, #4d8f99 45%, #8b8074 75%, #6c5e51 100%);
+  --se-audio-kicker: #aeb1a7;
+  --se-waveform-art: #d8f999;
+  --se-waveform-canvas: #5da42f;
+  --se-media-badge-bg: #191a17;
+  --se-scene-empty-bg: #fbfbfb;
+  --se-record-pill-bg: #ffffff;
+  --se-overlay-scrim: rgb(0 0 0 / 55%);
+  --se-confirm-scrim: rgb(15 17 20 / 55%);
+  --se-on-accent: #ffffff;
+
+  /* ===== Workspaces (script library) — ported from the demo workspaces.html.
+     Namespaced --ws-* so it never clashes with app/teleprompter/scene tokens.
+     Light-only page (like home); hex allowed here (tokens.css is exempt). ===== */
+  --ws-bg-page: #f9fafd;
+  --ws-appbar-bg: #f9fafd;
+  --ws-surface: #ffffff;
+  --ws-surface-soft: #f3f4f6;
+  --ws-surface-hover: #f1f5f9;
+  --ws-card: #f1f4f9;
+  --ws-card-hover: #e7ecf4;
+  --ws-thumb-bg: #0e0e10;
+  --ws-thumb-preview: rgb(255 255 255 / 62%);
+  --ws-thumb-empty: rgb(255 255 255 / 30%);
+  --ws-text: #002438;
+  --ws-text-secondary: #385261;
+  --ws-text-muted: #5f6a70;
+  --ws-border: #cfdcdd;
+  --ws-border-light: #e5e5e5;
+  --ws-primary: #75dd28;
+  --ws-primary-hover: #5ea500;
+  --ws-primary-ink: #17181b;
+  --ws-primary-soft: rgb(94 165 0 / 22%);
+  --ws-on-primary: #ffffff;
+  --ws-danger: #ef4444;
+  --ws-danger-soft: rgb(239 68 68 / 8%);
+  --ws-accent-soft: rgb(117 221 40 / 8%);
+  --ws-local-fg: #2f7d4f;
+  --ws-local-bg: rgb(38 160 90 / 12%);
+  --ws-local-dot: #2f9d5a;
+  --ws-avatar-bg: #ff6e6e;
+  --ws-logo-ink: #151515;
+  --ws-hover-scrim: rgb(0 0 0 / 6%);
+  --ws-overlay-scrim: rgb(0 0 0 / 40%);
+  --ws-drag-scrim: rgb(0 0 0 / 50%);
+  --ws-drag-surface: #ffffff;
+  --ws-drag-border: #000000;
+  --ws-drag-title: #000000;
+  --ws-drag-hint: #666666;
+  --ws-more-scrim: rgb(0 0 0 / 45%);
+  --ws-more-scrim-hover: rgb(0 0 0 / 72%);
+  --ws-drag-pill: #1e6fe0;
+  --ws-warn: #d98324;
+  --ws-warn-soft: rgb(217 131 36 / 12%);
+  --ws-shadow-card: 0 2px 8px rgb(0 0 0 / 6%), 0 0 2px rgb(0 0 0 / 4%);
+  --ws-shadow-card-hover: 0 8px 24px rgb(0 0 0 / 9%), 0 2px 8px rgb(0 0 0 / 4%);
+  --ws-shadow-sidebar: 0 8px 32px rgb(68 68 70 / 6%), 0 2px 8px rgb(68 68 70 / 3%);
+  --ws-menu-bg: #ffffff;
+  --ws-menu-shadow: 0 8px 30px rgb(0 0 0 / 16%);
+  --ws-mask-fade: linear-gradient(180deg, #000 55%, transparent 100%);
+  --ws-credits-bg: #f5f6f8;
+  --ws-credits-border: #eceef1;
+  --ws-credits-label: #16243f;
+  --ws-credits-text: #6b7280;
+
+  /* Shared components (used by Workspaces now; other pages can migrate later). */
+  --toast-bg: rgb(30 30 30 / 95%);
+  --toast-fg: #ffffff;
+  --toast-error-bg: #b42318;
+  --toast-error-fg: #ffffff;
+  --toast-shadow: 0 4px 20px rgb(0 0 0 / 30%);
+  --confirm-scrim: rgb(15 20 28 / 38%);
+  --confirm-surface: #ffffff;
+  --confirm-border: #e5e5e5;
+  --confirm-title: #16243f;
+  --confirm-text: #385261;
+  --confirm-danger: #ef4444;
+  --confirm-on-danger: #ffffff;
+  --confirm-shadow: 0 20px 60px rgb(0 0 0 / 22%);
+  --confirm-icon-bg: #f3f4f6;
+  --confirm-accent: #75dd28;
+  --confirm-accent-hover: #5ea500;
+  --confirm-accent-ink: #17181b;
+  --confirm-on-accent: #ffffff;
+  --confirm-cancel-bg: #f3f4f6;
+  --confirm-cancel-hover: #e7ecf4;
+  --rec-preview-scrim: rgb(8 12 18 / 62%);
+  --rec-preview-surface: #ffffff;
+  --rec-preview-border: #e5e5e5;
+  --rec-preview-shadow: 0 24px 70px rgb(0 0 0 / 32%);
+  --rec-preview-media-bg: #0b0f14;
+  --rec-preview-title: #16243f;
+  --rec-preview-meta: #5f6a70;
+  --export-status-scrim: var(--se-confirm-scrim);
+  --export-status-surface: var(--se-card-bg);
+  --export-status-border: var(--se-border);
+  --export-status-text: var(--se-text);
+  --export-status-muted: var(--se-muted);
+  --export-status-hover: var(--se-surface-hover);
+  --export-status-button-surface: var(--se-surface);
+  --export-status-success: var(--se-green);
+  --export-status-success-tint: var(--se-trim-accent-tint);
+  --export-status-progress: var(--se-blue);
+  --export-status-danger: var(--se-danger);
+  --export-status-brand: var(--se-brand);
+  --export-status-brand-hover: var(--se-brand-hover);
+  --export-status-brand-ink: var(--se-brand-ink);
+  --export-status-shadow: 0 24px 60px rgb(0 0 0 / 28%);
+}
+
+/* Light theme (default) */
+[data-theme="light"] {
+  --bg: #f6f7f9;
+  --surface: #ffffff;
+  --text: #14171c;
+  --text-muted: #5b6470;
+  --border: #e2e6eb;
+  --accent: #5ea500;
+  --accent-contrast: #ffffff;
+}
+
+/* Dark theme — teleprompter reading is usually dark; ready for a toggle. */
+[data-theme="dark"] {
+  --bg: #0c0e12;
+  --surface: #14181f;
+  --text: #f3f5f8;
+  --text-muted: #9aa3b0;
+  --border: #262c36;
+  --accent: #8edb4d;
+  --accent-contrast: #0c0e12;
+
+  /* Teleprompter studio — dark overrides (verbatim from the demo). */
+  --tp-green-light: rgba(117, 221, 40, 0.18);
+  --tp-gray-text: #a3a6ad;
+  --tp-divider: #2c2d33;
+  --tp-sidebar-bg: #26272c;
+  --tp-page-bg: #17181b;
+  --tp-page-text: #e7e8ea;
+  --tp-prompt-text: #d7d8db;
+  --tp-surface: #202127;
+  --tp-surface-hover: #2a2b31;
+  --tp-control-border: #3a3b42;
+  --tp-caret-bg: #2e2f35;
+  --tp-toggle-off-bg: #2a2b31;
+  --tp-track-bg: #3a3b42;
+  --tp-scrollbar-thumb: #3a3b41;
+
+  /* Scene editor dark overrides (from demo html[data-theme="dark"]). */
+  --se-page-bg: #141414;
+  --se-text: #e7e8ea;
+  --se-muted: #9b9ea3;
+  --se-icon: #c9cbcf;
+  --se-hover: #26272c;
+  --se-border: #2c2d33;
+  --se-surface: #202127;
+  --se-surface-hover: #2a2b31;
+  --se-card-bg: #1d1e23;
+  --se-faint: #7c7f84;
+  --se-scrollbar-thumb: #3a3b41;
+  --se-trim-accent-tint: rgb(93 164 47 / 25%);
+  --se-trim-track-bg: #333333;
+  --se-trim-tick: #55565a;
+  --se-trim-playhead-line: #f2f2f2;
+  --se-scene-empty-bg: #202127;
+  --se-record-pill-bg: #1d1e23;
+
+  /* Shared confirm dialog — dark (the scene editor mounts inside the dark
+     teleprompter page). Aliased to the scene-editor palette above. */
+  --confirm-scrim: var(--se-confirm-scrim);
+  --confirm-surface: var(--se-card-bg);
+  --confirm-border: var(--se-border);
+  --confirm-title: var(--se-text);
+  --confirm-text: var(--se-muted);
+  --confirm-icon-bg: var(--se-surface);
+  --confirm-cancel-bg: var(--se-surface);
+  --confirm-cancel-hover: var(--se-surface-hover);
+}

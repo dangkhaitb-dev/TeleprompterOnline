@@ -1,0 +1,270 @@
+/* media-player.css — custom media controls for se-viewer-media (video + audio).
+   Replaces native <video>/<audio> controls with themed UI.
+   Tokens: --se-* from tokens.css. */
+
+.se-media-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, transparent 0%, rgba(10, 10, 12, 0.85) 100%);
+  padding: 16px 20px 14px 20px;
+  z-index: 5;
+  pointer-events: auto;
+  touch-action: manipulation;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Show when viewer is hovered, controls are hovered, or manually marked visible (e.g. paused) */
+.se-viewer:hover .se-media-controls,
+.se-viewer:focus-within .se-media-controls,
+.se-media-controls.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Progress / Seek bar */
+.se-media-progress {
+  position: relative;
+  width: 100%;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  cursor: pointer;
+}
+
+.se-media-progress-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.24);
+  border-radius: 2px;
+  position: relative;
+  transition: height 0.15s ease;
+}
+
+.se-media-progress:hover .se-media-progress-track {
+  height: 6px;
+}
+
+.se-media-progress-filled {
+  height: 100%;
+  background: var(--se-green);
+  border-radius: inherit;
+  width: 0%;
+}
+
+.se-media-progress-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  touch-action: none;
+}
+
+/* Bottom Bar */
+.se-media-bar {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+/* Play/Pause Button */
+.se-media-play-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  color: var(--se-on-accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  touch-action: manipulation;
+}
+
+.se-media-play-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: scale(1.05);
+}
+
+.se-media-play-btn:active {
+  transform: scale(0.95);
+}
+
+.se-media-play-btn svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* Volume controls */
+.se-media-volume {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.se-media-volume-btn {
+  background: transparent;
+  border: 0;
+  padding: 4px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+  touch-action: manipulation;
+}
+
+.se-media-volume-btn:hover {
+  color: var(--se-on-accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.se-media-volume-btn svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.se-media-volume-slider-wrap {
+  width: 0;
+  opacity: 0;
+  overflow: hidden;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  transition: width 0.2s ease, opacity 0.2s ease;
+}
+
+/* Expand volume slider on volume container hover */
+.se-media-volume:hover .se-media-volume-slider-wrap,
+.se-media-volume-slider-wrap:focus-within {
+  width: 72px;
+  opacity: 1;
+  margin-right: 4px;
+}
+
+.se-media-volume-track {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 2px;
+  position: relative;
+}
+
+.se-media-volume-filled {
+  height: 100%;
+  background: var(--se-on-accent);
+  border-radius: inherit;
+  width: 100%;
+}
+
+.se-media-volume-knob {
+  position: absolute;
+  top: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--se-on-accent);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.se-media-volume-input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+  touch-action: none;
+}
+
+/* Touch devices have no persistent hover state, so the volume slider must not
+   depend on hover to become reachable. Sliders also need taller finger-sized
+   hit areas — the 20px desktop targets are fiddly to grab and drag on mobile. */
+@media (hover: none), (pointer: coarse) {
+  .se-media-volume-slider-wrap {
+    width: 88px;
+    height: 30px;
+    opacity: 1;
+    margin-right: 4px;
+  }
+
+  /* Grow the seek bar's touch area without changing the visible track height. */
+  .se-media-progress {
+    height: 30px;
+    margin-bottom: 8px;
+  }
+
+  .se-media-progress-track {
+    height: 5px;
+  }
+
+  .se-media-controls {
+    padding-bottom: calc(14px + env(safe-area-inset-bottom));
+  }
+}
+
+/* Time Display */
+.se-media-time {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 13px;
+  font-weight: 500;
+  font-family: monospace, system-ui;
+  font-variant-numeric: tabular-nums;
+  margin-left: auto;
+  user-select: none;
+}
+
+.se-media-time-sep {
+  opacity: 0.4;
+}
+
+.se-media-time-total {
+  opacity: 0.6;
+}
+
+/* Custom styling integration inside viewer */
+.se-viewer {
+  /* Ensure children (like controls) can stack nicely */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+/* Make sure the player overlay works on audio wrap as well */
+.se-audio-preview {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Native audio/video controls removal styling fallback */
+.se-viewer video::-webkit-media-controls,
+.se-viewer audio::-webkit-media-controls {
+  display: none !important;
+}

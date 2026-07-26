@@ -1,0 +1,278 @@
+{
+  "seo": {
+    "title": "Teleprompter online grátis com rolagem por voz com IA | VTeleprompter",
+    "description": "Use o VTeleprompter, um teleprompter online grátis com rolagem por voz com IA, modo notch, controle remoto e gravação em 4K. Sem anúncios nem marca d'água.",
+    "canonical": "/pt/",
+    "ogTitle": "Teleprompter com IA online e grátis — VTeleprompter",
+    "ogDescription": "Apresente com naturalidade usando rolagem por voz com IA, modo notch, controle remoto e gravação de vídeo profissional.",
+    "ogType": "website",
+    "ogImage": "/og-vteleprompter.jpg"
+  },
+  "schema": {
+    "orgDescription": "O VTeleprompter oferece um teleprompter online com IA gratuito para apresentações naturais e gravação de vídeo profissional.",
+    "brandDescription": "O VTeleprompter é um teleprompter online com IA feito para apresentações naturais e gravação de vídeo profissional.",
+    "websiteDescription": "Um teleprompter online grátis com rolagem por voz com IA, modo notch, controle remoto e gravação de vídeo profissional.",
+    "webpageName": "Teleprompter online grátis com rolagem por voz com IA | VTeleprompter",
+    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "logoUrl": "/logo.png",
+    "logoCaption": "VTeleprompter",
+    "primaryImage": "/og-vteleprompter.jpg",
+    "primaryImageCaption": "VTeleprompter, teleprompter online com IA gratuito",
+    "appAlternateName": "VTeleprompter Teleprompter Online",
+    "appDescription": "Um teleprompter online com IA gratuito com rolagem ativada por voz, modo notch, controle remoto, gerenciamento de roteiros e gravação de vídeo profissional em Full HD e 4K.",
+    "applicationCategory": "MultimediaApplication",
+    "applicationSubCategory": "Teleprompter Online",
+    "operatingSystem": "Qualquer sistema operacional com um navegador web moderno",
+    "browserRequirements": "Requer JavaScript e um navegador web moderno. É necessário acesso à câmera e ao microfone para a gravação e a rolagem por voz com IA.",
+    "availableOnDevice": ["Desktop", "Notebook", "Tablet", "Smartphone"],
+    "featureList": [
+      "Rolagem ativada por voz com IA",
+      "Rolagem manual do teleprompter",
+      "Rolagem automática em velocidade fixa",
+      "Modo notch de teleprompter",
+      "Controle remoto a partir de outro dispositivo",
+      "Gravação de vídeo em Full HD",
+      "Gravação de vídeo em 4K",
+      "Criação e edição de roteiros",
+      "Gerenciamento de roteiros",
+      "Gerenciamento de gravações",
+      "Interface móvel responsiva",
+      "Compatível com navegadores de desktop e móveis",
+      "Sem anúncios",
+      "Sem marca d'água no vídeo"
+    ],
+    "offerDescription": "Acesso gratuito aos recursos do teleprompter online VTeleprompter.",
+    "howToName": "Como usar o VTeleprompter",
+    "howToDescription": "Aprenda a adicionar um roteiro, escolher um modo de rolagem, personalizar seu teleprompter e começar a apresentar ou gravar com o VTeleprompter.",
+    "faqName": "Perguntas frequentes sobre o VTeleprompter",
+    "faqDescription": "Perguntas frequentes sobre o VTeleprompter, a rolagem por voz com IA, o modo notch, o controle remoto, os dispositivos compatíveis e a gravação de vídeo."
+  },
+  "nav": {
+    "items": [
+      { "label": "Recursos", "url": "#features" },
+      { "label": "Modo Notch", "url": "#notch" },
+      { "label": "Rolagem por voz", "url": "#voice-scroll" },
+      { "label": "Remoto", "url": "#remote" }
+    ],
+    "cta": { "label": "Áreas de trabalho", "url": "/workspaces" }
+  },
+  "hero": {
+    "eyebrow": "VTeleprompter — Teleprompter com IA",
+    "title": "Teleprompter online grátis",
+    "subtitle": "Apresente com naturalidade usando rolagem por voz com IA, modo notch, controle remoto e gravação profissional em 4K.",
+    "placeholder": "Cole seu roteiro ou envie um arquivo para começar...",
+    "uploadLabel": "Enviar arquivo",
+    "uploadLabelShort": "Enviar",
+    "startLabel": "Começar a apresentar",
+    "startLabelShort": "Começar",
+    "supportedText": "Compatível com TXT, DOCX e Markdown",
+    "dropTitle": "Solte o arquivo aqui para enviar",
+    "dropHint": "Compatível com TXT, DOCX e Markdown"
+  },
+  "messages": {
+    "errorEmpty": "Insira o conteúdo do seu roteiro antes de iniciar o teleprompter.",
+    "errorRead": "Formato não compatível. Selecione um arquivo .txt ou .md."
+  },
+  "features": {
+    "eyebrow": "Tudo o que você precisa para apresentar melhor",
+    "title": "Um teleprompter para cada gravação",
+    "description": "O VTeleprompter combina teleprompter online, rolagem por voz com IA, modo notch, controle remoto, gerenciamento de roteiros e gravação de vídeo profissional em uma única área de trabalho simples.",
+    "items": [
+      { "title": "Rolagem por voz com IA", "description": "O VTeleprompter acompanha sua fala e rola o roteiro automaticamente no ritmo natural da sua voz." },
+      { "title": "Teleprompter Notch", "description": "Mantenha o roteiro perto da câmera para reduzir o movimento visível dos olhos e manter um contato visual mais natural." },
+      { "title": "Controle remoto", "description": "Use outro celular, tablet ou computador para controlar a rolagem, avançar pelo roteiro e gerenciar sua apresentação à distância." },
+      { "title": "Gravação em Full HD e 4K", "description": "Grave vídeos profissionais enquanto lê o roteiro direto no teleprompter." },
+      { "title": "Gerenciamento de roteiros", "description": "Crie, envie, edite, organize e reutilize todos os seus roteiros em uma área de trabalho prática." },
+      { "title": "Biblioteca de gravações", "description": "Salve, revise e gerencie suas gravações junto com os roteiros usados para criá-las." },
+      { "title": "Feito para o celular", "description": "Use o VTeleprompter com conforto em celulares, tablets, notebooks e computadores com uma interface responsiva pensada para cada tela." },
+      { "title": "Sem anúncios ou marca d'água", "description": "Apresente e grave sem anúncios que distraem nem marcas d'água nos seus vídeos." }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "Simples desde a primeira tomada",
+    "title": "Como o VTeleprompter funciona",
+    "description": "Transforme qualquer roteiro em uma apresentação fluida ou uma gravação profissional em poucos passos.",
+    "steps": [
+      { "anchor": "step-add-script", "title": "Adicione seu roteiro", "description": "Cole seu texto diretamente no VTeleprompter ou envie um roteiro existente do seu dispositivo." },
+      { "anchor": "step-choose-scroll-mode", "title": "Escolha o modo de rolagem", "description": "Defina uma velocidade de rolagem fixa, controle o roteiro manualmente ou ative a rolagem por voz com IA." },
+      { "anchor": "step-customize-view", "title": "Personalize sua visualização", "description": "Ajuste a fonte, o tamanho do texto, o espaçamento, a área de leitura e a posição do teleprompter para ler com conforto." },
+      { "anchor": "step-start-presenting", "title": "Comece a apresentar", "description": "Abra o teleprompter, conecte um controle remoto se precisar e comece a apresentar ou gravar." }
+    ]
+  },
+  "voiceScroll": {
+    "eyebrow": "Role na velocidade da sua voz",
+    "title": "Rolagem por voz com IA que acompanha você",
+    "description": "Pare de ajustar seu ritmo de fala para acompanhar uma velocidade de rolagem fixa. O VTeleprompter acompanha sua voz para você focar em transmitir sua mensagem com naturalidade.",
+    "benefits": [
+      { "title": "Fale com naturalidade", "description": "Leia no seu próprio ritmo, sem soar apressado, lento ou robótico." },
+      { "title": "Faça pausas quando precisar", "description": "Respire, enfatize uma ideia ou pause entre seções sem perder o ponto na hora." },
+      { "title": "Mantenha o foco", "description": "Deixe visível a parte certa do roteiro enquanto se concentra na sua apresentação." },
+      { "title": "Reduza as regravações", "description": "Evite erros causados por roteiros que passam rápido ou devagar demais durante a gravação." }
+    ],
+    "supporting": "Prefere um autocue online tradicional? Os controles de rolagem manual e em velocidade fixa estão sempre disponíveis.",
+    "cta": { "label": "Experimente a rolagem por voz com IA", "url": "/workspaces" }
+  },
+  "notch": {
+    "eyebrow": "Contato visual natural",
+    "title": "Mantenha seu roteiro perto da câmera",
+    "description": "O modo notch do VTeleprompter posiciona uma área de leitura compacta perto da câmera, ajudando seu olhar a permanecer mais próximo da lente.",
+    "items": [
+      "Reduza o movimento óbvio dos olhos de um lado para o outro.",
+      "Posicione o roteiro perto da sua webcam ou da câmera do celular.",
+      "Redimensione a área de leitura para mostrar só as linhas de que você precisa.",
+      "Mova o teleprompter para qualquer lugar da sua tela.",
+      "Mantenha um contato visual mais natural em gravações e videochamadas."
+    ],
+    "supporting": "O modo notch é ideal para entrevistas, apresentações, demos de produto, aulas online, videochamadas e conteúdo falando para a câmera.",
+    "cta": { "label": "Abrir modo Notch", "url": "/workspaces" }
+  },
+  "remote": {
+    "eyebrow": "Controle de qualquer lugar",
+    "title": "Use qualquer dispositivo como controle do teleprompter",
+    "description": "Conecte outro celular, tablet ou computador e controle seu teleprompter sem tocar no dispositivo principal de gravação.",
+    "items": [
+      { "title": "Iniciar e pausar", "description": "Controle o teleprompter com discrição enquanto apresenta." },
+      { "title": "Ajustar a velocidade", "description": "Aumente ou diminua a velocidade a partir do seu controle conectado." },
+      { "title": "Navegar pelo roteiro", "description": "Avance, volte ou pule para outra seção do seu roteiro." },
+      { "title": "Gerenciar a gravação", "description": "Inicie ou pare a gravação remotamente quando seu dispositivo e navegador permitirem." }
+    ],
+    "supporting": "Perfeito para criadores solo, palestrantes, estúdios, equipes de produção e apresentações remotas.",
+    "cta": { "label": "Conectar um controle", "url": "/workspaces" }
+  },
+  "recording": {
+    "eyebrow": "Grave enquanto lê",
+    "title": "Crie vídeos profissionais em Full HD ou 4K",
+    "description": "Use sua câmera e o teleprompter em um fluxo de trabalho único. Leia com naturalidade, monitore o enquadramento e grave sem alternar entre aplicativos diferentes.",
+    "items": [
+      { "title": "Prévia da câmera ao vivo", "description": "Confira sua posição, enquadramento e aparência antes e durante a gravação." },
+      { "title": "Gravação em Full HD", "description": "Crie vídeos nítidos e de alta qualidade para redes sociais, aulas, apresentações e conteúdo corporativo." },
+      { "title": "Gravação em 4K", "description": "Capture vídeo profissional em alta resolução quando sua câmera, navegador e dispositivo permitirem." },
+      { "title": "Sem marca d'água", "description": "Exporte gravações limpas, sem o logo do VTeleprompter nem sobreposição de marca." },
+      { "title": "Biblioteca de gravações", "description": "Mantenha suas tomadas organizadas e encontre rapidamente a gravação de cada roteiro." }
+    ],
+    "cta": { "label": "Começar a gravar", "url": "/workspaces" }
+  },
+  "workspace": {
+    "eyebrow": "Sua área de conteúdo",
+    "title": "Gerencie roteiros e gravações juntos",
+    "description": "Pare de procurar em pastas, documentos e aplicativos separados. O VTeleprompter mantém seus roteiros e gravações em uma única área de trabalho organizada.",
+    "items": [
+      { "title": "Crie e edite roteiros", "description": "Escreva novos roteiros ou atualize conteúdo existente diretamente no VTeleprompter." },
+      { "title": "Envie conteúdo existente", "description": "Importe roteiros de documentos compatíveis em vez de copiar cada seção manualmente." },
+      { "title": "Organize sua biblioteca", "description": "Mantenha roteiros e gravações organizados e prontos para apresentações futuras." },
+      { "title": "Reutilize seus roteiros", "description": "Abra roteiros anteriores, faça ajustes rápidos e grave novas versões sem começar do zero." },
+      { "title": "Acesse de qualquer tela", "description": "Continue trabalhando do seu celular, tablet, notebook ou computador." }
+    ]
+  },
+  "mobile": {
+    "eyebrow": "Feito para cada tela",
+    "title": "Um teleprompter online otimizado para celular",
+    "description": "O VTeleprompter é feito para ser rápido, claro e fácil de controlar tanto no desktop quanto em dispositivos móveis.",
+    "items": [
+      { "title": "Interface responsiva", "description": "Os controles essenciais continuam fáceis de alcançar em diferentes tamanhos de tela e orientações." },
+      { "title": "Retrato e paisagem", "description": "Escolha a orientação de tela que melhor combina com sua configuração de gravação." },
+      { "title": "Controles para toque", "description": "Ajuste texto, rolagem e configurações de gravação com conforto em uma tela sensível ao toque." },
+      { "title": "Sem instalação", "description": "Abra o VTeleprompter em um navegador compatível e comece a usar o teleprompter online." }
+    ],
+    "supporting": "Use o VTeleprompter como teleprompter móvel, teleprompter de desktop ou autocue online pelo navegador."
+  },
+  "useCases": {
+    "eyebrow": "Feito para todo apresentador",
+    "title": "Para quem é o VTeleprompter?",
+    "items": [
+      { "title": "Criadores de conteúdo", "description": "Grave vídeos para TikTok, YouTube, Shorts, Reels e outros conteúdos sociais sem decorar cada linha." },
+      { "title": "YouTubers", "description": "Entregue reviews, tutoriais, explicações e vídeos falando para a câmera com uma apresentação mais fluida e confiante." },
+      { "title": "Podcasters", "description": "Siga aberturas, mensagens de patrocinadores, perguntas estruturadas e notas do episódio enquanto grava." },
+      { "title": "Professores e educadores", "description": "Apresente aulas online, vídeos de cursos e conteúdo educacional de forma clara e consistente." },
+      { "title": "Profissionais de negócios", "description": "Prepare demos de produto, atualizações da empresa, webinars, apresentações de vendas e vídeos de treinamento." },
+      { "title": "Palestrantes", "description": "Pratique discursos, ensaie apresentações e transmita mensagens preparadas com confiança." },
+      { "title": "Jornalistas e entrevistadores", "description": "Siga roteiros, perguntas e pontos-chave enquanto mantém o foco na câmera." },
+      { "title": "Equipes remotas", "description": "Use o modo notch em videochamadas, apresentações online e entrevistas remotas." }
+    ]
+  },
+  "comparison": {
+    "eyebrow": "Por que o VTeleprompter?",
+    "title": "Um teleprompter grátis mais completo",
+    "description": "O VTeleprompter foi feito para oferecer uma experiência de teleprompter completa sem obrigar você a combinar vários aplicativos nem a pagar por recursos básicos.",
+    "items": [
+      "Rolagem ativada por voz com IA",
+      "Modo notch de teleprompter",
+      "Controle remoto a partir de outro dispositivo",
+      "Gravação de vídeo em Full HD e 4K",
+      "Gerenciamento de roteiros e gravações",
+      "Compatível com desktop e celular",
+      "Sem publicidade",
+      "Sem marca d'água no vídeo",
+      "Experiência de uso simples e moderna",
+      "Acesso gratuito aos recursos essenciais do teleprompter"
+    ],
+    "supporting": "Do roteiro à gravação da tomada final, o VTeleprompter reúne as ferramentas que você precisa em um só lugar."
+  },
+  "about": {
+    "eyebrow": "Sobre o VTeleprompter",
+    "title": "Feito para que apresentar pareça natural",
+    "paragraphs": [
+      "O VTeleprompter é um teleprompter com IA criado para quem quer falar com confiança sem decorar cada palavra nem gerenciar a rolagem o tempo todo.",
+      "Nosso objetivo é criar a experiência de teleprompter online mais completa e acessível, unindo rolagem por IA confiável, design cuidadoso, ferramentas para contato visual natural e recursos de gravação profissional.",
+      "Seja gravando de um celular, apresentando de um notebook ou controlando um estúdio à distância, o VTeleprompter ajuda você a focar no seu público em vez do software."
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "Pronto para apresentar?",
+    "title": "Comece a usar o VTeleprompter",
+    "description": "Adicione seu roteiro, escolha o modo de leitura que preferir e comece a apresentar com naturalidade.",
+    "cta": { "label": "Abrir teleprompter grátis", "url": "/workspaces" },
+    "supporting": "Sem anúncios. Sem marca d'água. Sem configuração complicada."
+  },
+  "faq": {
+    "eyebrow": "Perguntas e respostas",
+    "title": "Perguntas frequentes",
+    "items": [
+      { "anchor": "faq-is-vteleprompter-free", "q": "O VTeleprompter é grátis?", "a": "O VTeleprompter é gratuito no momento. Você pode acessar seus recursos essenciais de teleprompter, roteiros e gravação sem anúncios nem marca d'água de marca no vídeo." },
+      { "anchor": "faq-what-is-ai-voice-scroll", "q": "O que é a rolagem por voz com IA?", "a": "A rolagem por voz com IA ouve sua fala e avança pelo roteiro conforme o ritmo natural da sua voz. Ela ajuda você a pausar, continuar e apresentar sem ajustar o tempo todo uma velocidade de rolagem fixa." },
+      { "anchor": "faq-what-is-notch-mode", "q": "O que é o modo Notch do VTeleprompter?", "a": "O modo Notch posiciona uma área de leitura compacta do teleprompter perto da sua câmera. Isso ajuda a reduzir o movimento visível dos olhos e faz seu contato visual parecer mais natural em gravações, apresentações e videochamadas." },
+      { "anchor": "faq-mobile-devices", "q": "Posso usar o VTeleprompter no celular ou tablet?", "a": "Sim. O VTeleprompter tem uma interface responsiva feita para smartphones, tablets, notebooks e computadores. Os recursos disponíveis podem depender do navegador, da câmera e dos recursos do dispositivo." },
+      { "anchor": "faq-installation", "q": "Preciso instalar o VTeleprompter?", "a": "Nenhuma instalação é necessária na versão web. Você pode abrir o VTeleprompter em um navegador moderno compatível, adicionar seu roteiro e começar a apresentar online." },
+      { "anchor": "faq-remote-control", "q": "Posso controlar o VTeleprompter de outro dispositivo?", "a": "Sim. O controle remoto do VTeleprompter permite usar outro celular, tablet ou computador para iniciar ou pausar o teleprompter, ajustar a rolagem e navegar pelo seu roteiro." },
+      { "anchor": "faq-4k-recording", "q": "O VTeleprompter grava vídeos em 4K?", "a": "O VTeleprompter suporta gravação em Full HD e 4K quando a câmera, o navegador e o dispositivo suportam a resolução escolhida. A qualidade real da gravação depende dos recursos e permissões do seu dispositivo." },
+      { "anchor": "faq-watermark", "q": "O VTeleprompter adiciona marca d'água às gravações?", "a": "O VTeleprompter não adiciona marca d'água de marca aos seus vídeos gravados." },
+      { "anchor": "faq-supported-files", "q": "Quais formatos de arquivo de roteiro o VTeleprompter suporta?", "a": "O VTeleprompter permite colar texto diretamente e enviar documentos de roteiro compatíveis, como arquivos TXT, DOCX, PDF e Markdown." },
+      { "anchor": "faq-online-autocue", "q": "O VTeleprompter pode ser usado como autocue online?", "a": "Sim. O VTeleprompter pode ser usado como autocue online pelo navegador, com rolagem manual, rolagem automática em velocidade fixa e rolagem ativada por voz com IA." }
+    ]
+  },
+  "footer": {
+    "brand": "VTeleprompter",
+    "description": "Um teleprompter online com IA gratuito para apresentações naturais e gravação de vídeo profissional.",
+    "columns": [
+      {
+        "title": "Produto",
+        "links": [
+          { "label": "Recursos", "url": "#features" },
+          { "label": "Como funciona", "url": "#how-it-works" },
+          { "label": "Rolagem por voz com IA", "url": "#voice-scroll" },
+          { "label": "Modo Notch", "url": "#notch" },
+          { "label": "Controle remoto", "url": "#remote" },
+          { "label": "Gravação em 4K", "url": "#recording" }
+        ]
+      },
+      {
+        "title": "Recursos úteis",
+        "links": [
+          { "label": "Como usar", "url": "#how-it-works" },
+          { "label": "Guia do teleprompter", "url": "/teleprompter-guide" },
+          { "label": "Blog", "url": "/blog" },
+          { "label": "Sobre", "url": "/about" }
+        ]
+      },
+      {
+        "title": "Jurídico",
+        "links": [
+          { "label": "Política de privacidade", "url": "/policy" },
+          { "label": "Termos de serviço", "url": "/term" },
+          { "label": "Cobrança e reembolsos", "url": "/billing" }
+        ]
+      }
+    ],
+    "copyright": "© 2026 VTeleprompter."
+  }
+}

@@ -1,0 +1,322 @@
+---
+layout: workspaces-base.njk
+permalink: /workspaces.html
+pageKey: workspaces
+lang: en
+---
+{%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
+{%- from "partials/logo.njk" import brandLogo -%}
+
+{# Flat copy map for the JS layer — inert JSON (CSP-safe, not executable). #}
+{%- set wsCopy = {
+  "untitled": pageData.card.untitled,
+  "emptyScript": pageData.card.emptyScript,
+  "localBadge": pageData.card.localBadge,
+  "updatedPrefix": pageData.card.updatedPrefix,
+  "recordingsZero": pageData.card.recordingsZero,
+  "recordingsOne": pageData.card.recordingsOne,
+  "recordingsMany": pageData.card.recordingsMany,
+  "itemOne": pageData.card.itemOne,
+  "itemMany": pageData.card.itemMany,
+  "moreAria": pageData.card.moreAria,
+  "openLabel": pageData.card.openLabel,
+  "renameLabel": pageData.card.renameLabel,
+  "deleteLabel": pageData.card.deleteLabel,
+  "exportJsonLabel": pageData.card.exportJsonLabel,
+  "confirmDeleteTitle": pageData.confirm.deleteTitle,
+  "confirmDeleteMessage": pageData.confirm.deleteMessage,
+  "confirmLabel": pageData.confirm.confirmLabel,
+  "cancelLabel": pageData.confirm.cancelLabel,
+  "renameScriptTitle": pageData.rename.scriptTitle,
+  "backLabel": pageData.breadcrumb.backLabel,
+  "backAria": pageData.breadcrumb.backAria,
+  "allLabel": pageData.breadcrumb.allLabel,
+  "folderNewTitle": pageData.folders.newTitle,
+  "folderNewDefault": pageData.folders.newDefault,
+  "folderCreateLabel": pageData.folders.createLabel,
+  "folderNamePlaceholder": pageData.folders.namePlaceholder,
+  "folderRenameTitle": pageData.folders.renameTitle,
+  "folderSaveLabel": pageData.folders.saveLabel,
+  "folderDeleteTitle": pageData.folders.deleteTitle,
+  "folderDeleteMessage": pageData.folders.deleteMessage,
+  "folderDeleteMessageWithCounts": pageData.folders.deleteMessageWithCounts,
+  "folderOne": pageData.folders.folderOne,
+  "folderMany": pageData.folders.folderMany,
+  "scriptOne": pageData.folders.scriptOne,
+  "scriptMany": pageData.folders.scriptMany,
+  "toastDeleted": pageData.toast.deleted,
+  "toastDeleteError": pageData.toast.deleteError,
+  "toastFolderDeleted": pageData.toast.folderDeleted,
+  "toastMoved": pageData.toast.moved,
+  "toastUploadUnsupported": pageData.toast.uploadUnsupported,
+  "toastUploadEmpty": pageData.toast.uploadEmpty,
+  "toastReadError": pageData.toast.readError,
+  "toastExportedJson": pageData.toast.exportedJson,
+  "toastExportError": pageData.toast.exportError,
+  "toastJsonImported": pageData.toast.jsonImported,
+  "toastJsonInvalid": pageData.toast.jsonInvalid,
+  "toastJsonTooLarge": pageData.toast.jsonTooLarge,
+  "backupPreparingMessage": pageData.backup.preparingMessage,
+  "backupReadyMessage": pageData.backup.readyMessage,
+  "backupFailedMessage": pageData.backup.failedMessage,
+  "recVideoBadge": pageData.recordings.videoBadge,
+  "recAudioBadge": pageData.recordings.audioBadge,
+  "recPreviewLabel": pageData.recordings.previewLabel,
+  "recPreviewCloseAria": pageData.recordings.previewCloseAria,
+  "recPreviewMissing": pageData.recordings.previewMissing,
+  "recDeleteLabel": pageData.recordings.deleteLabel,
+  "recMoreAria": pageData.recordings.moreAria,
+  "recDeleteTitle": pageData.recordings.deleteTitle,
+  "recDeleteMessage": pageData.recordings.deleteMessage,
+  "recDeleted": pageData.recordings.deleted,
+  "recDeleteError": pageData.recordings.deleteError,
+  "recUnknownScript": pageData.recordings.unknownScript,
+  "recDownloadLabel": pageData.recordings.downloadLabel,
+  "recToday": pageData.recordings.today,
+  "recYesterday": pageData.recordings.yesterday,
+  "selectionSelectAll": pageData.selection.selectAll,
+  "selectionUnselectAll": pageData.selection.unselectAll,
+  "selectionDownload": pageData.selection.download,
+  "selectionPreparingDownload": pageData.selection.preparingDownload,
+  "selectionDownloadReady": pageData.selection.downloadReady,
+  "selectionDownloadError": pageData.selection.downloadError,
+  "selectionDownloadTooLarge": pageData.selection.downloadTooLarge,
+  "close": pageData.selection.close,
+  "zipPreparingTitle": pageData.selection.zipPreparingTitle,
+  "zipPreparingMessage": pageData.selection.zipPreparingMessage,
+  "zipFile": pageData.selection.zipFile,
+  "zipFiles": pageData.selection.zipFiles,
+  "zipReadyTitle": pageData.selection.zipReadyTitle,
+  "zipReadyMessage": pageData.selection.zipReadyMessage,
+  "zipFailedTitle": pageData.selection.zipFailedTitle,
+  "zipFailedMessage": pageData.selection.zipFailedMessage,
+  "download": pageData.selection.download,
+  "retry": pageData.selection.retry,
+  "selectionDelete": pageData.selection.delete,
+  "selectionSelectScriptAria": pageData.selection.selectScriptAria,
+  "selectionSelectRecordingAria": pageData.selection.selectRecordingAria,
+  "selectionDeleteScriptsTitle": pageData.selection.deleteScriptsTitle,
+  "selectionDeleteScriptsMessage": pageData.selection.deleteScriptsMessage,
+  "selectionDeleteRecordingsTitle": pageData.selection.deleteRecordingsTitle,
+  "selectionDeleteRecordingsMessage": pageData.selection.deleteRecordingsMessage,
+  "selectionScriptsDeleted": pageData.selection.scriptsDeleted,
+  "selectionRecordingsDeleted": pageData.selection.recordingsDeleted,
+  "selectionDeleteError": pageData.selection.deleteError,
+  "storageUsage": pageData.storage.usage,
+  "storageWarn": pageData.storage.warn,
+  "storageFull": pageData.storage.full,
+  "storageEditHint": pageData.storage.editHint,
+  "storageEditSave": pageData.storage.editSave,
+  "storageUpdated": pageData.storage.updated,
+  "storageSettingsTitle": pageData.storage.settingsTitle,
+  "storageSettingsIntro": pageData.storage.settingsIntro,
+  "storageSaveToggle": pageData.storage.saveToggle,
+  "storageSaveToggleHint": pageData.storage.saveToggleHint,
+  "storageLimitLabel": pageData.storage.limitLabel
+} -%}
+<script type="application/json" id="wsCopy">{{ wsCopy | dump | safe }}</script>
+
+<div class="ws-layout">
+  <!-- Sidebar overlay (mobile) -->
+  <div class="ws-sidebar-overlay" id="wsSidebarOverlay"></div>
+
+  <!-- Top app bar -->
+  <header class="ws-appbar">
+    <div class="ws-appbar-brand">
+      <div class="ws-mobile-switch">
+        <button type="button" class="ws-switch-btn active" data-view="scripts">
+          <span>{{ pageData.sidebar.navScripts }}</span>
+        </button>
+        <button type="button" class="ws-switch-btn" data-view="recordings">
+          <span>{{ pageData.sidebar.navRecordings }}</span>
+        </button>
+      </div>
+      <a href="/" class="ws-appbar-logo" aria-label="{{ pageData.appbar.brandAria }}">
+        {{ brandLogo('#8EDB4D') | safe }}
+        <span class="ws-appbar-logo-text">{{ pageData.appbar.brandText }}</span>
+      </a>
+    </div>
+  </header>
+
+  <div class="ws-body-row">
+    <!-- Sidebar -->
+    <nav class="ws-sidebar" id="wsSidebar" aria-label="Workspace navigation">
+      <div class="ws-sidebar-content">
+        <div class="ws-workspace-switcher">
+          <div class="ws-workspace-btn">
+            <span class="ws-workspace-avatar">
+              <span class="ws-workspace-avatar-text">{{ pageData.sidebar.workspaceInitial }}</span>
+            </span>
+            <span class="ws-workspace-info">
+              <span class="ws-workspace-name">{{ pageData.sidebar.workspaceName }}</span>
+            </span>
+          </div>
+        </div>
+
+        <nav class="ws-sidebar-nav" aria-label="Sections">
+          <button type="button" class="ws-nav-item active" data-view="scripts" aria-current="page">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M2 4.5A1.5 1.5 0 0 1 3.5 3h9A1.5 1.5 0 0 1 14 4.5v7a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 11.5v-7Z"/>
+              <path stroke="currentColor" stroke-linecap="round" d="M5.5 7v2m2.5-2v2m2.5-2v2"/>
+            </svg>
+            <span class="ws-nav-item-label">{{ pageData.sidebar.navScripts }}</span>
+          </button>
+          <button type="button" class="ws-nav-item" data-view="recordings">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" aria-hidden="true">
+              <rect x="2" y="3.5" width="9" height="9" rx="1.5" stroke="currentColor" stroke-linejoin="round"/>
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="m11 7 3-1.5v5L11 9"/>
+            </svg>
+            <span class="ws-nav-item-label">{{ pageData.sidebar.navRecordings }}</span>
+          </button>
+        </nav>
+
+        <!-- Hidden file input (Upload) -->
+        <input type="file" accept=".txt,.md,.markdown,.fountain,.text,.json,text/plain,application/json" hidden id="wsFileInput">
+
+        <div class="ws-credits-card ws-credits-card--free">
+          <div class="ws-credits-header">
+            <span class="ws-credits-icon" aria-hidden="true">{{ brandLogo('currentColor') | safe }}</span>
+            <span class="ws-credits-label">{{ pageData.sidebar.creditsLabel }}</span>
+          </div>
+          <p class="ws-credits-text">{{ pageData.sidebar.creditsText | safe }}</p>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <main class="ws-main">
+      <div class="ws-content">
+        <div class="ws-content-header">
+          <h1 class="ws-welcome">{{ pageData.content.welcome }}</h1>
+          <div class="ws-content-actions">
+            <button type="button" id="wsNewScriptBtn" class="ws-action-btn ws-action-btn--primary">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+              <span>{{ pageData.appbar.newScript }}</span>
+            </button>
+            <button type="button" id="wsUploadBtn" class="ws-action-btn ws-action-btn--secondary">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              <span>{{ pageData.appbar.upload }}</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scripts view (folders + scripts library) -->
+        <div class="ws-view" id="wsScriptsView">
+        <!-- Breadcrumb (shown inside a folder) -->
+        <nav class="ws-breadcrumb" id="wsBreadcrumb" aria-label="Folder path" hidden></nav>
+
+        <section class="ws-folders-section" id="wsFoldersSection">
+          <div class="ws-section-head">
+            <button type="button" class="ws-section-toggle" data-section-toggle aria-label="{{ pageData.content.foldersCollapseAria }}">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <h2 class="ws-section-title">{{ pageData.content.foldersTitle }}</h2>
+            <button type="button" class="ws-section-add" id="wsAddFolderBtn" aria-label="{{ pageData.content.addFolderAria }}" title="{{ pageData.content.addFolderAria }}">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+            </button>
+          </div>
+          <div class="ws-section-body">
+            <div class="ws-folder-grid" id="wsFolderGrid"></div>
+          </div>
+        </section>
+
+        <section class="ws-scripts-section" id="wsScriptsSection">
+          <div class="ws-section-head">
+            <button type="button" class="ws-section-toggle" data-section-toggle aria-label="{{ pageData.content.collapseAria }}">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <h2 class="ws-section-title">{{ pageData.content.scriptsTitle }}</h2>
+          </div>
+          <div class="ws-section-body">
+            <div class="ws-video-grid" id="videoGrid"></div>
+            <div class="ws-scripts-empty" id="wsScriptsEmpty" hidden>
+              <h3 class="ws-empty-title">{{ pageData.empty.title }}</h3>
+              <p class="ws-empty-body">{{ pageData.empty.body }}</p>
+            </div>
+          </div>
+        </section>
+        </div>
+
+        <!-- Recordings view (all recorded takes, separate from scripts) -->
+        <div class="ws-view" id="wsRecordingsView" hidden>
+          <!-- Local storage budget meter (persistent) — record page only -->
+          <div class="ws-storage" id="wsStorage" hidden>
+            <div class="ws-storage-head">
+              <span class="ws-storage-label">{{ pageData.storage.label }}</span>
+              <span class="ws-storage-value" id="wsStorageValue"></span>
+              <button type="button" class="ws-storage-edit" id="wsStorageEdit" title="{{ pageData.storage.editAria }}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span>{{ pageData.storage.settingsAction }}</span>
+              </button>
+            </div>
+            <div class="ws-storage-bar" role="progressbar" aria-label="{{ pageData.storage.label }}">
+              <div class="ws-storage-fill" id="wsStorageFill"></div>
+            </div>
+            <p class="ws-storage-note" id="wsStorageNote" hidden></p>
+          </div>
+
+          <section class="ws-recordings-section">
+            <div class="ws-section-head">
+              <button type="button" class="ws-section-toggle" data-section-toggle aria-label="{{ pageData.content.recordingsTitle }}">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+              </button>
+              <h2 class="ws-section-title">{{ pageData.content.recordingsTitle }}</h2>
+            </div>
+            <div class="ws-section-body">
+              <div class="ws-recording-days" id="wsRecordingGrid"></div>
+              <div class="ws-scripts-empty" id="wsRecordingsEmpty" hidden>
+                <h3 class="ws-empty-title">{{ pageData.recordings.emptyTitle }}</h3>
+                <p class="ws-empty-body">{{ pageData.recordings.emptyBody }}</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- Multi-select actions (shown after checking or long-pressing an item) -->
+<div class="ws-selection-bar" id="wsSelectionToolbar" hidden aria-label="Selection actions">
+  <button type="button" class="ws-selection-bar-btn" id="wsSelectAllBtn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="2"></rect>
+      <polyline points="9 11 12 14 22 4"></polyline>
+    </svg>
+    <span class="ws-select-all-label">{{ pageData.selection.selectAll }}</span>
+  </button>
+  <button type="button" class="ws-selection-bar-btn" id="wsExportSelectedBtn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 3v12m0 0 4-4m-4 4-4-4"></path><path d="M5 19h14"></path>
+    </svg>
+    <span>{{ pageData.selection.exportSelected }}</span>
+  </button>
+  <div class="ws-selection-bar-divider" aria-hidden="true"></div>
+  <button type="button" class="ws-selection-bar-btn" id="wsDownloadSelectedBtn" hidden>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+      <polyline points="7 10 12 15 17 10"></polyline>
+      <line x1="12" y1="15" x2="12" y2="3"></line>
+    </svg>
+    <span class="ws-download-selected-label">{{ pageData.selection.download }}</span>
+  </button>
+  <button type="button" class="ws-selection-bar-btn ws-selection-bar-btn--danger" id="wsDeleteSelectedBtn">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+    </svg>
+    <span>{{ pageData.selection.delete }}</span>
+  </button>
+</div>
+
+<!-- Drag & drop overlay -->
+<div id="wsDragOverlay" class="ws-drag-overlay hidden" aria-hidden="true" hidden>
+  <div class="ws-drag-overlay-content">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+      <polyline points="17 8 12 3 7 8"/>
+      <line x1="12" y1="3" x2="12" y2="15"/>
+    </svg>
+    <h2>{{ pageData.drag.dropTitle }}</h2>
+    <p>{{ pageData.drag.dropHint }}</p>
+  </div>
+</div>

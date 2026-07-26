@@ -1,0 +1,131 @@
+/* components/confirm-popup.css — shared confirmation dialog. Centered card over
+   a darkened scrim (no blur), --z-modal. */
+.confirm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: var(--confirm-scrim);
+  animation: confirm-fade var(--dur-fast) ease;
+}
+
+.confirm-box {
+  width: 100%;
+  max-width: 380px;
+  padding: 24px 22px 20px;
+  background: var(--confirm-surface);
+  border: 1px solid var(--confirm-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--confirm-shadow);
+  text-align: center;
+  animation: confirm-pop var(--dur-fast) var(--ease-out);
+}
+
+.confirm-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  background: var(--confirm-icon-bg);
+  color: var(--confirm-text);
+}
+
+.confirm-icon.danger {
+  background: var(--ws-danger-soft);
+  color: var(--confirm-danger);
+}
+
+.confirm-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.confirm-title {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--confirm-title);
+}
+
+.confirm-message {
+  margin: 0 0 20px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--confirm-text);
+}
+
+.confirm-actions {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.confirm-btn {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 9px;
+  border: 1px solid transparent;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background var(--dur-fast) ease,
+    color var(--dur-fast) ease,
+    border-color var(--dur-fast) ease;
+}
+
+.confirm-cancel {
+  background: var(--confirm-cancel-bg);
+  color: var(--confirm-text);
+}
+
+.confirm-cancel:hover {
+  background: var(--confirm-cancel-hover);
+}
+
+.confirm-ok {
+  background: var(--confirm-accent);
+  color: var(--confirm-accent-ink);
+}
+
+.confirm-ok:hover {
+  background: var(--confirm-accent-hover);
+  color: var(--confirm-on-accent);
+}
+
+.confirm-ok.danger {
+  background: var(--confirm-danger);
+  color: var(--confirm-on-danger);
+}
+
+.confirm-ok.danger:hover {
+  background: var(--confirm-danger);
+  filter: brightness(0.92);
+}
+
+@keyframes confirm-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes confirm-pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

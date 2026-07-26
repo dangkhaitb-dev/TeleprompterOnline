@@ -1,0 +1,11 @@
+node_modules
+dist
+_11ty-output
+.git
+.github
+coverage
+test-results
+playwright-report
+*.log
+.env
+.env.*

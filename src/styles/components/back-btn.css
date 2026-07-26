@@ -1,0 +1,29 @@
+/* back-btn — ghost nav button dùng chung cho header teleprompter và trang
+   scene-editor (mount cùng document). Một class duy nhất để hai nút trông y hệt.
+   Màu lấy theo token teleprompter vì đây là "nguồn" mà scene-editor cần khớp.
+   Icon tự chứa stroke/size trong SVG (xem ICON_BACK / template), nên ở đây chỉ
+   cần chặn co giãn flex. */
+.back-btn {
+  height: 32px;
+  border: 0;
+  border-radius: 10px;
+  padding: 0 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--tp-gray-text);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .15s ease;
+}
+
+.back-btn:hover {
+  background: var(--tp-surface-hover);
+}
+
+.back-btn svg {
+  flex: none;
+}

@@ -1,0 +1,278 @@
+{
+  "seo": {
+    "title": "支援 AI 語音捲動的免費線上提詞機 | VTeleprompter",
+    "description": "VTeleprompter 是一款免費線上提詞機，支援 AI 語音捲動、瀏海模式、遠端遙控與 4K 錄影。無廣告、無浮水印。",
+    "canonical": "/zh-Hant/",
+    "ogTitle": "免費線上 AI 提詞機 — VTeleprompter",
+    "ogDescription": "透過 AI 語音捲動、瀏海模式、遠端遙控與專業影片錄製，自然地進行演說。",
+    "ogType": "website",
+    "ogImage": "/og-vteleprompter.jpg"
+  },
+  "schema": {
+    "orgDescription": "VTeleprompter 提供免費線上 AI 提詞機，助您自然演說並專業錄製影片。",
+    "brandDescription": "VTeleprompter 是一款專為自然演說與專業影片錄製而設計的線上 AI 提詞機。",
+    "websiteDescription": "一款免費線上提詞機，支援 AI 語音捲動、瀏海模式、遠端遙控與專業影片錄製。",
+    "webpageName": "支援 AI 語音捲動的免費線上提詞機 | VTeleprompter",
+    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "logoUrl": "/logo.png",
+    "logoCaption": "VTeleprompter",
+    "primaryImage": "/og-vteleprompter.jpg",
+    "primaryImageCaption": "VTeleprompter 免費線上 AI 提詞機",
+    "appAlternateName": "VTeleprompter 線上提詞機",
+    "appDescription": "一款免費線上 AI 提詞機，支援語音啟動捲動、瀏海模式、遠端遙控、腳本管理，以及專業的 Full HD 與 4K 影片錄製。",
+    "applicationCategory": "MultimediaApplication",
+    "applicationSubCategory": "線上提詞機",
+    "operatingSystem": "任何配備現代網頁瀏覽器的作業系統",
+    "browserRequirements": "需要 JavaScript 與現代網頁瀏覽器。使用錄影與 AI 語音捲動功能需要相機與麥克風存取權限。",
+    "availableOnDevice": ["桌上型電腦", "筆記型電腦", "平板電腦", "智慧型手機"],
+    "featureList": [
+      "AI 語音啟動捲動",
+      "手動提詞機捲動",
+      "固定速度自動捲動",
+      "瀏海提詞機模式",
+      "透過其他裝置遠端遙控",
+      "Full HD 影片錄製",
+      "4K 影片錄製",
+      "腳本建立與編輯",
+      "腳本管理",
+      "錄影內容管理",
+      "自適應行動版介面",
+      "支援桌面與行動裝置瀏覽器",
+      "無廣告",
+      "影片無浮水印"
+    ],
+    "offerDescription": "免費使用 VTeleprompter 線上提詞機的各項功能。",
+    "howToName": "如何使用 VTeleprompter",
+    "howToDescription": "了解如何新增腳本、選擇捲動模式、自訂提詞機，並使用 VTeleprompter 開始演說或錄影。",
+    "faqName": "VTeleprompter 常見問題",
+    "faqDescription": "關於 VTeleprompter、AI 語音捲動、瀏海模式、遠端遙控、支援裝置與影片錄製的常見問題。"
+  },
+  "nav": {
+    "items": [
+      { "label": "功能", "url": "#features" },
+      { "label": "瀏海模式", "url": "#notch" },
+      { "label": "語音捲動", "url": "#voice-scroll" },
+      { "label": "遠端遙控", "url": "#remote" }
+    ],
+    "cta": { "label": "工作區", "url": "/workspaces" }
+  },
+  "hero": {
+    "eyebrow": "VTeleprompter — AI 提詞機",
+    "title": "免費線上提詞機",
+    "subtitle": "透過 AI 語音捲動、瀏海模式、遠端遙控與專業 4K 錄影，自然地進行演說。",
+    "placeholder": "貼上您的腳本或上傳檔案即可開始……",
+    "uploadLabel": "上傳檔案",
+    "uploadLabelShort": "上傳",
+    "startLabel": "開始演說",
+    "startLabelShort": "開始",
+    "supportedText": "支援 TXT、DOCX 與 Markdown",
+    "dropTitle": "將檔案拖放到此處以上傳",
+    "dropHint": "支援 TXT、DOCX 與 Markdown"
+  },
+  "messages": {
+    "errorEmpty": "開始使用提詞機前，請先輸入您的腳本內容。",
+    "errorRead": "不支援的格式。請選擇 .txt 或 .md 檔案。"
+  },
+  "features": {
+    "eyebrow": "更出色演說所需的一切",
+    "title": "一款提詞機，勝任每一次錄影",
+    "description": "VTeleprompter 將線上提詞機、AI 語音捲動、瀏海模式、遠端遙控、腳本管理與專業影片錄製，整合到一個簡潔的工作區中。",
+    "items": [
+      { "title": "AI 語音捲動", "description": "VTeleprompter 跟隨您的語音，以自然的語速自動捲動您的腳本。" },
+      { "title": "瀏海提詞機", "description": "讓腳本貼近相機，減少明顯的視線移動，維持更自然的眼神交流。" },
+      { "title": "遠端遙控", "description": "使用另一支手機、平板或電腦控制捲動、翻閱腳本並遠端管理您的演說。" },
+      { "title": "Full HD 與 4K 錄製", "description": "直接從提詞機閱讀腳本的同時錄製專業影片。" },
+      { "title": "腳本管理", "description": "在一個便利的工作區中建立、上傳、編輯、整理並重複使用您的所有腳本。" },
+      { "title": "錄影資料庫", "description": "將錄影內容與用於製作它們的腳本一同儲存、檢視與管理。" },
+      { "title": "為行動裝置而生", "description": "自適應介面專為各種螢幕設計，讓您在手機、平板、筆電與桌機上都能舒適使用 VTeleprompter。" },
+      { "title": "無廣告、無浮水印", "description": "演說與錄影時，不會有分散注意力的廣告或品牌浮水印出現在您的影片上。" }
+    ]
+  },
+  "howItWorks": {
+    "eyebrow": "從第一次拍攝就輕鬆上手",
+    "title": "VTeleprompter 的運作方式",
+    "description": "只需幾個步驟，即可將任何腳本變成流暢的演說或專業的錄影作品。",
+    "steps": [
+      { "anchor": "step-add-script", "title": "新增您的腳本", "description": "將文字直接貼到 VTeleprompter，或從您的裝置上傳現有腳本。" },
+      { "anchor": "step-choose-scroll-mode", "title": "選擇捲動模式", "description": "設定固定捲動速度、手動控制腳本，或啟用 AI 語音捲動。" },
+      { "anchor": "step-customize-view", "title": "自訂檢視畫面", "description": "調整字型、字級、行距、閱讀區域與提詞機位置，讓閱讀更舒適。" },
+      { "anchor": "step-start-presenting", "title": "開始演說", "description": "開啟提詞機，如有需要連接遙控裝置，即可開始演說或錄影。" }
+    ]
+  },
+  "voiceScroll": {
+    "eyebrow": "以您的語速捲動",
+    "title": "緊隨您節奏的 AI 語音捲動",
+    "description": "無需再為配合固定捲動速度而調整語速。VTeleprompter 跟隨您的語音，讓您專注於自然地傳達訊息。",
+    "benefits": [
+      { "title": "自然地開口", "description": "以自己的節奏閱讀，不顯倉促、不拖沓，也不生硬機械。" },
+      { "title": "需要時隨時停頓", "description": "換氣、強調觀點或在段落之間稍作停頓，都不會立刻找不到閱讀位置。" },
+      { "title": "保持專注", "description": "在專注表達的同時，讓腳本的正確部分始終可見。" },
+      { "title": "減少重拍", "description": "避免因錄影時腳本捲動過快或過慢而造成的失誤。" }
+    ],
+    "supporting": "偏好傳統的線上提詞方式？手動與固定速度的捲動控制始終可用。",
+    "cta": { "label": "試用 AI 語音捲動", "url": "/workspaces" }
+  },
+  "notch": {
+    "eyebrow": "自然的眼神交流",
+    "title": "讓腳本緊貼相機",
+    "description": "VTeleprompter 的瀏海模式將精巧的閱讀區域放置在相機附近，幫助您的目光更貼近鏡頭。",
+    "items": [
+      "減少明顯的左右視線移動。",
+      "將腳本放置在網路攝影機或手機相機附近。",
+      "調整閱讀區域大小，只顯示所需的行數。",
+      "將提詞機移動到螢幕上的任意位置。",
+      "在錄影與視訊通話中維持更自然的眼神交流。"
+    ],
+    "supporting": "瀏海模式非常適合訪談、演說、產品展示、線上課程、視訊通話以及口播類內容。",
+    "cta": { "label": "開啟瀏海模式", "url": "/workspaces" }
+  },
+  "remote": {
+    "eyebrow": "隨時隨地遙控",
+    "title": "任何裝置皆可作為提詞機遙控器",
+    "description": "連接另一支手機、平板或電腦，無需碰觸主錄影裝置即可控制您的提詞機。",
+    "items": [
+      { "title": "開始與暫停", "description": "演說時不動聲色地控制提詞機。" },
+      { "title": "調整捲動速度", "description": "從連接的遙控裝置上加快或放慢速度。" },
+      { "title": "翻閱您的腳本", "description": "向前、向後或跳至腳本的其他段落。" },
+      { "title": "管理錄影", "description": "在您的裝置與瀏覽器支援時，遠端開始或停止錄影。" }
+    ],
+    "supporting": "非常適合個人創作者、演講者、工作室、製作團隊與遠端演說。",
+    "cta": { "label": "連接遙控裝置", "url": "/workspaces" }
+  },
+  "recording": {
+    "eyebrow": "邊讀邊錄",
+    "title": "以 Full HD 或 4K 製作專業影片",
+    "description": "在一個流暢的工作流程中同時使用相機與提詞機。自然地閱讀、監看構圖並進行錄製，無需在不同應用程式間切換。",
+    "items": [
+      { "title": "即時相機預覽", "description": "在錄影前與錄影過程中檢查您的位置、構圖與外觀。" },
+      { "title": "Full HD 錄製", "description": "為社群媒體、課程、演說與商務內容製作清晰、高品質的影片。" },
+      { "title": "4K 錄製", "description": "在相機、瀏覽器與裝置支援時，拍攝專業的高解析度影片。" },
+      { "title": "無浮水印", "description": "匯出不含 VTeleprompter 標誌或品牌疊加層的乾淨錄影作品。" },
+      { "title": "錄影資料庫", "description": "讓您的拍攝內容井然有序，快速找到與每個腳本關聯的錄影作品。" }
+    ],
+    "cta": { "label": "開始錄影", "url": "/workspaces" }
+  },
+  "workspace": {
+    "eyebrow": "您的內容工作區",
+    "title": "一起管理腳本與錄影內容",
+    "description": "不必再在資料夾、文件與各種應用程式之間來回尋找。VTeleprompter 將您的腳本與錄影內容集中在一個井然有序的工作區中。",
+    "items": [
+      { "title": "建立與編輯腳本", "description": "直接在 VTeleprompter 中撰寫新腳本或更新現有內容。" },
+      { "title": "上傳現有內容", "description": "從支援的文件匯入腳本，無需逐段手動複製。" },
+      { "title": "整理您的資料庫", "description": "讓腳本與錄影內容井然有序，隨時可用於日後的演說。" },
+      { "title": "重複使用您的腳本", "description": "開啟以往的腳本，快速修改後錄製新版本，無需從頭開始。" },
+      { "title": "在任何螢幕上存取", "description": "在手機、平板、筆電或桌機上繼續工作。" }
+    ]
+  },
+  "mobile": {
+    "eyebrow": "為每一塊螢幕而設計",
+    "title": "適配行動裝置的線上提詞機",
+    "description": "VTeleprompter 力求在桌面與行動裝置上都做到快速、清晰、易於操控。",
+    "items": [
+      { "title": "自適應介面", "description": "在不同的螢幕尺寸與方向下，核心控制項都觸手可及。" },
+      { "title": "直向與橫向", "description": "選擇最符合您錄影設定的螢幕方向。" },
+      { "title": "適合觸控的操作", "description": "在觸控螢幕上舒適地調整文字、捲動與錄影設定。" },
+      { "title": "無需安裝", "description": "在支援的瀏覽器中開啟 VTeleprompter，即可開始線上使用提詞機。" }
+    ],
+    "supporting": "將 VTeleprompter 用作行動提詞機、桌面提詞機或以瀏覽器為基礎的線上提詞工具。"
+  },
+  "useCases": {
+    "eyebrow": "為每一位演說者打造",
+    "title": "VTeleprompter 適合誰使用？",
+    "items": [
+      { "title": "內容創作者", "description": "無需逐字背誦，即可錄製 TikTok 影片、YouTube 影片、Shorts、Reels 等社群內容。" },
+      { "title": "YouTuber", "description": "以更流暢、更自信的表現呈現評測、教學、講解與口播影片。" },
+      { "title": "Podcast 主持人", "description": "錄製時跟隨開場白、贊助口播、結構化提問與節目筆記。" },
+      { "title": "教師與教育工作者", "description": "清晰、穩定地呈現線上課程、課程影片與教育內容。" },
+      { "title": "商務人士", "description": "準備產品展示、公司動態、網路研討會、銷售簡報與訓練影片。" },
+      { "title": "公眾演說者", "description": "練習演說、排練簡報，自信地傳達事先準備的內容。" },
+      { "title": "記者與採訪者", "description": "跟隨腳本、問題與關鍵重點，同時始終專注於鏡頭。" },
+      { "title": "遠端團隊", "description": "在視訊通話、線上簡報與遠端訪談中使用瀏海模式。" }
+    ]
+  },
+  "comparison": {
+    "eyebrow": "為什麼選擇 VTeleprompter？",
+    "title": "更完整的免費提詞機",
+    "description": "VTeleprompter 旨在提供完整的提詞機體驗，無需使用者拼湊多款應用程式，也無需為基本功能付費。",
+    "items": [
+      "AI 語音啟動捲動",
+      "瀏海提詞機模式",
+      "透過其他裝置遠端遙控",
+      "Full HD 與 4K 影片錄製",
+      "腳本與錄影內容管理",
+      "支援桌面與行動裝置",
+      "無廣告",
+      "影片無浮水印",
+      "簡潔而現代的使用者體驗",
+      "免費使用核心提詞機功能"
+    ],
+    "supporting": "從撰寫腳本到錄製最終成品，VTeleprompter 讓您在同一處即可取得所需的全部工具。"
+  },
+  "about": {
+    "eyebrow": "關於 VTeleprompter",
+    "title": "讓演說變得自然而然",
+    "paragraphs": [
+      "VTeleprompter 是一款 AI 提詞機，專為那些希望自信開口、又不想逐字背誦或頻繁操控捲動的人而打造。",
+      "我們的目標是打造最完整、最容易上手的線上提詞機體驗，將可靠的 AI 捲動、貼心的設計、自然眼神交流工具與專業錄製功能融為一體。",
+      "無論您是用手機錄影、用筆電演說，還是遠端操控工作室的設備，VTeleprompter 都能協助您專注於觀眾，而非軟體本身。"
+    ]
+  },
+  "finalCta": {
+    "eyebrow": "準備好演說了嗎？",
+    "title": "開始使用 VTeleprompter",
+    "description": "新增您的腳本，選擇您偏好的閱讀模式，自然地開始演說。",
+    "cta": { "label": "開啟免費提詞機", "url": "/workspaces" },
+    "supporting": "無廣告。無浮水印。無需繁瑣設定。"
+  },
+  "faq": {
+    "eyebrow": "問與答",
+    "title": "常見問題",
+    "items": [
+      { "anchor": "faq-is-vteleprompter-free", "q": "VTeleprompter 是免費使用的嗎？", "a": "VTeleprompter 目前免費使用。您可以使用其核心的提詞機、腳本與錄影功能，沒有廣告，也沒有品牌影片浮水印。" },
+      { "anchor": "faq-what-is-ai-voice-scroll", "q": "什麼是 AI 語音捲動？", "a": "AI 語音捲動會聆聽您的語音，並依據您自然的語速翻動腳本。它幫助您停頓、繼續與演說，無需不斷調整固定的捲動速度。" },
+      { "anchor": "faq-what-is-notch-mode", "q": "什麼是 VTeleprompter 瀏海模式？", "a": "瀏海模式將精巧的提詞機閱讀區域放置在相機附近。這有助於減少明顯的視線移動，讓您在錄影、演說與視訊通話中的眼神交流看起來更自然。" },
+      { "anchor": "faq-mobile-devices", "q": "我可以在手機或平板上使用 VTeleprompter 嗎？", "a": "可以。VTeleprompter 擁有專為智慧型手機、平板、筆電與桌機設計的自適應介面。可用功能可能取決於瀏覽器、相機與裝置效能。" },
+      { "anchor": "faq-installation", "q": "我需要安裝 VTeleprompter 嗎？", "a": "網頁版無需安裝。您可以在支援的現代瀏覽器中開啟 VTeleprompter，新增腳本，即可線上開始演說。" },
+      { "anchor": "faq-remote-control", "q": "我可以用另一台裝置控制 VTeleprompter 嗎？", "a": "可以。VTeleprompter 遠端遙控功能讓您使用另一支手機、平板或電腦來開始或暫停提詞機、調整捲動並翻閱您的腳本。" },
+      { "anchor": "faq-4k-recording", "q": "VTeleprompter 可以錄製 4K 影片嗎？", "a": "當相機、瀏覽器與裝置支援所選解析度時，VTeleprompter 支援 Full HD 與 4K 錄製。實際錄影品質取決於您裝置的效能與權限。" },
+      { "anchor": "faq-watermark", "q": "VTeleprompter 會為錄影內容加上浮水印嗎？", "a": "VTeleprompter 不會在您錄製的影片上加上品牌浮水印。" },
+      { "anchor": "faq-supported-files", "q": "VTeleprompter 支援哪些腳本檔案格式？", "a": "VTeleprompter 支援直接貼上文字，以及上傳 TXT、DOCX、PDF 與 Markdown 等受支援的腳本文件。" },
+      { "anchor": "faq-online-autocue", "q": "VTeleprompter 可以用作線上提詞工具嗎？", "a": "可以。VTeleprompter 可用作以瀏覽器為基礎的線上提詞工具，支援手動捲動、固定速度自動捲動與 AI 語音啟動捲動。" }
+    ]
+  },
+  "footer": {
+    "brand": "VTeleprompter",
+    "description": "一款免費線上 AI 提詞機，助您自然演說並專業錄製影片。",
+    "columns": [
+      {
+        "title": "產品",
+        "links": [
+          { "label": "功能", "url": "#features" },
+          { "label": "運作方式", "url": "#how-it-works" },
+          { "label": "AI 語音捲動", "url": "#voice-scroll" },
+          { "label": "瀏海模式", "url": "#notch" },
+          { "label": "遠端遙控", "url": "#remote" },
+          { "label": "4K 錄製", "url": "#recording" }
+        ]
+      },
+      {
+        "title": "資源",
+        "links": [
+          { "label": "使用方法", "url": "#how-it-works" },
+          { "label": "提詞機指南", "url": "/teleprompter-guide" },
+          { "label": "部落格", "url": "/blog" },
+          { "label": "關於我們", "url": "/about" }
+        ]
+      },
+      {
+        "title": "法律資訊",
+        "links": [
+          { "label": "隱私權政策", "url": "/policy" },
+          { "label": "服務條款", "url": "/term" },
+          { "label": "帳單與退款", "url": "/billing" }
+        ]
+      }
+    ],
+    "copyright": "© 2026 VTeleprompter."
+  }
+}

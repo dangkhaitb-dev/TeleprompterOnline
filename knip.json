@@ -1,0 +1,12 @@
+{
+  "$schema": "https://unpkg.com/knip@6/schema.json",
+  "entry": [
+    "src/script/main.js",
+    "scripts/*.js",
+    "eleventy.config.cjs",
+    "vite.config.js",
+    "vite-plugin-*.js"
+  ],
+  "project": ["src/script/**/*.js"],
+  "ignore": ["lib/**", "public/**", "_11ty-output/**", "dist/**"]
+}

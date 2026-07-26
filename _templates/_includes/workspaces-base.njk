@@ -1,0 +1,21 @@
+{%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
+<!DOCTYPE html>
+<html lang="{{ lang or 'en' }}" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ pageData.seo.description }}">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#f9fafd">
+    <title>{{ pageData.seo.title }}</title>
+    {% include "partials/head-icons.njk" %}
+</head>
+
+<body class="ws-body">
+    {{ content | safe }}
+    <script type="module" src="/src/script/workspaces-main.js"></script>
+</body>
+
+</html>

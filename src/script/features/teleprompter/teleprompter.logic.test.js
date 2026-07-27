@@ -169,6 +169,24 @@ describe('workspace setting inheritance', () => {
     });
   });
 
+  it('starts a new script with underline off instead of inheriting it', () => {
+    stubLocalStorage();
+    setItem(LS_GLOBAL_SETTING_PROMPTER, {
+      color: '#f2c94c',
+      underline: true,
+    });
+    const workspace = createWorkspace({ title: 'New script' });
+
+    expect(resolveInitialSettings(workspace)).toMatchObject({
+      color: '',
+      underline: false,
+    });
+
+    // Its first unrelated settings change must preserve the off default.
+    saveWorkspaceSettings(workspace.id, { align: 'center' });
+    expect(getWorkspace(workspace.id).settings.underline).toBe(false);
+  });
+
   it('keeps a saved script\'s own color untouched', () => {
     stubLocalStorage();
     setItem(LS_GLOBAL_SETTING_PROMPTER, { color: '#ffffff' });

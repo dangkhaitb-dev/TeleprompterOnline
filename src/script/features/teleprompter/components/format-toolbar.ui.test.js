@@ -16,6 +16,7 @@ describe('shared format toolbar controller', () => {
           <div id="notchEditToolbar">
             <select id="notchEditFontSize"><option value="24" selected>24</option><option value="32">32</option></select>
             <button data-cmd="bold">B</button>
+            <button data-cmd="underline">U</button>
             <button id="notchEditColorTrigger"></button>
             <span id="notchEditColorBar"></span>
             <button class="notch-edit-align" data-align="left"></button>
@@ -114,6 +115,40 @@ describe('shared format toolbar controller', () => {
 
     // Must commit the notch editor (fresh content), not promptBox (old content).
     expect(onFormatChange).toHaveBeenCalledWith(notchEditText, { bold: true });
+  });
+
+  it('turns off a saved global underline even when editor text is selected', () => {
+    const promptBox = document.getElementById('promptBox');
+    const teleprompterText = document.getElementById('teleprompterText');
+    const notchEditText = document.getElementById('notchEditText');
+    const onSettingsChange = vi.fn();
+    const onFormatChange = vi.fn();
+    controller = initFormatToolbar({
+      promptBox,
+      teleprompterText,
+      notchEditText,
+      initialUnderline: true,
+      onSettingsChange,
+      onFormatChange,
+    });
+
+    const range = document.createRange();
+    range.selectNodeContents(notchEditText);
+    const selection = window.getSelection();
+    selection.removeAllRanges();
+    selection.addRange(range);
+
+    const underlineButton = document.querySelector('#notchEditToolbar [data-cmd="underline"]');
+    expect(underlineButton.classList.contains('active')).toBe(true);
+    underlineButton.click();
+
+    [promptBox, teleprompterText, notchEditText].forEach((surface) => {
+      expect(surface.style.textDecoration).toBe('');
+    });
+    expect(underlineButton.classList.contains('active')).toBe(false);
+    expect(document.execCommand).not.toHaveBeenCalledWith('underline');
+    expect(onSettingsChange).toHaveBeenCalledWith({ underline: false });
+    expect(onFormatChange).toHaveBeenCalledWith(notchEditText, { underline: false });
   });
 
   it('sets global text color to white when setGlobalColor is called', () => {

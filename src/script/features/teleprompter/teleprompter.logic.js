@@ -64,18 +64,17 @@ export function loadGlobalSettings() {
 }
 
 // Base settings for a script that has none of its own yet: the global last-used
-// settings, EXCEPT text color. A brand-new script always starts with
-// theme-driven text (dark page → white, light page → black, via CSS) rather than
-// inheriting whatever color the user last picked, so color is reset to '' (auto).
-// Saved scripts keep their own color untouched.
+// settings, EXCEPT text color and underline. A brand-new script always starts
+// with theme-driven text color and underline off instead of inheriting either
+// formatting choice from the previous script. Saved scripts keep their own
+// color and underline untouched.
 function newScriptSettings() {
-  return { ...loadGlobalSettings(), color: '' };
+  return { ...loadGlobalSettings(), color: '', underline: false };
 }
 
 // Settings to apply when the studio opens a workspace: the script's own if it
 // has any, otherwise the global last-used defaults (with color reset to
-// theme-driven for a fresh script) — so a new script starts from the user's most
-// recent choices but with text color matching the page theme.
+// theme-driven and underline reset to off for a fresh script).
 export function resolveInitialSettings(workspace) {
   const own = workspace && workspace.settings;
   if (own && Object.keys(own).length > 0) return normalizeSettings(own);
@@ -90,9 +89,9 @@ export function saveWorkspaceSettings(id, patch = {}) {
   if (!id) return null;
   const own = getWorkspace(id)?.settings;
   // A brand-new workspace has an empty settings object and is rendered from
-  // newScriptSettings() (global last-used, color reset to theme-driven). Use that
-  // SAME resolved state as the base for its first change, otherwise the untouched
-  // inherited fields — including the theme-driven color shown to the user — reset.
+  // newScriptSettings() (global last-used, color reset to theme-driven and
+  // underline reset to off). Use that SAME resolved state as the base for its
+  // first change, otherwise untouched defaults shown to the user would reset.
   const current = own && Object.keys(own).length > 0 ? own : newScriptSettings();
   const next = normalizeSettings({ ...current, ...patch });
   updateWorkspaceSettings(id, next);

@@ -23,6 +23,7 @@ import {
 } from './teleprompter.model.js';
 import '../../../styles/components/permission-popup.css';
 import '../../../styles/components/toast.css';
+import '../../../styles/features/voice-scroll.css';
 import {
   getCaptureStream,
   stopStream,
@@ -46,6 +47,7 @@ import { createStorageMonitor, checkBeforeRecord, formatBytes } from '../../util
 import { requestPersistentStorage } from '../../utils/storage-quota.js';
 import { scopedId } from '../../utils/scoped-query.js';
 import { initEditStaleBadge } from './collab/edit-stale-badge.ui.js';
+import { initVoiceScrollUI } from './components/voice-scroll.ui.js';
 
 const TIMESLICE_LABEL_MS = 250;
 
@@ -101,6 +103,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const toastEl = $('toast');
   const recordButton = $('recordButton');
   const recordLabel = recordButton && recordButton.querySelector('.record-label');
+  const autoScrollBtn = $('autoScrollBtn');
   const pauseButton = $('pauseButton');
   const pauseLabel = pauseButton && pauseButton.querySelector('.pause-label');
   const headerPlayButton = $('headerPlayButton');
@@ -530,6 +533,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   function setCameraMode(nextOn) {
+    ensureVoiceScrollStopped();
     setFormatEditOpen(false);
     if (nextOn) {
       syncSurface(teleprompterText);
@@ -574,6 +578,130 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     onStateChange: (playing) => setPlayIcon(playing),
     portal,
   });
+
+  // ---- Voice Scroll (Auto Scroll) -----------------------------------------
+  let voiceScrollUI = null;
+  let voiceScrollStarting = false;
+  let voiceScrollAttempt = 0;
+
+  function setVoiceScrollButton({ active = false, busy = false, phase = 'idle' } = {}) {
+    if (!autoScrollBtn) return;
+    autoScrollBtn.classList.toggle('active', active);
+    autoScrollBtn.classList.toggle('is-starting', busy);
+    autoScrollBtn.setAttribute('aria-pressed', String(active));
+    autoScrollBtn.setAttribute('aria-busy', String(busy));
+    autoScrollBtn.disabled = busy;
+    autoScrollBtn.dataset.voicePhase = phase;
+  }
+
+  function voiceScrollErrorMessage(error) {
+    if (error === 'not-allowed' || error === 'service-not-allowed') {
+      return 'Microphone permission is required for voice scroll';
+    }
+    if (error === 'audio-capture') return copy.cameraNoDevice || 'No microphone is available';
+    if (error === 'network') return 'Speech recognition network error';
+    if (error === 'recognizer-busy') {
+      return 'Microphone conflict: another tab or browser voice feature is using speech recognition. Stop it, then try Auto again';
+    }
+    if (error === 'start-timeout') return 'Speech recognition did not start';
+    if (/does not support|unsupported/i.test(error || '')) {
+      return 'This browser does not support voice scroll';
+    }
+    return 'Voice scroll stopped because speech recognition failed';
+  }
+
+  function stopVoiceScroll({ error = '' } = {}) {
+    voiceScrollAttempt += 1;
+    voiceScrollStarting = false;
+    const current = voiceScrollUI;
+    voiceScrollUI = null;
+    if (current) current.stop();
+    app.classList.remove('voice-scroll-active');
+    setVoiceScrollButton();
+    if (error) {
+      showToast(voiceScrollErrorMessage(error), {
+        variant: 'error',
+        duration: error === 'recognizer-busy' ? 6000 : undefined,
+      });
+    }
+  }
+
+  function ensureVoiceScrollStopped() {
+    if (voiceScrollUI || voiceScrollStarting) stopVoiceScroll();
+  }
+
+  async function requestVoiceScrollMicrophone() {
+    const allowed = await ensureCaptureAllowed({ audio: true });
+    // Match the proven reference implementation: SpeechRecognition owns the
+    // microphone request. Opening and closing a separate getUserMedia stream
+    // here can race Chrome's recognizer on macOS.
+    return allowed;
+  }
+
+  async function toggleAutoScroll() {
+    if (voiceScrollUI || voiceScrollStarting) {
+      // OFF → back to normal mode
+      stopVoiceScroll();
+      return;
+    }
+
+    const attempt = ++voiceScrollAttempt;
+    voiceScrollStarting = true;
+    setVoiceScrollButton({ busy: true, phase: 'requesting-microphone' });
+    console.info('[VoiceScroll] requesting microphone');
+
+    try {
+      const micReady = await requestVoiceScrollMicrophone();
+      if (attempt !== voiceScrollAttempt) return;
+      if (!micReady) {
+        voiceScrollStarting = false;
+        setVoiceScrollButton();
+        return;
+      }
+
+      // ON → start voice scroll
+      scroller.stop();  // Stop WPM auto-scroll if running
+      syncDirtySurfaces();
+      const candidate = initVoiceScrollUI({
+        getSurface: activeSurface,
+        onPhaseChange: (phase) => {
+          if (candidate !== voiceScrollUI) return;
+          setVoiceScrollButton({
+            active: phase === 'listening',
+            busy: phase === 'detecting',
+            phase,
+          });
+        },
+        onError: (error) => {
+          if (candidate !== voiceScrollUI) return;
+          stopVoiceScroll({ error });
+        },
+      });
+      voiceScrollUI = candidate;
+      const started = await candidate.start();
+
+      if (attempt !== voiceScrollAttempt || candidate !== voiceScrollUI) {
+        candidate.stop();
+        return;
+      }
+      if (!started) {
+        stopVoiceScroll({ error: 'start-timeout' });
+        return;
+      }
+
+      voiceScrollStarting = false;
+      app.classList.add('voice-scroll-active');
+      setVoiceScrollButton({ active: true, phase: 'listening' });
+      showToast('Voice scroll is listening');
+    } catch (err) {
+      console.error('[VoiceScroll] failed to start', err);
+      if (attempt === voiceScrollAttempt) {
+        stopVoiceScroll({ error: err?.message || 'unknown' });
+      }
+    }
+  }
+
+  on(autoScrollBtn, 'click', toggleAutoScroll);
   let playbackOnlyActive = false;
   let notchAutoScrollBlocked = false;
   let colorBeforeNotch = null;
@@ -625,6 +753,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (notchAutoScrollBlocked) return;
     // Wait for the center-on-record slide to finish before auto-scrolling.
     if (layout.isCentering()) return;
+    if (voiceScrollUI && voiceScrollUI.isActive()) return;
     const surface = activeSurface();
     if (prepareScrollSurface(surface, restart)) scroller.start(surface);
   }
@@ -661,6 +790,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   function togglePlayback() {
+    ensureVoiceScrollStopped();
     // A direct Play click is the only action that may resume scrolling after
     // the user has switched to the static Notch view.
     if (notch.isActive()) notchAutoScrollBlocked = false;
@@ -1394,6 +1524,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     },
     shouldEnterFullscreen: settings.wantsNotchFullscreen,
     onActiveChange: (active, surface) => {
+      ensureVoiceScrollStopped();
       notchAutoScrollBlocked = active;
       if (!active) {
         // The main surfaces come back into view — apply edits typed in notch.
@@ -1584,6 +1715,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     window.removeEventListener('pagehide', teardown);
     persistSharedState.flush();
     scroller.destroy();
+    if (voiceScrollUI) { voiceScrollUI.destroy(); voiceScrollUI = null; }
     controller.cancel();
     cancelRecordCountdown();
     clearInterval(recordTimer);

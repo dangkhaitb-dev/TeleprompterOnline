@@ -375,6 +375,17 @@ export function initFormatToolbar({
     });
     toolbar.querySelectorAll('button[data-cmd]').forEach((btn) => {
       on(btn, 'click', () => {
+        // A selection cannot cancel text-decoration inherited from the editor
+        // surface itself: wrapping the selection with "text-decoration: none"
+        // still leaves the ancestor underline painted by CSS. Treat this case
+        // as switching off the saved global underline so the control can
+        // actually be toggled off (and all mirrored surfaces stay in sync).
+        const hasGlobalUnderline = btn.dataset.cmd === 'underline'
+          && promptBox.style.textDecoration.includes('underline');
+        if (hasGlobalUnderline) {
+          applyGlobalFormat('underline');
+          return;
+        }
         if (isSelectionActive()) {
           applyFormat(() => document.execCommand(btn.dataset.cmd));
         } else {

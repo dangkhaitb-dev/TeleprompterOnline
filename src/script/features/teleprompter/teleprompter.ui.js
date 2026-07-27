@@ -75,6 +75,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // when embedded; the standalone page keeps them on document.body.
   const portal = root === document ? document.body : root;
 
+  let resolvePanelsReady;
+  let rejectPanelsReady;
+  const panelsReady = new Promise((resolve, reject) => {
+    resolvePanelsReady = resolve;
+    rejectPanelsReady = reject;
+  });
+  // Mark the root chain handled so a chunk-load failure before any user
+  // interaction doesn't surface as a load-time unhandled rejection.
+  panelsReady.catch(() => {});
+
   const cleanups = [];
   const on = (el, type, fn, opts) => {
     if (!el) return;
@@ -1734,15 +1744,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // it needs exists, wire it up when it lands. `panelsDestroyed` lets teardown
   // win the race if it runs before the chunk resolves.
   let panelsDestroyed = false;
-  const panelsReady = panelsModule.then((m) => {
+  panelsModule.then((m) => {
     panels = m.initStudioPanels({ popups: popupsArgs, panelDrag: panelDragArgs });
     if (panelsDestroyed) panels.destroy();
-    return panels;
+    resolvePanelsReady(panels);
+  }).catch((err) => {
+    rejectPanelsReady(err);
   });
-  // Mark the root chain handled so a chunk-load failure before any user
-  // interaction doesn't surface as a load-time unhandled rejection. Consumers
-  // still observe the rejection on their own await/.then (each guarded).
-  panelsReady.catch(() => {});
   formatToolbar = initFormatToolbar({
     root,
     promptBox,

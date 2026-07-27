@@ -1425,88 +1425,130 @@ html[data-theme="dark"] .app .prompt-box {
   position: absolute;
   z-index: 2000;
   width: 196px;
-  padding: 6px;
-  border-radius: 14px;
+  padding: 8px;
+  border-radius: 16px;
   background: var(--tp-surface);
-  box-shadow: 0 0 0 1px rgba(18, 21, 26, 0.06), 0 14px 34px rgba(18, 21, 26, 0.16);
+  box-shadow: 
+    0 0 0 1px rgba(18, 21, 26, 0.04),
+    0 4px 6px -1px rgba(18, 21, 26, 0.05),
+    0 16px 36px -4px rgba(18, 21, 26, 0.16),
+    0 24px 48px -8px rgba(18, 21, 26, 0.12);
   display: none;
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+html[data-theme="dark"] .quick-menu {
+  box-shadow: 
+    0 0 0 1px rgba(255, 255, 255, 0.05),
+    0 4px 6px -1px rgba(0, 0, 0, 0.2),
+    0 16px 36px -4px rgba(0, 0, 0, 0.4),
+    0 24px 48px -8px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes quickMenuPopIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
 }
 
 .quick-menu.open {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
+  animation: quickMenuPopIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .speed-menu {
-  width: 304px;
-  padding: 14px;
+  width: 320px;
+  padding: 16px;
 }
 
 .scroll-mode-options {
   display: grid;
-  gap: 3px;
+  gap: 6px;
 }
 
 .scroll-mode-option {
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 10px;
+  background: var(--tp-surface);
+  border: 1px solid var(--tp-control-border);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.scroll-mode-option:hover {
+  background: var(--tp-surface-hover);
+}
+
+.scroll-mode-option:has(.scroll-mode-choice.selected) {
+  border-color: var(--tp-green-dark);
+  box-shadow: 0 4px 12px rgba(94, 165, 0, 0.06);
+  background: var(--tp-surface);
 }
 
 .scroll-mode-choice {
   width: 100%;
   display: grid;
-  grid-template-columns: 16px minmax(0, 1fr);
+  grid-template-columns: 18px minmax(0, 1fr);
   align-items: center;
-  gap: 10px;
-  min-height: 40px;
+  gap: 12px;
+  min-height: 42px;
   border: 0;
-  border-radius: 8px;
-  padding: 8px 10px;
+  border-radius: 0;
+  padding: 10px 14px;
   background: transparent;
   color: var(--tp-page-text);
   font: inherit;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 600;
   text-align: left;
   cursor: pointer;
-  transition: background-color 180ms ease, transform 120ms ease;
+  transition: color 180ms ease;
 }
 
 .scroll-mode-choice:hover {
-  background: var(--tp-surface-hover);
+  background: transparent;
 }
 
 .scroll-mode-choice.selected {
-  background: color-mix(in srgb, var(--tp-green-dark) 10%, transparent);
+  background: transparent;
   color: var(--tp-green-dark);
 }
 
 .scroll-choice-radio {
-  width: 15px;
-  height: 15px;
+  width: 16px;
+  height: 16px;
   display: grid;
   place-items: center;
-  border: 1.5px solid var(--tp-control-border);
+  border: 2px solid var(--tp-control-border);
   border-radius: 50%;
   background: var(--tp-surface);
-  transition: border-color 180ms ease, box-shadow 180ms ease;
+  transition: border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.2s ease;
 }
 
 .scroll-choice-radio::after {
-  width: 7px;
-  height: 7px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--tp-green-dark);
   content: "";
   opacity: 0;
-  transform: scale(0.5);
-  transition: opacity 180ms ease, transform 180ms ease;
+  transform: scale(0.4);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .scroll-mode-choice.selected .scroll-choice-radio {
   border-color: var(--tp-green-dark);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--tp-green-dark) 12%, transparent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tp-green-dark) 15%, transparent);
 }
 
 .scroll-mode-choice.selected .scroll-choice-radio::after {
@@ -1525,14 +1567,14 @@ html[data-theme="dark"] .app .prompt-box {
 
 .speed-mode-panel {
   min-width: 0;
-  margin: 0 10px;
-  padding: 12px 0 10px 26px;
-  border-top: 1px solid var(--tp-divider);
+  margin: 0;
+  padding: 12px 14px 14px 14px;
+  border-top: 1px dashed var(--tp-divider);
 }
 
 .speed-editor {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .speed-editor-header,
@@ -1546,17 +1588,27 @@ html[data-theme="dark"] .app .prompt-box {
   font-weight: 500;
 }
 
+.speed-editor-header span,
+.speed-input-row label {
+  color: var(--tp-gray-text);
+}
+
 .speed-editor output {
   color: var(--tp-green-dark);
   font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 13px;
+  background: color-mix(in srgb, var(--tp-green-dark) 10%, transparent);
+  padding: 2px 8px;
+  border-radius: 6px;
 }
 
 .speed-range {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 14px;
-  margin: 0;
+  height: 20px;
+  margin: 4px 0;
   padding: 0;
   border: 0;
   outline: none;
@@ -1566,61 +1618,97 @@ html[data-theme="dark"] .app .prompt-box {
 }
 
 .speed-range::-webkit-slider-runnable-track {
-  height: 4px;
+  height: 6px;
   border: 0;
   border-radius: 999px;
   background: linear-gradient(to right, var(--tp-green-dark) var(--fill), var(--tp-track-bg) var(--fill));
+  transition: height 0.15s ease;
+}
+
+.speed-range:hover::-webkit-slider-runnable-track {
+  height: 8px;
 }
 
 .speed-range::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 16px;
+  height: 16px;
   margin-top: -5px;
-  border: 0;
+  border: 2px solid var(--tp-surface);
   border-radius: 50%;
+  background: var(--tp-green-dark);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.15s ease;
+}
+
+.speed-range:hover::-webkit-slider-thumb {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tp-green-dark) 20%, transparent), 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.speed-range::-webkit-slider-thumb:active {
+  transform: scale(1.3);
   background: var(--tp-green-dark);
 }
 
 .speed-range::-moz-range-track {
-  height: 4px;
+  height: 6px;
   border: 0;
   border-radius: 999px;
   background: var(--tp-track-bg);
+  transition: height 0.15s ease;
+}
+
+.speed-range:hover::-moz-range-track {
+  height: 8px;
 }
 
 .speed-range::-moz-range-progress {
-  height: 4px;
+  height: 6px;
   border-radius: 999px;
   background: var(--tp-green-dark);
+  transition: height 0.15s ease;
+}
+
+.speed-range:hover::-moz-range-progress {
+  height: 8px;
 }
 
 .speed-range::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border: 0;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--tp-surface);
   border-radius: 50%;
   background: var(--tp-green-dark);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.speed-range:hover::-moz-range-thumb {
+  transform: scale(1.2);
 }
 
 .speed-number-wrap {
-  width: 112px;
-  height: 36px;
+  width: 100px;
+  height: 32px;
   display: flex;
   align-items: center;
-  gap: 5px;
-  border: 1px solid var(--tp-control-border);
+  gap: 6px;
+  border: 1.5px solid var(--tp-control-border);
   border-radius: 8px;
-  padding: 0 8px;
-  background: var(--tp-surface);
+  padding: 0 10px;
+  background: var(--tp-surface-hover);
   color: var(--tp-caret-arrow);
   font-size: 11px;
+  font-weight: 600;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .speed-number-wrap:focus-within {
   border-color: var(--tp-green-dark);
-  box-shadow: 0 0 0 2px rgba(94, 165, 0, 0.14);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tp-green-dark) 12%, transparent);
+  background: var(--tp-surface);
 }
 
 .speed-number-input {
@@ -1633,6 +1721,7 @@ html[data-theme="dark"] .app .prompt-box {
   color: var(--tp-page-text);
   font: inherit;
   font-size: 13px;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
 }
 
@@ -1644,19 +1733,25 @@ html[data-theme="dark"] .app .prompt-box {
 
 .speed-time-editor {
   display: grid;
-  gap: 14px;
+  gap: 12px;
 }
 
 .speed-time-editor output {
   color: var(--tp-green-dark);
   font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  font-size: 13px;
+  background: color-mix(in srgb, var(--tp-green-dark) 10%, transparent);
+  padding: 2px 8px;
+  border-radius: 6px;
 }
 
 .scroll-time-inputs {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: end;
-  gap: 8px;
+  gap: 12px;
+  margin-top: 4px;
 }
 
 .scroll-time-inputs label {
@@ -1664,33 +1759,38 @@ html[data-theme="dark"] .app .prompt-box {
   gap: 6px;
   color: var(--tp-gray-text);
   font-size: 11px;
+  font-weight: 500;
 }
 
 .scroll-time-inputs input {
   width: 100%;
-  height: 42px;
-  border: 1px solid var(--tp-control-border);
-  border-radius: 9px;
+  height: 38px;
+  border: 1.5px solid var(--tp-control-border);
+  border-radius: 8px;
   outline: 0;
   padding: 0 10px;
-  background: var(--tp-surface);
+  background: var(--tp-surface-hover);
   color: var(--tp-page-text);
   font: inherit;
-  font-size: 16px;
+  font-size: 15px;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   text-align: center;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
 .scroll-time-inputs input:focus {
   border-color: var(--tp-green-dark);
-  box-shadow: 0 0 0 2px rgba(94, 165, 0, 0.14);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--tp-green-dark) 12%, transparent);
+  background: var(--tp-surface);
 }
 
 .scroll-time-separator {
-  padding-bottom: 10px;
-  color: var(--tp-gray-text);
-  font-size: 16px;
+  padding-bottom: 8px;
+  color: var(--tp-control-border);
+  font-size: 18px;
   font-weight: 600;
+  text-align: center;
 }
 
 /* ===== Control-bar speed spinner (synced with toolbar speed, desktop only) ===== */
@@ -1718,8 +1818,8 @@ html[data-theme="dark"] .app .prompt-box {
 
 /* ===== Settings menu (mở Shortcuts popup & đếm ngược) ===== */
 .settings-quick {
-  width: 240px;
-  padding: 6px;
+  width: 248px;
+  padding: 8px;
 }
 
 .settings-row {
@@ -1727,15 +1827,20 @@ html[data-theme="dark"] .app .prompt-box {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 9px 10px;
+  padding: 10px 12px;
   border-radius: 10px;
   cursor: pointer;
-  color: var(--tp-page-text, var(--tp-panel-light-icon));
+  color: var(--tp-page-text);
   user-select: none;
+  transition: background-color 0.15s ease, transform 0.1s ease;
 }
 
 .settings-row:hover {
-  background: var(--tp-surface-hover, rgba(18, 21, 26, 0.05));
+  background: var(--tp-surface-hover);
+}
+
+.settings-row:active {
+  transform: scale(0.98);
 }
 
 .settings-row.theme-row {
@@ -1746,19 +1851,23 @@ html[data-theme="dark"] .app .prompt-box {
   background: none;
 }
 
+.settings-row.theme-row:active {
+  transform: none;
+}
+
 .settings-row-title {
   font-size: 13px;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .theme-toggle-group {
   display: flex;
-  background: rgba(120, 125, 135, 0.12);
+  background: var(--tp-track-bg);
   border-radius: 8px;
   padding: 2px;
   gap: 2px;
-  border: 1px solid rgba(120, 125, 135, 0.08);
+  border: 1px solid var(--tp-control-border);
   flex-shrink: 0;
 }
 
@@ -1766,26 +1875,30 @@ html[data-theme="dark"] .app .prompt-box {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 28px;
-  height: 24px;
+  width: 32px;
+  height: 26px;
   border-radius: 6px;
   border: none;
   background: transparent;
-  color: var(--tp-gray-text, var(--tp-kbd-label));
+  color: var(--tp-gray-text);
   cursor: pointer;
-  transition: color 0.15s ease, background-color 0.15s ease;
+  transition: color 0.15s ease, background-color 0.15s ease, transform 0.1s ease;
   padding: 0;
 }
 
 .theme-btn:hover {
-  color: var(--tp-page-text, var(--tp-panel-light-icon));
-  background: rgba(120, 125, 135, 0.08);
+  color: var(--tp-page-text);
+  background: rgba(120, 125, 135, 0.1);
+}
+
+.theme-btn:active {
+  transform: scale(0.92);
 }
 
 .theme-btn.active {
-  background: var(--tp-white);
-  color: var(--tp-panel-light-icon);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+  background: var(--tp-surface);
+  color: var(--tp-green-dark);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
 html[data-theme="dark"] .theme-toggle-group {
@@ -1799,15 +1912,15 @@ html[data-theme="dark"] .theme-btn:hover {
 }
 
 html[data-theme="dark"] .theme-btn.active {
-  background: var(--tp-white);
-  color: var(--tp-panel-light-icon);
+  background: var(--tp-caret-bg);
+  color: var(--tp-green);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 .settings-switch {
   position: relative;
   flex-shrink: 0;
-  width: 38px;
+  width: 40px;
   height: 22px;
 }
 
@@ -1825,8 +1938,10 @@ html[data-theme="dark"] .theme-btn.active {
   position: absolute;
   inset: 0;
   border-radius: 999px;
-  background: rgba(120, 125, 135, 0.4);
-  transition: background 0.18s ease;
+  background: var(--tp-track-bg);
+  border: 1px solid var(--tp-control-border);
+  transition: background-color 0.2s cubic-bezier(0.16, 1, 0.3, 1), 
+              border-color 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .settings-switch-track::after {
@@ -1834,20 +1949,21 @@ html[data-theme="dark"] .theme-btn.active {
   position: absolute;
   top: 2px;
   left: 2px;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   background: var(--tp-white);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-  transition: transform 0.18s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .settings-switch input:checked + .settings-switch-track {
   background: var(--tp-green-dark);
+  border-color: var(--tp-green-dark);
 }
 
 .settings-switch input:checked + .settings-switch-track::after {
-  transform: translateX(16px);
+  transform: translateX(18px);
 }
 
 /* Row trong Settings mà bấm vào sẽ mở popup con (vd: Shortcuts) */
@@ -1857,26 +1973,31 @@ html[data-theme="dark"] .theme-btn.active {
   background: none;
   font: inherit;
   text-align: left;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .settings-row-chevron {
-  color: var(--tp-gray-text, var(--tp-kbd-label));
+  color: var(--tp-gray-text);
   flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.settings-row:hover .settings-row-chevron {
+  transform: translateX(2px);
 }
 
 .settings-row-value {
   font-size: 12px;
   font-weight: 500;
-  color: var(--tp-gray-text, var(--tp-kbd-label));
+  color: var(--tp-gray-text);
   flex: 0 0 auto;
 }
 
 /* ===== Shortcuts popup (mở từ item Shortcuts trong Settings) ===== */
 .shortcuts-quick {
-  width: 240px;
-  padding: 6px;
+  width: 248px;
+  padding: 8px;
 }
 
 .shortcut-row {
@@ -1884,9 +2005,14 @@ html[data-theme="dark"] .theme-btn.active {
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 9px 10px;
+  padding: 10px 12px;
   border-radius: 10px;
-  color: var(--tp-page-text, var(--tp-panel-light-icon));
+  color: var(--tp-page-text);
+  transition: background-color 0.15s ease;
+}
+
+.shortcut-row:hover {
+  background: var(--tp-surface-hover);
 }
 
 .shortcut-row-label {
@@ -1905,15 +2031,19 @@ html[data-theme="dark"] .theme-btn.active {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 22px;
-  height: 22px;
-  padding: 0 6px;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
   border-radius: 6px;
-  background: var(--tp-surface-hover, rgba(18, 21, 26, 0.06));
-  color: var(--tp-page-text, var(--tp-panel-light-icon));
+  background: var(--tp-surface);
+  color: var(--tp-page-text);
+  border: 1px solid var(--tp-control-border);
+  border-bottom: 2px solid var(--tp-control-border);
+  font-family: var(--font-mono, ui-monospace, monospace);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 /* ===== Settings popup (toolbar) ===== */

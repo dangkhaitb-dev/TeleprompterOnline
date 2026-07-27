@@ -6,6 +6,7 @@ import {
   feedTranscript,
   viKey,
   foldDiacritics,
+  createPIDController,
 } from './voice-scroll.model.js';
 
 describe('Voice Scroll Model matching algorithm', () => {
@@ -99,5 +100,65 @@ describe('Voice Scroll Model matching algorithm', () => {
     // Step 3: Speak rest of the sentence
     state = speak('sẽ hướng dẫn các bạn tich hợp tính năng tự động cuộn', state);
     expect(state.cursor).toBe(14); // Should match "cuộn" at index 14
+  });
+});
+
+describe('Voice Scroll PID animation', () => {
+  it('eases into the first auto-scroll without alternating fast and slow frames', () => {
+    const pid = createPIDController();
+    pid.setTarget(600, true, 0);
+    pid.tick(0);
+
+    const positions = [];
+    for (let frame = 1; frame <= 12; frame++) {
+      positions.push(pid.tick(frame * 16).position);
+    }
+    const deltas = positions.map((position, index) => (
+      position - (index === 0 ? 0 : positions[index - 1])
+    ));
+
+    expect(deltas.every((delta) => delta > 0)).toBe(true);
+    expect(deltas[1]).toBeGreaterThan(deltas[0]);
+    expect(Math.max(...deltas) / Math.min(...deltas)).toBeLessThan(4);
+  });
+
+  it('animates smoothly when recognition re-anchors to an earlier paragraph', () => {
+    const pid = createPIDController();
+    pid.setTarget(100, true, 600);
+    pid.tick(0);
+
+    const firstAnimatedFrame = pid.tick(16);
+
+    expect(firstAnimatedFrame.settled).toBe(false);
+    expect(firstAnimatedFrame.position).toBeLessThan(600);
+    expect(firstAnimatedFrame.position).toBeGreaterThan(100);
+  });
+
+  it('starts a distant target from a fresh frame after waiting while settled', () => {
+    const pid = createPIDController();
+    pid.setTarget(400);
+    pid.tick(0);
+
+    let timestamp = 0;
+    let result;
+    for (let frame = 1; frame < 1000; frame++) {
+      timestamp = frame * 16;
+      result = pid.tick(timestamp);
+      if (result.settled) break;
+    }
+
+    expect(result.settled).toBe(true);
+    const settledPosition = pid.current();
+
+    // Simulate the reader pausing before recognition jumps from an early
+    // paragraph to a much later one.
+    pid.setTarget(2400);
+    const resumed = pid.tick(timestamp + 5000);
+    const nextFrame = pid.tick(timestamp + 5016);
+
+    expect(resumed.position).toBeCloseTo(settledPosition);
+    expect(nextFrame.position).toBeGreaterThan(settledPosition);
+    expect(nextFrame.position).toBeLessThan(settledPosition + 100);
+    expect(nextFrame.position).toBeLessThan(2400);
   });
 });

@@ -35,6 +35,12 @@ export const TPCOM_PID = Object.freeze({
   deadzone: 0.1, velocitySmoothness: 0.85, integralLeakage: 0.6,
 });
 
+// A long pause between speech-recognition results must not be treated as one
+// giant animation frame. Without this cap, resuming after a few seconds can
+// multiply the next velocity by the whole idle interval and jump several
+// paragraphs in a single paint.
+const MAX_PID_FRAME_SECONDS = 0.05;
+
 export const MANUAL_SCROLL_THRESHOLD = 10;
 export const REANCHOR_DELAY_MS = 180;
 
@@ -536,6 +542,8 @@ export function createPIDController(params = TPCOM_PID) {
   };
   return {
     setTarget(target, snap = false, current = null) {
+      const wasSettled = Math.abs(s.targetValue - s.currentValue) < params.deadzone
+        && Math.abs(s.currentVelocity) < 5;
       if (snap) {
         s.targetValue = target;
         s.currentValue = current !== null ? current : target;
@@ -546,6 +554,10 @@ export function createPIDController(params = TPCOM_PID) {
         s.targetValue = target;
         if (current !== null) s.currentValue = current;
       }
+      // The rAF loop stops while settled. Start a later movement with a fresh
+      // clock so time spent waiting for the next spoken phrase cannot become
+      // part of the animation delta.
+      if (wasSettled) s.lastTimestamp = null;
     },
     tick(now) {
       if (s.lastTimestamp === null) {
@@ -554,18 +566,28 @@ export function createPIDController(params = TPCOM_PID) {
         s.integralError = 0;
         return { position: s.currentValue, settled: false };
       }
-      const dt = (now - s.lastTimestamp) / 1000;
+      const dt = Math.min((now - s.lastTimestamp) / 1000, MAX_PID_FRAME_SECONDS);
       if (dt <= 0) {
         return { position: s.currentValue, settled: false };
       }
+      s.lastTimestamp = now;
       const error = s.targetValue - s.currentValue;
       
       const isSettled = Math.abs(error) < params.deadzone && Math.abs(s.currentVelocity) < 5;
       
       if (isSettled) {
+        s.currentValue = s.targetValue;
         s.currentVelocity = 0;
         s.integralError = 0;
         return { position: s.currentValue, settled: true };
+      }
+
+      // A new recognition result may move the target to the other side of the
+      // current position. Drop the old momentum before accelerating back so
+      // the scroll never jolts briefly in the wrong direction.
+      if (s.currentVelocity * error < 0) {
+        s.currentVelocity = 0;
+        s.integralError = 0;
       }
       
       s.integralError *= Math.pow(params.integralLeakage, dt);
@@ -573,20 +595,31 @@ export function createPIDController(params = TPCOM_PID) {
       const output = params.kp * error
         + params.ki * s.integralError
         + params.kd * (-s.currentVelocity);
-      const smooth = Math.min(1, params.velocitySmoothness / dt);
-      s.currentVelocity += (output - s.currentVelocity) * smooth;
-      
-      if (s.currentVelocity < 0) {
+      // velocitySmoothness is the amount of velocity retained per 60 Hz
+      // frame. Convert it to a frame-rate-independent blend. The previous
+      // division by dt always produced a blend of 1 at 60 Hz, making the
+      // derivative term alternate between a large and a tiny step every
+      // frame — the visible "stutter" at auto-scroll startup.
+      const velocityBlend = 1 - Math.pow(params.velocitySmoothness, dt * 60);
+      s.currentVelocity += (output - s.currentVelocity) * velocityBlend;
+
+      if (s.currentVelocity * error <= 0) {
         s.currentVelocity = 0;
         s.integralError = 0;
-        return { position: s.currentValue, settled: true };
+        return { position: s.currentValue, settled: false };
       }
-      
-      s.currentValue += s.currentVelocity * dt;
+
+      const nextValue = s.currentValue + s.currentVelocity * dt;
+      const crossedTarget = (s.targetValue - s.currentValue)
+        * (s.targetValue - nextValue) <= 0;
+      s.currentValue = crossedTarget ? s.targetValue : nextValue;
+      if (crossedTarget) {
+        s.currentVelocity = 0;
+        s.integralError = 0;
+      }
       s.previousError = error;
-      s.lastTimestamp = now;
       
-      return { position: s.currentValue, settled: false };
+      return { position: s.currentValue, settled: crossedTarget };
     },
     syncTo(pos) {
       s.currentValue = pos;

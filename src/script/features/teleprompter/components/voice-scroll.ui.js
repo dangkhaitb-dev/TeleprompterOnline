@@ -24,9 +24,17 @@ import {
   createVoiceScrollController,
 } from './voice-scroll.logic.js';
 
+const BLOCK_TEXT_TAGS = new Set([
+  'ADDRESS', 'ARTICLE', 'ASIDE', 'BLOCKQUOTE', 'DD', 'DIV', 'DL', 'DT',
+  'FIGCAPTION', 'FIGURE', 'FOOTER', 'H1', 'H2', 'H3', 'H4', 'H5', 'H6',
+  'HEADER', 'HR', 'LI', 'MAIN', 'NAV', 'OL', 'P', 'PRE', 'SECTION', 'UL',
+]);
+
 /**
- * Wraps each word in the surface text with <span class="vs-w"> elements
- * for positional tracking. Preserves original HTML for later restoration.
+ * Wraps each word in the existing rich-text DOM with <span class="vs-w">
+ * elements for positional tracking. Keeping the current element tree is
+ * important for Notch: its font/color/alignment live on the nested
+ * `.notch-text` element, and selection-level formatting lives on descendants.
  * @param {HTMLElement} surface - The prompter surface element
  * @returns {{ parts: Array, words: Array, originalHTML: string }}
  */
@@ -34,28 +42,29 @@ function wrapSurfaceWords(surface) {
   const originalHTML = surface.innerHTML;
   const text = surface.innerText || '';
   const parts = segmentParts(text);
-  
-  // Clear and rebuild with word spans
-  surface.innerHTML = '';
   const words = [];
-  const lines = text.replace(/\r/g, '').split('\n');
-  
-  lines.forEach((line) => {
-    const p = document.createElement('p');
-    p.className = 'vs-line';
-    let lineLastWord = null;
-    
-    segmentParts(line).forEach((part) => {
+  let trailingWord = null;
+
+  function markBreakAfterLastWord() {
+    if (words.length) words[words.length - 1].breakAfter = true;
+    trailingWord = null;
+  }
+
+  function wrapTextNode(textNode) {
+    const fragment = document.createDocumentFragment();
+
+    segmentParts(textNode.nodeValue || '').forEach((part) => {
       if (!part.isWord) {
         const separator = document.createElement('span');
         separator.className = 'vs-separator';
         separator.textContent = part.text;
-        p.appendChild(separator);
-        if (lineLastWord) lineLastWord.trailingEls.push(separator);
+        fragment.appendChild(separator);
+        if (trailingWord) trailingWord.trailingEls.push(separator);
         // Mark clause boundaries (punctuation)
         if (words.length && /[.!?,;:…—–]/.test(part.text)) {
           words[words.length - 1].breakAfter = true;
         }
+        if (/[\r\n]/.test(part.text)) markBreakAfterLastWord();
         return;
       }
       const norm = normalize(part.text);
@@ -65,8 +74,8 @@ function wrapSurfaceWords(surface) {
       span.className = 'vs-w';
       span.textContent = part.text;
       span.dataset.index = String(words.length);
-      p.appendChild(span);
-      lineLastWord = {
+      fragment.appendChild(span);
+      trailingWord = {
         raw: part.text,
         display: part.text,
         norm,
@@ -76,13 +85,37 @@ function wrapSurfaceWords(surface) {
         trailingEls: [],
         breakAfter: false,
       };
-      words.push(lineLastWord);
+      words.push(trailingWord);
     });
-    
-    if (words.length) words[words.length - 1].breakAfter = true;
-    surface.appendChild(p);
-  });
-  
+
+    textNode.replaceWith(fragment);
+  }
+
+  function walk(container) {
+    Array.from(container.childNodes).forEach((node) => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        wrapTextNode(node);
+        return;
+      }
+      if (node.nodeType !== Node.ELEMENT_NODE) return;
+
+      const element = /** @type {HTMLElement} */ (node);
+      if (element.tagName === 'BR' || element.tagName === 'HR') {
+        markBreakAfterLastWord();
+        return;
+      }
+
+      const wordCountBefore = words.length;
+      walk(element);
+      if (words.length > wordCountBefore && BLOCK_TEXT_TAGS.has(element.tagName)) {
+        markBreakAfterLastWord();
+      }
+    });
+  }
+
+  walk(surface);
+  markBreakAfterLastWord();
+
   return { parts, words, originalHTML };
 }
 

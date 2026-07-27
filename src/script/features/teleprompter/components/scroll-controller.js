@@ -86,8 +86,30 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
     return cachedMaxScroll;
   }
 
+  function bindSurface(surface = getSurface && getSurface()) {
+    if (!surface) return null;
+    target = surface;
+    measureMaxScroll(target);
+    scrollPosition = target.scrollTop;
+    scrollTarget = target.scrollTop;
+    manualScrollActive = false;
+    lastFrame = 0;
+    return target;
+  }
+
+  function resolveSurface() {
+    const surface = (getSurface && getSurface()) || target;
+    if (!target || (surface && surface !== target && !scrolling)) {
+      return bindSurface(surface);
+    }
+    return target;
+  }
+
   function tick(timestamp) {
-    const surface = getSurface && getSurface();
+    // A running animation belongs to the surface explicitly bound by start()
+    // or bindSurface(). Re-resolving getSurface() here used to leak the old
+    // scrollPosition/scrollTarget into a newly selected camera/notch surface.
+    const surface = target;
     if (!surface) {
       animId = null;
       lastFrame = 0;
@@ -128,17 +150,12 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
   }
 
   function start(surface) {
-    if (scrolling) return;
-    target = surface || (getSurface && getSurface());
-    if (!target) return;
+    const nextTarget = surface || (getSurface && getSurface()) || target;
+    if (!nextTarget) return;
+    if (scrolling && target === nextTarget) return;
+    if (scrolling) stop();
+    bindSurface(nextTarget);
     scrolling = true;
-    manualScrollActive = false;
-
-    // The caller just rebuilt the surface (eye-line padding, scroll tail) —
-    // seed the cached extent from the fresh layout.
-    measureMaxScroll(target);
-    scrollPosition = target.scrollTop;
-    scrollTarget = target.scrollTop;
 
     notify();
 
@@ -156,7 +173,7 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
 
   function toggle() {
     if (scrolling) stop();
-    else start(getSurface && getSurface());
+    else start(resolveSurface());
   }
 
   function setWpm(wpm) {
@@ -165,12 +182,12 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
 
   function setDuration(durationSeconds, surface = getSurface && getSurface()) {
     if (!surface) return;
-    const maxScroll = measureMaxScroll(surface);
+    const maxScroll = currentMaxScroll(surface);
     pxPerSec = pxPerSecForDuration(maxScroll - surface.scrollTop, durationSeconds);
   }
 
   function manualScroll(delta) {
-    const surface = getSurface && getSurface();
+    const surface = resolveSurface();
     if (!surface) return;
     const maxScroll = currentMaxScroll(surface);
 
@@ -191,7 +208,7 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
   }
 
   function scrollToTop() {
-    const surface = getSurface && getSurface();
+    const surface = resolveSurface();
     if (!surface) return;
     scrollTarget = 0;
     scrollPosition = 0;
@@ -209,7 +226,7 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
   }
 
   function scrollToNextSection() {
-    const surface = getSurface && getSurface();
+    const surface = resolveSurface();
     if (!surface) return;
     // Discrete action — measure fresh (the mirror walk below reflows anyway).
     const maxScroll = measureMaxScroll(surface);
@@ -251,6 +268,7 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
   }
 
   return {
+    bindSurface,
     start,
     stop,
     toggle,

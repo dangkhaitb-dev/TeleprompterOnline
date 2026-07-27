@@ -73,6 +73,11 @@ export function initLayoutGuides({
   // against app height, matching the demo. The notch has no eye-line.
   function eyeLineStartPadding(surface, recording) {
     if (!surface) return 0;
+    // Notch is a compact viewport without an eye-line. Preserve its CSS top
+    // padding instead of applying the main-stage eyeLineRatio to its height.
+    if (surface !== promptBox && surface !== teleprompterText) {
+      return parseFloat(getComputedStyle(surface).paddingTop) || 0;
+    }
     if (surface === teleprompterText) {
       return Math.max(0, Math.round(prompterPanel.clientHeight * eyeLineRatio - surface.offsetTop));
     }

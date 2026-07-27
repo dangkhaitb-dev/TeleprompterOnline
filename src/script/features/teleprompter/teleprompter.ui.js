@@ -38,6 +38,7 @@ import { debounce } from '../../utils/debounce.js';
 import { handlePlainTextPaste } from '../../utils/plain-paste.js';
 import { isFullscreen, onFullscreenChange } from '../../utils/fullscreen.js';
 import { createScrollController } from './components/scroll-controller.js';
+import { createReadingSessionController } from './components/reading-session-controller.js';
 import { createColorPicker } from './components/color-picker.ui.js';
 import { initFormatToolbar } from './components/format-toolbar.ui.js';
 import { initSettingsTheme } from './components/settings-theme.ui.js';
@@ -295,6 +296,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   });
   let notch = null;
   let formatToolbar = null;
+  let readingSession = null;
 
   // Serializing state.html into a detached div (for the plain-text snippet) and
   // rewriting the whole workspaces list in localStorage is O(script × library)
@@ -557,7 +559,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   function setCameraMode(nextOn) {
-    ensureVoiceScrollStopped();
     setFormatEditOpen(false);
     if (nextOn) {
       syncSurface(teleprompterText);
@@ -568,14 +569,15 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       updateCameraCanvasSize();
       if (cameraPlaceholderText) cameraPlaceholderText.textContent = copy.cameraStarting || '';
       if (cameraPlaceholder) cameraPlaceholder.classList.add('show');
+      if (readingSession) readingSession.switchSurface(teleprompterText);
       startCamera();
     } else {
-      scroller.stop();
       syncSurface(promptBox);
       setFormatToolbarInPanel(false);
       setLayoutFrameInPanel(false);
       setLayoutControlInPanel(false);
       app.classList.remove('cam-on');
+      if (readingSession) readingSession.switchSurface(promptBox);
       stopCamera();
       if (cameraPlaceholder) cameraPlaceholder.classList.remove('show');
     }
@@ -762,7 +764,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   let playbackOnlyActive = false;
-  let notchAutoScrollBlocked = false;
   let colorBeforeNotch = null;
   let didAutoChangeColor = false;
 
@@ -806,31 +807,19 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     return surface.scrollHeight - surface.clientHeight > 1;
   }
 
-  function startAutoScroll(restart = true) {
-    // Switching to Notch must stay static. This guard also blocks a delayed
-    // center-on-record callback that was queued before Notch became active.
-    if (notchAutoScrollBlocked) return;
-    // Wait for the center-on-record slide to finish before auto-scrolling.
-    if (layout.isCentering()) return;
-    if (voiceScrollUI && voiceScrollUI.isActive()) return;
-    const surface = activeSurface();
-    if (prepareScrollSurface(surface, restart)) {
-      if (selectedScrollMode === 'time') scroller.setDuration(scrollDurationSeconds, surface);
+  readingSession = createReadingSessionController({
+    scroller,
+    getSurface: activeSurface,
+    prepareSurface: prepareScrollSurface,
+    getScrollMode: () => selectedScrollMode,
+    configureScroll: (mode, surface) => {
+      if (mode === 'time') scroller.setDuration(scrollDurationSeconds, surface);
       else scroller.setWpm(wpm);
-      scroller.start(surface);
-    }
-  }
-
-  function startSelectedScroll(restart = true) {
-    if (selectedScrollMode === 'auto') {
-      scroller.stop();
-      const surface = activeSurface();
-      if (prepareScrollSurface(surface, restart)) void startVoiceScroll();
-      return;
-    }
-    ensureVoiceScrollStopped();
-    startAutoScroll(restart);
-  }
+    },
+    startVoiceScroll,
+    stopVoiceScroll: ensureVoiceScrollStopped,
+    isVoiceScrollRunning: () => Boolean(voiceScrollUI || voiceScrollStarting),
+  });
 
   // Play uses the exact same distraction-free reading UI as Record. The only
   // differences are that no MediaRecorder is started and the recording Pause
@@ -854,8 +843,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     playbackOnlyActive = false;
     app.classList.remove('playback-only', 'record-dim', 'record-paused');
     setReadingScrollCapture(false);
-    scroller.stop();
-    ensureVoiceScrollStopped();
+    readingSession.stop();
     activeSurface()?.style.removeProperty('--tp-scroll-tail');
     layout.restore(activeSurface());
     setEditingEnabled(true);
@@ -865,30 +853,17 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   function togglePlayback() {
-    // A direct Play click is the only action that may resume scrolling after
-    // the user has switched to the static Notch view.
-    if (notch.isActive()) notchAutoScrollBlocked = false;
     // While recording, this control only starts/stops auto-scroll; recording
     // pause remains owned by the separate Pause button.
     if (controller.isRecording() || controller.isPaused() || countingDown) {
-      if (selectedScrollMode === 'auto') {
-        if (voiceScrollUI || voiceScrollStarting) ensureVoiceScrollStopped();
-        else void startVoiceScroll();
-      } else {
-        scroller.toggle();
-      }
+      readingSession.toggleScroll();
       return;
     }
     if (playbackOnlyActive) {
       // The Play control doubles as Pause while in reading mode. Keep the
       // reading session mounted so starting it again resumes from the current
       // scrollTop instead of restoring the layout and beginning at the top.
-      if (selectedScrollMode === 'auto') {
-        if (voiceScrollUI || voiceScrollStarting) ensureVoiceScrollStopped();
-        else void startVoiceScroll();
-      } else {
-        scroller.toggle();
-      }
+      readingSession.toggleScroll();
       return;
     }
     playbackOnlyActive = true;
@@ -897,19 +872,14 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (pauseButton) pauseButton.classList.remove('show', 'paused');
     if (headerPlayButton) headerPlayButton.classList.remove('hidden');
     setEditingEnabled(false);
-    enterReadingUI(startSelectedScroll);
+    readingSession.begin('play', { waitFor: ['layout'] });
+    enterReadingUI(() => readingSession.release('layout'));
   }
 
   on(playBtn, 'click', togglePlayback);
   on(headerPlayButton, 'click', togglePlayback);
   on(restartReadingButton, 'click', () => {
-    scroller.scrollToTop();
-    // In Record or Play mode, restart auto-scroll from the top right away
-    // instead of waiting for another Play press.
-    if (controller.isRecording() || playbackOnlyActive) {
-      ensureVoiceScrollStopped();
-      startSelectedScroll();
-    }
+    readingSession.restart();
   });
   on(exitPlaybackButton, 'click', stopPlaybackOnly);
 
@@ -1002,7 +972,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (prompterPanel) prompterPanel.classList.toggle('closed', camOnPrompterHidden);
     if (promptBox) promptBox.classList.toggle('hidden', camOffPrompterHidden);
     if (prompterButton) prompterButton.classList.toggle('selected', !hidden);
-    if (hidden) scroller.stop();
+    if (hidden && readingSession) readingSession.stopScroll();
     layout.setEditing(!hidden);
   }
   function setPrompterHidden(hidden) {
@@ -1082,18 +1052,17 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   on(speedModeAuto, 'click', () => {
     setSpeedModePanel('auto');
+    readingSession.refreshMode();
     saveWorkspaceSettings(workspace.id,{ scrollMode: 'auto' });
   });
   on(speedMethodWpm, 'click', () => {
-    ensureVoiceScrollStopped();
     setSpeedModePanel('wpm');
-    scroller.setWpm(wpm);
+    readingSession.refreshMode();
     saveWorkspaceSettings(workspace.id,{ scrollMode: 'wpm' });
   });
   on(speedMethodTime, 'click', () => {
-    ensureVoiceScrollStopped();
     setSpeedModePanel('time');
-    scroller.setDuration(scrollDurationSeconds, activeSurface());
+    readingSession.refreshMode();
     saveWorkspaceSettings(workspace.id,{ scrollMode: 'time' });
   });
   on(scrollMinutes, 'input', () => applyScrollDuration());
@@ -1175,9 +1144,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // Saving is no longer possible (e.g. disk full mid-write): end the doomed
       // session right away instead of silently discarding more footage later.
       if (controller.isRecording() || controller.isPaused()) {
+        readingSession.stop();
         resetRecordUI();
-        scroller.stop();
-        ensureVoiceScrollStopped();
         controller.stop({ workspaceId: workspace.id }).catch(() => {});
       }
       if (!toastEl) return;
@@ -1210,7 +1178,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     onAutoStop: (free) => {
       if (!controller.isRecording() && !controller.isPaused()) return;
       // Stop recording UI (button + timer) but DO NOT stop the scroller.
-      resetRecordUI();
+      resetRecordUI({ keepReading: true });
+      readingSession.continueAsPlay();
       storageMonitor.stop();
       // Save in background — fire and forget from the user's perspective.
       controller.stop({ workspaceId: workspace.id }).then((record) => {
@@ -1276,24 +1245,28 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   // Reset the visual recording state (button, timer, pause button).
   // Does NOT stop the teleprompter scroller — safe to call from auto-stop.
-  function resetRecordUI() {
+  function resetRecordUI({ keepReading = false } = {}) {
     storageMonitor.stop();
-    playbackOnlyActive = false;
+    playbackOnlyActive = keepReading;
     if (toastEl) toastEl.classList.remove('toast--warn-subtle');
     recordButton.classList.remove('recording', 'paused');
     clearInterval(recordTimer);
     if (pauseButton) pauseButton.classList.remove('show', 'paused');
     if (pauseLabel) pauseLabel.textContent = copy.pause || 'Pause';
     if (recordLabel) recordLabel.textContent = copy.record || 'Record';
-    app.classList.remove('playback-only', 'record-dim', 'record-paused');
-    setReadingScrollCapture(false);
+    app.classList.remove('record-paused');
+    app.classList.toggle('playback-only', keepReading);
+    app.classList.toggle('record-dim', keepReading);
+    setReadingScrollCapture(keepReading);
     if (headerPlayButton) headerPlayButton.classList.remove('hidden');
-    setEditingEnabled(true);
-    [promptBox, teleprompterText, notch.getScroll()].forEach((surface) => {
-      if (surface) surface.style.removeProperty('--tp-scroll-tail');
-    });
-    if (promptBox) promptBox.style.paddingTop = '';
-    if (teleprompterText) teleprompterText.style.paddingTop = '';
+    setEditingEnabled(!keepReading);
+    if (!keepReading) {
+      [promptBox, teleprompterText, notch.getScroll()].forEach((surface) => {
+        if (surface) surface.style.removeProperty('--tp-scroll-tail');
+      });
+      if (promptBox) promptBox.style.paddingTop = '';
+      if (teleprompterText) teleprompterText.style.paddingTop = '';
+    }
   }
 
   function setEditingEnabled(enabled) {
@@ -1366,6 +1339,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     // e.g. the previous stop() is still persisting its recording.
     if (!started) {
       if (startErr) handleRecordCaptureError(startErr);
+      readingSession.stop();
       app.classList.remove('record-dim');
       setReadingScrollCapture(false);
       layout.restore(activeSurface());
@@ -1381,12 +1355,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     startRecordTimer();
     // Start monitoring storage — will fire warn/critical callbacks as needed.
     storageMonitor.start();
-    startSelectedScroll();
+    readingSession.release('capture');
   }
 
   async function onRecordClick() {
     if (countingDown) {
       cancelRecordCountdown();
+      readingSession.stop();
       layout.restore(activeSurface());
       app.classList.remove('record-dim', 'record-paused');
       setReadingScrollCapture(false);
@@ -1394,7 +1369,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       return;
     }
     if (!controller.isRecording() && !controller.isPaused()) {
-      if (notch.isActive()) notchAutoScrollBlocked = false;
       // Switching from Play to Record starts a fresh recording session while
       // preserving the same reading layout.
       stopPlaybackOnly();
@@ -1425,16 +1399,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // ── Begin countdown / recording ───────────────────────────────────────
       if (headerPlayButton) headerPlayButton.classList.add('hidden');
       // Slide the first line down onto the eye-line (runs through the countdown).
-      enterReadingUI(() => { if (controller.isRecording()) startSelectedScroll(); });
+      readingSession.begin('record', { waitFor: ['layout', 'capture'] });
+      enterReadingUI(() => readingSession.release('layout'));
       if (settings.wantsCountdown()) startRecordCountdown();
       else beginRecording();
     } else {
       // Manual stop → reset UI → stop scroller → jump straight to the scene
       // editor; the save keeps running in the background and the editor shows
       // a saving placeholder until it settles.
+      readingSession.stop();
       resetRecordUI();
-      scroller.stop();
-      ensureVoiceScrollStopped();
       const pendingSave = controller.stop({ workspaceId: workspace.id });
       await openSceneEditor({ pendingSave });
     }
@@ -1452,8 +1426,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // A paused recording is still an active recording session; keep the
       // script locked until the user stops recording completely.
       setEditingEnabled(false);
-      if (selectedScrollMode === 'auto') ensureVoiceScrollStopped();
-      else scroller.stop();
+      readingSession.pause();
     } else if (controller.isPaused()) {
       controller.resume();
       app.classList.remove('record-paused');
@@ -1463,7 +1436,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       setEditingEnabled(false);
       startRecordTimer();
       // Continue from the exact position where Pause stopped the scroller.
-      startSelectedScroll(false);
+      readingSession.resume();
     }
   }
   on(pauseButton, 'click', toggleRecordingPause);
@@ -1674,12 +1647,9 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     },
     shouldEnterFullscreen: settings.wantsNotchFullscreen,
     onActiveChange: (active, surface) => {
-      ensureVoiceScrollStopped();
-      notchAutoScrollBlocked = active;
       if (!active) {
         // The main surfaces come back into view — apply edits typed in notch.
         syncDirtySurfaces();
-        if (scroller.getTarget() === surface) scroller.stop();
         if (didAutoChangeColor) {
           if (editHistory.current().color === '#ffffff') {
             if (formatToolbar) {
@@ -1689,12 +1659,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
           didAutoChangeColor = false;
           colorBeforeNotch = null;
         }
+        readingSession.switchSurface(activeSurface(), {
+          preserveProgress: readingSession.isActive(),
+        });
         return;
       }
-      // Entering notch mode is a static preview. Stop any previous scrolling
-      // and seat the script at the top; Play/Record explicitly starts it later.
-      scroller.stop();
-      surface.scrollTop = 0;
+      // Idle notch remains a top-seated preview. During Play/Record the central
+      // session maps progress and resumes the same engine on the notch surface.
+      readingSession.switchSurface(surface, {
+        preserveProgress: readingSession.isActive(),
+      });
       const currentState = editHistory.current();
       const currentColor = currentState.color || '';
       if (currentColor !== '#ffffff') {
@@ -1862,6 +1836,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     tornDown = true;
     window.removeEventListener('pagehide', teardown);
     persistSharedState.flush();
+    readingSession.stop();
     scroller.destroy();
     if (voiceScrollUI) { voiceScrollUI.destroy(); voiceScrollUI = null; }
     controller.cancel();

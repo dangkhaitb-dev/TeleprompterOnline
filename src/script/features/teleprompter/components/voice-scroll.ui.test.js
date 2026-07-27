@@ -117,6 +117,34 @@ describe('Voice Scroll browser integration', () => {
     expect(surface.textContent).toBe('Hôm nay tôi sẽ hướng dẫn các bạn');
   });
 
+  it('preserves the Notch style wrapper and rich formatting while Auto is active', async () => {
+    surface.innerHTML = [
+      '<div class="notch-text" style="font-size: 32px; font-weight: 700; color: rgb(255, 255, 255); text-align: center;">',
+      '<span class="emphasis" style="font-style: italic; text-decoration: underline;">Hôm nay</span>',
+      ' tôi sẽ hướng dẫn các bạn',
+      '</div>',
+    ].join('');
+    const originalHTML = surface.innerHTML;
+    const notchText = surface.querySelector('.notch-text');
+    const emphasis = surface.querySelector('.emphasis');
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface });
+
+    await expect(voiceUI.start()).resolves.toBe(true);
+
+    expect(surface.querySelector('.notch-text')).toBe(notchText);
+    expect(notchText.style.fontSize).toBe('32px');
+    expect(notchText.style.fontWeight).toBe('700');
+    expect(notchText.style.color).toBe('rgb(255, 255, 255)');
+    expect(notchText.style.textAlign).toBe('center');
+    expect(surface.querySelector('.emphasis')).toBe(emphasis);
+    expect(emphasis.style.fontStyle).toBe('italic');
+    expect(emphasis.style.textDecoration).toBe('underline');
+    expect(emphasis.querySelectorAll('.vs-w')).toHaveLength(2);
+
+    voiceUI.stop();
+    expect(surface.innerHTML).toBe(originalHTML);
+  });
+
   it('does not trust a first interim even when Chrome reports confidence one', async () => {
     surface.textContent = 'In the mid 20th century the first scuba system appeared';
     const voiceUI = initVoiceScrollUI({ getSurface: () => surface });

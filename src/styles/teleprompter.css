@@ -1764,7 +1764,7 @@ html[data-theme="dark"] .quick-menu {
 
 .scroll-time-inputs input {
   width: 100%;
-  height: 38px;
+  height: 32px;
   border: 1.5px solid var(--tp-control-border);
   border-radius: 8px;
   outline: 0;
@@ -1772,7 +1772,7 @@ html[data-theme="dark"] .quick-menu {
   background: var(--tp-surface-hover);
   color: var(--tp-page-text);
   font: inherit;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 600;
   font-variant-numeric: tabular-nums;
   text-align: center;
@@ -1786,7 +1786,7 @@ html[data-theme="dark"] .quick-menu {
 }
 
 .scroll-time-separator {
-  padding-bottom: 8px;
+  padding-bottom: 6px;
   color: var(--tp-control-border);
   font-size: 18px;
   font-weight: 600;

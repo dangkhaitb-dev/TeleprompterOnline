@@ -16,7 +16,7 @@ export const WPM_STEP = 5;
 export const SCROLL_MODES = ['auto', 'wpm', 'time'];
 export const SCROLL_DURATION_DEFAULT = 60;
 export const SCROLL_DURATION_MIN = 1;
-export const SCROLL_DURATION_MAX = 5999;
+export const SCROLL_DURATION_MAX = 999999;
 
 export function clampWpm(value) {
   const n = Math.round(Number(value));

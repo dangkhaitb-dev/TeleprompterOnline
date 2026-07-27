@@ -1045,17 +1045,20 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   let scrollDurationSaveTimer = null;
 
   function applyScrollDuration(explicitSeconds = null, persist = true) {
-    const minutes = Math.max(0, Math.min(99, Math.round(Number(scrollMinutes?.value) || 0)));
+    const minutes = Math.max(0, Math.round(Number(scrollMinutes?.value) || 0));
     const seconds = Math.max(0, Math.min(59, Math.round(Number(scrollSeconds?.value) || 0)));
     const requested = explicitSeconds == null ? minutes * 60 + seconds : Number(explicitSeconds);
     scrollDurationSeconds = clampScrollDuration(requested);
     if (scrollMinutes) scrollMinutes.value = String(Math.floor(scrollDurationSeconds / 60));
     if (scrollSeconds) scrollSeconds.value = String(scrollDurationSeconds % 60);
     if (scrollTimeRange) {
-      scrollTimeRange.value = String(scrollDurationSeconds);
+      scrollTimeRange.min = '0';
+      scrollTimeRange.max = '3600';
+      const rangeValue = Math.max(0, Math.min(3600, scrollDurationSeconds));
+      scrollTimeRange.value = String(rangeValue);
       scrollTimeRange.style.setProperty(
         '--fill',
-        `${rangeFillPercent(scrollTimeRange.value, scrollTimeRange.min, scrollTimeRange.max)}%`,
+        `${rangeFillPercent(rangeValue, scrollTimeRange.min, scrollTimeRange.max)}%`,
       );
     }
     if (scrollTimeOutput) {

@@ -546,11 +546,11 @@
                 <span>Total scroll time</span>
                 <output id="scrollTimeOutput" for="scrollMinutes scrollSeconds">01:00</output>
               </div>
-              <input class="speed-range" id="scrollTimeRange" type="range" min="10" max="1800" step="5" value="60" aria-label="Total scroll time">
+              <input class="speed-range" id="scrollTimeRange" type="range" min="0" max="3600" step="5" value="60" aria-label="Total scroll time">
               <div class="scroll-time-inputs">
                 <label>
                   <span>Minutes</span>
-                  <input id="scrollMinutes" type="number" min="0" max="99" step="1" value="1" inputmode="numeric">
+                  <input id="scrollMinutes" type="number" min="0" max="9999" step="1" value="1" inputmode="numeric">
                 </label>
                 <span class="scroll-time-separator" aria-hidden="true">:</span>
                 <label>

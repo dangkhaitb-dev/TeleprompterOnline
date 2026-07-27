@@ -9,12 +9,18 @@ describe('shared format toolbar controller', () => {
   beforeEach(() => {
     document.body.innerHTML = `
       <div id="app" class="notch-on">
-        <div class="format-toolbar"></div>
+        <div class="format-toolbar">
+          <select class="ft-line-height"><option value="1.25">Line 1.25</option><option value="1.5">Line 1.5</option></select>
+        </div>
+        <div class="format-toolbar">
+          <select class="ft-line-height"><option value="1.25">Line 1.25</option><option value="1.5">Line 1.5</option></select>
+        </div>
         <div id="promptBox" contenteditable="true">Prompt text</div>
         <div id="teleprompterText" contenteditable="true">Popup text</div>
         <div id="notchEditPanel" class="show">
           <div id="notchEditToolbar">
             <select id="notchEditFontSize"><option value="24" selected>24</option><option value="32">32</option></select>
+            <select id="notchEditLineHeight"><option value="1.25" selected>Line 1.25</option><option value="1.5">Line 1.5</option></select>
             <button data-cmd="bold">B</button>
             <button data-cmd="underline">U</button>
             <button id="notchEditColorTrigger"></button>
@@ -85,6 +91,38 @@ describe('shared format toolbar controller', () => {
     // Commit against the surface being edited (the open notch panel), not the
     // stale main promptBox.
     expect(onFormatChange).toHaveBeenCalledWith(notchEditText, { fontSize: '32' });
+  });
+
+  it('applies and synchronizes line height across every teleprompter toolbar and surface', () => {
+    const promptBox = document.getElementById('promptBox');
+    const teleprompterText = document.getElementById('teleprompterText');
+    const notchEditText = document.getElementById('notchEditText');
+    const onSettingsChange = vi.fn();
+    const onFormatChange = vi.fn();
+    controller = initFormatToolbar({
+      promptBox,
+      teleprompterText,
+      notchEditText,
+      onSettingsChange,
+      onFormatChange,
+    });
+
+    [promptBox, teleprompterText, notchEditText].forEach((surface) => {
+      expect(surface.style.lineHeight).toBe('1.25');
+    });
+
+    const notchLineHeight = document.getElementById('notchEditLineHeight');
+    notchLineHeight.value = '1.5';
+    notchLineHeight.dispatchEvent(new Event('change', { bubbles: true }));
+
+    [promptBox, teleprompterText, notchEditText].forEach((surface) => {
+      expect(surface.style.lineHeight).toBe('1.5');
+    });
+    document.querySelectorAll('.ft-line-height, #notchEditLineHeight').forEach((select) => {
+      expect(select.value).toBe('1.5');
+    });
+    expect(onSettingsChange).toHaveBeenCalledWith({ lineHeight: '1.5' });
+    expect(onFormatChange).toHaveBeenCalledWith(notchEditText, { lineHeight: '1.5' });
   });
 
   it('commits a global format against the edited Notch content, not the stale main surface', () => {

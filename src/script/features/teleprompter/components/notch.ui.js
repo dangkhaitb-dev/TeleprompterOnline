@@ -31,6 +31,22 @@ function copyTextStyles(from, to) {
   if (!from || !to) return;
   const styles = getComputedStyle(from);
   TEXT_STYLE_PROPERTIES.forEach((property) => {
+    if (property === 'lineHeight') {
+      // getComputedStyle resolves a unitless line-height (for example 1.5) to
+      // pixels. Preserve the ratio so later font-size changes keep the editor
+      // and preview proportional instead of retaining a stale pixel height.
+      const inlineRatio = from.style.lineHeight.trim();
+      if (/^(?:\d+|\d*\.\d+)$/.test(inlineRatio)) {
+        to.style.lineHeight = inlineRatio;
+        return;
+      }
+      const fontSize = parseFloat(styles.fontSize);
+      const lineHeight = parseFloat(styles.lineHeight);
+      if (Number.isFinite(fontSize) && fontSize > 0 && Number.isFinite(lineHeight)) {
+        to.style.lineHeight = String(Math.round((lineHeight / fontSize) * 1000) / 1000);
+        return;
+      }
+    }
     to.style[property] = styles[property];
   });
 }

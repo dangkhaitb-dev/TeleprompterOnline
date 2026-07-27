@@ -287,6 +287,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     html: promptBox ? promptBox.innerHTML : scriptHtml,
     align: sharedAlign,
     fontSize: savedSettings.fontSize,
+    lineHeight: savedSettings.lineHeight,
     color: savedSettings.color,
     bold: savedSettings.bold,
     italic: savedSettings.italic,
@@ -361,6 +362,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       notchEditor.innerHTML = state.html;
       notchEditor.style.textAlign = sharedAlign;
       notchEditor.style.fontSize = state.fontSize ? `${state.fontSize}px` : '';
+      notchEditor.style.lineHeight = state.lineHeight || '1.25';
       notchEditor.style.color = state.color || '';
       notchEditor.style.fontWeight = state.bold ? 'bold' : '';
       notchEditor.style.fontStyle = state.italic ? 'italic' : '';
@@ -609,7 +611,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   let voiceScrollUI = null;
   let voiceScrollStarting = false;
   let voiceScrollAttempt = 0;
-  let selectedScrollMode = savedSettings.scrollMode || 'wpm';
+  let selectedScrollMode = savedSettings.scrollMode || 'auto';
 
   function setSpeedModePanel(mode) {
     const auto = mode === 'auto';
@@ -1477,10 +1479,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   cleanups.push(() => document.removeEventListener('keydown', onKeyDown));
 
   // With the visible Pause/Play buttons hidden during recording, clicking the
-  // reading surface (camera on or off) toggles the same paused/playing state.
+  // reading surface (camera on or off) toggles the same paused/playing state
+  // for fixed-speed modes. In Auto, surface clicks belong exclusively to word
+  // re-anchoring; pausing here would cancel the new voice-scroll animation.
   const isInteractiveTarget = (el) => !!(el.closest && el.closest('button, a, input, select, textarea, [role="button"], .app-header, .control-bar, .toolbar-shell'));
   on(stageEl, 'click', (e) => {
     if (!isRecordingActive()) return;
+    if (selectedScrollMode === 'auto') return;
     if (isInteractiveTarget(e.target)) return;
     toggleRecordingPause();
   });
@@ -1543,6 +1548,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     saveWorkspaceSettings(workspace.id,{
       align: state.align,
       fontSize: state.fontSize,
+      lineHeight: state.lineHeight,
       color: state.color,
       bold: state.bold,
       italic: state.italic,
@@ -1736,6 +1742,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     colorPicker,
     initialAlign: savedSettings.align,
     initialFontSize: savedSettings.fontSize,
+    initialLineHeight: savedSettings.lineHeight,
     initialColor: savedSettings.color,
     initialBold: savedSettings.bold,
     initialItalic: savedSettings.italic,

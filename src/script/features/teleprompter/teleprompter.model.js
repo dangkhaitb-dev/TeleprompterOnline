@@ -97,7 +97,7 @@ function eyeLineRatio(value) {
 
 export const DEFAULT_SETTINGS = Object.freeze({
   wpm: WPM_DEFAULT,
-  scrollMode: 'wpm',
+  scrollMode: 'auto',
   scrollDurationSeconds: SCROLL_DURATION_DEFAULT,
   mirror: false,
   pageTheme: 'dark',
@@ -111,6 +111,7 @@ export const DEFAULT_SETTINGS = Object.freeze({
   eyeLineVisible: true,
   layoutGuides: false,
   fontSize: '',
+  lineHeight: '1.25',
   color: '',
   bold: false,
   italic: false,
@@ -130,7 +131,7 @@ export function normalizeSettings(raw = {}) {
   };
   return {
     wpm: clampWpm(s.wpm),
-    scrollMode: SCROLL_MODES.includes(s.scrollMode) ? s.scrollMode : 'wpm',
+    scrollMode: SCROLL_MODES.includes(s.scrollMode) ? s.scrollMode : 'auto',
     scrollDurationSeconds: clampScrollDuration(s.scrollDurationSeconds),
     mirror: !!s.mirror,
     pageTheme: theme(s.pageTheme),
@@ -144,6 +145,8 @@ export function normalizeSettings(raw = {}) {
     eyeLineVisible: s.eyeLineVisible === undefined ? true : !!s.eyeLineVisible,
     layoutGuides: !!s.layoutGuides,
     fontSize: s.fontSize || '',
+    lineHeight: ['1', '1.15', '1.25', '1.5', '1.75', '2']
+      .includes(String(s.lineHeight)) ? String(s.lineHeight) : '1.25',
     color: s.color || '',
     bold: !!s.bold,
     italic: !!s.italic,

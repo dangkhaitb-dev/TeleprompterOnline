@@ -13,6 +13,7 @@ import {
 
 const PRE_AUDIO_ABORT_LIMIT = 2;
 const USER_OVERRIDE_GUARD_MS = 650;
+const MAX_ASR_CURSOR_ADVANCE = 8;
 
 /**
  * Detects the language of the script text with auto-fallback mechanisms.
@@ -66,6 +67,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
   let pendingTokens = 0;
   let rawFinalWords = [];
   let previousInterimTokens = [];
+  let lastDeliveredTokens = [];
   let lastResultAt = 0;
   let restartTimer = null;
   let useLocal = false;
@@ -98,6 +100,11 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     const resolve = settleStart;
     settleStart = null;
     resolve(started);
+  }
+
+  function sameTokens(left, right) {
+    return left.length === right.length
+      && left.every((token, index) => token === right[index]);
   }
   
   // Handle Chrome two-slot interim quirk
@@ -151,7 +158,12 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     const stableInterimToks = interimToks.slice(0, stableInterimLength);
     previousInterimTokens = interimToks;
     const allTokens = finalTokens.concat(stableInterimToks);
-    const reach = pendingTokens + stableInterimToks.length;
+    // A cumulative Chrome final can contain dozens of old words. Its length is
+    // not evidence that the reader skipped the same number of unread words.
+    const reach = Math.min(
+      pendingTokens + stableInterimToks.length,
+      MAX_ASR_CURSOR_ADVANCE
+    );
     const tailPartial = stableInterimToks.length > 0;
 
     const rawTranscript = `${rawFinalWords.slice(-16).join(' ')} ${interimText}`.trim();
@@ -162,6 +174,10 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
       stableInterimTokens: stableInterimToks.length,
       isInterim: tailPartial,
     });
+    // Chrome commonly emits the same token stream once as a stable interim and
+    // again as final. Feeding both lets one utterance advance the cursor twice.
+    if (sameTokens(allTokens, lastDeliveredTokens)) return;
+    lastDeliveredTokens = [...allTokens];
     try {
       onResult({
         allTokens,
@@ -371,6 +387,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     pendingTokens = 0;
     rawFinalWords = [];
     previousInterimTokens = [];
+    lastDeliveredTokens = [];
     lastResultAt = 0;
     fallbackToCloud = false;
     fatalError = false;
@@ -497,6 +514,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     pendingTokens = 0;
     rawFinalWords = [];
     previousInterimTokens = [];
+    lastDeliveredTokens = [];
   }
   
   function getLastResultAt() { return lastResultAt; }
@@ -550,7 +568,6 @@ export function createVoiceScrollController({
       missStreak: 0,
       lastFeedStreamLen: 0,
       lastMatchStreamLen: 0,
-      lastGlobalAt: 0,
       lastMatch: null,
       feedTailPartial: false,
     };
@@ -573,17 +590,34 @@ export function createVoiceScrollController({
       return;
     }
     
-    const result = modelFeedTranscript(allTokens, reach, tailPartial, matcherState);
+    let result = modelFeedTranscript(allTokens, reach, tailPartial, matcherState);
+    const previousCursor = matcherState.cursor;
+    const isSequentialRecovery = !!result.lastMatch?.sequentialRecovery;
+    if (!isSequentialRecovery
+      && result.cursor > previousCursor + MAX_ASR_CURSOR_ADVANCE) {
+      const rawCursor = result.cursor;
+      const cursor = previousCursor + MAX_ASR_CURSOR_ADVANCE;
+      result = {
+        ...result,
+        cursor,
+        lastMatch: result.lastMatch
+          ? { ...result.lastMatch, end: cursor, rawEnd: rawCursor, clamped: true }
+          : result.lastMatch,
+      };
+      console.info('[VoiceScroll] cursor advance clamped', {
+        previous: previousCursor,
+        requested: rawCursor,
+        accepted: cursor,
+      });
+    }
     const cursorMoved = result.cursor !== matcherState.cursor;
-    const isGlobal = !!(result.lastMatch && result.lastMatch.global);
     const movedBehindUser = cursorMoved && userAnchor >= 0 && result.cursor < userAnchor;
     const confirmedUserAnchor = cursorMoved
-      && result.cursor >= userAnchor
-      && !isGlobal;
+      && result.cursor >= userAnchor;
 
     // After a user re-anchor, only a local voice match at/after that anchor may
-    // resume ASR control. A global rescue or a stale result behind the manual
-    // position is never allowed to pull the prompter away from the user.
+    // resume ASR control. A stale result behind the manual position is never
+    // allowed to pull the prompter away from the user.
     if (movedBehindUser || (awaitingUserAnchorSpeech && !confirmedUserAnchor)) {
       asr?.resetStream();
       onTranscript?.({
@@ -624,13 +658,12 @@ export function createVoiceScrollController({
       onCursorMove?.({
         cursor: result.cursor,
         displayIndex,
-        isGlobal,
         words: result.words,
       });
       console.info('[VoiceScroll] cursor matched', {
         previous: prev,
         cursor: result.cursor,
-        global: isGlobal,
+        sequentialRecovery: isSequentialRecovery,
       });
       asr?.resetPending();
       
@@ -733,7 +766,6 @@ export function createVoiceScrollController({
     matcherState.lastFeedStreamLen = 0;
     matcherState.lastMatchStreamLen = 0;
     matcherState.curDrift = 0;
-    matcherState.lastGlobalAt = 0;
     matcherState.lastMatch = null;
     matcherState.feedTailPartial = false;
     if (asr) {
@@ -764,6 +796,12 @@ export function createVoiceScrollController({
   function updateCreepIndex(newIndex) {
     creepIndex = newIndex;
   }
+
+  function isUserOverrideActive() {
+    return userOverridePending
+      || awaitingUserAnchorSpeech
+      || performance.now() < userGuardUntil;
+  }
   
   return {
     start,
@@ -776,5 +814,6 @@ export function createVoiceScrollController({
     getPhase: () => phase,
     getWords: () => matcherState?.words ?? [],
     getCursor: () => matcherState?.cursor ?? -1,
+    isUserOverrideActive,
   };
 }

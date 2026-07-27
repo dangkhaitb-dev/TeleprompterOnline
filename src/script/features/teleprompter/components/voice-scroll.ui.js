@@ -121,35 +121,91 @@ function wrapSurfaceWords(surface) {
 
 function createScrollEngine(getSurface, pid) {
   let animId = null;
-  
+  let transition = null;
+
   function tick(timestamp) {
     const surface = getSurface();
-    if (!surface) { animId = null; return; }
-    
+    if (!surface) {
+      animId = null;
+      transition = null;
+      return;
+    }
+
+    if (transition) {
+      if (transition.startedAt === null) transition.startedAt = timestamp;
+      const progress = Math.min(1, (timestamp - transition.startedAt) / transition.duration);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const position = transition.from + (transition.to - transition.from) * eased;
+      surface.scrollTop = Math.round(position);
+      pid.syncTo(position);
+
+      if (progress < 1) {
+        animId = requestAnimationFrame(tick);
+      } else {
+        surface.scrollTop = Math.round(transition.to);
+        pid.syncTo(transition.to);
+        transition = null;
+        animId = null;
+      }
+      return;
+    }
+
     const { position, settled } = pid.tick(timestamp);
     surface.scrollTop = Math.round(position);
-    
+
     if (!settled) {
       animId = requestAnimationFrame(tick);
     } else {
       animId = null;
     }
   }
-  
+
   function ensureRunning() {
+    // Fresh speech takes ownership from an explicit click transition.
+    transition = null;
     if (animId === null) {
       animId = requestAnimationFrame(tick);
     }
   }
-  
+
+  function animateTo(target, duration) {
+    const surface = getSurface();
+    if (!surface) return;
+    if (animId !== null) cancelAnimationFrame(animId);
+
+    const from = surface.scrollTop;
+    if (Math.abs(target - from) < 1) {
+      surface.scrollTop = Math.round(target);
+      pid.syncTo(target);
+      animId = null;
+      transition = null;
+      return;
+    }
+
+    pid.syncTo(from);
+    transition = {
+      from,
+      to: target,
+      duration: Math.max(1, duration),
+      startedAt: null,
+    };
+    animId = requestAnimationFrame(tick);
+  }
+
   function stop() {
     if (animId !== null) {
       cancelAnimationFrame(animId);
       animId = null;
     }
+    transition = null;
   }
-  
-  return { ensureRunning, stop, isRunning: () => animId !== null };
+
+  return {
+    ensureRunning,
+    animateTo,
+    stop,
+    isRunning: () => animId !== null,
+  };
 }
 
 function setSpokenAppearance(word, spoken) {
@@ -208,6 +264,7 @@ export function paintWords(words, displayIndex, prevDisplayIndex) {
 // Reading line at 1/3 from top (teleprompter.com standard)
 const READING_RATIO = 1 / 3;
 const WORD_ACTIVE_FEEDBACK_MS = 700;
+const WORD_SCROLL_ANIMATION_MS = 360;
 
 function scrollTarget(el, surface) {
   return Math.max(0, el.offsetTop - surface.clientHeight * READING_RATIO + el.offsetHeight / 2);
@@ -232,6 +289,10 @@ function createCreepEngine(getSurface, pid, scrollEngine, controller) {
   
   function tick() {
     creepRaf = null;
+    // A direct word selection owns the reading position until fresh speech
+    // confirms that anchor. Even a stale creep callback that was already queued
+    // before the click must not install another automatic scroll target.
+    if (controller.isUserOverrideActive?.()) return;
     const info = controller.getCreepInfo();
     if (info.cursor < 0) return;
     const now = performance.now();
@@ -317,6 +378,13 @@ export function initVoiceScrollUI({
 
     clearTimeout(reanchorTimer);
     reanchorTimer = null;
+    // User input has the highest scroll priority. Tear down the current Auto
+    // frame and momentum first, then start one fresh transition from the exact
+    // DOM position to the selected word. This prevents an in-flight PID target
+    // from competing with the user's replacement target.
+    if (creep) creep.stop();
+    scrollEng.stop();
+    pid.syncTo(surface.scrollTop);
     displayIndex = index;
     controller.setCursorTo(index, { userInitiated: true });
     // A direct word selection is an explicit reading-position change: dim
@@ -334,9 +402,10 @@ export function initVoiceScrollUI({
       wordActiveTimer = null;
     }, WORD_ACTIVE_FEEDBACK_MS);
 
-    if (creep) creep.stop();
-    pid.setTarget(scrollTarget(words[index].el, surface), true, surface.scrollTop);
-    scrollEng.ensureRunning();
+    scrollEng.animateTo(
+      scrollTarget(words[index].el, surface),
+      WORD_SCROLL_ANIMATION_MS,
+    );
   }
   
   async function start() {
@@ -366,9 +435,8 @@ export function initVoiceScrollUI({
     
     // 3. Create controller
     controller = createVoiceScrollController({
-      onCursorMove: ({ cursor: newCursor, isGlobal }) => {
+      onCursorMove: ({ cursor: newCursor }) => {
         if (!words[newCursor]) return;
-        const prevDisplay = displayIndex;
         displayIndex = newCursor;
         
         // Only a confirmed ASR cursor move (or an explicit word click above)
@@ -381,11 +449,11 @@ export function initVoiceScrollUI({
         if (!surface) return;
         const target = scrollTarget(words[newCursor].el, surface);
         
-        // Forward-only guard (except global rescue)
-        const snap = isGlobal && newCursor < prevDisplay;
-        if (!isGlobal && surface.scrollTop > target) return;
+        // Recognition moves sequentially forward only. If the user manually
+        // placed the viewport below this word, do not pull it backward.
+        if (surface.scrollTop > target) return;
         
-        pid.setTarget(target, snap, snap ? surface.scrollTop : null);
+        pid.setTarget(target, false);
         scrollEng.ensureRunning();
         
         // Start creep
@@ -441,6 +509,10 @@ export function initVoiceScrollUI({
         const index = wordIndexFromEvent(event);
         if (index < 0) return;
         event.preventDefault();
+        // The word owns this click. Keep direct re-anchoring isolated from
+        // ancestor stage gestures; the Record stage also ignores Auto clicks
+        // defensively so this interaction behaves exactly like Play.
+        event.stopPropagation();
         activateWord(index);
       };
       surface2.addEventListener('pointerdown', wordPointerDownHandler);

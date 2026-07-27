@@ -34,7 +34,6 @@ function createMatcherState(script, cursor = -1) {
     missStreak: 0,
     lastFeedStreamLen: 0,
     lastMatchStreamLen: 0,
-    lastGlobalAt: 0,
     lastMatch: null,
     feedTailPartial: false,
   };
@@ -95,7 +94,6 @@ describe('Voice Scroll Model matching algorithm', () => {
       missStreak: 0,
       lastFeedStreamLen: 0,
       lastMatchStreamLen: 0,
-      lastGlobalAt: 0,
       lastMatch: null,
       feedTailPartial: false,
     };
@@ -188,6 +186,138 @@ describe('Voice Scroll Model matching algorithm', () => {
     const next = feedTranscript(oldParagraph, oldParagraph.length, false, state);
 
     expect(next.cursor).toBe(25);
+  });
+
+  it('only searches sequentially near the cursor instead of jumping to a later match', () => {
+    const scriptWords = [
+      'alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot', 'golf', 'hotel',
+      'india', 'juliett', 'kilo', 'lima', 'mike', 'november', 'oscar', 'papa',
+      'quebec', 'romeo', 'sierra', 'tango', 'uniform', 'victor', 'whiskey',
+      'xray', 'yankee', 'zulu',
+    ];
+    const state = createMatcherState(scriptWords.join(' '), 3);
+    const farTranscript = scriptWords.slice(20, 26).map((word) => normalize(word));
+
+    const farResult = feedTranscript(
+      farTranscript,
+      farTranscript.length,
+      false,
+      state
+    );
+
+    expect(farResult.cursor).toBe(3);
+
+    const sequentialTranscript = scriptWords.slice(4, 10).map((word) => normalize(word));
+    const sequentialResult = feedTranscript(
+      sequentialTranscript,
+      sequentialTranscript.length,
+      false,
+      state
+    );
+
+    expect(sequentialResult.cursor).toBeGreaterThan(3);
+    expect(sequentialResult.cursor).toBeLessThanOrEqual(9);
+  });
+
+  it('uses preceding context to disambiguate two identical chunks', () => {
+    const firstContext = ['red', 'amber', 'cedar', 'maple'];
+    const repeatedChunk = [
+      'alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot',
+      'golf', 'hotel', 'india', 'juliett', 'kilo', 'lima',
+    ];
+    const secondContext = ['blue', 'ivory', 'birch', 'willow'];
+    const scriptWords = [
+      ...firstContext,
+      ...repeatedChunk,
+      ...secondContext,
+      ...repeatedChunk,
+    ];
+    const state = createMatcherState(scriptWords.join(' '), 9);
+    const transcript = [...firstContext, ...repeatedChunk].map((word) => normalize(word));
+
+    const next = feedTranscript(transcript, transcript.length, false, state);
+
+    // Both repeated chunks have an identical level-1 score. The first one wins
+    // because its preceding context matches "red amber cedar maple"; the old
+    // latest-candidate tie-break incorrectly selected the second occurrence.
+    expect(next.cursor).toBe(15);
+    expect(next.lastMatch.contextScore).toBe(1);
+  });
+
+  it('keeps the nearer identical chunk ahead of a farther context match', () => {
+    const firstContext = ['red', 'amber', 'cedar', 'maple'];
+    const repeatedChunk = [
+      'alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot',
+      'golf', 'hotel', 'india', 'juliett', 'kilo', 'lima',
+    ];
+    const secondContext = ['blue', 'ivory', 'birch', 'willow'];
+    const scriptWords = [
+      ...firstContext,
+      ...repeatedChunk,
+      ...secondContext,
+      ...repeatedChunk,
+    ];
+    const transcript = [...secondContext, ...repeatedChunk].map((word) => normalize(word));
+    const state = {
+      ...createMatcherState(scriptWords.join(' '), 9),
+      lastFeedStreamLen: transcript.length,
+      lastMatchStreamLen: transcript.length,
+    };
+
+    const next = feedTranscript(transcript, transcript.length, false, state);
+
+    // Level 1 sees identical repeated content. Level 2 must keep the nearby
+    // occurrence even though the detached transcript context resembles the
+    // later occurrence more closely.
+    expect(next.cursor).toBe(15);
+  });
+
+  it('recovers from an intentionally skipped paragraph using the nearest later match', () => {
+    const opening = ['alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot'];
+    const skipped = Array.from({ length: 18 }, (_, index) => `skipped${index}`);
+    const nearestChunk = ['red', 'amber', 'cedar', 'maple', 'birch'];
+    const betweenRepeats = Array.from({ length: 20 }, (_, index) => `middle${index}`);
+    const scriptWords = [
+      ...opening,
+      ...skipped,
+      ...nearestChunk,
+      ...betweenRepeats,
+      ...nearestChunk,
+    ];
+    const spokenBeforeSkip = opening.map((word) => normalize(word));
+    let state = {
+      ...createMatcherState(scriptWords.join(' '), opening.length - 1),
+      lastFeedStreamLen: spokenBeforeSkip.length,
+      lastMatchStreamLen: spokenBeforeSkip.length,
+    };
+
+    // The first failed local update only arms recovery. This prevents one stale
+    // cumulative ASR result from immediately moving the cursor.
+    state = feedTranscript(
+      [...spokenBeforeSkip, ...nearestChunk.slice(0, 4)],
+      4,
+      false,
+      state
+    );
+    expect(state.cursor).toBe(opening.length - 1);
+    expect(state.missStreak).toBe(1);
+
+    state = feedTranscript(
+      [...spokenBeforeSkip, ...nearestChunk],
+      5,
+      false,
+      state
+    );
+
+    const nearestChunkEnd = opening.length + skipped.length + nearestChunk.length - 1;
+    expect(state.cursor).toBe(nearestChunkEnd);
+    expect(state.lastMatch.sequentialRecovery).toBe(true);
+    // The same chunk exists again later, but ordered forward scanning must stop
+    // at the nearest valid occurrence.
+    expect(state.cursor).toBeLessThan(
+      opening.length + skipped.length + nearestChunk.length
+        + betweenRepeats.length + nearestChunk.length - 1
+    );
   });
 });
 

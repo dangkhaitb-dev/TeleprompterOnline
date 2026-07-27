@@ -168,6 +168,80 @@ describe('Voice Scroll browser integration', () => {
     voiceUI.stop();
   });
 
+  it('does not let one long cumulative interim/final skip unread content', async () => {
+    const scriptWords = Array.from({ length: 60 }, (_, index) => `keyword${index}`);
+    const transcript = scriptWords.slice(0, 48).join(' ');
+    const onTranscript = vi.fn();
+    surface.textContent = scriptWords.join(' ');
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      onTranscript,
+    });
+    await voiceUI.start();
+    const words = [...surface.querySelectorAll('.vs-w')];
+    setVisualRows(words, words.map((_, index) => index));
+    const recognition = FakeSpeechRecognition.instances[0];
+
+    // Chrome can repeat a large accumulated utterance as stable interim and
+    // then final. It is one speech update, not permission to advance twice or
+    // jump straight to the matching tail.
+    recognition.emitTranscript(transcript);
+    recognition.emitTranscript(transcript);
+    const callsBeforeFinal = onTranscript.mock.calls.length;
+    recognition.emitTranscript(transcript, { isFinal: true, confidence: 1 });
+
+    const furthestSpoken = words.reduce(
+      (last, word, index) => word.classList.contains('vs-spoken') ? index : last,
+      -1
+    );
+    expect(furthestSpoken).toBeLessThan(8);
+    expect(onTranscript).toHaveBeenCalledTimes(callsBeforeFinal);
+
+    voiceUI.stop();
+  });
+
+  it('re-synchronizes after an intentional paragraph skip without the 8-word clamp', async () => {
+    const opening = ['alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot'];
+    const skipped = Array.from({ length: 18 }, (_, index) => `skipped${index}`);
+    const target = ['red', 'amber', 'cedar', 'maple', 'birch'];
+    const scriptWords = [...opening, ...skipped, ...target];
+    const onTranscript = vi.fn();
+    surface.textContent = scriptWords.join(' ');
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      onTranscript,
+    });
+    await voiceUI.start();
+    const recognition = FakeSpeechRecognition.instances[0];
+    const openingText = opening.join(' ');
+
+    recognition.emitTranscript(openingText);
+    recognition.emitTranscript(openingText);
+
+    const firstRecoveryText = [...opening, ...target.slice(0, 4)].join(' ');
+    recognition.emitTranscript(firstRecoveryText);
+    recognition.emitTranscript(firstRecoveryText);
+
+    const confirmedRecoveryText = [...opening, ...target].join(' ');
+    recognition.emitTranscript(confirmedRecoveryText);
+    recognition.emitTranscript(confirmedRecoveryText);
+
+    expect(onTranscript).toHaveBeenLastCalledWith(expect.objectContaining({
+      cursor: scriptWords.length - 1,
+      matched: true,
+    }));
+    expect(infoSpy).toHaveBeenCalledWith(
+      '[VoiceScroll] cursor matched',
+      expect.objectContaining({
+        previous: opening.length - 1,
+        cursor: scriptWords.length - 1,
+        sequentialRecovery: true,
+      })
+    );
+
+    voiceUI.stop();
+  });
+
   it('starts recognition without script hints that could seed hallucinations', async () => {
     class FakeSpeechRecognitionPhrase {
       constructor(phrase, boost) {
@@ -435,6 +509,47 @@ describe('Voice Scroll browser integration', () => {
       (word) => !word.classList.contains('vs-spoken')
     )).toBe(true);
     expect(words[2].classList.contains('vs-active')).toBe(true);
+
+    voiceUI.stop();
+  });
+
+  it('keeps consecutive word selections owned by one scroll loop in Record', async () => {
+    const recordStage = document.createElement('div');
+    const onRecordStageClick = vi.fn();
+    recordStage.addEventListener('click', onRecordStageClick);
+    recordStage.appendChild(surface);
+
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface });
+    await voiceUI.start();
+    const words = [...surface.querySelectorAll('.vs-w')];
+    words.forEach((word, index) => {
+      Object.defineProperty(word, 'offsetTop', {
+        configurable: true,
+        value: index * 120,
+      });
+      Object.defineProperty(word, 'offsetHeight', {
+        configurable: true,
+        value: 20,
+      });
+    });
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+
+    words[4].dispatchEvent(new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }));
+    words[6].dispatchEvent(new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }));
+
+    expect(words[4].classList.contains('vs-active')).toBe(false);
+    expect(words[6].classList.contains('vs-active')).toBe(true);
+    // Each click cancels the current Auto frame before scheduling its own
+    // replacement. There is never more than one live scroll owner.
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(2);
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(3);
+    expect(onRecordStageClick).not.toHaveBeenCalled();
 
     voiceUI.stop();
   });

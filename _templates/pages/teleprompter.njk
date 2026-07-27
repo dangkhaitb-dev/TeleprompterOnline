@@ -56,6 +56,14 @@ lang: en
       <select id="fontSizeSelect" class="ft-font-size" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}">
         {%- for s in pageData.format.fontSizes %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
       </select>
+      <span class="ft-line-height-control" title="{{ pageData.format.lineHeightLabel }}">
+        <svg class="ft-line-height-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M4 3v14M2 5l2-2 2 2M2 15l2 2 2-2M9 5h9M9 10h7M9 15h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <select class="ft-line-height" aria-label="{{ pageData.format.lineHeightLabel }}">
+          {%- for s in pageData.format.lineHeights %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
+        </select>
+      </span>
       <span class="ft-divider"></span>
       <div class="ft-bi-group">
         <button type="button" class="ft-bold" data-cmd="bold" title="{{ pageData.format.boldTitle }}">B</button>
@@ -123,6 +131,14 @@ lang: en
     <select class="ft-font-size" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}">
       {%- for s in pageData.format.fontSizes %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
     </select>
+    <span class="ft-line-height-control" title="{{ pageData.format.lineHeightLabel }}">
+      <svg class="ft-line-height-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M4 3v14M2 5l2-2 2 2M2 15l2 2 2-2M9 5h9M9 10h7M9 15h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <select class="ft-line-height" aria-label="{{ pageData.format.lineHeightLabel }}">
+        {%- for s in pageData.format.lineHeights %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
+      </select>
+    </span>
     <span class="ft-divider"></span>
     <div class="ft-bi-group">
       <button type="button" class="ft-bold" data-cmd="bold" title="{{ pageData.format.boldTitle }}">B</button>
@@ -417,18 +433,18 @@ lang: en
       <div class="popup-title">{{ pageData.speedMenu.title }}</div>
       <div class="scroll-mode-options" role="radiogroup" aria-label="{{ pageData.speedMenu.modeLabel }}">
         <div class="scroll-mode-option">
-          <button class="scroll-mode-choice" id="speedModeAuto" type="button" role="radio" aria-checked="false">
+          <button class="scroll-mode-choice selected" id="speedModeAuto" type="button" role="radio" aria-checked="true">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
             <span>{{ pageData.speedMenu.autoScroll }}</span>
           </button>
         </div>
 
         <div class="scroll-mode-option">
-          <button class="scroll-mode-choice selected" id="speedMethodWpm" type="button" role="radio" aria-checked="true" aria-controls="speedWpmPanel">
+          <button class="scroll-mode-choice" id="speedMethodWpm" type="button" role="radio" aria-checked="false" aria-controls="speedWpmPanel">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
             <span>{{ pageData.speedMenu.wordsPerMinute }}</span>
           </button>
-          <section class="speed-mode-panel" id="speedWpmPanel" aria-labelledby="speedMethodWpm">
+          <section class="speed-mode-panel" id="speedWpmPanel" aria-labelledby="speedMethodWpm" hidden>
             <div class="speed-editor">
               <label class="speed-editor-header" for="speedRange">
                 <span>{{ pageData.speedMenu.scrollSpeed }}</span>
@@ -608,6 +624,14 @@ lang: en
         <select class="notch-edit-select" id="notchEditFontSize" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}">
           {%- for s in pageData.notch.fontSizes %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
         </select>
+        <span class="ft-line-height-control notch-edit-line-height-control" title="{{ pageData.format.lineHeightLabel }}">
+          <svg class="ft-line-height-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 3v14M2 5l2-2 2 2M2 15l2 2 2-2M9 5h9M9 10h7M9 15h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <select class="notch-edit-select" id="notchEditLineHeight" aria-label="{{ pageData.format.lineHeightLabel }}">
+            {%- for s in pageData.format.lineHeights %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
+          </select>
+        </span>
         <span class="notch-edit-divider" aria-hidden="true"></span>
         <button type="button" class="notch-edit-cmd" data-cmd="bold" title="{{ pageData.format.boldTitle }}" aria-label="Bold"><b>B</b></button>
         <button type="button" class="notch-edit-cmd" data-cmd="italic" title="{{ pageData.format.italicTitle }}" aria-label="Italic"><i>I</i></button>

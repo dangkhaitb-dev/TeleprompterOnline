@@ -9,6 +9,10 @@
 
 export const MATCH = Object.freeze({
   BUF: 12, LOOK_BACK: 0, LOOK_AHEAD_PAD: 6, REACH_MAX: 30,
+  CONTEXT_WORDS: 6, CONTEXT_MIN_WORDS: 2, CONTEXT_NEAR_SPAN: 8,
+  RECOVERY_MIN_TOKENS: 4, RECOVERY_MAX_TOKENS: 8,
+  RECOVERY_AFTER_MISSES: 1, RECOVERY_ACCEPT: 0.72,
+  RECOVERY_MIN_DENSITY: 0.75,
   ACCEPT: 0.30, ACCEPT_STRICT: 0.45, LOCALITY_HALVING: 45,
   TIE_MARGIN: 0.04, FAR_JUMP_MIN_TOKENS: 2, FAR_JUMP_MAX_DIST: 20,
   RECENCY_DECAY: 0.82, INS_FACTOR: 0.6,
@@ -20,10 +24,7 @@ export const MATCH = Object.freeze({
   LOCAL_MIN_MATCHED: 2, LOCAL_MIN_DENSITY: 0.5,
   RESCUE_MIN_MATCHED: 4, RESCUE_MIN_DENSITY: 0.45,
   DRIFT_MAX: 30, FORCE_AFTER_STALLS: 3, FORCE_MAX_RUN: 8,
-  GLOBAL_AFTER_MISSES: 2, GLOBAL_ACCEPT: 0.72, GLOBAL_MIN_TOKENS: 6,
-  GLOBAL_BLOCK_MIN: 3, GLOBAL_MAX_CANDIDATES: 400, GLOBAL_MIN_INTERVAL_MS: 400,
   WEAK_LOCAL: 0.55,
-  GLOBAL_MUST_BEAT: 1.2,
 });
 
 export const CREEP = Object.freeze({
@@ -358,75 +359,131 @@ export function scoreEnd(buf, bufFold, wts, end, anchor, useLocality, ctx, match
   return best;
 }
 
-export function searchLocal(buf, bufFold, wts, lo, hi, anchor, minScore, ctx, matchCtx) {
-  let bestAny = null;
+function contextContinuity(contextTokens, candidate, ctx) {
+  if (!contextTokens.length || !candidate) return null;
+  const candidateStart = candidate.end - candidate.wLen + 1;
+  const length = Math.min(contextTokens.length, candidateStart);
+  if (length < MATCH.CONTEXT_MIN_WORDS) return null;
+  const spoken = contextTokens.slice(-length);
+  const scriptStart = candidateStart - length;
+  let score = 0;
+  for (let index = 0; index < length; index++) {
+    const token = spoken[index];
+    const word = ctx.words[scriptStart + index];
+    score += 1 - subCost(token, foldDiacritics(token), word, viKey(token));
+  }
+  return score / length;
+}
+
+function pickLocalCandidate(candidates, anchor, ctx) {
+  if (!candidates.length) return null;
+  const peakSimilarity = candidates.reduce(
+    (peak, candidate) => Math.max(peak, candidate.sim),
+    -Infinity
+  );
+  const nearPeak = candidates.filter(
+    (candidate) => candidate.sim >= peakSimilarity * (1 - MATCH.TIE_MARGIN)
+  );
+  const expected = anchor + ctx.curDrift;
+  const distanceFromExpected = (candidate) => Math.abs(candidate.end - expected);
+  const nearestDistance = nearPeak.reduce(
+    (nearest, candidate) => Math.min(nearest, distanceFromExpected(candidate)),
+    Infinity
+  );
+  const nearby = nearPeak.filter(
+    (candidate) => distanceFromExpected(candidate)
+      <= nearestDistance + MATCH.CONTEXT_NEAR_SPAN
+  );
+  nearby.sort((left, right) => {
+    const leftContext = left.contextScore ?? -1;
+    const rightContext = right.contextScore ?? -1;
+    if (Math.abs(rightContext - leftContext) > 1e-9) {
+      return rightContext - leftContext;
+    }
+    const distanceDiff = distanceFromExpected(left) - distanceFromExpected(right);
+    if (distanceDiff) return distanceDiff;
+    return left.end - right.end;
+  });
+  return nearby[0];
+}
+
+export function searchLocal(
+  buf,
+  bufFold,
+  wts,
+  lo,
+  hi,
+  anchor,
+  minScore,
+  ctx,
+  matchCtx,
+  contextTokens = []
+) {
+  const candidates = [];
   const accepted = [];
   for (let end = lo; end <= hi; end++) {
     const distAhead = Math.max(0, end - anchor);
     if (buf.length < MATCH.FAR_JUMP_MIN_TOKENS && distAhead > MATCH.FAR_JUMP_MAX_DIST) continue;
     const cand = scoreEnd(buf, bufFold, wts, end, anchor, true, ctx, matchCtx);
     if (!cand) continue;
-    if (!bestAny || cand.score > bestAny.score) bestAny = cand;
+    cand.contextScore = contextContinuity(contextTokens, cand, ctx);
+    candidates.push(cand);
     if (cand.score <= minScore) continue;
     accepted.push(cand);
   }
 
-  // Prefer the latest candidate only when it is within the tie margin of the
-  // true peak. Comparing against the previously selected candidate allowed a
-  // chain of slightly worse scores to walk the cursor across the whole window.
-  const peak = accepted.reduce((score, cand) => Math.max(score, cand.score), -Infinity);
-  const best = accepted
-    .filter((cand) => cand.score >= peak * (1 - MATCH.TIE_MARGIN))
-    .at(-1) || null;
-  return { best, bestAny };
+  // Level 1 ranks current-chunk similarity. Level 2 first limits candidates to
+  // the nearest neighborhood, then uses the immediately preceding words as
+  // context. An exact tie chooses the earlier candidate, so repeated text
+  // cannot pull the reader toward a distant occurrence.
+  return {
+    best: pickLocalCandidate(accepted, anchor, ctx),
+    bestAny: pickLocalCandidate(candidates, anchor, ctx),
+  };
 }
 
-export function searchGlobal(buf, bufFold, wts, anchor, minScore, ctx, matchCtx) {
-  const ends = new Set();
-  for (let i = 0; i < buf.length; i++) {
-    const positions = ctx.posIndex.get(buf[i]);
-    if (!positions) continue;
-    const offset = buf.length - 1 - i;
-    for (const p of positions) {
-      const end = p + offset;
-      if (end >= 0 && end < ctx.words.length) ends.add(end);
-    }
+function searchForwardRecovery(buf, contextTokens, start, ctx) {
+  if (buf.length < MATCH.RECOVERY_MIN_TOKENS || start >= ctx.words.length) {
+    return null;
   }
-  let best = null;
-  let seen = 0;
-  for (const end of ends) {
-    if (++seen > MATCH.GLOBAL_MAX_CANDIDATES) break;
-    const cand = scoreEnd(buf, bufFold, wts, end, anchor, false, ctx, matchCtx);
-    if (cand && cand.score > minScore && (!best || cand.score > best.score)) best = cand;
-  }
-  return best;
-}
+  const bufFold = buf.map(foldDiacritics);
+  const wts = recencyWeights(buf.length);
+  const matchCtx = createMatchCtx(buf, false);
 
-export function globalBlockJump(stream, anchor, ctx) {
-  const a = stream.slice(-36);
-  let j2len = new Map();
-  let bestSize = 0;
-  const ends = [];
-  const tailFrom = a.length - 6;
-  for (let i = 0; i < a.length; i++) {
-    const next = new Map();
-    const poss = ctx.junkAnchors.has(a[i]) ? null : ctx.posIndex.get(a[i]);
-    if (poss) {
-      for (const j of poss) {
-        const k = (j2len.get(j - 1) || 0) + 1;
-        next.set(j, k);
-        if (i >= tailFrom && k >= MATCH.GLOBAL_BLOCK_MIN) {
-          if (k > bestSize) { bestSize = k; ends.length = 0; ends.push(j); }
-          else if (k === bestSize) ends.push(j);
-        }
-      }
-    }
-    j2len = next;
+  // This is deliberately an ordered scan, not a global "best score" search.
+  // The first strongly confirmed chunk below the cursor wins, so an identical
+  // occurrence farther down can never overtake the nearest valid occurrence.
+  for (let end = start; end < ctx.words.length; end++) {
+    const candidate = scoreEnd(buf, bufFold, wts, end, ctx.cursor, false, ctx, matchCtx);
+    if (!candidate || candidate.sim < MATCH.RECOVERY_ACCEPT) continue;
+
+    const windowStart = Math.max(0, candidate.end - candidate.wLen + 1);
+    const trace = alignLastMatch(
+      buf,
+      bufFold,
+      wts,
+      windowStart,
+      candidate.end,
+      ctx,
+      matchCtx
+    );
+    if (!trace || trace.pos < start) continue;
+    if (trace.matched < MATCH.RECOVERY_MIN_TOKENS) continue;
+    if (trace.matched / buf.length < MATCH.RECOVERY_MIN_DENSITY) continue;
+
+    return {
+      ...candidate,
+      contextScore: contextContinuity(contextTokens, candidate, ctx),
+      end: trace.pos,
+      ti: trace.ti,
+      matched: trace.matched,
+      aligned: true,
+      matchLevel: 2,
+      sequentialRecovery: true,
+      newMissStreak: 0,
+    };
   }
-  if (bestSize < MATCH.GLOBAL_BLOCK_MIN || !ends.length) return null;
-  let end = ends[0];
-  for (const e of ends) if (Math.abs(e - anchor) < Math.abs(end - anchor)) end = e;
-  return end;
+  return null;
 }
 
 export function refineSpoken(tokens, ctx) {
@@ -439,7 +496,15 @@ export function refineSpoken(tokens, ctx) {
   return dedup;
 }
 
-export function findBestEnd(buf, reachTokens, stream, ctx, acceptThresholdVal = MATCH.ACCEPT) {
+export function findBestEnd(
+  buf,
+  reachTokens,
+  ctx,
+  acceptThresholdVal = MATCH.ACCEPT,
+  contextTokens = [],
+  recoveryTokens = [],
+  recoveryContextTokens = []
+) {
   const bufFold = buf.map(foldDiacritics);
   const matchCtx = createMatchCtx(buf, ctx.feedTailPartial || false);
   const wts = recencyWeights(buf.length);
@@ -450,7 +515,18 @@ export function findBestEnd(buf, reachTokens, stream, ctx, acceptThresholdVal = 
   const lo = Math.max(0, anchor - MATCH.LOOK_BACK);
   const hi = Math.min(ctx.words.length - 1, anchor + reach);
   
-  const { best: local, bestAny } = searchLocal(buf, bufFold, wts, lo, hi, anchor, acceptThresholdVal - 1e-9, ctx, matchCtx);
+  const { best: local, bestAny } = searchLocal(
+    buf,
+    bufFold,
+    wts,
+    lo,
+    hi,
+    anchor,
+    acceptThresholdVal - 1e-9,
+    ctx,
+    matchCtx,
+    contextTokens
+  );
 
   let localTrace = null;
   if (local) {
@@ -484,33 +560,6 @@ export function findBestEnd(buf, reachTokens, stream, ctx, acceptThresholdVal = 
     }
   }
   
-  const newMissStreak = (ctx.missStreak || 0) + 1;
-  const needMisses = buf.length >= MATCH.BUF ? 1 : MATCH.GLOBAL_AFTER_MISSES;
-  const now = ctx.now || Date.now();
-  const dueForGlobal = now - (ctx.lastGlobalAt || 0) >= MATCH.GLOBAL_MIN_INTERVAL_MS;
-  
-  if (dueForGlobal && newMissStreak >= needMisses && buf.length >= MATCH.GLOBAL_MIN_TOKENS) {
-    const blockEnd = globalBlockJump(stream || buf, anchor, ctx);
-    if (blockEnd !== null && Math.abs(blockEnd - anchor) > 15) {
-      return { end: blockEnd, score: 1, sim: 1, dist: 0, wLen: MATCH.GLOBAL_BLOCK_MIN,
-        aligned: true, global: true, newMissStreak: 0, newLastGlobalAt: now };
-    }
-    
-    let g = null;
-    for (const len of [buf.length, 8, MATCH.GLOBAL_MIN_TOKENS]) {
-      if (len > buf.length || len < MATCH.GLOBAL_MIN_TOKENS) continue;
-      const tail = buf.slice(-len);
-      const tailFold = tail.map(foldDiacritics);
-      const tailMatchCtx = createMatchCtx(tail, false);
-      const cand = searchGlobal(tail, tailFold, recencyWeights(len),
-        anchor, MATCH.GLOBAL_ACCEPT, ctx, tailMatchCtx);
-      if (cand && (!g || cand.score > g.score)) g = cand;
-    }
-    if (g && (!local || g.score > local.score * MATCH.GLOBAL_MUST_BEAT)) {
-      return { ...g, global: true, newMissStreak: 0, newLastGlobalAt: now };
-    }
-  }
-  
   if (local && localConfirmed) {
     return {
       ...local,
@@ -521,7 +570,22 @@ export function findBestEnd(buf, reachTokens, stream, ctx, acceptThresholdVal = 
       newMissStreak: 0,
     };
   }
-  return { newMissStreak };
+
+  // If the reader intentionally skips a paragraph, the normal local window
+  // cannot see the new phrase. After one failed local update, use only words
+  // spoken since the last confirmed match and scan the unread suffix in order.
+  // Requiring a dense multi-word match keeps an old cumulative transcript from
+  // being treated as permission to jump.
+  if ((ctx.missStreak || 0) >= MATCH.RECOVERY_AFTER_MISSES) {
+    const recovery = searchForwardRecovery(
+      recoveryTokens,
+      recoveryContextTokens,
+      anchor + 1,
+      ctx
+    );
+    if (recovery) return recovery;
+  }
+  return { newMissStreak: (ctx.missStreak || 0) + 1 };
 }
 
 /**
@@ -532,6 +596,10 @@ export function feedTranscript(allTokens, reachTokens, tailPartial, ctx) {
   const refined = refineSpoken(allTokens, ctx);
   if (!refined.length) return ctx;
   const buf = refined.slice(-MATCH.BUF);
+  const contextTokens = refined.slice(
+    Math.max(0, refined.length - MATCH.BUF - MATCH.CONTEXT_WORDS),
+    Math.max(0, refined.length - MATCH.BUF)
+  );
   
   const feedTailPartial = !!tailPartial && buf[buf.length - 1] === allTokens[allTokens.length - 1];
   
@@ -541,6 +609,15 @@ export function feedTranscript(allTokens, reachTokens, tailPartial, ctx) {
     lastMatchStreamLen -= ((ctx.lastFeedStreamLen || 0) - streamLen);
   }
   const curDrift = Math.max(0, Math.min(streamLen - lastMatchStreamLen, MATCH.DRIFT_MAX));
+  const freshStreamTokens = Math.max(0, streamLen - lastMatchStreamLen);
+  const recoveryTokens = refined.slice(
+    -Math.min(refined.length, freshStreamTokens, MATCH.RECOVERY_MAX_TOKENS)
+  );
+  const recoveryContextEnd = Math.max(0, refined.length - recoveryTokens.length);
+  const recoveryContextTokens = refined.slice(
+    Math.max(0, recoveryContextEnd - MATCH.CONTEXT_WORDS),
+    recoveryContextEnd
+  );
   
   const findCtx = {
     ...ctx,
@@ -548,7 +625,15 @@ export function feedTranscript(allTokens, reachTokens, tailPartial, ctx) {
     curDrift,
   };
   
-  const best = findBestEnd(buf, reachTokens, refined, findCtx, ctx.acceptThresholdVal || MATCH.ACCEPT);
+  const best = findBestEnd(
+    buf,
+    reachTokens,
+    findCtx,
+    ctx.acceptThresholdVal || MATCH.ACCEPT,
+    contextTokens,
+    recoveryTokens,
+    recoveryContextTokens
+  );
   
   const nextCtx = {
     ...ctx,
@@ -558,12 +643,8 @@ export function feedTranscript(allTokens, reachTokens, tailPartial, ctx) {
     missStreak: best && best.newMissStreak !== undefined ? best.newMissStreak : ctx.missStreak,
   };
   
-  if (best && best.newLastGlobalAt !== undefined) {
-    nextCtx.lastGlobalAt = best.newLastGlobalAt;
-  }
-  
-  // Recognition is forward-only. A global rescue may rediscover an older
-  // paragraph, but only an explicit user re-anchor is allowed to move back.
+  // Recognition is forward-only and local to the current cursor. Only an
+  // explicit user re-anchor is allowed to move backward or jump elsewhere.
   if (best && best.end !== undefined && best.end >= ctx.cursor) {
     nextCtx.cursor = best.end;
     nextCtx.lastMatch = best;

@@ -60,7 +60,7 @@ describe('normalizeSettings', () => {
     expect(normalizeSettings({ scrollMode: 'auto', scrollDurationSeconds: 125 }))
       .toMatchObject({ scrollMode: 'auto', scrollDurationSeconds: 125 });
     expect(normalizeSettings({ scrollMode: 'unknown', scrollDurationSeconds: 0 }))
-      .toMatchObject({ scrollMode: 'wpm', scrollDurationSeconds: 1 });
+      .toMatchObject({ scrollMode: 'auto', scrollDurationSeconds: 1 });
     expect(normalizeSettings({ scrollDurationSeconds: SCROLL_DURATION_MAX + 1 }).scrollDurationSeconds)
       .toBe(SCROLL_DURATION_MAX);
     expect(normalizeSettings({ scrollDurationSeconds: 'later' }).scrollDurationSeconds)
@@ -100,6 +100,13 @@ describe('normalizeSettings', () => {
     expect(normalizeSettings({ align: 'diagonal' }).align).toBe('left');
   });
 
+  it('defaults line height to 1.25 and only accepts toolbar values', () => {
+    expect(normalizeSettings({}).lineHeight).toBe('1.25');
+    expect(normalizeSettings({ lineHeight: 1.5 }).lineHeight).toBe('1.5');
+    expect(normalizeSettings({ lineHeight: '1.75' }).lineHeight).toBe('1.75');
+    expect(normalizeSettings({ lineHeight: '3' }).lineHeight).toBe('1.25');
+  });
+
   it('normalizes persisted layout settings', () => {
     expect(normalizeSettings({
       promptMarginRatio: 0.2,
@@ -136,7 +143,7 @@ describe('normalizeSettings', () => {
       notchFullscreen: false,
       promptMarginRatio: 0.18, panelMarginRatio: 0.1,
       eyeLineRatio: 0.4, eyeLineVisible: false, layoutGuides: true,
-      fontSize: '24', color: '#ff0000',
+      fontSize: '24', lineHeight: '1.5', color: '#ff0000',
       bold: true, italic: true, underline: true,
     };
     expect(normalizeSettings(full)).toEqual(full);

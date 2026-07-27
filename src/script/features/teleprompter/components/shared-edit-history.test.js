@@ -24,14 +24,14 @@ describe('createSharedEditHistory', () => {
     expect((await history.undo()).html).toBe('a');
   });
 
-  it('applies font, color and BIU snapshots through library commands', async () => {
+  it('applies font, line height, color and BIU snapshots through library commands', async () => {
     const applied = [];
     const history = createSharedEditHistory(
       { html: 'text', align: 'left' },
       { onApply: (state) => applied.push(state) },
     );
     history.commit({
-      html: 'text', align: 'left', fontSize: '32',
+      html: 'text', align: 'left', fontSize: '32', lineHeight: '1.5',
       color: '#ffffff', bold: true, italic: true, underline: true,
     });
 
@@ -39,7 +39,7 @@ describe('createSharedEditHistory', () => {
     const redone = await history.redo();
     expect(undone.bold).toBe(false);
     expect(redone).toMatchObject({
-      fontSize: '32', color: '#ffffff',
+      fontSize: '32', lineHeight: '1.5', color: '#ffffff',
       bold: true, italic: true, underline: true,
     });
     expect(applied).toHaveLength(2);

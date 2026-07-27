@@ -14,6 +14,7 @@ export function initFormatToolbar({
   colorPicker,
   initialAlign = 'left',
   initialFontSize = '',
+  initialLineHeight = '1.25',
   initialColor = '',
   initialBold = false,
   initialItalic = false,
@@ -29,6 +30,7 @@ export function initFormatToolbar({
   const colorBars = Array.from(root.querySelectorAll('.ft-color-bar, #notchEditColorBar'));
   const colorApplyBtns = Array.from(root.querySelectorAll('.ft-color, #notchEditColorApplyBtn'));
   const fontSizeSelects = Array.from(root.querySelectorAll('.format-toolbar .ft-font-size, #notchEditFontSize'));
+  const lineHeightSelects = Array.from(root.querySelectorAll('.format-toolbar .ft-line-height, #notchEditLineHeight'));
   const alignButtons = Array.from(root.querySelectorAll('.format-toolbar .ft-align, #notchEditToolbar .notch-edit-align'));
 
   let colorHex = initialColor || DEFAULT_COLOR;
@@ -49,15 +51,18 @@ export function initFormatToolbar({
 
   function applySettings(settings = {}) {
     const fontSize = settings.fontSize || '';
+    const lineHeight = settings.lineHeight || '1.25';
     const color = settings.color || '';
     surfaces.forEach((surface) => {
       surface.style.fontSize = fontSize ? `${fontSize}px` : '';
+      surface.style.lineHeight = lineHeight;
       surface.style.color = color;
       surface.style.fontWeight = settings.bold ? 'bold' : '';
       surface.style.fontStyle = settings.italic ? 'italic' : '';
       surface.style.textDecoration = settings.underline ? 'underline' : '';
     });
     fontSizeSelects.forEach((select) => setSelectValue(select, fontSize));
+    lineHeightSelects.forEach((select) => setSelectValue(select, lineHeight));
     colorHex = color || DEFAULT_COLOR;
     colorBars.forEach((bar) => { bar.style.background = colorHex; });
     ['bold', 'italic', 'underline'].forEach((command) => {
@@ -71,6 +76,7 @@ export function initFormatToolbar({
   applySettings({
     align: initialAlign,
     fontSize: initialFontSize,
+    lineHeight: initialLineHeight,
     color: initialColor,
     bold: initialBold,
     italic: initialItalic,
@@ -339,6 +345,13 @@ export function initFormatToolbar({
       });
       patch.fontSize = value;
       fontSizeSelects.forEach((select) => { select.value = value; });
+    } else if (cmd === 'lineHeight') {
+      surfaces.forEach((s) => {
+        s.style.lineHeight = value || '1.25';
+        clearStyleFromDescendants(s, 'lineHeight');
+      });
+      patch.lineHeight = value || '1.25';
+      lineHeightSelects.forEach((select) => { select.value = patch.lineHeight; });
     } else if (cmd === 'foreColor') {
       colorHex = value;
       colorBars.forEach((bar) => { bar.style.background = value; });
@@ -454,6 +467,14 @@ export function initFormatToolbar({
       } else {
         applyGlobalFormat('fontSize', px);
       }
+    });
+  });
+
+  // Line height is a shared reading-layout setting, so it always applies to
+  // the complete script across the default, camera, mobile and Notch surfaces.
+  lineHeightSelects.forEach((select) => {
+    on(select, 'change', () => {
+      applyGlobalFormat('lineHeight', select.value || '1.25');
     });
   });
 

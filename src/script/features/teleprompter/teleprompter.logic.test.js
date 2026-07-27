@@ -97,6 +97,8 @@ describe('workspace setting inheritance', () => {
     stubLocalStorage();
     const globalSettings = {
       wpm: 180,
+      scrollMode: 'wpm',
+      scrollDurationSeconds: 60,
       mirror: true,
       pageTheme: 'light',
       panelTheme: 'light-60',
@@ -136,6 +138,8 @@ describe('workspace setting inheritance', () => {
     // inherit it — it starts theme-driven (dark page → white, light page → black).
     const globalSettings = {
       wpm: 180,
+      scrollMode: 'wpm',
+      scrollDurationSeconds: 60,
       mirror: true,
       pageTheme: 'light',
       panelTheme: 'light-60',

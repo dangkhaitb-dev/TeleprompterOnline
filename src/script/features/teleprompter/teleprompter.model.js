@@ -13,6 +13,10 @@ export const WPM_MIN = 1;
 export const WPM_MAX = 1000;
 export const WPM_DEFAULT = 110;
 export const WPM_STEP = 5;
+export const SCROLL_MODES = ['auto', 'wpm', 'time'];
+export const SCROLL_DURATION_DEFAULT = 60;
+export const SCROLL_DURATION_MIN = 1;
+export const SCROLL_DURATION_MAX = 5999;
 
 export function clampWpm(value) {
   const n = Math.round(Number(value));
@@ -23,6 +27,21 @@ export function clampWpm(value) {
 // Words-per-minute → scroll speed in px/s.
 export function wpmToPxPerSec(wpm) {
   return BASE_PX_PER_SEC * (clampWpm(wpm) / BASE_WPM);
+}
+
+// Remaining scroll distance + chosen duration → the exact fixed pixel speed.
+// Keep this separate from WPM: timed scroll is a layout-duration control, not a
+// reading-speed estimate.
+export function pxPerSecForDuration(distance, durationSeconds) {
+  const px = Math.max(0, Number(distance) || 0);
+  const seconds = Math.max(1, Number(durationSeconds) || 1);
+  return px / seconds;
+}
+
+export function clampScrollDuration(value) {
+  const seconds = Math.round(Number(value));
+  if (!Number.isFinite(seconds)) return SCROLL_DURATION_DEFAULT;
+  return Math.max(SCROLL_DURATION_MIN, Math.min(SCROLL_DURATION_MAX, seconds));
 }
 
 // Range-fill percent for the speed slider gradient (0..100).
@@ -78,6 +97,8 @@ function eyeLineRatio(value) {
 
 export const DEFAULT_SETTINGS = Object.freeze({
   wpm: WPM_DEFAULT,
+  scrollMode: 'wpm',
+  scrollDurationSeconds: SCROLL_DURATION_DEFAULT,
   mirror: false,
   pageTheme: 'dark',
   panelTheme: 'dark-60',
@@ -109,6 +130,8 @@ export function normalizeSettings(raw = {}) {
   };
   return {
     wpm: clampWpm(s.wpm),
+    scrollMode: SCROLL_MODES.includes(s.scrollMode) ? s.scrollMode : 'wpm',
+    scrollDurationSeconds: clampScrollDuration(s.scrollDurationSeconds),
     mirror: !!s.mirror,
     pageTheme: theme(s.pageTheme),
     panelTheme: normalizePanelTheme(s.panelTheme),

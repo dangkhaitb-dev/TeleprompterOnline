@@ -6,6 +6,7 @@
 import {
   WPM_DEFAULT,
   wpmToPxPerSec,
+  pxPerSecForDuration,
   scrollDelta,
   paragraphStartIndices,
 } from '../teleprompter.model.js';
@@ -162,6 +163,12 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
     pxPerSec = wpmToPxPerSec(wpm);
   }
 
+  function setDuration(durationSeconds, surface = getSurface && getSurface()) {
+    if (!surface) return;
+    const maxScroll = measureMaxScroll(surface);
+    pxPerSec = pxPerSecForDuration(maxScroll - surface.scrollTop, durationSeconds);
+  }
+
   function manualScroll(delta) {
     const surface = getSurface && getSurface();
     if (!surface) return;
@@ -248,6 +255,7 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
     stop,
     toggle,
     setWpm,
+    setDuration,
     manualScroll,
     scrollToTop,
     scrollToNextSection,

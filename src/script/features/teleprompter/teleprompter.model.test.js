@@ -8,6 +8,9 @@ import {
   WPM_DEFAULT,
   WPM_MIN,
   WPM_MAX,
+  SCROLL_DURATION_DEFAULT,
+  SCROLL_DURATION_MAX,
+  pxPerSecForDuration,
   scrollDelta,
 } from './teleprompter.model.js';
 
@@ -18,6 +21,17 @@ describe('scrollDelta', () => {
 
   it('does not move backwards for a negative elapsed time', () => {
     expect(scrollDelta(-10, 40)).toBe(0);
+  });
+});
+
+describe('pxPerSecForDuration', () => {
+  it('calculates the exact speed needed to cover a distance in time', () => {
+    expect(pxPerSecForDuration(900, 30)).toBe(30);
+  });
+
+  it('clamps invalid distance and duration values safely', () => {
+    expect(pxPerSecForDuration(-10, 20)).toBe(0);
+    expect(pxPerSecForDuration(120, 0)).toBe(120);
   });
 });
 
@@ -40,6 +54,17 @@ describe('normalizeSettings', () => {
 
   it('falls back to the default wpm when it is not a number', () => {
     expect(normalizeSettings({ wpm: 'fast' }).wpm).toBe(WPM_DEFAULT);
+  });
+
+  it('normalizes the selected scroll mode and total duration', () => {
+    expect(normalizeSettings({ scrollMode: 'auto', scrollDurationSeconds: 125 }))
+      .toMatchObject({ scrollMode: 'auto', scrollDurationSeconds: 125 });
+    expect(normalizeSettings({ scrollMode: 'unknown', scrollDurationSeconds: 0 }))
+      .toMatchObject({ scrollMode: 'wpm', scrollDurationSeconds: 1 });
+    expect(normalizeSettings({ scrollDurationSeconds: SCROLL_DURATION_MAX + 1 }).scrollDurationSeconds)
+      .toBe(SCROLL_DURATION_MAX);
+    expect(normalizeSettings({ scrollDurationSeconds: 'later' }).scrollDurationSeconds)
+      .toBe(SCROLL_DURATION_DEFAULT);
   });
 
   it('coerces mirror to a boolean', () => {
@@ -105,7 +130,8 @@ describe('normalizeSettings', () => {
 
   it('passes a fully-specified valid object through unchanged', () => {
     const full = {
-      wpm: 180, mirror: true, pageTheme: 'light', panelTheme: 'light-60',
+      wpm: 180, scrollMode: 'time', scrollDurationSeconds: 125,
+      mirror: true, pageTheme: 'light', panelTheme: 'light-60',
       countdown: false, align: 'center',
       notchFullscreen: false,
       promptMarginRatio: 0.18, panelMarginRatio: 0.1,

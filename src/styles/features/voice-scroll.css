@@ -2,54 +2,6 @@
  * Voice Scroll — auto-scroll by voice recognition
  * ========================================================================= */
 
-/* ---- Button ---- */
-.auto-scroll-button {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border: 1.5px solid var(--border-secondary, rgba(255,255,255,.12));
-  border-radius: 20px;
-  background: transparent;
-  color: var(--text-secondary, rgba(255,255,255,.7));
-  font-size: 13px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all .2s ease;
-  -webkit-user-select: none;
-  user-select: none;
-}
-.auto-scroll-button:hover {
-  background: rgba(255,255,255,.06);
-  border-color: rgba(255,255,255,.2);
-  color: var(--text-primary, var(--tp-white));
-}
-.auto-scroll-button.active {
-  background: rgba(239,83,80,.12);
-  border-color: rgba(239,83,80,.5);
-  color: var(--danger-strong);
-}
-.auto-scroll-button.is-starting {
-  opacity: .7;
-  cursor: wait;
-}
-.auto-scroll-button:disabled {
-  pointer-events: none;
-}
-.auto-scroll-button.active svg {
-  animation: vs-pulse 1.5s ease-in-out infinite;
-}
-@keyframes vs-pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: .5; }
-}
-.auto-scroll-button svg {
-  flex-shrink: 0;
-}
-.auto-scroll-label {
-  line-height: 1;
-}
-
 /* ---- Word spans ---- */
 .vs-w,
 .vs-separator {

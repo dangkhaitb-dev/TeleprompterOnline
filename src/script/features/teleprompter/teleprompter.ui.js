@@ -15,6 +15,7 @@ import {
 } from './teleprompter.logic.js';
 import {
   clampWpm,
+  clampScrollDuration,
   formatDuration,
   rangeFillPercent,
   WPM_DEFAULT,
@@ -103,7 +104,20 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const toastEl = $('toast');
   const recordButton = $('recordButton');
   const recordLabel = recordButton && recordButton.querySelector('.record-label');
-  const autoScrollBtn = $('autoScrollBtn');
+  const speedControl = $('speedControl');
+  const speedValue = $('speedValue');
+  const speedRange = $('speedRange');
+  const speedInput = $('speedInput');
+  const speedOutput = $('speedOutput');
+  const speedModeAuto = $('speedModeAuto');
+  const speedMethodWpm = $('speedMethodWpm');
+  const speedMethodTime = $('speedMethodTime');
+  const speedWpmPanel = $('speedWpmPanel');
+  const speedTimePanel = $('speedTimePanel');
+  const scrollMinutes = $('scrollMinutes');
+  const scrollSeconds = $('scrollSeconds');
+  const scrollTimeRange = $('scrollTimeRange');
+  const scrollTimeOutput = $('scrollTimeOutput');
   const pauseButton = $('pauseButton');
   const pauseLabel = pauseButton && pauseButton.querySelector('.pause-label');
   const headerPlayButton = $('headerPlayButton');
@@ -140,7 +154,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const micToggle = root.querySelector('[data-toggle="mic"]');
   const prompterToggle = root.querySelector('[data-action="Prompter"]');
   const mirrorControlEl = $('mirrorControl');
-  const speedControlEl = $('speedControl');
+  const speedControlEl = speedControl;
   const settingsControlEl = $('settingsControl');
   // Document order — restore walks this reversed so each node's original next
   // sibling is already back in place before we re-insert it.
@@ -583,15 +597,54 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   let voiceScrollUI = null;
   let voiceScrollStarting = false;
   let voiceScrollAttempt = 0;
+  let selectedScrollMode = savedSettings.scrollMode || 'wpm';
 
-  function setVoiceScrollButton({ active = false, busy = false, phase = 'idle' } = {}) {
-    if (!autoScrollBtn) return;
-    autoScrollBtn.classList.toggle('active', active);
-    autoScrollBtn.classList.toggle('is-starting', busy);
-    autoScrollBtn.setAttribute('aria-pressed', String(active));
-    autoScrollBtn.setAttribute('aria-busy', String(busy));
-    autoScrollBtn.disabled = busy;
-    autoScrollBtn.dataset.voicePhase = phase;
+  function setSpeedModePanel(mode) {
+    const auto = mode === 'auto';
+    const timed = mode === 'time';
+    selectedScrollMode = auto ? 'auto' : timed ? 'time' : 'wpm';
+    if (speedModeAuto) {
+      speedModeAuto.classList.toggle('selected', auto);
+      speedModeAuto.setAttribute('aria-checked', String(auto));
+    }
+    if (speedMethodWpm) {
+      speedMethodWpm.classList.toggle('selected', !auto && !timed);
+      speedMethodWpm.setAttribute('aria-checked', String(!auto && !timed));
+    }
+    if (speedMethodTime) {
+      speedMethodTime.classList.toggle('selected', timed);
+      speedMethodTime.setAttribute('aria-checked', String(timed));
+    }
+    if (speedWpmPanel) speedWpmPanel.hidden = auto || timed;
+    if (speedTimePanel) speedTimePanel.hidden = !timed;
+    if (speedValue) speedValue.textContent = auto ? 'AUTO' : timed ? 'TIME' : String(wpm);
+    if (speedControl) {
+      speedControl.setAttribute(
+        'aria-label',
+        auto
+          ? 'Scroll mode: auto scroll'
+          : timed
+            ? `Scroll mode: ${scrollDurationSeconds} seconds`
+            : `Scroll mode: ${wpm} words per minute`,
+      );
+    }
+  }
+
+  function setVoiceScrollButton({ active = false, busy = false } = {}) {
+    if (speedControl) {
+      speedControl.classList.toggle('auto-scroll-active', active || busy);
+      if (active || busy) speedControl.setAttribute('aria-label', 'Auto scroll is active');
+      else {
+        speedControl.setAttribute(
+          'aria-label',
+          selectedScrollMode === 'auto'
+            ? 'Scroll mode: auto scroll'
+            : selectedScrollMode === 'time'
+              ? `Scroll mode: ${scrollDurationSeconds} seconds`
+              : `Scroll mode: ${wpm} words per minute`,
+        );
+      }
+    }
   }
 
   function voiceScrollErrorMessage(error) {
@@ -618,6 +671,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (current) current.stop();
     app.classList.remove('voice-scroll-active');
     setVoiceScrollButton();
+    setPlayIcon(false);
     if (error) {
       showToast(voiceScrollErrorMessage(error), {
         variant: 'error',
@@ -638,13 +692,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     return allowed;
   }
 
-  async function toggleAutoScroll() {
-    if (voiceScrollUI || voiceScrollStarting) {
-      // OFF → back to normal mode
-      stopVoiceScroll();
-      return;
-    }
-
+  async function startVoiceScroll() {
+    if (voiceScrollUI || voiceScrollStarting || selectedScrollMode !== 'auto') return;
     const attempt = ++voiceScrollAttempt;
     voiceScrollStarting = true;
     setVoiceScrollButton({ busy: true, phase: 'requesting-microphone' });
@@ -692,6 +741,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       voiceScrollStarting = false;
       app.classList.add('voice-scroll-active');
       setVoiceScrollButton({ active: true, phase: 'listening' });
+      setPlayIcon(true);
       showToast('Voice scroll is listening');
     } catch (err) {
       console.error('[VoiceScroll] failed to start', err);
@@ -701,7 +751,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     }
   }
 
-  on(autoScrollBtn, 'click', toggleAutoScroll);
   let playbackOnlyActive = false;
   let notchAutoScrollBlocked = false;
   let colorBeforeNotch = null;
@@ -755,7 +804,22 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (layout.isCentering()) return;
     if (voiceScrollUI && voiceScrollUI.isActive()) return;
     const surface = activeSurface();
-    if (prepareScrollSurface(surface, restart)) scroller.start(surface);
+    if (prepareScrollSurface(surface, restart)) {
+      if (selectedScrollMode === 'time') scroller.setDuration(scrollDurationSeconds, surface);
+      else scroller.setWpm(wpm);
+      scroller.start(surface);
+    }
+  }
+
+  function startSelectedScroll(restart = true) {
+    if (selectedScrollMode === 'auto') {
+      scroller.stop();
+      const surface = activeSurface();
+      if (prepareScrollSurface(surface, restart)) void startVoiceScroll();
+      return;
+    }
+    ensureVoiceScrollStopped();
+    startAutoScroll(restart);
   }
 
   // Play uses the exact same distraction-free reading UI as Record. The only
@@ -781,6 +845,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     app.classList.remove('playback-only', 'record-dim', 'record-paused');
     setReadingScrollCapture(false);
     scroller.stop();
+    ensureVoiceScrollStopped();
     activeSurface()?.style.removeProperty('--tp-scroll-tail');
     layout.restore(activeSurface());
     setEditingEnabled(true);
@@ -790,21 +855,30 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   function togglePlayback() {
-    ensureVoiceScrollStopped();
     // A direct Play click is the only action that may resume scrolling after
     // the user has switched to the static Notch view.
     if (notch.isActive()) notchAutoScrollBlocked = false;
     // While recording, this control only starts/stops auto-scroll; recording
     // pause remains owned by the separate Pause button.
     if (controller.isRecording() || controller.isPaused() || countingDown) {
-      scroller.toggle();
+      if (selectedScrollMode === 'auto') {
+        if (voiceScrollUI || voiceScrollStarting) ensureVoiceScrollStopped();
+        else void startVoiceScroll();
+      } else {
+        scroller.toggle();
+      }
       return;
     }
     if (playbackOnlyActive) {
       // The Play control doubles as Pause while in reading mode. Keep the
       // reading session mounted so starting it again resumes from the current
       // scrollTop instead of restoring the layout and beginning at the top.
-      scroller.toggle();
+      if (selectedScrollMode === 'auto') {
+        if (voiceScrollUI || voiceScrollStarting) ensureVoiceScrollStopped();
+        else void startVoiceScroll();
+      } else {
+        scroller.toggle();
+      }
       return;
     }
     playbackOnlyActive = true;
@@ -813,7 +887,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (pauseButton) pauseButton.classList.remove('show', 'paused');
     if (headerPlayButton) headerPlayButton.classList.remove('hidden');
     setEditingEnabled(false);
-    enterReadingUI(startAutoScroll);
+    enterReadingUI(startSelectedScroll);
   }
 
   on(playBtn, 'click', togglePlayback);
@@ -822,7 +896,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     scroller.scrollToTop();
     // In Record or Play mode, restart auto-scroll from the top right away
     // instead of waiting for another Play press.
-    if (controller.isRecording() || playbackOnlyActive) startAutoScroll();
+    if (controller.isRecording() || playbackOnlyActive) {
+      ensureVoiceScrollStopped();
+      startSelectedScroll();
+    }
   });
   on(exitPlaybackButton, 'click', stopPlaybackOnly);
 
@@ -952,13 +1029,66 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   if (savedSettings.mirror) setMirror(true);
 
   // ---- Speed ----------------------------------------------------------------
-  const speedControl = $('speedControl');
-  const speedValue = $('speedValue');
-  const speedRange = $('speedRange');
-  const speedInput = $('speedInput');
-  const speedOutput = $('speedOutput');
   const barSpeedValue = $('barSpeedValue');
   let wpm = WPM_DEFAULT;
+  let scrollDurationSeconds = clampScrollDuration(savedSettings.scrollDurationSeconds);
+  let scrollDurationSaveTimer = null;
+
+  function applyScrollDuration(explicitSeconds = null, persist = true) {
+    const minutes = Math.max(0, Math.min(99, Math.round(Number(scrollMinutes?.value) || 0)));
+    const seconds = Math.max(0, Math.min(59, Math.round(Number(scrollSeconds?.value) || 0)));
+    const requested = explicitSeconds == null ? minutes * 60 + seconds : Number(explicitSeconds);
+    scrollDurationSeconds = clampScrollDuration(requested);
+    if (scrollMinutes) scrollMinutes.value = String(Math.floor(scrollDurationSeconds / 60));
+    if (scrollSeconds) scrollSeconds.value = String(scrollDurationSeconds % 60);
+    if (scrollTimeRange) {
+      scrollTimeRange.value = String(scrollDurationSeconds);
+      scrollTimeRange.style.setProperty(
+        '--fill',
+        `${rangeFillPercent(scrollTimeRange.value, scrollTimeRange.min, scrollTimeRange.max)}%`,
+      );
+    }
+    if (scrollTimeOutput) {
+      const mm = String(Math.floor(scrollDurationSeconds / 60)).padStart(2, '0');
+      const ss = String(scrollDurationSeconds % 60).padStart(2, '0');
+      scrollTimeOutput.textContent = `${mm}:${ss}`;
+    }
+    if (selectedScrollMode === 'time') {
+      scroller.setDuration(scrollDurationSeconds, activeSurface());
+      if (speedControl) {
+        speedControl.setAttribute('aria-label', `Scroll mode: ${scrollDurationSeconds} seconds`);
+      }
+    }
+    if (persist) {
+      clearTimeout(scrollDurationSaveTimer);
+      scrollDurationSaveTimer = setTimeout(() => {
+        saveWorkspaceSettings(workspace.id,{ scrollDurationSeconds });
+      }, 300);
+    }
+  }
+
+  on(speedModeAuto, 'click', () => {
+    setSpeedModePanel('auto');
+    saveWorkspaceSettings(workspace.id,{ scrollMode: 'auto' });
+  });
+  on(speedMethodWpm, 'click', () => {
+    ensureVoiceScrollStopped();
+    setSpeedModePanel('wpm');
+    scroller.setWpm(wpm);
+    saveWorkspaceSettings(workspace.id,{ scrollMode: 'wpm' });
+  });
+  on(speedMethodTime, 'click', () => {
+    ensureVoiceScrollStopped();
+    setSpeedModePanel('time');
+    scroller.setDuration(scrollDurationSeconds, activeSurface());
+    saveWorkspaceSettings(workspace.id,{ scrollMode: 'time' });
+  });
+  on(scrollMinutes, 'input', () => applyScrollDuration());
+  on(scrollSeconds, 'input', () => applyScrollDuration());
+  on(scrollMinutes, 'change', () => applyScrollDuration());
+  on(scrollSeconds, 'change', () => applyScrollDuration());
+  on(scrollTimeRange, 'input', () => applyScrollDuration(scrollTimeRange.value));
+
   // Debounced so dragging the slider doesn't hammer localStorage.
   let wpmSaveTimer = null;
   function persistWpm() {
@@ -976,10 +1106,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     }
     if (syncInput && speedInput) speedInput.value = String(wpm);
     if (speedOutput) speedOutput.textContent = `${wpm} WPM`;
-    if (speedValue) speedValue.textContent = String(wpm);
+    if (speedValue && selectedScrollMode === 'wpm') speedValue.textContent = String(wpm);
     if (barSpeedValue) barSpeedValue.textContent = String(wpm);
-    if (speedControl) speedControl.setAttribute('aria-label', `Autoscroll speed: ${wpm} words per minute`);
-    scroller.setWpm(wpm);
+    if (speedControl && selectedScrollMode === 'wpm') {
+      speedControl.setAttribute('aria-label', `Scroll mode: ${wpm} words per minute`);
+    }
+    if (selectedScrollMode === 'wpm') scroller.setWpm(wpm);
     if (persist) persistWpm();
   }
   on(speedRange, 'input', () => applySpeed(speedRange.value));
@@ -990,6 +1122,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   on(speedInput, 'change', () => applySpeed(speedInput.value || WPM_DEFAULT));
   // Restore this script's saved speed (no persist on the initial apply).
   applySpeed(savedSettings.wpm, true, false);
+  applyScrollDuration(savedSettings.scrollDurationSeconds, false);
+  setSpeedModePanel(savedSettings.scrollMode);
 
   // ---- Countdown ------------------------------------------------------------
   let countdownTimer = null;
@@ -1030,6 +1164,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       if (controller.isRecording() || controller.isPaused()) {
         resetRecordUI();
         scroller.stop();
+        ensureVoiceScrollStopped();
         controller.stop({ workspaceId: workspace.id }).catch(() => {});
       }
       if (!toastEl) return;
@@ -1233,7 +1368,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     startRecordTimer();
     // Start monitoring storage — will fire warn/critical callbacks as needed.
     storageMonitor.start();
-    startAutoScroll();
+    startSelectedScroll();
   }
 
   async function onRecordClick() {
@@ -1277,7 +1412,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // ── Begin countdown / recording ───────────────────────────────────────
       if (headerPlayButton) headerPlayButton.classList.add('hidden');
       // Slide the first line down onto the eye-line (runs through the countdown).
-      enterReadingUI(() => { if (controller.isRecording()) startAutoScroll(); });
+      enterReadingUI(() => { if (controller.isRecording()) startSelectedScroll(); });
       if (settings.wantsCountdown()) startRecordCountdown();
       else beginRecording();
     } else {
@@ -1286,6 +1421,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // a saving placeholder until it settles.
       resetRecordUI();
       scroller.stop();
+      ensureVoiceScrollStopped();
       const pendingSave = controller.stop({ workspaceId: workspace.id });
       await openSceneEditor({ pendingSave });
     }
@@ -1303,7 +1439,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // A paused recording is still an active recording session; keep the
       // script locked until the user stops recording completely.
       setEditingEnabled(false);
-      scroller.stop();
+      if (selectedScrollMode === 'auto') ensureVoiceScrollStopped();
+      else scroller.stop();
     } else if (controller.isPaused()) {
       controller.resume();
       app.classList.remove('record-paused');
@@ -1313,7 +1450,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       setEditingEnabled(false);
       startRecordTimer();
       // Continue from the exact position where Pause stopped the scroller.
-      startAutoScroll(false);
+      startSelectedScroll(false);
     }
   }
   on(pauseButton, 'click', toggleRecordingPause);
@@ -1722,6 +1859,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     stopCamera();
     clearTimeout(toastTimer);
     clearTimeout(wpmSaveTimer);
+    clearTimeout(scrollDurationSaveTimer);
     storageMonitor.stop();
     if (mobileToolbarObserver) mobileToolbarObserver.disconnect();
     // Deferred chunk: destroy now if it's already up, else flag it so the

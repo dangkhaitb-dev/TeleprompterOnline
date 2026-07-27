@@ -206,13 +206,6 @@
         <span class="record-dot"></span>
         <span class="record-label">Record</span>
       </button>
-      <button class="auto-scroll-button" id="autoScrollBtn" type="button" aria-pressed="false" title="Auto Scroll — cuộn theo giọng nói">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 15c1.66 0 3-1.34 3-3V6c0-1.66-1.34-3-3-3S9 4.34 9 6v6c0 1.66 1.34 3 3 3z"/>
-          <path d="M17 12c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-2.08c3.39-.49 6-3.39 6-6.92h-2z"/>
-        </svg>
-        <span class="auto-scroll-label">Auto</span>
-      </button>
     </div>
 
   </header>
@@ -437,18 +430,18 @@
           <span class="label">Layout</span>
         </button>
 
-        <button class="item" id="speedControl" type="button" aria-label="Autoscroll speed: 110 words per minute" title="Change autoscroll speed" aria-haspopup="dialog" aria-expanded="false">
+        <button class="item" id="speedControl" type="button" aria-label="Scroll mode: fixed speed at 110 words per minute" title="Change scroll mode" aria-haspopup="dialog" aria-expanded="false">
           <div class="icon-wrap">
             <span class="toolbar-value" id="speedValue">110</span>
             <div class="action-btn">
               <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
                 <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
-                <path d="M13 24a8 8 0 1 1 14 0M20 20l4-4" stroke="var(--tp-icon-fg)" stroke-width="2" stroke-linecap="round"/>
-                <circle cx="20" cy="20" r="1.8" fill="var(--tp-icon-fg)"/>
+                <path d="M15 14h10M15 18h7M15 22h10M15 26h6" stroke="var(--tp-icon-fg)" stroke-width="1.7" stroke-linecap="round"/>
+                <path d="m27 15 2-2 2 2M29 13v14M27 25l2 2 2-2" stroke="var(--tp-icon-fg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
               </svg>
             </div>
           </div>
-          <span class="label">Speed</span>
+          <span class="label">Scroll mode</span>
         </button>
 
         <button class="item" id="settingsControl" type="button" aria-label="Settings" title="Settings" aria-haspopup="dialog" aria-expanded="false">
@@ -509,20 +502,64 @@
       </button>
     </div>
 
-    <div class="quick-menu speed-menu" id="speedMenu" role="dialog" aria-label="Autoscroll speed">
-      <div class="popup-title">Autoscroll speed</div>
-      <div class="speed-editor">
-        <label class="speed-editor-header" for="speedRange">
-          <span>Scroll speed</span>
-          <output id="speedOutput" for="speedRange speedInput">110 WPM</output>
-        </label>
-        <input class="speed-range" id="speedRange" type="range" min="1" max="400" step="1" value="110" aria-label="Change autoscroll speed">
-        <div class="speed-input-row">
-          <label for="speedInput">Custom value</label>
-          <div class="speed-number-wrap">
-            <input class="speed-number-input" id="speedInput" type="number" min="1" max="1000" step="1" value="110" inputmode="numeric" aria-label="Custom value">
-            <span>WPM</span>
-          </div>
+    <div class="quick-menu speed-menu" id="speedMenu" role="dialog" aria-label="Scroll mode">
+      <div class="popup-title">Scroll mode</div>
+      <div class="scroll-mode-options" role="radiogroup" aria-label="Choose scroll mode">
+        <div class="scroll-mode-option">
+          <button class="scroll-mode-choice" id="speedModeAuto" type="button" role="radio" aria-checked="false">
+            <span class="scroll-choice-radio" aria-hidden="true"></span>
+            <span>Auto scroll</span>
+          </button>
+        </div>
+
+        <div class="scroll-mode-option">
+          <button class="scroll-mode-choice selected" id="speedMethodWpm" type="button" role="radio" aria-checked="true" aria-controls="speedWpmPanel">
+            <span class="scroll-choice-radio" aria-hidden="true"></span>
+            <span>Word per min</span>
+          </button>
+          <section class="speed-mode-panel" id="speedWpmPanel" aria-labelledby="speedMethodWpm">
+            <div class="speed-editor">
+              <label class="speed-editor-header" for="speedRange">
+                <span>Scroll speed</span>
+                <output id="speedOutput" for="speedRange speedInput">110 WPM</output>
+              </label>
+              <input class="speed-range" id="speedRange" type="range" min="1" max="400" step="1" value="110" aria-label="Change scroll mode">
+              <div class="speed-input-row">
+                <label for="speedInput">Custom value</label>
+                <div class="speed-number-wrap">
+                  <input class="speed-number-input" id="speedInput" type="number" min="1" max="1000" step="1" value="110" inputmode="numeric" aria-label="Custom value">
+                  <span>WPM</span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div class="scroll-mode-option">
+          <button class="scroll-mode-choice" id="speedMethodTime" type="button" role="radio" aria-checked="false" aria-controls="speedTimePanel">
+            <span class="scroll-choice-radio" aria-hidden="true"></span>
+            <span>Scroll time</span>
+          </button>
+          <section class="speed-mode-panel" id="speedTimePanel" aria-labelledby="speedMethodTime" hidden>
+            <div class="speed-time-editor">
+              <div class="speed-editor-header">
+                <span>Total scroll time</span>
+                <output id="scrollTimeOutput" for="scrollMinutes scrollSeconds">01:00</output>
+              </div>
+              <input class="speed-range" id="scrollTimeRange" type="range" min="10" max="1800" step="5" value="60" aria-label="Total scroll time">
+              <div class="scroll-time-inputs">
+                <label>
+                  <span>Minutes</span>
+                  <input id="scrollMinutes" type="number" min="0" max="99" step="1" value="1" inputmode="numeric">
+                </label>
+                <span class="scroll-time-separator" aria-hidden="true">:</span>
+                <label>
+                  <span>Seconds</span>
+                  <input id="scrollSeconds" type="number" min="0" max="59" step="1" value="0" inputmode="numeric">
+                </label>
+              </div>
+            </div>
+          </section>
         </div>
       </div>
     </div>

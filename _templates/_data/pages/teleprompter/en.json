@@ -122,9 +122,9 @@
     "notchTitle": "Read the script right next to the camera",
     "layout": "Layout",
     "layoutAria": "Toggle layout guides",
-    "speed": "Speed",
-    "speedAria": "Autoscroll speed: 110 words per minute",
-    "speedTitle": "Change autoscroll speed",
+    "speed": "Scroll mode",
+    "speedAria": "Scroll mode: fixed speed at 110 words per minute",
+    "speedTitle": "Change scroll mode",
     "settings": "Settings"
   },
   "layout": {
@@ -136,10 +136,17 @@
     "eyeLineLabel": "Eye line"
   },
   "speedMenu": {
-    "title": "Autoscroll speed",
+    "title": "Scroll mode",
+    "modeLabel": "Choose scroll mode",
+    "autoScroll": "Auto scroll",
+    "wordsPerMinute": "Word per min",
+    "scrollTime": "Scroll time",
     "scrollSpeed": "Scroll speed",
     "customValue": "Custom value",
-    "unit": "WPM"
+    "unit": "WPM",
+    "totalTime": "Total scroll time",
+    "minutes": "Minutes",
+    "seconds": "Seconds"
   },
   "settingsMenu": {
     "title": "Settings",

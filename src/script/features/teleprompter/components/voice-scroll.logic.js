@@ -12,6 +12,7 @@ import {
 } from './voice-scroll.model.js';
 
 const PRE_AUDIO_ABORT_LIMIT = 2;
+const USER_OVERRIDE_GUARD_MS = 650;
 
 /**
  * Detects the language of the script text with auto-fallback mechanisms.
@@ -64,6 +65,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
   let finalizedIds = new Set();
   let pendingTokens = 0;
   let rawFinalWords = [];
+  let previousInterimTokens = [];
   let lastResultAt = 0;
   let restartTimer = null;
   let useLocal = false;
@@ -140,15 +142,24 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
       }
     }
     const interimToks = tokenizeSpoken(interimText);
-    const allTokens = finalTokens.concat(interimToks);
-    const reach = pendingTokens + interimToks.length;
-    const tailPartial = interimToks.length > 0;
+    let stableInterimLength = 0;
+    while (stableInterimLength < interimToks.length
+      && stableInterimLength < previousInterimTokens.length
+      && interimToks[stableInterimLength] === previousInterimTokens[stableInterimLength]) {
+      stableInterimLength += 1;
+    }
+    const stableInterimToks = interimToks.slice(0, stableInterimLength);
+    previousInterimTokens = interimToks;
+    const allTokens = finalTokens.concat(stableInterimToks);
+    const reach = pendingTokens + stableInterimToks.length;
+    const tailPartial = stableInterimToks.length > 0;
 
     const rawTranscript = `${rawFinalWords.slice(-16).join(' ')} ${interimText}`.trim();
     log('speech result', {
       transcript: rawTranscript,
       finalTokens: finalTokens.length,
       interimTokens: interimToks.length,
+      stableInterimTokens: stableInterimToks.length,
       isInterim: tailPartial,
     });
     try {
@@ -183,6 +194,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
       sessionHadSpeech = false;
       sessionHadResult = false;
       sessionErrorCode = '';
+      previousInterimTokens = [];
       // Chrome result indexes start at zero again for each restarted session.
       // Preserve accumulated final tokens, but allow new indexes to be committed.
       finalizedIds = new Set();
@@ -343,7 +355,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     return instance;
   }
   
-  async function start(detectedLocale, biasWords = [], biasCursor = 0) {
+  async function start(detectedLocale) {
     const globalScope = typeof self !== 'undefined' ? self : {};
     const SR = globalScope.SpeechRecognition || globalScope.webkitSpeechRecognition;
     if (!SR) {
@@ -358,6 +370,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     finalizedIds = new Set();
     pendingTokens = 0;
     rawFinalWords = [];
+    previousInterimTokens = [];
     lastResultAt = 0;
     fallbackToCloud = false;
     fatalError = false;
@@ -379,7 +392,9 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     }
 
     recognition = createRecognition(SR);
-    applyBias(biasWords, biasCursor);
+    // Start unbiased. Seeding the recognizer with script phrases before it has
+    // heard verified speech can make music/noise hallucinate those exact
+    // phrases with a misleading confidence of 1.
     log('starting recognition', { locale, mode: useLocal ? 'on-device' : 'browser-service' });
     
     try {
@@ -434,6 +449,9 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
       const from = Math.max(0, anchor - BIAS.BEHIND);
       const to = Math.min(words.length - 1, anchor + BIAS.AHEAD);
       const phrases = [];
+      const language = locale.toLowerCase().split('-')[0];
+      const nearBoost = BIAS.BOOST_NEAR_BY_LANGUAGE?.[language]
+        ?? BIAS.BOOST_NEAR;
       let clause = [];
       let clauseStart = from;
       const flush = () => {
@@ -444,7 +462,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
             const dist = Math.max(0, clauseStart + s - anchor);
             phrases.push(new SpeechRecognitionPhrase(
               win.join(' '),
-              dist <= BIAS.NEAR ? BIAS.BOOST_NEAR : BIAS.BOOST_FAR
+              dist <= BIAS.NEAR ? nearBoost : BIAS.BOOST_FAR
             ));
             if (s + BIAS.MAX_LEN >= clause.length) break;
           }
@@ -462,6 +480,9 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
       log('contextual hints applied', {
         count: selected.length,
         anchor,
+        nearBoost,
+        farBoost: BIAS.BOOST_FAR,
+        language,
       });
       return selected.length;
     } catch (err) {
@@ -475,6 +496,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     finalizedIds = new Set();
     pendingTokens = 0;
     rawFinalWords = [];
+    previousInterimTokens = [];
   }
   
   function getLastResultAt() { return lastResultAt; }
@@ -508,6 +530,10 @@ export function createVoiceScrollController({
   let anchorAt = 0;
   let creepIndex = -1;
   let displayIndex = -1;
+  let userOverridePending = false;
+  let userAnchor = -1;
+  let userGuardUntil = 0;
+  let awaitingUserAnchorSpeech = false;
   
   function initMatcherState(wordParts) {
     const indices = buildIndices(wordParts);
@@ -532,15 +558,51 @@ export function createVoiceScrollController({
   
   function handleASRResult({ allTokens, reach, tailPartial }) {
     if (!matcherState) return;
+
+    // Direct manipulation always wins over recognition. While a manual scroll
+    // is still settling, or while an in-flight ASR result may predate the
+    // user's click/scroll, drop the result before it can mutate matcher state.
+    if (userOverridePending || performance.now() < userGuardUntil) {
+      asr?.resetStream();
+      onTranscript?.({
+        tokenCount: allTokens.length,
+        cursor: matcherState.cursor,
+        matched: false,
+        userOverride: true,
+      });
+      return;
+    }
     
     const result = modelFeedTranscript(allTokens, reach, tailPartial, matcherState);
+    const cursorMoved = result.cursor !== matcherState.cursor;
+    const isGlobal = !!(result.lastMatch && result.lastMatch.global);
+    const movedBehindUser = cursorMoved && userAnchor >= 0 && result.cursor < userAnchor;
+    const confirmedUserAnchor = cursorMoved
+      && result.cursor >= userAnchor
+      && !isGlobal;
+
+    // After a user re-anchor, only a local voice match at/after that anchor may
+    // resume ASR control. A global rescue or a stale result behind the manual
+    // position is never allowed to pull the prompter away from the user.
+    if (movedBehindUser || (awaitingUserAnchorSpeech && !confirmedUserAnchor)) {
+      asr?.resetStream();
+      onTranscript?.({
+        tokenCount: allTokens.length,
+        cursor: matcherState.cursor,
+        matched: false,
+        userOverride: true,
+      });
+      return;
+    }
+
+    if (confirmedUserAnchor) awaitingUserAnchorSpeech = false;
     onTranscript?.({
       tokenCount: allTokens.length,
       cursor: result.cursor,
-      matched: result.cursor !== matcherState.cursor,
+      matched: cursorMoved,
     });
     
-    if (result.cursor !== undefined && result.cursor !== matcherState.cursor) {
+    if (result.cursor !== undefined && cursorMoved) {
       const prev = matcherState.cursor;
       
       // Update reading speed (EMA)
@@ -557,8 +619,6 @@ export function createVoiceScrollController({
       anchorAt = now;
       displayIndex = result.cursor;
       creepIndex = result.cursor;
-      
-      const isGlobal = !!(result.lastMatch && result.lastMatch.global);
       
       // Notify UI to scroll
       onCursorMove?.({
@@ -596,6 +656,10 @@ export function createVoiceScrollController({
     creepIndex = -1;
     displayIndex = -1;
     biasAnchor = -1e9;
+    userOverridePending = false;
+    userAnchor = -1;
+    userGuardUntil = 0;
+    awaitingUserAnchorSpeech = false;
     
     // Detect language
     const detected = await detectScriptLanguage(scriptText);
@@ -618,10 +682,10 @@ export function createVoiceScrollController({
       },
     });
     
-    // Seed Chrome with the opening script phrases before recognition.start().
-    // Refresh after each BIAS.REFRESH_EVERY words as the cursor advances.
+    // Recognition starts unbiased. Context is introduced only after the reader
+    // has already advanced far enough to establish a real content match.
     biasAnchor = 0;
-    const started = await asr.start(detected.locale, wordParts, biasAnchor);
+    const started = await asr.start(detected.locale);
     if (!started) {
       phase = 'idle';
       onPhaseChange?.('idle');
@@ -635,11 +699,29 @@ export function createVoiceScrollController({
     if (asr) { asr.stop(); asr = null; }
     phase = 'idle';
     matcherState = null;
+    userOverridePending = false;
+    userAnchor = -1;
+    userGuardUntil = 0;
+    awaitingUserAnchorSpeech = false;
     onPhaseChange?.('idle');
   }
   
-  function setCursorTo(index) {
+  function beginUserOverride() {
+    if (!matcherState || userOverridePending) return;
+    userOverridePending = true;
+    userGuardUntil = performance.now() + USER_OVERRIDE_GUARD_MS;
+    awaitingUserAnchorSpeech = true;
+    asr?.resetStream();
+  }
+
+  function setCursorTo(index, { userInitiated = false } = {}) {
     if (!matcherState || index < 0 || index >= matcherState.words.length) return;
+    if (userInitiated) {
+      userOverridePending = false;
+      userAnchor = index;
+      userGuardUntil = performance.now() + USER_OVERRIDE_GUARD_MS;
+      awaitingUserAnchorSpeech = true;
+    }
     matcherState.cursor = index - 1;
     displayIndex = index;
     creepIndex = index;
@@ -651,8 +733,14 @@ export function createVoiceScrollController({
     matcherState.lastFeedStreamLen = 0;
     matcherState.lastMatchStreamLen = 0;
     matcherState.curDrift = 0;
+    matcherState.lastGlobalAt = 0;
+    matcherState.lastMatch = null;
+    matcherState.feedTailPartial = false;
     if (asr) {
       asr.resetStream();
+      // A direct re-anchor changes the user's expected reading context, so
+      // replace the recognizer hints immediately instead of waiting for the
+      // normal BIAS.REFRESH_EVERY cursor advance.
       asr.applyBias(matcherState.words, index);
       biasAnchor = index;
     }
@@ -666,7 +754,9 @@ export function createVoiceScrollController({
       displayIndex,
       wpm,
       anchorAt,
-      lastResultAt: asr?.getLastResultAt() ?? 0,
+      // Only a confirmed content match may keep optimistic creep alive. Raw
+      // ASR noise must not extend scrolling merely by emitting transcripts.
+      lastResultAt: anchorAt,
       wordsLength: matcherState?.words.length ?? 0,
     };
   }
@@ -678,6 +768,7 @@ export function createVoiceScrollController({
   return {
     start,
     stop,
+    beginUserOverride,
     setCursorTo,
     getCreepInfo,
     updateCreepIndex,

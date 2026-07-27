@@ -51,19 +51,60 @@
 }
 
 /* ---- Word spans ---- */
-.vs-w {
+.vs-w,
+.vs-separator {
   transition: color .15s, background-color .15s, opacity .15s;
+}
+.vs-w {
+  position: relative;
   border-radius: 2px;
 }
 .vs-spoken {
   opacity: .35;
 }
-.vs-active {
-  color: var(--tp-white);
-  background: rgba(239,83,80,.25);
-  border-radius: 3px;
-  padding: 1px 2px;
-  margin: -1px -2px;
+.voice-scroll-active .vs-w {
+  cursor: pointer;
+}
+.voice-scroll-active .vs-w.vs-active::after {
+  position: absolute;
+  top: calc(100% + .06em);
+  left: 0;
+  width: 62%;
+  height: 3px;
+  pointer-events: none;
+  content: "";
+  background: var(--tp-green);
+  border-radius: 999px;
+  transform-origin: left center;
+  animation: vs-word-anchor .7s ease-out both;
+}
+.voice-scroll-active .vs-w:hover {
+  opacity: .45;
+}
+.voice-scroll-active .vs-w.vs-spoken:hover {
+  opacity: .2;
+}
+
+@keyframes vs-word-anchor {
+  0% {
+    opacity: 0;
+    transform: scaleX(.65);
+  }
+
+  18% {
+    opacity: .8;
+    transform: scaleX(1);
+  }
+
+  72% {
+    opacity: .7;
+    transform: scaleX(.94);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scaleX(.78);
+  }
 }
 
 /* ---- Line wrapper ---- */

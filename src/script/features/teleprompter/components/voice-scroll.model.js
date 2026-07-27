@@ -13,10 +13,11 @@ export const MATCH = Object.freeze({
   TIE_MARGIN: 0.04, FAR_JUMP_MIN_TOKENS: 2, FAR_JUMP_MAX_DIST: 20,
   RECENCY_DECAY: 0.82, INS_FACTOR: 0.6,
   WIN_SHRINK: 0.35, WIN_GROW: 0.6,
-  COST_FOLD: 0.15, COST_SCALE: 1.15, COST_VIKEY: 0.08, OOV_COST: 0.55,
+  COST_FOLD: 0.15, COST_SCALE: 1.15, COST_VIKEY: 0.08,
   COST_PREFIX_BASE: 0.10, COST_PREFIX_SPAN: 0.30,
   PARTIAL_MIN_CHARS: 4, PARTIAL_PREFIX_COST: 0.1,
   MATCH_MAX_COST: 0.5, MATCH_MAX_COST_LONG: 0.7, MATCH_LONG_LEN: 5,
+  LOCAL_MIN_MATCHED: 2, LOCAL_MIN_DENSITY: 0.5,
   RESCUE_MIN_MATCHED: 4, RESCUE_MIN_DENSITY: 0.45,
   DRIFT_MAX: 30, FORCE_AFTER_STALLS: 3, FORCE_MAX_RUN: 8,
   GLOBAL_AFTER_MISSES: 2, GLOBAL_ACCEPT: 0.72, GLOBAL_MIN_TOKENS: 6,
@@ -46,8 +47,13 @@ export const REANCHOR_DELAY_MS = 180;
 
 export const BIAS = Object.freeze({
   AHEAD: 120, BEHIND: 12, MIN_LEN: 2, MAX_LEN: 6,
-  STRIDE: 3, MAX_PHRASES: 96, NEAR: 40,
-  BOOST_NEAR: 4.0, BOOST_FAR: 2.0, REFRESH_EVERY: 16,
+  STRIDE: 3, MAX_PHRASES: 48, NEAR: 40,
+  // July 2026 Chrome 150 benchmark: boost 6 materially improved English and
+  // Korean. Vietnamese degraded at fast speech, while Japanese and Spanish
+  // were neutral, so unmeasured languages use the conservative boost 2.
+  BOOST_NEAR: 2.0,
+  BOOST_NEAR_BY_LANGUAGE: Object.freeze({ en: 6.0, ko: 6.0 }),
+  BOOST_FAR: 2.0, REFRESH_EVERY: 16,
 });
 
 /* =========================================================================
@@ -247,13 +253,12 @@ export function recencyWeights(n) {
   return { w, sum };
 }
 
-function createMatchCtx(buf, bufFold, feedTailPartial, ctx) {
+function createMatchCtx(buf, feedTailPartial) {
   return {
     costCache: new Array(buf.length),
     feedTailPartial,
     costCachePartialIdx: feedTailPartial ? buf.length - 1 : -1,
     curBufVKey: buf.map(viKey),
-    curBufOOV: buf.map((t, i) => !ctx.tokenIndex.has(t) && !ctx.foldIndex.has(bufFold[i])),
   };
 }
 
@@ -279,11 +284,9 @@ export function windowDistance(buf, bufFold, wts, start, end, ctx, matchCtx) {
   for (let i = 1; i <= n; i++) {
     const wi = wts.w[i - 1];
     const ins = wi * MATCH.INS_FACTOR;
-    const oov = matchCtx.curBufOOV[i - 1];
     cur[0] = prev[0] + wi;
     for (let j = 1; j <= m; j++) {
-      let c = subCostCached(i - 1, buf, bufFold, start + j - 1, ctx, matchCtx);
-      if (oov && c > MATCH.OOV_COST) c = MATCH.OOV_COST;
+      const c = subCostCached(i - 1, buf, bufFold, start + j - 1, ctx, matchCtx);
       cur[j] = Math.min(prev[j] + wi, cur[j - 1] + ins, prev[j - 1] + wi * c);
     }
     prev = cur.slice();
@@ -356,7 +359,8 @@ export function scoreEnd(buf, bufFold, wts, end, anchor, useLocality, ctx, match
 }
 
 export function searchLocal(buf, bufFold, wts, lo, hi, anchor, minScore, ctx, matchCtx) {
-  let best = null, bestAny = null;
+  let bestAny = null;
+  const accepted = [];
   for (let end = lo; end <= hi; end++) {
     const distAhead = Math.max(0, end - anchor);
     if (buf.length < MATCH.FAR_JUMP_MIN_TOKENS && distAhead > MATCH.FAR_JUMP_MAX_DIST) continue;
@@ -364,9 +368,16 @@ export function searchLocal(buf, bufFold, wts, lo, hi, anchor, minScore, ctx, ma
     if (!cand) continue;
     if (!bestAny || cand.score > bestAny.score) bestAny = cand;
     if (cand.score <= minScore) continue;
-    if (!best || cand.score > best.score * (1 + MATCH.TIE_MARGIN)
-      || (cand.score > best.score * (1 - MATCH.TIE_MARGIN) && cand.end > best.end)) best = cand;
+    accepted.push(cand);
   }
+
+  // Prefer the latest candidate only when it is within the tie margin of the
+  // true peak. Comparing against the previously selected candidate allowed a
+  // chain of slightly worse scores to walk the cursor across the whole window.
+  const peak = accepted.reduce((score, cand) => Math.max(score, cand.score), -Infinity);
+  const best = accepted
+    .filter((cand) => cand.score >= peak * (1 - MATCH.TIE_MARGIN))
+    .at(-1) || null;
   return { best, bestAny };
 }
 
@@ -430,7 +441,7 @@ export function refineSpoken(tokens, ctx) {
 
 export function findBestEnd(buf, reachTokens, stream, ctx, acceptThresholdVal = MATCH.ACCEPT) {
   const bufFold = buf.map(foldDiacritics);
-  const matchCtx = createMatchCtx(buf, bufFold, ctx.feedTailPartial || false, ctx);
+  const matchCtx = createMatchCtx(buf, ctx.feedTailPartial || false);
   const wts = recencyWeights(buf.length);
   const anchor = ctx.cursor;
   
@@ -440,8 +451,28 @@ export function findBestEnd(buf, reachTokens, stream, ctx, acceptThresholdVal = 
   const hi = Math.min(ctx.words.length - 1, anchor + reach);
   
   const { best: local, bestAny } = searchLocal(buf, bufFold, wts, lo, hi, anchor, acceptThresholdVal - 1e-9, ctx, matchCtx);
+
+  let localTrace = null;
+  if (local) {
+    const wStart = Math.max(0, local.end - (local.wLen || buf.length) + 1);
+    localTrace = alignLastMatch(buf, bufFold, wts, wStart, local.end, ctx, matchCtx);
+  }
+  const minLocalMatched = Math.min(MATCH.LOCAL_MIN_MATCHED, ctx.words.length);
+  const localConfirmed = !!(localTrace
+    && localTrace.pos > anchor
+    && localTrace.matched >= minLocalMatched
+    && localTrace.matched / (localTrace.ti + 1) >= MATCH.LOCAL_MIN_DENSITY);
   
-  if (local && local.score >= MATCH.WEAK_LOCAL) { return { ...local, newMissStreak: 0 }; }
+  if (local && local.score >= MATCH.WEAK_LOCAL && localConfirmed) {
+    return {
+      ...local,
+      end: localTrace.pos,
+      ti: localTrace.ti,
+      matched: localTrace.matched,
+      aligned: true,
+      newMissStreak: 0,
+    };
+  }
   
   if (bestAny) {
     const wStart = Math.max(0, bestAny.end - (bestAny.wLen || buf.length) + 1);
@@ -470,7 +501,7 @@ export function findBestEnd(buf, reachTokens, stream, ctx, acceptThresholdVal = 
       if (len > buf.length || len < MATCH.GLOBAL_MIN_TOKENS) continue;
       const tail = buf.slice(-len);
       const tailFold = tail.map(foldDiacritics);
-      const tailMatchCtx = createMatchCtx(tail, tailFold, false, ctx);
+      const tailMatchCtx = createMatchCtx(tail, false);
       const cand = searchGlobal(tail, tailFold, recencyWeights(len),
         anchor, MATCH.GLOBAL_ACCEPT, ctx, tailMatchCtx);
       if (cand && (!g || cand.score > g.score)) g = cand;
@@ -480,7 +511,16 @@ export function findBestEnd(buf, reachTokens, stream, ctx, acceptThresholdVal = 
     }
   }
   
-  if (local) { return { ...local, newMissStreak: 0 }; }
+  if (local && localConfirmed) {
+    return {
+      ...local,
+      end: localTrace.pos,
+      ti: localTrace.ti,
+      matched: localTrace.matched,
+      aligned: true,
+      newMissStreak: 0,
+    };
+  }
   return { newMissStreak };
 }
 
@@ -522,7 +562,9 @@ export function feedTranscript(allTokens, reachTokens, tailPartial, ctx) {
     nextCtx.lastGlobalAt = best.newLastGlobalAt;
   }
   
-  if (best && best.end !== undefined) {
+  // Recognition is forward-only. A global rescue may rediscover an older
+  // paragraph, but only an explicit user re-anchor is allowed to move back.
+  if (best && best.end !== undefined && best.end >= ctx.cursor) {
     nextCtx.cursor = best.end;
     nextCtx.lastMatch = best;
     nextCtx.lastMatchStreamLen = streamLen;

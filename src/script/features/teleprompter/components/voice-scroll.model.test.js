@@ -9,6 +9,37 @@ import {
   createPIDController,
 } from './voice-scroll.model.js';
 
+function createMatcherState(script, cursor = -1) {
+  const words = segmentParts(script).filter((part) => part.isWord).map((part) => {
+    const norm = normalize(part.text);
+    return {
+      raw: part.text,
+      norm,
+      fold: foldDiacritics(norm),
+      vkey: viKey(norm),
+      breakAfter: false,
+    };
+  });
+
+  return {
+    words,
+    ...buildIndices(words),
+    cursor,
+    displayIndex: cursor,
+    creepIndex: cursor,
+    curDrift: 0,
+    stallRuns: 0,
+    forcedRun: 0,
+    pendingTokens: 0,
+    missStreak: 0,
+    lastFeedStreamLen: 0,
+    lastMatchStreamLen: 0,
+    lastGlobalAt: 0,
+    lastMatch: null,
+    feedTailPartial: false,
+  };
+}
+
 describe('Voice Scroll Model matching algorithm', () => {
   it('normalizes script and spoken words correctly', () => {
     expect(normalize('Học!')).toBe('học');
@@ -100,6 +131,63 @@ describe('Voice Scroll Model matching algorithm', () => {
     // Step 3: Speak rest of the sentence
     state = speak('sẽ hướng dẫn các bạn tich hợp tính năng tự động cuộn', state);
     expect(state.cursor).toBe(14); // Should match "cuộn" at index 14
+  });
+
+  it('does not activate from unrelated noise transcripts', () => {
+    let state = createMatcherState(
+      'Hôm nay chúng ta thử nghiệm bộ điều khiển camera và tự động cuộn nội dung'
+    );
+    const noiseTokens = ['zzzz', 'xxxx', 'qqqq', 'vvvv', 'bbbb', 'kkkk'];
+
+    for (let length = 1; length <= noiseTokens.length; length++) {
+      state = feedTranscript(noiseTokens.slice(0, length), length, true, state);
+      expect(state.cursor).toBe(-1);
+    }
+  });
+
+  it('requires more than one incidental script word before the first match', () => {
+    const state = createMatcherState(
+      'Hôm nay tôi sẽ hướng dẫn các bạn tích hợp tính năng tự động cuộn'
+    );
+
+    const next = feedTranscript(['tôi'], 1, true, state);
+
+    expect(next.cursor).toBe(-1);
+  });
+
+  it('ignores off-script speech even when it contains common script words', () => {
+    let state = createMatcherState(
+      'Hôm nay tôi sẽ hướng dẫn các bạn tích hợp tính năng tự động cuộn nội dung'
+    );
+    const offScript = 'Tôi đổi chủ đề và sẽ nói về thời tiết âm nhạc cuối tuần'
+      .split(' ')
+      .map((word) => normalize(word));
+
+    for (let length = 1; length <= offScript.length; length++) {
+      state = feedTranscript(offScript.slice(0, length), length, true, state);
+    }
+
+    expect(state.cursor).toBe(-1);
+  });
+
+  it('never lets recognition move behind a cursor that has already passed', () => {
+    const scriptWords = [
+      'alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot', 'golf', 'hotel',
+      'india', 'juliett', 'kilo', 'lima', 'mike', 'november', 'oscar', 'papa',
+      'quebec', 'romeo', 'sierra', 'tango', 'uniform', 'victor', 'whiskey',
+      'xray', 'yankee', 'zulu',
+    ];
+    const script = scriptWords.join(' ');
+    const state = {
+      ...createMatcherState(script, 25),
+      missStreak: 1,
+      now: 1000,
+    };
+    const oldParagraph = scriptWords.slice(0, 6);
+
+    const next = feedTranscript(oldParagraph, oldParagraph.length, false, state);
+
+    expect(next.cursor).toBe(25);
   });
 });
 

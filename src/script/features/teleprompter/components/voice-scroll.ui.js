@@ -7,9 +7,10 @@
 //
 // CSS classes used:
 // - .vs-w — word span wrapper
+// - .vs-separator — punctuation/spacing associated with the preceding word
 // - .vs-line — paragraph/line wrapper
 // - .vs-spoken — word that has been read (past)
-// - .vs-active — word currently being read
+// - .vs-active — word chosen as the current reading anchor
 // - .voice-scroll-active — class on #app when voice scroll is on
 // - .reading-line — visual reading line indicator
 
@@ -42,10 +43,15 @@ function wrapSurfaceWords(surface) {
   lines.forEach((line) => {
     const p = document.createElement('p');
     p.className = 'vs-line';
+    let lineLastWord = null;
     
     segmentParts(line).forEach((part) => {
       if (!part.isWord) {
-        p.appendChild(document.createTextNode(part.text));
+        const separator = document.createElement('span');
+        separator.className = 'vs-separator';
+        separator.textContent = part.text;
+        p.appendChild(separator);
+        if (lineLastWord) lineLastWord.trailingEls.push(separator);
         // Mark clause boundaries (punctuation)
         if (words.length && /[.!?,;:…—–]/.test(part.text)) {
           words[words.length - 1].breakAfter = true;
@@ -60,7 +66,17 @@ function wrapSurfaceWords(surface) {
       span.textContent = part.text;
       span.dataset.index = String(words.length);
       p.appendChild(span);
-      words.push({ raw: part.text, display: part.text, norm, fold, vkey, el: span, breakAfter: false });
+      lineLastWord = {
+        raw: part.text,
+        display: part.text,
+        norm,
+        fold,
+        vkey,
+        el: span,
+        trailingEls: [],
+        breakAfter: false,
+      };
+      words.push(lineLastWord);
     });
     
     if (words.length) words[words.length - 1].breakAfter = true;
@@ -103,27 +119,62 @@ function createScrollEngine(getSurface, pid) {
   return { ensureRunning, stop, isRunning: () => animId !== null };
 }
 
-function paintWords(words, displayIndex, prevDisplayIndex) {
+function setSpokenAppearance(word, spoken) {
+  if (!word) return;
+  word.el.classList.toggle('vs-spoken', spoken);
+  word.trailingEls?.forEach((el) => el.classList.toggle('vs-spoken', spoken));
+}
+
+function isSameVisualRow(left, right) {
+  if (!left?.el || !right?.el) return false;
+  return left.el.parentElement === right.el.parentElement
+    && left.el.offsetTop === right.el.offsetTop;
+}
+
+function getVisualRowBounds(words, index) {
+  let start = index;
+  let end = index;
+
+  while (start > 0 && isSameVisualRow(words[start - 1], words[start])) start -= 1;
+  while (end + 1 < words.length && isSameVisualRow(words[end], words[end + 1])) end += 1;
+
+  return { start, end };
+}
+
+export function paintWords(words, displayIndex, prevDisplayIndex) {
   if (displayIndex === prevDisplayIndex || !words[displayIndex]) return;
-  // Mark all words up to displayIndex as 'spoken'
-  if (displayIndex > prevDisplayIndex) {
-    for (let i = prevDisplayIndex + 1; i <= displayIndex; i++) {
-      if (words[i]) words[i].el.classList.add('vs-spoken');
+
+  // Dim complete visual rows only. If the current cursor is still anywhere
+  // inside a wrapped row, every word in that row remains fully readable.
+  // Include the whole rows around both cursors so forward movement and
+  // backward re-anchoring update every affected word together.
+  const changedFrom = prevDisplayIndex < 0
+    ? 0
+    : Math.min(displayIndex, prevDisplayIndex);
+  const changedTo = Math.max(displayIndex, prevDisplayIndex);
+  let rowStart = getVisualRowBounds(words, changedFrom).start;
+  const lastAffectedRowEnd = getVisualRowBounds(words, changedTo).end;
+
+  while (rowStart <= lastAffectedRowEnd) {
+    const rowEnd = getVisualRowBounds(words, rowStart).end;
+    const rowIsSpoken = rowEnd < displayIndex;
+    for (let i = rowStart; i <= rowEnd; i++) {
+      setSpokenAppearance(words[i], rowIsSpoken);
     }
+    rowStart = rowEnd + 1;
   }
-  // Remove 'active' from previous, add 'spoken'
+
+  // Clean up the legacy active marker without assigning it to the new word.
   if (prevDisplayIndex >= 0 && words[prevDisplayIndex]) {
     words[prevDisplayIndex].el.classList.remove('vs-active');
-    words[prevDisplayIndex].el.classList.add('vs-spoken');
   }
-  // Set new active word
   const el = words[displayIndex].el;
-  el.classList.remove('vs-spoken');
-  el.classList.add('vs-active');
+  el.classList.remove('vs-active');
 }
 
 // Reading line at 1/3 from top (teleprompter.com standard)
 const READING_RATIO = 1 / 3;
+const WORD_ACTIVE_FEEDBACK_MS = 700;
 
 function scrollTarget(el, surface) {
   return Math.max(0, el.offsetTop - surface.clientHeight * READING_RATIO + el.offsetHeight / 2);
@@ -210,10 +261,50 @@ export function initVoiceScrollUI({
   let words = [];
   let originalHTML = '';
   let displayIndex = -1;
+  let paintedIndex = -1;
   let reanchorTimer = null;
   let scrollHandler = null;
+  let wordPointerDownHandler = null;
+  let wordClickHandler = null;
+  let wordActiveTimer = null;
   let active = false;
   let mountedSurface = null;
+
+  function wordIndexFromEvent(event) {
+    const surface = mountedSurface;
+    const target = event.target instanceof Element ? event.target.closest('.vs-w') : null;
+    if (!surface || !target || !surface.contains(target)) return -1;
+    const index = Number.parseInt(target.dataset.index || '', 10);
+    return Number.isInteger(index) && words[index]?.el === target ? index : -1;
+  }
+
+  function activateWord(index) {
+    const surface = mountedSurface;
+    if (!active || !controller || !surface || !words[index]) return;
+
+    clearTimeout(reanchorTimer);
+    reanchorTimer = null;
+    displayIndex = index;
+    controller.setCursorTo(index, { userInitiated: true });
+    // A direct word selection is an explicit reading-position change: dim
+    // every complete visual row above the selected row. Manual scrolling uses
+    // a separate path below and intentionally never paints spoken state.
+    paintWords(words, displayIndex, paintedIndex);
+    paintedIndex = displayIndex;
+
+    words.forEach((word, wordIndex) => {
+      word.el.classList.toggle('vs-active', wordIndex === index);
+    });
+    clearTimeout(wordActiveTimer);
+    wordActiveTimer = setTimeout(() => {
+      words[index]?.el.classList.remove('vs-active');
+      wordActiveTimer = null;
+    }, WORD_ACTIVE_FEEDBACK_MS);
+
+    if (creep) creep.stop();
+    pid.setTarget(scrollTarget(words[index].el, surface), true, surface.scrollTop);
+    scrollEng.ensureRunning();
+  }
   
   async function start() {
     const surface = getSurface();
@@ -225,6 +316,7 @@ export function initVoiceScrollUI({
     words = wrapped.words;
     originalHTML = wrapped.originalHTML;
     displayIndex = -1;
+    paintedIndex = -1;
     
     if (!words.length) {
       // Restore and bail
@@ -246,8 +338,10 @@ export function initVoiceScrollUI({
         const prevDisplay = displayIndex;
         displayIndex = newCursor;
         
-        // Paint highlight
-        paintWords(words, displayIndex, prevDisplay);
+        // Only a confirmed ASR cursor move (or an explicit word click above)
+        // may advance the independently tracked row-dimming state.
+        paintWords(words, displayIndex, paintedIndex);
+        paintedIndex = displayIndex;
         
         // Scroll to word
         const surface = getSurface();
@@ -286,25 +380,39 @@ export function initVoiceScrollUI({
       if (Math.abs(surface.scrollTop - Math.round(pid.current())) > MANUAL_SCROLL_THRESHOLD) {
         pid.syncTo(surface.scrollTop);
         if (creep) creep.stop();
-        if (controller.getPhase() === 'listening') {
-          clearTimeout(reanchorTimer);
-          reanchorTimer = setTimeout(() => {
-            const surface = getSurface();
-            if (!surface || !controller.isActive()) return;
-            const idx = findWordAtReadingLine(words, surface);
-            controller.setCursorTo(idx);
-            // Repaint from new position
-            displayIndex = idx;
-            words.forEach((w, i) => {
-              w.el.classList.toggle('vs-spoken', i < idx);
-              w.el.classList.toggle('vs-active', i === idx);
-            });
-          }, REANCHOR_DELAY_MS);
-        }
+        controller.beginUserOverride();
+        clearTimeout(reanchorTimer);
+        reanchorTimer = setTimeout(() => {
+          const surface = getSurface();
+          if (!surface || !controller.isActive()) return;
+          const idx = findWordAtReadingLine(words, surface);
+          controller.setCursorTo(idx, { userInitiated: true });
+          // Manual scrolling may move the speech-matcher anchor, but it must
+          // never mark text as spoken. Only onCursorMove (an ASR match) may
+          // update the row-dimming state.
+          displayIndex = idx;
+        }, REANCHOR_DELAY_MS);
       }
     };
     const surface2 = getSurface();
-    if (surface2) surface2.addEventListener('scroll', scrollHandler, { passive: true });
+    if (surface2) {
+      surface2.addEventListener('scroll', scrollHandler, { passive: true });
+
+      // Auto mode turns every wrapped word into a direct reading anchor. Keep
+      // pointer-down from moving the contenteditable caret, then re-anchor the
+      // speech matcher and scroll position on click.
+      wordPointerDownHandler = (event) => {
+        if (wordIndexFromEvent(event) >= 0) event.preventDefault();
+      };
+      wordClickHandler = (event) => {
+        const index = wordIndexFromEvent(event);
+        if (index < 0) return;
+        event.preventDefault();
+        activateWord(index);
+      };
+      surface2.addEventListener('pointerdown', wordPointerDownHandler);
+      surface2.addEventListener('click', wordClickHandler);
+    }
     
     // 6. Start voice recognition
     const scriptText = surface.innerText || '';
@@ -345,6 +453,16 @@ export function initVoiceScrollUI({
       surface.removeEventListener('scroll', scrollHandler);
     }
     scrollHandler = null;
+    if (surface && wordPointerDownHandler) {
+      surface.removeEventListener('pointerdown', wordPointerDownHandler);
+    }
+    if (surface && wordClickHandler) {
+      surface.removeEventListener('click', wordClickHandler);
+    }
+    wordPointerDownHandler = null;
+    wordClickHandler = null;
+    clearTimeout(wordActiveTimer);
+    wordActiveTimer = null;
     
     // Clear reanchor timer
     clearTimeout(reanchorTimer);
@@ -362,6 +480,7 @@ export function initVoiceScrollUI({
     
     words = [];
     displayIndex = -1;
+    paintedIndex = -1;
     originalHTML = '';
     mountedSurface = null;
   }

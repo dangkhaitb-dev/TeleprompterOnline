@@ -15,13 +15,13 @@ export { getCachedAuthState, clearCachedAuthState };
 
 // Firebase configuration from Firebase Console
 const firebaseConfig = {
-  apiKey: "AIzaSyCx2DjEGIRtwCUjfwgBWmlJn38SufPab6E",
-  authDomain: "freesub-19b6f.firebaseapp.com",
-  projectId: "freesub-19b6f",
-  storageBucket: "freesub-19b6f.firebasestorage.app",
-  messagingSenderId: "198073792624",
-  appId: "1:198073792624:web:62665a8a70a6ebcbe45cb5",
-  measurementId: "G-QYE4THHVJF"
+  apiKey: "AIzaSyBLu1Ygr4Qa12pnKZKr7hlaWI8mwCvMQlI",
+  authDomain: "solprompter.firebaseapp.com",
+  projectId: "solprompter",
+  storageBucket: "solprompter.firebasestorage.app",
+  messagingSenderId: "248632168603",
+  appId: "1:248632168603:web:5d621ad724dc16b9fd763e",
+  measurementId: "G-78YJ6C2REG"
 };
 
 /**

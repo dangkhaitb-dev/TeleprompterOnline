@@ -1,9 +1,9 @@
 {#- Brand logo SVG, shared across pages. Import and call with an optional fill
     and intrinsic dimensions:
     {% from "partials/logo.njk" import brandLogo %}
-    {{ brandLogo('#8EDB4D', 38, 57) | safe }}   (defaults to currentColor) -#}
-{%- macro brandLogo(fill='currentColor') -%}
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" fill="none" aria-hidden="true">
-  <image href="/logo.png" width="1254" height="1254"/>
+    {{ brandLogo('#8EDB4D', 32, 32) | safe }}   (defaults to currentColor) -#}
+{%- macro brandLogo(fill='currentColor', width=32, height=32) -%}
+<svg xmlns="http://www.w3.org/2000/svg" width="{{ width }}" height="{{ height }}" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+  <image href="/logo.png" width="500" height="500"/>
 </svg>
 {%- endmacro -%}

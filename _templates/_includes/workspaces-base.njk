@@ -11,6 +11,28 @@
     <meta name="theme-color" content="#f9fafd">
     <title>{{ pageData.seo.title }}</title>
     {% include "partials/head-icons.njk" %}
+    {#- Keep brand icons at their final size before module-loaded CSS arrives. -#}
+    <style>
+      .ws-appbar-logo .shared-brand-logo {
+        display: inline-flex;
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+      }
+
+      .ws-appbar-logo .shared-brand-logo svg {
+        display: block;
+        width: 32px;
+        height: 32px;
+      }
+
+      .ws-credits-icon,
+      .ws-credits-icon svg {
+        display: inline-flex;
+        width: 18px;
+        height: 18px;
+      }
+    </style>
 </head>
 
 <body class="ws-body">

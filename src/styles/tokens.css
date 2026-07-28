@@ -385,5 +385,34 @@
   --confirm-text: var(--se-muted);
   --confirm-icon-bg: var(--se-surface);
   --confirm-cancel-bg: var(--se-surface);
-  --confirm-cancel-hover: var(--se-surface-hover);
+}
+
+/* Shared Brand Identity Classes */
+.shared-brand-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px !important;
+  height: 32px !important;
+  flex-shrink: 0;
+}
+
+.shared-brand-logo svg,
+.shared-brand-logo img,
+.shared-brand-logo div {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+.shared-brand-text {
+  font-family: var(--font-sans);
+  margin: 0 !important;
+  font-weight: 700 !important;
+  font-size: 1.5rem !important;
+  color: var(--brand) !important;
+  letter-spacing: -0.025em;
+  line-height: 1 !important;
+  display: inline-flex;
+  align-items: center;
 }

@@ -20,7 +20,27 @@
 <link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png">
 <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<style>
+      .ws-appbar-logo .shared-brand-logo {
+        display: inline-flex;
+        width: 32px;
+        height: 32px;
+        flex: 0 0 32px;
+      }
 
+      .ws-appbar-logo .shared-brand-logo svg {
+        display: block;
+        width: 32px;
+        height: 32px;
+      }
+
+      .ws-credits-icon,
+      .ws-credits-icon svg {
+        display: inline-flex;
+        width: 18px;
+        height: 18px;
+      }
+    </style>
 </head>
 
 <body class="ws-body">
@@ -144,10 +164,10 @@
         </button>
       </div>
       <a href="/" class="ws-appbar-logo" aria-label="SolPrompter home">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" fill="none" aria-hidden="true">
-  <image href="/logo.png" width="1254" height="1254"/>
-</svg>
-        <span class="ws-appbar-logo-text">SolPrompter</span>
+        <span class="shared-brand-logo"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+  <image href="/logo.png" width="500" height="500"/>
+</svg></span>
+        <span class="ws-appbar-logo-text shared-brand-text">SolPrompter</span>
       </a>
     </div>
   </header>
@@ -189,8 +209,8 @@
 
         <div class="ws-credits-card ws-credits-card--free">
           <div class="ws-credits-header">
-            <span class="ws-credits-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1254 1254" fill="none" aria-hidden="true">
-  <image href="/logo.png" width="1254" height="1254"/>
+            <span class="ws-credits-icon" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+  <image href="/logo.png" width="500" height="500"/>
 </svg></span>
             <span class="ws-credits-label">SolPrompter</span>
           </div>

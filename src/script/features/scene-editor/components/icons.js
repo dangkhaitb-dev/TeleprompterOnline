@@ -1,7 +1,7 @@
 // icons.js — inline SVG strings for the scene editor (zero-dependency, matches
 // the base's no-CDN stance). Plain strings, no DOM; imported by UI/components.
 
-export const LOGO = '<svg viewBox="0 0 500 500" fill="none" aria-hidden="true"><image href="/logo.png" width="500" height="500"/></svg>';
+export const LOGO = '<svg viewBox="0 0 500 500" fill="none" aria-hidden="true"><image href="/logo.webp" width="500" height="500"/></svg>';
 
 export const ICON_BACK = '<svg viewBox="0 0 16 16" width="16" height="16" fill="none" aria-hidden="true" style="stroke-width:1.5px"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M10 4 6 8l4 4"/></svg>';
 export const ICON_EXPORT = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2v7m0 0 2.5-2.5M8 9 5.5 6.5M3 11v2.5h10V11"/></svg>';

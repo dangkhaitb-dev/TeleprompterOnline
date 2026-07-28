@@ -13,15 +13,11 @@ import '../styles/workspaces.css';
 import { initWorkspacesUI } from './features/workspaces/workspaces.ui.js';
 import { indexedDbGarbageCollect } from './features/teleprompter/teleprompter.logic.js';
 import { releasePointerButtonFocus } from './utils/release-pointer-button-focus.js';
-import { loadCrisp } from './utils/load-crisp.js';
 
 document.documentElement.setAttribute('data-theme', 'light');
 
 releasePointerButtonFocus();
 initWorkspacesUI();
-
-// Support chat, lazily injected after load + idle.
-loadCrisp();
 
 // Clean up any orphaned temporary IndexedDB records when entering the workspaces
 // dashboard — idle-gated so the getAll() scan never contends with the first render.

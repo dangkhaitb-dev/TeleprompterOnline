@@ -93,11 +93,11 @@ describe('normalizeSettings', () => {
     expect(normalizeSettings({ notchFullscreen: 0 }).notchFullscreen).toBe(false);
   });
 
-  it('only accepts known alignments, otherwise "left"', () => {
+  it('only accepts known alignments, otherwise "justify"', () => {
     expect(normalizeSettings({ align: 'center' }).align).toBe('center');
     expect(normalizeSettings({ align: 'right' }).align).toBe('right');
     expect(normalizeSettings({ align: 'justify' }).align).toBe('justify');
-    expect(normalizeSettings({ align: 'diagonal' }).align).toBe('left');
+    expect(normalizeSettings({ align: 'diagonal' }).align).toBe('justify');
   });
 
   it('defaults line height to 1.25 and only accepts toolbar values', () => {

@@ -12,7 +12,7 @@ export function initFormatToolbar({
   teleprompterText,
   notchEditText,
   colorPicker,
-  initialAlign = 'left',
+  initialAlign = 'justify',
   initialFontSize = '',
   initialLineHeight = '1.25',
   initialColor = '',

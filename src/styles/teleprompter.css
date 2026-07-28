@@ -1300,7 +1300,7 @@ html[data-theme="dark"] .app .prompt-box {
   padding: 0 12px;
   border-radius: 999px;
   background: var(--tp-eyeline-grip);
-  color: var(--tp-white);
+  color: var(--tp-eyeline-grip-fg);
   box-shadow: 0 2px 6px rgba(0, 0, 0, .25);
   cursor: grab;
   white-space: nowrap;

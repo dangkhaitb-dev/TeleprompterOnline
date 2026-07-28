@@ -56,14 +56,6 @@ lang: en
       <select id="fontSizeSelect" class="ft-font-size" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}">
         {%- for s in pageData.format.fontSizes %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
       </select>
-      <span class="ft-line-height-control" title="{{ pageData.format.lineHeightLabel }}">
-        <svg class="ft-line-height-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-          <path d="M4 3v14M2 5l2-2 2 2M2 15l2 2 2-2M9 5h9M9 10h7M9 15h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <select class="ft-line-height" aria-label="{{ pageData.format.lineHeightLabel }}">
-          {%- for s in pageData.format.lineHeights %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
-        </select>
-      </span>
       <span class="ft-divider"></span>
       <div class="ft-bi-group">
         <button type="button" class="ft-bold" data-cmd="bold" title="{{ pageData.format.boldTitle }}">B</button>
@@ -82,7 +74,10 @@ lang: en
       </div>
       <span class="ft-divider"></span>
       <div class="ft-align-group">
-        <button type="button" class="ft-align active" data-align="left" title="{{ pageData.format.alignLeft }}" aria-label="{{ pageData.format.alignLeft }}" aria-pressed="true">
+        <button type="button" class="ft-align active" data-align="justify" title="{{ pageData.format.alignJustify }}" aria-label="{{ pageData.format.alignJustify }}" aria-pressed="true">
+          <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M3 8h14M3 12h14M3 16h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="ft-align" data-align="left" title="{{ pageData.format.alignLeft }}" aria-label="{{ pageData.format.alignLeft }}" aria-pressed="false">
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M3 8h9M3 12h14M3 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </button>
         <button type="button" class="ft-align" data-align="center" title="{{ pageData.format.alignCenter }}" aria-label="{{ pageData.format.alignCenter }}" aria-pressed="false">
@@ -92,6 +87,15 @@ lang: en
           <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M8 8h9M3 12h14M9 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </button>
       </div>
+      <span class="ft-divider"></span>
+      <span class="ft-line-height-control" title="{{ pageData.format.lineHeightLabel }}">
+        <svg class="ft-line-height-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path d="M4 3v14M2 5l2-2 2 2M2 15l2 2 2-2M9 5h9M9 10h7M9 15h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <select class="ft-line-height" aria-label="{{ pageData.format.lineHeightLabel }}">
+          {%- for s in pageData.format.lineHeights %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
+        </select>
+      </span>
     </div>
 
     <div class="record-controls">
@@ -131,14 +135,6 @@ lang: en
     <select class="ft-font-size" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}">
       {%- for s in pageData.format.fontSizes %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
     </select>
-    <span class="ft-line-height-control" title="{{ pageData.format.lineHeightLabel }}">
-      <svg class="ft-line-height-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-        <path d="M4 3v14M2 5l2-2 2 2M2 15l2 2 2-2M9 5h9M9 10h7M9 15h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-      <select class="ft-line-height" aria-label="{{ pageData.format.lineHeightLabel }}">
-        {%- for s in pageData.format.lineHeights %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
-      </select>
-    </span>
     <span class="ft-divider"></span>
     <div class="ft-bi-group">
       <button type="button" class="ft-bold" data-cmd="bold" title="{{ pageData.format.boldTitle }}">B</button>
@@ -157,7 +153,10 @@ lang: en
     </div>
     <span class="ft-divider"></span>
     <div class="ft-align-group">
-      <button type="button" class="ft-align active" data-align="left" title="{{ pageData.format.alignLeft }}" aria-label="{{ pageData.format.alignLeft }}" aria-pressed="true">
+      <button type="button" class="ft-align active" data-align="justify" title="{{ pageData.format.alignJustify }}" aria-label="{{ pageData.format.alignJustify }}" aria-pressed="true">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M3 8h14M3 12h14M3 16h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </button>
+      <button type="button" class="ft-align" data-align="left" title="{{ pageData.format.alignLeft }}" aria-label="{{ pageData.format.alignLeft }}" aria-pressed="false">
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M3 8h9M3 12h14M3 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
       <button type="button" class="ft-align" data-align="center" title="{{ pageData.format.alignCenter }}" aria-label="{{ pageData.format.alignCenter }}" aria-pressed="false">
@@ -167,6 +166,15 @@ lang: en
         <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M8 8h9M3 12h14M9 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       </button>
     </div>
+    <span class="ft-divider"></span>
+    <span class="ft-line-height-control" title="{{ pageData.format.lineHeightLabel }}">
+      <svg class="ft-line-height-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M4 3v14M2 5l2-2 2 2M2 15l2 2 2-2M9 5h9M9 10h7M9 15h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <select class="ft-line-height" aria-label="{{ pageData.format.lineHeightLabel }}">
+        {%- for s in pageData.format.lineHeights %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
+      </select>
+    </span>
   </div>
 
   <!-- Scroll affordances: show at the left/right of the mobile format toolbar
@@ -417,13 +425,6 @@ lang: en
       </button>
       <button class="layout-eyeline" type="button" id="layoutEyeLine" aria-label="{{ pageData.layout.eyeLineAria }}" title="{{ pageData.layout.eyeLineTitle }}">
         <span class="layout-eye-grip">
-          <svg class="eye-icon-on" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-            <path d="M1.5 8s2.5-4.5 6.5-4.5S14.5 8 14.5 8 12 12.5 8 12.5 1.5 8 1.5 8Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-            <circle cx="8" cy="8" r="2" fill="currentColor"/>
-          </svg>
-          <svg class="eye-icon-off" width="15" height="15" viewBox="0 0 16 16" fill="none" aria-hidden="true" style="stroke-width:1.5px;">
-            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M9.47 3.83a6.2 6.2 0 0 0-1.305-.135c-2.745 0-4.748 1.8-5.852 3.128a2.16 2.16 0 0 0 0 2.784q.173.208.36.409m4.175-.605c.17.167.376.3.605.393a2.02 2.02 0 0 0 1.457.023c.232-.085.443-.212.62-.373.177-.16.316-.352.41-.563a1.56 1.56 0 0 0-.026-1.325 1.7 1.7 0 0 0-.432-.55M15 2 1.33 14.427m3.144-2.858a6.67 6.67 0 0 0 3.691 1.164c2.743 0 4.745-1.798 5.85-3.126a2.16 2.16 0 0 0-.002-2.787 11 11 0 0 0-2.157-1.962z"/>
-          </svg>
           <span class="layout-grip-label">{{ pageData.layout.eyeLineLabel }}</span>
         </span>
       </button>
@@ -624,14 +625,6 @@ lang: en
         <select class="notch-edit-select" id="notchEditFontSize" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}">
           {%- for s in pageData.notch.fontSizes %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
         </select>
-        <span class="ft-line-height-control notch-edit-line-height-control" title="{{ pageData.format.lineHeightLabel }}">
-          <svg class="ft-line-height-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-            <path d="M4 3v14M2 5l2-2 2 2M2 15l2 2 2-2M9 5h9M9 10h7M9 15h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-          <select class="notch-edit-select" id="notchEditLineHeight" aria-label="{{ pageData.format.lineHeightLabel }}">
-            {%- for s in pageData.format.lineHeights %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
-          </select>
-        </span>
         <span class="notch-edit-divider" aria-hidden="true"></span>
         <button type="button" class="notch-edit-cmd" data-cmd="bold" title="{{ pageData.format.boldTitle }}" aria-label="Bold"><b>B</b></button>
         <button type="button" class="notch-edit-cmd" data-cmd="italic" title="{{ pageData.format.italicTitle }}" aria-label="Italic"><i>I</i></button>
@@ -647,7 +640,10 @@ lang: en
           </button>
         </div>
         <span class="notch-edit-divider" aria-hidden="true"></span>
-        <button type="button" class="notch-edit-align active" data-align="left" title="{{ pageData.format.alignLeft }}" aria-label="{{ pageData.format.alignLeft }}" aria-pressed="true">
+        <button type="button" class="notch-edit-align active" data-align="justify" title="{{ pageData.format.alignJustify }}" aria-label="{{ pageData.format.alignJustify }}" aria-pressed="true">
+          <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M3 8h14M3 12h14M3 16h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+        </button>
+        <button type="button" class="notch-edit-align" data-align="left" title="{{ pageData.format.alignLeft }}" aria-label="{{ pageData.format.alignLeft }}" aria-pressed="false">
           <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M3 8h9M3 12h14M3 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </button>
         <button type="button" class="notch-edit-align" data-align="center" title="{{ pageData.format.alignCenter }}" aria-label="{{ pageData.format.alignCenter }}" aria-pressed="false">
@@ -656,6 +652,15 @@ lang: en
         <button type="button" class="notch-edit-align" data-align="right" title="{{ pageData.format.alignRight }}" aria-label="{{ pageData.format.alignRight }}" aria-pressed="false">
           <svg width="16" height="16" viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 4h14M8 8h9M3 12h14M9 16h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
         </button>
+        <span class="notch-edit-divider" aria-hidden="true"></span>
+        <span class="ft-line-height-control notch-edit-line-height-control" title="{{ pageData.format.lineHeightLabel }}">
+          <svg class="ft-line-height-icon" width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+            <path d="M4 3v14M2 5l2-2 2 2M2 15l2 2 2-2M9 5h9M9 10h7M9 15h9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <select class="notch-edit-select" id="notchEditLineHeight" aria-label="{{ pageData.format.lineHeightLabel }}">
+            {%- for s in pageData.format.lineHeights %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
+          </select>
+        </span>
       </div>
       <div class="notch-edit-textarea" id="notchEditText" contenteditable="true" spellcheck="false" data-placeholder="{{ pageData.notch.editPlaceholder }}" aria-label="{{ pageData.notch.editTextAria }}"></div>
     </div>

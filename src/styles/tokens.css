@@ -134,6 +134,7 @@
   --tp-caret-arrow: #8a8d95;
   --tp-eyeline: rgba(240, 161, 50, 0.95);
   --tp-eyeline-grip: #f0a132;
+  --tp-eyeline-grip-fg: var(--tp-white);
   --tp-margin-guide: rgba(244, 99, 94, 0.9);
   --tp-margin-grip: #f4635e;
   --tp-bar-muted: #cfd1d6;
@@ -352,6 +353,8 @@
   --tp-track-bg: #3a3b42;
   --tp-scrollbar-thumb: #3a3b41;
   --tp-eyeline: var(--tp-white);
+  --tp-eyeline-grip: var(--tp-white);
+  --tp-eyeline-grip-fg: var(--tp-black);
 
   /* Scene editor dark overrides (from demo html[data-theme="dark"]). */
   --se-page-bg: #141414;

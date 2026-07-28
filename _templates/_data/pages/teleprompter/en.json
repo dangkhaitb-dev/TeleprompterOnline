@@ -38,7 +38,8 @@
     "chooseColor": "Choose color",
     "alignLeft": "Align left",
     "alignCenter": "Align center",
-    "alignRight": "Align right"
+    "alignRight": "Align right",
+    "alignJustify": "Align justify"
   },
   "record": {
     "pause": "Pause",

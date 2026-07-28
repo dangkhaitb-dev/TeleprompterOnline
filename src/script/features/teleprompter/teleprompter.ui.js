@@ -52,8 +52,15 @@ import { requestPersistentStorage } from '../../utils/storage-quota.js';
 import { scopedId } from '../../utils/scoped-query.js';
 import { initEditStaleBadge } from './collab/edit-stale-badge.ui.js';
 import { initVoiceScrollUI } from './components/voice-scroll.ui.js';
+import {
+  preloadLanguageDetector,
+  prepareSpeechPackForText,
+  releaseLanguageDetector,
+} from './components/voice-scroll.logic.js';
 
 const TIMESLICE_LABEL_MS = 250;
+const VOICE_LANGUAGE_EDIT_DEBOUNCE_MS = 1800;
+const VOICE_LANGUAGE_SAMPLE_WORDS = 200;
 
 // Read the flat copy map embedded as an inert JSON <script> on the page.
 function readCopy(root) {
@@ -391,6 +398,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       source,
       syncToolbars: Object.keys(settingsPatch).length > 0,
     });
+    scheduleVoiceLanguageEditCheck(source);
   }
 
   function commitSharedAlignment(align) {
@@ -614,6 +622,113 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   let voiceScrollStarting = false;
   let voiceScrollAttempt = 0;
   let selectedScrollMode = savedSettings.scrollMode || 'auto';
+  let pendingVoiceLanguageCheck = null;
+  let lastBackgroundVoiceSample = '';
+  let lastBackgroundVoiceResult = null;
+
+  function warmLanguageDetector(reason) {
+    return preloadLanguageDetector({ allowDownload: true }).then((result) => {
+      console.info('[VoiceScroll] LanguageDetector preload', {
+        reason,
+        status: result.status,
+      });
+      return result;
+    });
+  }
+
+  // Begin as soon as the studio chunk mounts. Chrome builds that require a
+  // transient user activation get an immediate retry on the first interaction.
+  void warmLanguageDetector('studio-load');
+  let detectorActivationRetryInFlight = false;
+  const detectorActivationOptions = { capture: true };
+  const retryLanguageDetectorWithActivation = (event) => {
+    if (detectorActivationRetryInFlight) return;
+    detectorActivationRetryInFlight = true;
+    void warmLanguageDetector(
+      event.type === 'keydown' ? 'user-key' : 'user-pointer',
+    ).then((result) => {
+      detectorActivationRetryInFlight = false;
+      if (!['available', 'unsupported', 'unavailable'].includes(result.status)) return;
+      document.removeEventListener(
+        'pointerdown',
+        retryLanguageDetectorWithActivation,
+        detectorActivationOptions,
+      );
+      document.removeEventListener(
+        'keydown',
+        retryLanguageDetectorWithActivation,
+        detectorActivationOptions,
+      );
+    });
+  };
+  on(
+    document,
+    'pointerdown',
+    retryLanguageDetectorWithActivation,
+    detectorActivationOptions,
+  );
+  on(
+    document,
+    'keydown',
+    retryLanguageDetectorWithActivation,
+    detectorActivationOptions,
+  );
+
+  function beginningVoiceSample(surface = activeSurface()) {
+    const text = surface?.innerText || surface?.textContent || '';
+    return text.trim().split(/\s+/).slice(0, VOICE_LANGUAGE_SAMPLE_WORDS).join(' ');
+  }
+
+  function runVoiceLanguageCheck({
+    surface = activeSurface(),
+    force = false,
+    reason = 'edit',
+  } = {}) {
+    const sample = beginningVoiceSample(surface);
+    if (!sample) return Promise.resolve(null);
+    if (!force && sample === lastBackgroundVoiceSample) {
+      return Promise.resolve(lastBackgroundVoiceResult);
+    }
+
+    if (!force) lastBackgroundVoiceSample = sample;
+    const check = prepareSpeechPackForText(sample, {
+      onStatus: (details) => {
+        console.info('[VoiceScroll] language-pack preflight', { reason, ...details });
+      },
+    }).then((result) => {
+      if (!force && sample === lastBackgroundVoiceSample) {
+        lastBackgroundVoiceResult = result;
+      }
+      return result;
+    }).catch((error) => {
+      console.warn('[VoiceScroll] language-pack preflight failed', {
+        reason,
+        error: error?.message || String(error),
+      });
+      return null;
+    });
+    return check;
+  }
+
+  const voiceLanguageEditPreflight = debounce((surface) => {
+    void runVoiceLanguageCheck({ surface, reason: 'edit' });
+  }, VOICE_LANGUAGE_EDIT_DEBOUNCE_MS);
+
+  function scheduleVoiceLanguageEditCheck(surface) {
+    voiceLanguageEditPreflight(surface);
+  }
+
+  function armVoiceLanguageCheck(reason) {
+    pendingVoiceLanguageCheck = selectedScrollMode === 'auto'
+      ? runVoiceLanguageCheck({ force: true, reason })
+      : null;
+    return pendingVoiceLanguageCheck;
+  }
+
+  // Existing workspaces can mount with a complete script before the user
+  // touches the editor. Detect it now so both detector and ASR pack preparation
+  // are already under way before the first Play or Record action.
+  void runVoiceLanguageCheck({ reason: 'studio-init' });
 
   function setSpeedModePanel(mode) {
     const auto = mode === 'auto';
@@ -713,9 +828,18 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     const attempt = ++voiceScrollAttempt;
     voiceScrollStarting = true;
     setVoiceScrollButton({ busy: true, phase: 'requesting-microphone' });
-    console.info('[VoiceScroll] requesting microphone');
+    console.info('[VoiceScroll] checking script language');
 
     try {
+      const languageCheck = pendingVoiceLanguageCheck
+        || runVoiceLanguageCheck({ force: true, reason: 'voice-start' });
+      if (pendingVoiceLanguageCheck === languageCheck) pendingVoiceLanguageCheck = null;
+      const languageResult = await languageCheck;
+      if (attempt !== voiceScrollAttempt) return;
+      const detectedLanguage = languageResult?.detected
+        || (languageResult?.locale ? languageResult : null);
+
+      console.info('[VoiceScroll] requesting microphone');
       const micReady = await requestVoiceScrollMicrophone();
       if (attempt !== voiceScrollAttempt) return;
       if (!micReady) {
@@ -748,7 +872,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         },
       });
       voiceScrollUI = candidate;
-      const started = await candidate.start();
+      const started = await candidate.start({ detectedLanguage });
 
       if (attempt !== voiceScrollAttempt || candidate !== voiceScrollUI) {
         candidate.stop();
@@ -877,6 +1001,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       readingSession.toggleScroll();
       return;
     }
+    armVoiceLanguageCheck('play');
     playbackOnlyActive = true;
     app.classList.add('playback-only');
     app.classList.remove('record-paused');
@@ -1383,6 +1508,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // Switching from Play to Record starts a fresh recording session while
       // preserving the same reading layout.
       stopPlaybackOnly();
+      armVoiceLanguageCheck('record');
       // ── Pre-flight storage check. The warn tier respects the user's
       // storage-warning preference; the blocked tier always stops — with that
       // little space left the recording is doomed regardless of preference.
@@ -1543,8 +1669,18 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   on(teleprompterText, 'input', () => { clearIfEmpty(teleprompterText); commitSharedEdit(teleprompterText); });
   // Paste as plain text only — strip any HTML/markup from the clipboard so the
   // prompt surfaces never absorb foreign formatting (see utils/plain-paste.js).
-  on(promptBox, 'paste', handlePlainTextPaste);
-  on(teleprompterText, 'paste', handlePlainTextPaste);
+  const handleScriptPaste = (event) => {
+    const surface = event.currentTarget;
+    handlePlainTextPaste(event);
+    // execCommand inserts synchronously and emits input. Cancel that trailing
+    // edit preflight and check the newly pasted script once, immediately.
+    queueMicrotask(() => {
+      voiceLanguageEditPreflight.cancel();
+      void runVoiceLanguageCheck({ surface, reason: 'paste' });
+    });
+  };
+  on(promptBox, 'paste', handleScriptPaste);
+  on(teleprompterText, 'paste', handleScriptPaste);
   // Persistence trails typing (debounced) — commit it before the page/tab can
   // be discarded. pagehide is covered by teardown.
   on(document, 'visibilitychange', () => {
@@ -1853,6 +1989,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     // The scene editor reads workspace state from the store — commit any
     // trailing debounced edit before handing over.
     persistSharedState.flush();
+    voiceLanguageEditPreflight.cancel();
     // The editor is mounted beside (not inside) the teleprompter app, so the
     // fixed notch overlay must be explicitly turned off before swapping views.
     notch.deactivate();
@@ -1889,6 +2026,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     tornDown = true;
     window.removeEventListener('pagehide', teardown);
     persistSharedState.flush();
+    voiceLanguageEditPreflight.cancel();
+    releaseLanguageDetector();
     readingSession.stop();
     scroller.destroy();
     if (voiceScrollUI) { voiceScrollUI.destroy(); voiceScrollUI = null; }

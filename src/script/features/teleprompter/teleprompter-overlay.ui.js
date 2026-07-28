@@ -15,6 +15,7 @@ import {
 } from './teleprompter.logic.js';
 import { fetchPageHtml, extractBodyHtml } from '../../utils/prefetch-page.js';
 import { isFullscreen, exitFullscreen } from '../../utils/fullscreen.js';
+import { preloadLanguageDetector } from './components/voice-scroll.logic.js';
 
 const TELEPROMPTER_URL = '/teleprompter';
 
@@ -28,11 +29,15 @@ let active = null;
 // warmed open has nothing left to fetch.
 export function preloadTeleprompterOverlay() {
   import('./components/studio-panels.ui.js').catch(() => {});
+  void preloadLanguageDetector({ allowDownload: true });
   return fetchPageHtml(TELEPROMPTER_URL);
 }
 
 export async function openTeleprompterOverlay(workspaceId, { onClosed } = {}) {
   if (active) return active;
+  // This call runs inside the user's open/click gesture and retries model
+  // creation if the idle warm-up was blocked by transient-activation rules.
+  void preloadLanguageDetector({ allowDownload: true });
 
   // Parity with teleprompter-main: a stale/missing id auto-creates a scratch
   // workspace instead of a dead end.

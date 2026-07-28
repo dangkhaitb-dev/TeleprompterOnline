@@ -14,6 +14,209 @@ import {
 const PRE_AUDIO_ABORT_LIMIT = 2;
 const USER_OVERRIDE_GUARD_MS = 650;
 const MAX_ASR_CURSOR_ADVANCE = 8;
+const LOCAL_PACK_CHECK_TIMEOUT_MS = 3000;
+const MIN_PACK_LANGUAGE_CONFIDENCE = 0.35;
+const LANGUAGE_DETECTION_SAMPLE_WORDS = 200;
+const LANGUAGE_DETECTOR_IDLE_RELEASE_MS = 5 * 60 * 1000;
+const speechPackInstallJobs = new Map();
+const speechPackResultCache = new Map();
+const readySpeechPackLocales = new Set();
+const SPEECH_PACK_RESULT_TTL_MS = Object.freeze({
+  available: 5 * 60 * 1000,
+  installed: 5 * 60 * 1000,
+  unavailable: 10 * 60 * 1000,
+  timeout: 60 * 1000,
+  failed: 60 * 1000,
+});
+let cachedLanguageDetectorAPI = null;
+let cachedLanguageDetector = null;
+let languageDetectorLoadPromise = null;
+let languageDetectorAvailabilityPromise = null;
+let languageDetectorAvailability = null;
+let languageDetectorReleaseTimer = null;
+
+function speechRecognitionConstructor() {
+  const globalScope = typeof self !== 'undefined' ? self : {};
+  return globalScope.SpeechRecognition || globalScope.webkitSpeechRecognition || null;
+}
+
+function supportsOnDeviceSpeechInstall(SR) {
+  if (!SR?.available || !SR?.install) return false;
+  if (SR.prototype && 'processLocally' in SR.prototype) return true;
+  try {
+    return 'processLocally' in new SR();
+  } catch {
+    return false;
+  }
+}
+
+function rememberSpeechPackResult(result) {
+  const ttl = SPEECH_PACK_RESULT_TTL_MS[result.status];
+  if (ttl === undefined) return result;
+  if (result.status === 'available' || result.status === 'installed') {
+    readySpeechPackLocales.add(result.locale);
+  }
+  speechPackResultCache.set(result.locale, {
+    result,
+    expiresAt: ttl === Infinity ? Infinity : Date.now() + ttl,
+  });
+  return result;
+}
+
+async function localSpeechAvailability(SR, locale, timeoutMs = LOCAL_PACK_CHECK_TIMEOUT_MS) {
+  if (!SR?.available) return 'unsupported';
+  try {
+    return await Promise.race([
+      SR.available({ langs: [locale], processLocally: true }),
+      new Promise((resolve) => setTimeout(() => resolve('timeout'), timeoutMs)),
+    ]);
+  } catch {
+    return 'unavailable';
+  }
+}
+
+function resetLanguageDetectorCache(API) {
+  if (cachedLanguageDetectorAPI === API) return;
+  releaseLanguageDetector();
+  cachedLanguageDetectorAPI = API;
+  languageDetectorAvailabilityPromise = null;
+  languageDetectorAvailability = null;
+}
+
+function scheduleLanguageDetectorRelease() {
+  clearTimeout(languageDetectorReleaseTimer);
+  languageDetectorReleaseTimer = setTimeout(() => {
+    releaseLanguageDetector();
+  }, LANGUAGE_DETECTOR_IDLE_RELEASE_MS);
+  languageDetectorReleaseTimer?.unref?.();
+}
+
+export function releaseLanguageDetector() {
+  clearTimeout(languageDetectorReleaseTimer);
+  languageDetectorReleaseTimer = null;
+  try {
+    cachedLanguageDetector?.destroy?.();
+  } catch { /* best-effort browser resource release */ }
+  cachedLanguageDetector = null;
+  languageDetectorLoadPromise = null;
+}
+
+function checkLanguageDetectorAvailability(API) {
+  resetLanguageDetectorCache(API);
+  if (languageDetectorAvailability) {
+    return Promise.resolve(languageDetectorAvailability);
+  }
+  if (languageDetectorAvailabilityPromise) return languageDetectorAvailabilityPromise;
+
+  const pending = Promise.resolve()
+    .then(() => API.availability())
+    .then((status) => {
+      languageDetectorAvailability = status;
+      return status;
+    })
+    .catch(() => {
+      languageDetectorAvailability = 'unavailable';
+      return 'unavailable';
+    });
+  languageDetectorAvailabilityPromise = pending;
+  return pending;
+}
+
+function startLanguageDetectorLoad(API, { onProgress } = {}) {
+  resetLanguageDetectorCache(API);
+  if (cachedLanguageDetector) {
+    return Promise.resolve({ status: 'available', detector: cachedLanguageDetector });
+  }
+  if (languageDetectorLoadPromise) return languageDetectorLoadPromise;
+
+  let created;
+  try {
+    created = API.create({
+      monitor(monitor) {
+        monitor.addEventListener('downloadprogress', (event) => {
+          onProgress?.(Number(event.loaded) || 0);
+        });
+      },
+    });
+  } catch (error) {
+    return Promise.resolve({
+      status: 'failed',
+      error: error?.message || String(error),
+    });
+  }
+
+  const pending = Promise.resolve(created)
+    .then((detector) => {
+      cachedLanguageDetector = detector;
+      languageDetectorAvailability = 'available';
+      scheduleLanguageDetectorRelease();
+      return { status: 'available', detector };
+    })
+    .catch((error) => {
+      if (languageDetectorLoadPromise === pending) {
+        languageDetectorLoadPromise = null;
+      }
+      return { status: 'failed', error: error?.message || String(error) };
+    });
+  languageDetectorLoadPromise = pending;
+  return pending;
+}
+
+/**
+ * Preloads Chrome's shared LanguageDetector model. Callers should fire and
+ * forget this promise; detection uses the offline heuristic while it is pending.
+ */
+export function preloadLanguageDetector({ allowDownload = false, onProgress } = {}) {
+  const API = typeof self !== 'undefined' ? self.LanguageDetector : null;
+  if (!API?.availability || !API?.create) {
+    return Promise.resolve({ status: 'unsupported' });
+  }
+  resetLanguageDetectorCache(API);
+  if (cachedLanguageDetector) {
+    return Promise.resolve({ status: 'available', detector: cachedLanguageDetector });
+  }
+  if (languageDetectorLoadPromise) return languageDetectorLoadPromise;
+
+  // When an earlier idle preflight already learned the state, a user gesture
+  // can enter create() synchronously instead of losing transient activation to
+  // another availability await.
+  const known = languageDetectorAvailability;
+  if (known === 'available'
+    || (allowDownload && (known === 'downloadable' || known === 'downloading'))) {
+    return startLanguageDetectorLoad(API, { onProgress });
+  }
+
+  return checkLanguageDetectorAvailability(API).then((availability) => {
+    if (availability === 'available'
+      || (allowDownload
+        && (availability === 'downloadable' || availability === 'downloading'))) {
+      return startLanguageDetectorLoad(API, { onProgress });
+    }
+    return { status: availability || 'unavailable' };
+  });
+}
+
+async function readyLanguageDetector() {
+  const API = typeof self !== 'undefined' ? self.LanguageDetector : null;
+  if (!API?.availability || !API?.create) return null;
+  resetLanguageDetectorCache(API);
+  if (cachedLanguageDetector) {
+    scheduleLanguageDetectorRelease();
+    return cachedLanguageDetector;
+  }
+
+  // Critical fallback rule: never wait for an in-flight model download.
+  if (languageDetectorLoadPromise) return null;
+
+  const availability = await checkLanguageDetectorAvailability(API);
+  if (cachedLanguageDetector) {
+    scheduleLanguageDetectorRelease();
+    return cachedLanguageDetector;
+  }
+  if (languageDetectorLoadPromise || availability !== 'available') return null;
+  const loaded = await startLanguageDetectorLoad(API);
+  return loaded.status === 'available' ? loaded.detector : null;
+}
 
 /**
  * Detects the language of the script text with auto-fallback mechanisms.
@@ -22,32 +225,140 @@ const MAX_ASR_CURSOR_ADVANCE = 8;
  */
 export async function detectScriptLanguage(text) {
   // 1. Try Chrome LanguageDetector API (on-device, best)
-  if (typeof self !== 'undefined' && 'LanguageDetector' in self) {
+  const detector = await readyLanguageDetector();
+  if (detector) {
     try {
-      const avail = await LanguageDetector.availability();
-      if (avail !== 'unavailable') {
-        const det = await LanguageDetector.create();
-        const excerpt = (text || '').trim().split(/\s+/).slice(0, 15).join(' ');
-        if (excerpt) {
-          const results = await det.detect(excerpt);
-          const top = (results || []).find(r => r.detectedLanguage && r.detectedLanguage !== 'und');
-          if (top) {
-            const iso = top.detectedLanguage.split('-')[0];
-            return { iso, locale: ISO_TO_LOCALE[iso] || 'en-US', label: LABEL[iso] || iso, confidence: top.confidence, source: 'on-device' };
-          }
+      const excerpt = (text || '').trim().split(/\s+/)
+        .slice(0, LANGUAGE_DETECTION_SAMPLE_WORDS)
+        .join(' ');
+      if (excerpt) {
+        const results = await detector.detect(excerpt);
+        const top = (results || []).find(r => r.detectedLanguage && r.detectedLanguage !== 'und');
+        if (top) {
+          const detectedTag = top.detectedLanguage;
+          const iso = detectedTag.split('-')[0];
+          return {
+            iso,
+            locale: ISO_TO_LOCALE[iso] || detectedTag,
+            label: LABEL[iso] || detectedTag,
+            confidence: top.confidence,
+            source: 'on-device',
+          };
         }
       }
-    } catch (e) { /* fallback */ }
+    } catch { /* fallback */ }
   }
   
   // 2. Offline heuristic fallback
   const result = detectLanguage(text);
-  if (result.confidence >= 0.2) {
+  if (result.confidence >= MIN_PACK_LANGUAGE_CONFIDENCE) {
     return { ...result, source: 'offline-heuristic' };
   }
   
   // 3. Default
   return { iso: 'vi', locale: 'vi-VN', label: 'Tiếng Việt', confidence: 0, source: 'default' };
+}
+
+/**
+ * Checks and, when possible, installs the on-device speech-recognition pack.
+ * Installation is intentionally non-blocking at call sites: browser-service
+ * recognition remains available while Chrome downloads the local pack.
+ */
+export async function ensureOnDeviceSpeechPack(locale, { onStatus } = {}) {
+  const SR = speechRecognitionConstructor();
+  const report = (status, details = {}) => {
+    const result = { locale, status, ...details };
+    onStatus?.(result);
+    return result;
+  };
+
+  if (!locale || !supportsOnDeviceSpeechInstall(SR)) {
+    return report('unsupported');
+  }
+
+  const cached = speechPackResultCache.get(locale);
+  if (cached) {
+    if (cached.expiresAt > Date.now()) {
+      const result = { ...cached.result, cached: true };
+      onStatus?.(result);
+      return result;
+    }
+    speechPackResultCache.delete(locale);
+  }
+
+  const existing = speechPackInstallJobs.get(locale);
+  if (existing) {
+    report('downloading');
+    const result = await existing;
+    onStatus?.(result);
+    return result;
+  }
+
+  const job = (async () => {
+    const availability = await localSpeechAvailability(SR, locale);
+    if (availability === 'available') {
+      return rememberSpeechPackResult(report('available'));
+    }
+    if (availability === 'unavailable' || availability === 'timeout') {
+      return rememberSpeechPackResult(report(availability));
+    }
+
+    // Both `downloadable` and `downloading` are handled by install(). Chrome
+    // either starts the pack download or joins the download already in flight.
+    report('downloading', { availability });
+    try {
+      const installed = await SR.install({
+        langs: [locale],
+        processLocally: true,
+      });
+      if (!installed) return rememberSpeechPackResult(report('failed'));
+
+      const verified = await localSpeechAvailability(SR, locale);
+      return rememberSpeechPackResult(
+        report(verified === 'available' ? 'installed' : 'failed', {
+          availability: verified,
+        }),
+      );
+    } catch (error) {
+      return rememberSpeechPackResult(
+        report('failed', { error: error?.message || String(error) }),
+      );
+    }
+  })();
+
+  speechPackInstallJobs.set(locale, job);
+  try {
+    return await job;
+  } finally {
+    if (speechPackInstallJobs.get(locale) === job) {
+      speechPackInstallJobs.delete(locale);
+    }
+  }
+}
+
+/**
+ * Detects the script language and warms its on-device ASR pack. Ambiguous text
+ * is left alone so the default locale cannot trigger an unrelated download.
+ */
+export async function prepareSpeechPackForText(text, { onStatus } = {}) {
+  if (!(text || '').trim()) {
+    const result = { status: 'empty' };
+    onStatus?.(result);
+    return result;
+  }
+
+  const detected = await detectScriptLanguage(text);
+  onStatus?.({ status: 'detected', ...detected });
+  if (detected.confidence < MIN_PACK_LANGUAGE_CONFIDENCE || detected.source === 'default') {
+    const result = { status: 'uncertain', ...detected };
+    onStatus?.(result);
+    return result;
+  }
+
+  const packPromise = ensureOnDeviceSpeechPack(detected.locale, {
+    onStatus: (pack) => onStatus?.({ ...pack, detected }),
+  });
+  return { status: 'preparing', detected, packPromise };
 }
 
 /**
@@ -72,6 +383,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
   let restartTimer = null;
   let useLocal = false;
   let fallbackToCloud = false;
+  let localDisabledForSession = false;
   let fatalError = false;
   let biasSupported = true;
   let settleStart = null;
@@ -278,6 +590,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
 
       if (canFallback) {
         fallbackToCloud = true;
+        localDisabledForSession = true;
         log('on-device recognition failed; falling back', { error: code });
         return;
       }
@@ -351,6 +664,15 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
           fallbackToCloud = false;
           useLocal = false;
           recognition = createRecognition(SR);
+        } else if (!useLocal
+          && !localDisabledForSession
+          && readySpeechPackLocales.has(locale)) {
+          // A pack may have finished downloading while browser-service
+          // recognition was active. Upgrade on a natural recognition restart
+          // instead of interrupting the user's current utterance.
+          useLocal = true;
+          recognition = createRecognition(SR);
+          log('on-device language pack ready; upgrading recognition', { locale });
         }
         try {
           recognition.start();
@@ -372,8 +694,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
   }
   
   async function start(detectedLocale) {
-    const globalScope = typeof self !== 'undefined' ? self : {};
-    const SR = globalScope.SpeechRecognition || globalScope.webkitSpeechRecognition;
+    const SR = speechRecognitionConstructor();
     if (!SR) {
       console.error('[VoiceScroll] Web Speech API is unavailable');
       onError?.('unsupported');
@@ -390,6 +711,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     lastDeliveredTokens = [];
     lastResultAt = 0;
     fallbackToCloud = false;
+    localDisabledForSession = false;
     fatalError = false;
     biasSupported = true;
     hasLoggedListening = false;
@@ -398,15 +720,9 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     
     // Try on-device first
     useLocal = false;
-    if (SR.available) {
-      try {
-        const status = await Promise.race([
-          SR.available({ langs: [locale], processLocally: true }),
-          new Promise(r => setTimeout(() => r('timeout'), 3000))
-        ]);
-        useLocal = status === 'available';
-      } catch { useLocal = false; }
-    }
+    const localStatus = await localSpeechAvailability(SR, locale);
+    useLocal = localStatus === 'available';
+    if (useLocal) readySpeechPackLocales.add(locale);
 
     recognition = createRecognition(SR);
     // Start unbiased. Seeding the recognizer with script phrases before it has
@@ -444,6 +760,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     wantsListening = false;
     fatalError = false;
     fallbackToCloud = false;
+    localDisabledForSession = false;
     clearRestartTimer();
     resolveStart(false);
     if (recognition) {
@@ -675,7 +992,7 @@ export function createVoiceScrollController({
     matcherState = result;
   }
   
-  async function start(wordParts, scriptText) {
+  async function start(wordParts, scriptText, detectedLanguage = null) {
     if (phase !== 'idle') return;
     phase = 'detecting';
     onPhaseChange?.('detecting');
@@ -692,8 +1009,14 @@ export function createVoiceScrollController({
     awaitingUserAnchorSpeech = false;
     
     // Detect language
-    const detected = await detectScriptLanguage(scriptText);
+    const detected = detectedLanguage || await detectScriptLanguage(scriptText);
     console.info('[VoiceScroll] language detected', detected);
+
+    // Start or join the pack download without holding up recognition. The ASR
+    // engine below uses browser-service until the local pack becomes available.
+    if (detected.confidence >= MIN_PACK_LANGUAGE_CONFIDENCE && detected.source !== 'default') {
+      void ensureOnDeviceSpeechPack(detected.locale);
+    }
     
     // Start ASR
     asr = createASREngine({

@@ -414,7 +414,7 @@ export function initVoiceScrollUI({
     );
   }
   
-  async function start() {
+  async function start({ detectedLanguage = null } = {}) {
     const surface = getSurface();
     if (!surface || active) return false;
     mountedSurface = surface;
@@ -525,7 +525,7 @@ export function initVoiceScrollUI({
     // 6. Start voice recognition
     const scriptText = surface.innerText || '';
     const startingController = controller;
-    const started = await startingController.start(words, scriptText);
+    const started = await startingController.start(words, scriptText, detectedLanguage);
     if (!started || controller !== startingController) {
       // stop() also restores the original rich HTML and removes listeners.
       if (controller === startingController) stop();

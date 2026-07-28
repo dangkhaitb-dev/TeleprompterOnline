@@ -32,13 +32,21 @@ export function formatUpdatedDate(ts) {
 
 // raw = stored Workspace { id, title, scriptText, scriptHtml, settings, folderId, updatedAt, ... }
 export function toWorkspaceCard(raw = {}) {
+  const workspace = raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
   return {
-    id: raw.id,
-    title: (raw.title || '').trim(),
-    snippet: deriveSnippet(raw.scriptText),
-    previewHtml: (raw.scriptHtml || '').slice(0, PREVIEW_HTML_MAX),
-    settings: raw.settings || {},
-    updatedDate: formatUpdatedDate(raw.updatedAt),
+    id: typeof workspace.id === 'string' || typeof workspace.id === 'number'
+      ? String(workspace.id)
+      : '',
+    title: typeof workspace.title === 'string' ? workspace.title.trim() : '',
+    snippet: deriveSnippet(workspace.scriptText),
+    previewHtml: typeof workspace.scriptHtml === 'string'
+      ? workspace.scriptHtml.slice(0, PREVIEW_HTML_MAX)
+      : '',
+    settings: workspace.settings && typeof workspace.settings === 'object'
+      && !Array.isArray(workspace.settings)
+      ? workspace.settings
+      : {},
+    updatedDate: formatUpdatedDate(workspace.updatedAt),
   };
 }
 
@@ -50,15 +58,18 @@ export function sameFolder(a, b) {
 }
 
 export function folderById(folders, id) {
-  return folders.find((f) => String(f.id) === String(id)) || null;
+  return (Array.isArray(folders) ? folders : [])
+    .find((f) => f && String(f.id) === String(id)) || null;
 }
 
 export function childFolders(folders, parentId) {
-  return folders.filter((f) => sameFolder(f.parentId, parentId));
+  return (Array.isArray(folders) ? folders : [])
+    .filter((f) => f && sameFolder(f.parentId, parentId));
 }
 
 export function childWorkspaces(workspaces, folderId) {
-  return workspaces.filter((w) => sameFolder(w.folderId, folderId));
+  return (Array.isArray(workspaces) ? workspaces : [])
+    .filter((w) => w && sameFolder(w.folderId, folderId));
 }
 
 // Ancestor chain [root…leaf] for the breadcrumb; empty at root.

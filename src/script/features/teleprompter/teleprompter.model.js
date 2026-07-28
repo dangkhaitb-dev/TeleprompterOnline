@@ -121,7 +121,7 @@ export const DEFAULT_SETTINGS = Object.freeze({
 // Coerce a stored (possibly stale/partial) settings blob into a valid, fully
 // populated settings object. Pure — safe defaults for anything missing/invalid.
 export function normalizeSettings(raw = {}) {
-  const s = raw && typeof raw === 'object' ? raw : {};
+  const s = raw && typeof raw === 'object' && !Array.isArray(raw) ? raw : {};
   const theme = (v) => (v === 'light' ? 'light' : 'dark');
   const normalizePanelTheme = (v) => {
     if (v === 'light' || v === 'light-60') return 'light-60';
@@ -144,10 +144,13 @@ export function normalizeSettings(raw = {}) {
     eyeLineRatio: eyeLineRatio(s.eyeLineRatio),
     eyeLineVisible: s.eyeLineVisible === undefined ? true : !!s.eyeLineVisible,
     layoutGuides: !!s.layoutGuides,
-    fontSize: s.fontSize || '',
+    fontSize: (typeof s.fontSize === 'number' && Number.isFinite(s.fontSize))
+      || typeof s.fontSize === 'string'
+      ? s.fontSize
+      : '',
     lineHeight: ['1', '1.15', '1.25', '1.5', '1.75', '2']
       .includes(String(s.lineHeight)) ? String(s.lineHeight) : '1.25',
-    color: s.color || '',
+    color: typeof s.color === 'string' ? s.color : '',
     bold: !!s.bold,
     italic: !!s.italic,
     underline: !!s.underline,
@@ -169,7 +172,8 @@ export function clamp01(n) {
 }
 
 export function normalizeHexColor(value) {
-  let v = (value || '').trim().replace(/^#/, '');
+  if (typeof value !== 'string') return null;
+  let v = value.trim().replace(/^#/, '');
   if (/^[0-9a-f]{3}$/i.test(v)) v = v.split('').map((c) => c + c).join('');
   if (!/^[0-9a-f]{6}$/i.test(v)) return null;
   return `#${v.toLowerCase()}`;

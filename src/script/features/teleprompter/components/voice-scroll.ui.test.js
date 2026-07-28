@@ -117,6 +117,21 @@ describe('Voice Scroll browser integration', () => {
     expect(surface.textContent).toBe('Hôm nay tôi sẽ hướng dẫn các bạn');
   });
 
+  it('uses the host eye-line instead of replacing it with the Auto fallback', async () => {
+    const getReadingLineOffset = vi.fn(() => 72);
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      getReadingLineOffset,
+    });
+
+    await expect(voiceUI.start()).resolves.toBe(true);
+
+    expect(getReadingLineOffset).toHaveBeenCalledWith(surface);
+    expect(surface.style.paddingTop).toBe('72px');
+
+    voiceUI.stop();
+  });
+
   it('preserves the Notch style wrapper and rich formatting while Auto is active', async () => {
     surface.innerHTML = [
       '<div class="notch-text" style="font-size: 32px; font-weight: 700; color: rgb(255, 255, 255); text-align: center;">',
@@ -532,7 +547,8 @@ describe('Voice Scroll browser integration', () => {
         value: 20,
       });
     });
-    expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    // Enabling Auto preserves the viewport and does not start a scroll loop.
+    expect(requestAnimationFrame).not.toHaveBeenCalled();
 
     words[4].dispatchEvent(new MouseEvent('click', {
       bubbles: true,
@@ -545,10 +561,10 @@ describe('Voice Scroll browser integration', () => {
 
     expect(words[4].classList.contains('vs-active')).toBe(false);
     expect(words[6].classList.contains('vs-active')).toBe(true);
-    // Each click cancels the current Auto frame before scheduling its own
+    // The second click cancels the first click's frame before scheduling its
     // replacement. There is never more than one live scroll owner.
-    expect(cancelAnimationFrame).toHaveBeenCalledTimes(2);
-    expect(requestAnimationFrame).toHaveBeenCalledTimes(3);
+    expect(cancelAnimationFrame).toHaveBeenCalledTimes(1);
+    expect(requestAnimationFrame).toHaveBeenCalledTimes(2);
     expect(onRecordStageClick).not.toHaveBeenCalled();
 
     voiceUI.stop();

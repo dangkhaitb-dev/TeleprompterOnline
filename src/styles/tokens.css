@@ -351,6 +351,7 @@
   --tp-toggle-off-bg: #2a2b31;
   --tp-track-bg: #3a3b42;
   --tp-scrollbar-thumb: #3a3b41;
+  --tp-eyeline: var(--tp-white);
 
   /* Scene editor dark overrides (from demo html[data-theme="dark"]). */
   --se-page-bg: #141414;

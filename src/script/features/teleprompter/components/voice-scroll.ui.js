@@ -261,20 +261,32 @@ export function paintWords(words, displayIndex, prevDisplayIndex) {
   el.classList.remove('vs-active');
 }
 
-// Reading line at 1/3 from top (teleprompter.com standard)
+// Standalone fallback when the host does not provide its adjustable eye-line.
 const READING_RATIO = 1 / 3;
 const WORD_ACTIVE_FEEDBACK_MS = 700;
 const WORD_SCROLL_ANIMATION_MS = 360;
 
-function scrollTarget(el, surface) {
-  return Math.max(0, el.offsetTop - surface.clientHeight * READING_RATIO + el.offsetHeight / 2);
+function readingLineOffset(surface, getReadingLineOffset) {
+  const fallback = surface.clientHeight * READING_RATIO;
+  const raw = getReadingLineOffset?.(surface);
+  if (raw == null) return fallback;
+  const provided = Number(raw);
+  if (!Number.isFinite(provided)) return fallback;
+  return Math.max(0, Math.min(surface.clientHeight, provided));
 }
 
-function findWordAtReadingLine(words, surface) {
+function scrollTarget(el, surface, getReadingLineOffset) {
+  return Math.max(
+    0,
+    el.offsetTop - readingLineOffset(surface, getReadingLineOffset) + el.offsetHeight / 2,
+  );
+}
+
+function findWordAtReadingLine(words, surface, getReadingLineOffset) {
   let lo = 0, hi = words.length - 1, idx = 0;
   while (lo <= hi) {
     const mid = (lo + hi) >> 1;
-    if (scrollTarget(words[mid].el, surface) <= surface.scrollTop + 1) {
+    if (scrollTarget(words[mid].el, surface, getReadingLineOffset) <= surface.scrollTop + 1) {
       idx = mid;
       lo = mid + 1;
     } else {
@@ -284,7 +296,13 @@ function findWordAtReadingLine(words, surface) {
   return idx;
 }
 
-function createCreepEngine(getSurface, pid, scrollEngine, controller) {
+function createCreepEngine(
+  getSurface,
+  getReadingLineOffset,
+  pid,
+  scrollEngine,
+  controller,
+) {
   let creepRaf = null;
   
   function tick() {
@@ -310,7 +328,10 @@ function createCreepEngine(getSurface, pid, scrollEngine, controller) {
       const surface = getSurface();
       if (surface) {
         // Update PID target without snap (smooth continuation)
-        pid.setTarget(scrollTarget(words[target].el, surface), false);
+        pid.setTarget(
+          scrollTarget(words[target].el, surface, getReadingLineOffset),
+          false,
+        );
         scrollEngine.ensureRunning();
       }
     }
@@ -336,6 +357,7 @@ function createCreepEngine(getSurface, pid, scrollEngine, controller) {
  * Call this when the Auto Scroll button is pressed.
  * @param {{
  *   getSurface: () => HTMLElement,
+ *   getReadingLineOffset?: (surface: HTMLElement) => number | null,
  *   onPhaseChange?: (phase: string) => void,
  *   onError?: (error: string) => void,
  *   onTranscript?: (details: Object) => void,
@@ -344,6 +366,7 @@ function createCreepEngine(getSurface, pid, scrollEngine, controller) {
  */
 export function initVoiceScrollUI({
   getSurface,
+  getReadingLineOffset,
   onPhaseChange,
   onError,
   onTranscript,
@@ -403,7 +426,7 @@ export function initVoiceScrollUI({
     }, WORD_ACTIVE_FEEDBACK_MS);
 
     scrollEng.animateTo(
-      scrollTarget(words[index].el, surface),
+      scrollTarget(words[index].el, surface, getReadingLineOffset),
       WORD_SCROLL_ANIMATION_MS,
     );
   }
@@ -431,7 +454,7 @@ export function initVoiceScrollUI({
     const surfaceHeight = surface.clientHeight;
     const trailing = Math.max(0, surfaceHeight * 0.8);
     surface.style.setProperty('--tp-scroll-tail', `${trailing}px`);
-    surface.style.paddingTop = `${surfaceHeight * READING_RATIO}px`;
+    surface.style.paddingTop = `${readingLineOffset(surface, getReadingLineOffset)}px`;
     
     // 3. Create controller
     controller = createVoiceScrollController({
@@ -447,7 +470,7 @@ export function initVoiceScrollUI({
         // Scroll to word
         const surface = getSurface();
         if (!surface) return;
-        const target = scrollTarget(words[newCursor].el, surface);
+        const target = scrollTarget(words[newCursor].el, surface, getReadingLineOffset);
         
         // Recognition moves sequentially forward only. If the user manually
         // placed the viewport below this word, do not pull it backward.
@@ -471,7 +494,13 @@ export function initVoiceScrollUI({
     });
     
     // 4. Create creep engine
-    creep = createCreepEngine(getSurface, pid, scrollEng, controller);
+    creep = createCreepEngine(
+      getSurface,
+      getReadingLineOffset,
+      pid,
+      scrollEng,
+      controller,
+    );
     
     // 5. Set up manual scroll detection
     scrollHandler = () => {
@@ -486,7 +515,7 @@ export function initVoiceScrollUI({
         reanchorTimer = setTimeout(() => {
           const surface = getSurface();
           if (!surface || !controller.isActive()) return;
-          const idx = findWordAtReadingLine(words, surface);
+          const idx = findWordAtReadingLine(words, surface, getReadingLineOffset);
           controller.setCursorTo(idx, { userInitiated: true });
           // Manual scrolling may move the speech-matcher anchor, but it must
           // never mark text as spoken. Only onCursorMove (an ASR match) may
@@ -529,11 +558,10 @@ export function initVoiceScrollUI({
       return false;
     }
     
-    // 7. Initial nudge: scroll first word to reading line
-    if (words[0]) {
-      pid.setTarget(scrollTarget(words[0].el, getSurface()), true, 0);
-      scrollEng.ensureRunning();
-    }
+    // 7. Preserve the viewport on startup. Scrolling begins only after speech
+    // produces a confirmed cursor move; the previous first-word nudge caused
+    // an unnecessary second startup animation.
+    pid.syncTo(getSurface()?.scrollTop || 0);
     
     active = true;
     return true;

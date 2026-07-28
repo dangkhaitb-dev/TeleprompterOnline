@@ -727,6 +727,11 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       syncDirtySurfaces();
       const candidate = initVoiceScrollUI({
         getSurface: activeSurface,
+        getReadingLineOffset: (surface) => (
+          surface === promptBox || surface === teleprompterText
+            ? layout.eyeLineStartPadding(surface, true)
+            : null
+        ),
         onPhaseChange: (phase) => {
           if (candidate !== voiceScrollUI) return;
           setVoiceScrollButton({
@@ -786,7 +791,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   // Add enough trailing space so that the final line stops at 20% of the screen height,
   // preventing it from scrolling beyond the screen. Seat the first line on the
-  // eye-line so it stays put after the center-on-record slide finishes.
+  // eye-line before reading begins.
   function prepareScrollSurface(surface, restart = false) {
     if (!surface) return false;
     const savedScrollTop = restart ? 0 : surface.scrollTop;
@@ -836,6 +841,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     app.classList.add('record-dim');
     setReadingScrollCapture(true);
     notch.closeNotchEdit();
+    // The reading-session layout gate keeps every scroll engine, including
+    // voice-driven Auto, stopped until the first line reaches the eye-line.
     layout.centerOnRecord(activeSurface(), onCentered);
     requestAnimationFrame(() => layout.update());
   }

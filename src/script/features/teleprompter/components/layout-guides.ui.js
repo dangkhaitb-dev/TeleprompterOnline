@@ -298,13 +298,17 @@ export function initLayoutGuides({
     return surface.scrollTop;
   }
 
-  function centerOnRecord(surface, onDone) {
+  function centerOnRecord(surface, onDone, { animate = true } = {}) {
     stopCenterRaf();
     const done = () => { if (typeof onDone === 'function') onDone(); };
     if (!surface || isNotch(surface)) { done(); return; }
     scrollBeforeCenter = surface.scrollTop;
     const startTop = seatAtEyeLine(surface);
-    if (startTop <= 0 || prefersReducedMotion()) { surface.scrollTop = 0; done(); return; }
+    if (!animate || startTop <= 0 || prefersReducedMotion()) {
+      surface.scrollTop = 0;
+      done();
+      return;
+    }
     centering = true;
     let startTime = 0;
     const step = (timestamp) => {

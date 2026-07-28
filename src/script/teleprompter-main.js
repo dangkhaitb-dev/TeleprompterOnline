@@ -32,4 +32,9 @@ if (!workspace) {
 
 // The standalone page never calls destroy(): teardown runs on pagehide and the
 // browser releases the session lock when the page goes away.
-bootTeleprompter({ workspace }).catch(() => {});
+bootTeleprompter({ workspace }).catch((error) => {
+  // Never turn an initialization failure into a mysteriously inert UI.
+  // Storage is normalized before this point; remaining boot failures belong in
+  // the console so they can be diagnosed without deleting user data.
+  console.error('[Teleprompter] Failed to initialize the studio', error);
+});

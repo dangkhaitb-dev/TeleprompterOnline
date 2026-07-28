@@ -8,7 +8,7 @@ import { LS_WS_SAVE_RECORDINGS, LS_WS_STORAGE_LIMIT } from '../utils/storage-key
 // Master switch for persisting recordings. Defaults ON (missing = enabled).
 export function isRecordingSaveEnabled() {
   const value = getItem(LS_WS_SAVE_RECORDINGS);
-  return value === null ? true : !!value;
+  return typeof value === 'boolean' ? value : true;
 }
 
 export function setRecordingSaveEnabled(enabled) {
@@ -22,5 +22,6 @@ export function getStorageLimitBytes() {
 }
 
 export function setStorageLimitBytes(bytes) {
-  setItem(LS_WS_STORAGE_LIMIT, bytes);
+  const value = Number(bytes);
+  if (Number.isFinite(value) && value > 0) setItem(LS_WS_STORAGE_LIMIT, value);
 }

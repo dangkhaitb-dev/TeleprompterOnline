@@ -240,7 +240,14 @@ export function initNotch({
   });
 
   const savedNotchSize = getItem(LS_TP_NOTCH_SIZE);
-  if (savedNotchSize && savedNotchSize.w && savedNotchSize.h) applyNotchSize(savedNotchSize.w, savedNotchSize.h);
+  if (
+    savedNotchSize
+    && typeof savedNotchSize === 'object'
+    && Number.isFinite(Number(savedNotchSize.w))
+    && Number.isFinite(Number(savedNotchSize.h))
+  ) {
+    applyNotchSize(Number(savedNotchSize.w), Number(savedNotchSize.h));
+  }
 
   // ---- Notch edit panel: free drag (via toolbar) + corner resize -----------
   // Position is session-only (the open handler resets to the centred default);
@@ -347,7 +354,14 @@ export function initNotch({
     });
 
     const savedEditSize = getItem(LS_TP_NOTCH_EDIT_SIZE);
-    if (savedEditSize && savedEditSize.w && savedEditSize.h) applyNotchEditSize(savedEditSize.w, savedEditSize.h);
+    if (
+      savedEditSize
+      && typeof savedEditSize === 'object'
+      && Number.isFinite(Number(savedEditSize.w))
+      && Number.isFinite(Number(savedEditSize.h))
+    ) {
+      applyNotchEditSize(Number(savedEditSize.w), Number(savedEditSize.h));
+    }
   }
 
   return {

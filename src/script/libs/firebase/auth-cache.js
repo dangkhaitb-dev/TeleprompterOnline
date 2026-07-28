@@ -14,7 +14,16 @@ import { LS_AUTH_STATE } from '../../utils/storage-keys.js';
  * @returns {{ isAnonymous: boolean, uid: string, email: string|null } | null}
  */
 export function getCachedAuthState() {
-  return getItem(LS_AUTH_STATE);
+  const cached = getItem(LS_AUTH_STATE);
+  if (!cached || typeof cached !== 'object' || Array.isArray(cached)) return null;
+  if (typeof cached.uid !== 'string' || !cached.uid) return null;
+  return {
+    isAnonymous: !!cached.isAnonymous,
+    uid: cached.uid,
+    email: typeof cached.email === 'string' ? cached.email : null,
+    displayName: typeof cached.displayName === 'string' ? cached.displayName : null,
+    photoURL: typeof cached.photoURL === 'string' ? cached.photoURL : null,
+  };
 }
 
 /**

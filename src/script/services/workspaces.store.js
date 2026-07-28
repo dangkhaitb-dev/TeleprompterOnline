@@ -12,13 +12,68 @@ import { getItem, setItem } from '../utils/storage.js';
 import { LS_WORKSPACES } from '../utils/storage-keys.js';
 import { makeId } from '../utils/id.js';
 
+function isRecord(value) {
+  return value !== null && typeof value === 'object' && !Array.isArray(value);
+}
+
+function storedString(value, fallback = '') {
+  return typeof value === 'string' ? value : fallback;
+}
+
+function storedTimestamp(value) {
+  return typeof value === 'number' && Number.isFinite(value) && value >= 0 ? value : 0;
+}
+
+// localStorage survives deployments, interrupted writes, manual edits, and old
+// schemas. Treat every entry as untrusted: preserve usable records, replace bad
+// fields with safe defaults, and drop only entries that have no usable id.
+function normalizeWorkspace(raw) {
+  if (!isRecord(raw)) return null;
+  const id = typeof raw.id === 'string' || typeof raw.id === 'number'
+    ? String(raw.id).trim()
+    : '';
+  if (!id) return null;
+
+  const settings = isRecord(raw.settings) ? raw.settings : {};
+  const folderId = raw.folderId === null || raw.folderId === undefined
+    ? null
+    : (typeof raw.folderId === 'string' || typeof raw.folderId === 'number'
+      ? String(raw.folderId)
+      : null);
+
+  return {
+    ...raw,
+    id,
+    title: storedString(raw.title).trim() || 'Untitled script',
+    scriptText: storedString(raw.scriptText),
+    scriptHtml: storedString(raw.scriptHtml),
+    folderId,
+    settings,
+    createdAt: storedTimestamp(raw.createdAt),
+    updatedAt: storedTimestamp(raw.updatedAt),
+  };
+}
+
 function readAll() {
   const list = getItem(LS_WORKSPACES);
-  return Array.isArray(list) ? list : [];
+  if (!Array.isArray(list)) return [];
+
+  const seen = new Set();
+  const safe = [];
+  for (const raw of list) {
+    const workspace = normalizeWorkspace(raw);
+    if (!workspace || seen.has(workspace.id)) continue;
+    seen.add(workspace.id);
+    safe.push(workspace);
+  }
+  return safe;
 }
 
 function writeAll(list) {
-  setItem(LS_WORKSPACES, list);
+  const safe = Array.isArray(list)
+    ? list.map(normalizeWorkspace).filter(Boolean)
+    : [];
+  setItem(LS_WORKSPACES, safe);
 }
 
 // Most-recently-updated first.
@@ -27,17 +82,20 @@ export function listWorkspaces() {
 }
 
 export function getWorkspace(id) {
-  return readAll().find((w) => w.id === id) || null;
+  const normalizedId = String(id ?? '');
+  return readAll().find((w) => w.id === normalizedId) || null;
 }
 
 export function createWorkspace({ title, scriptText, folderId = null } = {}) {
   const now = Date.now();
   const workspace = {
     id: makeId('ws'),
-    title: (title || '').trim() || 'Untitled script',
-    scriptText: scriptText || '',
+    title: storedString(title).trim() || 'Untitled script',
+    scriptText: storedString(scriptText),
     scriptHtml: '',
-    folderId: folderId ?? null,
+    folderId: typeof folderId === 'string' || typeof folderId === 'number'
+      ? String(folderId)
+      : null,
     settings: {},
     createdAt: now,
     updatedAt: now,
@@ -50,25 +108,39 @@ export function createWorkspace({ title, scriptText, folderId = null } = {}) {
 
 export function updateWorkspace(id, patch = {}) {
   const list = readAll();
-  const index = list.findIndex((w) => w.id === id);
+  const normalizedId = String(id ?? '');
+  const index = list.findIndex((w) => w.id === normalizedId);
   if (index === -1) return null;
-  const updated = { ...list[index], ...patch, id, updatedAt: Date.now() };
+  const safePatch = isRecord(patch) ? patch : {};
+  const updated = normalizeWorkspace({
+    ...list[index],
+    ...safePatch,
+    id: normalizedId,
+    updatedAt: Date.now(),
+  });
   list[index] = updated;
   writeAll(list);
   return updated;
 }
 
 export function removeWorkspace(id) {
-  writeAll(readAll().filter((w) => w.id !== id));
+  const normalizedId = String(id ?? '');
+  writeAll(readAll().filter((w) => w.id !== normalizedId));
 }
 
 // Move a workspace into a folder (folderId null = library root). Does not bump
 // updatedAt — moving is organizing, not editing, so recency order is preserved.
 export function moveWorkspace(id, folderId) {
   const list = readAll();
-  const index = list.findIndex((w) => w.id === id);
+  const normalizedId = String(id ?? '');
+  const index = list.findIndex((w) => w.id === normalizedId);
   if (index === -1) return null;
-  const updated = { ...list[index], folderId: folderId ?? null };
+  const updated = {
+    ...list[index],
+    folderId: typeof folderId === 'string' || typeof folderId === 'number'
+      ? String(folderId)
+      : null,
+  };
   list[index] = updated;
   writeAll(list);
   return updated;
@@ -79,9 +151,13 @@ export function moveWorkspace(id, folderId) {
 // reorder the recency-sorted library (mirrors moveWorkspace/renameWorkspace).
 export function updateWorkspaceSettings(id, settings) {
   const list = readAll();
-  const index = list.findIndex((w) => w.id === id);
+  const normalizedId = String(id ?? '');
+  const index = list.findIndex((w) => w.id === normalizedId);
   if (index === -1) return null;
-  const updated = { ...list[index], settings: settings || {} };
+  const updated = {
+    ...list[index],
+    settings: isRecord(settings) ? settings : {},
+  };
   list[index] = updated;
   writeAll(list);
   return updated;
@@ -90,9 +166,13 @@ export function updateWorkspaceSettings(id, settings) {
 // Rename a workspace's title without bumping updatedAt (keeps recency order).
 export function renameWorkspace(id, title) {
   const list = readAll();
-  const index = list.findIndex((w) => w.id === id);
+  const normalizedId = String(id ?? '');
+  const index = list.findIndex((w) => w.id === normalizedId);
   if (index === -1) return null;
-  const updated = { ...list[index], title: (title || '').trim() || 'Untitled script' };
+  const updated = {
+    ...list[index],
+    title: storedString(title).trim() || 'Untitled script',
+  };
   list[index] = updated;
   writeAll(list);
   return updated;

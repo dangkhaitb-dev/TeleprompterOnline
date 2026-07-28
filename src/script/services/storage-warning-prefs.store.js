@@ -11,7 +11,7 @@ import { LS_STORAGE_WARNING } from '../utils/storage-keys.js';
  */
 export function isStorageWarningEnabled() {
   const value = getItem(LS_STORAGE_WARNING);
-  return value === null ? true : value !== false;
+  return typeof value === 'boolean' ? value : true;
 }
 
 /**

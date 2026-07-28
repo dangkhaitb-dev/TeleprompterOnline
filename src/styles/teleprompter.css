@@ -1089,7 +1089,7 @@ html[data-theme="dark"] .app .prompt-box {
 
 /* Đang soạn thảo vẫn giữ frame: guide chỉ ẩn/hiện theo peek margin (JS), không ẩn cứng nữa */
 
-/* Eye line ẩn: giấu vạch ngang, chỉ còn núm với icon mắt-gạch */
+/* Eye line ẩn: giấu marker tam giác, chỉ còn núm với icon mắt-gạch. */
 .layout-eyeline.eye-hidden::before {
   display: none;
 }
@@ -1126,13 +1126,16 @@ html[data-theme="dark"] .app .prompt-box {
   opacity: 1;
 }
 
-/* Khi record: ẩn núm margin, chỉ giữ eye line mờ làm mốc đọc (không kéo được) */
+/* Khi đọc/record: chỉ giữ marker tam giác làm mốc, không che ngang chữ. */
 .app.record-dim .layout-handle {
   display: none;
 }
 .app.record-dim .layout-eyeline {
-  opacity: .35;
+  opacity: .85;
   pointer-events: none;
+}
+.app.record-dim .layout-eye-grip {
+  display: none;
 }
 
 /* Eye line đã tắt thì khi Play/Record ẩn luôn cả nút điều khiển. */
@@ -1275,16 +1278,18 @@ html[data-theme="dark"] .app .prompt-box {
   position: absolute;
   top: 50%;
   left: 0;
-  right: 0;
-  height: 2px;
   transform: translateY(-50%);
+  width: 16px;
+  height: 24px;
   background: var(--tp-eyeline);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .28));
 }
 
 .layout-eye-grip {
   position: absolute;
   top: 50%;
-  left: 6px;
+  left: 22px;
   transform: translateY(-50%);
   display: flex;
   align-items: center;
@@ -2411,7 +2416,7 @@ html[data-theme="dark"] .theme-btn.active {
   padding: 4px;
   background: var(--tp-surface);
   border-radius: 14px;
-  box-shadow: rgba(68, 68, 70, 0.1) 0px 8px 12px 0px, rgba(68, 68, 70, 0.05) 0px 2px 8px -2px, rgba(68, 68, 70, 0.05) 0px 1px 4px -1px;
+  box-shadow: rgba(68, 68, 70, 0.08) 0px 4px 6px 0px, rgba(68, 68, 70, 0.04) 0px 1px 3px 0px;
   transition: opacity .28s ease, visibility .28s ease;
 }
 
@@ -2451,10 +2456,95 @@ html[data-theme="dark"] .toolbar-shell {
   box-shadow: none;
   transform: none;
   scrollbar-width: none;
+  background: var(--tp-control-bar-bg);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .panel > #formatToolbar::-webkit-scrollbar {
   display: none;
+}
+
+/* --- Dark panel theme format-toolbar colors (synchronous with control-bar) --- */
+.panel:not(.theme-light) > #formatToolbar button,
+.panel:not(.theme-light) > #formatToolbar select,
+.panel:not(.theme-light) > #formatToolbar .ft-line-height-control {
+  color: var(--tp-white);
+}
+
+.panel:not(.theme-light) > #formatToolbar button:hover,
+.panel:not(.theme-light) > #formatToolbar select:hover:not(.ft-line-height),
+.panel:not(.theme-light) > #formatToolbar .ft-line-height-control:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--tp-white);
+}
+
+.panel:not(.theme-light) > #formatToolbar select option {
+  background: var(--tp-control-bar-bg);
+  color: var(--tp-white);
+}
+
+.panel:not(.theme-light) > #formatToolbar .ft-color-a,
+.panel:not(.theme-light) > #formatToolbar .ft-caret {
+  color: var(--tp-white);
+}
+
+.panel:not(.theme-light) > #formatToolbar button.active,
+.panel:not(.theme-light) > #formatToolbar .ft-color.active {
+  background-color: var(--tp-green-active-bg);
+  color: var(--tp-green);
+}
+
+.panel:not(.theme-light) > #formatToolbar .ft-color.active .ft-color-a {
+  color: var(--tp-green);
+}
+
+.panel:not(.theme-light) > #formatToolbar .ft-divider {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Light panel theme format-toolbar colors (synchronous with control-bar) --- */
+.panel.theme-light > #formatToolbar {
+  background: var(--tp-panel-light-bar);
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.panel.theme-light > #formatToolbar button,
+.panel.theme-light > #formatToolbar select,
+.panel.theme-light > #formatToolbar .ft-line-height-control {
+  color: var(--tp-page-text);
+}
+
+.panel.theme-light > #formatToolbar button:hover,
+.panel.theme-light > #formatToolbar select:hover:not(.ft-line-height),
+.panel.theme-light > #formatToolbar .ft-line-height-control:hover {
+  background-color: rgba(0, 0, 0, 0.06);
+  color: var(--tp-page-text);
+}
+
+.panel.theme-light > #formatToolbar select option {
+  background: var(--tp-panel-light-bar);
+  color: var(--tp-page-text);
+}
+
+.panel.theme-light > #formatToolbar .ft-color-a,
+.panel.theme-light > #formatToolbar .ft-caret {
+  color: var(--tp-page-text);
+}
+
+.panel.theme-light > #formatToolbar button.active,
+.panel.theme-light > #formatToolbar .ft-color.active {
+  background-color: var(--tp-green-light);
+  color: var(--tp-green-dark);
+}
+
+.panel.theme-light > #formatToolbar .ft-color.active .ft-color-a {
+  color: var(--tp-green-dark);
+}
+
+.panel.theme-light > #formatToolbar .ft-divider {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 /* Ensure layout frame has a lower z-index than format toolbar and control bar inside panel */
@@ -2717,7 +2807,7 @@ html[data-theme="dark"] .mff-more-left {
   flex: 0 0 auto;
 }
 
-.format-toolbar select:hover {
+.format-toolbar select:hover:not(.ft-line-height) {
   background: var(--tp-surface-hover);
   color: var(--tp-page-text);
 }
@@ -2751,8 +2841,10 @@ html[data-theme="dark"] .mff-more-left {
   padding: 0 8px 0 4px;
 }
 
-.format-toolbar .ft-line-height-control .ft-line-height:hover {
+.format-toolbar .ft-line-height-control .ft-line-height:hover,
+.format-toolbar .ft-line-height-control .ft-line-height:focus {
   background: transparent;
+  outline: none;
 }
 
 .ft-color-split-group {
@@ -3469,6 +3561,10 @@ html.theme-instant *::after {
   height: 28px;
   padding: 0 6px 0 3px;
   border: 0;
+  background: transparent;
+}
+
+.notch-edit-line-height-control .notch-edit-select:hover {
   background: transparent;
 }
 

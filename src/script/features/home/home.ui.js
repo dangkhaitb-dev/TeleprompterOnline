@@ -7,7 +7,6 @@ import { initLanguageSwitcher } from './language-switcher.ui.js';
 import { readTextFile } from '../../utils/read-text-file.js';
 import { initFileDragDrop } from '../../utils/drag-drop.js';
 import { prefetchPageAssets, fetchPageHtml } from '../../utils/prefetch-page.js';
-import { hideCrisp, showCrisp } from '../../utils/load-crisp.js';
 
 // The hero demo video is pure decoration, so its bytes load dead last: the
 // small poster paints as soon as the video nears the viewport, but the video
@@ -200,8 +199,6 @@ export function initHomeUI() {
     // Stop the hero video from buffering right when the overlay's own
     // downloads need the bandwidth most.
     if (heroVideo) heroVideo.onOverlayToggle(true);
-    // The overlay is the teleprompter: keep the support bubble off the recorder.
-    hideCrisp();
     // Kick the markup fetch off now, in parallel with the JS chunks below —
     // fetchPageHtml memoizes in-flight, so the overlay's own call joins this
     // request instead of starting it only after the chunks finish. 'high'
@@ -214,7 +211,6 @@ export function initHomeUI() {
       await openTeleprompterOverlay(result.workspace.id, {
         onClosed: () => {
           if (heroVideo) heroVideo.onOverlayToggle(false);
-          showCrisp();
         },
       });
     } catch {

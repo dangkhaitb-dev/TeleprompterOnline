@@ -19,7 +19,7 @@
 
         try {
           const workspaceId = new URLSearchParams(location.search).get('ws');
-          const workspaces = JSON.parse(localStorage.getItem('vteleprompter:workspaces') || '[]');
+          const workspaces = JSON.parse(localStorage.getItem('solprompter:workspaces') || '[]');
           const workspace = Array.isArray(workspaces)
             ? workspaces.find((item) => item && item.id === workspaceId)
             : null;

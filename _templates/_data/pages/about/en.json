@@ -1,25 +1,25 @@
 {
   "seo": {
-    "title": "About VTeleprompter | A Smarter AI Teleprompter",
-    "description": "Learn about VTeleprompter, a free online AI teleprompter built to make presenting, recording and maintaining natural eye contact easier on every device.",
+    "title": "About SolPrompter | A Smarter AI Teleprompter",
+    "description": "Learn about SolPrompter, a free online AI teleprompter built to make presenting, recording and maintaining natural eye contact easier on every device.",
     "canonical": "/about",
-    "ogTitle": "About VTeleprompter — Present Naturally",
-    "ogDescription": "Discover why VTeleprompter was created and how we are building a more natural, accessible and complete teleprompter experience.",
+    "ogTitle": "About SolPrompter — Present Naturally",
+    "ogDescription": "Discover why SolPrompter was created and how we are building a more natural, accessible and complete teleprompter experience.",
     "ogType": "website",
-    "ogImage": "/og-vteleprompter.jpg"
+    "ogImage": "/og-solprompter.jpg"
   },
   "hero": {
-    "eyebrow": "About VTeleprompter",
+    "eyebrow": "About SolPrompter",
     "title": "Present Naturally. Stay Focused.",
-    "description": "VTeleprompter is an online AI teleprompter built to help people speak confidently, maintain natural eye contact and create professional videos without complicated software."
+    "description": "SolPrompter is an online AI teleprompter built to help people speak confidently, maintain natural eye contact and create professional videos without complicated software."
   },
   "why": {
-    "eyebrow": "Why We Built VTeleprompter",
+    "eyebrow": "Why We Built SolPrompter",
     "title": "Teleprompters Should Adapt to You",
     "paragraphs": [
       "Most teleprompter tools expect presenters to follow a fixed scrolling speed, constantly adjust controls or combine several different applications to write, present and record.",
       "We believe the teleprompter should adapt to the speaker—not the other way around.",
-      "VTeleprompter was created to make presenting feel more natural. AI Voice Scroll follows your speaking pace, Notch Mode keeps your script close to the camera and remote control lets you manage the presentation without interrupting your recording.",
+      "SolPrompter was created to make presenting feel more natural. AI Voice Scroll follows your speaking pace, Notch Mode keeps your script close to the camera and remote control lets you manage the presentation without interrupting your recording.",
       "Everything is designed to help you focus less on the software and more on the message you want to deliver."
     ]
   },
@@ -35,16 +35,16 @@
     ]
   },
   "differences": {
-    "eyebrow": "What Makes VTeleprompter Different",
+    "eyebrow": "What Makes SolPrompter Different",
     "title": "More Than a Scrolling Script",
-    "description": "VTeleprompter brings the complete presentation workflow into one connected workspace.",
+    "description": "SolPrompter brings the complete presentation workflow into one connected workspace.",
     "items": [
       { "title": "AI Voice Scroll", "description": "The script follows your speech instead of forcing you to match a fixed scrolling speed." },
       { "title": "Notch Teleprompter Mode", "description": "A compact reading area can be positioned close to the camera to reduce visible eye movement." },
       { "title": "Remote Control", "description": "Control scrolling and navigate your script from another phone, tablet or computer." },
       { "title": "Professional Recording", "description": "Present and record in one workflow with support for Full HD and 4K video on compatible devices." },
       { "title": "Script and Recording Management", "description": "Create, organize and reuse scripts while keeping recordings connected to your content." },
-      { "title": "Designed for Every Screen", "description": "Use VTeleprompter from a desktop, laptop, tablet or smartphone through a responsive, touch-friendly interface." }
+      { "title": "Designed for Every Screen", "description": "Use SolPrompter from a desktop, laptop, tablet or smartphone through a responsive, touch-friendly interface." }
     ]
   },
   "principles": {
@@ -56,13 +56,13 @@
       { "title": "Natural Over Robotic", "description": "Technology should support the presenter’s speaking rhythm, eye movement and delivery rather than making the presentation feel mechanical." },
       { "title": "Useful on Every Device", "description": "Mobile users should receive a complete and thoughtful experience—not a reduced desktop interface squeezed onto a smaller screen." },
       { "title": "Focused and Distraction-Free", "description": "The interface should keep attention on the script, camera and audience instead of unnecessary visual elements." },
-      { "title": "Respect for Your Content", "description": "Your scripts and recordings belong to you. VTeleprompter is designed to help you create without placing a branded watermark over your work." }
+      { "title": "Respect for Your Content", "description": "Your scripts and recordings belong to you. SolPrompter is designed to help you create without placing a branded watermark over your work." }
     ]
   },
   "audiences": {
     "eyebrow": "Who We Build For",
     "title": "For Anyone with Something to Say",
-    "description": "VTeleprompter is made for people who want to communicate clearly without memorizing every word.",
+    "description": "SolPrompter is made for people who want to communicate clearly without memorizing every word.",
     "items": [
       { "title": "Content Creators", "description": "Record TikTok videos, YouTube videos, Shorts, Reels and talking-head content with a smoother delivery." },
       { "title": "Teachers and Educators", "description": "Create online lessons, course videos and educational presentations while staying focused on the camera." },
@@ -76,17 +76,17 @@
     "eyebrow": "Our Current Commitment",
     "title": "A Free and Focused Experience",
     "paragraphs": [
-      "VTeleprompter is currently free to use and is being built without distracting advertisements or branded video watermarks.",
-      "We want people to experience the complete product, understand how it improves their workflow and help shape what VTeleprompter becomes next.",
+      "SolPrompter is currently free to use and is being built without distracting advertisements or branded video watermarks.",
+      "We want people to experience the complete product, understand how it improves their workflow and help shape what SolPrompter becomes next.",
       "As the platform grows, our priority will remain the same: provide a clear, reliable and valuable experience for presenters and creators."
     ]
   },
   "future": {
-    "eyebrow": "The Future of VTeleprompter",
+    "eyebrow": "The Future of SolPrompter",
     "title": "Building the Complete Presentation Workspace",
     "paragraphs": [
       "Our vision extends beyond basic teleprompter scrolling.",
-      "We are building VTeleprompter as a complete workspace where users can prepare scripts, present naturally, control sessions remotely, record high-quality video and manage their content from one place.",
+      "We are building SolPrompter as a complete workspace where users can prepare scripts, present naturally, control sessions remotely, record high-quality video and manage their content from one place.",
       "Future development will continue to focus on intelligent automation, better collaboration, cross-device workflows and tools that reduce the time between writing an idea and recording the final take.",
       "Every feature should solve a real presentation problem—not simply add another setting to the interface."
     ]
@@ -95,16 +95,16 @@
     "eyebrow": "Part of VPlatform",
     "title": "A Growing Ecosystem for Modern Creators",
     "paragraphs": [
-      "VTeleprompter is a product of VPlatform, a growing ecosystem of focused tools designed for modern creators, presenters and digital professionals.",
+      "SolPrompter is a product of VPlatform, a growing ecosystem of focused tools designed for modern creators, presenters and digital professionals.",
       "Each product within VPlatform is intended to solve a specific part of the creative workflow while sharing the same principles of simplicity, thoughtful design and practical technology.",
-      "VTeleprompter is the first step in that broader vision: build focused products that work exceptionally well on their own and become even more useful when connected."
+      "SolPrompter is the first step in that broader vision: build focused products that work exceptionally well on their own and become even more useful when connected."
     ]
   },
   "finalCta": {
     "eyebrow": "Your Message Deserves a Confident Delivery",
-    "title": "Start Presenting with VTeleprompter",
+    "title": "Start Presenting with SolPrompter",
     "description": "Add your script, choose how you want it to scroll and focus on delivering your message naturally.",
-    "cta": { "label": "Open VTeleprompter", "url": "/workspaces" },
+    "cta": { "label": "Open SolPrompter", "url": "/workspaces" },
     "supporting": "Currently free to use · No ads · No watermark"
   }
 }

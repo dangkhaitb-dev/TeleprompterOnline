@@ -1,16 +1,16 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
-  "slug": "inside-vteleprompter-every-ai-teleprompter-feature-tested",
+  "slug": "inside-solprompter-every-ai-teleprompter-feature-tested",
   "published": true,
-  "title": "Inside VTeleprompter: Every AI Teleprompter Feature, Tested",
+  "title": "Inside SolPrompter: Every AI Teleprompter Feature, Tested",
   "date": "2026-07-17",
   "dateDisplay": "July 17, 2026",
   "modified": "2026-07-17",
   "author": {
-    "name": "The VTeleprompter Team"
+    "name": "The SolPrompter Team"
   },
   "category": "Product",
-  "shortName": "Inside VTeleprompter",
+  "shortName": "Inside SolPrompter",
   "keywords": [
     "online teleprompter",
     "AI Voice Scroll",
@@ -25,24 +25,24 @@
     "4K Recording"
   ],
   "seo": {
-    "title": "VTeleprompter Features: AI Teleprompter for Desktop & Mobile",
-    "description": "Explore VTeleprompter's AI Voice Scroll, Notch Mode, remote control, 4K recording, desktop and mobile experience, privacy architecture, and performance benchmarks.",
-    "image": "https://vteleprompter.com/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/hero.webp"
+    "title": "SolPrompter Features: AI Teleprompter for Desktop & Mobile",
+    "description": "Explore SolPrompter's AI Voice Scroll, Notch Mode, remote control, 4K recording, desktop and mobile experience, privacy architecture, and performance benchmarks.",
+    "image": "https://solprompter.com/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/hero.webp"
   },
   "hero": {
-    "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/hero.webp",
-    "alt": "VTeleprompter teleprompter view with a script scrolling above the live camera preview",
+    "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/hero.webp",
+    "alt": "SolPrompter teleprompter view with a script scrolling above the live camera preview",
     "width": 1600,
     "height": 836
   },
   "cta": {
-    "label": "Open VTeleprompter",
+    "label": "Open SolPrompter",
     "url": "/teleprompter"
   },
   "content": [
     {
       "type": "paragraph",
-      "html": "VTeleprompter is a free online teleprompter and browser-based recording studio designed for creators who want to open a browser, paste a script, and start recording without installing additional software."
+      "html": "SolPrompter is a free online teleprompter and browser-based recording studio designed for creators who want to open a browser, paste a script, and start recording without installing additional software."
     },
     {
       "type": "paragraph",
@@ -50,28 +50,28 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter has been in development since January 2026. Over more than six months, the product has gone through multiple stages of user research, workflow planning, interface design, prototyping, development, performance testing, mobile optimization, and continuous refinement."
+      "html": "SolPrompter has been in development since January 2026. Over more than six months, the product has gone through multiple stages of user research, workflow planning, interface design, prototyping, development, performance testing, mobile optimization, and continuous refinement."
     },
     {
       "type": "paragraph",
-      "html": "The goal was never to assemble a collection of disconnected teleprompter features. Every part of VTeleprompter—from preparing a script and controlling the scroll to recording video and managing completed takes—has been designed as part of one complete creator workflow."
+      "html": "The goal was never to assemble a collection of disconnected teleprompter features. Every part of SolPrompter—from preparing a script and controlling the scroll to recording video and managing completed takes—has been designed as part of one complete creator workflow."
     },
     {
       "type": "paragraph",
-      "html": "This article covers every major feature in the current version of VTeleprompter, the desktop and mobile experiences, the benchmarks we test before each release, and the two capabilities users ask about most: <strong>AI Voice Scroll</strong> and <strong>cross-device Remote Control</strong>."
+      "html": "This article covers every major feature in the current version of SolPrompter, the desktop and mobile experiences, the benchmarks we test before each release, and the two capabilities users ask about most: <strong>AI Voice Scroll</strong> and <strong>cross-device Remote Control</strong>."
     },
     {
       "type": "paragraph",
-      "html": "<a href=\"/teleprompter\">Open VTeleprompter</a>"
+      "html": "<a href=\"/teleprompter\">Open SolPrompter</a>"
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "VTeleprompter at a glance"
+      "text": "SolPrompter at a glance"
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter combines an online teleprompter, script editor, workspace manager, camera recorder, voice-controlled scrolling system, and remote control in a single browser-based product."
+      "html": "SolPrompter combines an online teleprompter, script editor, workspace manager, camera recorder, voice-controlled scrolling system, and remote control in a single browser-based product."
     },
     {
       "type": "paragraph",
@@ -105,7 +105,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter began development in January 2026 with a simple objective: make professional teleprompter workflows available directly in the browser without sacrificing performance, usability, recording quality, or privacy."
+      "html": "SolPrompter began development in January 2026 with a simple objective: make professional teleprompter workflows available directly in the browser without sacrificing performance, usability, recording quality, or privacy."
     },
     {
       "type": "paragraph",
@@ -170,7 +170,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter was designed to support this complete process instead of treating each action as a separate tool."
+      "html": "SolPrompter was designed to support this complete process instead of treating each action as a separate tool."
     },
     {
       "type": "heading",
@@ -210,7 +210,7 @@
     },
     {
       "type": "paragraph",
-      "html": "On desktop, VTeleprompter uses the larger screen for:"
+      "html": "On desktop, SolPrompter uses the larger screen for:"
     },
     {
       "type": "list",
@@ -247,7 +247,7 @@
     },
     {
       "type": "paragraph",
-      "html": "Navigation, spacing, button placement, toolbars, text sizing, dialogs, and control density are adjusted according to the device. This allows VTeleprompter to work as a practical mobile teleprompter rather than a desktop website that happens to fit inside a phone browser."
+      "html": "Navigation, spacing, button placement, toolbars, text sizing, dialogs, and control density are adjusted according to the device. This allows SolPrompter to work as a practical mobile teleprompter rather than a desktop website that happens to fit inside a phone browser."
     },
     {
       "type": "heading",
@@ -287,7 +287,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter begins with a script editor built for spoken content rather than ordinary document writing. You can paste a script, import existing content, format important lines, and organize scripts into folders and workspaces."
+      "html": "SolPrompter begins with a script editor built for spoken content rather than ordinary document writing. You can paste a script, import existing content, format important lines, and organize scripts into folders and workspaces."
     },
     {
       "type": "paragraph",
@@ -299,8 +299,8 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/script-editor.webp",
-      "alt": "VTeleprompter script editor with formatting toolbar and a script ready to prompt",
+      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/script-editor.webp",
+      "alt": "SolPrompter script editor with formatting toolbar and a script ready to prompt",
       "width": 1600,
       "height": 836,
       "caption": "The script editor — paste a draft, format it for spoken delivery, and it is ready to prompt."
@@ -349,7 +349,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter therefore uses a mobile-specific interface rather than compressing every desktop control into a narrow layout. The mobile experience prioritizes:"
+      "html": "SolPrompter therefore uses a mobile-specific interface rather than compressing every desktop control into a narrow layout. The mobile experience prioritizes:"
     },
     {
       "type": "list",
@@ -373,8 +373,8 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/mobile-studio.webp",
-      "alt": "VTeleprompter running on a phone: the script editor with the record dock, and the prompter playing full-screen",
+      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/mobile-studio.webp",
+      "alt": "SolPrompter running on a phone: the script editor with the record dock, and the prompter playing full-screen",
       "width": 1600,
       "height": 836,
       "caption": "The full studio on a phone — the editor with the record dock (left) and the prompter running full-screen (right)."
@@ -390,7 +390,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter measures fixed scrolling speed in <strong>words per minute</strong>, with 110 WPM as the default setting."
+      "html": "SolPrompter measures fixed scrolling speed in <strong>words per minute</strong>, with 110 WPM as the default setting."
     },
     {
       "type": "paragraph",
@@ -407,7 +407,7 @@
     },
     {
       "type": "paragraph",
-      "html": "This makes VTeleprompter suitable for both browser-only setups and traditional teleprompter hardware."
+      "html": "This makes SolPrompter suitable for both browser-only setups and traditional teleprompter hardware."
     },
     {
       "type": "heading",
@@ -441,8 +441,8 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/notch-mode.webp",
-      "alt": "VTeleprompter Notch Mode floating prompter positioned under the webcam",
+      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/notch-mode.webp",
+      "alt": "SolPrompter Notch Mode floating prompter positioned under the webcam",
       "width": 1600,
       "height": 836,
       "caption": "Notch Mode — a floating prompter you drag right under the camera, so your eyes never leave the lens."
@@ -483,7 +483,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter can access your camera and record while the script scrolls in the same browser tab. Available recording options include SD, HD, Full HD 1080p, 2K, and 4K."
+      "html": "SolPrompter can access your camera and record while the script scrolls in the same browser tab. Available recording options include SD, HD, Full HD 1080p, 2K, and 4K."
     },
     {
       "type": "paragraph",
@@ -495,11 +495,11 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/record-settings.webp",
-      "alt": "VTeleprompter recording settings showing video resolution options from SD to 4K",
+      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/record-settings.webp",
+      "alt": "SolPrompter recording settings showing video resolution options from SD to 4K",
       "width": 1600,
       "height": 836,
-      "caption": "Recording resolution options inside the VTeleprompter settings panel."
+      "caption": "Recording resolution options inside the SolPrompter settings panel."
     },
     {
       "type": "heading",
@@ -508,7 +508,7 @@
     },
     {
       "type": "paragraph",
-      "html": "Recorded takes are saved in the browser's local storage and organized by workspace. You can replay a recording, compare previous takes, and download the version you want to keep. The recording does not need to be uploaded to VTeleprompter before it can be reviewed."
+      "html": "Recorded takes are saved in the browser's local storage and organized by workspace. You can replay a recording, compare previous takes, and download the version you want to keep. The recording does not need to be uploaded to SolPrompter before it can be reviewed."
     },
     {
       "type": "paragraph",
@@ -531,8 +531,8 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/workspaces.webp",
-      "alt": "VTeleprompter workspaces view with scripts and recordings organized in folders",
+      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/workspaces.webp",
+      "alt": "SolPrompter workspaces view with scripts and recordings organized in folders",
       "width": 1600,
       "height": 836,
       "caption": "Workspaces — scripts and takes organized in folders, stored entirely on your device."
@@ -544,7 +544,7 @@
     },
     {
       "type": "paragraph",
-      "html": "Desktop creators can control VTeleprompter without constantly moving the pointer. Examples include:"
+      "html": "Desktop creators can control SolPrompter without constantly moving the pointer. Examples include:"
     },
     {
       "type": "list",
@@ -583,7 +583,7 @@
     {
       "type": "heading",
       "level": 2,
-      "text": "VTeleprompter performance benchmarks"
+      "text": "SolPrompter performance benchmarks"
     },
     {
       "type": "paragraph",
@@ -591,7 +591,7 @@
     },
     {
       "type": "paragraph",
-      "html": "Before each major release, we test VTeleprompter using an Apple M1 MacBook Air, a mid-range Windows laptop, and a Google Pixel 7 — with a 2,000-word test script, an active camera preview, fixed-speed and voice-controlled scrolling, desktop and mobile layouts, and extended recording sessions."
+      "html": "Before each major release, we test SolPrompter using an Apple M1 MacBook Air, a mid-range Windows laptop, and a Google Pixel 7 — with a 2,000-word test script, an active camera preview, fixed-speed and voice-controlled scrolling, desktop and mobile layouts, and extended recording sessions."
     },
     {
       "type": "paragraph",
@@ -654,7 +654,7 @@
     },
     {
       "type": "paragraph",
-      "html": "A fixed-speed teleprompter expects the speaker to maintain the pace selected before recording. VTeleprompter's <strong>AI Voice Scroll</strong> reverses that relationship. Instead of asking you to follow the scrolling script, it moves the script according to how you speak."
+      "html": "A fixed-speed teleprompter expects the speaker to maintain the pace selected before recording. SolPrompter's <strong>AI Voice Scroll</strong> reverses that relationship. Instead of asking you to follow the scrolling script, it moves the script according to how you speak."
     },
     {
       "type": "paragraph",
@@ -671,11 +671,11 @@
     },
     {
       "type": "paragraph",
-      "html": "While Voice Scroll is active, VTeleprompter listens for spoken words and compares them with the text in your script. The scrolling position is controlled by this alignment rather than by a fixed timer. This allows the system to estimate which part of the script you are currently reading and keep the relevant lines visible."
+      "html": "While Voice Scroll is active, SolPrompter listens for spoken words and compares them with the text in your script. The scrolling position is controlled by this alignment rather than by a fixed timer. This allows the system to estimate which part of the script you are currently reading and keep the relevant lines visible."
     },
     {
       "type": "paragraph",
-      "html": "The processing is performed locally in the browser. Your microphone audio is not uploaded to VTeleprompter for remote processing."
+      "html": "The processing is performed locally in the browser. Your microphone audio is not uploaded to SolPrompter for remote processing."
     },
     {
       "type": "heading",
@@ -713,7 +713,7 @@
     },
     {
       "type": "paragraph",
-      "html": "When VTeleprompter detects that your speech no longer matches the current line, it holds the scrolling position rather than continuing blindly. When you return to recognizable words in the script, it attempts to align with the text again."
+      "html": "When SolPrompter detects that your speech no longer matches the current line, it holds the scrolling position rather than continuing blindly. When you return to recognizable words in the script, it attempts to align with the text again."
     },
     {
       "type": "heading",
@@ -786,8 +786,8 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested/scroll-speed.webp",
-      "alt": "VTeleprompter toolbar showing fixed words-per-minute controls and AI Voice Scroll",
+      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/scroll-speed.webp",
+      "alt": "SolPrompter toolbar showing fixed words-per-minute controls and AI Voice Scroll",
       "width": 1600,
       "height": 836,
       "caption": "Use a fixed WPM setting or allow AI Voice Scroll to control the script."
@@ -799,11 +799,11 @@
     },
     {
       "type": "paragraph",
-      "html": "Recording alone often means acting as the speaker, camera operator, director, and teleprompter operator at the same time. VTeleprompter Remote Control allows one device to display the script while another controls it."
+      "html": "Recording alone often means acting as the speaker, camera operator, director, and teleprompter operator at the same time. SolPrompter Remote Control allows one device to display the script while another controls it."
     },
     {
       "type": "paragraph",
-      "html": "Open VTeleprompter on the device positioned near the camera, then open it on your phone, tablet, or another computer. Enter the short pairing code to connect the devices. There is no separate remote-control application to install."
+      "html": "Open SolPrompter on the device positioned near the camera, then open it on your phone, tablet, or another computer. Enter the short pairing code to connect the devices. There is no separate remote-control application to install."
     },
     {
       "type": "heading",
@@ -892,7 +892,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter is designed so that the most sensitive operations happen locally."
+      "html": "SolPrompter is designed so that the most sensitive operations happen locally."
     },
     {
       "type": "list",
@@ -924,7 +924,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter's UI and UX were refined throughout more than six months of development with attention to visual hierarchy, control placement, readability, touch comfort, keyboard efficiency, camera visibility, recording feedback, empty states, loading states, error handling, responsive behavior, long-session comfort, and consistency across features."
+      "html": "SolPrompter's UI and UX were refined throughout more than six months of development with attention to visual hierarchy, control placement, readability, touch comfort, keyboard efficiency, camera visibility, recording feedback, empty states, loading states, error handling, responsive behavior, long-session comfort, and consistency across features."
     },
     {
       "type": "paragraph",
@@ -933,11 +933,11 @@
     {
       "type": "heading",
       "level": 2,
-      "text": "Who is VTeleprompter designed for?"
+      "text": "Who is SolPrompter designed for?"
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter can be used by anyone who needs to speak naturally while following prepared text, including:"
+      "html": "SolPrompter can be used by anyone who needs to speak naturally while following prepared text, including:"
     },
     {
       "type": "list",
@@ -971,7 +971,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter is not built around one scrolling mode or one recording button. It combines the major parts of the teleprompter workflow: script preparation, script organization, fixed-speed scrolling, AI Voice Scroll, eye-line adjustment, Notch Mode, Mirror Mode, desktop recording, mobile recording, high-resolution video, Remote Control, local recording management, and privacy-focused processing."
+      "html": "SolPrompter is not built around one scrolling mode or one recording button. It combines the major parts of the teleprompter workflow: script preparation, script organization, fixed-speed scrolling, AI Voice Scroll, eye-line adjustment, Notch Mode, Mirror Mode, desktop recording, mobile recording, high-resolution video, Remote Control, local recording management, and privacy-focused processing."
     },
     {
       "type": "paragraph",
@@ -984,11 +984,11 @@
     {
       "type": "heading",
       "level": 2,
-      "text": "Try VTeleprompter in your browser"
+      "text": "Try SolPrompter in your browser"
     },
     {
       "type": "paragraph",
-      "html": "The fastest way to understand VTeleprompter is to use it. Open the teleprompter, paste or import your script, position the text near your camera, and start reading."
+      "html": "The fastest way to understand SolPrompter is to use it. Open the teleprompter, paste or import your script, position the text near your camera, and start reading."
     },
     {
       "type": "paragraph",
@@ -996,7 +996,7 @@
     },
     {
       "type": "paragraph",
-      "html": "No download or installation is required. <a href=\"/teleprompter\">Open VTeleprompter</a>."
+      "html": "No download or installation is required. <a href=\"/teleprompter\">Open SolPrompter</a>."
     },
     {
       "type": "heading",
@@ -1006,16 +1006,16 @@
     {
       "type": "heading",
       "level": 3,
-      "text": "When did VTeleprompter development begin?"
+      "text": "When did SolPrompter development begin?"
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter development began in January 2026. The product has since gone through more than six months of research, design, prototyping, development, testing, optimization, and refinement."
+      "html": "SolPrompter development began in January 2026. The product has since gone through more than six months of research, design, prototyping, development, testing, optimization, and refinement."
     },
     {
       "type": "heading",
       "level": 3,
-      "text": "Is VTeleprompter a free online teleprompter?"
+      "text": "Is SolPrompter a free online teleprompter?"
     },
     {
       "type": "paragraph",
@@ -1024,11 +1024,11 @@
     {
       "type": "heading",
       "level": 3,
-      "text": "Does VTeleprompter work on desktop and mobile?"
+      "text": "Does SolPrompter work on desktop and mobile?"
     },
     {
       "type": "paragraph",
-      "html": "Yes. VTeleprompter is designed for desktop computers, laptops, tablets, and mobile phones. The desktop and mobile interfaces are optimized separately. The mobile experience is not simply a smaller version of the desktop layout."
+      "html": "Yes. SolPrompter is designed for desktop computers, laptops, tablets, and mobile phones. The desktop and mobile interfaces are optimized separately. The mobile experience is not simply a smaller version of the desktop layout."
     },
     {
       "type": "heading",
@@ -1046,12 +1046,12 @@
     },
     {
       "type": "paragraph",
-      "html": "No. VTeleprompter runs directly in a compatible browser."
+      "html": "No. SolPrompter runs directly in a compatible browser."
     },
     {
       "type": "heading",
       "level": 3,
-      "text": "Does VTeleprompter upload my scripts?"
+      "text": "Does SolPrompter upload my scripts?"
     },
     {
       "type": "paragraph",
@@ -1060,11 +1060,11 @@
     {
       "type": "heading",
       "level": 3,
-      "text": "Can VTeleprompter record 4K video?"
+      "text": "Can SolPrompter record 4K video?"
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter provides recording options up to 4K. Actual availability depends on the browser, camera, device performance, and supported media settings."
+      "html": "SolPrompter provides recording options up to 4K. Actual availability depends on the browser, camera, device performance, and supported media settings."
     },
     {
       "type": "heading",
@@ -1087,7 +1087,7 @@
     {
       "type": "heading",
       "level": 3,
-      "text": "Can I control VTeleprompter from my phone?"
+      "text": "Can I control SolPrompter from my phone?"
     },
     {
       "type": "paragraph",
@@ -1131,7 +1131,7 @@
     },
     {
       "type": "endnote",
-      "text": "Continue reading product thinking, research and news from VTeleprompter.",
+      "text": "Continue reading product thinking, research and news from SolPrompter.",
       "label": "View all articles",
       "url": "/blog"
     }

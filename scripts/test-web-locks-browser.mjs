@@ -190,7 +190,7 @@ async function holdWithAppHelper(page, workspaceId) {
 }
 
 async function main() {
-  const profileDir = mkdtempSync(join(tmpdir(), 'vteleprompter-web-locks-'));
+  const profileDir = mkdtempSync(join(tmpdir(), 'solprompter-web-locks-'));
   const { server, origin } = await startServer();
   let chrome;
   const pages = [];

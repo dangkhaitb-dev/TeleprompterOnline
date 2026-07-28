@@ -26,7 +26,7 @@ function recordingEntries(scenes = []) {
     .filter((scene) => scene?.blob)
     .map((scene, index) => ({
       blob: scene.blob,
-      name: `vteleprompter-clip-${String(index + 1).padStart(2, '0')}.${fileExtension(scene)}`,
+      name: `solprompter-clip-${String(index + 1).padStart(2, '0')}.${fileExtension(scene)}`,
     }));
 }
 

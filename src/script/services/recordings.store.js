@@ -13,7 +13,7 @@
 
 import { makeId } from '../utils/id.js';
 
-const DB_NAME = 'vteleprompter-media';
+const DB_NAME = 'solprompter-media';
 const DB_VERSION = 2;
 const STORE = 'recordings';
 const BYTES_STORE = 'recording-bytes';

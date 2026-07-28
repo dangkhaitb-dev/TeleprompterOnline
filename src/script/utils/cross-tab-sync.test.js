@@ -19,7 +19,7 @@ describe('onWorkspacesChanged', () => {
   it('ignores unrelated storage keys', () => {
     const handler = vi.fn();
     off = onWorkspacesChanged(handler);
-    fireStorage('vteleprompter:some-other-key');
+    fireStorage('solprompter:some-other-key');
     expect(handler).not.toHaveBeenCalled();
   });
 

@@ -2,7 +2,7 @@
 
 Hướng dẫn cho Claude Code khi làm việc trong repo này.
 
-> **VPromter** — base cho một ứng dụng **teleprompter** web. Stack: **Vite + 11ty + Vanilla JS (ES modules)**, không framework. Đây là bộ khung tối giản: hạ tầng build/lint/test + HTTP layer + Firebase auth + 1 trang `index`. Business logic của teleprompter sẽ được xây trên nền này.
+> **SolPrompter** — base cho một ứng dụng **teleprompter** web. Stack: **Vite + 11ty + Vanilla JS (ES modules)**, không framework. Đây là bộ khung tối giản: hạ tầng build/lint/test + HTTP layer + Firebase auth + 1 trang `index`. Business logic của teleprompter sẽ được xây trên nền này.
 
 ---
 

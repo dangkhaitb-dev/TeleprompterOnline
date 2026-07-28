@@ -4,13 +4,13 @@
   "published": true,
   "title": "Teleprompter Guide",
   "seo": {
-    "title": "Teleprompter Guide | How to Use VTeleprompter",
-    "description": "A step-by-step guide to the VTeleprompter online teleprompter — add a script, choose a scroll mode, adjust your reading view, use notch mode, connect a remote and record in Full HD or 4K."
+    "title": "Teleprompter Guide | How to Use SolPrompter",
+    "description": "A step-by-step guide to the SolPrompter online teleprompter — add a script, choose a scroll mode, adjust your reading view, use notch mode, connect a remote and record in Full HD or 4K."
   },
   "content": [
     {
       "type": "paragraph",
-      "html": "VTeleprompter is a browser-based teleprompter for presenting and recording. This guide walks you through everything from adding your script to recording a finished take — no installation and no account required."
+      "html": "SolPrompter is a browser-based teleprompter for presenting and recording. This guide walks you through everything from adding your script to recording a finished take — no installation and no account required."
     },
     {
       "type": "heading",
@@ -18,7 +18,7 @@
     },
     {
       "type": "paragraph",
-      "html": "Start on the VTeleprompter home page. You can paste or type your script directly, or upload an existing file from your device."
+      "html": "Start on the SolPrompter home page. You can paste or type your script directly, or upload an existing file from your device."
     },
     {
       "type": "list",
@@ -31,7 +31,7 @@
     {
       "type": "image",
       "src": "/media/guide/step-1-add-script.webp",
-      "alt": "VTeleprompter home page with a script pasted into the script box, ready to start presenting",
+      "alt": "SolPrompter home page with a script pasted into the script box, ready to start presenting",
       "width": 1600,
       "height": 836,
       "caption": "Paste or upload your script on the home page, then press Start Presenting."
@@ -47,7 +47,7 @@
     {
       "type": "image",
       "src": "/media/guide/step-2-teleprompter-view.webp",
-      "alt": "The VTeleprompter teleprompter view showing large white script text on a dark background, with the format toolbar at the top and camera, mirror, notch, speed and settings controls at the bottom",
+      "alt": "The SolPrompter teleprompter view showing large white script text on a dark background, with the format toolbar at the top and camera, mirror, notch, speed and settings controls at the bottom",
       "width": 1600,
       "height": 836,
       "caption": "The teleprompter view — your script fills the screen, with all controls one click away."
@@ -58,12 +58,12 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter offers three ways to move through your script so you can present at a pace that feels natural."
+      "html": "SolPrompter offers three ways to move through your script so you can present at a pace that feels natural."
     },
     {
       "type": "list",
       "items": [
-        "AI Voice Scroll — VTeleprompter listens to your speech and scrolls automatically at your natural speaking pace. Turn it on, allow microphone access and simply start talking; the script follows you and waits when you pause.",
+        "AI Voice Scroll — SolPrompter listens to your speech and scrolls automatically at your natural speaking pace. Turn it on, allow microphone access and simply start talking; the script follows you and waits when you pause.",
         "Auto-scroll — the script scrolls at a fixed speed. Open the Speed control to set your words-per-minute (WPM); the default is 110 WPM. Use the slider or type a custom value.",
         "Manual scroll — control the script yourself with the arrow keys or by scrolling on a touchscreen, for a traditional autocue feel."
       ]
@@ -120,14 +120,14 @@
     {
       "type": "image",
       "src": "/media/guide/step-5-notch-mode.webp",
-      "alt": "Notch Mode active in VTeleprompter, with a compact reading window at the top of the screen near the camera and the rest of the screen dimmed",
+      "alt": "Notch Mode active in SolPrompter, with a compact reading window at the top of the screen near the camera and the rest of the screen dimmed",
       "width": 1600,
       "height": 836,
       "caption": "Notch Mode places a compact reading window right next to your camera."
     },
     {
       "type": "heading",
-      "text": "6. Control VTeleprompter from another device"
+      "text": "6. Control SolPrompter from another device"
     },
     {
       "type": "paragraph",
@@ -149,7 +149,7 @@
     },
     {
       "type": "paragraph",
-      "html": "VTeleprompter combines the teleprompter and your camera in one place, so you can read naturally and record without switching apps."
+      "html": "SolPrompter combines the teleprompter and your camera in one place, so you can read naturally and record without switching apps."
     },
     {
       "type": "list",
@@ -164,14 +164,14 @@
     {
       "type": "image",
       "src": "/media/guide/step-7-record-settings.webp",
-      "alt": "The VTeleprompter settings panel showing resolution set to Full HD, plus countdown, fullscreen and dark theme options",
+      "alt": "The SolPrompter settings panel showing resolution set to Full HD, plus countdown, fullscreen and dark theme options",
       "width": 1600,
       "height": 836,
       "caption": "Pick your recording resolution and countdown options in Settings."
     },
     {
       "type": "paragraph",
-      "html": "Recordings are saved privately on your device and never carry a VTeleprompter watermark."
+      "html": "Recordings are saved privately on your device and never carry a SolPrompter watermark."
     },
     {
       "type": "heading",
@@ -184,7 +184,7 @@
     {
       "type": "list",
       "items": [
-        "Create and edit scripts directly in VTeleprompter.",
+        "Create and edit scripts directly in SolPrompter.",
         "Organize scripts into folders, and rename or move them as needed.",
         "Reuse a script anytime — it reopens with your saved reading settings.",
         "Find every recording in the Recordings library, linked to the script it came from.",
@@ -194,7 +194,7 @@
     {
       "type": "image",
       "src": "/media/guide/step-8-workspaces.webp",
-      "alt": "The VTeleprompter workspace with a YouTube Videos folder and a saved script card showing a preview of its opening lines",
+      "alt": "The SolPrompter workspace with a YouTube Videos folder and a saved script card showing a preview of its opening lines",
       "width": 1600,
       "height": 836,
       "caption": "Your workspace keeps scripts, folders and recordings organized in one place."
@@ -232,7 +232,7 @@
     },
     {
       "type": "paragraph",
-      "html": "That is everything you need to present and record with VTeleprompter. Open the app, add your script and start speaking naturally."
+      "html": "That is everything you need to present and record with SolPrompter. Open the app, add your script and start speaking naturally."
     }
   ]
 }

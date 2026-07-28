@@ -1,15 +1,15 @@
 {
   "seo": {
-    "title": "Pricing — Day Pass, Pro and Lifetime | VTeleprompter",
-    "description": "VTeleprompter early adopter pricing: a $3.99 one-day pass, Pro at $6.99 per month or $49 a year, and a $169 lifetime plan. AI Scroll, cloud sync and remote control included.",
+    "title": "Pricing — Day Pass, Pro and Lifetime | SolPrompter",
+    "description": "SolPrompter early adopter pricing: a $3.99 one-day pass, Pro at $6.99 per month or $49 a year, and a $169 lifetime plan. AI Scroll, cloud sync and remote control included.",
     "canonical": "/pricing",
-    "ogTitle": "VTeleprompter Pricing — Lock In Your Price Forever",
+    "ogTitle": "SolPrompter Pricing — Lock In Your Price Forever",
     "ogDescription": "Early adopter pricing: One-Day Pass $3.99, Pro $6.99/month, Lifetime $169. Prices go up as we add more premium features.",
     "ogType": "website",
-    "ogImage": "/og-vteleprompter.jpg"
+    "ogImage": "/og-solprompter.jpg"
   },
   "pricingSchema": {
-    "productName": "VTeleprompter",
+    "productName": "SolPrompter",
     "productDescription": "Online AI teleprompter with voice-following scroll, notch mode, remote control and 4K recording.",
     "currency": "USD"
   },
@@ -119,17 +119,17 @@
       {
         "anchor": "faq-lifetime-cover",
         "q": "What does the Lifetime plan actually cover?",
-        "a": "A single payment for the Pro features, plus every update and premium feature we release for VTeleprompter, with no renewal. Lifetime refers to the lifetime of the product, not the lifetime of the purchaser — it lasts for as long as VTeleprompter is commercially operated by us. The full terms are in the Billing and Refund Policy."
+        "a": "A single payment for the Pro features, plus every update and premium feature we release for SolPrompter, with no renewal. Lifetime refers to the lifetime of the product, not the lifetime of the purchaser — it lasts for as long as SolPrompter is commercially operated by us. The full terms are in the Billing and Refund Policy."
       },
       {
         "anchor": "faq-cancel",
         "q": "Can I cancel my subscription?",
-        "a": "Yes. Cancel at any time from your account billing settings, or email contact.vpromter@gmail.com. Automatic renewal stops immediately and you keep paid access until the end of the billing period you already paid for."
+        "a": "Yes. Cancel at any time from your account billing settings, or email contact.solprompter@gmail.com. Automatic renewal stops immediately and you keep paid access until the end of the billing period you already paid for."
       },
       {
         "anchor": "faq-refund",
         "q": "Do you offer refunds?",
-        "a": "We offer a voluntary 7-day refund guarantee on your first purchase made directly through VTeleprompter, subject to the conditions in the Billing and Refund Policy. Mandatory consumer rights in your country always apply on top of it."
+        "a": "We offer a voluntary 7-day refund guarantee on your first purchase made directly through SolPrompter, subject to the conditions in the Billing and Refund Policy. Mandatory consumer rights in your country always apply on top of it."
       },
       {
         "anchor": "faq-day-pass",

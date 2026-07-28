@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://vteleprompter.com/schemas/blog-article.schema.json",
-  "title": "VTeleprompter blog article",
+  "$id": "https://solprompter.com/schemas/blog-article.schema.json",
+  "title": "SolPrompter blog article",
   "type": "object",
   "additionalProperties": false,
   "required": [

@@ -4,7 +4,7 @@
 import { getWorkspace, listWorkspaces } from './workspaces.store.js';
 import { createJsonBlob, safeZipSegment } from '../utils/export-data.js';
 
-export const WORKSPACE_EXPORT_FORMAT = 'vteleprompter-workspace';
+export const WORKSPACE_EXPORT_FORMAT = 'solprompter-workspace';
 export const EXPORT_SCHEMA_VERSION = 1;
 
 function exportTimestamp(now) {

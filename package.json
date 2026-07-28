@@ -1,5 +1,5 @@
 {
-  "name": "vpromter",
+  "name": "solprompter",
   "version": "1.0.0",
   "description": "Teleprompter web app — base (Vite + 11ty, vanilla JS ES modules)",
   "main": "index.js",

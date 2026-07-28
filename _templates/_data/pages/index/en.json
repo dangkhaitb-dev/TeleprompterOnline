@@ -1,24 +1,24 @@
 {
   "seo": {
-    "title": "Free Online Teleprompter with AI Voice Scroll | VTeleprompter",
-    "description": "Use VTeleprompter, a free online teleprompter with AI voice scrolling, notch mode, remote control and 4K recording. No ads or watermark.",
+    "title": "Free Online Teleprompter with AI Voice Scroll | SolPrompter",
+    "description": "Use SolPrompter, a free online teleprompter with AI voice scrolling, notch mode, remote control and 4K recording. No ads or watermark.",
     "canonical": "/",
-    "ogTitle": "Free Online AI Teleprompter — VTeleprompter",
+    "ogTitle": "Free Online AI Teleprompter — SolPrompter",
     "ogDescription": "Present naturally with AI voice scrolling, notch mode, remote control and professional video recording.",
     "ogType": "website",
-    "ogImage": "/og-vteleprompter.jpg"
+    "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "VTeleprompter provides a free online AI teleprompter for natural presentations and professional video recording.",
-    "brandDescription": "VTeleprompter is an online AI teleprompter designed for natural presentations and professional video recording.",
+    "orgDescription": "SolPrompter provides a free online AI teleprompter for natural presentations and professional video recording.",
+    "brandDescription": "SolPrompter is an online AI teleprompter designed for natural presentations and professional video recording.",
     "websiteDescription": "A free online teleprompter with AI voice scrolling, notch mode, remote control and professional video recording.",
-    "webpageName": "Free Online Teleprompter with AI Voice Scroll | VTeleprompter",
-    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "webpageName": "Free Online Teleprompter with AI Voice Scroll | SolPrompter",
+    "alternateNames": ["SolPrompter", "solprompter.com"],
     "logoUrl": "/logo.png",
-    "logoCaption": "VTeleprompter",
-    "primaryImage": "/og-vteleprompter.jpg",
-    "primaryImageCaption": "VTeleprompter free online AI teleprompter",
-    "appAlternateName": "VTeleprompter Online Teleprompter",
+    "logoCaption": "SolPrompter",
+    "primaryImage": "/og-solprompter.jpg",
+    "primaryImageCaption": "SolPrompter free online AI teleprompter",
+    "appAlternateName": "SolPrompter Online Teleprompter",
     "appDescription": "A free online AI teleprompter with voice-activated scrolling, notch mode, remote control, script management and professional Full HD and 4K video recording.",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "Online Teleprompter",
@@ -41,11 +41,11 @@
       "No advertisements",
       "No video watermark"
     ],
-    "offerDescription": "Free access to VTeleprompter online teleprompter features.",
-    "howToName": "How to Use VTeleprompter",
-    "howToDescription": "Learn how to add a script, choose a scrolling mode, customize your teleprompter and start presenting or recording with VTeleprompter.",
-    "faqName": "VTeleprompter Frequently Asked Questions",
-    "faqDescription": "Frequently asked questions about VTeleprompter, AI Voice Scroll, notch mode, remote control, supported devices and video recording."
+    "offerDescription": "Free access to SolPrompter online teleprompter features.",
+    "howToName": "How to Use SolPrompter",
+    "howToDescription": "Learn how to add a script, choose a scrolling mode, customize your teleprompter and start presenting or recording with SolPrompter.",
+    "faqName": "SolPrompter Frequently Asked Questions",
+    "faqDescription": "Frequently asked questions about SolPrompter, AI Voice Scroll, notch mode, remote control, supported devices and video recording."
   },
   "nav": {
     "items": [
@@ -57,7 +57,7 @@
     "cta": { "label": "Workspaces", "url": "/workspaces" }
   },
   "hero": {
-    "eyebrow": "VTeleprompter — AI Teleprompter",
+    "eyebrow": "SolPrompter — AI Teleprompter",
     "title": "Free Online Teleprompter",
     "subtitle": "Present naturally with AI voice scrolling, notch mode, remote control and professional 4K recording.",
     "placeholder": "Paste your script or upload a file to begin...",
@@ -76,24 +76,24 @@
   "features": {
     "eyebrow": "Everything You Need to Present Better",
     "title": "One Teleprompter for Every Recording",
-    "description": "VTeleprompter combines an online teleprompter, AI voice scrolling, notch mode, remote control, script management and professional video recording in one simple workspace.",
+    "description": "SolPrompter combines an online teleprompter, AI voice scrolling, notch mode, remote control, script management and professional video recording in one simple workspace.",
     "items": [
-      { "title": "AI Voice Scroll", "description": "VTeleprompter follows your speech and automatically scrolls through your script at your natural speaking pace." },
+      { "title": "AI Voice Scroll", "description": "SolPrompter follows your speech and automatically scrolls through your script at your natural speaking pace." },
       { "title": "Notch Teleprompter", "description": "Keep your script close to the camera to reduce visible eye movement and maintain more natural eye contact." },
       { "title": "Remote Control", "description": "Use another phone, tablet or computer to control scrolling, move through your script and manage your presentation remotely." },
       { "title": "Full HD and 4K Recording", "description": "Record professional videos while reading your script directly from the teleprompter." },
       { "title": "Script Management", "description": "Create, upload, edit, organize and reuse all your scripts from one convenient workspace." },
       { "title": "Recording Library", "description": "Save, review and manage your recordings alongside the scripts used to create them." },
-      { "title": "Built for Mobile", "description": "Use VTeleprompter comfortably on phones, tablets, laptops and desktop computers with a responsive interface designed for every screen." },
+      { "title": "Built for Mobile", "description": "Use SolPrompter comfortably on phones, tablets, laptops and desktop computers with a responsive interface designed for every screen." },
       { "title": "No Ads or Watermark", "description": "Present and record without distracting advertisements or branded watermarks on your videos." }
     ]
   },
   "howItWorks": {
     "eyebrow": "Simple from the First Take",
-    "title": "How VTeleprompter Works",
+    "title": "How SolPrompter Works",
     "description": "Turn any script into a smooth presentation or professional recording in just a few steps.",
     "steps": [
-      { "anchor": "step-add-script", "title": "Add Your Script", "description": "Paste your text directly into VTeleprompter or upload an existing script from your device." },
+      { "anchor": "step-add-script", "title": "Add Your Script", "description": "Paste your text directly into SolPrompter or upload an existing script from your device." },
       { "anchor": "step-choose-scroll-mode", "title": "Choose Your Scroll Mode", "description": "Set a fixed scrolling speed, control the script manually or activate AI Voice Scroll." },
       { "anchor": "step-customize-view", "title": "Customize Your View", "description": "Adjust the font, text size, line spacing, reading area and teleprompter position for comfortable reading." },
       { "anchor": "step-start-presenting", "title": "Start Presenting", "description": "Open the teleprompter, connect a remote if needed and begin presenting or recording." }
@@ -102,7 +102,7 @@
   "voiceScroll": {
     "eyebrow": "Scroll at the Speed of Your Voice",
     "title": "AI Voice Scroll That Follows You",
-    "description": "Stop adjusting your speaking pace to match a fixed scroll speed. VTeleprompter follows your voice so you can focus on delivering your message naturally.",
+    "description": "Stop adjusting your speaking pace to match a fixed scroll speed. SolPrompter follows your voice so you can focus on delivering your message naturally.",
     "benefits": [
       { "title": "Speak Naturally", "description": "Read at your own pace without sounding rushed, slow or robotic." },
       { "title": "Pause When You Need To", "description": "Take a breath, emphasize an idea or pause between sections without immediately losing your place." },
@@ -115,7 +115,7 @@
   "notch": {
     "eyebrow": "Natural Eye Contact",
     "title": "Keep Your Script Close to the Camera",
-    "description": "VTeleprompter’s notch mode places a compact reading area near your camera, helping your eyes stay focused closer to the lens.",
+    "description": "SolPrompter’s notch mode places a compact reading area near your camera, helping your eyes stay focused closer to the lens.",
     "items": [
       "Reduce obvious side-to-side eye movement.",
       "Place the script near your webcam or phone camera.",
@@ -147,7 +147,7 @@
       { "title": "Live Camera Preview", "description": "Check your position, framing and appearance before and during your recording." },
       { "title": "Full HD Recording", "description": "Create clear, high-quality videos for social media, lessons, presentations and business content." },
       { "title": "4K Recording", "description": "Capture professional high-resolution video when your camera, browser and device support it." },
-      { "title": "No Watermark", "description": "Export clean recordings without a VTeleprompter logo or branded overlay." },
+      { "title": "No Watermark", "description": "Export clean recordings without a SolPrompter logo or branded overlay." },
       { "title": "Recording Library", "description": "Keep your takes organized and quickly find the recording associated with each script." }
     ],
     "cta": { "label": "Start Recording", "url": "/workspaces" }
@@ -155,9 +155,9 @@
   "workspace": {
     "eyebrow": "Your Content Workspace",
     "title": "Manage Scripts and Recordings Together",
-    "description": "Stop searching across folders, documents and separate applications. VTeleprompter keeps your scripts and recordings in one organized workspace.",
+    "description": "Stop searching across folders, documents and separate applications. SolPrompter keeps your scripts and recordings in one organized workspace.",
     "items": [
-      { "title": "Create and Edit Scripts", "description": "Write new scripts or update existing content directly inside VTeleprompter." },
+      { "title": "Create and Edit Scripts", "description": "Write new scripts or update existing content directly inside SolPrompter." },
       { "title": "Upload Existing Content", "description": "Import scripts from supported documents instead of copying each section manually." },
       { "title": "Organize Your Library", "description": "Keep scripts and recordings organized so they are ready for future presentations." },
       { "title": "Reuse Your Scripts", "description": "Open previous scripts, make quick changes and record new versions without starting again." },
@@ -167,18 +167,18 @@
   "mobile": {
     "eyebrow": "Designed for Every Screen",
     "title": "A Mobile-Friendly Online Teleprompter",
-    "description": "VTeleprompter is designed to feel fast, clear and easy to control on both desktop and mobile devices.",
+    "description": "SolPrompter is designed to feel fast, clear and easy to control on both desktop and mobile devices.",
     "items": [
       { "title": "Responsive Interface", "description": "Essential controls remain easy to reach across different screen sizes and orientations." },
       { "title": "Portrait and Landscape", "description": "Choose the screen orientation that best matches your recording setup." },
       { "title": "Touch-Friendly Controls", "description": "Adjust text, scrolling and recording settings comfortably from a touchscreen." },
-      { "title": "No Installation Required", "description": "Open VTeleprompter in a supported browser and start using the teleprompter online." }
+      { "title": "No Installation Required", "description": "Open SolPrompter in a supported browser and start using the teleprompter online." }
     ],
-    "supporting": "Use VTeleprompter as a mobile teleprompter, desktop teleprompter or browser-based online autocue."
+    "supporting": "Use SolPrompter as a mobile teleprompter, desktop teleprompter or browser-based online autocue."
   },
   "useCases": {
     "eyebrow": "Made for Every Presenter",
-    "title": "Who Is VTeleprompter For?",
+    "title": "Who Is SolPrompter For?",
     "items": [
       { "title": "Content Creators", "description": "Record TikTok videos, YouTube videos, Shorts, Reels and other social content without memorizing every line." },
       { "title": "YouTubers", "description": "Deliver reviews, tutorials, explainers and talking-head videos with a smoother, more confident presentation." },
@@ -191,9 +191,9 @@
     ]
   },
   "comparison": {
-    "eyebrow": "Why VTeleprompter?",
+    "eyebrow": "Why SolPrompter?",
     "title": "A More Complete Free Teleprompter",
-    "description": "VTeleprompter is built to provide a complete teleprompter experience without forcing users to combine multiple applications or pay for basic features.",
+    "description": "SolPrompter is built to provide a complete teleprompter experience without forcing users to combine multiple applications or pay for basic features.",
     "items": [
       "AI voice-activated scrolling",
       "Notch teleprompter mode",
@@ -206,20 +206,20 @@
       "Simple and modern user experience",
       "Free access to essential teleprompter features"
     ],
-    "supporting": "From writing your script to recording the final take, VTeleprompter gives you the tools you need in one place."
+    "supporting": "From writing your script to recording the final take, SolPrompter gives you the tools you need in one place."
   },
   "about": {
-    "eyebrow": "About VTeleprompter",
+    "eyebrow": "About SolPrompter",
     "title": "Built to Make Presenting Feel Natural",
     "paragraphs": [
-      "VTeleprompter is an AI teleprompter created for people who want to speak confidently without memorizing every word or constantly managing scroll controls.",
+      "SolPrompter is an AI teleprompter created for people who want to speak confidently without memorizing every word or constantly managing scroll controls.",
       "Our goal is to create the most complete and accessible online teleprompter experience, combining reliable AI scrolling, thoughtful design, natural-eye-contact tools and professional recording features.",
-      "Whether you are recording from a phone, presenting from a laptop or controlling a studio setup remotely, VTeleprompter helps you stay focused on your audience instead of the software."
+      "Whether you are recording from a phone, presenting from a laptop or controlling a studio setup remotely, SolPrompter helps you stay focused on your audience instead of the software."
     ]
   },
   "finalCta": {
     "eyebrow": "Ready to Present?",
-    "title": "Start Using VTeleprompter",
+    "title": "Start Using SolPrompter",
     "description": "Add your script, choose your preferred reading mode and start presenting naturally.",
     "cta": { "label": "Open Free Teleprompter", "url": "/workspaces" },
     "supporting": "No ads. No watermark. No complicated setup."
@@ -228,20 +228,20 @@
     "eyebrow": "Questions & Answers",
     "title": "Frequently Asked Questions",
     "items": [
-      { "anchor": "faq-is-vteleprompter-free", "q": "Is VTeleprompter free to use?", "a": "VTeleprompter is currently free to use. You can access its essential teleprompter, script and recording features without advertisements or a branded video watermark." },
+      { "anchor": "faq-is-solprompter-free", "q": "Is SolPrompter free to use?", "a": "SolPrompter is currently free to use. You can access its essential teleprompter, script and recording features without advertisements or a branded video watermark." },
       { "anchor": "faq-what-is-ai-voice-scroll", "q": "What is AI Voice Scroll?", "a": "AI Voice Scroll listens to your speech and moves through the script based on your natural speaking pace. It helps you pause, continue and present without constantly adjusting a fixed scroll speed." },
-      { "anchor": "faq-what-is-notch-mode", "q": "What is VTeleprompter Notch Mode?", "a": "Notch Mode places a compact teleprompter reading area close to your camera. This helps reduce visible eye movement and makes your eye contact appear more natural during recordings, presentations and video calls." },
-      { "anchor": "faq-mobile-devices", "q": "Can I use VTeleprompter on a phone or tablet?", "a": "Yes. VTeleprompter has a responsive interface designed for smartphones, tablets, laptops and desktop computers. Available features may depend on the browser, camera and device capabilities." },
-      { "anchor": "faq-installation", "q": "Do I need to install VTeleprompter?", "a": "No installation is required for the web version. You can open VTeleprompter in a supported modern browser, add your script and start presenting online." },
-      { "anchor": "faq-remote-control", "q": "Can I control VTeleprompter from another device?", "a": "Yes. VTeleprompter remote control lets you use another phone, tablet or computer to start or pause the teleprompter, adjust scrolling and navigate through your script." },
-      { "anchor": "faq-4k-recording", "q": "Can VTeleprompter record videos in 4K?", "a": "VTeleprompter supports Full HD and 4K recording when the camera, browser and device support the selected resolution. Actual recording quality depends on the capabilities and permissions of your device." },
-      { "anchor": "faq-watermark", "q": "Does VTeleprompter add a watermark to recordings?", "a": "VTeleprompter does not add a branded watermark to your recorded videos." },
-      { "anchor": "faq-supported-files", "q": "Which script file formats does VTeleprompter support?", "a": "VTeleprompter supports pasting text directly and uploading supported script documents such as TXT, DOCX, PDF and Markdown files." },
-      { "anchor": "faq-online-autocue", "q": "Can VTeleprompter be used as an online autocue?", "a": "Yes. VTeleprompter can be used as a browser-based online autocue with manual scrolling, fixed-speed automatic scrolling and AI voice-activated scrolling." }
+      { "anchor": "faq-what-is-notch-mode", "q": "What is SolPrompter Notch Mode?", "a": "Notch Mode places a compact teleprompter reading area close to your camera. This helps reduce visible eye movement and makes your eye contact appear more natural during recordings, presentations and video calls." },
+      { "anchor": "faq-mobile-devices", "q": "Can I use SolPrompter on a phone or tablet?", "a": "Yes. SolPrompter has a responsive interface designed for smartphones, tablets, laptops and desktop computers. Available features may depend on the browser, camera and device capabilities." },
+      { "anchor": "faq-installation", "q": "Do I need to install SolPrompter?", "a": "No installation is required for the web version. You can open SolPrompter in a supported modern browser, add your script and start presenting online." },
+      { "anchor": "faq-remote-control", "q": "Can I control SolPrompter from another device?", "a": "Yes. SolPrompter remote control lets you use another phone, tablet or computer to start or pause the teleprompter, adjust scrolling and navigate through your script." },
+      { "anchor": "faq-4k-recording", "q": "Can SolPrompter record videos in 4K?", "a": "SolPrompter supports Full HD and 4K recording when the camera, browser and device support the selected resolution. Actual recording quality depends on the capabilities and permissions of your device." },
+      { "anchor": "faq-watermark", "q": "Does SolPrompter add a watermark to recordings?", "a": "SolPrompter does not add a branded watermark to your recorded videos." },
+      { "anchor": "faq-supported-files", "q": "Which script file formats does SolPrompter support?", "a": "SolPrompter supports pasting text directly and uploading supported script documents such as TXT, DOCX, PDF and Markdown files." },
+      { "anchor": "faq-online-autocue", "q": "Can SolPrompter be used as an online autocue?", "a": "Yes. SolPrompter can be used as a browser-based online autocue with manual scrolling, fixed-speed automatic scrolling and AI voice-activated scrolling." }
     ]
   },
   "footer": {
-    "brand": "VTeleprompter",
+    "brand": "SolPrompter",
     "description": "A free online AI teleprompter for natural presentations and professional video recording.",
     "columns": [
       {
@@ -274,6 +274,6 @@
         ]
       }
     ],
-    "copyright": "© 2026 VTeleprompter."
+    "copyright": "© 2026 SolPrompter."
   }
 }

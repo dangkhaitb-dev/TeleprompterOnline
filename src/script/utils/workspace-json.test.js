@@ -6,7 +6,7 @@ import { parseWorkspaceJson, sanitizeWorkspaceHtml } from './workspace-json.js';
 describe('workspace JSON upload helpers', () => {
   it('parses the versioned workspace export shape', () => {
     const result = parseWorkspaceJson(JSON.stringify({
-      format: 'vteleprompter-workspace',
+      format: 'solprompter-workspace',
       schemaVersion: 1,
       workspace: {
         title: 'Demo',
@@ -27,7 +27,7 @@ describe('workspace JSON upload helpers', () => {
   it('rejects unrelated and empty JSON documents', () => {
     expect(() => parseWorkspaceJson('{"hello":"world"}')).toThrow('Unsupported');
     expect(() => parseWorkspaceJson(JSON.stringify({
-      format: 'vteleprompter-workspace',
+      format: 'solprompter-workspace',
       schemaVersion: 1,
       workspace: {},
     }))).toThrow('empty');

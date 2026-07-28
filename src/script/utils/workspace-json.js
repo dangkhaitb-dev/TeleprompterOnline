@@ -20,7 +20,7 @@ export function parseWorkspaceJson(text) {
     throw new Error('Invalid JSON file');
   }
   const workspace = parsed?.workspace;
-  if (parsed?.format !== 'vteleprompter-workspace' || !workspace || typeof workspace !== 'object') {
+  if (parsed?.format !== 'solprompter-workspace' || !workspace || typeof workspace !== 'object') {
     throw new Error('Unsupported workspace JSON');
   }
   if (parsed.schemaVersion !== 1) throw new Error('Unsupported workspace version');

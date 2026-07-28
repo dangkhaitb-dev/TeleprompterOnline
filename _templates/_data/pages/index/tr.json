@@ -1,24 +1,24 @@
 {
   "seo": {
-    "title": "Yapay Zekâ Sesli Kaydırmalı Ücretsiz Çevrimiçi Teleprompter | VTeleprompter",
-    "description": "Yapay zekâ sesli kaydırma, notch modu, uzaktan kumanda ve 4K kayıt sunan ücretsiz çevrimiçi teleprompter VTeleprompter'ı kullanın. Reklam veya filigran yok.",
+    "title": "Yapay Zekâ Sesli Kaydırmalı Ücretsiz Çevrimiçi Teleprompter | SolPrompter",
+    "description": "Yapay zekâ sesli kaydırma, notch modu, uzaktan kumanda ve 4K kayıt sunan ücretsiz çevrimiçi teleprompter SolPrompter'ı kullanın. Reklam veya filigran yok.",
     "canonical": "/tr/",
-    "ogTitle": "Ücretsiz Çevrimiçi Yapay Zekâ Teleprompter — VTeleprompter",
+    "ogTitle": "Ücretsiz Çevrimiçi Yapay Zekâ Teleprompter — SolPrompter",
     "ogDescription": "Yapay zekâ sesli kaydırma, notch modu, uzaktan kumanda ve profesyonel video kaydıyla doğal bir şekilde sunum yapın.",
     "ogType": "website",
-    "ogImage": "/og-vteleprompter.jpg"
+    "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "VTeleprompter, doğal sunumlar ve profesyonel video kaydı için ücretsiz çevrimiçi bir yapay zekâ teleprompter sunar.",
-    "brandDescription": "VTeleprompter, doğal sunumlar ve profesyonel video kaydı için tasarlanmış çevrimiçi bir yapay zekâ teleprompter'dır.",
+    "orgDescription": "SolPrompter, doğal sunumlar ve profesyonel video kaydı için ücretsiz çevrimiçi bir yapay zekâ teleprompter sunar.",
+    "brandDescription": "SolPrompter, doğal sunumlar ve profesyonel video kaydı için tasarlanmış çevrimiçi bir yapay zekâ teleprompter'dır.",
     "websiteDescription": "Yapay zekâ sesli kaydırma, notch modu, uzaktan kumanda ve profesyonel video kaydı sunan ücretsiz çevrimiçi bir teleprompter.",
-    "webpageName": "Yapay Zekâ Sesli Kaydırmalı Ücretsiz Çevrimiçi Teleprompter | VTeleprompter",
-    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "webpageName": "Yapay Zekâ Sesli Kaydırmalı Ücretsiz Çevrimiçi Teleprompter | SolPrompter",
+    "alternateNames": ["SolPrompter", "solprompter.com"],
     "logoUrl": "/logo.png",
-    "logoCaption": "VTeleprompter",
-    "primaryImage": "/og-vteleprompter.jpg",
-    "primaryImageCaption": "VTeleprompter ücretsiz çevrimiçi yapay zekâ teleprompter",
-    "appAlternateName": "VTeleprompter Çevrimiçi Teleprompter",
+    "logoCaption": "SolPrompter",
+    "primaryImage": "/og-solprompter.jpg",
+    "primaryImageCaption": "SolPrompter ücretsiz çevrimiçi yapay zekâ teleprompter",
+    "appAlternateName": "SolPrompter Çevrimiçi Teleprompter",
     "appDescription": "Sesle kaydırma, notch modu, uzaktan kumanda, metin yönetimi ve profesyonel Full HD ve 4K video kaydı sunan ücretsiz çevrimiçi bir yapay zekâ teleprompter.",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "Çevrimiçi Teleprompter",
@@ -41,11 +41,11 @@
       "Reklam yok",
       "Video filigranı yok"
     ],
-    "offerDescription": "VTeleprompter çevrimiçi teleprompter özelliklerine ücretsiz erişim.",
-    "howToName": "VTeleprompter Nasıl Kullanılır",
-    "howToDescription": "VTeleprompter ile nasıl metin ekleyeceğinizi, kaydırma modu seçeceğinizi, teleprompter'ınızı özelleştireceğinizi ve sunum ya da kayıt yapmaya başlayacağınızı öğrenin.",
-    "faqName": "VTeleprompter Sıkça Sorulan Sorular",
-    "faqDescription": "VTeleprompter, yapay zekâ sesli kaydırma, notch modu, uzaktan kumanda, desteklenen cihazlar ve video kaydı hakkında sıkça sorulan sorular."
+    "offerDescription": "SolPrompter çevrimiçi teleprompter özelliklerine ücretsiz erişim.",
+    "howToName": "SolPrompter Nasıl Kullanılır",
+    "howToDescription": "SolPrompter ile nasıl metin ekleyeceğinizi, kaydırma modu seçeceğinizi, teleprompter'ınızı özelleştireceğinizi ve sunum ya da kayıt yapmaya başlayacağınızı öğrenin.",
+    "faqName": "SolPrompter Sıkça Sorulan Sorular",
+    "faqDescription": "SolPrompter, yapay zekâ sesli kaydırma, notch modu, uzaktan kumanda, desteklenen cihazlar ve video kaydı hakkında sıkça sorulan sorular."
   },
   "nav": {
     "items": [
@@ -57,7 +57,7 @@
     "cta": { "label": "Çalışma Alanları", "url": "/workspaces" }
   },
   "hero": {
-    "eyebrow": "VTeleprompter — Yapay Zekâ Teleprompter",
+    "eyebrow": "SolPrompter — Yapay Zekâ Teleprompter",
     "title": "Ücretsiz Çevrimiçi Teleprompter",
     "subtitle": "Yapay zekâ sesli kaydırma, notch modu, uzaktan kumanda ve profesyonel 4K kayıtla doğal bir şekilde sunum yapın.",
     "placeholder": "Başlamak için metninizi yapıştırın veya bir dosya yükleyin...",
@@ -76,24 +76,24 @@
   "features": {
     "eyebrow": "Daha İyi Sunum Yapmak İçin İhtiyacınız Olan Her Şey",
     "title": "Her Kayıt İçin Tek Bir Teleprompter",
-    "description": "VTeleprompter; çevrimiçi teleprompter, yapay zekâ sesli kaydırma, notch modu, uzaktan kumanda, metin yönetimi ve profesyonel video kaydını tek bir basit çalışma alanında birleştirir.",
+    "description": "SolPrompter; çevrimiçi teleprompter, yapay zekâ sesli kaydırma, notch modu, uzaktan kumanda, metin yönetimi ve profesyonel video kaydını tek bir basit çalışma alanında birleştirir.",
     "items": [
-      { "title": "Yapay Zekâ Sesli Kaydırma", "description": "VTeleprompter konuşmanızı takip eder ve metninizi doğal konuşma hızınızda otomatik olarak kaydırır." },
+      { "title": "Yapay Zekâ Sesli Kaydırma", "description": "SolPrompter konuşmanızı takip eder ve metninizi doğal konuşma hızınızda otomatik olarak kaydırır." },
       { "title": "Notch Teleprompter", "description": "Görünür göz hareketlerini azaltmak ve daha doğal göz teması sürdürmek için metninizi kameraya yakın tutun." },
       { "title": "Uzaktan Kumanda", "description": "Kaydırmayı kontrol etmek, metninizde gezinmek ve sunumunuzu uzaktan yönetmek için başka bir telefon, tablet veya bilgisayar kullanın." },
       { "title": "Full HD ve 4K Kayıt", "description": "Metninizi doğrudan teleprompter'dan okurken profesyonel videolar kaydedin." },
       { "title": "Metin Yönetimi", "description": "Tüm metinlerinizi tek bir kullanışlı çalışma alanından oluşturun, yükleyin, düzenleyin, organize edin ve yeniden kullanın." },
       { "title": "Kayıt Kütüphanesi", "description": "Kayıtlarınızı, onları oluşturmak için kullanılan metinlerle birlikte kaydedin, gözden geçirin ve yönetin." },
-      { "title": "Mobil İçin Tasarlandı", "description": "Her ekran için tasarlanmış duyarlı arayüzle VTeleprompter'ı telefon, tablet, dizüstü ve masaüstü bilgisayarlarda rahatça kullanın." },
+      { "title": "Mobil İçin Tasarlandı", "description": "Her ekran için tasarlanmış duyarlı arayüzle SolPrompter'ı telefon, tablet, dizüstü ve masaüstü bilgisayarlarda rahatça kullanın." },
       { "title": "Reklam veya Filigran Yok", "description": "Videolarınızda dikkat dağıtan reklamlar veya markalı filigranlar olmadan sunum yapın ve kayıt alın." }
     ]
   },
   "howItWorks": {
     "eyebrow": "İlk Çekimden İtibaren Basit",
-    "title": "VTeleprompter Nasıl Çalışır",
+    "title": "SolPrompter Nasıl Çalışır",
     "description": "Herhangi bir metni yalnızca birkaç adımda akıcı bir sunuma veya profesyonel bir kayda dönüştürün.",
     "steps": [
-      { "anchor": "step-add-script", "title": "Metninizi Ekleyin", "description": "Metninizi doğrudan VTeleprompter'a yapıştırın veya cihazınızdan mevcut bir metni yükleyin." },
+      { "anchor": "step-add-script", "title": "Metninizi Ekleyin", "description": "Metninizi doğrudan SolPrompter'a yapıştırın veya cihazınızdan mevcut bir metni yükleyin." },
       { "anchor": "step-choose-scroll-mode", "title": "Kaydırma Modunuzu Seçin", "description": "Sabit bir kaydırma hızı ayarlayın, metni manuel olarak kontrol edin veya yapay zekâ sesli kaydırmayı etkinleştirin." },
       { "anchor": "step-customize-view", "title": "Görünümünüzü Özelleştirin", "description": "Rahat okuma için yazı tipini, metin boyutunu, satır aralığını, okuma alanını ve teleprompter konumunu ayarlayın." },
       { "anchor": "step-start-presenting", "title": "Sunuma Başlayın", "description": "Teleprompter'ı açın, gerekirse bir kumanda bağlayın ve sunuma ya da kayda başlayın." }
@@ -102,7 +102,7 @@
   "voiceScroll": {
     "eyebrow": "Sesinizin Hızında Kaydırın",
     "title": "Sizi Takip Eden Yapay Zekâ Sesli Kaydırma",
-    "description": "Konuşma hızınızı sabit bir kaydırma hızına göre ayarlamayı bırakın. VTeleprompter sesinizi takip eder, böylece mesajınızı doğal biçimde iletmeye odaklanabilirsiniz.",
+    "description": "Konuşma hızınızı sabit bir kaydırma hızına göre ayarlamayı bırakın. SolPrompter sesinizi takip eder, böylece mesajınızı doğal biçimde iletmeye odaklanabilirsiniz.",
     "benefits": [
       { "title": "Doğal Konuşun", "description": "Aceleci, yavaş ya da robotik görünmeden kendi hızınızda okuyun." },
       { "title": "İhtiyacınız Olduğunda Duraklayın", "description": "Nefes alın, bir fikri vurgulayın veya bölümler arasında duraklayın; yerinizi hemen kaybetmeyin." },
@@ -115,7 +115,7 @@
   "notch": {
     "eyebrow": "Doğal Göz Teması",
     "title": "Metninizi Kameraya Yakın Tutun",
-    "description": "VTeleprompter'ın notch modu, gözlerinizin objektife daha yakın odaklanmasına yardımcı olacak şekilde kameranızın yakınına kompakt bir okuma alanı yerleştirir.",
+    "description": "SolPrompter'ın notch modu, gözlerinizin objektife daha yakın odaklanmasına yardımcı olacak şekilde kameranızın yakınına kompakt bir okuma alanı yerleştirir.",
     "items": [
       "Belirgin yanlara doğru göz hareketlerini azaltın.",
       "Metni web kameranızın veya telefon kameranızın yakınına yerleştirin.",
@@ -147,7 +147,7 @@
       { "title": "Canlı Kamera Önizlemesi", "description": "Kaydınızdan önce ve kayıt sırasında konumunuzu, çerçevenizi ve görünümünüzü kontrol edin." },
       { "title": "Full HD Kayıt", "description": "Sosyal medya, dersler, sunumlar ve iş içerikleri için net, yüksek kaliteli videolar oluşturun." },
       { "title": "4K Kayıt", "description": "Kameranız, tarayıcınız ve cihazınız desteklediğinde profesyonel yüksek çözünürlüklü video çekin." },
-      { "title": "Filigran Yok", "description": "VTeleprompter logosu veya markalı bir katman olmadan temiz kayıtlar dışa aktarın." },
+      { "title": "Filigran Yok", "description": "SolPrompter logosu veya markalı bir katman olmadan temiz kayıtlar dışa aktarın." },
       { "title": "Kayıt Kütüphanesi", "description": "Çekimlerinizi düzenli tutun ve her metne ait kaydı hızlıca bulun." }
     ],
     "cta": { "label": "Kayda Başla", "url": "/workspaces" }
@@ -155,9 +155,9 @@
   "workspace": {
     "eyebrow": "İçerik Çalışma Alanınız",
     "title": "Metinleri ve Kayıtları Birlikte Yönetin",
-    "description": "Klasörler, belgeler ve ayrı uygulamalar arasında arama yapmayı bırakın. VTeleprompter, metinlerinizi ve kayıtlarınızı tek bir düzenli çalışma alanında tutar.",
+    "description": "Klasörler, belgeler ve ayrı uygulamalar arasında arama yapmayı bırakın. SolPrompter, metinlerinizi ve kayıtlarınızı tek bir düzenli çalışma alanında tutar.",
     "items": [
-      { "title": "Metin Oluşturun ve Düzenleyin", "description": "Doğrudan VTeleprompter içinde yeni metinler yazın veya mevcut içeriği güncelleyin." },
+      { "title": "Metin Oluşturun ve Düzenleyin", "description": "Doğrudan SolPrompter içinde yeni metinler yazın veya mevcut içeriği güncelleyin." },
       { "title": "Mevcut İçeriği Yükleyin", "description": "Her bölümü elle kopyalamak yerine desteklenen belgelerden metin içe aktarın." },
       { "title": "Kütüphanenizi Düzenleyin", "description": "Metinleri ve kayıtları, gelecekteki sunumlara hazır olacak şekilde düzenli tutun." },
       { "title": "Metinlerinizi Yeniden Kullanın", "description": "Önceki metinleri açın, hızlı değişiklikler yapın ve baştan başlamadan yeni sürümler kaydedin." },
@@ -167,18 +167,18 @@
   "mobile": {
     "eyebrow": "Her Ekran İçin Tasarlandı",
     "title": "Mobil Uyumlu Çevrimiçi Teleprompter",
-    "description": "VTeleprompter, hem masaüstü hem de mobil cihazlarda hızlı, net ve kontrolü kolay olacak şekilde tasarlanmıştır.",
+    "description": "SolPrompter, hem masaüstü hem de mobil cihazlarda hızlı, net ve kontrolü kolay olacak şekilde tasarlanmıştır.",
     "items": [
       { "title": "Duyarlı Arayüz", "description": "Temel kontroller farklı ekran boyutları ve yönlerinde kolayca erişilebilir kalır." },
       { "title": "Dikey ve Yatay", "description": "Kayıt düzeninize en uygun ekran yönünü seçin." },
       { "title": "Dokunmatik Uyumlu Kontroller", "description": "Metin, kaydırma ve kayıt ayarlarını dokunmatik ekrandan rahatça ayarlayın." },
-      { "title": "Kurulum Gerektirmez", "description": "VTeleprompter'ı desteklenen bir tarayıcıda açın ve teleprompter'ı çevrimiçi kullanmaya başlayın." }
+      { "title": "Kurulum Gerektirmez", "description": "SolPrompter'ı desteklenen bir tarayıcıda açın ve teleprompter'ı çevrimiçi kullanmaya başlayın." }
     ],
-    "supporting": "VTeleprompter'ı mobil teleprompter, masaüstü teleprompter veya tarayıcı tabanlı çevrimiçi suflör olarak kullanın."
+    "supporting": "SolPrompter'ı mobil teleprompter, masaüstü teleprompter veya tarayıcı tabanlı çevrimiçi suflör olarak kullanın."
   },
   "useCases": {
     "eyebrow": "Her Sunucu İçin Yapıldı",
-    "title": "VTeleprompter Kimler İçin?",
+    "title": "SolPrompter Kimler İçin?",
     "items": [
       { "title": "İçerik Üreticileri", "description": "Her satırı ezberlemeden TikTok videoları, YouTube videoları, Shorts, Reels ve diğer sosyal içerikleri kaydedin." },
       { "title": "YouTuber'lar", "description": "İncelemeleri, eğitimleri, açıklamaları ve konuşan kişi videolarını daha akıcı, daha özgüvenli bir sunumla aktarın." },
@@ -191,9 +191,9 @@
     ]
   },
   "comparison": {
-    "eyebrow": "Neden VTeleprompter?",
+    "eyebrow": "Neden SolPrompter?",
     "title": "Daha Eksiksiz Bir Ücretsiz Teleprompter",
-    "description": "VTeleprompter, kullanıcıları birden çok uygulamayı birleştirmeye veya temel özellikler için ödeme yapmaya zorlamadan eksiksiz bir teleprompter deneyimi sunmak için tasarlanmıştır.",
+    "description": "SolPrompter, kullanıcıları birden çok uygulamayı birleştirmeye veya temel özellikler için ödeme yapmaya zorlamadan eksiksiz bir teleprompter deneyimi sunmak için tasarlanmıştır.",
     "items": [
       "Yapay zekâ ile sesle kaydırma",
       "Notch teleprompter modu",
@@ -206,20 +206,20 @@
       "Basit ve modern kullanıcı deneyimi",
       "Temel teleprompter özelliklerine ücretsiz erişim"
     ],
-    "supporting": "Metninizi yazmaktan son çekimi kaydetmeye kadar, VTeleprompter ihtiyaç duyduğunuz araçları tek bir yerde sunar."
+    "supporting": "Metninizi yazmaktan son çekimi kaydetmeye kadar, SolPrompter ihtiyaç duyduğunuz araçları tek bir yerde sunar."
   },
   "about": {
-    "eyebrow": "VTeleprompter Hakkında",
+    "eyebrow": "SolPrompter Hakkında",
     "title": "Sunum Yapmayı Doğal Hissettirmek İçin Tasarlandı",
     "paragraphs": [
-      "VTeleprompter, her kelimeyi ezberlemeden veya sürekli kaydırma kontrollerini yönetmeden özgüvenle konuşmak isteyenler için oluşturulmuş bir yapay zekâ teleprompter'dır.",
+      "SolPrompter, her kelimeyi ezberlemeden veya sürekli kaydırma kontrollerini yönetmeden özgüvenle konuşmak isteyenler için oluşturulmuş bir yapay zekâ teleprompter'dır.",
       "Amacımız; güvenilir yapay zekâ kaydırmasını, özenli tasarımı, doğal göz teması araçlarını ve profesyonel kayıt özelliklerini birleştirerek en eksiksiz ve erişilebilir çevrimiçi teleprompter deneyimini oluşturmaktır.",
-      "İster telefondan kayıt yapın, ister dizüstü bilgisayardan sunum yapın ya da bir stüdyo kurulumunu uzaktan kontrol edin; VTeleprompter, yazılım yerine izleyicinize odaklanmanıza yardımcı olur."
+      "İster telefondan kayıt yapın, ister dizüstü bilgisayardan sunum yapın ya da bir stüdyo kurulumunu uzaktan kontrol edin; SolPrompter, yazılım yerine izleyicinize odaklanmanıza yardımcı olur."
     ]
   },
   "finalCta": {
     "eyebrow": "Sunuma Hazır mısınız?",
-    "title": "VTeleprompter'ı Kullanmaya Başlayın",
+    "title": "SolPrompter'ı Kullanmaya Başlayın",
     "description": "Metninizi ekleyin, tercih ettiğiniz okuma modunu seçin ve doğal bir şekilde sunuma başlayın.",
     "cta": { "label": "Ücretsiz Teleprompter'ı Aç", "url": "/workspaces" },
     "supporting": "Reklam yok. Filigran yok. Karmaşık kurulum yok."
@@ -228,20 +228,20 @@
     "eyebrow": "Sorular ve Yanıtlar",
     "title": "Sıkça Sorulan Sorular",
     "items": [
-      { "anchor": "faq-is-vteleprompter-free", "q": "VTeleprompter kullanımı ücretsiz mi?", "a": "VTeleprompter şu anda ücretsizdir. Temel teleprompter, metin ve kayıt özelliklerine reklam veya markalı bir video filigranı olmadan erişebilirsiniz." },
+      { "anchor": "faq-is-solprompter-free", "q": "SolPrompter kullanımı ücretsiz mi?", "a": "SolPrompter şu anda ücretsizdir. Temel teleprompter, metin ve kayıt özelliklerine reklam veya markalı bir video filigranı olmadan erişebilirsiniz." },
       { "anchor": "faq-what-is-ai-voice-scroll", "q": "Yapay Zekâ Sesli Kaydırma nedir?", "a": "Yapay Zekâ Sesli Kaydırma konuşmanızı dinler ve doğal konuşma hızınıza göre metinde ilerler. Sabit bir kaydırma hızını sürekli ayarlamadan duraklamanıza, devam etmenize ve sunum yapmanıza yardımcı olur." },
-      { "anchor": "faq-what-is-notch-mode", "q": "VTeleprompter Notch Modu nedir?", "a": "Notch Modu, kompakt bir teleprompter okuma alanını kameranıza yakın yerleştirir. Bu, görünür göz hareketlerini azaltmaya yardımcı olur ve kayıtlar, sunumlar ve görüntülü aramalar sırasında göz temasınızın daha doğal görünmesini sağlar." },
-      { "anchor": "faq-mobile-devices", "q": "VTeleprompter'ı telefon veya tablette kullanabilir miyim?", "a": "Evet. VTeleprompter'ın akıllı telefonlar, tabletler, dizüstü ve masaüstü bilgisayarlar için tasarlanmış duyarlı bir arayüzü vardır. Kullanılabilir özellikler tarayıcıya, kameraya ve cihaz olanaklarına bağlı olabilir." },
-      { "anchor": "faq-installation", "q": "VTeleprompter'ı kurmam gerekir mi?", "a": "Web sürümü için kurulum gerekmez. VTeleprompter'ı desteklenen modern bir tarayıcıda açabilir, metninizi ekleyebilir ve çevrimiçi sunuma başlayabilirsiniz." },
-      { "anchor": "faq-remote-control", "q": "VTeleprompter'ı başka bir cihazdan kontrol edebilir miyim?", "a": "Evet. VTeleprompter uzaktan kumanda, teleprompter'ı başlatmak veya duraklatmak, kaydırmayı ayarlamak ve metninizde gezinmek için başka bir telefon, tablet veya bilgisayar kullanmanıza olanak tanır." },
-      { "anchor": "faq-4k-recording", "q": "VTeleprompter videoları 4K olarak kaydedebilir mi?", "a": "VTeleprompter; kamera, tarayıcı ve cihaz seçilen çözünürlüğü desteklediğinde Full HD ve 4K kaydı destekler. Gerçek kayıt kalitesi cihazınızın olanaklarına ve izinlerine bağlıdır." },
-      { "anchor": "faq-watermark", "q": "VTeleprompter kayıtlara filigran ekler mi?", "a": "VTeleprompter kaydettiğiniz videolara markalı bir filigran eklemez." },
-      { "anchor": "faq-supported-files", "q": "VTeleprompter hangi metin dosyası biçimlerini destekler?", "a": "VTeleprompter, metni doğrudan yapıştırmayı ve TXT, DOCX, PDF ve Markdown dosyaları gibi desteklenen metin belgelerini yüklemeyi destekler." },
-      { "anchor": "faq-online-autocue", "q": "VTeleprompter çevrimiçi suflör olarak kullanılabilir mi?", "a": "Evet. VTeleprompter; manuel kaydırma, sabit hızlı otomatik kaydırma ve yapay zekâ ile sesle kaydırma sunan tarayıcı tabanlı bir çevrimiçi suflör olarak kullanılabilir." }
+      { "anchor": "faq-what-is-notch-mode", "q": "SolPrompter Notch Modu nedir?", "a": "Notch Modu, kompakt bir teleprompter okuma alanını kameranıza yakın yerleştirir. Bu, görünür göz hareketlerini azaltmaya yardımcı olur ve kayıtlar, sunumlar ve görüntülü aramalar sırasında göz temasınızın daha doğal görünmesini sağlar." },
+      { "anchor": "faq-mobile-devices", "q": "SolPrompter'ı telefon veya tablette kullanabilir miyim?", "a": "Evet. SolPrompter'ın akıllı telefonlar, tabletler, dizüstü ve masaüstü bilgisayarlar için tasarlanmış duyarlı bir arayüzü vardır. Kullanılabilir özellikler tarayıcıya, kameraya ve cihaz olanaklarına bağlı olabilir." },
+      { "anchor": "faq-installation", "q": "SolPrompter'ı kurmam gerekir mi?", "a": "Web sürümü için kurulum gerekmez. SolPrompter'ı desteklenen modern bir tarayıcıda açabilir, metninizi ekleyebilir ve çevrimiçi sunuma başlayabilirsiniz." },
+      { "anchor": "faq-remote-control", "q": "SolPrompter'ı başka bir cihazdan kontrol edebilir miyim?", "a": "Evet. SolPrompter uzaktan kumanda, teleprompter'ı başlatmak veya duraklatmak, kaydırmayı ayarlamak ve metninizde gezinmek için başka bir telefon, tablet veya bilgisayar kullanmanıza olanak tanır." },
+      { "anchor": "faq-4k-recording", "q": "SolPrompter videoları 4K olarak kaydedebilir mi?", "a": "SolPrompter; kamera, tarayıcı ve cihaz seçilen çözünürlüğü desteklediğinde Full HD ve 4K kaydı destekler. Gerçek kayıt kalitesi cihazınızın olanaklarına ve izinlerine bağlıdır." },
+      { "anchor": "faq-watermark", "q": "SolPrompter kayıtlara filigran ekler mi?", "a": "SolPrompter kaydettiğiniz videolara markalı bir filigran eklemez." },
+      { "anchor": "faq-supported-files", "q": "SolPrompter hangi metin dosyası biçimlerini destekler?", "a": "SolPrompter, metni doğrudan yapıştırmayı ve TXT, DOCX, PDF ve Markdown dosyaları gibi desteklenen metin belgelerini yüklemeyi destekler." },
+      { "anchor": "faq-online-autocue", "q": "SolPrompter çevrimiçi suflör olarak kullanılabilir mi?", "a": "Evet. SolPrompter; manuel kaydırma, sabit hızlı otomatik kaydırma ve yapay zekâ ile sesle kaydırma sunan tarayıcı tabanlı bir çevrimiçi suflör olarak kullanılabilir." }
     ]
   },
   "footer": {
-    "brand": "VTeleprompter",
+    "brand": "SolPrompter",
     "description": "Doğal sunumlar ve profesyonel video kaydı için ücretsiz çevrimiçi bir yapay zekâ teleprompter.",
     "columns": [
       {
@@ -274,6 +274,6 @@
         ]
       }
     ],
-    "copyright": "© 2026 VTeleprompter."
+    "copyright": "© 2026 SolPrompter."
   }
 }

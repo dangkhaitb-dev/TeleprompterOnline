@@ -132,7 +132,7 @@ lang: en
         </button>
       </div>
       <a href="/" class="ws-appbar-logo" aria-label="{{ pageData.appbar.brandAria }}">
-        {{ brandLogo('#8EDB4D') | safe }}
+        {{ brandLogo('#8EDB4D', 38, 57) | safe }}
         <span class="ws-appbar-logo-text">{{ pageData.appbar.brandText }}</span>
       </a>
     </div>
@@ -175,7 +175,7 @@ lang: en
 
         <div class="ws-credits-card ws-credits-card--free">
           <div class="ws-credits-header">
-            <span class="ws-credits-icon" aria-hidden="true">{{ brandLogo('currentColor') | safe }}</span>
+            <span class="ws-credits-icon" aria-hidden="true">{{ brandLogo('currentColor', 12, 18) | safe }}</span>
             <span class="ws-credits-label">{{ pageData.sidebar.creditsLabel }}</span>
           </div>
           <p class="ws-credits-text">{{ pageData.sidebar.creditsText | safe }}</p>

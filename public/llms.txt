@@ -1,28 +1,28 @@
-# VTeleprompter
+# SolPrompter
 
-> VTeleprompter is a free browser-based AI teleprompter for creators, educators, presenters and teams. It combines AI Voice Scroll, Notch Mode, remote control, script management and Full HD or 4K video recording in one web application.
+> SolPrompter is a free browser-based AI teleprompter for creators, educators, presenters and teams. It combines AI Voice Scroll, Notch Mode, remote control, script management and Full HD or 4K video recording in one web application.
 
-VTeleprompter runs in modern web browsers without requiring installation. Camera, microphone, voice-scrolling and recording capabilities depend on the user's browser, device support and permissions.
+SolPrompter runs in modern web browsers without requiring installation. Camera, microphone, voice-scrolling and recording capabilities depend on the user's browser, device support and permissions.
 
-VTeleprompter is currently free to use, without advertisements or a branded video watermark. Refer to the privacy policy for current details about accounts, local storage, cloud services and data processing.
+SolPrompter is currently free to use, without advertisements or a branded video watermark. Refer to the privacy policy for current details about accounts, local storage, cloud services and data processing.
 
 ## Product
 
-- [VTeleprompter home](https://vteleprompter.com/): Product overview, key features and access to the online teleprompter.
-- [Teleprompter guide](https://vteleprompter.com/teleprompter-guide): Step-by-step instructions for adding a script, choosing a scrolling mode, adjusting the reading view, using Notch Mode, connecting a remote and recording video.
-- [About VTeleprompter](https://vteleprompter.com/about): Product mission, intended users, design principles and feature overview.
-- [Plans and billing](https://vteleprompter.com/billing): Current plan and billing information.
+- [SolPrompter home](https://solprompter.com/): Product overview, key features and access to the online teleprompter.
+- [Teleprompter guide](https://solprompter.com/teleprompter-guide): Step-by-step instructions for adding a script, choosing a scrolling mode, adjusting the reading view, using Notch Mode, connecting a remote and recording video.
+- [About SolPrompter](https://solprompter.com/about): Product mission, intended users, design principles and feature overview.
+- [Plans and billing](https://solprompter.com/billing): Current plan and billing information.
 
 ## Research and Updates
 
-- [VTeleprompter blog](https://vteleprompter.com/blog): Product research, announcements and articles.
-- [Inside VTeleprompter: Every AI Teleprompter Feature Tested](https://vteleprompter.com/blog/inside-vteleprompter-every-ai-teleprompter-feature-tested): Detailed testing of AI Voice Scroll, Notch Mode, remote control, recording, privacy and performance.
+- [SolPrompter blog](https://solprompter.com/blog): Product research, announcements and articles.
+- [Inside SolPrompter: Every AI Teleprompter Feature Tested](https://solprompter.com/blog/inside-solprompter-every-ai-teleprompter-feature-tested): Detailed testing of AI Voice Scroll, Notch Mode, remote control, recording, privacy and performance.
 
 ## Policies
 
-- [Privacy and Cookie Policy](https://vteleprompter.com/policy): How VTeleprompter handles accounts, scripts, recordings, camera and microphone access, cookies and third-party services.
-- [Terms of Service](https://vteleprompter.com/term): Conditions governing access, recordings, user content, acceptable use and paid services.
+- [Privacy and Cookie Policy](https://solprompter.com/policy): How SolPrompter handles accounts, scripts, recordings, camera and microphone access, cookies and third-party services.
+- [Terms of Service](https://solprompter.com/term): Conditions governing access, recordings, user content, acceptable use and paid services.
 
 ## Optional
 
-- [XML sitemap](https://vteleprompter.com/sitemap.xml): Complete list of indexable pages and localized homepages.
+- [XML sitemap](https://solprompter.com/sitemap.xml): Complete list of indexable pages and localized homepages.

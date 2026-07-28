@@ -3715,7 +3715,7 @@ html.theme-instant *::after {
   display: none !important;
 }
 
-/* ===== VPromter additions (not in the demo): empty-state, review panel, and
+/* ===== SolPrompter additions (not in the demo): empty-state, review panel, and
    scene-editor mount. Kept minimal and token-driven. ===== */
 .tp-empty {
   position: fixed;

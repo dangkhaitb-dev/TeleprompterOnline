@@ -77,7 +77,7 @@ export async function exportSelectedBackup(
   return {
     ...artifact,
     entryCount: entries.length,
-    filename: `vteleprompter-selection-${isoDateStamp(now)}.zip`,
+    filename: `solprompter-selection-${isoDateStamp(now)}.zip`,
   };
 }
 

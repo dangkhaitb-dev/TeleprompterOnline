@@ -20,7 +20,7 @@ const HTML = `
 function makeDoc() {
   const links = [];
   return {
-    baseURI: 'https://vteleprompter.test/',
+    baseURI: 'https://solprompter.test/',
     head: { appendChild: (el) => links.push(el) },
     createElement: () => ({ rel: '', href: '' }),
     querySelector: (selector) => {
@@ -111,7 +111,7 @@ describe('fetchPageHtml', () => {
     expect(first).toBe(HTML);
     expect(second).toBe(HTML);
     expect(fetchImpl).toHaveBeenCalledTimes(1);
-    expect(fetchImpl).toHaveBeenCalledWith('https://vteleprompter.test/teleprompter', {
+    expect(fetchImpl).toHaveBeenCalledWith('https://solprompter.test/teleprompter', {
       credentials: 'same-origin',
       priority: 'low',
     });
@@ -138,11 +138,11 @@ describe('fetchPageHtml', () => {
     await fetchPageHtml('/warm', { doc, fetch: fetchImpl, cache: new Map() });
     await fetchPageHtml('/click', { doc, fetch: fetchImpl, cache: new Map(), priority: 'high' });
 
-    expect(fetchImpl).toHaveBeenNthCalledWith(1, 'https://vteleprompter.test/warm', {
+    expect(fetchImpl).toHaveBeenNthCalledWith(1, 'https://solprompter.test/warm', {
       credentials: 'same-origin',
       priority: 'low',
     });
-    expect(fetchImpl).toHaveBeenNthCalledWith(2, 'https://vteleprompter.test/click', {
+    expect(fetchImpl).toHaveBeenNthCalledWith(2, 'https://solprompter.test/click', {
       credentials: 'same-origin',
       priority: 'high',
     });
@@ -174,8 +174,8 @@ describe('fetchPageHtml', () => {
 
     expect(fetchImpl).toHaveBeenCalledTimes(2);
     // The cache holds the settled fetch promise, keyed per absolute URL.
-    expect(await cache.get('https://vteleprompter.test/a')).toBe('page:https://vteleprompter.test/a');
-    expect(await cache.get('https://vteleprompter.test/b')).toBe('page:https://vteleprompter.test/b');
+    expect(await cache.get('https://solprompter.test/a')).toBe('page:https://solprompter.test/a');
+    expect(await cache.get('https://solprompter.test/b')).toBe('page:https://solprompter.test/b');
   });
 });
 
@@ -186,15 +186,15 @@ describe('prefetchPageAssets', () => {
 
     await prefetchPageAssets('/teleprompter.html', { doc, fetch: fetchImpl, cache: new Map() });
 
-    expect(fetchImpl).toHaveBeenCalledWith('https://vteleprompter.test/teleprompter.html', {
+    expect(fetchImpl).toHaveBeenCalledWith('https://solprompter.test/teleprompter.html', {
       credentials: 'same-origin',
       priority: 'low',
     });
     expect(doc.prefetched.map((l) => l.href)).toEqual([
-      'https://vteleprompter.test/teleprompter.html',
-      'https://vteleprompter.test/assets/teleprompter-def.js',
-      'https://vteleprompter.test/assets/teleprompter-abc.css',
-      'https://vteleprompter.test/assets/firebase-xyz.js',
+      'https://solprompter.test/teleprompter.html',
+      'https://solprompter.test/assets/teleprompter-def.js',
+      'https://solprompter.test/assets/teleprompter-abc.css',
+      'https://solprompter.test/assets/firebase-xyz.js',
     ]);
     expect(doc.prefetched.every((l) => l.rel === 'prefetch')).toBe(true);
   });
@@ -224,7 +224,7 @@ describe('prefetchPageAssets', () => {
     ).resolves.toBeUndefined();
     // The document hint is injected before the fetch, then the error is swallowed.
     expect(doc.prefetched.map((l) => l.href)).toEqual([
-      'https://vteleprompter.test/teleprompter.html',
+      'https://solprompter.test/teleprompter.html',
     ]);
   });
 

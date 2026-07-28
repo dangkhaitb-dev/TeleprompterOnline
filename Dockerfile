@@ -6,7 +6,7 @@ COPY package.json package-lock.json ./
 RUN npm ci --ignore-scripts
 COPY . .
 # Canonical/og:url domain baked at build time (test vs production)
-ARG SITE_URL=https://vteleprompter.com
+ARG SITE_URL=https://solprompter.com
 ENV SITE_URL=$SITE_URL
 RUN npm run build
 

@@ -1,24 +1,24 @@
 {
   "seo": {
-    "title": "Gobbo online gratuito con scorrimento vocale IA | VTeleprompter",
-    "description": "Usa VTeleprompter, un gobbo online gratuito con scorrimento vocale IA, modalità notch, controllo remoto e registrazione in 4K. Senza pubblicità né filigrana.",
+    "title": "Gobbo online gratuito con scorrimento vocale IA | SolPrompter",
+    "description": "Usa SolPrompter, un gobbo online gratuito con scorrimento vocale IA, modalità notch, controllo remoto e registrazione in 4K. Senza pubblicità né filigrana.",
     "canonical": "/it/",
-    "ogTitle": "Gobbo con IA online e gratuito — VTeleprompter",
+    "ogTitle": "Gobbo con IA online e gratuito — SolPrompter",
     "ogDescription": "Presenta in modo naturale con scorrimento vocale IA, modalità notch, controllo remoto e registrazione video professionale.",
     "ogType": "website",
-    "ogImage": "/og-vteleprompter.jpg"
+    "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "VTeleprompter offre un gobbo online con IA gratuito per presentazioni naturali e registrazione video professionale.",
-    "brandDescription": "VTeleprompter è un gobbo online con IA pensato per presentazioni naturali e registrazione video professionale.",
+    "orgDescription": "SolPrompter offre un gobbo online con IA gratuito per presentazioni naturali e registrazione video professionale.",
+    "brandDescription": "SolPrompter è un gobbo online con IA pensato per presentazioni naturali e registrazione video professionale.",
     "websiteDescription": "Un gobbo online gratuito con scorrimento vocale IA, modalità notch, controllo remoto e registrazione video professionale.",
-    "webpageName": "Gobbo online gratuito con scorrimento vocale IA | VTeleprompter",
-    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "webpageName": "Gobbo online gratuito con scorrimento vocale IA | SolPrompter",
+    "alternateNames": ["SolPrompter", "solprompter.com"],
     "logoUrl": "/logo.png",
-    "logoCaption": "VTeleprompter",
-    "primaryImage": "/og-vteleprompter.jpg",
-    "primaryImageCaption": "VTeleprompter, gobbo online con IA gratuito",
-    "appAlternateName": "VTeleprompter Gobbo Online",
+    "logoCaption": "SolPrompter",
+    "primaryImage": "/og-solprompter.jpg",
+    "primaryImageCaption": "SolPrompter, gobbo online con IA gratuito",
+    "appAlternateName": "SolPrompter Gobbo Online",
     "appDescription": "Un gobbo online con IA gratuito con scorrimento attivato dalla voce, modalità notch, controllo remoto, gestione degli script e registrazione video professionale in Full HD e 4K.",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "Gobbo online",
@@ -41,11 +41,11 @@
       "Nessuna pubblicità",
       "Nessuna filigrana sul video"
     ],
-    "offerDescription": "Accesso gratuito alle funzioni del gobbo online VTeleprompter.",
-    "howToName": "Come usare VTeleprompter",
-    "howToDescription": "Scopri come aggiungere uno script, scegliere una modalità di scorrimento, personalizzare il tuo gobbo e iniziare a presentare o registrare con VTeleprompter.",
-    "faqName": "Domande frequenti su VTeleprompter",
-    "faqDescription": "Domande frequenti su VTeleprompter, scorrimento vocale IA, modalità notch, controllo remoto, dispositivi supportati e registrazione video."
+    "offerDescription": "Accesso gratuito alle funzioni del gobbo online SolPrompter.",
+    "howToName": "Come usare SolPrompter",
+    "howToDescription": "Scopri come aggiungere uno script, scegliere una modalità di scorrimento, personalizzare il tuo gobbo e iniziare a presentare o registrare con SolPrompter.",
+    "faqName": "Domande frequenti su SolPrompter",
+    "faqDescription": "Domande frequenti su SolPrompter, scorrimento vocale IA, modalità notch, controllo remoto, dispositivi supportati e registrazione video."
   },
   "nav": {
     "items": [
@@ -57,7 +57,7 @@
     "cta": { "label": "Spazi di lavoro", "url": "/workspaces" }
   },
   "hero": {
-    "eyebrow": "VTeleprompter — Gobbo con IA",
+    "eyebrow": "SolPrompter — Gobbo con IA",
     "title": "Gobbo online gratuito",
     "subtitle": "Presenta in modo naturale con scorrimento vocale IA, modalità notch, controllo remoto e registrazione professionale in 4K.",
     "placeholder": "Incolla il tuo script o carica un file per iniziare...",
@@ -76,24 +76,24 @@
   "features": {
     "eyebrow": "Tutto ciò che serve per presentare meglio",
     "title": "Un solo gobbo per ogni registrazione",
-    "description": "VTeleprompter unisce gobbo online, scorrimento vocale IA, modalità notch, controllo remoto, gestione degli script e registrazione video professionale in un unico spazio di lavoro semplice.",
+    "description": "SolPrompter unisce gobbo online, scorrimento vocale IA, modalità notch, controllo remoto, gestione degli script e registrazione video professionale in un unico spazio di lavoro semplice.",
     "items": [
-      { "title": "Scorrimento vocale IA", "description": "VTeleprompter segue la tua voce e fa scorrere lo script automaticamente al ritmo naturale del tuo parlato." },
+      { "title": "Scorrimento vocale IA", "description": "SolPrompter segue la tua voce e fa scorrere lo script automaticamente al ritmo naturale del tuo parlato." },
       { "title": "Gobbo Notch", "description": "Tieni lo script vicino alla fotocamera per ridurre i movimenti visibili degli occhi e mantenere un contatto visivo più naturale." },
       { "title": "Controllo remoto", "description": "Usa un altro telefono, tablet o computer per controllare lo scorrimento, muoverti nello script e gestire la presentazione a distanza." },
       { "title": "Registrazione Full HD e 4K", "description": "Registra video professionali mentre leggi lo script direttamente dal gobbo." },
       { "title": "Gestione degli script", "description": "Crea, carica, modifica, organizza e riutilizza tutti i tuoi script da un comodo spazio di lavoro." },
       { "title": "Libreria delle registrazioni", "description": "Salva, rivedi e gestisci le tue registrazioni insieme agli script usati per crearle." },
-      { "title": "Pensato per il mobile", "description": "Usa VTeleprompter comodamente su telefoni, tablet, laptop e computer desktop con un'interfaccia responsive adatta a ogni schermo." },
+      { "title": "Pensato per il mobile", "description": "Usa SolPrompter comodamente su telefoni, tablet, laptop e computer desktop con un'interfaccia responsive adatta a ogni schermo." },
       { "title": "Niente pubblicità né filigrana", "description": "Presenta e registra senza pubblicità che distraggono o filigrane di marca sui tuoi video." }
     ]
   },
   "howItWorks": {
     "eyebrow": "Semplice fin dal primo ciak",
-    "title": "Come funziona VTeleprompter",
+    "title": "Come funziona SolPrompter",
     "description": "Trasforma qualsiasi script in una presentazione fluida o in una registrazione professionale in pochi passaggi.",
     "steps": [
-      { "anchor": "step-add-script", "title": "Aggiungi il tuo script", "description": "Incolla il testo direttamente in VTeleprompter o carica uno script esistente dal tuo dispositivo." },
+      { "anchor": "step-add-script", "title": "Aggiungi il tuo script", "description": "Incolla il testo direttamente in SolPrompter o carica uno script esistente dal tuo dispositivo." },
       { "anchor": "step-choose-scroll-mode", "title": "Scegli la modalità di scorrimento", "description": "Imposta una velocità di scorrimento fissa, controlla lo script manualmente o attiva lo scorrimento vocale IA." },
       { "anchor": "step-customize-view", "title": "Personalizza la vista", "description": "Regola font, dimensione del testo, interlinea, area di lettura e posizione del gobbo per una lettura comoda." },
       { "anchor": "step-start-presenting", "title": "Inizia a presentare", "description": "Apri il gobbo, collega un telecomando se necessario e inizia a presentare o registrare." }
@@ -102,7 +102,7 @@
   "voiceScroll": {
     "eyebrow": "Scorri alla velocità della tua voce",
     "title": "Uno scorrimento vocale IA che ti segue",
-    "description": "Smetti di adattare il tuo ritmo a una velocità di scorrimento fissa. VTeleprompter segue la tua voce così puoi concentrarti sul trasmettere il messaggio in modo naturale.",
+    "description": "Smetti di adattare il tuo ritmo a una velocità di scorrimento fissa. SolPrompter segue la tua voce così puoi concentrarti sul trasmettere il messaggio in modo naturale.",
     "benefits": [
       { "title": "Parla in modo naturale", "description": "Leggi al tuo ritmo senza sembrare frettoloso, lento o robotico." },
       { "title": "Fai pause quando serve", "description": "Prendi fiato, enfatizza un'idea o fai una pausa tra le sezioni senza perdere subito il segno." },
@@ -115,7 +115,7 @@
   "notch": {
     "eyebrow": "Contatto visivo naturale",
     "title": "Tieni lo script vicino alla fotocamera",
-    "description": "La modalità notch di VTeleprompter posiziona un'area di lettura compatta vicino alla fotocamera, aiutando lo sguardo a restare più vicino all'obiettivo.",
+    "description": "La modalità notch di SolPrompter posiziona un'area di lettura compatta vicino alla fotocamera, aiutando lo sguardo a restare più vicino all'obiettivo.",
     "items": [
       "Riduci gli evidenti movimenti degli occhi da un lato all'altro.",
       "Posiziona lo script vicino alla webcam o alla fotocamera del telefono.",
@@ -147,7 +147,7 @@
       { "title": "Anteprima fotocamera in tempo reale", "description": "Controlla posizione, inquadratura e aspetto prima e durante la registrazione." },
       { "title": "Registrazione Full HD", "description": "Crea video nitidi e di alta qualità per social media, lezioni, presentazioni e contenuti aziendali." },
       { "title": "Registrazione 4K", "description": "Cattura video professionali ad alta risoluzione quando fotocamera, browser e dispositivo lo supportano." },
-      { "title": "Nessuna filigrana", "description": "Esporta registrazioni pulite senza logo VTeleprompter o sovrapposizioni di marca." },
+      { "title": "Nessuna filigrana", "description": "Esporta registrazioni pulite senza logo SolPrompter o sovrapposizioni di marca." },
       { "title": "Libreria delle registrazioni", "description": "Mantieni i tuoi ciak organizzati e trova rapidamente la registrazione associata a ogni script." }
     ],
     "cta": { "label": "Inizia a registrare", "url": "/workspaces" }
@@ -155,9 +155,9 @@
   "workspace": {
     "eyebrow": "Il tuo spazio dei contenuti",
     "title": "Gestisci script e registrazioni insieme",
-    "description": "Smetti di cercare tra cartelle, documenti e applicazioni separate. VTeleprompter tiene script e registrazioni in un unico spazio di lavoro organizzato.",
+    "description": "Smetti di cercare tra cartelle, documenti e applicazioni separate. SolPrompter tiene script e registrazioni in un unico spazio di lavoro organizzato.",
     "items": [
-      { "title": "Crea e modifica script", "description": "Scrivi nuovi script o aggiorna contenuti esistenti direttamente in VTeleprompter." },
+      { "title": "Crea e modifica script", "description": "Scrivi nuovi script o aggiorna contenuti esistenti direttamente in SolPrompter." },
       { "title": "Carica contenuti esistenti", "description": "Importa script da documenti supportati invece di copiare ogni sezione a mano." },
       { "title": "Organizza la tua libreria", "description": "Tieni script e registrazioni ordinati e pronti per le presentazioni future." },
       { "title": "Riutilizza i tuoi script", "description": "Apri script precedenti, apporta modifiche rapide e registra nuove versioni senza ricominciare da capo." },
@@ -167,18 +167,18 @@
   "mobile": {
     "eyebrow": "Progettato per ogni schermo",
     "title": "Un gobbo online ottimizzato per il mobile",
-    "description": "VTeleprompter è progettato per risultare veloce, chiaro e facile da controllare sia su desktop sia su dispositivi mobili.",
+    "description": "SolPrompter è progettato per risultare veloce, chiaro e facile da controllare sia su desktop sia su dispositivi mobili.",
     "items": [
       { "title": "Interfaccia responsive", "description": "I comandi essenziali restano facili da raggiungere su diverse dimensioni e orientamenti dello schermo." },
       { "title": "Verticale e orizzontale", "description": "Scegli l'orientamento dello schermo più adatto al tuo setup di registrazione." },
       { "title": "Comandi ottimizzati per il tocco", "description": "Regola testo, scorrimento e impostazioni di registrazione comodamente da uno schermo touch." },
-      { "title": "Nessuna installazione richiesta", "description": "Apri VTeleprompter in un browser supportato e inizia a usare il gobbo online." }
+      { "title": "Nessuna installazione richiesta", "description": "Apri SolPrompter in un browser supportato e inizia a usare il gobbo online." }
     ],
-    "supporting": "Usa VTeleprompter come gobbo mobile, gobbo desktop o gobbo online basato su browser."
+    "supporting": "Usa SolPrompter come gobbo mobile, gobbo desktop o gobbo online basato su browser."
   },
   "useCases": {
     "eyebrow": "Fatto per ogni presentatore",
-    "title": "A chi è rivolto VTeleprompter?",
+    "title": "A chi è rivolto SolPrompter?",
     "items": [
       { "title": "Creator di contenuti", "description": "Registra video per TikTok, YouTube, Shorts, Reels e altri contenuti social senza memorizzare ogni battuta." },
       { "title": "YouTuber", "description": "Realizza recensioni, tutorial, video esplicativi e contenuti in camera con una presentazione più fluida e sicura." },
@@ -191,9 +191,9 @@
     ]
   },
   "comparison": {
-    "eyebrow": "Perché VTeleprompter?",
+    "eyebrow": "Perché SolPrompter?",
     "title": "Un gobbo gratuito più completo",
-    "description": "VTeleprompter è pensato per offrire un'esperienza di gobbo completa senza costringere gli utenti a combinare più applicazioni o a pagare per le funzioni di base.",
+    "description": "SolPrompter è pensato per offrire un'esperienza di gobbo completa senza costringere gli utenti a combinare più applicazioni o a pagare per le funzioni di base.",
     "items": [
       "Scorrimento attivato dalla voce con IA",
       "Modalità notch del gobbo",
@@ -206,20 +206,20 @@
       "Esperienza d'uso semplice e moderna",
       "Accesso gratuito alle funzioni essenziali del gobbo"
     ],
-    "supporting": "Dalla scrittura dello script alla registrazione del ciak finale, VTeleprompter ti offre gli strumenti che ti servono in un unico posto."
+    "supporting": "Dalla scrittura dello script alla registrazione del ciak finale, SolPrompter ti offre gli strumenti che ti servono in un unico posto."
   },
   "about": {
-    "eyebrow": "Informazioni su VTeleprompter",
+    "eyebrow": "Informazioni su SolPrompter",
     "title": "Creato per rendere naturale il presentare",
     "paragraphs": [
-      "VTeleprompter è un gobbo con IA creato per chi vuole parlare con sicurezza senza memorizzare ogni parola o gestire di continuo i comandi di scorrimento.",
+      "SolPrompter è un gobbo con IA creato per chi vuole parlare con sicurezza senza memorizzare ogni parola o gestire di continuo i comandi di scorrimento.",
       "Il nostro obiettivo è offrire l'esperienza di gobbo online più completa e accessibile, unendo uno scorrimento IA affidabile, un design curato, strumenti per un contatto visivo naturale e funzioni di registrazione professionale.",
-      "Che tu stia registrando da un telefono, presentando da un laptop o controllando uno studio da remoto, VTeleprompter ti aiuta a concentrarti sul tuo pubblico invece che sul software."
+      "Che tu stia registrando da un telefono, presentando da un laptop o controllando uno studio da remoto, SolPrompter ti aiuta a concentrarti sul tuo pubblico invece che sul software."
     ]
   },
   "finalCta": {
     "eyebrow": "Pronto a presentare?",
-    "title": "Inizia a usare VTeleprompter",
+    "title": "Inizia a usare SolPrompter",
     "description": "Aggiungi il tuo script, scegli la modalità di lettura preferita e inizia a presentare in modo naturale.",
     "cta": { "label": "Apri il gobbo gratuito", "url": "/workspaces" },
     "supporting": "Niente pubblicità. Niente filigrana. Nessuna configurazione complicata."
@@ -228,20 +228,20 @@
     "eyebrow": "Domande e risposte",
     "title": "Domande frequenti",
     "items": [
-      { "anchor": "faq-is-vteleprompter-free", "q": "VTeleprompter è gratuito?", "a": "VTeleprompter è attualmente gratuito. Puoi accedere alle sue funzioni essenziali di gobbo, script e registrazione senza pubblicità o filigrana di marca sul video." },
+      { "anchor": "faq-is-solprompter-free", "q": "SolPrompter è gratuito?", "a": "SolPrompter è attualmente gratuito. Puoi accedere alle sue funzioni essenziali di gobbo, script e registrazione senza pubblicità o filigrana di marca sul video." },
       { "anchor": "faq-what-is-ai-voice-scroll", "q": "Cos'è lo scorrimento vocale IA?", "a": "Lo scorrimento vocale IA ascolta il tuo parlato e avanza nello script in base al tuo ritmo naturale. Ti aiuta a fare pause, riprendere e presentare senza regolare di continuo una velocità di scorrimento fissa." },
-      { "anchor": "faq-what-is-notch-mode", "q": "Cos'è la modalità Notch di VTeleprompter?", "a": "La modalità Notch posiziona un'area di lettura compatta del gobbo vicino alla fotocamera. Questo aiuta a ridurre i movimenti visibili degli occhi e rende il contatto visivo più naturale durante registrazioni, presentazioni e videochiamate." },
-      { "anchor": "faq-mobile-devices", "q": "Posso usare VTeleprompter su telefono o tablet?", "a": "Sì. VTeleprompter ha un'interfaccia responsive pensata per smartphone, tablet, laptop e computer desktop. Le funzioni disponibili possono dipendere dal browser, dalla fotocamera e dalle capacità del dispositivo." },
-      { "anchor": "faq-installation", "q": "Devo installare VTeleprompter?", "a": "Per la versione web non è richiesta alcuna installazione. Puoi aprire VTeleprompter in un browser moderno supportato, aggiungere il tuo script e iniziare a presentare online." },
-      { "anchor": "faq-remote-control", "q": "Posso controllare VTeleprompter da un altro dispositivo?", "a": "Sì. Il controllo remoto di VTeleprompter ti permette di usare un altro telefono, tablet o computer per avviare o mettere in pausa il gobbo, regolare lo scorrimento e navigare nello script." },
-      { "anchor": "faq-4k-recording", "q": "VTeleprompter può registrare video in 4K?", "a": "VTeleprompter supporta la registrazione in Full HD e 4K quando fotocamera, browser e dispositivo supportano la risoluzione scelta. La qualità reale della registrazione dipende dalle capacità e dalle autorizzazioni del tuo dispositivo." },
-      { "anchor": "faq-watermark", "q": "VTeleprompter aggiunge una filigrana alle registrazioni?", "a": "VTeleprompter non aggiunge una filigrana di marca ai tuoi video registrati." },
-      { "anchor": "faq-supported-files", "q": "Quali formati di file per gli script supporta VTeleprompter?", "a": "VTeleprompter permette di incollare il testo direttamente e di caricare documenti di script supportati come file TXT, DOCX, PDF e Markdown." },
-      { "anchor": "faq-online-autocue", "q": "VTeleprompter può essere usato come gobbo online?", "a": "Sì. VTeleprompter può essere usato come gobbo online basato su browser con scorrimento manuale, scorrimento automatico a velocità fissa e scorrimento attivato dalla voce con IA." }
+      { "anchor": "faq-what-is-notch-mode", "q": "Cos'è la modalità Notch di SolPrompter?", "a": "La modalità Notch posiziona un'area di lettura compatta del gobbo vicino alla fotocamera. Questo aiuta a ridurre i movimenti visibili degli occhi e rende il contatto visivo più naturale durante registrazioni, presentazioni e videochiamate." },
+      { "anchor": "faq-mobile-devices", "q": "Posso usare SolPrompter su telefono o tablet?", "a": "Sì. SolPrompter ha un'interfaccia responsive pensata per smartphone, tablet, laptop e computer desktop. Le funzioni disponibili possono dipendere dal browser, dalla fotocamera e dalle capacità del dispositivo." },
+      { "anchor": "faq-installation", "q": "Devo installare SolPrompter?", "a": "Per la versione web non è richiesta alcuna installazione. Puoi aprire SolPrompter in un browser moderno supportato, aggiungere il tuo script e iniziare a presentare online." },
+      { "anchor": "faq-remote-control", "q": "Posso controllare SolPrompter da un altro dispositivo?", "a": "Sì. Il controllo remoto di SolPrompter ti permette di usare un altro telefono, tablet o computer per avviare o mettere in pausa il gobbo, regolare lo scorrimento e navigare nello script." },
+      { "anchor": "faq-4k-recording", "q": "SolPrompter può registrare video in 4K?", "a": "SolPrompter supporta la registrazione in Full HD e 4K quando fotocamera, browser e dispositivo supportano la risoluzione scelta. La qualità reale della registrazione dipende dalle capacità e dalle autorizzazioni del tuo dispositivo." },
+      { "anchor": "faq-watermark", "q": "SolPrompter aggiunge una filigrana alle registrazioni?", "a": "SolPrompter non aggiunge una filigrana di marca ai tuoi video registrati." },
+      { "anchor": "faq-supported-files", "q": "Quali formati di file per gli script supporta SolPrompter?", "a": "SolPrompter permette di incollare il testo direttamente e di caricare documenti di script supportati come file TXT, DOCX, PDF e Markdown." },
+      { "anchor": "faq-online-autocue", "q": "SolPrompter può essere usato come gobbo online?", "a": "Sì. SolPrompter può essere usato come gobbo online basato su browser con scorrimento manuale, scorrimento automatico a velocità fissa e scorrimento attivato dalla voce con IA." }
     ]
   },
   "footer": {
-    "brand": "VTeleprompter",
+    "brand": "SolPrompter",
     "description": "Un gobbo online con IA gratuito per presentazioni naturali e registrazione video professionale.",
     "columns": [
       {
@@ -274,6 +274,6 @@
         ]
       }
     ],
-    "copyright": "© 2026 VTeleprompter."
+    "copyright": "© 2026 SolPrompter."
   }
 }

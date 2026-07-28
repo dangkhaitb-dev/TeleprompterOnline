@@ -1,24 +1,24 @@
 {
   "seo": {
-    "title": "支持 AI 语音滚动的免费在线提词器 | VTeleprompter",
-    "description": "VTeleprompter 是一款免费在线提词器，支持 AI 语音滚动、刘海模式、远程遥控和 4K 录制。无广告、无水印。",
+    "title": "支持 AI 语音滚动的免费在线提词器 | SolPrompter",
+    "description": "SolPrompter 是一款免费在线提词器，支持 AI 语音滚动、刘海模式、远程遥控和 4K 录制。无广告、无水印。",
     "canonical": "/zh/",
-    "ogTitle": "免费在线 AI 提词器 — VTeleprompter",
+    "ogTitle": "免费在线 AI 提词器 — SolPrompter",
     "ogDescription": "借助 AI 语音滚动、刘海模式、远程遥控和专业视频录制，自然地进行演讲。",
     "ogType": "website",
-    "ogImage": "/og-vteleprompter.jpg"
+    "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "VTeleprompter 提供免费在线 AI 提词器，助力自然演讲和专业视频录制。",
-    "brandDescription": "VTeleprompter 是一款专为自然演讲和专业视频录制而设计的在线 AI 提词器。",
+    "orgDescription": "SolPrompter 提供免费在线 AI 提词器，助力自然演讲和专业视频录制。",
+    "brandDescription": "SolPrompter 是一款专为自然演讲和专业视频录制而设计的在线 AI 提词器。",
     "websiteDescription": "一款免费在线提词器，支持 AI 语音滚动、刘海模式、远程遥控和专业视频录制。",
-    "webpageName": "支持 AI 语音滚动的免费在线提词器 | VTeleprompter",
-    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "webpageName": "支持 AI 语音滚动的免费在线提词器 | SolPrompter",
+    "alternateNames": ["SolPrompter", "solprompter.com"],
     "logoUrl": "/logo.png",
-    "logoCaption": "VTeleprompter",
-    "primaryImage": "/og-vteleprompter.jpg",
-    "primaryImageCaption": "VTeleprompter 免费在线 AI 提词器",
-    "appAlternateName": "VTeleprompter 在线提词器",
+    "logoCaption": "SolPrompter",
+    "primaryImage": "/og-solprompter.jpg",
+    "primaryImageCaption": "SolPrompter 免费在线 AI 提词器",
+    "appAlternateName": "SolPrompter 在线提词器",
     "appDescription": "一款免费在线 AI 提词器，支持语音激活滚动、刘海模式、远程遥控、脚本管理以及专业的全高清和 4K 视频录制。",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "在线提词器",
@@ -41,11 +41,11 @@
       "无广告",
       "视频无水印"
     ],
-    "offerDescription": "免费使用 VTeleprompter 在线提词器的各项功能。",
-    "howToName": "如何使用 VTeleprompter",
-    "howToDescription": "了解如何添加脚本、选择滚动模式、自定义提词器，并使用 VTeleprompter 开始演讲或录制。",
-    "faqName": "VTeleprompter 常见问题",
-    "faqDescription": "关于 VTeleprompter、AI 语音滚动、刘海模式、远程遥控、支持的设备和视频录制的常见问题。"
+    "offerDescription": "免费使用 SolPrompter 在线提词器的各项功能。",
+    "howToName": "如何使用 SolPrompter",
+    "howToDescription": "了解如何添加脚本、选择滚动模式、自定义提词器，并使用 SolPrompter 开始演讲或录制。",
+    "faqName": "SolPrompter 常见问题",
+    "faqDescription": "关于 SolPrompter、AI 语音滚动、刘海模式、远程遥控、支持的设备和视频录制的常见问题。"
   },
   "nav": {
     "items": [
@@ -57,7 +57,7 @@
     "cta": { "label": "工作区", "url": "/workspaces" }
   },
   "hero": {
-    "eyebrow": "VTeleprompter — AI 提词器",
+    "eyebrow": "SolPrompter — AI 提词器",
     "title": "免费在线提词器",
     "subtitle": "借助 AI 语音滚动、刘海模式、远程遥控和专业 4K 录制，自然地进行演讲。",
     "placeholder": "粘贴您的脚本或上传文件即可开始……",
@@ -76,24 +76,24 @@
   "features": {
     "eyebrow": "更出色演讲所需的一切",
     "title": "一款提词器，胜任每一次录制",
-    "description": "VTeleprompter 将在线提词器、AI 语音滚动、刘海模式、远程遥控、脚本管理和专业视频录制整合到一个简洁的工作区中。",
+    "description": "SolPrompter 将在线提词器、AI 语音滚动、刘海模式、远程遥控、脚本管理和专业视频录制整合到一个简洁的工作区中。",
     "items": [
-      { "title": "AI 语音滚动", "description": "VTeleprompter 跟随您的语音，以自然的语速自动滚动您的脚本。" },
+      { "title": "AI 语音滚动", "description": "SolPrompter 跟随您的语音，以自然的语速自动滚动您的脚本。" },
       { "title": "刘海提词器", "description": "让脚本靠近摄像头，减少明显的视线移动，保持更自然的眼神交流。" },
       { "title": "远程遥控", "description": "使用另一部手机、平板或电脑控制滚动、翻阅脚本并远程管理您的演讲。" },
       { "title": "全高清与 4K 录制", "description": "直接从提词器阅读脚本的同时录制专业视频。" },
       { "title": "脚本管理", "description": "在一个便捷的工作区中创建、上传、编辑、整理并重复使用您的所有脚本。" },
       { "title": "录制资料库", "description": "将录制内容与用于创作它们的脚本一同保存、查看和管理。" },
-      { "title": "为移动端而生", "description": "自适应界面专为各种屏幕设计，让您在手机、平板、笔记本和台式机上都能舒适使用 VTeleprompter。" },
+      { "title": "为移动端而生", "description": "自适应界面专为各种屏幕设计，让您在手机、平板、笔记本和台式机上都能舒适使用 SolPrompter。" },
       { "title": "无广告、无水印", "description": "演讲和录制时不会有分散注意力的广告或品牌水印出现在您的视频上。" }
     ]
   },
   "howItWorks": {
     "eyebrow": "从第一次拍摄就轻松上手",
-    "title": "VTeleprompter 的工作原理",
+    "title": "SolPrompter 的工作原理",
     "description": "只需几个步骤，即可将任意脚本变成流畅的演讲或专业的录制作品。",
     "steps": [
-      { "anchor": "step-add-script", "title": "添加您的脚本", "description": "将文本直接粘贴到 VTeleprompter，或从您的设备上传现有脚本。" },
+      { "anchor": "step-add-script", "title": "添加您的脚本", "description": "将文本直接粘贴到 SolPrompter，或从您的设备上传现有脚本。" },
       { "anchor": "step-choose-scroll-mode", "title": "选择滚动模式", "description": "设置固定滚动速度、手动控制脚本，或启用 AI 语音滚动。" },
       { "anchor": "step-customize-view", "title": "自定义视图", "description": "调整字体、字号、行距、阅读区域和提词器位置，让阅读更舒适。" },
       { "anchor": "step-start-presenting", "title": "开始演讲", "description": "打开提词器，如有需要连接遥控设备，即可开始演讲或录制。" }
@@ -102,7 +102,7 @@
   "voiceScroll": {
     "eyebrow": "以您的语速滚动",
     "title": "紧随您节奏的 AI 语音滚动",
-    "description": "无需再为迁就固定滚动速度而调整语速。VTeleprompter 跟随您的语音，让您专注于自然地传达信息。",
+    "description": "无需再为迁就固定滚动速度而调整语速。SolPrompter 跟随您的语音，让您专注于自然地传达信息。",
     "benefits": [
       { "title": "自然地开口", "description": "以自己的节奏阅读，不显仓促、不拖沓，也不生硬机械。" },
       { "title": "需要时随时停顿", "description": "换气、强调观点或在段落之间稍作停顿，都不会立刻找不到阅读位置。" },
@@ -115,7 +115,7 @@
   "notch": {
     "eyebrow": "自然的眼神交流",
     "title": "让脚本紧贴摄像头",
-    "description": "VTeleprompter 的刘海模式将紧凑的阅读区域放置在摄像头附近，帮助您的目光更贴近镜头。",
+    "description": "SolPrompter 的刘海模式将紧凑的阅读区域放置在摄像头附近，帮助您的目光更贴近镜头。",
     "items": [
       "减少明显的左右视线移动。",
       "将脚本放置在网络摄像头或手机摄像头附近。",
@@ -147,7 +147,7 @@
       { "title": "实时摄像头预览", "description": "在录制前和录制过程中检查您的位置、构图和外观。" },
       { "title": "全高清录制", "description": "为社交媒体、课程、演讲和商务内容创作清晰、高质量的视频。" },
       { "title": "4K 录制", "description": "在摄像头、浏览器和设备支持时，拍摄专业的高分辨率视频。" },
-      { "title": "无水印", "description": "导出无 VTeleprompter 徽标或品牌叠加层的干净录制作品。" },
+      { "title": "无水印", "description": "导出无 SolPrompter 徽标或品牌叠加层的干净录制作品。" },
       { "title": "录制资料库", "description": "让您的拍摄内容井井有条，快速找到与每个脚本关联的录制作品。" }
     ],
     "cta": { "label": "开始录制", "url": "/workspaces" }
@@ -155,9 +155,9 @@
   "workspace": {
     "eyebrow": "您的内容工作区",
     "title": "一起管理脚本和录制内容",
-    "description": "不必再在文件夹、文档和各种应用之间来回查找。VTeleprompter 将您的脚本和录制内容集中在一个井然有序的工作区中。",
+    "description": "不必再在文件夹、文档和各种应用之间来回查找。SolPrompter 将您的脚本和录制内容集中在一个井然有序的工作区中。",
     "items": [
-      { "title": "创建和编辑脚本", "description": "直接在 VTeleprompter 中撰写新脚本或更新已有内容。" },
+      { "title": "创建和编辑脚本", "description": "直接在 SolPrompter 中撰写新脚本或更新已有内容。" },
       { "title": "上传现有内容", "description": "从支持的文档导入脚本，无需逐段手动复制。" },
       { "title": "整理您的资料库", "description": "让脚本和录制内容井然有序，随时可用于日后的演讲。" },
       { "title": "重复使用您的脚本", "description": "打开以往的脚本，快速修改后录制新版本，无需从头开始。" },
@@ -167,18 +167,18 @@
   "mobile": {
     "eyebrow": "为每一块屏幕而设计",
     "title": "适配移动端的在线提词器",
-    "description": "VTeleprompter 力求在桌面端和移动端都做到快速、清晰、易于操控。",
+    "description": "SolPrompter 力求在桌面端和移动端都做到快速、清晰、易于操控。",
     "items": [
       { "title": "自适应界面", "description": "在不同的屏幕尺寸和方向下，核心控件都触手可及。" },
       { "title": "竖屏与横屏", "description": "选择最契合您录制设置的屏幕方向。" },
       { "title": "适合触控的操作", "description": "在触摸屏上舒适地调整文字、滚动和录制设置。" },
-      { "title": "无需安装", "description": "在支持的浏览器中打开 VTeleprompter，即可开始在线使用提词器。" }
+      { "title": "无需安装", "description": "在支持的浏览器中打开 SolPrompter，即可开始在线使用提词器。" }
     ],
-    "supporting": "将 VTeleprompter 用作移动端提词器、桌面端提词器或基于浏览器的在线提词工具。"
+    "supporting": "将 SolPrompter 用作移动端提词器、桌面端提词器或基于浏览器的在线提词工具。"
   },
   "useCases": {
     "eyebrow": "为每一位演讲者打造",
-    "title": "VTeleprompter 适合谁使用？",
+    "title": "SolPrompter 适合谁使用？",
     "items": [
       { "title": "内容创作者", "description": "无需逐字背诵，即可录制 TikTok 视频、YouTube 视频、Shorts、Reels 等社交内容。" },
       { "title": "YouTube 博主", "description": "以更流畅、更自信的表现呈现测评、教程、讲解和口播视频。" },
@@ -191,9 +191,9 @@
     ]
   },
   "comparison": {
-    "eyebrow": "为什么选择 VTeleprompter？",
+    "eyebrow": "为什么选择 SolPrompter？",
     "title": "更完整的免费提词器",
-    "description": "VTeleprompter 旨在提供完整的提词器体验，无需用户拼凑多款应用，也无需为基础功能付费。",
+    "description": "SolPrompter 旨在提供完整的提词器体验，无需用户拼凑多款应用，也无需为基础功能付费。",
     "items": [
       "AI 语音激活滚动",
       "刘海提词器模式",
@@ -206,20 +206,20 @@
       "简洁而现代的用户体验",
       "免费使用核心提词器功能"
     ],
-    "supporting": "从撰写脚本到录制最终成片，VTeleprompter 让您在一处即可获得所需的全部工具。"
+    "supporting": "从撰写脚本到录制最终成片，SolPrompter 让您在一处即可获得所需的全部工具。"
   },
   "about": {
-    "eyebrow": "关于 VTeleprompter",
+    "eyebrow": "关于 SolPrompter",
     "title": "让演讲变得自然而然",
     "paragraphs": [
-      "VTeleprompter 是一款 AI 提词器，专为那些希望自信开口、又不想逐字背诵或频繁操控滚动的人而打造。",
+      "SolPrompter 是一款 AI 提词器，专为那些希望自信开口、又不想逐字背诵或频繁操控滚动的人而打造。",
       "我们的目标是打造最完整、最易上手的在线提词器体验，将可靠的 AI 滚动、贴心的设计、自然眼神交流工具和专业录制功能融为一体。",
-      "无论您是用手机录制、用笔记本演讲，还是远程操控工作室的设备，VTeleprompter 都能帮您专注于观众，而非软件本身。"
+      "无论您是用手机录制、用笔记本演讲，还是远程操控工作室的设备，SolPrompter 都能帮您专注于观众，而非软件本身。"
     ]
   },
   "finalCta": {
     "eyebrow": "准备好演讲了吗？",
-    "title": "开始使用 VTeleprompter",
+    "title": "开始使用 SolPrompter",
     "description": "添加您的脚本，选择您偏好的阅读模式，自然地开始演讲。",
     "cta": { "label": "打开免费提词器", "url": "/workspaces" },
     "supporting": "无广告。无水印。无需繁琐设置。"
@@ -228,20 +228,20 @@
     "eyebrow": "问与答",
     "title": "常见问题",
     "items": [
-      { "anchor": "faq-is-vteleprompter-free", "q": "VTeleprompter 是免费使用的吗？", "a": "VTeleprompter 目前免费使用。您可以使用其核心的提词器、脚本和录制功能，没有广告，也没有品牌视频水印。" },
+      { "anchor": "faq-is-solprompter-free", "q": "SolPrompter 是免费使用的吗？", "a": "SolPrompter 目前免费使用。您可以使用其核心的提词器、脚本和录制功能，没有广告，也没有品牌视频水印。" },
       { "anchor": "faq-what-is-ai-voice-scroll", "q": "什么是 AI 语音滚动？", "a": "AI 语音滚动会聆听您的语音，并根据您自然的语速翻动脚本。它帮助您停顿、继续和演讲，无需不断调整固定的滚动速度。" },
-      { "anchor": "faq-what-is-notch-mode", "q": "什么是 VTeleprompter 刘海模式？", "a": "刘海模式将紧凑的提词器阅读区域放置在摄像头附近。这有助于减少明显的视线移动，让您在录制、演讲和视频通话中的眼神交流看起来更自然。" },
-      { "anchor": "faq-mobile-devices", "q": "我可以在手机或平板上使用 VTeleprompter 吗？", "a": "可以。VTeleprompter 拥有专为智能手机、平板、笔记本和台式机设计的自适应界面。可用功能可能取决于浏览器、摄像头和设备性能。" },
-      { "anchor": "faq-installation", "q": "我需要安装 VTeleprompter 吗？", "a": "网页版无需安装。您可以在支持的现代浏览器中打开 VTeleprompter，添加脚本，即可在线开始演讲。" },
-      { "anchor": "faq-remote-control", "q": "我可以用另一台设备控制 VTeleprompter 吗？", "a": "可以。VTeleprompter 远程遥控功能让您使用另一部手机、平板或电脑来开始或暂停提词器、调整滚动并翻阅您的脚本。" },
-      { "anchor": "faq-4k-recording", "q": "VTeleprompter 可以录制 4K 视频吗？", "a": "当摄像头、浏览器和设备支持所选分辨率时，VTeleprompter 支持全高清和 4K 录制。实际录制质量取决于您设备的性能和权限。" },
-      { "anchor": "faq-watermark", "q": "VTeleprompter 会给录制内容添加水印吗？", "a": "VTeleprompter 不会在您录制的视频上添加品牌水印。" },
-      { "anchor": "faq-supported-files", "q": "VTeleprompter 支持哪些脚本文件格式？", "a": "VTeleprompter 支持直接粘贴文本，以及上传 TXT、DOCX、PDF 和 Markdown 等受支持的脚本文档。" },
-      { "anchor": "faq-online-autocue", "q": "VTeleprompter 可以用作在线提词工具吗？", "a": "可以。VTeleprompter 可用作基于浏览器的在线提词工具，支持手动滚动、固定速度自动滚动和 AI 语音激活滚动。" }
+      { "anchor": "faq-what-is-notch-mode", "q": "什么是 SolPrompter 刘海模式？", "a": "刘海模式将紧凑的提词器阅读区域放置在摄像头附近。这有助于减少明显的视线移动，让您在录制、演讲和视频通话中的眼神交流看起来更自然。" },
+      { "anchor": "faq-mobile-devices", "q": "我可以在手机或平板上使用 SolPrompter 吗？", "a": "可以。SolPrompter 拥有专为智能手机、平板、笔记本和台式机设计的自适应界面。可用功能可能取决于浏览器、摄像头和设备性能。" },
+      { "anchor": "faq-installation", "q": "我需要安装 SolPrompter 吗？", "a": "网页版无需安装。您可以在支持的现代浏览器中打开 SolPrompter，添加脚本，即可在线开始演讲。" },
+      { "anchor": "faq-remote-control", "q": "我可以用另一台设备控制 SolPrompter 吗？", "a": "可以。SolPrompter 远程遥控功能让您使用另一部手机、平板或电脑来开始或暂停提词器、调整滚动并翻阅您的脚本。" },
+      { "anchor": "faq-4k-recording", "q": "SolPrompter 可以录制 4K 视频吗？", "a": "当摄像头、浏览器和设备支持所选分辨率时，SolPrompter 支持全高清和 4K 录制。实际录制质量取决于您设备的性能和权限。" },
+      { "anchor": "faq-watermark", "q": "SolPrompter 会给录制内容添加水印吗？", "a": "SolPrompter 不会在您录制的视频上添加品牌水印。" },
+      { "anchor": "faq-supported-files", "q": "SolPrompter 支持哪些脚本文件格式？", "a": "SolPrompter 支持直接粘贴文本，以及上传 TXT、DOCX、PDF 和 Markdown 等受支持的脚本文档。" },
+      { "anchor": "faq-online-autocue", "q": "SolPrompter 可以用作在线提词工具吗？", "a": "可以。SolPrompter 可用作基于浏览器的在线提词工具，支持手动滚动、固定速度自动滚动和 AI 语音激活滚动。" }
     ]
   },
   "footer": {
-    "brand": "VTeleprompter",
+    "brand": "SolPrompter",
     "description": "一款免费在线 AI 提词器，助力自然演讲和专业视频录制。",
     "columns": [
       {
@@ -274,6 +274,6 @@
         ]
       }
     ],
-    "copyright": "© 2026 VTeleprompter."
+    "copyright": "© 2026 SolPrompter."
   }
 }

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://vteleprompter.com/schemas/simple-page.schema.json",
-  "title": "VTeleprompter simple content page",
+  "$id": "https://solprompter.com/schemas/simple-page.schema.json",
+  "title": "SolPrompter simple content page",
   "type": "object",
   "additionalProperties": false,
   "required": ["slug", "published", "title", "seo", "content"],

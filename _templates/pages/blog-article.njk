@@ -18,7 +18,7 @@ lang: en
 <header class="nav article-nav">
     <div class="nav-inner">
         <div class="nav-left">
-            <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="brand-text">VTeleprompter</span></a>
+            <a href="/" class="brand" aria-label="SolPrompter home">{{ logoSvg | safe }}<span class="brand-text">SolPrompter</span></a>
             <nav class="nav-menu" aria-label="Primary">
                 {%- for item in pageData.nav.items %}
                 <a href="{{ item.url }}" class="nav-item{% if item.label == 'Blog' %} nav-item-current{% endif %}"{% if item.label == 'Blog' %} aria-current="page"{% endif %}>{{ item.label }}</a>
@@ -149,7 +149,7 @@ lang: en
 <footer class="footer article-footer">
     <div class="footer-inner">
         <div class="footer-logo">
-            <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="footer-logo-text">VTeleprompter</span></a>
+            <a href="/" class="brand" aria-label="SolPrompter home">{{ logoSvg | safe }}<span class="footer-logo-text">SolPrompter</span></a>
         </div>
         <div class="footer-links">
             {%- for link in pageData.footer.links %}

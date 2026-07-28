@@ -20,8 +20,8 @@ describe('createRecordingsZip', () => {
     const files = unzipSync(new Uint8Array(await archive.arrayBuffer()));
 
     expect(archive.type).toBe('application/zip');
-    expect(strFromU8(files['vteleprompter-clip-01.webm'])).toBe('video-one');
-    expect(strFromU8(files['vteleprompter-clip-02.ogg'])).toBe('audio-two');
+    expect(strFromU8(files['solprompter-clip-01.webm'])).toBe('video-one');
+    expect(strFromU8(files['solprompter-clip-02.ogg'])).toBe('audio-two');
     expect(onProgress).toHaveBeenLastCalledWith({ progress: 1, fileIndex: 2, fileCount: 2 });
   });
 

@@ -17,7 +17,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const CONFIG = {
-  baseUrl: (process.env.SITE_URL || 'https://vteleprompter.com').replace(/\/$/, ''),
+  baseUrl: (process.env.SITE_URL || 'https://solprompter.com').replace(/\/$/, ''),
   rootDir: path.resolve(__dirname, '..'),
   blogDir: path.resolve(__dirname, '../blog'),
   pagesDir: path.resolve(__dirname, '../pages'),

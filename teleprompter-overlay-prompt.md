@@ -1,6 +1,6 @@
 # Prompt: Chuyển teleprompter sang render overlay bằng JS (bỏ điều hướng trang)
 
-> Dán toàn bộ file này cho AI/agent thực thi. Đây là spec tự-chứa: đọc kỹ, lập plan, rồi implement theo phase. Repo: **VPromter** — Vite + 11ty + Vanilla JS (ES modules), **không framework**.
+> Dán toàn bộ file này cho AI/agent thực thi. Đây là spec tự-chứa: đọc kỹ, lập plan, rồi implement theo phase. Repo: **SolPrompter** — Vite + 11ty + Vanilla JS (ES modules), **không framework**.
 
 ---
 
@@ -8,7 +8,7 @@
 
 App teleprompter hiện là **Multi-Page App**: user submit script ở trang home (`/`) hoặc `/workspaces` → điều hướng sang trang `/teleprompter?ws=<id>` (một document HTML riêng).
 
-Đo trên production (`test.vpromter.com`, nginx):
+Đo trên production (`test.solprompter.com`, nginx):
 - **TTFB ~0.9–1.2 giây cho MỌI request tĩnh** (kể cả file JS hash immutable, không redirect). Server phản hồi rất chậm.
 - RTT ~300ms (server ở xa).
 - HTML **không có header cache** nào (`Cache-Control`/`ETag`/`Last-Modified` đều thiếu) → mỗi lần điều hướng phải tải lại HTML từ server chậm.

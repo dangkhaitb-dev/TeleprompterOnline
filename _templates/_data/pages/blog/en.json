@@ -1,7 +1,7 @@
 {
   "seo": {
-    "title": "Blog — VTeleprompter",
-    "description": "Read the latest articles, research and product news from VTeleprompter."
+    "title": "Blog — SolPrompter",
+    "description": "Read the latest articles, research and product news from SolPrompter."
   },
   "nav": {
     "items": [
@@ -12,7 +12,7 @@
     ],
     "workspaces": "Workspaces"
   },
-  "heading": "VTeleprompter Blog",
+  "heading": "SolPrompter Blog",
   "footer": {
     "version": "- v1.2.0",
     "links": [
@@ -23,6 +23,6 @@
       { "label": "Privacy", "url": "/policy" },
       { "label": "Billing", "url": "/billing" }
     ],
-    "copyright": "© 2026 VTeleprompter. All rights reserved. 100% Client-side privacy guaranteed."
+    "copyright": "© 2026 SolPrompter. All rights reserved. 100% Client-side privacy guaranteed."
   }
 }

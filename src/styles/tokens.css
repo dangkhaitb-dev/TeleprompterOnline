@@ -32,10 +32,10 @@
 
   --maxw-content: 68rem;
 
-  /* Brand — teleprompter green (from the product design). Theme-independent. */
-  --brand: #5ea500;
-  --brand-strong: #437a00; /* AA-readable green: ≥4.8:1 as text on light, ≥5.2:1 under white */
-  --brand-soft: #8edb4d;
+  /* Brand — Black & White theme. Theme-independent. */
+  --brand: #000000;
+  --brand-strong: #17181b; /* AA-readable dark gray/black */
+  --brand-soft: #737373;   /* Neutral mid gray */
   --brand-tint: color-mix(in srgb, var(--brand) 14%, transparent);
 
   /* Feedback */
@@ -67,7 +67,7 @@
      Warm stone greys + brand greens; hex allowed here (tokens.css is exempt). */
   --font-brand: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --font-brand-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --home-bg: #fbfcfd;
+  --home-bg: #ffffff;
   --ink: #1c1917;
   --ink-soft: #44403c;
   --ink-muted: #6d655f; /* AA-readable muted: ≥5.1:1 on tinted section-alt bg, ≥5.5:1 on white */
@@ -76,7 +76,7 @@
   --line-soft: #f5f5f4;
   --composer-text: #17181b;
   --upload-text: #475569;
-  --brand-vivid: #75dd28;
+  --brand-vivid: #000000;
   --upload-border: #cbd5e1;
   --placeholder: #94a3b8;
   --dot-red: #ff5f57;
@@ -236,14 +236,14 @@
   --ws-text-muted: #5f6a70;
   --ws-border: #cfdcdd;
   --ws-border-light: #e5e5e5;
-  --ws-primary: #75dd28;
-  --ws-primary-hover: #5ea500;
-  --ws-primary-ink: #17181b;
-  --ws-primary-soft: rgb(94 165 0 / 22%);
+  --ws-primary: #000000;
+  --ws-primary-hover: #1f2937;
+  --ws-primary-ink: #ffffff;
+  --ws-primary-soft: rgba(0, 0, 0, 0.08);
   --ws-on-primary: #ffffff;
   --ws-danger: #ef4444;
   --ws-danger-soft: rgb(239 68 68 / 8%);
-  --ws-accent-soft: rgb(117 221 40 / 8%);
+  --ws-accent-soft: rgba(0, 0, 0, 0.04);
   --ws-local-fg: #2f7d4f;
   --ws-local-bg: rgb(38 160 90 / 12%);
   --ws-local-dot: #2f9d5a;
@@ -287,9 +287,9 @@
   --confirm-on-danger: #ffffff;
   --confirm-shadow: 0 20px 60px rgb(0 0 0 / 22%);
   --confirm-icon-bg: #f3f4f6;
-  --confirm-accent: #75dd28;
-  --confirm-accent-hover: #5ea500;
-  --confirm-accent-ink: #17181b;
+  --confirm-accent: #000000;
+  --confirm-accent-hover: #1f2937;
+  --confirm-accent-ink: #ffffff;
   --confirm-on-accent: #ffffff;
   --confirm-cancel-bg: #f3f4f6;
   --confirm-cancel-hover: #e7ecf4;
@@ -324,7 +324,7 @@
   --text: #14171c;
   --text-muted: #5b6470;
   --border: #e2e6eb;
-  --accent: #5ea500;
+  --accent: #000000;
   --accent-contrast: #ffffff;
 }
 

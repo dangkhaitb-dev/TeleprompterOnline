@@ -13,7 +13,7 @@ lang: en
 <header class="nav">
     <div class="nav-inner">
         <div class="nav-left">
-            <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="brand-text">VTeleprompter</span></a>
+            <a href="/" class="brand" aria-label="SolPrompter home">{{ logoSvg | safe }}<span class="brand-text">SolPrompter</span></a>
             <nav class="nav-menu" aria-label="Primary">
                 {%- for item in chrome.nav.items %}
                 {%- set navHref = ('/' + item.url) if '#' in item.url else item.url %}
@@ -212,7 +212,7 @@ lang: en
     <div class="footer-inner">
         <div class="footer-top">
             <div class="footer-brand">
-                <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="footer-logo-text">{{ chrome.footer.brand }}</span></a>
+                <a href="/" class="brand" aria-label="SolPrompter home">{{ logoSvg | safe }}<span class="footer-logo-text">{{ chrome.footer.brand }}</span></a>
                 <p class="footer-desc">{{ chrome.footer.description }}</p>
             </div>
             <div class="footer-cols">

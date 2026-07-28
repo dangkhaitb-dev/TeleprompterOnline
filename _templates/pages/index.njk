@@ -17,7 +17,7 @@ eleventyComputed:
 <header class="nav">
     <div class="nav-inner">
         <div class="nav-left">
-            <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="brand-text">VTeleprompter</span></a>
+            <a href="/" class="brand framer-WFgEA framer-qdeek2 framer-v-qdeek2 framer-4n26gx" data-framer-name="On" data-highlight="true" data-framer-page-link-current="true" tabindex="0" style="height: 100%; opacity: 1; gap: 0.5rem;"><div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" class="framer-ngytjn" aria-hidden="true" style="image-rendering: pixelated; flex-shrink: 0; background-size: 100% 100%; background-image: url(&quot;data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 xmlns:xlink=%22http://www.w3.org/1999/xlink%22 viewBox=%220 0 16 24%22 overflow=%22visible%22&gt;&lt;path d=%22M 16 0 L 16 8 L 8 8 L 0 0 Z M 0 8 L 8 8 L 16 16 L 8 16 L 8 24 L 0 16 Z%22 fill=%22rgb(0, 0, 0)%22&gt;&lt;/path&gt;&lt;/svg&gt;&quot;); opacity: 1; width: 14px; height: 21px;"></div><div class="framer-1gzwofs" data-framer-component-type="RichTextContainer" style="--extracted-2gg91v: &quot;opsz&quot; 32, &quot;wght&quot; 600; --extracted-r6o4lv: rgb(0, 0, 0); --framer-link-text-color: rgb(0, 153, 255); --framer-link-text-decoration: underline; transform: none; opacity: 1;"><p dir="auto" class="framer-text" style="--font-selector:SW50ZXItVmFyaWFibGVWRj1JbTl3YzNvaUlETXlMQ0FpZDJkb2RDSWdOakF3;--framer-font-family:&quot;Inter Variable&quot;, &quot;Inter Variable Placeholder&quot;, sans-serif;--framer-font-open-type-features:'ss07' on, 'cv05' on, 'ss03' on, 'cv11' on;--framer-font-size:14px;--framer-font-variation-axes:var(--extracted-2gg91v, &quot;opsz&quot; 32, &quot;wght&quot; 600);--framer-letter-spacing:-0.01px;--framer-line-height:1em;--framer-text-alignment:left;--framer-text-color:var(--extracted-r6o4lv, rgb(0, 0, 0)); margin: 0;">SolPrompter</p></div></a>
             <nav class="nav-menu" aria-label="Primary">
                 {%- for item in pageData.nav.items %}
                 <a href="{{ item.url }}" class="nav-item">{{ item.label }}</a>
@@ -83,21 +83,6 @@ eleventyComputed:
                 </form>
             </div>
         </div>
-
-        <div class="hero-preview">
-            <div class="browser-frame">
-                <div class="browser-chrome">
-                    <span class="chrome-dot red"></span>
-                    <span class="chrome-dot yellow"></span>
-                    <span class="chrome-dot green"></span>
-                </div>
-                <div class="browser-viewport">
-                    <video class="hero-preview-img" id="heroPreviewVideo" width="1600" height="1000" muted loop playsinline preload="none" data-poster="/media/preview-poster.webp?v=4" data-src="/media/preview-demo.mp4?v=3">
-                        <track kind="captions" src="/media/preview-demo.vtt" srclang="en" label="English">
-                    </video>
-                </div>
-            </div>
-        </div>
     </section>
 
     {%- set features = pageData.features %}
@@ -108,17 +93,60 @@ eleventyComputed:
                 <h2 class="section-title">{{ features.title }}</h2>
                 <p class="section-desc">{{ features.description }}</p>
             </div>
-            <ul class="card-grid">
+            <ul class="bento-grid">
                 {%- for item in features.items %}
-                <li class="card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
+                <li class="bento-card {% if loop.index == 1 %}bento-span-2 bento-card--voice{% elif loop.index == 6 %}bento-span-2 bento-card--recording{% elif loop.index == 7 %}bento-span-2 bento-card--mobile{% elif loop.index == 8 %}bento-span-2 bento-card--ads{% endif %}">
+                    <div class="bento-card-inner">
+                        <div class="card-icon-box">
+                            {% if loop.index == 1 %}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
+                            {% elif loop.index == 2 %}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/><path d="M9 2h6"/></svg>
+                            {% elif loop.index == 3 %}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><rect width="10" height="18" x="7" y="3" rx="2"/><path d="M11 7h2"/><path d="M11 11h2"/><path d="M12 15h.01"/></svg>
+                            {% elif loop.index == 4 %}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M23 7a2 2 0 0 0-2.45-1.45L16 7V5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2l4.55 1.45A2 2 0 0 0 23 17V7z"/></svg>
+                            {% elif loop.index == 5 %}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
+                            {% elif loop.index == 6 %}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/><path d="M6 12h4"/></svg>
+                            {% elif loop.index == 7 %}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><rect width="16" height="12" x="2" y="4" rx="2"/><path d="M12 18H7.5a1.5 1.5 0 0 1 0-3H18a1 1 0 0 1 1 1v2"/><path d="M8 20h8"/></svg>
+                            {% elif loop.index == 8 %}
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            {% endif %}
+                        </div>
+                        <div class="bento-card-text">
+                            <h3 class="card-title">{{ item.title }}</h3>
+                            <p class="card-desc">{{ item.description }}</p>
+                        </div>
+                        
+                        {# Custom visual decoration for large cards #}
+                        {% if loop.index == 1 %}
+                        <div class="bento-visual voice-waves">
+                            <span class="wave-line"></span>
+                            <span class="wave-line"></span>
+                            <span class="wave-line"></span>
+                            <span class="wave-line"></span>
+                            <span class="wave-line"></span>
+                        </div>
+                        {% elif loop.index == 6 %}
+                        <div class="bento-visual recording-badge">
+                            <span class="rec-dot"></span>
+                            <span class="rec-time">00:02:45</span>
+                        </div>
+                        {% elif loop.index == 7 %}
+                        <div class="bento-visual phone-outline">
+                            <div class="notch-indicator"></div>
+                        </div>
+                        {% endif %}
+                    </div>
                 </li>
                 {%- endfor %}
             </ul>
         </div>
     </section>
-
+ 
     {%- set howItWorks = pageData.howItWorks %}
     <section class="section section-alt" id="how-it-works">
         <div class="section-inner">
@@ -127,11 +155,11 @@ eleventyComputed:
                 <h2 class="section-title">{{ howItWorks.title }}</h2>
                 <p class="section-desc">{{ howItWorks.description }}</p>
             </div>
-            <ol class="steps">
+            <ol class="steps-flow">
                 {%- for step in howItWorks.steps %}
-                <li class="step" id="{{ step.anchor }}">
-                    <span class="step-num">{{ loop.index }}</span>
-                    <div class="step-body">
+                <li class="step-card" id="{{ step.anchor }}">
+                    <span class="step-giant-number">0{{ loop.index }}</span>
+                    <div class="step-card-content">
                         <h3 class="card-title">{{ step.title }}</h3>
                         <p class="card-desc">{{ step.description }}</p>
                     </div>
@@ -140,67 +168,105 @@ eleventyComputed:
             </ol>
         </div>
     </section>
-
+ 
     {%- set voiceScroll = pageData.voiceScroll %}
     <section class="section" id="voice-scroll">
-        <div class="section-inner">
-            <div class="section-head">
+        <div class="section-inner split-section">
+            <div class="split-text-col">
                 <p class="eyebrow">{{ voiceScroll.eyebrow }}</p>
                 <h2 class="section-title">{{ voiceScroll.title }}</h2>
                 <p class="section-desc">{{ voiceScroll.description }}</p>
+                <ul class="custom-benefits-list">
+                    {%- for item in voiceScroll.benefits %}
+                    <li>
+                        <span class="benefit-bullet">✓</span>
+                        <div class="benefit-info">
+                            <strong class="benefit-title">{{ item.title }}</strong>
+                            <p class="benefit-desc">{{ item.description }}</p>
+                        </div>
+                    </li>
+                    {%- endfor %}
+                </ul>
+                <p class="section-support">{{ voiceScroll.supporting }}</p>
+                <div class="section-cta align-left"><a class="btn btn-primary" href="{{ voiceScroll.cta.url }}">{{ voiceScroll.cta.label }}</a></div>
             </div>
-            <ul class="card-grid">
-                {%- for item in voiceScroll.benefits %}
-                <li class="card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
-                </li>
-                {%- endfor %}
-            </ul>
-            <p class="section-support">{{ voiceScroll.supporting }}</p>
-            <div class="section-cta"><a class="btn btn-primary" href="{{ voiceScroll.cta.url }}">{{ voiceScroll.cta.label }}</a></div>
+            <div class="split-visual-col">
+                <div class="browser-frame app-screenshot-wrapper">
+                    <div class="browser-chrome">
+                        <span class="chrome-dot red"></span>
+                        <span class="chrome-dot yellow"></span>
+                        <span class="chrome-dot green"></span>
+                    </div>
+                    <div class="browser-viewport">
+                        <img src="/media/teleprompter-screenshot.jpg" alt="SolPrompter Studio Screen" class="app-screenshot">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
+ 
     {%- set notch = pageData.notch %}
     <section class="section section-alt" id="notch">
-        <div class="section-inner">
-            <div class="section-head">
+        <div class="section-inner split-section split-reverse">
+            <div class="split-text-col">
                 <p class="eyebrow">{{ notch.eyebrow }}</p>
                 <h2 class="section-title">{{ notch.title }}</h2>
                 <p class="section-desc">{{ notch.description }}</p>
+                <ul class="modern-checklist">
+                    {%- for point in notch.items %}
+                    <li>
+                        <span class="check-bullet">✓</span>
+                        <span class="check-text">{{ point }}</span>
+                    </li>
+                    {%- endfor %}
+                </ul>
+                <p class="section-support">{{ notch.supporting }}</p>
+                <div class="section-cta align-left"><a class="btn btn-primary" href="{{ notch.cta.url }}">{{ notch.cta.label }}</a></div>
             </div>
-            <ul class="checklist">
-                {%- for point in notch.items %}
-                <li>{{ point }}</li>
-                {%- endfor %}
-            </ul>
-            <p class="section-support">{{ notch.supporting }}</p>
-            <div class="section-cta"><a class="btn btn-primary" href="{{ notch.cta.url }}">{{ notch.cta.label }}</a></div>
+            <div class="split-visual-col">
+                <div class="browser-frame app-screenshot-wrapper">
+                    <div class="browser-chrome">
+                        <span class="chrome-dot red"></span>
+                        <span class="chrome-dot yellow"></span>
+                        <span class="chrome-dot green"></span>
+                    </div>
+                    <div class="browser-viewport">
+                        <img src="/media/notch-screenshot.jpg" alt="SolPrompter Notch Mode Screen" class="app-screenshot">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
+ 
     {%- set remote = pageData.remote %}
     <section class="section" id="remote">
-        <div class="section-inner">
-            <div class="section-head">
+        <div class="section-inner split-section">
+            <div class="split-text-col">
                 <p class="eyebrow">{{ remote.eyebrow }}</p>
                 <h2 class="section-title">{{ remote.title }}</h2>
                 <p class="section-desc">{{ remote.description }}</p>
+                <ul class="custom-benefits-list">
+                    {%- for item in remote.items %}
+                    <li>
+                        <span class="benefit-bullet">✓</span>
+                        <div class="benefit-info">
+                            <strong class="benefit-title">{{ item.title }}</strong>
+                            <p class="benefit-desc">{{ item.description }}</p>
+                        </div>
+                    </li>
+                    {%- endfor %}
+                </ul>
+                <p class="section-support">{{ remote.supporting }}</p>
+                <div class="section-cta align-left"><a class="btn btn-primary" href="{{ remote.cta.url }}">{{ remote.cta.label }}</a></div>
             </div>
-            <ul class="card-grid">
-                {%- for item in remote.items %}
-                <li class="card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
-                </li>
-                {%- endfor %}
-            </ul>
-            <p class="section-support">{{ remote.supporting }}</p>
-            <div class="section-cta"><a class="btn btn-primary" href="{{ remote.cta.url }}">{{ remote.cta.label }}</a></div>
+            <div class="split-visual-col">
+                <div class="app-screenshot-wrapper mobile-screenshot-wrapper">
+                    <img src="/media/teleprompter-mobile-screenshot.jpg" alt="VTeleprompter Mobile Studio Screen" class="app-screenshot">
+                </div>
+            </div>
         </div>
     </section>
-
+ 
     {%- set recording = pageData.recording %}
     <section class="section section-alt" id="recording">
         <div class="section-inner">
@@ -209,9 +275,10 @@ eleventyComputed:
                 <h2 class="section-title">{{ recording.title }}</h2>
                 <p class="section-desc">{{ recording.description }}</p>
             </div>
-            <ul class="card-grid card-grid--five">
+            <ul class="cards-interactive-grid">
                 {%- for item in recording.items %}
-                <li class="card">
+                <li class="interactive-card">
+                    <span class="card-counter">0{{ loop.index }}</span>
                     <h3 class="card-title">{{ item.title }}</h3>
                     <p class="card-desc">{{ item.description }}</p>
                 </li>
@@ -220,26 +287,41 @@ eleventyComputed:
             <div class="section-cta"><a class="btn btn-primary" href="{{ recording.cta.url }}">{{ recording.cta.label }}</a></div>
         </div>
     </section>
-
+ 
     {%- set workspace = pageData.workspace %}
     <section class="section" id="workspace">
-        <div class="section-inner">
-            <div class="section-head">
+        <div class="section-inner split-section">
+            <div class="split-text-col">
                 <p class="eyebrow">{{ workspace.eyebrow }}</p>
                 <h2 class="section-title">{{ workspace.title }}</h2>
                 <p class="section-desc">{{ workspace.description }}</p>
+                <ul class="custom-benefits-list">
+                    {%- for item in workspace.items %}
+                    <li>
+                        <span class="benefit-bullet">✓</span>
+                        <div class="benefit-info">
+                            <strong class="benefit-title">{{ item.title }}</strong>
+                            <p class="benefit-desc">{{ item.description }}</p>
+                        </div>
+                    </li>
+                    {%- endfor %}
+                </ul>
             </div>
-            <ul class="card-grid card-grid--five">
-                {%- for item in workspace.items %}
-                <li class="card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
-                </li>
-                {%- endfor %}
-            </ul>
+            <div class="split-visual-col">
+                <div class="browser-frame app-screenshot-wrapper">
+                    <div class="browser-chrome">
+                        <span class="chrome-dot red"></span>
+                        <span class="chrome-dot yellow"></span>
+                        <span class="chrome-dot green"></span>
+                    </div>
+                    <div class="browser-viewport">
+                        <img src="/media/workspaces-screenshot.jpg" alt="SolPrompter Workspace Library" class="app-screenshot">
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
-
+ 
     {%- set mobile = pageData.mobile %}
     <section class="section section-alt" id="mobile">
         <div class="section-inner">
@@ -248,9 +330,9 @@ eleventyComputed:
                 <h2 class="section-title">{{ mobile.title }}</h2>
                 <p class="section-desc">{{ mobile.description }}</p>
             </div>
-            <ul class="card-grid">
+            <ul class="cards-interactive-grid">
                 {%- for item in mobile.items %}
-                <li class="card">
+                <li class="interactive-card">
                     <h3 class="card-title">{{ item.title }}</h3>
                     <p class="card-desc">{{ item.description }}</p>
                 </li>
@@ -259,7 +341,7 @@ eleventyComputed:
             <p class="section-support">{{ mobile.supporting }}</p>
         </div>
     </section>
-
+ 
     {%- set useCases = pageData.useCases %}
     <section class="section" id="use-cases">
         <div class="section-inner">
@@ -267,9 +349,9 @@ eleventyComputed:
                 <p class="eyebrow">{{ useCases.eyebrow }}</p>
                 <h2 class="section-title">{{ useCases.title }}</h2>
             </div>
-            <ul class="card-grid">
+            <ul class="cards-interactive-grid">
                 {%- for item in useCases.items %}
-                <li class="card">
+                <li class="interactive-card">
                     <h3 class="card-title">{{ item.title }}</h3>
                     <p class="card-desc">{{ item.description }}</p>
                 </li>
@@ -277,7 +359,7 @@ eleventyComputed:
             </ul>
         </div>
     </section>
-
+ 
     {%- set comparison = pageData.comparison %}
     <section class="section section-alt" id="why">
         <div class="section-inner">
@@ -286,15 +368,18 @@ eleventyComputed:
                 <h2 class="section-title">{{ comparison.title }}</h2>
                 <p class="section-desc">{{ comparison.description }}</p>
             </div>
-            <ul class="checklist checklist-cols">
+            <ul class="checklist-grid">
                 {%- for point in comparison.items %}
-                <li>{{ point }}</li>
+                <li class="checklist-item">
+                    <span class="check-badge">✓</span>
+                    <span class="checklist-body">{{ point }}</span>
+                </li>
                 {%- endfor %}
             </ul>
             <p class="section-support">{{ comparison.supporting }}</p>
         </div>
     </section>
-
+ 
     {%- set about = pageData.about %}
     <section class="section" id="about">
         <div class="section-inner section-narrow">
@@ -302,14 +387,14 @@ eleventyComputed:
                 <p class="eyebrow">{{ about.eyebrow }}</p>
                 <h2 class="section-title">{{ about.title }}</h2>
             </div>
-            <div class="prose">
+            <div class="prose-content">
                 {%- for paragraph in about.paragraphs %}
-                <p>{{ paragraph }}</p>
+                <p class="prose-paragraph">{{ paragraph }}</p>
                 {%- endfor %}
             </div>
         </div>
     </section>
-
+ 
     {%- set faq = pageData.faq %}
     <section class="section section-alt" id="faq">
         <div class="section-inner section-narrow">
@@ -317,11 +402,16 @@ eleventyComputed:
                 <p class="eyebrow">{{ faq.eyebrow }}</p>
                 <h2 class="section-title">{{ faq.title }}</h2>
             </div>
-            <div class="faq">
+            <div class="faq-container">
                 {%- for item in faq.items %}
-                <details class="faq-item" id="{{ item.anchor }}">
-                    <summary class="faq-q">{{ item.q }}</summary>
-                    <p class="faq-a">{{ item.a }}</p>
+                <details class="faq-accordion-item" id="{{ item.anchor }}">
+                    <summary class="faq-summary">
+                        <span class="faq-question-text">{{ item.q }}</span>
+                        <svg class="faq-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+                    </summary>
+                    <div class="faq-content">
+                        <p class="faq-answer-text">{{ item.a }}</p>
+                    </div>
                 </details>
                 {%- endfor %}
             </div>
@@ -345,7 +435,7 @@ eleventyComputed:
     <div class="footer-inner">
         <div class="footer-top">
             <div class="footer-brand">
-                <a href="/" class="brand" aria-label="VTeleprompter home">{{ logoSvg | safe }}<span class="footer-logo-text">{{ pageData.footer.brand }}</span></a>
+                <a href="/" class="brand" aria-label="SolPrompter home">{{ logoSvg | safe }}<span class="footer-logo-text">{{ pageData.footer.brand }}</span></a>
                 <p class="footer-desc">{{ pageData.footer.description }}</p>
             </div>
             <div class="footer-cols">

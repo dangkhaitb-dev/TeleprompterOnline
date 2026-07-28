@@ -19,7 +19,7 @@ describe('workspace export service', () => {
   it('keeps content and per-script settings in a JSON payload', () => {
     const payload = buildWorkspaceExportPayload(workspace, 0);
 
-    expect(payload.format).toBe('vteleprompter-workspace');
+    expect(payload.format).toBe('solprompter-workspace');
     expect(payload.schemaVersion).toBe(1);
     expect(payload.workspace).toMatchObject({
       scriptText: 'Hello',

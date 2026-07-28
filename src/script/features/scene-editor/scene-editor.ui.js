@@ -111,7 +111,7 @@ export async function mountSceneEditor(container, opts = {}) {
     labels: copy,
     onDownload: () => {
       if (archiveArtifact?.blob) {
-        downloadBlob(archiveArtifact.blob, 'vteleprompter-recordings.zip');
+        downloadBlob(archiveArtifact.blob, 'solprompter-recordings.zip');
       }
     },
     onRetry: () => handleExportArchive(),
@@ -272,7 +272,7 @@ export async function mountSceneEditor(container, opts = {}) {
     if (exporting) return;
     const [scene] = exportableScenes(scenes);
     if (!scene) { showToast(copy.noExport || 'No video to export'); return; }
-    downloadBlob(scene.blob, `vteleprompter-recording.${fileExtension(scene)}`);
+    downloadBlob(scene.blob, `solprompter-recording.${fileExtension(scene)}`);
   }
 
   async function handleExportArchive() {

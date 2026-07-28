@@ -1,24 +1,24 @@
 {
   "seo": {
-    "title": "Teleprompter Online Gratis dengan Gulir Suara AI | VTeleprompter",
-    "description": "Gunakan VTeleprompter, teleprompter online gratis dengan gulir suara AI, mode notch, kontrol jarak jauh, dan perekaman 4K. Tanpa iklan atau watermark.",
+    "title": "Teleprompter Online Gratis dengan Gulir Suara AI | SolPrompter",
+    "description": "Gunakan SolPrompter, teleprompter online gratis dengan gulir suara AI, mode notch, kontrol jarak jauh, dan perekaman 4K. Tanpa iklan atau watermark.",
     "canonical": "/id/",
-    "ogTitle": "Teleprompter AI Online Gratis — VTeleprompter",
+    "ogTitle": "Teleprompter AI Online Gratis — SolPrompter",
     "ogDescription": "Presentasi secara alami dengan gulir suara AI, mode notch, kontrol jarak jauh, dan perekaman video profesional.",
     "ogType": "website",
-    "ogImage": "/og-vteleprompter.jpg"
+    "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "VTeleprompter menyediakan teleprompter AI online gratis untuk presentasi alami dan perekaman video profesional.",
-    "brandDescription": "VTeleprompter adalah teleprompter AI online yang dirancang untuk presentasi alami dan perekaman video profesional.",
+    "orgDescription": "SolPrompter menyediakan teleprompter AI online gratis untuk presentasi alami dan perekaman video profesional.",
+    "brandDescription": "SolPrompter adalah teleprompter AI online yang dirancang untuk presentasi alami dan perekaman video profesional.",
     "websiteDescription": "Teleprompter online gratis dengan gulir suara AI, mode notch, kontrol jarak jauh, dan perekaman video profesional.",
-    "webpageName": "Teleprompter Online Gratis dengan Gulir Suara AI | VTeleprompter",
-    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "webpageName": "Teleprompter Online Gratis dengan Gulir Suara AI | SolPrompter",
+    "alternateNames": ["SolPrompter", "solprompter.com"],
     "logoUrl": "/logo.png",
-    "logoCaption": "VTeleprompter",
-    "primaryImage": "/og-vteleprompter.jpg",
-    "primaryImageCaption": "VTeleprompter teleprompter AI online gratis",
-    "appAlternateName": "VTeleprompter Teleprompter Online",
+    "logoCaption": "SolPrompter",
+    "primaryImage": "/og-solprompter.jpg",
+    "primaryImageCaption": "SolPrompter teleprompter AI online gratis",
+    "appAlternateName": "SolPrompter Teleprompter Online",
     "appDescription": "Teleprompter AI online gratis dengan gulir yang diaktifkan suara, mode notch, kontrol jarak jauh, manajemen naskah, serta perekaman video Full HD dan 4K profesional.",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "Teleprompter Online",
@@ -41,11 +41,11 @@
       "Tanpa iklan",
       "Tanpa watermark video"
     ],
-    "offerDescription": "Akses gratis ke fitur teleprompter online VTeleprompter.",
-    "howToName": "Cara Menggunakan VTeleprompter",
-    "howToDescription": "Pelajari cara menambahkan naskah, memilih mode gulir, menyesuaikan teleprompter, dan mulai presentasi atau merekam dengan VTeleprompter.",
-    "faqName": "Pertanyaan yang Sering Diajukan tentang VTeleprompter",
-    "faqDescription": "Pertanyaan yang sering diajukan tentang VTeleprompter, Gulir Suara AI, mode notch, kontrol jarak jauh, perangkat yang didukung, dan perekaman video."
+    "offerDescription": "Akses gratis ke fitur teleprompter online SolPrompter.",
+    "howToName": "Cara Menggunakan SolPrompter",
+    "howToDescription": "Pelajari cara menambahkan naskah, memilih mode gulir, menyesuaikan teleprompter, dan mulai presentasi atau merekam dengan SolPrompter.",
+    "faqName": "Pertanyaan yang Sering Diajukan tentang SolPrompter",
+    "faqDescription": "Pertanyaan yang sering diajukan tentang SolPrompter, Gulir Suara AI, mode notch, kontrol jarak jauh, perangkat yang didukung, dan perekaman video."
   },
   "nav": {
     "items": [
@@ -57,7 +57,7 @@
     "cta": { "label": "Ruang Kerja", "url": "/workspaces" }
   },
   "hero": {
-    "eyebrow": "VTeleprompter — Teleprompter AI",
+    "eyebrow": "SolPrompter — Teleprompter AI",
     "title": "Teleprompter Online Gratis",
     "subtitle": "Presentasi secara alami dengan gulir suara AI, mode notch, kontrol jarak jauh, dan perekaman 4K profesional.",
     "placeholder": "Tempel naskah Anda atau unggah file untuk memulai...",
@@ -76,24 +76,24 @@
   "features": {
     "eyebrow": "Semua yang Anda Butuhkan untuk Presentasi Lebih Baik",
     "title": "Satu Teleprompter untuk Setiap Rekaman",
-    "description": "VTeleprompter menggabungkan teleprompter online, gulir suara AI, mode notch, kontrol jarak jauh, manajemen naskah, dan perekaman video profesional dalam satu ruang kerja sederhana.",
+    "description": "SolPrompter menggabungkan teleprompter online, gulir suara AI, mode notch, kontrol jarak jauh, manajemen naskah, dan perekaman video profesional dalam satu ruang kerja sederhana.",
     "items": [
-      { "title": "Gulir Suara AI", "description": "VTeleprompter mengikuti ucapan Anda dan menggulir naskah secara otomatis sesuai tempo bicara alami Anda." },
+      { "title": "Gulir Suara AI", "description": "SolPrompter mengikuti ucapan Anda dan menggulir naskah secara otomatis sesuai tempo bicara alami Anda." },
       { "title": "Teleprompter Notch", "description": "Jaga naskah tetap dekat kamera untuk mengurangi gerakan mata yang terlihat dan mempertahankan kontak mata yang lebih alami." },
       { "title": "Kontrol Jarak Jauh", "description": "Gunakan ponsel, tablet, atau komputer lain untuk mengontrol gulir, berpindah dalam naskah, dan mengelola presentasi dari jarak jauh." },
       { "title": "Perekaman Full HD dan 4K", "description": "Rekam video profesional sambil membaca naskah langsung dari teleprompter." },
       { "title": "Manajemen Naskah", "description": "Buat, unggah, edit, atur, dan gunakan kembali semua naskah Anda dari satu ruang kerja yang praktis." },
       { "title": "Perpustakaan Rekaman", "description": "Simpan, tinjau, dan kelola rekaman Anda bersama naskah yang digunakan untuk membuatnya." },
-      { "title": "Dirancang untuk Seluler", "description": "Gunakan VTeleprompter dengan nyaman di ponsel, tablet, laptop, dan komputer desktop dengan antarmuka responsif untuk setiap layar." },
+      { "title": "Dirancang untuk Seluler", "description": "Gunakan SolPrompter dengan nyaman di ponsel, tablet, laptop, dan komputer desktop dengan antarmuka responsif untuk setiap layar." },
       { "title": "Tanpa Iklan atau Watermark", "description": "Presentasi dan merekam tanpa iklan yang mengganggu atau watermark merek pada video Anda." }
     ]
   },
   "howItWorks": {
     "eyebrow": "Sederhana Sejak Take Pertama",
-    "title": "Cara Kerja VTeleprompter",
+    "title": "Cara Kerja SolPrompter",
     "description": "Ubah naskah apa pun menjadi presentasi yang mulus atau rekaman profesional hanya dalam beberapa langkah.",
     "steps": [
-      { "anchor": "step-add-script", "title": "Tambahkan Naskah Anda", "description": "Tempel teks Anda langsung ke VTeleprompter atau unggah naskah yang sudah ada dari perangkat Anda." },
+      { "anchor": "step-add-script", "title": "Tambahkan Naskah Anda", "description": "Tempel teks Anda langsung ke SolPrompter atau unggah naskah yang sudah ada dari perangkat Anda." },
       { "anchor": "step-choose-scroll-mode", "title": "Pilih Mode Gulir Anda", "description": "Atur kecepatan gulir tetap, kendalikan naskah secara manual, atau aktifkan Gulir Suara AI." },
       { "anchor": "step-customize-view", "title": "Sesuaikan Tampilan Anda", "description": "Sesuaikan font, ukuran teks, spasi baris, area baca, dan posisi teleprompter untuk membaca yang nyaman." },
       { "anchor": "step-start-presenting", "title": "Mulai Presentasi", "description": "Buka teleprompter, sambungkan remote jika perlu, dan mulai presentasi atau merekam." }
@@ -102,7 +102,7 @@
   "voiceScroll": {
     "eyebrow": "Bergulir Sesuai Kecepatan Suara Anda",
     "title": "Gulir Suara AI yang Mengikuti Anda",
-    "description": "Berhenti menyesuaikan tempo bicara Anda dengan kecepatan gulir tetap. VTeleprompter mengikuti suara Anda agar Anda dapat fokus menyampaikan pesan secara alami.",
+    "description": "Berhenti menyesuaikan tempo bicara Anda dengan kecepatan gulir tetap. SolPrompter mengikuti suara Anda agar Anda dapat fokus menyampaikan pesan secara alami.",
     "benefits": [
       { "title": "Berbicara Secara Alami", "description": "Baca dengan tempo Anda sendiri tanpa terdengar terburu-buru, lambat, atau kaku." },
       { "title": "Jeda Saat Anda Perlu", "description": "Tarik napas, tekankan sebuah gagasan, atau berhenti sejenak antar bagian tanpa langsung kehilangan posisi." },
@@ -115,7 +115,7 @@
   "notch": {
     "eyebrow": "Kontak Mata Alami",
     "title": "Jaga Naskah Anda Dekat dengan Kamera",
-    "description": "Mode notch VTeleprompter menempatkan area baca yang ringkas dekat kamera Anda, membantu mata tetap fokus lebih dekat ke lensa.",
+    "description": "Mode notch SolPrompter menempatkan area baca yang ringkas dekat kamera Anda, membantu mata tetap fokus lebih dekat ke lensa.",
     "items": [
       "Kurangi gerakan mata ke kiri dan kanan yang mencolok.",
       "Tempatkan naskah dekat webcam atau kamera ponsel Anda.",
@@ -147,7 +147,7 @@
       { "title": "Pratinjau Kamera Langsung", "description": "Periksa posisi, komposisi, dan penampilan sebelum dan selama perekaman." },
       { "title": "Perekaman Full HD", "description": "Buat video jernih berkualitas tinggi untuk media sosial, pelajaran, presentasi, dan konten bisnis." },
       { "title": "Perekaman 4K", "description": "Rekam video resolusi tinggi profesional saat kamera, peramban, dan perangkat Anda mendukungnya." },
-      { "title": "Tanpa Watermark", "description": "Ekspor rekaman bersih tanpa logo VTeleprompter atau overlay merek." },
+      { "title": "Tanpa Watermark", "description": "Ekspor rekaman bersih tanpa logo SolPrompter atau overlay merek." },
       { "title": "Perpustakaan Rekaman", "description": "Jaga take Anda tetap teratur dan temukan dengan cepat rekaman yang terkait dengan setiap naskah." }
     ],
     "cta": { "label": "Mulai Merekam", "url": "/workspaces" }
@@ -155,9 +155,9 @@
   "workspace": {
     "eyebrow": "Ruang Konten Anda",
     "title": "Kelola Naskah dan Rekaman Bersama",
-    "description": "Berhenti mencari di berbagai folder, dokumen, dan aplikasi terpisah. VTeleprompter menyimpan naskah dan rekaman Anda dalam satu ruang kerja yang teratur.",
+    "description": "Berhenti mencari di berbagai folder, dokumen, dan aplikasi terpisah. SolPrompter menyimpan naskah dan rekaman Anda dalam satu ruang kerja yang teratur.",
     "items": [
-      { "title": "Buat dan Edit Naskah", "description": "Tulis naskah baru atau perbarui konten yang ada langsung di dalam VTeleprompter." },
+      { "title": "Buat dan Edit Naskah", "description": "Tulis naskah baru atau perbarui konten yang ada langsung di dalam SolPrompter." },
       { "title": "Unggah Konten yang Ada", "description": "Impor naskah dari dokumen yang didukung alih-alih menyalin setiap bagian secara manual." },
       { "title": "Atur Perpustakaan Anda", "description": "Jaga naskah dan rekaman tetap teratur agar siap untuk presentasi mendatang." },
       { "title": "Gunakan Kembali Naskah Anda", "description": "Buka naskah sebelumnya, lakukan perubahan cepat, dan rekam versi baru tanpa memulai dari awal." },
@@ -167,18 +167,18 @@
   "mobile": {
     "eyebrow": "Dirancang untuk Setiap Layar",
     "title": "Teleprompter Online yang Ramah Seluler",
-    "description": "VTeleprompter dirancang agar terasa cepat, jelas, dan mudah dikendalikan baik di perangkat desktop maupun seluler.",
+    "description": "SolPrompter dirancang agar terasa cepat, jelas, dan mudah dikendalikan baik di perangkat desktop maupun seluler.",
     "items": [
       { "title": "Antarmuka Responsif", "description": "Kontrol penting tetap mudah dijangkau di berbagai ukuran dan orientasi layar." },
       { "title": "Potret dan Lanskap", "description": "Pilih orientasi layar yang paling sesuai dengan pengaturan perekaman Anda." },
       { "title": "Kontrol Ramah Sentuh", "description": "Sesuaikan teks, gulir, dan pengaturan perekaman dengan nyaman dari layar sentuh." },
-      { "title": "Tanpa Instalasi", "description": "Buka VTeleprompter di peramban yang didukung dan mulai gunakan teleprompter secara online." }
+      { "title": "Tanpa Instalasi", "description": "Buka SolPrompter di peramban yang didukung dan mulai gunakan teleprompter secara online." }
     ],
-    "supporting": "Gunakan VTeleprompter sebagai teleprompter seluler, teleprompter desktop, atau autocue online berbasis peramban."
+    "supporting": "Gunakan SolPrompter sebagai teleprompter seluler, teleprompter desktop, atau autocue online berbasis peramban."
   },
   "useCases": {
     "eyebrow": "Dibuat untuk Setiap Presenter",
-    "title": "Untuk Siapa VTeleprompter?",
+    "title": "Untuk Siapa SolPrompter?",
     "items": [
       { "title": "Kreator Konten", "description": "Rekam video TikTok, YouTube, Shorts, Reels, dan konten sosial lainnya tanpa menghafal setiap baris." },
       { "title": "YouTuber", "description": "Sampaikan ulasan, tutorial, penjelasan, dan video talking-head dengan presentasi yang lebih mulus dan percaya diri." },
@@ -191,9 +191,9 @@
     ]
   },
   "comparison": {
-    "eyebrow": "Mengapa VTeleprompter?",
+    "eyebrow": "Mengapa SolPrompter?",
     "title": "Teleprompter Gratis yang Lebih Lengkap",
-    "description": "VTeleprompter dibangun untuk memberikan pengalaman teleprompter yang lengkap tanpa memaksa pengguna menggabungkan beberapa aplikasi atau membayar fitur dasar.",
+    "description": "SolPrompter dibangun untuk memberikan pengalaman teleprompter yang lengkap tanpa memaksa pengguna menggabungkan beberapa aplikasi atau membayar fitur dasar.",
     "items": [
       "Gulir yang diaktifkan suara AI",
       "Mode teleprompter notch",
@@ -206,20 +206,20 @@
       "Pengalaman pengguna yang sederhana dan modern",
       "Akses gratis ke fitur teleprompter penting"
     ],
-    "supporting": "Dari menulis naskah hingga merekam take akhir, VTeleprompter memberi Anda alat yang dibutuhkan dalam satu tempat."
+    "supporting": "Dari menulis naskah hingga merekam take akhir, SolPrompter memberi Anda alat yang dibutuhkan dalam satu tempat."
   },
   "about": {
-    "eyebrow": "Tentang VTeleprompter",
+    "eyebrow": "Tentang SolPrompter",
     "title": "Dibuat agar Presentasi Terasa Alami",
     "paragraphs": [
-      "VTeleprompter adalah teleprompter AI yang dibuat untuk orang-orang yang ingin berbicara dengan percaya diri tanpa menghafal setiap kata atau terus-menerus mengatur kontrol gulir.",
+      "SolPrompter adalah teleprompter AI yang dibuat untuk orang-orang yang ingin berbicara dengan percaya diri tanpa menghafal setiap kata atau terus-menerus mengatur kontrol gulir.",
       "Tujuan kami adalah menciptakan pengalaman teleprompter online yang paling lengkap dan mudah diakses, menggabungkan gulir AI yang andal, desain yang matang, alat kontak mata alami, dan fitur perekaman profesional.",
-      "Baik Anda merekam dari ponsel, presentasi dari laptop, atau mengendalikan pengaturan studio dari jarak jauh, VTeleprompter membantu Anda tetap fokus pada audiens alih-alih pada perangkat lunaknya."
+      "Baik Anda merekam dari ponsel, presentasi dari laptop, atau mengendalikan pengaturan studio dari jarak jauh, SolPrompter membantu Anda tetap fokus pada audiens alih-alih pada perangkat lunaknya."
     ]
   },
   "finalCta": {
     "eyebrow": "Siap Presentasi?",
-    "title": "Mulai Gunakan VTeleprompter",
+    "title": "Mulai Gunakan SolPrompter",
     "description": "Tambahkan naskah Anda, pilih mode baca favorit Anda, dan mulai presentasi secara alami.",
     "cta": { "label": "Buka Teleprompter Gratis", "url": "/workspaces" },
     "supporting": "Tanpa iklan. Tanpa watermark. Tanpa pengaturan rumit."
@@ -228,20 +228,20 @@
     "eyebrow": "Tanya & Jawab",
     "title": "Pertanyaan yang Sering Diajukan",
     "items": [
-      { "anchor": "faq-is-vteleprompter-free", "q": "Apakah VTeleprompter gratis digunakan?", "a": "VTeleprompter saat ini gratis digunakan. Anda dapat mengakses fitur teleprompter, naskah, dan perekaman penting tanpa iklan atau watermark video bermerek." },
+      { "anchor": "faq-is-solprompter-free", "q": "Apakah SolPrompter gratis digunakan?", "a": "SolPrompter saat ini gratis digunakan. Anda dapat mengakses fitur teleprompter, naskah, dan perekaman penting tanpa iklan atau watermark video bermerek." },
       { "anchor": "faq-what-is-ai-voice-scroll", "q": "Apa itu Gulir Suara AI?", "a": "Gulir Suara AI mendengarkan ucapan Anda dan bergerak melalui naskah berdasarkan tempo bicara alami Anda. Ini membantu Anda berhenti sejenak, melanjutkan, dan presentasi tanpa terus-menerus menyesuaikan kecepatan gulir tetap." },
-      { "anchor": "faq-what-is-notch-mode", "q": "Apa itu Mode Notch VTeleprompter?", "a": "Mode Notch menempatkan area baca teleprompter yang ringkas dekat kamera Anda. Ini membantu mengurangi gerakan mata yang terlihat dan membuat kontak mata Anda tampak lebih alami selama perekaman, presentasi, dan panggilan video." },
-      { "anchor": "faq-mobile-devices", "q": "Bisakah saya menggunakan VTeleprompter di ponsel atau tablet?", "a": "Ya. VTeleprompter memiliki antarmuka responsif yang dirancang untuk ponsel pintar, tablet, laptop, dan komputer desktop. Fitur yang tersedia dapat bergantung pada peramban, kamera, dan kemampuan perangkat." },
-      { "anchor": "faq-installation", "q": "Apakah saya perlu menginstal VTeleprompter?", "a": "Tidak ada instalasi yang diperlukan untuk versi web. Anda dapat membuka VTeleprompter di peramban modern yang didukung, menambahkan naskah, dan mulai presentasi secara online." },
-      { "anchor": "faq-remote-control", "q": "Bisakah saya mengontrol VTeleprompter dari perangkat lain?", "a": "Ya. Kontrol jarak jauh VTeleprompter memungkinkan Anda menggunakan ponsel, tablet, atau komputer lain untuk memulai atau menjeda teleprompter, menyesuaikan gulir, dan menavigasi naskah Anda." },
-      { "anchor": "faq-4k-recording", "q": "Bisakah VTeleprompter merekam video dalam 4K?", "a": "VTeleprompter mendukung perekaman Full HD dan 4K saat kamera, peramban, dan perangkat mendukung resolusi yang dipilih. Kualitas perekaman sebenarnya bergantung pada kemampuan dan izin perangkat Anda." },
-      { "anchor": "faq-watermark", "q": "Apakah VTeleprompter menambahkan watermark pada rekaman?", "a": "VTeleprompter tidak menambahkan watermark bermerek pada video yang Anda rekam." },
-      { "anchor": "faq-supported-files", "q": "Format file naskah apa saja yang didukung VTeleprompter?", "a": "VTeleprompter mendukung penempelan teks secara langsung dan pengunggahan dokumen naskah yang didukung seperti file TXT, DOCX, PDF, dan Markdown." },
-      { "anchor": "faq-online-autocue", "q": "Bisakah VTeleprompter digunakan sebagai autocue online?", "a": "Ya. VTeleprompter dapat digunakan sebagai autocue online berbasis peramban dengan gulir manual, gulir otomatis kecepatan tetap, dan gulir yang diaktifkan suara AI." }
+      { "anchor": "faq-what-is-notch-mode", "q": "Apa itu Mode Notch SolPrompter?", "a": "Mode Notch menempatkan area baca teleprompter yang ringkas dekat kamera Anda. Ini membantu mengurangi gerakan mata yang terlihat dan membuat kontak mata Anda tampak lebih alami selama perekaman, presentasi, dan panggilan video." },
+      { "anchor": "faq-mobile-devices", "q": "Bisakah saya menggunakan SolPrompter di ponsel atau tablet?", "a": "Ya. SolPrompter memiliki antarmuka responsif yang dirancang untuk ponsel pintar, tablet, laptop, dan komputer desktop. Fitur yang tersedia dapat bergantung pada peramban, kamera, dan kemampuan perangkat." },
+      { "anchor": "faq-installation", "q": "Apakah saya perlu menginstal SolPrompter?", "a": "Tidak ada instalasi yang diperlukan untuk versi web. Anda dapat membuka SolPrompter di peramban modern yang didukung, menambahkan naskah, dan mulai presentasi secara online." },
+      { "anchor": "faq-remote-control", "q": "Bisakah saya mengontrol SolPrompter dari perangkat lain?", "a": "Ya. Kontrol jarak jauh SolPrompter memungkinkan Anda menggunakan ponsel, tablet, atau komputer lain untuk memulai atau menjeda teleprompter, menyesuaikan gulir, dan menavigasi naskah Anda." },
+      { "anchor": "faq-4k-recording", "q": "Bisakah SolPrompter merekam video dalam 4K?", "a": "SolPrompter mendukung perekaman Full HD dan 4K saat kamera, peramban, dan perangkat mendukung resolusi yang dipilih. Kualitas perekaman sebenarnya bergantung pada kemampuan dan izin perangkat Anda." },
+      { "anchor": "faq-watermark", "q": "Apakah SolPrompter menambahkan watermark pada rekaman?", "a": "SolPrompter tidak menambahkan watermark bermerek pada video yang Anda rekam." },
+      { "anchor": "faq-supported-files", "q": "Format file naskah apa saja yang didukung SolPrompter?", "a": "SolPrompter mendukung penempelan teks secara langsung dan pengunggahan dokumen naskah yang didukung seperti file TXT, DOCX, PDF, dan Markdown." },
+      { "anchor": "faq-online-autocue", "q": "Bisakah SolPrompter digunakan sebagai autocue online?", "a": "Ya. SolPrompter dapat digunakan sebagai autocue online berbasis peramban dengan gulir manual, gulir otomatis kecepatan tetap, dan gulir yang diaktifkan suara AI." }
     ]
   },
   "footer": {
-    "brand": "VTeleprompter",
+    "brand": "SolPrompter",
     "description": "Teleprompter AI online gratis untuk presentasi alami dan perekaman video profesional.",
     "columns": [
       {
@@ -274,6 +274,6 @@
         ]
       }
     ],
-    "copyright": "© 2026 VTeleprompter."
+    "copyright": "© 2026 SolPrompter."
   }
 }

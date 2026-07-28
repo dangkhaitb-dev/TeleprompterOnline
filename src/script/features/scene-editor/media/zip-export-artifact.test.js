@@ -37,8 +37,8 @@ describe('createRecordingsZipArtifact', () => {
     const files = unzipSync(new Uint8Array(await artifact.blob.arrayBuffer()));
 
     expect(artifact.storage).toBe('opfs');
-    expect(strFromU8(files['vteleprompter-clip-01.webm'])).toBe('one');
-    expect(strFromU8(files['vteleprompter-clip-02.ogg'])).toBe('two');
+    expect(strFromU8(files['solprompter-clip-01.webm'])).toBe('one');
+    expect(strFromU8(files['solprompter-clip-02.ogg'])).toBe('two');
 
     await artifact.cleanup();
     await artifact.cleanup();

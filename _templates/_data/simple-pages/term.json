@@ -4,23 +4,23 @@
   "published": true,
   "title": "Terms of Service",
   "seo": {
-    "title": "Terms of Service | VTeleprompter",
-    "description": "Read the terms governing access to and use of VTeleprompter, including user content, recordings, acceptable use, paid services and limitations of liability."
+    "title": "Terms of Service | SolPrompter",
+    "description": "Read the terms governing access to and use of SolPrompter, including user content, recordings, acceptable use, paid services and limitations of liability."
   },
   "content": [
     { "type": "paragraph", "html": "<strong>Effective date: July 17, 2026</strong><br><strong>Last updated: July 26, 2026</strong>" },
-    { "type": "paragraph", "html": "These Terms of Service (“Terms”) govern your access to and use of VTeleprompter, including the website located at <a href=\"https://vteleprompter.com\">https://vteleprompter.com</a>, its web application, mobile applications, software, features and related services collectively referred to as the “Service.”" },
-    { "type": "paragraph", "html": "In these Terms, “VTeleprompter,” “we,” “us” and “our” refer to the person or entity operating VTeleprompter from Vietnam. “You” and “your” refer to the individual or organization accessing or using the Service." },
-    { "type": "paragraph", "html": "By accessing or using VTeleprompter, creating an account, purchasing a paid plan or otherwise indicating your acceptance, you agree to these Terms. If you do not agree, do not use the Service." },
+    { "type": "paragraph", "html": "These Terms of Service (“Terms”) govern your access to and use of SolPrompter, including the website located at <a href=\"https://solprompter.com\">https://solprompter.com</a>, its web application, mobile applications, software, features and related services collectively referred to as the “Service.”" },
+    { "type": "paragraph", "html": "In these Terms, “SolPrompter,” “we,” “us” and “our” refer to the person or entity operating SolPrompter from Vietnam. “You” and “your” refer to the individual or organization accessing or using the Service." },
+    { "type": "paragraph", "html": "By accessing or using SolPrompter, creating an account, purchasing a paid plan or otherwise indicating your acceptance, you agree to these Terms. If you do not agree, do not use the Service." },
 
     { "type": "heading", "text": "1. Eligibility" },
-    { "type": "paragraph", "html": "You must be at least 13 years old to use VTeleprompter." },
+    { "type": "paragraph", "html": "You must be at least 13 years old to use SolPrompter." },
     { "type": "paragraph", "html": "If the law where you live requires you to be older to enter into a binding agreement or use an online service without parental consent, the higher age requirement applies." },
     { "type": "paragraph", "html": "If you are under the age of legal majority where you live, you may use the Service only with the permission and supervision of a parent or legal guardian." },
-    { "type": "paragraph", "html": "If you use VTeleprompter on behalf of a company, school, production team or other organization, you represent that you have authority to bind that organization to these Terms." },
+    { "type": "paragraph", "html": "If you use SolPrompter on behalf of a company, school, production team or other organization, you represent that you have authority to bind that organization to these Terms." },
 
-    { "type": "heading", "text": "2. The VTeleprompter Service" },
-    { "type": "paragraph", "html": "VTeleprompter provides tools that may allow users to:" },
+    { "type": "heading", "text": "2. The SolPrompter Service" },
+    { "type": "paragraph", "html": "SolPrompter provides tools that may allow users to:" },
     { "type": "list", "items": [
       "Create, paste, upload, edit and organize scripts.",
       "Display scripts in a teleprompter interface.",
@@ -49,7 +49,7 @@
     { "type": "paragraph", "html": "We may require verification before processing sensitive account requests, including account recovery, data export, deletion, billing changes or refunds." },
 
     { "type": "heading", "text": "4. Camera and Microphone Permissions" },
-    { "type": "paragraph", "html": "VTeleprompter may request permission to access your camera or microphone when you use recording, preview, voice scrolling or related features." },
+    { "type": "paragraph", "html": "SolPrompter may request permission to access your camera or microphone when you use recording, preview, voice scrolling or related features." },
     { "type": "paragraph", "html": "You control these permissions through your browser, device or operating system." },
     { "type": "paragraph", "html": "You are responsible for:" },
     { "type": "list", "items": [
@@ -59,10 +59,10 @@
       "Avoiding the capture of confidential, personal or sensitive information without authorization.",
       "Reviewing your camera frame and microphone input before recording."
     ] },
-    { "type": "paragraph", "html": "VTeleprompter does not grant you permission to record another person. Laws governing audio and video recording differ by jurisdiction, and you are responsible for determining which rules apply to your use." },
+    { "type": "paragraph", "html": "SolPrompter does not grant you permission to record another person. Laws governing audio and video recording differ by jurisdiction, and you are responsible for determining which rules apply to your use." },
 
     { "type": "heading", "text": "5. AI Voice Scroll and Automated Features" },
-    { "type": "paragraph", "html": "VTeleprompter may use speech recognition, text matching, timing analysis or other automated technology to move through a script or support your presentation." },
+    { "type": "paragraph", "html": "SolPrompter may use speech recognition, text matching, timing analysis or other automated technology to move through a script or support your presentation." },
     { "type": "paragraph", "html": "Automated features may:" },
     { "type": "list", "items": [
       "Mishear words.",
@@ -73,15 +73,15 @@
       "Be temporarily unavailable."
     ] },
     { "type": "paragraph", "html": "You are responsible for reviewing the script, monitoring the teleprompter and maintaining an alternative method when uninterrupted presentation is important." },
-    { "type": "paragraph", "html": "VTeleprompter does not guarantee that voice scrolling or any AI-assisted feature will be error-free, uninterrupted or suitable for every speaker, environment or production." },
+    { "type": "paragraph", "html": "SolPrompter does not guarantee that voice scrolling or any AI-assisted feature will be error-free, uninterrupted or suitable for every speaker, environment or production." },
 
     { "type": "heading", "text": "6. User Content" },
     { "type": "paragraph", "html": "“User Content” includes scripts, text, documents, audio, video, images, recordings, prompts, filenames, comments and other content that you upload, create, store, process or transmit through the Service." },
     { "type": "paragraph", "html": "<strong>Your ownership</strong>" },
     { "type": "paragraph", "html": "You retain ownership of your User Content." },
-    { "type": "paragraph", "html": "These Terms do not transfer ownership of your scripts or recordings to VTeleprompter." },
+    { "type": "paragraph", "html": "These Terms do not transfer ownership of your scripts or recordings to SolPrompter." },
     { "type": "paragraph", "html": "<strong>Permission required to operate the Service</strong>" },
-    { "type": "paragraph", "html": "You grant VTeleprompter a limited, non-exclusive, worldwide and royalty-free license to host, store, reproduce, transmit, process, display, convert and otherwise use your User Content only as reasonably necessary to:" },
+    { "type": "paragraph", "html": "You grant SolPrompter a limited, non-exclusive, worldwide and royalty-free license to host, store, reproduce, transmit, process, display, convert and otherwise use your User Content only as reasonably necessary to:" },
     { "type": "list", "items": [
       "Provide the features you request.",
       "Synchronize content across devices.",
@@ -97,12 +97,12 @@
       "You own your User Content or have permission to use it.",
       "Your content does not violate copyright, privacy, publicity, confidentiality or other rights.",
       "Your content is not unlawful or harmful.",
-      "Uploading and processing the content through VTeleprompter is legally permitted."
+      "Uploading and processing the content through SolPrompter is legally permitted."
     ] },
     { "type": "paragraph", "html": "We are not responsible for disputes arising from content you upload without appropriate permission." },
 
     { "type": "heading", "text": "7. Content Storage and Backups" },
-    { "type": "paragraph", "html": "VTeleprompter may offer script or recording storage, but the Service is not intended to be your only backup system." },
+    { "type": "paragraph", "html": "SolPrompter may offer script or recording storage, but the Service is not intended to be your only backup system." },
     { "type": "paragraph", "html": "You should maintain independent copies of important scripts and recordings." },
     { "type": "paragraph", "html": "We do not guarantee that:" },
     { "type": "list", "items": [
@@ -115,7 +115,7 @@
     { "type": "paragraph", "html": "Storage limits may depend on your plan. We may delete content that exceeds applicable limits after providing reasonable notice where practical." },
 
     { "type": "heading", "text": "8. Acceptable Use" },
-    { "type": "paragraph", "html": "You may not use VTeleprompter to:" },
+    { "type": "paragraph", "html": "You may not use SolPrompter to:" },
     { "type": "list", "items": [
       "Violate any law or regulation.",
       "Infringe copyright, trademark, privacy, publicity or other rights.",
@@ -133,17 +133,17 @@
       "Reverse engineer the Service except where applicable law expressly permits it.",
       "Use another person’s payment method without authorization.",
       "Submit fraudulent refund requests or payment disputes.",
-      "Use VTeleprompter in a manner that creates a material safety, legal or security risk."
+      "Use SolPrompter in a manner that creates a material safety, legal or security risk."
     ] },
     { "type": "paragraph", "html": "We may investigate suspected abuse and restrict or suspend access when reasonably necessary to protect users, third parties or the Service." },
 
     { "type": "heading", "text": "9. Intellectual Property" },
-    { "type": "paragraph", "html": "The Service, including its software, interface, design, branding, icons, graphics, text, documentation and underlying technology, is owned by VTeleprompter or its licensors and is protected by applicable intellectual property laws." },
-    { "type": "paragraph", "html": "Subject to these Terms, VTeleprompter grants you a limited, revocable, non-exclusive, non-transferable license to use the Service for lawful personal or internal business purposes." },
+    { "type": "paragraph", "html": "The Service, including its software, interface, design, branding, icons, graphics, text, documentation and underlying technology, is owned by SolPrompter or its licensors and is protected by applicable intellectual property laws." },
+    { "type": "paragraph", "html": "Subject to these Terms, SolPrompter grants you a limited, revocable, non-exclusive, non-transferable license to use the Service for lawful personal or internal business purposes." },
     { "type": "paragraph", "html": "This license does not permit you to:" },
     { "type": "list", "items": [
       "Copy or redistribute the Service.",
-      "Use VTeleprompter trademarks without permission.",
+      "Use SolPrompter trademarks without permission.",
       "Remove ownership notices.",
       "Create a competing service by copying protected elements.",
       "Sell access to the Service.",
@@ -152,7 +152,7 @@
     { "type": "paragraph", "html": "No rights are granted except those expressly stated in these Terms." },
 
     { "type": "heading", "text": "10. Feedback" },
-    { "type": "paragraph", "html": "You may send suggestions, ideas or feedback about VTeleprompter." },
+    { "type": "paragraph", "html": "You may send suggestions, ideas or feedback about SolPrompter." },
     { "type": "paragraph", "html": "You grant us permission to use that feedback without restriction or payment, provided that we do not publicly identify you as the source without permission." },
     { "type": "paragraph", "html": "This does not give us ownership of your scripts, recordings or other User Content." },
 
@@ -167,12 +167,12 @@
       "A statement that the information provided is accurate.",
       "Your physical or electronic signature."
     ] },
-    { "type": "paragraph", "html": "Send copyright complaints to: <a href=\"mailto:contact.vpromter@gmail.com\" rel=\"nofollow\">contact.vpromter@gmail.com</a>" },
+    { "type": "paragraph", "html": "Send copyright complaints to: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a>" },
     { "type": "paragraph", "html": "We may remove or restrict content when we reasonably believe it infringes intellectual property rights. We may also terminate repeat infringers where appropriate." },
     { "type": "paragraph", "html": "Submitting a knowingly false complaint may create legal liability." },
 
     { "type": "heading", "text": "12. Third-Party Services" },
-    { "type": "paragraph", "html": "VTeleprompter may rely on or integrate with third-party services, including:" },
+    { "type": "paragraph", "html": "SolPrompter may rely on or integrate with third-party services, including:" },
     { "type": "list", "items": [
       "Cloud hosting.",
       "Authentication providers.",
@@ -188,9 +188,9 @@
     { "type": "paragraph", "html": "We are not responsible for third-party services that we do not control, including outages, policy changes, account restrictions or data handling by those providers." },
 
     { "type": "heading", "text": "13. Free and Paid Features" },
-    { "type": "paragraph", "html": "VTeleprompter may provide free features, paid subscriptions, one-time purchases, usage credits or other paid services." },
+    { "type": "paragraph", "html": "SolPrompter may provide free features, paid subscriptions, one-time purchases, usage credits or other paid services." },
     { "type": "paragraph", "html": "Prices, billing periods, usage limits and included features will be displayed before purchase." },
-    { "type": "paragraph", "html": "Paid services are also governed by the VTeleprompter Billing, Subscription, Cancellation and Refund Policy." },
+    { "type": "paragraph", "html": "Paid services are also governed by the SolPrompter Billing, Subscription, Cancellation and Refund Policy." },
     { "type": "paragraph", "html": "If there is a conflict concerning billing or refunds, the Billing and Refund Policy controls for that issue." },
 
     { "type": "heading", "text": "14. Fair Use Policy" },
@@ -208,7 +208,7 @@
 
     { "type": "heading", "text": "15. Lifetime Access" },
     { "type": "paragraph", "html": "We may offer a Lifetime plan: a one-time payment instead of a recurring subscription." },
-    { "type": "paragraph", "html": "<strong>\u201cLifetime\u201d refers to the lifetime of the Service, not the lifetime of the user.</strong> A Lifetime plan grants a personal, non-exclusive, non-transferable right to use the paid features of VTeleprompter for as long as we operate the Service commercially." },
+    { "type": "paragraph", "html": "<strong>\u201cLifetime\u201d refers to the lifetime of the Service, not the lifetime of the user.</strong> A Lifetime plan grants a personal, non-exclusive, non-transferable right to use the paid features of SolPrompter for as long as we operate the Service commercially." },
     { "type": "paragraph", "html": "A Lifetime plan:" },
     { "type": "list", "items": [
       "Does not create a right to any separate product we may release in the future.",
@@ -239,7 +239,7 @@
     { "type": "paragraph", "html": "We are not required to maintain every free feature indefinitely." },
 
     { "type": "heading", "text": "18. Suspension and Termination" },
-    { "type": "paragraph", "html": "You may stop using VTeleprompter at any time." },
+    { "type": "paragraph", "html": "You may stop using SolPrompter at any time." },
     { "type": "paragraph", "html": "You may delete your account through available account settings or by contacting us." },
     { "type": "paragraph", "html": "We may suspend or terminate access when:" },
     { "type": "list", "items": [
@@ -254,7 +254,7 @@
     { "type": "paragraph", "html": "After termination, your right to use the Service ends. Provisions concerning ownership, payment obligations, disclaimers, liability and disputes continue where their nature requires." },
 
     { "type": "heading", "text": "19. Disclaimers" },
-    { "type": "paragraph", "html": "To the maximum extent permitted by law, VTeleprompter is provided on an “as is” and “as available” basis." },
+    { "type": "paragraph", "html": "To the maximum extent permitted by law, SolPrompter is provided on an “as is” and “as available” basis." },
     { "type": "paragraph", "html": "We do not guarantee that:" },
     { "type": "list", "items": [
       "The Service will always be available.",
@@ -270,7 +270,7 @@
     { "type": "paragraph", "html": "Nothing in these Terms excludes warranties or consumer rights that cannot lawfully be excluded." },
 
     { "type": "heading", "text": "20. Limitation of Liability" },
-    { "type": "paragraph", "html": "To the maximum extent permitted by law, VTeleprompter and its operators, affiliates, contractors and service providers will not be liable for indirect, incidental, special, consequential, exemplary or punitive damages, including:" },
+    { "type": "paragraph", "html": "To the maximum extent permitted by law, SolPrompter and its operators, affiliates, contractors and service providers will not be liable for indirect, incidental, special, consequential, exemplary or punitive damages, including:" },
     { "type": "list", "items": [
       "Lost profits.",
       "Lost revenue.",
@@ -281,11 +281,11 @@
       "Reputational harm.",
       "Substitute service costs."
     ] },
-    { "type": "paragraph", "html": "To the maximum extent permitted by law, VTeleprompter’s total liability arising from the Service will not exceed the greater of the amount you paid to VTeleprompter during the 12 months before the event giving rise to the claim, or USD $100." },
+    { "type": "paragraph", "html": "To the maximum extent permitted by law, SolPrompter’s total liability arising from the Service will not exceed the greater of the amount you paid to SolPrompter during the 12 months before the event giving rise to the claim, or USD $100." },
     { "type": "paragraph", "html": "These limitations do not apply where prohibited by law, including liability that cannot legally be limited for fraud, intentional misconduct, personal injury or mandatory consumer protections." },
 
     { "type": "heading", "text": "21. Business User Indemnification" },
-    { "type": "paragraph", "html": "If you use VTeleprompter on behalf of a business or organization, that organization agrees, to the extent permitted by law, to defend and indemnify VTeleprompter against third-party claims arising from:" },
+    { "type": "paragraph", "html": "If you use SolPrompter on behalf of a business or organization, that organization agrees, to the extent permitted by law, to defend and indemnify SolPrompter against third-party claims arising from:" },
     { "type": "list", "items": [
       "Its User Content.",
       "Its unlawful recording activity.",
@@ -316,7 +316,7 @@
     { "type": "paragraph", "html": "Continued use after the effective date of updated Terms constitutes acceptance where permitted by law. Where affirmative consent is legally required, we will request it." },
 
     { "type": "heading", "text": "24. General Provisions" },
-    { "type": "paragraph", "html": "These Terms and any policies incorporated by reference form the agreement between you and VTeleprompter concerning the Service." },
+    { "type": "paragraph", "html": "These Terms and any policies incorporated by reference form the agreement between you and SolPrompter concerning the Service." },
     { "type": "paragraph", "html": "If part of these Terms is found unenforceable, the remaining provisions remain in effect." },
     { "type": "paragraph", "html": "Our failure to enforce a provision is not a waiver of our right to enforce it later." },
     { "type": "paragraph", "html": "You may not assign these Terms without our permission. We may assign them as part of a merger, acquisition, restructuring or transfer of the Service, subject to applicable law." },
@@ -324,6 +324,6 @@
 
     { "type": "heading", "text": "25. Contact" },
     { "type": "paragraph", "html": "Questions about these Terms may be sent to:" },
-    { "type": "paragraph", "html": "<strong>VTeleprompter</strong><br>Website: <a href=\"https://vteleprompter.com\">https://vteleprompter.com</a><br>Email: <a href=\"mailto:contact.vpromter@gmail.com\" rel=\"nofollow\">contact.vpromter@gmail.com</a><br>Country of operation: Vietnam" }
+    { "type": "paragraph", "html": "<strong>SolPrompter</strong><br>Website: <a href=\"https://solprompter.com\">https://solprompter.com</a><br>Email: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a><br>Country of operation: Vietnam" }
   ]
 }

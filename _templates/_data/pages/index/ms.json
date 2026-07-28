@@ -1,24 +1,24 @@
 {
   "seo": {
-    "title": "Teleprompter Dalam Talian Percuma dengan Skrol Suara AI | VTeleprompter",
-    "description": "Gunakan VTeleprompter, teleprompter dalam talian percuma dengan skrol suara AI, mod notch, kawalan jauh dan rakaman 4K. Tiada iklan atau tera air.",
+    "title": "Teleprompter Dalam Talian Percuma dengan Skrol Suara AI | SolPrompter",
+    "description": "Gunakan SolPrompter, teleprompter dalam talian percuma dengan skrol suara AI, mod notch, kawalan jauh dan rakaman 4K. Tiada iklan atau tera air.",
     "canonical": "/ms/",
-    "ogTitle": "Teleprompter AI Dalam Talian Percuma — VTeleprompter",
+    "ogTitle": "Teleprompter AI Dalam Talian Percuma — SolPrompter",
     "ogDescription": "Persembahan secara semula jadi dengan skrol suara AI, mod notch, kawalan jauh dan rakaman video profesional.",
     "ogType": "website",
-    "ogImage": "/og-vteleprompter.jpg"
+    "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "VTeleprompter menyediakan teleprompter AI dalam talian percuma untuk persembahan semula jadi dan rakaman video profesional.",
-    "brandDescription": "VTeleprompter ialah teleprompter AI dalam talian yang direka untuk persembahan semula jadi dan rakaman video profesional.",
+    "orgDescription": "SolPrompter menyediakan teleprompter AI dalam talian percuma untuk persembahan semula jadi dan rakaman video profesional.",
+    "brandDescription": "SolPrompter ialah teleprompter AI dalam talian yang direka untuk persembahan semula jadi dan rakaman video profesional.",
     "websiteDescription": "Teleprompter dalam talian percuma dengan skrol suara AI, mod notch, kawalan jauh dan rakaman video profesional.",
-    "webpageName": "Teleprompter Dalam Talian Percuma dengan Skrol Suara AI | VTeleprompter",
-    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "webpageName": "Teleprompter Dalam Talian Percuma dengan Skrol Suara AI | SolPrompter",
+    "alternateNames": ["SolPrompter", "solprompter.com"],
     "logoUrl": "/logo.png",
-    "logoCaption": "VTeleprompter",
-    "primaryImage": "/og-vteleprompter.jpg",
-    "primaryImageCaption": "VTeleprompter teleprompter AI dalam talian percuma",
-    "appAlternateName": "VTeleprompter Teleprompter Dalam Talian",
+    "logoCaption": "SolPrompter",
+    "primaryImage": "/og-solprompter.jpg",
+    "primaryImageCaption": "SolPrompter teleprompter AI dalam talian percuma",
+    "appAlternateName": "SolPrompter Teleprompter Dalam Talian",
     "appDescription": "Teleprompter AI dalam talian percuma dengan skrol diaktifkan suara, mod notch, kawalan jauh, pengurusan skrip serta rakaman video Full HD dan 4K profesional.",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "Teleprompter Dalam Talian",
@@ -41,11 +41,11 @@
       "Tiada iklan",
       "Tiada tera air video"
     ],
-    "offerDescription": "Akses percuma kepada ciri teleprompter dalam talian VTeleprompter.",
-    "howToName": "Cara Menggunakan VTeleprompter",
-    "howToDescription": "Ketahui cara menambah skrip, memilih mod skrol, menyesuaikan teleprompter dan mula membuat persembahan atau merakam dengan VTeleprompter.",
-    "faqName": "Soalan Lazim VTeleprompter",
-    "faqDescription": "Soalan lazim tentang VTeleprompter, Skrol Suara AI, mod notch, kawalan jauh, peranti yang disokong dan rakaman video."
+    "offerDescription": "Akses percuma kepada ciri teleprompter dalam talian SolPrompter.",
+    "howToName": "Cara Menggunakan SolPrompter",
+    "howToDescription": "Ketahui cara menambah skrip, memilih mod skrol, menyesuaikan teleprompter dan mula membuat persembahan atau merakam dengan SolPrompter.",
+    "faqName": "Soalan Lazim SolPrompter",
+    "faqDescription": "Soalan lazim tentang SolPrompter, Skrol Suara AI, mod notch, kawalan jauh, peranti yang disokong dan rakaman video."
   },
   "nav": {
     "items": [
@@ -57,7 +57,7 @@
     "cta": { "label": "Ruang Kerja", "url": "/workspaces" }
   },
   "hero": {
-    "eyebrow": "VTeleprompter — Teleprompter AI",
+    "eyebrow": "SolPrompter — Teleprompter AI",
     "title": "Teleprompter Dalam Talian Percuma",
     "subtitle": "Persembahan secara semula jadi dengan skrol suara AI, mod notch, kawalan jauh dan rakaman 4K profesional.",
     "placeholder": "Tampal skrip anda atau muat naik fail untuk bermula...",
@@ -76,24 +76,24 @@
   "features": {
     "eyebrow": "Segala yang Anda Perlukan untuk Persembahan Lebih Baik",
     "title": "Satu Teleprompter untuk Setiap Rakaman",
-    "description": "VTeleprompter menggabungkan teleprompter dalam talian, skrol suara AI, mod notch, kawalan jauh, pengurusan skrip dan rakaman video profesional dalam satu ruang kerja yang ringkas.",
+    "description": "SolPrompter menggabungkan teleprompter dalam talian, skrol suara AI, mod notch, kawalan jauh, pengurusan skrip dan rakaman video profesional dalam satu ruang kerja yang ringkas.",
     "items": [
-      { "title": "Skrol Suara AI", "description": "VTeleprompter mengikut pertuturan anda dan menskrol skrip secara automatik mengikut tempo percakapan semula jadi anda." },
+      { "title": "Skrol Suara AI", "description": "SolPrompter mengikut pertuturan anda dan menskrol skrip secara automatik mengikut tempo percakapan semula jadi anda." },
       { "title": "Teleprompter Notch", "description": "Kekalkan skrip berhampiran kamera untuk mengurangkan gerakan mata yang ketara dan mengekalkan hubungan mata yang lebih semula jadi." },
       { "title": "Kawalan Jauh", "description": "Gunakan telefon, tablet atau komputer lain untuk mengawal skrol, bergerak melalui skrip dan menguruskan persembahan dari jauh." },
       { "title": "Rakaman Full HD dan 4K", "description": "Rakam video profesional sambil membaca skrip terus daripada teleprompter." },
       { "title": "Pengurusan Skrip", "description": "Cipta, muat naik, sunting, susun dan guna semula semua skrip anda dari satu ruang kerja yang mudah." },
       { "title": "Pustaka Rakaman", "description": "Simpan, semak dan uruskan rakaman anda bersama skrip yang digunakan untuk menciptanya." },
-      { "title": "Dibina untuk Mudah Alih", "description": "Gunakan VTeleprompter dengan selesa pada telefon, tablet, komputer riba dan desktop dengan antara muka responsif yang direka untuk setiap skrin." },
+      { "title": "Dibina untuk Mudah Alih", "description": "Gunakan SolPrompter dengan selesa pada telefon, tablet, komputer riba dan desktop dengan antara muka responsif yang direka untuk setiap skrin." },
       { "title": "Tiada Iklan atau Tera Air", "description": "Buat persembahan dan rakam tanpa iklan yang mengganggu atau tera air jenama pada video anda." }
     ]
   },
   "howItWorks": {
     "eyebrow": "Mudah Sejak Take Pertama",
-    "title": "Cara VTeleprompter Berfungsi",
+    "title": "Cara SolPrompter Berfungsi",
     "description": "Ubah sebarang skrip menjadi persembahan yang lancar atau rakaman profesional hanya dalam beberapa langkah.",
     "steps": [
-      { "anchor": "step-add-script", "title": "Tambah Skrip Anda", "description": "Tampal teks anda terus ke VTeleprompter atau muat naik skrip sedia ada dari peranti anda." },
+      { "anchor": "step-add-script", "title": "Tambah Skrip Anda", "description": "Tampal teks anda terus ke SolPrompter atau muat naik skrip sedia ada dari peranti anda." },
       { "anchor": "step-choose-scroll-mode", "title": "Pilih Mod Skrol Anda", "description": "Tetapkan kelajuan skrol tetap, kawal skrip secara manual atau aktifkan Skrol Suara AI." },
       { "anchor": "step-customize-view", "title": "Sesuaikan Paparan Anda", "description": "Laraskan fon, saiz teks, jarak baris, kawasan bacaan dan kedudukan teleprompter untuk bacaan yang selesa." },
       { "anchor": "step-start-presenting", "title": "Mula Persembahan", "description": "Buka teleprompter, sambungkan kawalan jauh jika perlu dan mula membuat persembahan atau merakam." }
@@ -102,7 +102,7 @@
   "voiceScroll": {
     "eyebrow": "Skrol pada Kelajuan Suara Anda",
     "title": "Skrol Suara AI yang Mengikut Anda",
-    "description": "Berhenti melaraskan tempo percakapan anda untuk sepadan dengan kelajuan skrol tetap. VTeleprompter mengikut suara anda supaya anda boleh fokus menyampaikan mesej secara semula jadi.",
+    "description": "Berhenti melaraskan tempo percakapan anda untuk sepadan dengan kelajuan skrol tetap. SolPrompter mengikut suara anda supaya anda boleh fokus menyampaikan mesej secara semula jadi.",
     "benefits": [
       { "title": "Bercakap Secara Semula Jadi", "description": "Baca mengikut tempo anda sendiri tanpa kedengaran tergesa-gesa, perlahan atau kaku." },
       { "title": "Berhenti Sejenak Bila Perlu", "description": "Tarik nafas, tekankan sesuatu idea atau berhenti antara bahagian tanpa serta-merta hilang kedudukan anda." },
@@ -115,7 +115,7 @@
   "notch": {
     "eyebrow": "Hubungan Mata Semula Jadi",
     "title": "Kekalkan Skrip Anda Berhampiran Kamera",
-    "description": "Mod notch VTeleprompter meletakkan kawasan bacaan yang padat berhampiran kamera anda, membantu mata anda kekal fokus lebih dekat dengan lensa.",
+    "description": "Mod notch SolPrompter meletakkan kawasan bacaan yang padat berhampiran kamera anda, membantu mata anda kekal fokus lebih dekat dengan lensa.",
     "items": [
       "Kurangkan gerakan mata sisi ke sisi yang ketara.",
       "Letakkan skrip berhampiran webcam atau kamera telefon anda.",
@@ -147,7 +147,7 @@
       { "title": "Pratonton Kamera Langsung", "description": "Semak kedudukan, bingkai dan penampilan anda sebelum dan semasa rakaman." },
       { "title": "Rakaman Full HD", "description": "Cipta video jelas berkualiti tinggi untuk media sosial, pelajaran, persembahan dan kandungan perniagaan." },
       { "title": "Rakaman 4K", "description": "Rakam video resolusi tinggi profesional apabila kamera, pelayar dan peranti anda menyokongnya." },
-      { "title": "Tiada Tera Air", "description": "Eksport rakaman bersih tanpa logo VTeleprompter atau lapisan jenama." },
+      { "title": "Tiada Tera Air", "description": "Eksport rakaman bersih tanpa logo SolPrompter atau lapisan jenama." },
       { "title": "Pustaka Rakaman", "description": "Kekalkan take anda tersusun dan cari dengan pantas rakaman yang berkaitan dengan setiap skrip." }
     ],
     "cta": { "label": "Mula Merakam", "url": "/workspaces" }
@@ -155,9 +155,9 @@
   "workspace": {
     "eyebrow": "Ruang Kandungan Anda",
     "title": "Urus Skrip dan Rakaman Bersama",
-    "description": "Berhenti mencari di merata folder, dokumen dan aplikasi berasingan. VTeleprompter menyimpan skrip dan rakaman anda dalam satu ruang kerja yang tersusun.",
+    "description": "Berhenti mencari di merata folder, dokumen dan aplikasi berasingan. SolPrompter menyimpan skrip dan rakaman anda dalam satu ruang kerja yang tersusun.",
     "items": [
-      { "title": "Cipta dan Sunting Skrip", "description": "Tulis skrip baharu atau kemas kini kandungan sedia ada terus di dalam VTeleprompter." },
+      { "title": "Cipta dan Sunting Skrip", "description": "Tulis skrip baharu atau kemas kini kandungan sedia ada terus di dalam SolPrompter." },
       { "title": "Muat Naik Kandungan Sedia Ada", "description": "Import skrip dari dokumen yang disokong tanpa perlu menyalin setiap bahagian secara manual." },
       { "title": "Susun Pustaka Anda", "description": "Kekalkan skrip dan rakaman tersusun supaya sedia untuk persembahan akan datang." },
       { "title": "Guna Semula Skrip Anda", "description": "Buka skrip terdahulu, buat perubahan pantas dan rakam versi baharu tanpa perlu bermula semula." },
@@ -167,18 +167,18 @@
   "mobile": {
     "eyebrow": "Direka untuk Setiap Skrin",
     "title": "Teleprompter Dalam Talian Mesra Mudah Alih",
-    "description": "VTeleprompter direka agar terasa pantas, jelas dan mudah dikawal pada kedua-dua peranti desktop dan mudah alih.",
+    "description": "SolPrompter direka agar terasa pantas, jelas dan mudah dikawal pada kedua-dua peranti desktop dan mudah alih.",
     "items": [
       { "title": "Antara Muka Responsif", "description": "Kawalan penting kekal mudah dicapai merentas saiz dan orientasi skrin yang berbeza." },
       { "title": "Potret dan Landskap", "description": "Pilih orientasi skrin yang paling sepadan dengan persediaan rakaman anda." },
       { "title": "Kawalan Mesra Sentuh", "description": "Laraskan teks, skrol dan tetapan rakaman dengan selesa dari skrin sentuh." },
-      { "title": "Tiada Pemasangan Diperlukan", "description": "Buka VTeleprompter dalam pelayar yang disokong dan mula gunakan teleprompter dalam talian." }
+      { "title": "Tiada Pemasangan Diperlukan", "description": "Buka SolPrompter dalam pelayar yang disokong dan mula gunakan teleprompter dalam talian." }
     ],
-    "supporting": "Gunakan VTeleprompter sebagai teleprompter mudah alih, teleprompter desktop atau autocue dalam talian berasaskan pelayar."
+    "supporting": "Gunakan SolPrompter sebagai teleprompter mudah alih, teleprompter desktop atau autocue dalam talian berasaskan pelayar."
   },
   "useCases": {
     "eyebrow": "Dibina untuk Setiap Penyampai",
-    "title": "Untuk Siapa VTeleprompter?",
+    "title": "Untuk Siapa SolPrompter?",
     "items": [
       { "title": "Pencipta Kandungan", "description": "Rakam video TikTok, YouTube, Shorts, Reels dan kandungan sosial lain tanpa menghafal setiap baris." },
       { "title": "YouTuber", "description": "Sampaikan ulasan, tutorial, penerangan dan video talking-head dengan persembahan yang lebih lancar dan yakin." },
@@ -191,9 +191,9 @@
     ]
   },
   "comparison": {
-    "eyebrow": "Mengapa VTeleprompter?",
+    "eyebrow": "Mengapa SolPrompter?",
     "title": "Teleprompter Percuma yang Lebih Lengkap",
-    "description": "VTeleprompter dibina untuk menawarkan pengalaman teleprompter yang lengkap tanpa memaksa pengguna menggabungkan pelbagai aplikasi atau membayar untuk ciri asas.",
+    "description": "SolPrompter dibina untuk menawarkan pengalaman teleprompter yang lengkap tanpa memaksa pengguna menggabungkan pelbagai aplikasi atau membayar untuk ciri asas.",
     "items": [
       "Skrol diaktifkan suara AI",
       "Mod teleprompter notch",
@@ -206,20 +206,20 @@
       "Pengalaman pengguna yang ringkas dan moden",
       "Akses percuma kepada ciri teleprompter penting"
     ],
-    "supporting": "Dari menulis skrip anda hingga merakam take akhir, VTeleprompter memberikan alat yang anda perlukan dalam satu tempat."
+    "supporting": "Dari menulis skrip anda hingga merakam take akhir, SolPrompter memberikan alat yang anda perlukan dalam satu tempat."
   },
   "about": {
-    "eyebrow": "Tentang VTeleprompter",
+    "eyebrow": "Tentang SolPrompter",
     "title": "Dibina untuk Menjadikan Persembahan Terasa Semula Jadi",
     "paragraphs": [
-      "VTeleprompter ialah teleprompter AI yang dicipta untuk mereka yang ingin bercakap dengan yakin tanpa menghafal setiap perkataan atau sentiasa menguruskan kawalan skrol.",
+      "SolPrompter ialah teleprompter AI yang dicipta untuk mereka yang ingin bercakap dengan yakin tanpa menghafal setiap perkataan atau sentiasa menguruskan kawalan skrol.",
       "Matlamat kami adalah untuk mencipta pengalaman teleprompter dalam talian yang paling lengkap dan mudah diakses, menggabungkan skrol AI yang boleh dipercayai, reka bentuk yang teliti, alat hubungan mata semula jadi dan ciri rakaman profesional.",
-      "Sama ada anda merakam dari telefon, membuat persembahan dari komputer riba atau mengawal persediaan studio dari jauh, VTeleprompter membantu anda kekal fokus pada penonton anda dan bukan pada perisian."
+      "Sama ada anda merakam dari telefon, membuat persembahan dari komputer riba atau mengawal persediaan studio dari jauh, SolPrompter membantu anda kekal fokus pada penonton anda dan bukan pada perisian."
     ]
   },
   "finalCta": {
     "eyebrow": "Bersedia untuk Persembahan?",
-    "title": "Mula Menggunakan VTeleprompter",
+    "title": "Mula Menggunakan SolPrompter",
     "description": "Tambah skrip anda, pilih mod bacaan pilihan anda dan mula membuat persembahan secara semula jadi.",
     "cta": { "label": "Buka Teleprompter Percuma", "url": "/workspaces" },
     "supporting": "Tiada iklan. Tiada tera air. Tiada persediaan yang rumit."
@@ -228,20 +228,20 @@
     "eyebrow": "Soalan & Jawapan",
     "title": "Soalan Lazim",
     "items": [
-      { "anchor": "faq-is-vteleprompter-free", "q": "Adakah VTeleprompter percuma digunakan?", "a": "VTeleprompter buat masa ini percuma digunakan. Anda boleh mengakses ciri teleprompter, skrip dan rakaman penting tanpa iklan atau tera air video berjenama." },
+      { "anchor": "faq-is-solprompter-free", "q": "Adakah SolPrompter percuma digunakan?", "a": "SolPrompter buat masa ini percuma digunakan. Anda boleh mengakses ciri teleprompter, skrip dan rakaman penting tanpa iklan atau tera air video berjenama." },
       { "anchor": "faq-what-is-ai-voice-scroll", "q": "Apakah itu Skrol Suara AI?", "a": "Skrol Suara AI mendengar pertuturan anda dan bergerak melalui skrip berdasarkan tempo percakapan semula jadi anda. Ia membantu anda berhenti sejenak, meneruskan dan membuat persembahan tanpa perlu sentiasa melaraskan kelajuan skrol tetap." },
-      { "anchor": "faq-what-is-notch-mode", "q": "Apakah itu Mod Notch VTeleprompter?", "a": "Mod Notch meletakkan kawasan bacaan teleprompter yang padat berhampiran kamera anda. Ini membantu mengurangkan gerakan mata yang ketara dan menjadikan hubungan mata anda kelihatan lebih semula jadi semasa rakaman, persembahan dan panggilan video." },
-      { "anchor": "faq-mobile-devices", "q": "Bolehkah saya menggunakan VTeleprompter pada telefon atau tablet?", "a": "Ya. VTeleprompter mempunyai antara muka responsif yang direka untuk telefon pintar, tablet, komputer riba dan desktop. Ciri yang tersedia mungkin bergantung pada pelayar, kamera dan keupayaan peranti." },
-      { "anchor": "faq-installation", "q": "Adakah saya perlu memasang VTeleprompter?", "a": "Tiada pemasangan diperlukan untuk versi web. Anda boleh membuka VTeleprompter dalam pelayar moden yang disokong, menambah skrip anda dan mula membuat persembahan dalam talian." },
-      { "anchor": "faq-remote-control", "q": "Bolehkah saya mengawal VTeleprompter dari peranti lain?", "a": "Ya. Kawalan jauh VTeleprompter membolehkan anda menggunakan telefon, tablet atau komputer lain untuk memulakan atau menjeda teleprompter, melaraskan skrol dan menavigasi skrip anda." },
-      { "anchor": "faq-4k-recording", "q": "Bolehkah VTeleprompter merakam video dalam 4K?", "a": "VTeleprompter menyokong rakaman Full HD dan 4K apabila kamera, pelayar dan peranti menyokong resolusi yang dipilih. Kualiti rakaman sebenar bergantung pada keupayaan dan kebenaran peranti anda." },
-      { "anchor": "faq-watermark", "q": "Adakah VTeleprompter menambah tera air pada rakaman?", "a": "VTeleprompter tidak menambah tera air berjenama pada video yang anda rakam." },
-      { "anchor": "faq-supported-files", "q": "Format fail skrip yang manakah disokong oleh VTeleprompter?", "a": "VTeleprompter menyokong penampalan teks secara terus dan pemuatan naik dokumen skrip yang disokong seperti fail TXT, DOCX, PDF dan Markdown." },
-      { "anchor": "faq-online-autocue", "q": "Bolehkah VTeleprompter digunakan sebagai autocue dalam talian?", "a": "Ya. VTeleprompter boleh digunakan sebagai autocue dalam talian berasaskan pelayar dengan skrol manual, skrol automatik kelajuan tetap dan skrol diaktifkan suara AI." }
+      { "anchor": "faq-what-is-notch-mode", "q": "Apakah itu Mod Notch SolPrompter?", "a": "Mod Notch meletakkan kawasan bacaan teleprompter yang padat berhampiran kamera anda. Ini membantu mengurangkan gerakan mata yang ketara dan menjadikan hubungan mata anda kelihatan lebih semula jadi semasa rakaman, persembahan dan panggilan video." },
+      { "anchor": "faq-mobile-devices", "q": "Bolehkah saya menggunakan SolPrompter pada telefon atau tablet?", "a": "Ya. SolPrompter mempunyai antara muka responsif yang direka untuk telefon pintar, tablet, komputer riba dan desktop. Ciri yang tersedia mungkin bergantung pada pelayar, kamera dan keupayaan peranti." },
+      { "anchor": "faq-installation", "q": "Adakah saya perlu memasang SolPrompter?", "a": "Tiada pemasangan diperlukan untuk versi web. Anda boleh membuka SolPrompter dalam pelayar moden yang disokong, menambah skrip anda dan mula membuat persembahan dalam talian." },
+      { "anchor": "faq-remote-control", "q": "Bolehkah saya mengawal SolPrompter dari peranti lain?", "a": "Ya. Kawalan jauh SolPrompter membolehkan anda menggunakan telefon, tablet atau komputer lain untuk memulakan atau menjeda teleprompter, melaraskan skrol dan menavigasi skrip anda." },
+      { "anchor": "faq-4k-recording", "q": "Bolehkah SolPrompter merakam video dalam 4K?", "a": "SolPrompter menyokong rakaman Full HD dan 4K apabila kamera, pelayar dan peranti menyokong resolusi yang dipilih. Kualiti rakaman sebenar bergantung pada keupayaan dan kebenaran peranti anda." },
+      { "anchor": "faq-watermark", "q": "Adakah SolPrompter menambah tera air pada rakaman?", "a": "SolPrompter tidak menambah tera air berjenama pada video yang anda rakam." },
+      { "anchor": "faq-supported-files", "q": "Format fail skrip yang manakah disokong oleh SolPrompter?", "a": "SolPrompter menyokong penampalan teks secara terus dan pemuatan naik dokumen skrip yang disokong seperti fail TXT, DOCX, PDF dan Markdown." },
+      { "anchor": "faq-online-autocue", "q": "Bolehkah SolPrompter digunakan sebagai autocue dalam talian?", "a": "Ya. SolPrompter boleh digunakan sebagai autocue dalam talian berasaskan pelayar dengan skrol manual, skrol automatik kelajuan tetap dan skrol diaktifkan suara AI." }
     ]
   },
   "footer": {
-    "brand": "VTeleprompter",
+    "brand": "SolPrompter",
     "description": "Teleprompter AI dalam talian percuma untuk persembahan semula jadi dan rakaman video profesional.",
     "columns": [
       {
@@ -274,6 +274,6 @@
         ]
       }
     ],
-    "copyright": "© 2026 VTeleprompter."
+    "copyright": "© 2026 SolPrompter."
   }
 }

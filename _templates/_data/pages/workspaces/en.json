@@ -1,12 +1,12 @@
 {
   "seo": {
-    "title": "Workspaces — VTeleprompter",
+    "title": "Workspaces — SolPrompter",
     "description": "Your saved teleprompter scripts. Open a workspace to record, or start a new script — everything stays private on your device."
   },
   "appbar": {
     "menuAria": "Open menu",
-    "brandAria": "VTeleprompter home",
-    "brandText": "VTeleprompter",
+    "brandAria": "SolPrompter home",
+    "brandText": "SolPrompter",
     "newScript": "New script",
     "upload": "Upload"
   },
@@ -15,11 +15,11 @@
     "workspaceInitial": "M",
     "navScripts": "Scripts",
     "navRecordings": "Recordings",
-    "creditsLabel": "VTeleprompter",
+    "creditsLabel": "SolPrompter",
     "creditsText": "<strong>Free</strong>, <strong>no ads</strong> — your scripts and recordings stay private on your device."
   },
   "content": {
-    "welcome": "Welcome to VTeleprompter",
+    "welcome": "Welcome to SolPrompter",
     "foldersTitle": "Folders",
     "foldersCollapseAria": "Collapse folders",
     "addFolderAria": "New folder",

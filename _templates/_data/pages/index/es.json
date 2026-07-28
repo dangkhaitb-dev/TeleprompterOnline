@@ -1,24 +1,24 @@
 {
   "seo": {
-    "title": "Teleprompter online gratis con desplazamiento por voz IA | VTeleprompter",
-    "description": "Usa VTeleprompter, un teleprompter online gratis con desplazamiento por voz IA, modo notch, control remoto y grabación en 4K. Sin anuncios ni marca de agua.",
+    "title": "Teleprompter online gratis con desplazamiento por voz IA | SolPrompter",
+    "description": "Usa SolPrompter, un teleprompter online gratis con desplazamiento por voz IA, modo notch, control remoto y grabación en 4K. Sin anuncios ni marca de agua.",
     "canonical": "/es/",
-    "ogTitle": "Teleprompter con IA online y gratis — VTeleprompter",
+    "ogTitle": "Teleprompter con IA online y gratis — SolPrompter",
     "ogDescription": "Presenta con naturalidad gracias al desplazamiento por voz IA, el modo notch, el control remoto y la grabación de video profesional.",
     "ogType": "website",
-    "ogImage": "/og-vteleprompter.jpg"
+    "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "VTeleprompter ofrece un teleprompter online con IA gratuito para presentaciones naturales y grabación de video profesional.",
-    "brandDescription": "VTeleprompter es un teleprompter online con IA diseñado para presentaciones naturales y grabación de video profesional.",
+    "orgDescription": "SolPrompter ofrece un teleprompter online con IA gratuito para presentaciones naturales y grabación de video profesional.",
+    "brandDescription": "SolPrompter es un teleprompter online con IA diseñado para presentaciones naturales y grabación de video profesional.",
     "websiteDescription": "Un teleprompter online gratis con desplazamiento por voz IA, modo notch, control remoto y grabación de video profesional.",
-    "webpageName": "Teleprompter online gratis con desplazamiento por voz IA | VTeleprompter",
-    "alternateNames": ["V Teleprompter", "vteleprompter.com"],
+    "webpageName": "Teleprompter online gratis con desplazamiento por voz IA | SolPrompter",
+    "alternateNames": ["SolPrompter", "solprompter.com"],
     "logoUrl": "/logo.png",
-    "logoCaption": "VTeleprompter",
-    "primaryImage": "/og-vteleprompter.jpg",
-    "primaryImageCaption": "VTeleprompter, teleprompter online con IA gratuito",
-    "appAlternateName": "VTeleprompter Teleprompter Online",
+    "logoCaption": "SolPrompter",
+    "primaryImage": "/og-solprompter.jpg",
+    "primaryImageCaption": "SolPrompter, teleprompter online con IA gratuito",
+    "appAlternateName": "SolPrompter Teleprompter Online",
     "appDescription": "Un teleprompter online con IA gratuito con desplazamiento activado por voz, modo notch, control remoto, gestión de guiones y grabación de video profesional en Full HD y 4K.",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "Teleprompter Online",
@@ -41,11 +41,11 @@
       "Sin anuncios",
       "Sin marca de agua en el video"
     ],
-    "offerDescription": "Acceso gratuito a las funciones del teleprompter online de VTeleprompter.",
-    "howToName": "Cómo usar VTeleprompter",
-    "howToDescription": "Aprende a añadir un guion, elegir un modo de desplazamiento, personalizar tu teleprompter y empezar a presentar o grabar con VTeleprompter.",
-    "faqName": "Preguntas frecuentes sobre VTeleprompter",
-    "faqDescription": "Preguntas frecuentes sobre VTeleprompter, el desplazamiento por voz IA, el modo notch, el control remoto, los dispositivos compatibles y la grabación de video."
+    "offerDescription": "Acceso gratuito a las funciones del teleprompter online de SolPrompter.",
+    "howToName": "Cómo usar SolPrompter",
+    "howToDescription": "Aprende a añadir un guion, elegir un modo de desplazamiento, personalizar tu teleprompter y empezar a presentar o grabar con SolPrompter.",
+    "faqName": "Preguntas frecuentes sobre SolPrompter",
+    "faqDescription": "Preguntas frecuentes sobre SolPrompter, el desplazamiento por voz IA, el modo notch, el control remoto, los dispositivos compatibles y la grabación de video."
   },
   "nav": {
     "items": [
@@ -57,7 +57,7 @@
     "cta": { "label": "Espacios de trabajo", "url": "/workspaces" }
   },
   "hero": {
-    "eyebrow": "VTeleprompter — Teleprompter con IA",
+    "eyebrow": "SolPrompter — Teleprompter con IA",
     "title": "Teleprompter online gratis",
     "subtitle": "Presenta con naturalidad gracias al desplazamiento por voz IA, el modo notch, el control remoto y la grabación profesional en 4K.",
     "placeholder": "Pega tu guion o sube un archivo para empezar...",
@@ -76,24 +76,24 @@
   "features": {
     "eyebrow": "Todo lo que necesitas para presentar mejor",
     "title": "Un solo teleprompter para cada grabación",
-    "description": "VTeleprompter combina un teleprompter online, desplazamiento por voz IA, modo notch, control remoto, gestión de guiones y grabación de video profesional en un único espacio de trabajo sencillo.",
+    "description": "SolPrompter combina un teleprompter online, desplazamiento por voz IA, modo notch, control remoto, gestión de guiones y grabación de video profesional en un único espacio de trabajo sencillo.",
     "items": [
-      { "title": "Desplazamiento por voz IA", "description": "VTeleprompter sigue tu voz y desplaza el guion automáticamente al ritmo natural de tu habla." },
+      { "title": "Desplazamiento por voz IA", "description": "SolPrompter sigue tu voz y desplaza el guion automáticamente al ritmo natural de tu habla." },
       { "title": "Teleprompter Notch", "description": "Mantén el guion cerca de la cámara para reducir el movimiento de los ojos y conservar un contacto visual más natural." },
       { "title": "Control remoto", "description": "Usa otro teléfono, tablet u ordenador para controlar el desplazamiento, avanzar por el guion y gestionar tu presentación a distancia." },
       { "title": "Grabación en Full HD y 4K", "description": "Graba videos profesionales mientras lees el guion directamente en el teleprompter." },
       { "title": "Gestión de guiones", "description": "Crea, sube, edita, organiza y reutiliza todos tus guiones desde un cómodo espacio de trabajo." },
       { "title": "Biblioteca de grabaciones", "description": "Guarda, revisa y gestiona tus grabaciones junto con los guiones usados para crearlas." },
-      { "title": "Pensado para el móvil", "description": "Usa VTeleprompter con comodidad en teléfonos, tablets, portátiles y ordenadores de escritorio con una interfaz adaptable a cada pantalla." },
+      { "title": "Pensado para el móvil", "description": "Usa SolPrompter con comodidad en teléfonos, tablets, portátiles y ordenadores de escritorio con una interfaz adaptable a cada pantalla." },
       { "title": "Sin anuncios ni marca de agua", "description": "Presenta y graba sin anuncios molestos ni marcas de agua de marca en tus videos." }
     ]
   },
   "howItWorks": {
     "eyebrow": "Sencillo desde la primera toma",
-    "title": "Cómo funciona VTeleprompter",
+    "title": "Cómo funciona SolPrompter",
     "description": "Convierte cualquier guion en una presentación fluida o una grabación profesional en unos pocos pasos.",
     "steps": [
-      { "anchor": "step-add-script", "title": "Añade tu guion", "description": "Pega tu texto directamente en VTeleprompter o sube un guion existente desde tu dispositivo." },
+      { "anchor": "step-add-script", "title": "Añade tu guion", "description": "Pega tu texto directamente en SolPrompter o sube un guion existente desde tu dispositivo." },
       { "anchor": "step-choose-scroll-mode", "title": "Elige tu modo de desplazamiento", "description": "Fija una velocidad de desplazamiento constante, controla el guion manualmente o activa el desplazamiento por voz IA." },
       { "anchor": "step-customize-view", "title": "Personaliza tu vista", "description": "Ajusta la fuente, el tamaño del texto, el interlineado, el área de lectura y la posición del teleprompter para leer con comodidad." },
       { "anchor": "step-start-presenting", "title": "Empieza a presentar", "description": "Abre el teleprompter, conecta un remoto si lo necesitas y empieza a presentar o grabar." }
@@ -102,7 +102,7 @@
   "voiceScroll": {
     "eyebrow": "Desplázate a la velocidad de tu voz",
     "title": "Desplazamiento por voz IA que te sigue",
-    "description": "Deja de adaptar tu ritmo al hablar para seguir una velocidad de desplazamiento fija. VTeleprompter sigue tu voz para que te concentres en transmitir tu mensaje con naturalidad.",
+    "description": "Deja de adaptar tu ritmo al hablar para seguir una velocidad de desplazamiento fija. SolPrompter sigue tu voz para que te concentres en transmitir tu mensaje con naturalidad.",
     "benefits": [
       { "title": "Habla con naturalidad", "description": "Lee a tu propio ritmo sin sonar apresurado, lento ni robótico." },
       { "title": "Haz pausas cuando lo necesites", "description": "Toma aire, enfatiza una idea o haz una pausa entre secciones sin perder el punto de inmediato." },
@@ -115,7 +115,7 @@
   "notch": {
     "eyebrow": "Contacto visual natural",
     "title": "Mantén tu guion cerca de la cámara",
-    "description": "El modo notch de VTeleprompter coloca un área de lectura compacta junto a la cámara, ayudando a que tu mirada se mantenga más cerca del objetivo.",
+    "description": "El modo notch de SolPrompter coloca un área de lectura compacta junto a la cámara, ayudando a que tu mirada se mantenga más cerca del objetivo.",
     "items": [
       "Reduce el evidente movimiento de ojos de lado a lado.",
       "Coloca el guion cerca de tu webcam o de la cámara del teléfono.",
@@ -147,7 +147,7 @@
       { "title": "Vista previa de cámara en vivo", "description": "Comprueba tu posición, encuadre y aspecto antes y durante la grabación." },
       { "title": "Grabación en Full HD", "description": "Crea videos nítidos y de alta calidad para redes sociales, clases, presentaciones y contenido de empresa." },
       { "title": "Grabación en 4K", "description": "Captura video profesional en alta resolución cuando tu cámara, navegador y dispositivo lo permitan." },
-      { "title": "Sin marca de agua", "description": "Exporta grabaciones limpias sin el logotipo de VTeleprompter ni superposiciones de marca." },
+      { "title": "Sin marca de agua", "description": "Exporta grabaciones limpias sin el logotipo de SolPrompter ni superposiciones de marca." },
       { "title": "Biblioteca de grabaciones", "description": "Mantén tus tomas organizadas y encuentra rápidamente la grabación asociada a cada guion." }
     ],
     "cta": { "label": "Empezar a grabar", "url": "/workspaces" }
@@ -155,9 +155,9 @@
   "workspace": {
     "eyebrow": "Tu espacio de contenido",
     "title": "Gestiona guiones y grabaciones en un solo lugar",
-    "description": "Deja de buscar entre carpetas, documentos y aplicaciones separadas. VTeleprompter mantiene tus guiones y grabaciones en un espacio de trabajo organizado.",
+    "description": "Deja de buscar entre carpetas, documentos y aplicaciones separadas. SolPrompter mantiene tus guiones y grabaciones en un espacio de trabajo organizado.",
     "items": [
-      { "title": "Crea y edita guiones", "description": "Escribe nuevos guiones o actualiza contenido existente directamente en VTeleprompter." },
+      { "title": "Crea y edita guiones", "description": "Escribe nuevos guiones o actualiza contenido existente directamente en SolPrompter." },
       { "title": "Sube contenido existente", "description": "Importa guiones desde documentos compatibles en lugar de copiar cada sección a mano." },
       { "title": "Organiza tu biblioteca", "description": "Mantén guiones y grabaciones ordenados y listos para futuras presentaciones." },
       { "title": "Reutiliza tus guiones", "description": "Abre guiones anteriores, haz cambios rápidos y graba nuevas versiones sin empezar de cero." },
@@ -167,18 +167,18 @@
   "mobile": {
     "eyebrow": "Diseñado para cada pantalla",
     "title": "Un teleprompter online optimizado para el móvil",
-    "description": "VTeleprompter está diseñado para sentirse rápido, claro y fácil de controlar tanto en escritorio como en dispositivos móviles.",
+    "description": "SolPrompter está diseñado para sentirse rápido, claro y fácil de controlar tanto en escritorio como en dispositivos móviles.",
     "items": [
       { "title": "Interfaz adaptable", "description": "Los controles esenciales siguen siendo fáciles de alcanzar en distintos tamaños de pantalla y orientaciones." },
       { "title": "Vertical y horizontal", "description": "Elige la orientación de pantalla que mejor se adapte a tu configuración de grabación." },
       { "title": "Controles táctiles", "description": "Ajusta el texto, el desplazamiento y los ajustes de grabación con comodidad desde una pantalla táctil." },
-      { "title": "Sin instalación", "description": "Abre VTeleprompter en un navegador compatible y empieza a usar el teleprompter online." }
+      { "title": "Sin instalación", "description": "Abre SolPrompter en un navegador compatible y empieza a usar el teleprompter online." }
     ],
-    "supporting": "Usa VTeleprompter como teleprompter móvil, teleprompter de escritorio o autocue online desde el navegador."
+    "supporting": "Usa SolPrompter como teleprompter móvil, teleprompter de escritorio o autocue online desde el navegador."
   },
   "useCases": {
     "eyebrow": "Hecho para cada presentador",
-    "title": "¿Para quién es VTeleprompter?",
+    "title": "¿Para quién es SolPrompter?",
     "items": [
       { "title": "Creadores de contenido", "description": "Graba videos de TikTok, YouTube, Shorts, Reels y otro contenido social sin memorizar cada línea." },
       { "title": "YouTubers", "description": "Ofrece reseñas, tutoriales, explicaciones y videos a cámara con una presentación más fluida y segura." },
@@ -191,9 +191,9 @@
     ]
   },
   "comparison": {
-    "eyebrow": "¿Por qué VTeleprompter?",
+    "eyebrow": "¿Por qué SolPrompter?",
     "title": "Un teleprompter gratuito más completo",
-    "description": "VTeleprompter está diseñado para ofrecer una experiencia de teleprompter completa sin obligar a combinar varias aplicaciones ni a pagar por funciones básicas.",
+    "description": "SolPrompter está diseñado para ofrecer una experiencia de teleprompter completa sin obligar a combinar varias aplicaciones ni a pagar por funciones básicas.",
     "items": [
       "Desplazamiento activado por voz con IA",
       "Modo notch de teleprompter",
@@ -206,20 +206,20 @@
       "Experiencia de usuario sencilla y moderna",
       "Acceso gratuito a las funciones esenciales del teleprompter"
     ],
-    "supporting": "Desde escribir tu guion hasta grabar la toma final, VTeleprompter te da las herramientas que necesitas en un solo lugar."
+    "supporting": "Desde escribir tu guion hasta grabar la toma final, SolPrompter te da las herramientas que necesitas en un solo lugar."
   },
   "about": {
-    "eyebrow": "Acerca de VTeleprompter",
+    "eyebrow": "Acerca de SolPrompter",
     "title": "Creado para que presentar se sienta natural",
     "paragraphs": [
-      "VTeleprompter es un teleprompter con IA creado para quienes quieren hablar con seguridad sin memorizar cada palabra ni gestionar el desplazamiento de forma constante.",
+      "SolPrompter es un teleprompter con IA creado para quienes quieren hablar con seguridad sin memorizar cada palabra ni gestionar el desplazamiento de forma constante.",
       "Nuestro objetivo es crear la experiencia de teleprompter online más completa y accesible, combinando un desplazamiento por IA fiable, un diseño cuidado, herramientas para un contacto visual natural y funciones de grabación profesional.",
-      "Ya sea que grabes desde un teléfono, presentes desde un portátil o controles un estudio a distancia, VTeleprompter te ayuda a centrarte en tu audiencia en lugar de en el software."
+      "Ya sea que grabes desde un teléfono, presentes desde un portátil o controles un estudio a distancia, SolPrompter te ayuda a centrarte en tu audiencia en lugar de en el software."
     ]
   },
   "finalCta": {
     "eyebrow": "¿Listo para presentar?",
-    "title": "Empieza a usar VTeleprompter",
+    "title": "Empieza a usar SolPrompter",
     "description": "Añade tu guion, elige tu modo de lectura preferido y empieza a presentar con naturalidad.",
     "cta": { "label": "Abrir teleprompter gratis", "url": "/workspaces" },
     "supporting": "Sin anuncios. Sin marca de agua. Sin configuraciones complicadas."
@@ -228,20 +228,20 @@
     "eyebrow": "Preguntas y respuestas",
     "title": "Preguntas frecuentes",
     "items": [
-      { "anchor": "faq-is-vteleprompter-free", "q": "¿VTeleprompter es gratis?", "a": "VTeleprompter es gratuito por ahora. Puedes acceder a sus funciones esenciales de teleprompter, guiones y grabación sin anuncios ni marca de agua de marca en el video." },
+      { "anchor": "faq-is-solprompter-free", "q": "¿SolPrompter es gratis?", "a": "SolPrompter es gratuito por ahora. Puedes acceder a sus funciones esenciales de teleprompter, guiones y grabación sin anuncios ni marca de agua de marca en el video." },
       { "anchor": "faq-what-is-ai-voice-scroll", "q": "¿Qué es el desplazamiento por voz IA?", "a": "El desplazamiento por voz IA escucha tu habla y avanza por el guion según tu ritmo natural. Te ayuda a pausar, continuar y presentar sin ajustar constantemente una velocidad de desplazamiento fija." },
-      { "anchor": "faq-what-is-notch-mode", "q": "¿Qué es el modo Notch de VTeleprompter?", "a": "El modo Notch coloca un área de lectura compacta del teleprompter cerca de tu cámara. Esto ayuda a reducir el movimiento de los ojos y hace que tu contacto visual parezca más natural durante grabaciones, presentaciones y videollamadas." },
-      { "anchor": "faq-mobile-devices", "q": "¿Puedo usar VTeleprompter en un teléfono o tablet?", "a": "Sí. VTeleprompter tiene una interfaz adaptable diseñada para teléfonos, tablets, portátiles y ordenadores de escritorio. Las funciones disponibles pueden depender del navegador, la cámara y las capacidades del dispositivo." },
-      { "anchor": "faq-installation", "q": "¿Necesito instalar VTeleprompter?", "a": "No se requiere instalación para la versión web. Puedes abrir VTeleprompter en un navegador moderno compatible, añadir tu guion y empezar a presentar online." },
-      { "anchor": "faq-remote-control", "q": "¿Puedo controlar VTeleprompter desde otro dispositivo?", "a": "Sí. El control remoto de VTeleprompter te permite usar otro teléfono, tablet u ordenador para iniciar o pausar el teleprompter, ajustar el desplazamiento y navegar por tu guion." },
-      { "anchor": "faq-4k-recording", "q": "¿VTeleprompter puede grabar videos en 4K?", "a": "VTeleprompter admite grabación en Full HD y 4K cuando la cámara, el navegador y el dispositivo soportan la resolución elegida. La calidad real de la grabación depende de las capacidades y los permisos de tu dispositivo." },
-      { "anchor": "faq-watermark", "q": "¿VTeleprompter añade una marca de agua a las grabaciones?", "a": "VTeleprompter no añade una marca de agua de marca a tus videos grabados." },
-      { "anchor": "faq-supported-files", "q": "¿Qué formatos de archivo de guion admite VTeleprompter?", "a": "VTeleprompter permite pegar texto directamente y subir documentos de guion compatibles como archivos TXT, DOCX, PDF y Markdown." },
-      { "anchor": "faq-online-autocue", "q": "¿Se puede usar VTeleprompter como autocue online?", "a": "Sí. VTeleprompter puede usarse como autocue online desde el navegador con desplazamiento manual, desplazamiento automático a velocidad fija y desplazamiento activado por voz con IA." }
+      { "anchor": "faq-what-is-notch-mode", "q": "¿Qué es el modo Notch de SolPrompter?", "a": "El modo Notch coloca un área de lectura compacta del teleprompter cerca de tu cámara. Esto ayuda a reducir el movimiento de los ojos y hace que tu contacto visual parezca más natural durante grabaciones, presentaciones y videollamadas." },
+      { "anchor": "faq-mobile-devices", "q": "¿Puedo usar SolPrompter en un teléfono o tablet?", "a": "Sí. SolPrompter tiene una interfaz adaptable diseñada para teléfonos, tablets, portátiles y ordenadores de escritorio. Las funciones disponibles pueden depender del navegador, la cámara y las capacidades del dispositivo." },
+      { "anchor": "faq-installation", "q": "¿Necesito instalar SolPrompter?", "a": "No se requiere instalación para la versión web. Puedes abrir SolPrompter en un navegador moderno compatible, añadir tu guion y empezar a presentar online." },
+      { "anchor": "faq-remote-control", "q": "¿Puedo controlar SolPrompter desde otro dispositivo?", "a": "Sí. El control remoto de SolPrompter te permite usar otro teléfono, tablet u ordenador para iniciar o pausar el teleprompter, ajustar el desplazamiento y navegar por tu guion." },
+      { "anchor": "faq-4k-recording", "q": "¿SolPrompter puede grabar videos en 4K?", "a": "SolPrompter admite grabación en Full HD y 4K cuando la cámara, el navegador y el dispositivo soportan la resolución elegida. La calidad real de la grabación depende de las capacidades y los permisos de tu dispositivo." },
+      { "anchor": "faq-watermark", "q": "¿SolPrompter añade una marca de agua a las grabaciones?", "a": "SolPrompter no añade una marca de agua de marca a tus videos grabados." },
+      { "anchor": "faq-supported-files", "q": "¿Qué formatos de archivo de guion admite SolPrompter?", "a": "SolPrompter permite pegar texto directamente y subir documentos de guion compatibles como archivos TXT, DOCX, PDF y Markdown." },
+      { "anchor": "faq-online-autocue", "q": "¿Se puede usar SolPrompter como autocue online?", "a": "Sí. SolPrompter puede usarse como autocue online desde el navegador con desplazamiento manual, desplazamiento automático a velocidad fija y desplazamiento activado por voz con IA." }
     ]
   },
   "footer": {
-    "brand": "VTeleprompter",
+    "brand": "SolPrompter",
     "description": "Un teleprompter online con IA gratuito para presentaciones naturales y grabación de video profesional.",
     "columns": [
       {
@@ -274,6 +274,6 @@
         ]
       }
     ],
-    "copyright": "© 2026 VTeleprompter."
+    "copyright": "© 2026 SolPrompter."
   }
 }

@@ -75,6 +75,13 @@
   --line: #e7e5e4;
   --line-soft: #f5f5f4;
   --composer-text: #17181b;
+  --composer-bg: #242427;
+  --composer-border: #73737f;
+  --composer-placeholder: #f5f5f6;
+  --composer-action: #17181b;
+  --composer-action-hover: #2d2d30;
+  --composer-action-ink: #f8f8f8;
+  --composer-action-muted: #17181b;
   --upload-text: #475569;
   --brand-vivid: #000000;
   --upload-border: #cbd5e1;

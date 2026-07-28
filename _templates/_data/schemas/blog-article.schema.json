@@ -11,6 +11,7 @@
     "date",
     "dateDisplay",
     "modified",
+    "modifiedDisplay",
     "author",
     "seo",
     "hero",
@@ -40,6 +41,7 @@
     "date": { "type": "string", "format": "date" },
     "dateDisplay": { "type": "string", "minLength": 1 },
     "modified": { "type": "string", "format": "date" },
+    "modifiedDisplay": { "type": "string", "minLength": 1 },
     "author": {
       "type": "object",
       "additionalProperties": false,

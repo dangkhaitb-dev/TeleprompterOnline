@@ -32,12 +32,19 @@ body.blog-article-page {
   justify-content: center;
 }
 
-.article-date {
+.article-dates {
   margin-bottom: clamp(1rem, 2vw, 1.5rem);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.25rem;
   color: var(--ink-muted);
   font-size: clamp(0.95rem, 1.4vw, 1.15rem);
   font-weight: 600;
   line-height: 1.4;
+}
+
+.article-dates time {
+  font-weight: inherit;
 }
 
 .article-slug {

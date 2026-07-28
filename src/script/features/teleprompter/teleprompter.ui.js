@@ -56,6 +56,7 @@ import {
   preloadLanguageDetector,
   prepareSpeechPackForText,
   releaseLanguageDetector,
+  restoreRememberedSpeechPacks,
 } from './components/voice-scroll.logic.js';
 
 const TIMESLICE_LABEL_MS = 250;
@@ -605,7 +606,9 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   // ---- Active surface resolution --------------------------------------------
   const activeSurface = () => {
-    if (notch.isActive()) return notch.getScroll();
+    // Voice-language preflight runs before the notch component is mounted.
+    // During that boot window the regular prompt is the active surface.
+    if (notch?.isActive()) return notch.getScroll();
     return app.classList.contains('cam-on') ? teleprompterText : promptBox;
   };
   const activeEditSurface = () => (app.classList.contains('cam-on') ? teleprompterText : promptBox);
@@ -625,6 +628,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   let pendingVoiceLanguageCheck = null;
   let lastBackgroundVoiceSample = '';
   let lastBackgroundVoiceResult = null;
+  const rememberedSpeechPackRecoveryController = new AbortController();
 
   function warmLanguageDetector(reason) {
     return preloadLanguageDetector({ allowDownload: true }).then((result) => {
@@ -639,6 +643,23 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // Begin as soon as the studio chunk mounts. Chrome builds that require a
   // transient user activation get an immediate retry on the first interaction.
   void warmLanguageDetector('studio-load');
+  void restoreRememberedSpeechPacks({
+    signal: rememberedSpeechPackRecoveryController.signal,
+    onStatus: (details) => {
+      console.info('[VoiceScroll] remembered language-pack recovery', details);
+    },
+  }).then((result) => {
+    if (rememberedSpeechPackRecoveryController.signal.aborted) return;
+    console.info('[VoiceScroll] remembered language-pack recovery complete', {
+      status: result.status,
+      locales: result.locales,
+    });
+  }).catch((error) => {
+    if (rememberedSpeechPackRecoveryController.signal.aborted) return;
+    console.warn('[VoiceScroll] remembered language-pack recovery failed', {
+      error: error?.message || String(error),
+    });
+  });
   let detectorActivationRetryInFlight = false;
   const detectorActivationOptions = { capture: true };
   const retryLanguageDetectorWithActivation = (event) => {
@@ -2027,6 +2048,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     window.removeEventListener('pagehide', teardown);
     persistSharedState.flush();
     voiceLanguageEditPreflight.cancel();
+    rememberedSpeechPackRecoveryController.abort();
     releaseLanguageDetector();
     readingSession.stop();
     scroller.destroy();

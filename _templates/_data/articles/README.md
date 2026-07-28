@@ -22,7 +22,7 @@ Required top-level fields:
 
 - `published`: use `false` to keep a draft out of the build
 - `slug`: lowercase, accent-free words separated by hyphens; it must match `title`
-- `title`, `date`, `dateDisplay`, `modified`
+- `title`, `date`, `dateDisplay`, `modified`, `modifiedDisplay`
 - `author.name`
 - `seo.title`, `seo.description`, `seo.image`
 - `hero.src`, `hero.alt`, `hero.width`, `hero.height`

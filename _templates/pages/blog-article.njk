@@ -35,7 +35,10 @@ lang: en
     <article class="article-content" id="article-content">
         <header class="article-header">
             <a class="article-slug" href="/blog">/blog</a>
-            <time class="article-date" datetime="{{ article.date }}">{{ article.dateDisplay }}</time>
+            <div class="article-dates" aria-label="Article dates">
+                <span>Published: <time datetime="{{ article.date }}">{{ article.dateDisplay }}</time></span>
+                <span>Updated: <time datetime="{{ article.modified }}">{{ article.modifiedDisplay }}</time></span>
+            </div>
             <h1 class="article-title">{{ article.title }}</h1>
             <a href="{{ article.cta.url }}" class="article-cta">{{ article.cta.label }}</a>
         </header>

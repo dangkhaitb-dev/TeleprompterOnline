@@ -37,3 +37,8 @@ export const LS_GLOBAL_SETTING_PROMPTER = 'global_setting_promter';
 export const LS_TP_COLOR_HISTORY = 'solprompter:tp-color-history'; // recent picker colors
 export const LS_TP_NOTCH_SIZE = 'solprompter:tp-notch-size'; // { w, h } notch prompter block
 export const LS_TP_NOTCH_EDIT_SIZE = 'solprompter:tp-notch-edit-size'; // { w, h } notch edit panel
+
+// Up to 12 most-recent BCP-47 locales whose on-device speech packs were
+// requested by Voice Scroll. The browser owns the packs; this registry only
+// lets the Studio verify/recover them on a later visit.
+export const LS_VOICE_SCROLL_ASR_LOCALES = 'solprompter:voice-scroll-asr-locales';

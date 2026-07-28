@@ -10,6 +10,8 @@ import {
   buildIndices, feedTranscript as modelFeedTranscript,
   detectLanguage, ISO_TO_LOCALE, LABEL,
 } from './voice-scroll.model.js';
+import { getItem, setItem } from '../../../utils/storage.js';
+import { LS_VOICE_SCROLL_ASR_LOCALES } from '../../../utils/storage-keys.js';
 
 const PRE_AUDIO_ABORT_LIMIT = 2;
 const USER_OVERRIDE_GUARD_MS = 650;
@@ -18,9 +20,11 @@ const LOCAL_PACK_CHECK_TIMEOUT_MS = 3000;
 const MIN_PACK_LANGUAGE_CONFIDENCE = 0.35;
 const LANGUAGE_DETECTION_SAMPLE_WORDS = 200;
 const LANGUAGE_DETECTOR_IDLE_RELEASE_MS = 5 * 60 * 1000;
+const MAX_REMEMBERED_SPEECH_PACK_LOCALES = 12;
 const speechPackInstallJobs = new Map();
 const speechPackResultCache = new Map();
 const readySpeechPackLocales = new Set();
+let speechPackInstallQueue = Promise.resolve();
 const SPEECH_PACK_RESULT_TTL_MS = Object.freeze({
   available: 5 * 60 * 1000,
   installed: 5 * 60 * 1000,
@@ -50,11 +54,60 @@ function supportsOnDeviceSpeechInstall(SR) {
   }
 }
 
+function normalizeSpeechPackLocale(locale) {
+  if (typeof locale !== 'string') return null;
+  const candidate = locale.trim();
+  if (!/^[a-z]{2,3}(?:-[a-z0-9]{2,8})*$/i.test(candidate)) return null;
+  try {
+    return Intl.getCanonicalLocales(candidate)[0] || null;
+  } catch {
+    return null;
+  }
+}
+
+export function getRememberedSpeechPackLocales() {
+  const stored = getItem(LS_VOICE_SCROLL_ASR_LOCALES);
+  if (!Array.isArray(stored)) return [];
+  return [...new Set(stored.map(normalizeSpeechPackLocale).filter(Boolean))]
+    .slice(0, MAX_REMEMBERED_SPEECH_PACK_LOCALES);
+}
+
+function rememberSpeechPackLocale(locale) {
+  const normalized = normalizeSpeechPackLocale(locale);
+  if (!normalized) return;
+  const locales = getRememberedSpeechPackLocales()
+    .filter((remembered) => remembered !== normalized);
+  setItem(
+    LS_VOICE_SCROLL_ASR_LOCALES,
+    [normalized, ...locales].slice(0, MAX_REMEMBERED_SPEECH_PACK_LOCALES),
+  );
+}
+
+function forgetSpeechPackLocale(locale) {
+  const normalized = normalizeSpeechPackLocale(locale);
+  if (!normalized) return;
+  setItem(
+    LS_VOICE_SCROLL_ASR_LOCALES,
+    getRememberedSpeechPackLocales()
+      .filter((remembered) => remembered !== normalized),
+  );
+}
+
+function queueSpeechPackInstall(task) {
+  const queued = speechPackInstallQueue
+    .catch(() => {})
+    .then(task);
+  speechPackInstallQueue = queued.catch(() => {});
+  return queued;
+}
+
 function rememberSpeechPackResult(result) {
   const ttl = SPEECH_PACK_RESULT_TTL_MS[result.status];
   if (ttl === undefined) return result;
   if (result.status === 'available' || result.status === 'installed') {
     readySpeechPackLocales.add(result.locale);
+  } else {
+    readySpeechPackLocales.delete(result.locale);
   }
   speechPackResultCache.set(result.locale, {
     result,
@@ -71,7 +124,7 @@ async function localSpeechAvailability(SR, locale, timeoutMs = LOCAL_PACK_CHECK_
       new Promise((resolve) => setTimeout(() => resolve('timeout'), timeoutMs)),
     ]);
   } catch {
-    return 'unavailable';
+    return 'check-failed';
   }
 }
 
@@ -264,32 +317,62 @@ export async function detectScriptLanguage(text) {
  * Installation is intentionally non-blocking at call sites: browser-service
  * recognition remains available while Chrome downloads the local pack.
  */
-export async function ensureOnDeviceSpeechPack(locale, { onStatus } = {}) {
+export async function ensureOnDeviceSpeechPack(
+  locale,
+  {
+    onStatus,
+    forceCheck = false,
+    rememberUsage = true,
+    signal,
+  } = {},
+) {
   const SR = speechRecognitionConstructor();
+  const normalizedLocale = normalizeSpeechPackLocale(locale);
   const report = (status, details = {}) => {
-    const result = { locale, status, ...details };
+    const result = { locale: normalizedLocale || locale, status, ...details };
     onStatus?.(result);
     return result;
   };
 
-  if (!locale || !supportsOnDeviceSpeechInstall(SR)) {
+  if (!normalizedLocale || !supportsOnDeviceSpeechInstall(SR)) {
     return report('unsupported');
   }
+  if (signal?.aborted) return report('aborted');
+  locale = normalizedLocale;
 
   const cached = speechPackResultCache.get(locale);
-  if (cached) {
+  if (cached && !forceCheck) {
     if (cached.expiresAt > Date.now()) {
+      if (rememberUsage && cached.result.status !== 'unavailable') {
+        rememberSpeechPackLocale(locale);
+      }
       const result = { ...cached.result, cached: true };
       onStatus?.(result);
       return result;
     }
     speechPackResultCache.delete(locale);
   }
+  if (forceCheck) {
+    speechPackResultCache.delete(locale);
+    readySpeechPackLocales.delete(locale);
+  }
+  if (rememberUsage) rememberSpeechPackLocale(locale);
 
   const existing = speechPackInstallJobs.get(locale);
   if (existing) {
     report('downloading');
     const result = await existing;
+    if (result.status === 'aborted' && !signal?.aborted) {
+      if (speechPackInstallJobs.get(locale) === existing) {
+        speechPackInstallJobs.delete(locale);
+      }
+      return ensureOnDeviceSpeechPack(locale, {
+        onStatus,
+        forceCheck: true,
+        rememberUsage,
+        signal,
+      });
+    }
     onStatus?.(result);
     return result;
   }
@@ -299,31 +382,62 @@ export async function ensureOnDeviceSpeechPack(locale, { onStatus } = {}) {
     if (availability === 'available') {
       return rememberSpeechPackResult(report('available'));
     }
-    if (availability === 'unavailable' || availability === 'timeout') {
+    if (availability === 'unavailable') {
+      forgetSpeechPackLocale(locale);
       return rememberSpeechPackResult(report(availability));
+    }
+    if (availability === 'timeout' || availability === 'check-failed') {
+      return rememberSpeechPackResult(report(
+        availability === 'timeout' ? 'timeout' : 'failed',
+        availability === 'check-failed' ? { availability } : {},
+      ));
     }
 
     // Both `downloadable` and `downloading` are handled by install(). Chrome
     // either starts the pack download or joins the download already in flight.
     report('downloading', { availability });
-    try {
-      const installed = await SR.install({
-        langs: [locale],
-        processLocally: true,
-      });
-      if (!installed) return rememberSpeechPackResult(report('failed'));
+    return queueSpeechPackInstall(async () => {
+      if (signal?.aborted) return report('aborted');
 
-      const verified = await localSpeechAvailability(SR, locale);
-      return rememberSpeechPackResult(
-        report(verified === 'available' ? 'installed' : 'failed', {
-          availability: verified,
-        }),
-      );
-    } catch (error) {
-      return rememberSpeechPackResult(
-        report('failed', { error: error?.message || String(error) }),
-      );
-    }
+      // Another tab or an earlier queued request may have completed this pack
+      // while this locale was waiting for the single install slot.
+      const queuedAvailability = await localSpeechAvailability(SR, locale);
+      if (queuedAvailability === 'available') {
+        return rememberSpeechPackResult(report('available'));
+      }
+      if (queuedAvailability === 'unavailable') {
+        forgetSpeechPackLocale(locale);
+        return rememberSpeechPackResult(report('unavailable'));
+      }
+      if (queuedAvailability === 'timeout' || queuedAvailability === 'check-failed') {
+        return rememberSpeechPackResult(report(
+          queuedAvailability === 'timeout' ? 'timeout' : 'failed',
+          queuedAvailability === 'check-failed'
+            ? { availability: queuedAvailability }
+            : {},
+        ));
+      }
+      if (signal?.aborted) return report('aborted');
+
+      try {
+        const installed = await SR.install({
+          langs: [locale],
+          processLocally: true,
+        });
+        if (!installed) return rememberSpeechPackResult(report('failed'));
+
+        const verified = await localSpeechAvailability(SR, locale);
+        return rememberSpeechPackResult(
+          report(verified === 'available' ? 'installed' : 'failed', {
+            availability: verified,
+          }),
+        );
+      } catch (error) {
+        return rememberSpeechPackResult(
+          report('failed', { error: error?.message || String(error) }),
+        );
+      }
+    });
   })();
 
   speechPackInstallJobs.set(locale, job);
@@ -334,6 +448,52 @@ export async function ensureOnDeviceSpeechPack(locale, { onStatus } = {}) {
       speechPackInstallJobs.delete(locale);
     }
   }
+}
+
+/**
+ * Re-checks previously used ASR locales whenever the Studio mounts. The
+ * browser owns the model files, so a persisted locale is only a recovery hint:
+ * every entry performs a fresh availability check and installs missing packs
+ * one at a time.
+ */
+export async function restoreRememberedSpeechPacks({ onStatus, signal } = {}) {
+  const SR = speechRecognitionConstructor();
+  const locales = getRememberedSpeechPackLocales();
+  if (!supportsOnDeviceSpeechInstall(SR)) {
+    return { status: 'unsupported', locales, results: [] };
+  }
+  if (locales.length === 0) {
+    return { status: 'empty', locales, results: [] };
+  }
+
+  const results = [];
+  for (const locale of locales) {
+    if (signal?.aborted) {
+      return { status: 'aborted', locales, results };
+    }
+    const reportRestoreStatus = (details) => {
+      if (!signal?.aborted) onStatus?.(details);
+    };
+    reportRestoreStatus({ locale, status: 'checking-remembered' });
+    const result = await ensureOnDeviceSpeechPack(locale, {
+      forceCheck: true,
+      rememberUsage: false,
+      signal,
+      onStatus: reportRestoreStatus,
+    });
+    if (signal?.aborted || result.status === 'aborted') {
+      return { status: 'aborted', locales, results };
+    }
+    results.push(result);
+
+    // A background recovery can fail because download permission requires a
+    // later user activation. Do not let its short failure TTL suppress the
+    // immediate retry from Play or Record.
+    if (result.status === 'failed' || result.status === 'timeout') {
+      speechPackResultCache.delete(locale);
+    }
+  }
+  return { status: 'complete', locales, results };
 }
 
 /**

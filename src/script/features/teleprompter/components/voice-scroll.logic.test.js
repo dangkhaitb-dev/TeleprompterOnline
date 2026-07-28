@@ -1,11 +1,15 @@
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import {
   detectScriptLanguage,
   ensureOnDeviceSpeechPack,
+  getRememberedSpeechPackLocales,
   preloadLanguageDetector,
   prepareSpeechPackForText,
   releaseLanguageDetector,
+  restoreRememberedSpeechPacks,
 } from './voice-scroll.logic.js';
+import { removeItem, setItem } from '../../../utils/storage.js';
+import { LS_VOICE_SCROLL_ASR_LOCALES } from '../../../utils/storage-keys.js';
 
 function recognitionWith({ available, install }) {
   class FakeSpeechRecognition {}
@@ -19,7 +23,17 @@ function recognitionWith({ available, install }) {
   return FakeSpeechRecognition;
 }
 
+beforeEach(() => {
+  const values = new Map();
+  vi.stubGlobal('localStorage', {
+    getItem: vi.fn((key) => values.has(key) ? values.get(key) : null),
+    setItem: vi.fn((key, value) => values.set(key, String(value))),
+    removeItem: vi.fn((key) => values.delete(key)),
+  });
+});
+
 afterEach(() => {
+  removeItem(LS_VOICE_SCROLL_ASR_LOCALES);
   vi.unstubAllGlobals();
 });
 
@@ -144,6 +158,7 @@ describe('Voice Scroll on-device language packs', () => {
   it('downloads and verifies a downloadable language pack', async () => {
     const available = vi.fn()
       .mockResolvedValueOnce('downloadable')
+      .mockResolvedValueOnce('downloadable')
       .mockResolvedValueOnce('available');
     const install = vi.fn().mockResolvedValue(true);
     const SR = recognitionWith({ available, install });
@@ -159,6 +174,192 @@ describe('Voice Scroll on-device language packs', () => {
       langs: ['en-US'],
       processLocally: true,
     });
+    expect(getRememberedSpeechPackLocales()).toEqual(['en-US']);
+  });
+
+  it('checks remembered locales sequentially and reinstalls only missing packs', async () => {
+    setItem(LS_VOICE_SCROLL_ASR_LOCALES, ['it-IT', 'nl-NL']);
+    let finishMissingInstall;
+    const checkedLocales = [];
+    const available = vi.fn(({ langs }) => {
+      checkedLocales.push(langs[0]);
+      if (langs[0] === 'it-IT') return Promise.resolve('available');
+      if (checkedLocales.filter((locale) => locale === 'nl-NL').length <= 2) {
+        return Promise.resolve('downloadable');
+      }
+      return Promise.resolve('available');
+    });
+    const install = vi.fn(({ langs }) => new Promise((resolve) => {
+      expect(langs).toEqual(['nl-NL']);
+      finishMissingInstall = resolve;
+    }));
+    const SR = recognitionWith({ available, install });
+    vi.stubGlobal('self', { SpeechRecognition: SR });
+
+    const recovery = restoreRememberedSpeechPacks();
+    await vi.waitFor(() => expect(install).toHaveBeenCalledOnce());
+    expect(checkedLocales).toEqual(['it-IT', 'nl-NL', 'nl-NL']);
+    finishMissingInstall(true);
+
+    await expect(recovery).resolves.toMatchObject({
+      status: 'complete',
+      locales: ['it-IT', 'nl-NL'],
+      results: [
+        { locale: 'it-IT', status: 'available' },
+        { locale: 'nl-NL', status: 'installed' },
+      ],
+    });
+    expect(checkedLocales).toEqual(['it-IT', 'nl-NL', 'nl-NL', 'nl-NL']);
+    expect(getRememberedSpeechPackLocales()).toEqual(['it-IT', 'nl-NL']);
+  });
+
+  it('forces a fresh availability check for a remembered locale on re-entry', async () => {
+    const available = vi.fn()
+      .mockResolvedValueOnce('available')
+      .mockResolvedValueOnce('available');
+    const install = vi.fn();
+    const SR = recognitionWith({ available, install });
+    vi.stubGlobal('self', { SpeechRecognition: SR });
+
+    await ensureOnDeviceSpeechPack('de-DE');
+    await restoreRememberedSpeechPacks();
+
+    expect(available).toHaveBeenCalledTimes(2);
+    expect(install).not.toHaveBeenCalled();
+  });
+
+  it('serializes installs requested concurrently for different locales', async () => {
+    const checks = new Map();
+    const installResolvers = new Map();
+    const available = vi.fn(({ langs }) => {
+      const locale = langs[0];
+      const count = (checks.get(locale) || 0) + 1;
+      checks.set(locale, count);
+      return Promise.resolve(count <= 2 ? 'downloadable' : 'available');
+    });
+    const install = vi.fn(({ langs }) => new Promise((resolve) => {
+      installResolvers.set(langs[0], resolve);
+    }));
+    const SR = recognitionWith({ available, install });
+    vi.stubGlobal('self', { SpeechRecognition: SR });
+
+    const spanish = ensureOnDeviceSpeechPack('es-MX');
+    const portuguese = ensureOnDeviceSpeechPack('pt-BR');
+    await vi.waitFor(() => expect(install).toHaveBeenCalledOnce());
+    expect(install.mock.calls[0][0].langs).toEqual(['es-MX']);
+    expect(installResolvers.has('pt-BR')).toBe(false);
+
+    installResolvers.get('es-MX')(true);
+    await vi.waitFor(() => expect(install).toHaveBeenCalledTimes(2));
+    expect(install.mock.calls[1][0].langs).toEqual(['pt-BR']);
+    installResolvers.get('pt-BR')(true);
+
+    await expect(Promise.all([spanish, portuguese])).resolves.toMatchObject([
+      { locale: 'es-MX', status: 'installed' },
+      { locale: 'pt-BR', status: 'installed' },
+    ]);
+  });
+
+  it('allows Play to retry after a transient restore availability failure', async () => {
+    setItem(LS_VOICE_SCROLL_ASR_LOCALES, ['sv-SE']);
+    const available = vi.fn()
+      .mockRejectedValueOnce(new DOMException('Not ready', 'InvalidStateError'))
+      .mockResolvedValueOnce('available');
+    const install = vi.fn();
+    const SR = recognitionWith({ available, install });
+    vi.stubGlobal('self', { SpeechRecognition: SR });
+
+    await expect(restoreRememberedSpeechPacks()).resolves.toMatchObject({
+      status: 'complete',
+      results: [{ locale: 'sv-SE', status: 'failed', availability: 'check-failed' }],
+    });
+    await expect(ensureOnDeviceSpeechPack('sv-SE')).resolves.toMatchObject({
+      locale: 'sv-SE',
+      status: 'available',
+    });
+    expect(available).toHaveBeenCalledTimes(2);
+  });
+
+  it('stops restoring additional locales after Studio teardown', async () => {
+    setItem(LS_VOICE_SCROLL_ASR_LOCALES, ['da-DK', 'fi-FI']);
+    let finishFirstCheck;
+    const available = vi.fn(() => new Promise((resolve) => {
+      finishFirstCheck = resolve;
+    }));
+    const install = vi.fn();
+    const SR = recognitionWith({ available, install });
+    vi.stubGlobal('self', { SpeechRecognition: SR });
+    const controller = new AbortController();
+
+    const recovery = restoreRememberedSpeechPacks({
+      signal: controller.signal,
+    });
+    await vi.waitFor(() => expect(available).toHaveBeenCalledOnce());
+    controller.abort();
+    finishFirstCheck('available');
+
+    await expect(recovery).resolves.toMatchObject({
+      status: 'aborted',
+      results: [],
+    });
+    expect(available).toHaveBeenCalledOnce();
+    expect(install).not.toHaveBeenCalled();
+  });
+
+  it('retries an aborted queued job when a newly opened Studio joins it', async () => {
+    const checks = new Map();
+    const installResolvers = new Map();
+    const available = vi.fn(({ langs }) => {
+      const locale = langs[0];
+      const count = (checks.get(locale) || 0) + 1;
+      checks.set(locale, count);
+      const downloadableChecks = locale === 'cs-CZ' ? 3 : 2;
+      return Promise.resolve(count <= downloadableChecks ? 'downloadable' : 'available');
+    });
+    const install = vi.fn(({ langs }) => new Promise((resolve) => {
+      installResolvers.set(langs[0], resolve);
+    }));
+    const SR = recognitionWith({ available, install });
+    vi.stubGlobal('self', { SpeechRecognition: SR });
+
+    const blocker = ensureOnDeviceSpeechPack('fr-CA');
+    await vi.waitFor(() => expect(installResolvers.has('fr-CA')).toBe(true));
+
+    setItem(LS_VOICE_SCROLL_ASR_LOCALES, ['cs-CZ']);
+    const oldStudioController = new AbortController();
+    const oldRecovery = restoreRememberedSpeechPacks({
+      signal: oldStudioController.signal,
+    });
+    await vi.waitFor(() => expect(checks.get('cs-CZ')).toBe(1));
+    oldStudioController.abort();
+
+    const reopenedRecovery = restoreRememberedSpeechPacks();
+    installResolvers.get('fr-CA')(true);
+    await blocker;
+    await vi.waitFor(() => expect(installResolvers.has('cs-CZ')).toBe(true));
+    installResolvers.get('cs-CZ')(true);
+
+    await expect(oldRecovery).resolves.toMatchObject({ status: 'aborted' });
+    await expect(reopenedRecovery).resolves.toMatchObject({
+      status: 'complete',
+      results: [{ locale: 'cs-CZ', status: 'installed' }],
+    });
+  });
+
+  it('bounds remembered locales and prunes a permanently unavailable pack', async () => {
+    const locales = [
+      'en-US', 'vi-VN', 'fr-FR', 'de-DE', 'it-IT', 'es-ES', 'pt-BR',
+      'ja-JP', 'ko-KR', 'zh-CN', 'nl-NL', 'pl-PL', 'tr-TR',
+    ];
+    setItem(LS_VOICE_SCROLL_ASR_LOCALES, locales);
+    expect(getRememberedSpeechPackLocales()).toEqual(locales.slice(0, 12));
+
+    const available = vi.fn().mockResolvedValue('unavailable');
+    const SR = recognitionWith({ available, install: vi.fn() });
+    vi.stubGlobal('self', { SpeechRecognition: SR });
+    await ensureOnDeviceSpeechPack('en-US', { forceCheck: true });
+
+    expect(getRememberedSpeechPackLocales()).not.toContain('en-US');
   });
 
   it('keeps fallback recognition and never installs an unavailable pack', async () => {
@@ -172,6 +373,7 @@ describe('Voice Scroll on-device language packs', () => {
       status: 'unavailable',
     });
     expect(install).not.toHaveBeenCalled();
+    expect(getRememberedSpeechPackLocales()).not.toContain('zz-ZZ');
   });
 
   it('caches a negative pack result instead of polling after every edit', async () => {
@@ -210,6 +412,7 @@ describe('Voice Scroll on-device language packs', () => {
     let finishInstall;
     const available = vi.fn()
       .mockResolvedValueOnce('downloadable')
+      .mockResolvedValueOnce('downloadable')
       .mockResolvedValueOnce('available');
     const install = vi.fn(() => new Promise((resolve) => {
       finishInstall = resolve;
@@ -239,6 +442,7 @@ describe('Voice Scroll on-device language packs', () => {
   it('returns the detected locale immediately while installation continues', async () => {
     let finishInstall;
     const available = vi.fn()
+      .mockResolvedValueOnce('downloadable')
       .mockResolvedValueOnce('downloadable')
       .mockResolvedValueOnce('available');
     const install = vi.fn(() => new Promise((resolve) => {

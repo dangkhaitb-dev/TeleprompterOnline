@@ -23,7 +23,7 @@ module.exports = function (eleventyConfig) {
     for (const file of articleFiles) {
       const filePath = path.join(articlesDataDir, file);
       const article = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-      const requiredStrings = ['slug', 'title', 'date', 'dateDisplay', 'modified'];
+      const requiredStrings = ['slug', 'title', 'date', 'dateDisplay', 'modified', 'modifiedDisplay'];
 
       for (const field of requiredStrings) {
         if (typeof article[field] !== 'string' || !article[field].trim()) {

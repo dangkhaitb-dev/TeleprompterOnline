@@ -6,11 +6,10 @@
 //
 // Pages carrying `<meta name="robots" content="noindex">` (e.g. the app views
 // teleprompter.html, workspaces.html) are skipped so the sitemap only lists
-// indexable URLs. `lastmod` comes from the file's last git commit date.
+// indexable URLs.
 
 import fs from 'fs';
 import path from 'path';
-import { execSync } from 'child_process';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -25,7 +24,6 @@ const CONFIG = {
   changefreq: 'weekly',
   defaultPriority: 0.8,
   homePriority: 1.0,
-  fallbackLastmod: new Date().toISOString().split('T')[0],
 };
 
 const EXCLUDE_FILES = ['404.html'];
@@ -39,22 +37,9 @@ function isNoindex(absPath) {
   }
 }
 
-function getLastmod(relPath) {
-  try {
-    const date = execSync(`git log -1 --format=%aI -- "${relPath}"`, {
-      cwd: CONFIG.rootDir,
-      encoding: 'utf-8',
-    }).trim();
-    return date ? date.split('T')[0] : CONFIG.fallbackLastmod;
-  } catch {
-    return CONFIG.fallbackLastmod;
-  }
-}
-
-function urlEntry(loc, lastmod, priority, alternatesXml = '') {
+function urlEntry(loc, priority, alternatesXml = '') {
   return `  <url>
     <loc>${loc}</loc>${alternatesXml}
-    <lastmod>${lastmod}</lastmod>
     <changefreq>${CONFIG.changefreq}</changefreq>
     <priority>${priority}</priority>
   </url>`;
@@ -131,7 +116,6 @@ function generateSitemap() {
   const urls = sorted.map((e) =>
     urlEntry(
       `${CONFIG.baseUrl}/${e.urlPath}`,
-      getLastmod(e.relPath),
       e.priority,
       e.isHome ? homeAlternatesXml : ''
     )

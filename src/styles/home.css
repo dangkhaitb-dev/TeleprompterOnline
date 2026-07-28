@@ -229,11 +229,7 @@ body.home {
 }
 
 .editor-textarea:focus {
-  border-color: var(--composer-border);
-  box-shadow:
-    0 1.25rem 2.5rem rgb(35 35 39 / 16%),
-    0 0 0 4px var(--home-bg),
-    0 0 0 7px var(--composer-border);
+  border-color: var(--composer-placeholder);
 }
 
 .composer-actions {

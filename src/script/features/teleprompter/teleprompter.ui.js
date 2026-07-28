@@ -21,6 +21,8 @@ import {
   WPM_DEFAULT,
   BAR_SPEED_STEP,
   SCROLL_STEP,
+  normalizeHexColor,
+  hexToRgb,
 } from './teleprompter.model.js';
 import '../../../styles/components/permission-popup.css';
 import '../../../styles/components/toast.css';
@@ -774,8 +776,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   let colorBeforeNotch = null;
   let didAutoChangeColor = false;
 
-  const PLAY_PATH = 'M8 5v14l11-7z';
-  const PAUSE_PATH = 'M7 5h4v14H7zM13 5h4v14h-4z';
+  const PLAY_PATH = 'M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z';
+  const PAUSE_PATH = 'M8 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2zM16 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2z';
   function setPlayIcon(playing) {
     if (playIcon) {
       const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
@@ -1642,7 +1644,44 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       countdown: savedSettings.countdown,
       notchFullscreen: savedSettings.notchFullscreen,
     },
-    onChange: (patch) => saveWorkspaceSettings(workspace.id,patch),
+    onChange: (patch) => {
+      saveWorkspaceSettings(workspace.id, patch);
+      if (patch.panelTheme !== undefined) {
+        const isLight = patch.panelTheme.startsWith('light-');
+        const currentColor = editHistory.current().color || '';
+        if (formatToolbar) {
+          if (isLight) {
+            // Light background: white, very light colors, or empty/default should switch to dark charcoal (#17181b)
+            if (currentColor === '' || currentColor === '#ffffff') {
+              formatToolbar.setGlobalColor('#17181b');
+            } else {
+              const normalized = normalizeHexColor(currentColor);
+              if (normalized) {
+                const rgb = hexToRgb(normalized);
+                const brightness = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
+                if (brightness > 180) { // Very bright, low contrast on light bg
+                  formatToolbar.setGlobalColor('#17181b');
+                }
+              }
+            }
+          } else {
+            // Dark background: dark charcoal (#17181b), very dark colors should switch to white (#ffffff)
+            if (currentColor === '#17181b') {
+              formatToolbar.setGlobalColor('#ffffff');
+            } else if (currentColor !== '') {
+              const normalized = normalizeHexColor(currentColor);
+              if (normalized) {
+                const rgb = hexToRgb(normalized);
+                const brightness = (rgb.r * 299 + rgb.g * 587 + rgb.b * 114) / 1000;
+                if (brightness < 80) { // Very dark, low contrast on dark bg
+                  formatToolbar.setGlobalColor('#ffffff');
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     initialStorageWarning: isStorageWarningEnabled(),
     onStorageWarningChange: setStorageWarningEnabled,
   });

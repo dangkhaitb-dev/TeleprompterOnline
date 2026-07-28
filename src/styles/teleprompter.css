@@ -267,17 +267,17 @@ body.tp button,
 /* Play button: bật/tắt tự cuộn ngay lập tức, không record.
    Đơn sắc đen/trắng đảo theo theme (light: nền tối chữ sáng; dark: ngược lại). */
 .header-play-button {
-  height: 36px;
+  height: 32px;
   border: 0;
-  border-radius: 10px;
-  padding: 0 18px;
+  border-radius: 8px;
+  padding: 0 14px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
   background: var(--tp-page-text);
   color: var(--tp-page-bg);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
   line-height: 1;
   cursor: pointer;
@@ -298,8 +298,8 @@ body.tp button,
 }
 
 .header-play-button svg {
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   color: var(--tp-page-bg);
 }
 
@@ -1004,6 +1004,20 @@ html[data-theme="dark"] .app .prompt-box {
   color: var(--tp-green);
 }
 
+.scroll-action-icon {
+  color: var(--tp-scroll-icon);
+}
+
+.item:hover .scroll-action-icon {
+  color: var(--tp-gray-text);
+}
+
+.item.active .scroll-action-icon,
+.item.selected .scroll-action-icon,
+.item.auto-scroll-active .scroll-action-icon {
+  color: var(--tp-green);
+}
+
 /* Make action icons (except mic/camera) inside the floating toolbar larger */
 .toolbar-shell .item:has(.action-btn) .icon-wrap,
 .toolbar-shell .item .action-btn {
@@ -1012,6 +1026,11 @@ html[data-theme="dark"] .app .prompt-box {
 }
 
 .toolbar-shell .item .action-btn svg {
+  width: 38px;
+  height: 38px;
+}
+
+.toolbar-shell .item .scroll-action-icon {
   width: 38px;
   height: 38px;
 }
@@ -1060,7 +1079,7 @@ html[data-theme="dark"] .app .prompt-box {
 
 .toolbar-value {
   position: absolute;
-  top: -6px;
+  top: -10px;
   left: 50%;
   min-width: 24px;
   transform: translateX(-50%);
@@ -2720,10 +2739,7 @@ html[data-theme="dark"] .mff-more-left {
     display: none !important;
   }
 
-  /* Hide text labels inside layout guide handles, leaving only the icons */
-  .layout-grip-label {
-    display: none !important;
-  }
+
 
   /* Hide the microphone toolbar button on mobile/tablet */
   .toolbar [data-toggle="mic"] {
@@ -3868,6 +3884,13 @@ html.theme-instant *::after {
 
   .m-studio-bar .item { min-width: 0; }
   .m-studio-bar .item .label { display: none; }
+  #mPanelTools .item .label {
+    display: block;
+    font-size: 11px;
+    font-weight: 550;
+    line-height: 1.2;
+    margin-top: 4px;
+  }
 
   /* Prompter-tools icons (layout · speed · mirror) are the larger touch targets. */
   #mPanelTools .item .icon-wrap,
@@ -3892,30 +3915,41 @@ html.theme-instant *::after {
     gap: 0;
   }
 
-  /* Small red record circle (icon only). Idle-scoped: during record-dim the
-     button reverts to its default pill, floated bottom-right as before. */
+  /* Circular white-ring record button (icon only). Idle-scoped: during
+     record-dim the button reverts to its pill, floated bottom-right. */
   .app:not(.record-dim) #mPanelMain #recordButton {
     width: 44px;
     height: 44px;
     padding: 0;
+    border: 2px solid var(--tp-white, #fff);
     border-radius: 50%;
-    background: var(--tp-record-btn);
-  }
-  .app:not(.record-dim) #mPanelMain #recordButton .record-dot,
-  .app:not(.record-dim) #mPanelMain #recordButton .record-label { display: none; }
-
-  /* Play → bare triangle / pause icon, no background. */
-  .app:not(.record-dim) #mPanelMain .header-play-button {
-    width: auto;
-    height: auto;
-    padding: 0 2px;
-    border-radius: 0;
     background: transparent;
   }
+  .app:not(.record-dim) #mPanelMain #recordButton .record-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--tp-record-btn);
+    display: block;
+  }
+  .app:not(.record-dim) #mPanelMain #recordButton .record-label { display: none; }
+
+  /* Play → circular border container like the record button. */
+  .app:not(.record-dim) #mPanelMain .header-play-button {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border: 2px solid var(--tp-white, #fff);
+    border-radius: 50%;
+    background: transparent;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
   .app:not(.record-dim) #mPanelMain .header-play-button svg {
-    width: 26px;
-    height: 26px;
-    color: var(--tp-page-text);
+    width: 24px;
+    height: 24px;
+    color: var(--tp-white, #fff);
   }
   .app:not(.record-dim) #mPanelMain .header-play-button .header-play-label { display: none; }
 

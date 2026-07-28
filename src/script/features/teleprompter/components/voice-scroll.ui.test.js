@@ -607,9 +607,14 @@ describe('Voice Scroll browser integration', () => {
     voiceUI.stop();
   });
 
-  it('keeps manual scroll in control until ASR matches from the new position', async () => {
-    const voiceUI = initVoiceScrollUI({ getSurface: () => surface });
+  it('keeps matching and dimming from the ASR cursor after manual scroll up or down', async () => {
+    const onTranscript = vi.fn();
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      onTranscript,
+    });
     await voiceUI.start();
+    const recognition = FakeSpeechRecognition.instances[0];
     const words = [...surface.querySelectorAll('.vs-w')];
     words.forEach((word, index) => {
       Object.defineProperty(word, 'offsetTop', {
@@ -621,28 +626,44 @@ describe('Voice Scroll browser integration', () => {
         value: 20,
       });
     });
-    vi.useFakeTimers();
 
+    recognition.emitTranscript('Hôm nay tôi');
+    recognition.emitTranscript('Hôm nay tôi');
+    expect(words[0].classList.contains('vs-spoken')).toBe(true);
+    expect(words[1].classList.contains('vs-spoken')).toBe(true);
+    expect(words[2].classList.contains('vs-spoken')).toBe(false);
+
+    // Looking elsewhere in the script must not reset the accumulated
+    // transcript, move the matcher cursor, or replace contextual hints.
     surface.scrollTop = 620;
     surface.dispatchEvent(new Event('scroll'));
+    expect(recognition.phrases).toBeUndefined();
 
-    // ASR may answer during the 180 ms re-anchor debounce; it still cannot win.
-    FakeSpeechRecognition.instances[0].emitTranscript('Hôm nay tôi');
-    await vi.advanceTimersByTimeAsync(180);
-    expect(words.every((word) => !word.classList.contains('vs-spoken'))).toBe(true);
+    recognition.emitTranscript('Hôm nay tôi sẽ hướng dẫn');
+    recognition.emitTranscript('Hôm nay tôi sẽ hướng dẫn');
+    expect(words.slice(0, 5).every(
+      (word) => word.classList.contains('vs-spoken')
+    )).toBe(true);
     expect(words[5].classList.contains('vs-spoken')).toBe(false);
+    expect(onTranscript).toHaveBeenLastCalledWith(expect.objectContaining({
+      cursor: 5,
+      matched: true,
+    }));
+    expect(surface.scrollTop).toBe(620);
 
-    await vi.advanceTimersByTimeAsync(650);
-    FakeSpeechRecognition.instances[0].emitTranscript('Hôm nay tôi');
-    FakeSpeechRecognition.instances[0].emitTranscript('Hôm nay tôi');
-    expect(words.every((word) => !word.classList.contains('vs-spoken'))).toBe(true);
-    expect(words[5].classList.contains('vs-spoken')).toBe(false);
+    surface.scrollTop = 0;
+    surface.dispatchEvent(new Event('scroll'));
+    recognition.emitTranscript('Hôm nay tôi sẽ hướng dẫn các bạn');
+    recognition.emitTranscript('Hôm nay tôi sẽ hướng dẫn các bạn');
+    expect(words.slice(0, 7).every(
+      (word) => word.classList.contains('vs-spoken')
+    )).toBe(true);
+    expect(words[7].classList.contains('vs-spoken')).toBe(false);
+    expect(onTranscript).toHaveBeenLastCalledWith(expect.objectContaining({
+      cursor: 7,
+      matched: true,
+    }));
 
-    FakeSpeechRecognition.instances[0].emitTranscript('dẫn các', { isFinal: true });
-    expect(words[5].classList.contains('vs-spoken')).toBe(true);
-    expect(words[6].classList.contains('vs-spoken')).toBe(false);
-
-    vi.useRealTimers();
     voiceUI.stop();
   });
 

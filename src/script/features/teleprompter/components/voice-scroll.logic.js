@@ -548,7 +548,6 @@ export function createVoiceScrollController({
   let anchorAt = 0;
   let creepIndex = -1;
   let displayIndex = -1;
-  let userOverridePending = false;
   let userAnchor = -1;
   let userGuardUntil = 0;
   let awaitingUserAnchorSpeech = false;
@@ -576,10 +575,9 @@ export function createVoiceScrollController({
   function handleASRResult({ allTokens, reach, tailPartial }) {
     if (!matcherState) return;
 
-    // Direct manipulation always wins over recognition. While a manual scroll
-    // is still settling, or while an in-flight ASR result may predate the
-    // user's click/scroll, drop the result before it can mutate matcher state.
-    if (userOverridePending || performance.now() < userGuardUntil) {
+    // An explicit word selection wins over recognition. While its transition
+    // is settling, drop any in-flight ASR result that may predate the click.
+    if (performance.now() < userGuardUntil) {
       asr?.resetStream();
       onTranscript?.({
         tokenCount: allTokens.length,
@@ -615,9 +613,9 @@ export function createVoiceScrollController({
     const confirmedUserAnchor = cursorMoved
       && result.cursor >= userAnchor;
 
-    // After a user re-anchor, only a local voice match at/after that anchor may
-    // resume ASR control. A stale result behind the manual position is never
-    // allowed to pull the prompter away from the user.
+    // After an explicit word re-anchor, only a local voice match at/after that
+    // anchor may resume ASR control. A stale result behind the selected word
+    // is never allowed to pull the prompter away from the user.
     if (movedBehindUser || (awaitingUserAnchorSpeech && !confirmedUserAnchor)) {
       asr?.resetStream();
       onTranscript?.({
@@ -689,7 +687,6 @@ export function createVoiceScrollController({
     creepIndex = -1;
     displayIndex = -1;
     biasAnchor = -1e9;
-    userOverridePending = false;
     userAnchor = -1;
     userGuardUntil = 0;
     awaitingUserAnchorSpeech = false;
@@ -732,25 +729,15 @@ export function createVoiceScrollController({
     if (asr) { asr.stop(); asr = null; }
     phase = 'idle';
     matcherState = null;
-    userOverridePending = false;
     userAnchor = -1;
     userGuardUntil = 0;
     awaitingUserAnchorSpeech = false;
     onPhaseChange?.('idle');
   }
   
-  function beginUserOverride() {
-    if (!matcherState || userOverridePending) return;
-    userOverridePending = true;
-    userGuardUntil = performance.now() + USER_OVERRIDE_GUARD_MS;
-    awaitingUserAnchorSpeech = true;
-    asr?.resetStream();
-  }
-
   function setCursorTo(index, { userInitiated = false } = {}) {
     if (!matcherState || index < 0 || index >= matcherState.words.length) return;
     if (userInitiated) {
-      userOverridePending = false;
       userAnchor = index;
       userGuardUntil = performance.now() + USER_OVERRIDE_GUARD_MS;
       awaitingUserAnchorSpeech = true;
@@ -798,15 +785,13 @@ export function createVoiceScrollController({
   }
 
   function isUserOverrideActive() {
-    return userOverridePending
-      || awaitingUserAnchorSpeech
+    return awaitingUserAnchorSpeech
       || performance.now() < userGuardUntil;
   }
   
   return {
     start,
     stop,
-    beginUserOverride,
     setCursorTo,
     getCreepInfo,
     updateCreepIndex,

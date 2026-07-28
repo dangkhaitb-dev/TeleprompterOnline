@@ -1,6 +1,6 @@
 // voice-scroll.ui.js — Voice scroll UI layer. The ONLY layer that touches DOM.
-// Handles: PID scroll loop, word span wrapping, text highlight, manual scroll
-// detection + re-anchor, optimistic creep visual updates.
+// Handles: PID scroll loop, word span wrapping, text highlight, viewport-only
+// manual scroll detection, explicit word re-anchor, optimistic creep updates.
 //
 // Ported from deepgram-teleprompter/public/app.js (sections 2–3).
 // Works across all 3 modes: Camera OFF / Camera ON / Notch.
@@ -15,7 +15,7 @@
 // - .reading-line — visual reading line indicator
 
 import {
-  TPCOM_PID, CREEP, MANUAL_SCROLL_THRESHOLD, REANCHOR_DELAY_MS,
+  TPCOM_PID, CREEP, MANUAL_SCROLL_THRESHOLD,
   createPIDController,
   segmentParts, normalize, foldDiacritics, viKey,
 } from './voice-scroll.model.js';
@@ -282,20 +282,6 @@ function scrollTarget(el, surface, getReadingLineOffset) {
   );
 }
 
-function findWordAtReadingLine(words, surface, getReadingLineOffset) {
-  let lo = 0, hi = words.length - 1, idx = 0;
-  while (lo <= hi) {
-    const mid = (lo + hi) >> 1;
-    if (scrollTarget(words[mid].el, surface, getReadingLineOffset) <= surface.scrollTop + 1) {
-      idx = mid;
-      lo = mid + 1;
-    } else {
-      hi = mid - 1;
-    }
-  }
-  return idx;
-}
-
 function createCreepEngine(
   getSurface,
   getReadingLineOffset,
@@ -379,7 +365,6 @@ export function initVoiceScrollUI({
   let originalHTML = '';
   let displayIndex = -1;
   let paintedIndex = -1;
-  let reanchorTimer = null;
   let scrollHandler = null;
   let wordPointerDownHandler = null;
   let wordClickHandler = null;
@@ -399,8 +384,6 @@ export function initVoiceScrollUI({
     const surface = mountedSurface;
     if (!active || !controller || !surface || !words[index]) return;
 
-    clearTimeout(reanchorTimer);
-    reanchorTimer = null;
     // User input has the highest scroll priority. Tear down the current Auto
     // frame and momentum first, then start one fresh transition from the exact
     // DOM position to the selected word. This prevents an in-flight PID target
@@ -510,18 +493,9 @@ export function initVoiceScrollUI({
       if (Math.abs(surface.scrollTop - Math.round(pid.current())) > MANUAL_SCROLL_THRESHOLD) {
         pid.syncTo(surface.scrollTop);
         if (creep) creep.stop();
-        controller.beginUserOverride();
-        clearTimeout(reanchorTimer);
-        reanchorTimer = setTimeout(() => {
-          const surface = getSurface();
-          if (!surface || !controller.isActive()) return;
-          const idx = findWordAtReadingLine(words, surface, getReadingLineOffset);
-          controller.setCursorTo(idx, { userInitiated: true });
-          // Manual scrolling may move the speech-matcher anchor, but it must
-          // never mark text as spoken. Only onCursorMove (an ASR match) may
-          // update the row-dimming state.
-          displayIndex = idx;
-        }, REANCHOR_DELAY_MS);
+        // Manual scrolling changes only the viewport. The speech matcher and
+        // spoken-row state continue from the last confirmed ASR cursor; only an
+        // explicit word click is allowed to re-anchor them.
       }
     };
     const surface2 = getSurface();
@@ -596,10 +570,6 @@ export function initVoiceScrollUI({
     wordClickHandler = null;
     clearTimeout(wordActiveTimer);
     wordActiveTimer = null;
-    
-    // Clear reanchor timer
-    clearTimeout(reanchorTimer);
-    reanchorTimer = null;
     
     // Restore original surface HTML
     if (surface && originalHTML) {

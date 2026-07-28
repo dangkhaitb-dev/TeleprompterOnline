@@ -44,7 +44,6 @@ export const TPCOM_PID = Object.freeze({
 const MAX_PID_FRAME_SECONDS = 0.05;
 
 export const MANUAL_SCROLL_THRESHOLD = 10;
-export const REANCHOR_DELAY_MS = 180;
 
 export const BIAS = Object.freeze({
   AHEAD: 120, BEHIND: 12, MIN_LEN: 2, MAX_LEN: 6,

@@ -125,7 +125,7 @@ export function getPageAnalyticsName(doc = document, pageLocation = window.locat
   }
 
   if (segments[0] === 'blog' && segments[1]) {
-    return toAnalyticsSegment(`blog-${segments[1]}`, 'blog-article');
+    return toAnalyticsSegment(`blog-${segments.at(-1)}`, 'blog-article');
   }
 
   return toAnalyticsSegment(segments.at(-1), 'home');

@@ -66,7 +66,7 @@ eleventyComputed:
                 <form class="composer" id="composerForm" novalidate
                       data-msg-empty="{{ pageData.messages.errorEmpty }}"
                       data-msg-read="{{ pageData.messages.errorRead }}">
-                    <input type="file" id="file-input" accept=".md,.markdown,.txt" hidden>
+                    <input type="file" id="file-input" accept=".md,.markdown,.txt,.docx" hidden>
                     <div class="textarea-container">
                         <label class="visually-hidden" for="paste-textarea">{{ pageData.hero.placeholder }}</label>
                         <textarea id="paste-textarea" class="editor-textarea" placeholder="{{ pageData.hero.placeholder }}"></textarea>
@@ -235,18 +235,18 @@ eleventyComputed:
                     <div class="split-visual-col" style="margin-top: 2rem;">
                         <div class="remote-phone-visual">
                             <div class="remote-phone-mockup" role="img" aria-label="SolPrompter mobile interface displayed inside the supplied iPhone mockup">
-                                <img class="remote-phone-frame-base" src="/media/iphone-frame.png" alt="" width="754" height="1555" loading="lazy" decoding="async" aria-hidden="true">
+                                <img class="remote-phone-frame-base" src="/media/iphone-frame.png" alt="" width="855" height="1721" loading="lazy" decoding="async" aria-hidden="true">
                                 <div class="remote-phone-screen" aria-hidden="true">
                                     <img src="/media/teleprompter-mobile-screenshot.jpg" alt="" width="750" height="1624" loading="lazy" decoding="async">
                                 </div>
-                                <svg class="remote-phone-status" viewBox="0 0 754 1555" aria-hidden="true">
-                                    <text x="82" y="67" fill="#f5f5f7" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="650">9:41</text>
-                                    <path d="M560 68h9V57h-9zm15 0h9V49h-9zm15 0h9V41h-9z" fill="#f5f5f7"/>
-                                    <path d="M617 49c12-11 27-11 39 0M626 58c7-7 15-7 22 0M634 66c3-3 6-3 9 0" fill="none" stroke="#f5f5f7" stroke-width="4" stroke-linecap="round"/>
-                                    <rect x="676" y="43" width="30" height="24" rx="6" fill="none" stroke="#f5f5f7" stroke-width="4"/>
-                                    <rect x="681" y="48" width="20" height="14" rx="3" fill="#f5f5f7"/>
+                                <svg class="remote-phone-status" viewBox="0 0 855 1721" aria-hidden="true">
+                                    <text x="92" y="75" fill="#f5f5f7" font-family="system-ui, -apple-system, sans-serif" font-size="31" font-weight="650">9:41</text>
+                                    <path d="M620 76h10V64h-10zm17 0h10V55h-10zm17 0h10V45h-10z" fill="#f5f5f7"/>
+                                    <path d="M684 55c13-12 30-12 43 0M694 65c8-8 17-8 25 0M703 74c3-3 7-3 10 0" fill="none" stroke="#f5f5f7" stroke-width="4.5" stroke-linecap="round"/>
+                                    <rect x="748" y="48" width="34" height="27" rx="7" fill="none" stroke="#f5f5f7" stroke-width="4.5"/>
+                                    <rect x="754" y="54" width="22" height="15" rx="3" fill="#f5f5f7"/>
                                 </svg>
-                                <img class="remote-phone-frame-island" src="/media/iphone-frame.png" alt="" width="754" height="1555" loading="lazy" decoding="async" aria-hidden="true">
+                                <img class="remote-phone-frame-island" src="/media/iphone-frame.png" alt="" width="855" height="1721" loading="lazy" decoding="async" aria-hidden="true">
                             </div>
                         </div>
                     </div>
@@ -264,6 +264,9 @@ eleventyComputed:
                 <p class="eyebrow">{{ recording.eyebrow }}</p>
                 <h2 class="section-title">{{ recording.title }}</h2>
                 <p class="section-desc">{{ recording.description }}</p>
+                {%- if recording.resourceLink %}
+                <p class="section-support"><a class="section-resource-link" href="{{ recording.resourceLink.url }}">{{ recording.resourceLink.label }}</a></p>
+                {%- endif %}
             </div>
             
             <div class="spotlight-grid">
@@ -337,6 +340,9 @@ eleventyComputed:
                 <p class="eyebrow">{{ howItWorks.eyebrow }}</p>
                 <h2 class="section-title">{{ howItWorks.title }}</h2>
                 <p class="section-desc">{{ howItWorks.description }}</p>
+                {%- if howItWorks.resourceLink %}
+                <p class="section-support"><a class="section-resource-link" href="{{ howItWorks.resourceLink.url }}">{{ howItWorks.resourceLink.label }}</a></p>
+                {%- endif %}
             </div>
             <div class="steps-editorial-flow">
                 {%- for step in howItWorks.steps %}
@@ -389,6 +395,7 @@ eleventyComputed:
                 <h2 class="section-title">{{ comparison.title }}</h2>
                 <p class="section-desc">{{ comparison.description }}</p>
             </div>
+            {%- if comparison.table %}
             <div class="comparison-table-wrapper" style="overflow-x: auto; margin-top: 2rem;">
                 <table class="comparison-table">
                     <thead>
@@ -410,6 +417,7 @@ eleventyComputed:
                     </tbody>
                 </table>
             </div>
+            {%- endif %}
 
             {%- if comparison.whyChoose %}
             <div class="why-choose-details" style="margin-top: 4rem;">
@@ -469,6 +477,13 @@ eleventyComputed:
                 
                 <!-- Right: Benchmarks -->
                 <div class="spotlight-col">
+                    {%- if engineering.evidenceSummary %}
+                    <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 1.5rem; text-align: center;">{{ engineering.evidenceTitle }}</h3>
+                    <p class="section-desc" style="font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin: 0;">{{ engineering.evidenceSummary }}</p>
+                    {%- if engineering.benchmarkLink %}
+                    <p class="section-support" style="margin-top: 1.5rem; text-align: center;"><a class="section-resource-link" href="{{ engineering.benchmarkLink.url }}">{{ engineering.benchmarkLink.label }}</a></p>
+                    {%- endif %}
+                    {%- else %}
                     <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 1.5rem; text-align: center;">{{ engineering.benchmarksTitle }}</h3>
                     <div class="benchmarks-table-wrapper" style="overflow-x: auto; margin-top: 1rem;">
                         <table class="comparison-table" style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
@@ -491,6 +506,7 @@ eleventyComputed:
                         </table>
                     </div>
                     <p class="section-support" style="font-size: 0.85rem; margin-top: 1.5rem; text-align: center; color: var(--ink-muted);">{{ engineering.benchmarksSupport }}</p>
+                    {%- endif %}
                 </div>
             </div>
         </div>

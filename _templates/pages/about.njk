@@ -50,100 +50,121 @@ lang: en
     <a href="{{ chrome.nav.cta.url }}" class="btn btn-workspaces mobile-nav-cta">{{ chrome.nav.cta.label }}</a>
 </nav>
 
-<!-- HERO + MAIN -->
-<main id="main" tabindex="-1">
-    <section class="hero">
-        <div class="hero-inner">
-            <p class="eyebrow">{{ pageData.hero.eyebrow }}</p>
-            <h1 class="hero-title">{{ pageData.hero.title }}</h1>
-            <p class="hero-desc">{{ pageData.hero.description }}</p>
+<!-- ABOUT STORY -->
+<main class="about-page" id="main" tabindex="-1">
+    {%- set finalCta = pageData.finalCta %}
+    {%- set differences = pageData.differences %}
+    <section class="about-hero">
+        <div class="about-shell about-hero-grid">
+            <div class="about-hero-heading">
+                <p class="about-kicker">{{ pageData.hero.eyebrow }}</p>
+                <h1 class="about-hero-title">{{ pageData.hero.title }}</h1>
+            </div>
+
+            <div class="about-hero-copy">
+                <p>{{ pageData.hero.description }}</p>
+                <a class="about-text-link" href="{{ finalCta.cta.url }}">
+                    {{ finalCta.cta.label }}
+                    <span aria-hidden="true">↗</span>
+                </a>
+            </div>
         </div>
     </section>
 
     {%- set why = pageData.why %}
-    <section class="section section-alt" id="why">
-        <div class="section-inner section-narrow">
-            <div class="section-head">
-                <p class="eyebrow">{{ why.eyebrow }}</p>
-                <h2 class="section-title">{{ why.title }}</h2>
-            </div>
-            <div class="prose">
+    <section class="about-section about-origin" id="why">
+        <div class="about-shell about-origin-grid">
+            <header class="about-section-heading">
+                <p class="about-kicker">{{ why.eyebrow }}</p>
+                <h2>{{ why.title }}</h2>
+            </header>
+            <div class="about-origin-copy">
                 {%- for paragraph in why.paragraphs %}
-                <p>{{ paragraph }}</p>
+                <p{% if loop.index == 2 %} class="about-origin-belief"{% endif %}>{{ paragraph }}</p>
                 {%- endfor %}
             </div>
         </div>
     </section>
 
     {%- set mission = pageData.mission %}
-    <section class="section" id="mission">
-        <div class="section-inner">
-            <div class="section-head">
-                <p class="eyebrow">{{ mission.eyebrow }}</p>
-                <h2 class="section-title">{{ mission.title }}</h2>
-                <p class="section-desc">{{ mission.description }}</p>
+    <section class="about-section about-mission" id="mission">
+        <div class="about-shell">
+            <div class="about-section-intro">
+                <header class="about-section-heading">
+                    <p class="about-kicker">{{ mission.eyebrow }}</p>
+                    <h2>{{ mission.title }}</h2>
+                </header>
+                <p>{{ mission.description }}</p>
             </div>
-            <ul class="card-grid">
+            <ol class="about-numbered-list">
                 {%- for item in mission.items %}
-                <li class="card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
+                <li>
+                    <span class="about-number">0{{ loop.index }}</span>
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
                 </li>
                 {%- endfor %}
-            </ul>
+            </ol>
         </div>
     </section>
 
-    {%- set differences = pageData.differences %}
-    <section class="section section-alt" id="different">
-        <div class="section-inner">
-            <div class="section-head">
-                <p class="eyebrow">{{ differences.eyebrow }}</p>
-                <h2 class="section-title">{{ differences.title }}</h2>
-                <p class="section-desc">{{ differences.description }}</p>
+    <section class="about-section about-product" id="different">
+        <div class="about-shell">
+            <div class="about-product-heading">
+                <p class="about-kicker">{{ differences.eyebrow }}</p>
+                <h2>{{ differences.title }}</h2>
+                <p>{{ differences.description }}</p>
             </div>
-            <ul class="card-grid">
+            <ol class="about-feature-list">
                 {%- for item in differences.items %}
-                <li class="card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
+                <li>
+                    <span class="about-feature-index">0{{ loop.index }}</span>
+                    <div>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                    </div>
                 </li>
                 {%- endfor %}
-            </ul>
+            </ol>
         </div>
     </section>
 
     {%- set principles = pageData.principles %}
-    <section class="section" id="principles">
-        <div class="section-inner">
-            <div class="section-head">
-                <p class="eyebrow">{{ principles.eyebrow }}</p>
-                <h2 class="section-title">{{ principles.title }}</h2>
-            </div>
-            <ul class="card-grid">
+    <section class="about-section about-principles" id="principles">
+        <div class="about-shell about-principles-grid">
+            <header class="about-section-heading">
+                <p class="about-kicker">{{ principles.eyebrow }}</p>
+                <h2>{{ principles.title }}</h2>
+            </header>
+            <ol class="about-principle-list">
                 {%- for item in principles.items %}
-                <li class="card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
+                <li>
+                    <span>0{{ loop.index }}</span>
+                    <div>
+                        <h3>{{ item.title }}</h3>
+                        <p>{{ item.description }}</p>
+                    </div>
                 </li>
                 {%- endfor %}
-            </ul>
+            </ol>
         </div>
     </section>
 
     {%- set audiences = pageData.audiences %}
-    <section class="section section-alt" id="audience">
-        <div class="section-inner">
-            <div class="section-head">
-                <p class="eyebrow">{{ audiences.eyebrow }}</p>
-                <h2 class="section-title">{{ audiences.title }}</h2>
-                <p class="section-desc">{{ audiences.description }}</p>
+    <section class="about-section about-audience" id="audience">
+        <div class="about-shell">
+            <div class="about-section-intro">
+                <header class="about-section-heading">
+                    <p class="about-kicker">{{ audiences.eyebrow }}</p>
+                    <h2>{{ audiences.title }}</h2>
+                </header>
+                <p>{{ audiences.description }}</p>
             </div>
-            <ul class="card-grid">
+            <ul class="about-audience-list">
                 {%- for item in audiences.items %}
-                <li class="card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
+                <li>
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
                 </li>
                 {%- endfor %}
             </ul>
@@ -151,58 +172,54 @@ lang: en
     </section>
 
     {%- set commitment = pageData.commitment %}
-    <section class="section" id="commitment">
-        <div class="section-inner section-narrow">
-            <div class="section-head">
-                <p class="eyebrow">{{ commitment.eyebrow }}</p>
-                <h2 class="section-title">{{ commitment.title }}</h2>
-            </div>
-            <div class="prose">
-                {%- for paragraph in commitment.paragraphs %}
-                <p>{{ paragraph }}</p>
-                {%- endfor %}
-            </div>
-        </div>
-    </section>
-
     {%- set future = pageData.future %}
-    <section class="section section-alt" id="future">
-        <div class="section-inner section-narrow">
-            <div class="section-head">
-                <p class="eyebrow">{{ future.eyebrow }}</p>
-                <h2 class="section-title">{{ future.title }}</h2>
-            </div>
-            <div class="prose">
-                {%- for paragraph in future.paragraphs %}
-                <p>{{ paragraph }}</p>
-                {%- endfor %}
-            </div>
-        </div>
-    </section>
-
     {%- set ecosystem = pageData.ecosystem %}
-    <section class="section" id="ecosystem">
-        <div class="section-inner section-narrow">
-            <div class="section-head">
-                <p class="eyebrow">{{ ecosystem.eyebrow }}</p>
-                <h2 class="section-title">{{ ecosystem.title }}</h2>
-            </div>
-            <div class="prose">
-                {%- for paragraph in ecosystem.paragraphs %}
-                <p>{{ paragraph }}</p>
-                {%- endfor %}
+    <section class="about-section about-roadmap" id="future">
+        <div class="about-shell">
+            <h2 class="visually-hidden">{{ future.title }}</h2>
+            <div class="about-roadmap-chapters">
+                <article id="commitment">
+                    <p class="about-kicker">{{ commitment.eyebrow }}</p>
+                    <h3>{{ commitment.title }}</h3>
+                    <div>
+                        {%- for paragraph in commitment.paragraphs %}
+                        <p>{{ paragraph }}</p>
+                        {%- endfor %}
+                    </div>
+                </article>
+                <article>
+                    <p class="about-kicker">{{ future.eyebrow }}</p>
+                    <h3>{{ future.title }}</h3>
+                    <div>
+                        {%- for paragraph in future.paragraphs %}
+                        <p>{{ paragraph }}</p>
+                        {%- endfor %}
+                    </div>
+                </article>
+                <article id="ecosystem">
+                    <p class="about-kicker">{{ ecosystem.eyebrow }}</p>
+                    <h3>{{ ecosystem.title }}</h3>
+                    <div>
+                        {%- for paragraph in ecosystem.paragraphs %}
+                        <p>{{ paragraph }}</p>
+                        {%- endfor %}
+                    </div>
+                </article>
             </div>
         </div>
     </section>
 
-    {%- set finalCta = pageData.finalCta %}
-    <section class="section section-alt final-cta" id="start">
-        <div class="section-inner section-narrow">
-            <p class="eyebrow">{{ finalCta.eyebrow }}</p>
-            <h2 class="section-title">{{ finalCta.title }}</h2>
-            <p class="section-desc">{{ finalCta.description }}</p>
-            <div class="section-cta"><a class="btn btn-primary btn-lg" href="{{ finalCta.cta.url }}">{{ finalCta.cta.label }}</a></div>
-            <p class="section-support">{{ finalCta.supporting }}</p>
+    <section class="about-final" id="start">
+        <div class="about-shell about-final-grid">
+            <div>
+                <p class="about-kicker">{{ finalCta.eyebrow }}</p>
+                <h2>{{ finalCta.title }}</h2>
+            </div>
+            <div class="about-final-copy">
+                <p>{{ finalCta.description }}</p>
+                <a class="btn about-final-cta" href="{{ finalCta.cta.url }}">{{ finalCta.cta.label }}</a>
+                <p class="about-final-support">{{ finalCta.supporting }}</p>
+            </div>
         </div>
     </section>
 </main>

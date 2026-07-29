@@ -32,41 +32,49 @@ body.blog-article-page {
   justify-content: center;
 }
 
-.article-dates {
-  margin-bottom: clamp(1rem, 2vw, 1.5rem);
+.article-breadcrumb {
+  margin-bottom: clamp(1.25rem, 2.5vw, 1.75rem);
   display: flex;
   flex-wrap: wrap;
-  gap: 0.35rem 1.25rem;
+  align-items: center;
+  gap: 0.45rem;
   color: var(--ink-muted);
-  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
-  font-weight: 600;
-  line-height: 1.4;
-}
-
-.article-dates time {
-  font-weight: inherit;
-}
-
-.article-slug {
-  margin: 0 0 0.45rem;
-  color: var(--ink-muted);
-  display: inline-block;
   font-family: var(--font-brand-mono);
-  font-size: 0.72rem;
+  font-size: var(--text-xs);
   line-height: 1.4;
-  overflow-wrap: anywhere;
+}
+
+.article-breadcrumb a {
+  color: inherit;
   text-decoration: none;
   transition: color var(--dur-normal) var(--ease-out);
 }
 
-.article-slug:hover {
+.article-breadcrumb a:hover {
   color: var(--ink);
 }
 
-.article-slug:focus-visible {
+.article-breadcrumb a:focus-visible {
   border-radius: var(--radius-sm);
   outline: 3px solid var(--brand);
   outline-offset: 4px;
+}
+
+.article-review {
+  margin: clamp(1.25rem, 2.5vw, 1.75rem) 0 0;
+  color: var(--ink-muted);
+  font-size: clamp(0.9rem, 1.2vw, 1rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
+.article-review strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.article-review span {
+  margin-inline: 0.35rem;
 }
 
 .article-title {

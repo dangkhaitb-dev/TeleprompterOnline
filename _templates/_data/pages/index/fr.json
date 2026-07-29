@@ -1,12 +1,13 @@
 {
   "seo": {
     "title": "Téléprompteur en ligne gratuit avec défilement vocal par IA | SolPrompter",
-    "description": "Téléprompteur en ligne gratuit avec défilement à commande vocale AI, mode Notch et télécommande QR. Pas de publicité, pas d'inscription, 100% privé.",
+    "description": "Téléprompteur en ligne gratuit avec défilement à commande vocale, mode encoche et télécommande QR. Sans publicité ni inscription ; les scripts et les enregistrements restent sur votre appareil.",
     "canonical": "/fr/",
     "ogTitle": "Téléprompteur en ligne gratuit — SolPrompter",
     "ogDescription": "Présentez naturellement avec notre téléprompteur basé sur un navigateur. Défile automatiquement avec votre voix, minimise les mouvements oculaires et prend en charge la télécommande QR.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg"
+    "ogImage": "/og-solprompter.jpg",
+    "ogImageAlt": "Interface du téléprompteur à commande vocale SolPrompter"
   },
   "schema": {
     "orgDescription": "SolPrompter fournit un téléprompteur en ligne gratuit pour des présentations naturelles et un enregistrement vidéo professionnel.",
@@ -82,7 +83,7 @@
   "hero": {
     "eyebrow": "SolPrompter — Téléprompteur en ligne gratuit",
     "title": "Téléprompteur en ligne gratuit",
-    "subtitle": "Défile automatiquement avec votre voix, ancre le texte près de l'objectif de l'appareil photo pour éviter toute déviation oculaire et prend en charge le contrôle à distance via un code QR. Gratuit, sans publicité et 100% privé.",
+    "subtitle": "Fait défiler automatiquement avec votre voix et ancre le texte près de l'objectif de la caméra pour réduire le mouvement des yeux. Les scripts et les enregistrements restent sur votre appareil.",
     "placeholder": "Collez votre script ou importez un fichier pour commencer...",
     "uploadLabel": "Télécharger le fichier",
     "uploadLabelShort": "Importer",
@@ -94,7 +95,7 @@
   },
   "messages": {
     "errorEmpty": "Veuillez saisir le contenu de votre script avant de lancer le téléprompteur.",
-    "errorRead": "Format non pris en charge. Veuillez sélectionner un fichier .txt ou .md."
+    "errorRead": "Format non pris en charge. Veuillez sélectionner un fichier .txt, .md ou .docx."
   },
   "features": {
     "eyebrow": "Principales fonctionnalités",
@@ -131,6 +132,10 @@
     "eyebrow": "Flux de travail",
     "title": "Simple et instantané",
     "description": "Préparez votre script et commencez à présenter ou à enregistrer en quelques étapes seulement.",
+    "resourceLink": {
+      "label": "Lire le guide complet du téléprompteur",
+      "url": "/teleprompter-guide"
+    },
     "steps": [
       {
         "anchor": "step-add-script",
@@ -162,9 +167,9 @@
       "problemTitle": "Problème : les téléprompteurs traditionnels défilent à une vitesse fixe",
       "problemDesc": "Si vous parlez plus vite, vous perdez votre place. Si vous faites une pause, le script continue d'avancer. Cela rend les présentations rigides et stressantes.",
       "solutionTitle": "Solution : défilement activé par la voix de l'IA",
-      "solutionDesc": "SolPrompter écoute et fait automatiquement avancer le script au fur et à mesure que vous lisez, s'adaptant instantanément à votre vitesse naturelle en temps réel."
+      "solutionDesc": "SolPrompter écoute et fait avancer le script au fur et à mesure que vous lisez, s'adaptant aux changements de votre rythme de parole."
     },
-    "description": "La reconnaissance vocale suit votre discours et fait progresser le script au fur et à mesure que vous parlez, s'adaptant instantanément à chaque changement de rythme.",
+    "description": "La reconnaissance vocale suit votre élocution et fait avancer le script au fur et à mesure que vous parlez, réagissant à chaque changement de rythme.",
     "benefits": [
       {
         "title": "Parlez naturellement",
@@ -212,7 +217,7 @@
   "remote": {
     "eyebrow": "Télécommande",
     "title": "Scannez un QR pour contrôler depuis n'importe quel appareil",
-    "description": "Connectez un téléphone ou une tablette via un code QR à l'aide de WebSockets sécurisés. Contrôlez votre présentation sans installer d'applications externes.",
+    "description": "Connectez un téléphone ou une tablette à l'aide d'un code QR et d'une session WebSocket jumelée. Contrôlez votre présentation sans installer d'autre application.",
     "items": [
       {
         "title": "Script de lecture et de pause",
@@ -244,11 +249,11 @@
   "recording": {
     "eyebrow": "Enregistrement et confidentialité",
     "title": "Enregistrement 4K dans le navigateur et confidentialité des scripts locaux",
-    "description": "Capturez des vidéos nettes directement depuis le navigateur tout en gardant vos scripts 100 % privés dans le stockage local.",
+    "description": "Capturez des vidéos dans le navigateur tout en conservant les scripts et les enregistrements dans le stockage local du navigateur de votre appareil.",
     "items": [
       {
         "title": "Aperçu caméra en direct",
-        "description": "Prévisualisez et vérifiez votre cadrage et votre alignement avant l'enregistrement du coup."
+        "description": "Prévisualisez et vérifiez votre cadrage et votre alignement avant d'enregistrer."
       },
       {
         "title": "Enregistrez en Full HD et 4K",
@@ -270,6 +275,10 @@
     "cta": {
       "label": "Commencer l'enregistrement",
       "url": "/teleprompter.html"
+    },
+    "resourceLink": {
+      "label": "Découvrez comment SolPrompter gère le contenu local",
+      "url": "/policy"
     }
   },
   "workspace": {
@@ -364,69 +373,17 @@
   "comparison": {
     "eyebrow": "Comparaison",
     "title": "Un téléprompteur de navigateur complet",
-    "description": "Comparez les fonctionnalités principales de SolPrompter avec les alternatives existantes sur le marché.",
-    "table": {
-      "headers": [
-        "Fonctionnalité",
-        "SolPrompter",
-        "InviteIntelligent",
-        "TéléprompteurMiroir"
-      ],
-      "rows": [
-        {
-          "feature": "Défilement vocal IA",
-          "sol": "Gratuit",
-          "smart": "Abonnement requis",
-          "mirror": "Non pris en charge"
-        },
-        {
-          "feature": "Basé sur un navigateur",
-          "sol": "Oui",
-          "smart": "Non (téléchargement de l'application)",
-          "mirror": "Oui"
-        },
-        {
-          "feature": "Confidentialité des scripts",
-          "sol": "100 % local sur l'appareil",
-          "smart": "Local sur l'appareil",
-          "mirror": "Local sur l'appareil"
-        },
-        {
-          "feature": "Télécommande QR",
-          "sol": "Oui (Pas d'installation)",
-          "smart": "Oui (téléchargement de l'application)",
-          "mirror": "Non pris en charge"
-        },
-        {
-          "feature": "Bannières publicitaires",
-          "sol": "Sans publicité",
-          "smart": "Sans publicité",
-          "mirror": "Oui (bannières publicitaires)"
-        },
-        {
-          "feature": "Enregistrement vidéo 4K",
-          "sol": "Pris en charge (ordinateur de bureau)",
-          "smart": "Non pris en charge",
-          "mirror": "Non pris en charge"
-        },
-        {
-          "feature": "Prix",
-          "sol": "Entièrement gratuit",
-          "smart": "Abonnement payant",
-          "mirror": "Gratuit (financé par la publicité)"
-        }
-      ]
-    },
+    "description": "Utilisez le défilement vocal, à vitesse fixe ou manuel ; contrôlez le prompteur à distance ; et enregistrez à partir d'un seul espace de travail basé sur le navigateur.",
     "whyChoose": {
       "title": "Pourquoi les créateurs choisissent SolPrompter",
       "items": [
         {
           "title": "Défilement gratuit à commande vocale",
-          "description": "Contrairement aux outils d'abonnement qui verrouillent la synchronisation vocale derrière des paywalls, SolPrompter l'inclut gratuitement, alimenté directement par la reconnaissance vocale du navigateur."
+          "description": "Le défilement à commande vocale est disponible sans inscription ni paiement et utilise la reconnaissance vocale fournie par votre navigateur."
         },
         {
           "title": "Vos données restent sur votre machine",
-          "description": "Vos scripts sont traités localement dans votre navigateur. Nous ne transmettons jamais votre contenu, garantissant ainsi une confidentialité totale des brouillons."
+          "description": "Les scripts et les enregistrements restent dans le stockage local du navigateur. Selon la prise en charge du navigateur, la reconnaissance vocale peut s'exécuter sur l'appareil ou utiliser le service de reconnaissance du fournisseur du navigateur."
         },
         {
           "title": "Aucune inscription ou configuration requise",
@@ -441,7 +398,7 @@
     "title": "Faire de la lecture en ligne une conversation naturelle",
     "paragraphs": [
       "SolPrompter a été conçu pour aider les orateurs à présenter en toute confiance sans mémoriser de longs textes ni jouer avec les vitesses de défilement.",
-      "Nous nous concentrons sur la création d'un téléprompteur en ligne minimal et haut de gamme qui allie un suivi vocal précis, une conception ergonomique et un enregistrement vidéo simple.",
+      "Nous nous concentrons sur la création d'un téléprompteur en ligne minimaliste qui combine le défilement synchronisé avec la parole, une conception ergonomique et un enregistrement vidéo simple.",
       "Que vous filmiez avec un téléphone, enregistriez à partir d'un ordinateur portable ou gériez un studio, SolPrompter vous permet de rester concentré sur votre public."
     ]
   },
@@ -462,17 +419,17 @@
       {
         "anchor": "FAQ-maintenir-le-contact-visuel",
         "q": "Comment puis-je éviter d’avoir l’air de lire et maintenir un contact visuel ?",
-        "a": "<strong>Activez le mode Notch de SolPrompter pour positionner votre script directement sous l'objectif.</strong> Cela réduit la largeur du texte à 50 à 70 caractères et l'ancre en haut au centre. En réduisant le mouvement des yeux à moins de 3 degrés, cela donne l’impression que vous parlez directement au spectateur."
+        "a": "<strong>Activez le mode encoche de SolPrompter pour positionner votre script directement sous l'objectif.</strong> Une colonne de lecture plus étroite réduit le balayage visuel latéral, mais le résultat dépend toujours de la taille de votre écran, de la position de la caméra et de la distance de lecture."
       },
       {
         "anchor": "FAQ-vs-app-store",
         "q": "Pourquoi choisir SolPrompter plutôt qu'une application App Store ?",
-        "a": "<strong>SolPrompter fonctionne directement sur le Web, ne nécessite aucun téléchargement et ne met pas de filigrane sur vos exportations vidéo.</strong> La plupart des applications mobiles limitent la longueur du script ou facturent des frais mensuels pour activer ou désactiver des fonctionnalités simples. SolPrompter fournit toutes les fonctionnalités prêtes à l'emploi."
+        "a": "<strong>SolPrompter fonctionne directement sur le Web, ne nécessite aucun téléchargement et n'ajoute pas de filigrane à vos exportations vidéo.</strong> C'est une option pratique lorsque vous souhaitez coller un script et commencer sans installer ni créer de compte."
       },
       {
         "anchor": "FAQ-télécommande-stabilité",
         "q": "La télécommande se déconnectera-t-elle lorsque mon téléphone se verrouille ou se met en veille ?",
-        "a": "<strong>Non, la télécommande de SolPrompter utilise des WebSockets persistants avec un protocole de battement de cœur pour garantir la stabilité.</strong> Tant que l'onglet du téléprompteur reste actif, le lien reste actif avec une latence inférieure à 10 ms, évitant ainsi les interruptions courantes dans les cliqueurs matériels."
+        "a": "<strong>La télécommande de SolPrompter utilise une session WebSocket persistante avec un battement de cœur pour détecter la perte de connexion.</strong> La latence réelle et le comportement pendant qu'un téléphone est verrouillé dépendent des appareils, des règles d'économie d'énergie du navigateur et de la qualité du réseau."
       },
       {
         "anchor": "FAQ-séparateur-de-faisceau-physique",
@@ -482,7 +439,7 @@
       {
         "anchor": "FAQ-script-confidentialité",
         "q": "Mes scripts et brouillons d'entreprise sont-ils sécurisés ?",
-        "a": "<strong>Oui. Vos scripts et enregistrements restent sur votre appareil pendant que vous travaillez.</strong> SolPrompter ne télécharge pas ce contenu sur ses serveurs, ce qui permet de garder les brouillons confidentiels sous votre contrôle."
+        "a": "<strong>Vos scripts et enregistrements restent sur votre appareil pendant que vous travaillez.</strong> SolPrompter ne télécharge pas ce contenu sur ses serveurs. La reconnaissance vocale peut toujours utiliser un moteur local ou un service de reconnaissance fourni par votre navigateur."
       },
       {
         "anchor": "FAQ-fantôme-flou",
@@ -492,23 +449,23 @@
       {
         "anchor": "FAQ-utilisation hors ligne",
         "q": "Puis-je exécuter le téléprompteur hors ligne ?",
-        "a": "<strong>L'espace de travail du téléprompteur fonctionne hors ligne une fois chargé, mais la synchronisation vocale nécessite Internet.</strong> La reconnaissance vocale utilise des API de navigateur natives, qui traitent l'audio via les serveurs cloud de Google ou d'Apple. Pour les paramètres hors ligne, passez au défilement à vitesse fixe ou manuel."
+        "a": "<strong>L'espace de travail du téléprompteur peut continuer à fonctionner après le chargement de la page, mais la disponibilité de la synchronisation vocale dépend du mode de reconnaissance de votre navigateur.</strong> Utilisez le défilement à vitesse fixe ou manuel lorsqu'aucun moteur de reconnaissance vocale hors ligne n'est disponible."
       },
       {
         "anchor": "FAQ-taille-de-police-distance",
         "q": "Comment déterminer la taille de police adaptée à ma distance de lecture ?",
-        "a": "<strong>Une règle générale consiste à dimensionner votre police à 1 pouce de hauteur tous les 10 pieds de distance de lecture.</strong> Pour une lecture rapprochée sur un ordinateur portable, une disposition de texte plus petite et plus étroite est préférable pour empêcher les yeux de scanner visiblement à gauche et à droite."
+        "a": "<strong>Augmentez la taille de la police à mesure que votre distance de lecture augmente, puis testez-la à la position exacte de la caméra avant d'enregistrer.</strong> Pour une lecture de près sur un ordinateur portable, utilisez une colonne de texte plus étroite pour réduire le balayage latéral visible."
       }
     ]
   },
   "engineering": {
     "eyebrow": "Conçu pour le monde réel",
     "title": "Rapide, privé et prêt à fonctionner",
-    "description": "Découvrez comment SolPrompter conserve les scripts sur votre appareil, répond en temps réel et s'exécute directement dans le navigateur sans téléchargement ni configuration compliquée.",
+    "description": "Découvrez comment SolPrompter conserve les scripts sur votre appareil, suit les mots parlés et s'exécute directement dans le navigateur sans téléchargement ni configuration compliquée.",
     "principles": [
       {
         "title": "Pourquoi nous avons créé SolPrompter",
-        "description": "Les logiciels de téléprompteur existants verrouillent souvent des fonctionnalités essentielles (comme le défilement vocal ou l'enregistrement sans filigrane) derrière des abonnements mensuels coûteux. Nous avons construit SolPrompter pour fournir un téléprompteur en ligne haut de gamme entièrement gratuit, sans inscription requise, rendant les outils professionnels accessibles à tous les créateurs."
+        "description": "Nous avons construit SolPrompter pour rendre le défilement vocal, les commandes de lecture flexibles et l'enregistrement sans filigrane disponibles dans un outil de navigation gratuit sans inscription requise."
       },
       {
         "title": "Pourquoi il s'exécute dans votre navigateur",
@@ -519,35 +476,12 @@
         "description": "Vos scripts et enregistrements restent sur votre appareil au lieu d'être téléchargés sur SolPrompter, vous donnant un contrôle direct sur le contenu sensible."
       }
     ],
-    "benchmarksTitle": "Performance mesurée",
-    "benchmarks": [
-      {
-        "metric": "Latence de défilement vocal AI",
-        "sol": "< 50 ms (temps réel)",
-        "trad": "N/A (vitesse fixe)"
-      },
-      {
-        "metric": "Précision de la détection vocale",
-        "sol": "98 % (multilingue)",
-        "trad": "Contrôle manuel uniquement"
-      },
-      {
-        "metric": "Utilisation du processeur (inactif/défilement)",
-        "sol": "< 2% / 5%",
-        "trad": "Élevé (application de bureau)"
-      },
-      {
-        "metric": "Consommation de la batterie",
-        "sol": "Minimal (API Web native)",
-        "trad": "Modéré à élevé"
-      },
-      {
-        "metric": "Navigateurs pris en charge",
-        "sol": "Chrome, Bord, Safari, Firefox",
-        "trad": "Applications restreintes au système d'exploitation"
-      }
-    ],
-    "benchmarksSupport": "Testé sur Apple M2 (macOS) et Intel Core i7 (Windows 11) avec Chrome 120."
+    "evidenceTitle": "Performance avec limites documentées",
+    "evidenceSummary": "La précision de la reconnaissance vocale et le temps de réponse varient en fonction du navigateur, de la langue, du microphone, du bruit de fond et du style de lecture.",
+    "benchmarkLink": {
+      "label": "Lire les notes de fonctionnalités de SolPrompter",
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+    }
   },
   "footer": {
     "brand": "SolPrompter",

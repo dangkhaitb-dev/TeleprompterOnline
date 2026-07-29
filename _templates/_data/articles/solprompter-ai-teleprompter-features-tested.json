@@ -1,22 +1,25 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
-  "slug": "inside-solprompter-every-ai-teleprompter-feature-tested",
+  "slug": "solprompter-ai-teleprompter-features-tested",
   "published": true,
-  "title": "Inside SolPrompter: Every AI Teleprompter Feature, Tested",
+  "title": "SolPrompter AI Teleprompter: Features Tested",
   "date": "2026-07-10",
   "dateDisplay": "July 10, 2026",
   "modified": "2026-07-29",
-  "modifiedDisplay": "July 29, 2026",
   "author": {
     "name": "The SolPrompter Team"
   },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "July 29, 2026"
+  },
   "category": "Product",
-  "shortName": "Inside SolPrompter",
+  "shortName": "SolPrompter AI Teleprompter",
   "keywords": [
     "online teleprompter",
     "AI Voice Scroll",
     "teleprompter remote control",
-    "teleprompter benchmarks",
+    "AI teleprompter features",
     "4K teleprompter recording"
   ],
   "mentions": [
@@ -26,12 +29,12 @@
     "4K Recording"
   ],
   "seo": {
-    "title": "SolPrompter Features: AI Teleprompter for Desktop & Mobile",
-    "description": "Explore SolPrompter's AI Voice Scroll, Notch Mode, remote control, 4K recording, desktop and mobile experience, privacy architecture, and performance benchmarks.",
-    "image": "https://solprompter.com/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/hero.webp"
+    "title": "SolPrompter AI Teleprompter: Features Tested",
+    "description": "Explore SolPrompter's AI Voice Scroll, Notch Mode, remote control, 4K recording, desktop and mobile experience, privacy architecture, and performance considerations.",
+    "image": "https://solprompter.com/media/blog/solprompter-ai-teleprompter-features-tested/hero.webp"
   },
   "hero": {
-    "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/hero.webp",
+    "src": "/media/blog/solprompter-ai-teleprompter-features-tested/hero.webp",
     "alt": "SolPrompter teleprompter view with a script scrolling above the live camera preview",
     "width": 1600,
     "height": 836
@@ -51,7 +54,7 @@
     },
     {
       "type": "paragraph",
-      "html": "SolPrompter has been in development since January 2026. Over more than six months, the product has gone through multiple stages of user research, workflow planning, interface design, prototyping, development, performance testing, mobile optimization, and continuous refinement."
+      "html": "SolPrompter has been in development since January 2026. Over more than six months, the product has gone through multiple stages of user research, workflow planning, interface design, prototyping, development, performance refinement, mobile optimization, and continuous improvement."
     },
     {
       "type": "paragraph",
@@ -59,11 +62,15 @@
     },
     {
       "type": "paragraph",
-      "html": "This article covers every major feature in the current version of SolPrompter, the desktop and mobile experiences, the benchmarks we test before each release, and the two capabilities users ask about most: <strong>AI Voice Scroll</strong> and <strong>cross-device Remote Control</strong>."
+      "html": "This article covers every major feature in the current version of SolPrompter, the desktop and mobile experiences, factors that affect performance, and the two capabilities users ask about most: <strong>AI Voice Scroll</strong> and <strong>cross-device Remote Control</strong>."
     },
     {
       "type": "paragraph",
       "html": "<a href=\"/\">Open SolPrompter</a>"
+    },
+    {
+      "type": "toc",
+      "title": "Table of contents"
     },
     {
       "type": "heading",
@@ -263,18 +270,18 @@
       "type": "list",
       "style": "bullets",
       "items": [
-        { "text": "Scroll-engine testing." },
+        { "text": "Scroll-engine refinement." },
         { "text": "Camera and microphone integration." },
-        { "text": "Recording-quality testing." },
+        { "text": "Recording-workflow refinement." },
         { "text": "Local-storage management." },
-        { "text": "Device compatibility checks." },
-        { "text": "Responsive-layout testing." },
-        { "text": "Touch-gesture testing." },
+        { "text": "Device-compatibility improvements." },
+        { "text": "Responsive-layout optimization." },
+        { "text": "Touch-gesture refinement." },
         { "text": "Voice-alignment refinement." },
-        { "text": "Remote-control latency testing." },
-        { "text": "Long-session memory testing." },
+        { "text": "Remote-control reliability improvements." },
+        { "text": "Long-session stability improvements." },
         { "text": "Accessibility improvements." },
-        { "text": "Browser compatibility testing." }
+        { "text": "Browser-compatibility improvements." }
       ]
     },
     {
@@ -300,7 +307,7 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/script-editor.webp",
+      "src": "/media/blog/solprompter-ai-teleprompter-features-tested/script-editor.webp",
       "alt": "SolPrompter script editor with formatting toolbar and a script ready to prompt",
       "width": 1600,
       "height": 836,
@@ -374,7 +381,7 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/mobile-studio.webp",
+      "src": "/media/blog/solprompter-ai-teleprompter-features-tested/mobile-studio.webp",
       "alt": "SolPrompter running on a phone: the script editor with the record dock, and the prompter playing full-screen",
       "width": 1600,
       "height": 836,
@@ -442,7 +449,7 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/notch-mode.webp",
+      "src": "/media/blog/solprompter-ai-teleprompter-features-tested/notch-mode.webp",
       "alt": "SolPrompter Notch Mode floating prompter positioned under the webcam",
       "width": 1600,
       "height": 836,
@@ -496,7 +503,7 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/record-settings.webp",
+      "src": "/media/blog/solprompter-ai-teleprompter-features-tested/record-settings.webp",
       "alt": "SolPrompter recording settings showing video resolution options from SD to 4K",
       "width": 1600,
       "height": 836,
@@ -532,7 +539,7 @@
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/workspaces.webp",
+      "src": "/media/blog/solprompter-ai-teleprompter-features-tested/workspaces.webp",
       "alt": "SolPrompter workspaces view with scripts and recordings organized in folders",
       "width": 1600,
       "height": 836,
@@ -584,7 +591,7 @@
     {
       "type": "heading",
       "level": 2,
-      "text": "SolPrompter performance benchmarks"
+      "text": "SolPrompter performance considerations"
     },
     {
       "type": "paragraph",
@@ -592,57 +599,7 @@
     },
     {
       "type": "paragraph",
-      "html": "Before each major release, we test SolPrompter using an Apple M1 MacBook Air, a mid-range Windows laptop, and a Google Pixel 7 — with a 2,000-word test script, an active camera preview, fixed-speed and voice-controlled scrolling, desktop and mobile layouts, and extended recording sessions."
-    },
-    {
-      "type": "paragraph",
-      "html": "The current build produced the following results in our internal test environment:"
-    },
-    {
-      "type": "list",
-      "style": "bullets",
-      "items": [
-        {
-          "title": "Median cold-start time on throttled Fast 4G",
-          "text": "0.9 seconds."
-        },
-        {
-          "title": "Lighthouse Performance score",
-          "text": "99/100."
-        },
-        {
-          "title": "Target scrolling frame rate",
-          "text": "60 fps."
-        },
-        {
-          "title": "Dropped frames during a 45-minute session",
-          "text": "0.2%."
-        },
-        {
-          "title": "Scroll-timing drift during a 10-minute take",
-          "text": "Below ±40 ms."
-        },
-        {
-          "title": "Gzipped JavaScript payload",
-          "text": "Below 150 KB."
-        },
-        {
-          "title": "Memory use after a three-hour test session",
-          "text": "Below 180 MB."
-        },
-        {
-          "title": "Recorded takes during the endurance test",
-          "text": "40."
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "html": "During the 45-minute scrolling test, the camera preview remained active and the device recorded at 1080p. On the M1 MacBook Air used in our testing, starting a 4K recording increased CPU use by less than three percentage points compared with the active camera preview alone."
-    },
-    {
-      "type": "paragraph",
-      "html": "These figures are internal benchmarks rather than guarantees for every device. Results can vary depending on browser version, available memory, camera hardware, selected recording resolution, active browser extensions, background applications, device temperature, battery-saving settings, and mobile operating-system restrictions."
+      "html": "Scrolling and recording performance can vary depending on browser version, available memory, camera hardware, selected recording resolution, active browser extensions, background applications, device temperature, battery-saving settings, and mobile operating-system restrictions."
     },
     {
       "type": "paragraph",
@@ -668,6 +625,7 @@
     {
       "type": "heading",
       "level": 3,
+      "includeInToc": true,
       "text": "How AI Voice Scroll works"
     },
     {
@@ -681,6 +639,7 @@
     {
       "type": "heading",
       "level": 3,
+      "includeInToc": true,
       "text": "Pause without losing your position"
     },
     {
@@ -694,6 +653,7 @@
     {
       "type": "heading",
       "level": 3,
+      "includeInToc": true,
       "text": "Go off script and return naturally"
     },
     {
@@ -719,6 +679,7 @@
     {
       "type": "heading",
       "level": 3,
+      "includeInToc": true,
       "text": "No voice-profile training"
     },
     {
@@ -732,6 +693,7 @@
     {
       "type": "heading",
       "level": 3,
+      "includeInToc": true,
       "text": "Voice Scroll on desktop and mobile"
     },
     {
@@ -747,47 +709,12 @@
       "html": "This is particularly helpful for solo creators who may not have another person available to control the teleprompter."
     },
     {
-      "type": "heading",
-      "level": 3,
-      "text": "Internal Voice Scroll benchmarks"
-    },
-    {
-      "type": "paragraph",
-      "html": "Our internal Voice Scroll evaluation currently includes 40 speakers with different accents and reading speeds. The current build achieved:"
-    },
-    {
-      "type": "list",
-      "style": "bullets",
-      "items": [
-        {
-          "title": "Word-alignment accuracy",
-          "text": "96.8%."
-        },
-        {
-          "title": "Median tracking latency",
-          "text": "Approximately 120 ms."
-        },
-        {
-          "title": "Average return after an ad-lib",
-          "text": "About 1.5 script words."
-        }
-      ]
-    },
-    {
-      "type": "paragraph",
-      "html": "The test set contains both exact script reading and samples with short pauses, repeated phrases, skipped words, changed wording, brief off-script sections, and different reading speeds."
-    },
-    {
-      "type": "paragraph",
-      "html": "These results describe our internal test set and should not be interpreted as guaranteed accuracy for every voice or recording environment. The central idea behind Voice Scroll is simple:"
-    },
-    {
       "type": "quote",
       "text": "The correct teleprompter speed should be the speed at which you naturally speak."
     },
     {
       "type": "image",
-      "src": "/media/blog/inside-solprompter-every-ai-teleprompter-feature-tested/scroll-speed.webp",
+      "src": "/media/blog/solprompter-ai-teleprompter-features-tested/scroll-speed.webp",
       "alt": "SolPrompter toolbar showing fixed words-per-minute controls and AI Voice Scroll",
       "width": 1600,
       "height": 836,
@@ -809,6 +736,7 @@
     {
       "type": "heading",
       "level": 3,
+      "includeInToc": true,
       "text": "Control the teleprompter from your phone"
     },
     {
@@ -822,6 +750,7 @@
     {
       "type": "heading",
       "level": 3,
+      "includeInToc": true,
       "text": "Use a phone as the teleprompter"
     },
     {
@@ -839,6 +768,7 @@
     {
       "type": "heading",
       "level": 3,
+      "includeInToc": true,
       "text": "Jump directly to another section"
     },
     {
@@ -863,6 +793,7 @@
     {
       "type": "heading",
       "level": 3,
+      "includeInToc": true,
       "text": "Connect more than two devices"
     },
     {
@@ -876,15 +807,16 @@
     {
       "type": "heading",
       "level": 3,
-      "text": "Remote Control latency"
+      "includeInToc": true,
+      "text": "Remote Control performance"
     },
     {
       "type": "paragraph",
-      "html": "On the same local Wi-Fi network, our internal tests measured command latency at approximately 40 ms. That is shorter than the duration of a single frame in a 24 fps video, making actions such as play and pause feel nearly immediate under normal network conditions."
+      "html": "Remote Control uses a persistent connection between paired devices. Actual responsiveness depends on signal strength, router congestion, device performance, power-saving settings, network restrictions, and distance from the router."
     },
     {
       "type": "paragraph",
-      "html": "Remote performance can vary depending on signal strength, router congestion, device performance, power-saving settings, network restrictions, and distance from the router."
+      "html": "For the most predictable response, keep both devices on a stable network and prevent either browser from being suspended during a session."
     },
     {
       "type": "heading",

@@ -8,11 +8,12 @@
     "slug",
     "published",
     "title",
+    "category",
     "date",
     "dateDisplay",
     "modified",
-    "modifiedDisplay",
     "author",
+    "review",
     "seo",
     "hero",
     "cta",
@@ -41,13 +42,21 @@
     "date": { "type": "string", "format": "date" },
     "dateDisplay": { "type": "string", "minLength": 1 },
     "modified": { "type": "string", "format": "date" },
-    "modifiedDisplay": { "type": "string", "minLength": 1 },
     "author": {
       "type": "object",
       "additionalProperties": false,
       "required": ["name"],
       "properties": {
         "name": { "type": "string", "minLength": 1 }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["by", "updatedDisplay"],
+      "properties": {
+        "by": { "type": "string", "minLength": 1 },
+        "updatedDisplay": { "type": "string", "minLength": 1 }
       }
     },
     "seo": {
@@ -94,6 +103,7 @@
         { "$ref": "#/$defs/quote" },
         { "$ref": "#/$defs/list" },
         { "$ref": "#/$defs/image" },
+        { "$ref": "#/$defs/toc" },
         { "$ref": "#/$defs/endnote" }
       ]
     },
@@ -113,7 +123,17 @@
       "properties": {
         "type": { "const": "heading" },
         "level": { "enum": [2, 3] },
-        "text": { "type": "string", "minLength": 1 }
+        "text": { "type": "string", "minLength": 1 },
+        "includeInToc": { "type": "boolean" }
+      }
+    },
+    "toc": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "title"],
+      "properties": {
+        "type": { "const": "toc" },
+        "title": { "type": "string", "minLength": 1 }
       }
     },
     "quote": {

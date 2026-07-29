@@ -2,10 +2,33 @@
   "$schema": "../schemas/simple-page/simple-page.schema.json",
   "slug": "teleprompter-guide",
   "published": true,
-  "title": "Teleprompter Guide",
+  "title": "How to Use SolPrompter: A Complete Teleprompter Guide",
+  "breadcrumb": {
+    "label": "Breadcrumb",
+    "homeLabel": "Home",
+    "currentLabel": "Teleprompter guide"
+  },
+  "toc": {
+    "title": "In this guide"
+  },
+  "article": {
+    "byLabel": "By",
+    "updatedLabel": "Updated",
+    "author": {
+      "name": "The SolPrompter Team",
+      "url": "/about"
+    },
+    "dateModified": "2026-07-29",
+    "dateModifiedDisplay": "July 29, 2026"
+  },
   "seo": {
-    "title": "Teleprompter Guide | How to Use SolPrompter",
-    "description": "A step-by-step guide to the SolPrompter online teleprompter — add a script, choose a scroll mode, adjust your reading view, use notch mode, connect a remote and record in Full HD or 4K."
+    "title": "How to Use SolPrompter: Complete Teleprompter Guide",
+    "description": "Learn how to use SolPrompter: add a script, choose AI voice or auto-scroll, adjust your reading view, use remote control, and record up to 4K.",
+    "ogImage": "/og-solprompter.jpg",
+    "ogImageAlt": "SolPrompter teleprompter interface with script and recording controls",
+    "ogImageWidth": 1200,
+    "ogImageHeight": 630,
+    "ogImageType": "image/jpeg"
   },
   "content": [
     {
@@ -14,11 +37,21 @@
     },
     {
       "type": "heading",
+      "id": "before-you-start",
+      "text": "Before you start"
+    },
+    {
+      "type": "paragraph",
+      "html": "All you need is a browser and a script. A camera and microphone are optional for presenting, but you will need to allow browser access to them if you want to record video and audio."
+    },
+    {
+      "type": "heading",
+      "id": "add-your-script",
       "text": "1. Add your script"
     },
     {
       "type": "paragraph",
-      "html": "Start on the SolPrompter home page. You can paste or type your script directly, or upload an existing file from your device."
+      "html": "Start on the <a href=\"/\">SolPrompter home page</a>. You can paste or type your script directly, or upload an existing file from your device."
     },
     {
       "type": "list",
@@ -38,6 +71,7 @@
     },
     {
       "type": "heading",
+      "id": "open-the-teleprompter",
       "text": "2. Open the teleprompter"
     },
     {
@@ -54,6 +88,7 @@
     },
     {
       "type": "heading",
+      "id": "choose-your-scroll-mode",
       "text": "3. Choose your scroll mode"
     },
     {
@@ -82,6 +117,7 @@
     },
     {
       "type": "heading",
+      "id": "adjust-your-reading-view",
       "text": "4. Adjust your reading view"
     },
     {
@@ -102,6 +138,7 @@
     },
     {
       "type": "heading",
+      "id": "use-notch-mode",
       "text": "5. Use Notch Mode for natural eye contact"
     },
     {
@@ -127,6 +164,7 @@
     },
     {
       "type": "heading",
+      "id": "control-from-another-device",
       "text": "6. Control SolPrompter from another device"
     },
     {
@@ -145,6 +183,7 @@
     },
     {
       "type": "heading",
+      "id": "record-your-video",
       "text": "7. Record your video"
     },
     {
@@ -175,11 +214,12 @@
     },
     {
       "type": "heading",
+      "id": "manage-scripts-and-recordings",
       "text": "8. Manage scripts and recordings"
     },
     {
       "type": "paragraph",
-      "html": "Keep everything organized in one workspace so it is ready for your next presentation."
+      "html": "Keep everything organized in your <a href=\"/workspaces\">SolPrompter workspace</a> so it is ready for your next presentation."
     },
     {
       "type": "list",
@@ -201,6 +241,7 @@
     },
     {
       "type": "heading",
+      "id": "keyboard-shortcuts",
       "text": "Keyboard shortcuts"
     },
     {
@@ -219,6 +260,7 @@
     },
     {
       "type": "heading",
+      "id": "tips-for-a-great-take",
       "text": "Tips for a great take"
     },
     {
@@ -231,8 +273,26 @@
       ]
     },
     {
+      "type": "heading",
+      "id": "troubleshooting",
+      "text": "Troubleshooting common issues"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Camera or microphone unavailable — check the browser permission shown beside the address bar, allow access and reload SolPrompter.",
+        "Text moves too quickly — lower the WPM setting, switch to AI Voice Scroll or pause with the Space bar.",
+        "Text appears backwards — turn off Mirror Mode for a normal screen; use it only when reading through a beam-splitter teleprompter.",
+        "A higher recording resolution is unavailable — choose a resolution supported by your device, camera and browser."
+      ]
+    },
+    {
       "type": "paragraph",
-      "html": "That is everything you need to present and record with SolPrompter. Open the app, add your script and start speaking naturally."
+      "html": "That is everything you need to present and record with SolPrompter. <a href=\"/\">Open SolPrompter</a>, add your script and start speaking naturally."
+    },
+    {
+      "type": "paragraph",
+      "html": "For a feature-by-feature look at the product and its testing process, read <a href=\"/blog/product/solprompter-ai-teleprompter-features-tested/\">SolPrompter AI Teleprompter: Features Tested</a>."
     }
   ]
 }

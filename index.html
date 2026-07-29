@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online teleprompter with AI voice-activated scrolling, notch mode, and QR remote control. No ads, no sign-up, 100% private.">
+    <meta name="description" content="Free online teleprompter with voice-activated scrolling, notch mode, and QR remote control. No ads or sign-up; scripts and recordings stay on your device.">
     <meta name="robots" content="index, follow">
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#fbfcfd">
@@ -13,6 +13,15 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://solprompter.com/">
     <meta property="og:image" content="https://solprompter.com/og-solprompter.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="SolPrompter voice-controlled teleprompter interface">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Free Online Teleprompter — SolPrompter">
+    <meta name="twitter:description" content="Present naturally with our browser-based teleprompter. Automatically scrolls with your voice, minimizes eye movement, and supports QR remote control.">
+    <meta name="twitter:image" content="https://solprompter.com/og-solprompter.jpg">
+    <meta name="twitter:image:alt" content="SolPrompter voice-controlled teleprompter interface">
     <link rel="canonical" href="https://solprompter.com/">
     <link rel="alternate" hreflang="en" href="https://solprompter.com/">
     <link rel="alternate" hreflang="es" href="https://solprompter.com/es/">
@@ -86,15 +95,14 @@
       "name": "SolPrompter",
       "alternateName": ["SolPrompter", "solprompter.com"],
       "description": "A free online teleprompter featuring AI voice scrolling, notch mode, wireless remote control, and professional 4K video recording.",
-      "publisher": { "@id": "https://solprompter.com/#organization" },
-      "inLanguage": "en"
+      "publisher": { "@id": "https://solprompter.com/#organization" }
     },
     {
       "@type": "WebPage",
       "@id": "https://solprompter.com/#webpage",
       "url": "https://solprompter.com/",
       "name": "Free Online Teleprompter with AI Voice Scroll | SolPrompter",
-      "description": "Free online teleprompter with AI voice-activated scrolling, notch mode, and QR remote control. No ads, no sign-up, 100% private.",
+      "description": "Free online teleprompter with voice-activated scrolling, notch mode, and QR remote control. No ads or sign-up; scripts and recordings stay on your device.",
       "isPartOf": { "@id": "https://solprompter.com/#website" },
       "publisher": { "@id": "https://solprompter.com/#organization" },
       "about": { "@id": "https://solprompter.com/#application" },
@@ -106,10 +114,6 @@
         "contentUrl": "https://solprompter.com/og-solprompter.jpg",
         "caption": "SolPrompter free online teleprompter"
       },
-      "hasPart": [
-        { "@id": "https://solprompter.com/#how-to" },
-        { "@id": "https://solprompter.com/#faq" }
-      ],
       "inLanguage": "en"
     },
     {
@@ -140,134 +144,6 @@
       "creator": { "@id": "https://solprompter.com/#organization" },
       "provider": { "@id": "https://solprompter.com/#organization" },
       "mainEntityOfPage": { "@id": "https://solprompter.com/#webpage" },
-      "inLanguage": "en"
-    },
-    {
-      "@type": "HowTo",
-      "@id": "https://solprompter.com/#how-to",
-      "url": "https://solprompter.com/#how-it-works",
-      "name": "How to Use SolPrompter",
-      "description": "Learn how to add a script, choose a scrolling mode, customize your teleprompter and start presenting or recording with SolPrompter.",
-      "about": { "@id": "https://solprompter.com/#application" },
-      "mainEntityOfPage": { "@id": "https://solprompter.com/#webpage" },
-      "step": [
-        {
-          "@type": "HowToStep",
-          "@id": "https://solprompter.com/#step-add-script",
-          "position": 1,
-          "url": "https://solprompter.com/#step-add-script",
-          "name": "Input script",
-          "text": "Paste your text directly or upload a document from your device."
-        },
-        {
-          "@type": "HowToStep",
-          "@id": "https://solprompter.com/#step-choose-scroll-mode",
-          "position": 2,
-          "url": "https://solprompter.com/#step-choose-scroll-mode",
-          "name": "Choose scroll mode",
-          "text": "Set a fixed automatic speed, use voice sync, or scroll manually."
-        },
-        {
-          "@type": "HowToStep",
-          "@id": "https://solprompter.com/#step-customize-view",
-          "position": 3,
-          "url": "https://solprompter.com/#step-customize-view",
-          "name": "Customize view",
-          "text": "Adjust font sizes, line heights, and margins for reading comfort."
-        },
-        {
-          "@type": "HowToStep",
-          "@id": "https://solprompter.com/#step-start-presenting",
-          "position": 4,
-          "url": "https://solprompter.com/#step-start-presenting",
-          "name": "Start presenting",
-          "text": "Open the teleprompter, connect a remote if needed, and start speaking."
-        }
-      ],
-      "inLanguage": "en"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://solprompter.com/#faq",
-      "url": "https://solprompter.com/#faq",
-      "name": "SolPrompter Online Teleprompter FAQ",
-      "description": "Frequently asked questions about SolPrompter, AI Voice Scroll, notch mode, remote control, supported devices and video recording.",
-      "isPartOf": { "@id": "https://solprompter.com/#webpage" },
-      "about": { "@id": "https://solprompter.com/#application" },
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "@id": "https://solprompter.com/#faq-maintain-eye-contact",
-          "name": "How do I avoid looking like I am reading and maintain eye contact?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Activate SolPrompter's Notch Mode to position your script directly below the lens. This narrows the text width to 50-70 characters and anchors it at the top-center. By reducing eye movement to under 3 degrees, it gives the appearance that you are speaking directly to the viewer."
-          }
-        },
-        {
-          "@type": "Question",
-          "@id": "https://solprompter.com/#faq-vs-app-store",
-          "name": "Why choose SolPrompter over an App Store application?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "SolPrompter works directly on the web, requires no download, and does not put watermarks on your video exports. Most mobile applications limit script length or charge monthly fees to toggle simple features. SolPrompter provides full functionality out of the box."
-          }
-        },
-        {
-          "@type": "Question",
-          "@id": "https://solprompter.com/#faq-remote-control-stability",
-          "name": "Will the remote disconnect when my phone locks or goes to sleep?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "No, SolPrompter's remote uses persistent WebSockets with a heartbeat protocol to ensure stability. As long as the teleprompter tab remains active, the link stays alive with under 10ms latency, preventing the dropouts common in hardware clickers."
-          }
-        },
-        {
-          "@type": "Question",
-          "@id": "https://solprompter.com/#faq-physical-beamsplitter",
-          "name": "Can I use SolPrompter with a physical glass beamsplitter rig?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes, toggle \"Mirror Mode\" in SolPrompter's settings to flip the text horizontally. To maximize reading contrast, switch the interface to dark mode (white text on a pure black background) to eliminate double reflections."
-          }
-        },
-        {
-          "@type": "Question",
-          "@id": "https://solprompter.com/#faq-script-privacy",
-          "name": "Are my scripts and corporate drafts secure?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Yes. Your scripts and recordings remain on your device while you work. SolPrompter does not upload this content to its servers, helping keep confidential drafts under your control."
-          }
-        },
-        {
-          "@type": "Question",
-          "@id": "https://solprompter.com/#faq-ghosting-blur",
-          "name": "Why does the reflected text on my glass look blurry?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Double-reflections (ghosting) happen on normal glass. Use professional beamsplitter glass and lower screen brightness. A professional 70/30 glass has an anti-reflective coating on one side. Draping the back of the glass with a dark cloth is also necessary to prevent light leaks."
-          }
-        },
-        {
-          "@type": "Question",
-          "@id": "https://solprompter.com/#faq-offline-use",
-          "name": "Can I run the teleprompter offline?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The teleprompter workspace operates offline once loaded, but voice sync requires internet. The speech recognition uses native browser APIs, which process audio via Google or Apple cloud servers. For offline settings, switch to fixed-speed or manual scrolling."
-          }
-        },
-        {
-          "@type": "Question",
-          "@id": "https://solprompter.com/#faq-font-size-distance",
-          "name": "How do I determine the right font size for my reading distance?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A general benchmark is to size your font to 1 inch of height for every 10 feet of reading distance. For close-up laptop reading, a smaller, narrow text layout is preferred to prevent eyes from visibly scanning left and right."
-          }
-        }
-      ],
       "inLanguage": "en"
     }
   ]
@@ -640,13 +516,13 @@
     <section class="hero">
         <div class="hero-inner">
             <h1 class="hero-title">Free Online Teleprompter</h1>
-            <p class="hero-desc">Automatically scrolls with your voice, anchors text near the camera lens to prevent eye deviation, and supports remote control via QR code. Free, ad-free, and 100% private.</p>
+            <p class="hero-desc">Automatically scrolls with your voice and anchors text near the camera lens to reduce eye movement. Scripts and recordings stay on your device.</p>
 
             <div class="main">
                 <form class="composer" id="composerForm" novalidate
                       data-msg-empty="Please enter your script content before starting the Teleprompter."
-                      data-msg-read="Unsupported format. Please select a .txt or .md file.">
-                    <input type="file" id="file-input" accept=".md,.markdown,.txt" hidden>
+                      data-msg-read="Unsupported format. Please select a .txt, .md, or .docx file.">
+                    <input type="file" id="file-input" accept=".md,.markdown,.txt,.docx" hidden>
                     <div class="textarea-container">
                         <label class="visually-hidden" for="paste-textarea">Paste your script or upload a file to begin...</label>
                         <textarea id="paste-textarea" class="editor-textarea" placeholder="Paste your script or upload a file to begin..."></textarea>
@@ -720,11 +596,11 @@
                     </div>
                     <div class="solution-part">
                         <strong style="color: var(--brand); display: block; margin-bottom: 0.25rem;">Solution: AI Voice-Activated Scrolling</strong>
-                        <p style="font-size: 0.95rem; margin: 0; color: var(--ink-soft); line-height: 1.5;">SolPrompter listens and automatically advances the script as you read, adapting instantly to your natural speed in real-time.</p>
+                        <p style="font-size: 0.95rem; margin: 0; color: var(--ink-soft); line-height: 1.5;">SolPrompter listens and advances the script as you read, adjusting to changes in your speaking pace.</p>
                     </div>
                 </div>
 
-                <p class="section-desc">Voice recognition follows your delivery and advances the script as you speak, adapting instantly whenever your pace changes.</p>
+                <p class="section-desc">Voice recognition follows your delivery and advances the script as you speak, responding whenever your pace changes.</p>
                 <ul class="custom-benefits-list">
                     <li>
                         <div class="benefit-info">
@@ -823,7 +699,7 @@
                 <div class="spotlight-col" id="remote">
                     <div class="spotlight-text-block">
                         <h3 class="spotlight-subtitle">Scan a QR to control from any device</h3>
-                        <p class="section-desc" style="margin-top: 0;">Connect a phone or tablet via QR code using secure WebSockets. Control your presentation without installing external applications.</p>
+                        <p class="section-desc" style="margin-top: 0;">Connect a phone or tablet with a QR code and a paired WebSocket session. Control your presentation without installing another application.</p>
                         <ul class="custom-benefits-list">
                             <li>
                                 <div class="benefit-info">
@@ -859,18 +735,18 @@
                     <div class="split-visual-col" style="margin-top: 2rem;">
                         <div class="remote-phone-visual">
                             <div class="remote-phone-mockup" role="img" aria-label="SolPrompter mobile interface displayed inside the supplied iPhone mockup">
-                                <img class="remote-phone-frame-base" src="/media/iphone-frame.png" alt="" width="754" height="1555" loading="lazy" decoding="async" aria-hidden="true">
+                                <img class="remote-phone-frame-base" src="/media/iphone-frame.png" alt="" width="855" height="1721" loading="lazy" decoding="async" aria-hidden="true">
                                 <div class="remote-phone-screen" aria-hidden="true">
                                     <img src="/media/teleprompter-mobile-screenshot.jpg" alt="" width="750" height="1624" loading="lazy" decoding="async">
                                 </div>
-                                <svg class="remote-phone-status" viewBox="0 0 754 1555" aria-hidden="true">
-                                    <text x="82" y="67" fill="#f5f5f7" font-family="system-ui, -apple-system, sans-serif" font-size="28" font-weight="650">9:41</text>
-                                    <path d="M560 68h9V57h-9zm15 0h9V49h-9zm15 0h9V41h-9z" fill="#f5f5f7"/>
-                                    <path d="M617 49c12-11 27-11 39 0M626 58c7-7 15-7 22 0M634 66c3-3 6-3 9 0" fill="none" stroke="#f5f5f7" stroke-width="4" stroke-linecap="round"/>
-                                    <rect x="676" y="43" width="30" height="24" rx="6" fill="none" stroke="#f5f5f7" stroke-width="4"/>
-                                    <rect x="681" y="48" width="20" height="14" rx="3" fill="#f5f5f7"/>
+                                <svg class="remote-phone-status" viewBox="0 0 855 1721" aria-hidden="true">
+                                    <text x="92" y="75" fill="#f5f5f7" font-family="system-ui, -apple-system, sans-serif" font-size="31" font-weight="650">9:41</text>
+                                    <path d="M620 76h10V64h-10zm17 0h10V55h-10zm17 0h10V45h-10z" fill="#f5f5f7"/>
+                                    <path d="M684 55c13-12 30-12 43 0M694 65c8-8 17-8 25 0M703 74c3-3 7-3 10 0" fill="none" stroke="#f5f5f7" stroke-width="4.5" stroke-linecap="round"/>
+                                    <rect x="748" y="48" width="34" height="27" rx="7" fill="none" stroke="#f5f5f7" stroke-width="4.5"/>
+                                    <rect x="754" y="54" width="22" height="15" rx="3" fill="#f5f5f7"/>
                                 </svg>
-                                <img class="remote-phone-frame-island" src="/media/iphone-frame.png" alt="" width="754" height="1555" loading="lazy" decoding="async" aria-hidden="true">
+                                <img class="remote-phone-frame-island" src="/media/iphone-frame.png" alt="" width="855" height="1721" loading="lazy" decoding="async" aria-hidden="true">
                             </div>
                         </div>
                     </div>
@@ -885,7 +761,8 @@
             <div class="section-head">
                 <p class="eyebrow">Recording &amp; Privacy</p>
                 <h2 class="section-title">In-Browser 4K Recording &amp; Local Script Privacy</h2>
-                <p class="section-desc">Capture crisp video straight from the browser while keeping your scripts 100% private in local storage.</p>
+                <p class="section-desc">Capture video in the browser while keeping scripts and recordings in local browser storage on your device.</p>
+                <p class="section-support"><a class="section-resource-link" href="/policy">Read how SolPrompter handles local content</a></p>
             </div>
             
             <div class="spotlight-grid">
@@ -896,7 +773,7 @@
                         <li>
                             <div class="benefit-info">
                                 <strong class="benefit-title">Live Camera Preview</strong>
-                                <p class="benefit-desc">Preview and check your framing and alignment before hit recording.</p>
+                                <p class="benefit-desc">Preview and check your framing and alignment before recording.</p>
                             </div>
                         </li>
                         
@@ -998,6 +875,7 @@
                 <p class="eyebrow">Workflow</p>
                 <h2 class="section-title">Simple and Instant</h2>
                 <p class="section-desc">Prepare your script and start presenting or recording in just a few steps.</p>
+                <p class="section-support"><a class="section-resource-link" href="/teleprompter-guide">Read the complete teleprompter guide</a></p>
             </div>
             <div class="steps-editorial-flow">
                 <div class="step-editorial-item" id="step-add-script">
@@ -1074,74 +952,18 @@
             <div class="section-head">
                 <p class="eyebrow">Comparison</p>
                 <h2 class="section-title">A Complete Browser Teleprompter</h2>
-                <p class="section-desc">Compare SolPrompter&#39;s core features against existing marketplace alternatives.</p>
-            </div>
-            <div class="comparison-table-wrapper" style="overflow-x: auto; margin-top: 2rem;">
-                <table class="comparison-table">
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>SolPrompter</th>
-                            <th>PromptSmart</th>
-                            <th>TeleprompterMirror</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>AI Voice Scrolling</strong></td>
-                            <td><strong>Free</strong></td>
-                            <td>Subscription required</td>
-                            <td>Not supported</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Browser Based</strong></td>
-                            <td><strong>Yes</strong></td>
-                            <td>No (App download)</td>
-                            <td>Yes</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Script Privacy</strong></td>
-                            <td><strong>100% Local on Device</strong></td>
-                            <td>Local on Device</td>
-                            <td>Local on Device</td>
-                        </tr>
-                        <tr>
-                            <td><strong>QR Remote Control</strong></td>
-                            <td><strong>Yes (No installation)</strong></td>
-                            <td>Yes (App download)</td>
-                            <td>Not supported</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Banner Advertisements</strong></td>
-                            <td><strong>Ad-free</strong></td>
-                            <td>Ad-free</td>
-                            <td>Yes (Banner ads)</td>
-                        </tr>
-                        <tr>
-                            <td><strong>4K Video Recording</strong></td>
-                            <td><strong>Supported (Desktop)</strong></td>
-                            <td>Not supported</td>
-                            <td>Not supported</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Price</strong></td>
-                            <td><strong>Completely free</strong></td>
-                            <td>Paid subscription</td>
-                            <td>Free (Ad-supported)</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <p class="section-desc">Use voice, fixed-speed, or manual scrolling; control the prompt remotely; and record from one browser-based workspace.</p>
             </div>
             <div class="why-choose-details" style="margin-top: 4rem;">
                 <h3 class="section-subtitle" style="text-align: center; margin-bottom: 2rem; font-size: 1.75rem; color: var(--text-heading);">Why Creators Choose SolPrompter</h3>
                 <div class="why-choose-editorial-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 2rem;">
                     <div class="why-choose-item" style="text-align: left;">
                         <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-heading); font-weight: 600;">Free voice-activated scrolling</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin: 0;">Unlike subscription tools that lock voice sync behind paywalls, SolPrompter includes it for free, powered directly by browser speech recognition.</p>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin: 0;">Voice-activated scrolling is available without signup or payment and uses speech recognition supplied by your browser.</p>
                     </div>
                     <div class="why-choose-item" style="text-align: left;">
                         <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-heading); font-weight: 600;">Your data stays on your machine</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin: 0;">Your scripts are processed locally in your browser. We never transmit your content, guaranteeing total privacy for drafts.</p>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin: 0;">Scripts and recordings stay in local browser storage. Depending on browser support, voice recognition may run on-device or use the browser provider&#39;s recognition service.</p>
                     </div>
                     <div class="why-choose-item" style="text-align: left;">
                         <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-heading); font-weight: 600;">No signup or setup required</h4>
@@ -1163,7 +985,7 @@
             </div>
             <div class="prose-content">
                 <p class="prose-paragraph">SolPrompter was built to help speakers present confidently without memorizing long texts or fidgeting with scroll speeds.</p>
-                <p class="prose-paragraph">We focus on creating a minimal, high-end online teleprompter that blends accurate voice tracking, ergonomic design, and simple video recording.</p>
+                <p class="prose-paragraph">We focus on creating a minimal online teleprompter that combines speech-aligned scrolling, ergonomic design, and simple video recording.</p>
                 <p class="prose-paragraph">Whether you are shooting on a phone, recording from a laptop, or managing a studio, SolPrompter keeps you focused on your audience.</p>
             </div>
         </div>
@@ -1175,7 +997,7 @@
             <div class="section-head" style="margin-bottom: 3.5rem;">
                 <p class="eyebrow">Built for the Real World</p>
                 <h2 class="section-title">Fast, Private, and Ready to Perform</h2>
-                <p class="section-desc">See how SolPrompter keeps scripts on your device, responds in real time, and runs directly in the browser without downloads or complicated setup.</p>
+                <p class="section-desc">See how SolPrompter keeps scripts on your device, follows spoken words, and runs directly in the browser without downloads or complicated setup.</p>
             </div>
             
             <div class="spotlight-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: flex-start; text-align: left;">
@@ -1183,7 +1005,7 @@
                 <div class="spotlight-col">
                     <div class="engineering-principle" style="margin-bottom: 2rem;">
                         <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">Why We Built SolPrompter</h3>
-                        <p class="section-desc" style="font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin: 0;">Existing teleprompter software often locks essential features (like voice scrolling or watermark-free recording) behind expensive monthly subscriptions. We built SolPrompter to provide a high-end, completely free online teleprompter with no signup required, making professional tools accessible to all creators.</p>
+                        <p class="section-desc" style="font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin: 0;">We built SolPrompter to make voice scrolling, flexible reading controls, and watermark-free recording available in a free browser tool with no signup required.</p>
                     </div>
                     <div class="engineering-principle" style="margin-bottom: 2rem;">
                         <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">Why It Runs in Your Browser</h3>
@@ -1197,46 +1019,9 @@
                 
                 <!-- Right: Benchmarks -->
                 <div class="spotlight-col">
-                    <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 1.5rem; text-align: center;">Measured Performance</h3>
-                    <div class="benchmarks-table-wrapper" style="overflow-x: auto; margin-top: 1rem;">
-                        <table class="comparison-table" style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
-                            <thead>
-                                <tr style="border-bottom: 2px solid var(--ink);">
-                                    <th style="text-align: left; padding: 0.75rem 1rem; font-weight: 600;">Metric</th>
-                                    <th style="text-align: center; padding: 0.75rem 1rem; font-weight: 600;">SolPrompter</th>
-                                    <th style="text-align: center; padding: 0.75rem 1rem; font-weight: 600;">Traditional</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr style="border-bottom: 1px solid var(--line-soft);">
-                                    <td style="text-align: left; padding: 0.75rem 1rem;"><strong>AI Voice Scroll Latency</strong></td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--brand-strong); font-weight: 600;">&lt; 50ms (Real-time)</td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--ink-faint);">N/A (Fixed Speed)</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--line-soft);">
-                                    <td style="text-align: left; padding: 0.75rem 1rem;"><strong>Speech Detection Accuracy</strong></td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--brand-strong); font-weight: 600;">98% (Multi-language)</td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--ink-faint);">Manual Control Only</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--line-soft);">
-                                    <td style="text-align: left; padding: 0.75rem 1rem;"><strong>CPU Usage (Idle/Scroll)</strong></td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--brand-strong); font-weight: 600;">&lt; 2% / 5%</td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--ink-faint);">High (Desktop App)</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--line-soft);">
-                                    <td style="text-align: left; padding: 0.75rem 1rem;"><strong>Battery Consumption</strong></td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--brand-strong); font-weight: 600;">Minimal (Native Web API)</td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--ink-faint);">Moderate to High</td>
-                                </tr>
-                                <tr style="border-bottom: 1px solid var(--line-soft);">
-                                    <td style="text-align: left; padding: 0.75rem 1rem;"><strong>Supported Browsers</strong></td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--brand-strong); font-weight: 600;">Chrome, Edge, Safari, Firefox</td>
-                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--ink-faint);">OS-restricted Apps</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <p class="section-support" style="font-size: 0.85rem; margin-top: 1.5rem; text-align: center; color: var(--ink-muted);">Tested on Apple M2 (macOS) and Intel Core i7 (Windows 11) using Chrome 120.</p>
+                    <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 1.5rem; text-align: center;">Performance with documented limits</h3>
+                    <p class="section-desc" style="font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin: 0;">Voice recognition accuracy and response time vary with the browser, language, microphone, background noise, and reading style.</p>
+                    <p class="section-support" style="margin-top: 1.5rem; text-align: center;"><a class="section-resource-link" href="/blog/product/solprompter-ai-teleprompter-features-tested">Read the SolPrompter feature notes</a></p>
                 </div>
             </div>
         </div>
@@ -1256,7 +1041,7 @@
                         <svg class="faq-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </summary>
                     <div class="faq-content">
-                        <p class="faq-answer-text"><strong>Activate SolPrompter's Notch Mode to position your script directly below the lens.</strong> This narrows the text width to 50-70 characters and anchors it at the top-center. By reducing eye movement to under 3 degrees, it gives the appearance that you are speaking directly to the viewer.</p>
+                        <p class="faq-answer-text"><strong>Activate SolPrompter's Notch Mode to position your script directly below the lens.</strong> A narrower reading column reduces visible side-to-side scanning, but the result still depends on your screen size, camera position, and reading distance.</p>
                     </div>
                 </details>
                 <details class="faq-accordion-item" id="faq-vs-app-store">
@@ -1265,7 +1050,7 @@
                         <svg class="faq-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </summary>
                     <div class="faq-content">
-                        <p class="faq-answer-text"><strong>SolPrompter works directly on the web, requires no download, and does not put watermarks on your video exports.</strong> Most mobile applications limit script length or charge monthly fees to toggle simple features. SolPrompter provides full functionality out of the box.</p>
+                        <p class="faq-answer-text"><strong>SolPrompter works directly on the web, requires no download, and does not put watermarks on your video exports.</strong> It is a practical option when you want to paste a script and start without installing or creating an account.</p>
                     </div>
                 </details>
                 <details class="faq-accordion-item" id="faq-remote-control-stability">
@@ -1274,7 +1059,7 @@
                         <svg class="faq-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </summary>
                     <div class="faq-content">
-                        <p class="faq-answer-text"><strong>No, SolPrompter's remote uses persistent WebSockets with a heartbeat protocol to ensure stability.</strong> As long as the teleprompter tab remains active, the link stays alive with under 10ms latency, preventing the dropouts common in hardware clickers.</p>
+                        <p class="faq-answer-text"><strong>SolPrompter's remote uses a persistent WebSocket session with a heartbeat to detect connection loss.</strong> Actual latency and behavior while a phone is locked depend on the devices, browser power-saving rules, and network quality.</p>
                     </div>
                 </details>
                 <details class="faq-accordion-item" id="faq-physical-beamsplitter">
@@ -1292,7 +1077,7 @@
                         <svg class="faq-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </summary>
                     <div class="faq-content">
-                        <p class="faq-answer-text"><strong>Yes. Your scripts and recordings remain on your device while you work.</strong> SolPrompter does not upload this content to its servers, helping keep confidential drafts under your control.</p>
+                        <p class="faq-answer-text"><strong>Your scripts and recordings remain on your device while you work.</strong> SolPrompter does not upload that content to its servers. Voice recognition may still use an on-device engine or a recognition service supplied by your browser.</p>
                     </div>
                 </details>
                 <details class="faq-accordion-item" id="faq-ghosting-blur">
@@ -1310,7 +1095,7 @@
                         <svg class="faq-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </summary>
                     <div class="faq-content">
-                        <p class="faq-answer-text"><strong>The teleprompter workspace operates offline once loaded, but voice sync requires internet.</strong> The speech recognition uses native browser APIs, which process audio via Google or Apple cloud servers. For offline settings, switch to fixed-speed or manual scrolling.</p>
+                        <p class="faq-answer-text"><strong>The teleprompter workspace can continue after the page has loaded, but voice sync availability depends on your browser's recognition mode.</strong> Use fixed-speed or manual scrolling when an offline speech-recognition engine is unavailable.</p>
                     </div>
                 </details>
                 <details class="faq-accordion-item" id="faq-font-size-distance">
@@ -1319,7 +1104,7 @@
                         <svg class="faq-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </summary>
                     <div class="faq-content">
-                        <p class="faq-answer-text"><strong>A general benchmark is to size your font to 1 inch of height for every 10 feet of reading distance.</strong> For close-up laptop reading, a smaller, narrow text layout is preferred to prevent eyes from visibly scanning left and right.</p>
+                        <p class="faq-answer-text"><strong>Increase the font size as your reading distance grows, then test it at the exact camera position before recording.</strong> For close laptop reading, use a narrower text column to reduce visible side-to-side scanning.</p>
                     </div>
                 </details>
             </div>

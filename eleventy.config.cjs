@@ -5,9 +5,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addWatchTarget('_templates/_data/');
 
   const articlesDataDir = path.join(__dirname, '_templates/_data/articles');
-  const allowedArticleBlocks = new Set(['paragraph', 'heading', 'quote', 'list', 'image', 'endnote']);
+  const allowedArticleBlocks = new Set(['paragraph', 'heading', 'quote', 'list', 'image', 'toc', 'endnote']);
   const blogArticles = [];
-  const slugifyArticleTitle = (title) => String(title)
+  const slugifyUrlPart = (value) => String(value)
     .replace(/[Đđ]/g, (character) => character === 'Đ' ? 'D' : 'd')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
@@ -23,7 +23,7 @@ module.exports = function (eleventyConfig) {
     for (const file of articleFiles) {
       const filePath = path.join(articlesDataDir, file);
       const article = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-      const requiredStrings = ['slug', 'title', 'date', 'dateDisplay', 'modified', 'modifiedDisplay'];
+      const requiredStrings = ['slug', 'title', 'category', 'date', 'dateDisplay', 'modified'];
 
       for (const field of requiredStrings) {
         if (typeof article[field] !== 'string' || !article[field].trim()) {
@@ -31,15 +31,22 @@ module.exports = function (eleventyConfig) {
         }
       }
 
-      const titleSlug = slugifyArticleTitle(article.title);
+      const titleSlug = slugifyUrlPart(article.title);
+      const categorySlug = slugifyUrlPart(article.category);
 
       if (!titleSlug) {
         throw new Error(`[articles] ${file}: "title" could not be converted to a URL slug.`);
       }
 
+      if (!categorySlug) {
+        throw new Error(`[articles] ${file}: "category" could not be converted to a URL slug.`);
+      }
+
       if (article.slug !== titleSlug) {
         throw new Error(`[articles] ${file}: "slug" must be "${titleSlug}" to match the title.`);
       }
+
+      article.categorySlug = categorySlug;
 
       if (!article.seo?.title || !article.seo?.description) {
         throw new Error(`[articles] ${file}: "seo.title" and "seo.description" are required.`);
@@ -47,6 +54,10 @@ module.exports = function (eleventyConfig) {
 
       if (!article.author?.name) {
         throw new Error(`[articles] ${file}: "author.name" is required.`);
+      }
+
+      if (!article.review?.by || !article.review?.updatedDisplay) {
+        throw new Error(`[articles] ${file}: "review.by" and "review.updatedDisplay" are required.`);
       }
 
       if (!article.hero?.src || !article.hero?.alt || !article.hero?.width || !article.hero?.height) {
@@ -57,11 +68,50 @@ module.exports = function (eleventyConfig) {
         throw new Error(`[articles] ${file}: "content" must contain at least one block.`);
       }
 
+      const headingIdCounts = new Map();
+      const tocItems = [];
+      let currentTocSection = null;
+      let tocBlockCount = 0;
+
       article.content.forEach((block, index) => {
         if (!allowedArticleBlocks.has(block.type)) {
           throw new Error(`[articles] ${file}: content block ${index + 1} has unsupported type "${block.type}".`);
         }
+
+        if (block.type === 'toc') {
+          tocBlockCount += 1;
+          if (tocBlockCount > 1) {
+            throw new Error(`[articles] ${file}: only one table-of-contents block is allowed.`);
+          }
+        }
+
+        if (block.type !== 'heading') return;
+
+        const baseHeadingId = slugifyUrlPart(block.text);
+        if (!baseHeadingId) {
+          throw new Error(`[articles] ${file}: heading ${index + 1} could not be converted to an anchor.`);
+        }
+
+        const headingIdCount = (headingIdCounts.get(baseHeadingId) || 0) + 1;
+        headingIdCounts.set(baseHeadingId, headingIdCount);
+        block.id = headingIdCount === 1 ? baseHeadingId : `${baseHeadingId}-${headingIdCount}`;
+
+        if (block.level === 3) {
+          if (block.includeInToc && currentTocSection) {
+            currentTocSection.children.push({ id: block.id, text: block.text });
+          }
+          return;
+        }
+
+        currentTocSection = {
+          id: block.id,
+          text: block.text,
+          children: [],
+        };
+        tocItems.push(currentTocSection);
       });
+
+      article.tocItems = tocItems;
 
       if (blogArticles.some((item) => item.slug === article.slug)) {
         throw new Error(`[articles] Duplicate slug "${article.slug}".`);
@@ -72,6 +122,30 @@ module.exports = function (eleventyConfig) {
   }
 
   blogArticles.sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const blogCategoryBySlug = new Map();
+
+  for (const article of blogArticles) {
+    const existingCategory = blogCategoryBySlug.get(article.categorySlug);
+
+    if (existingCategory && existingCategory.name !== article.category) {
+      throw new Error(
+        `[articles] Categories "${existingCategory.name}" and "${article.category}" resolve to the same slug "${article.categorySlug}".`
+      );
+    }
+
+    if (existingCategory) {
+      existingCategory.articles.push(article);
+    } else {
+      blogCategoryBySlug.set(article.categorySlug, {
+        name: article.category,
+        slug: article.categorySlug,
+        articles: [article],
+      });
+    }
+  }
+
+  const blogCategories = [...blogCategoryBySlug.values()];
 
   const simplePagesDataDir = path.join(__dirname, '_templates/_data/simple-pages');
   const allowedSimplePageBlocks = new Set(['paragraph', 'heading', 'list', 'image']);
@@ -157,6 +231,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addGlobalData('i18nBase', i18nBase);
   eleventyConfig.addGlobalData('i18nPages', i18nPages);
   eleventyConfig.addGlobalData('blogArticles', blogArticles);
+  eleventyConfig.addGlobalData('blogCategories', blogCategories);
   eleventyConfig.addGlobalData('simplePages', simplePages);
 
   const languages = require('./_templates/_data/languages.cjs');
@@ -199,26 +274,34 @@ module.exports = function (eleventyConfig) {
     const destinationBlogDir = path.join(rootDir, 'blog');
     const generatedBlogDir = path.join(outputDir, 'blog');
 
-    if (fs.existsSync(destinationBlogDir)) {
-      const routeDirs = fs.readdirSync(destinationBlogDir, { withFileTypes: true })
-        .filter((item) => item.isDirectory());
+    const removeStaleGeneratedBlogRoutes = (currentDestinationDir, currentGeneratedDir) => {
+      if (!fs.existsSync(currentDestinationDir)) return;
 
-      for (const routeDir of routeDirs) {
-        const destinationIndex = path.join(destinationBlogDir, routeDir.name, 'index.html');
-        const generatedIndex = path.join(generatedBlogDir, routeDir.name, 'index.html');
+      const routeItems = fs.readdirSync(currentDestinationDir, { withFileTypes: true });
+
+      for (const routeItem of routeItems) {
+        const destinationPath = path.join(currentDestinationDir, routeItem.name);
+        const generatedPath = path.join(currentGeneratedDir, routeItem.name);
+
+        if (routeItem.isDirectory()) {
+          removeStaleGeneratedBlogRoutes(destinationPath, generatedPath);
+          if (fs.readdirSync(destinationPath).length === 0) fs.rmdirSync(destinationPath);
+          continue;
+        }
 
         if (
-          fs.existsSync(destinationIndex)
-          && !fs.existsSync(generatedIndex)
-          && fs.readFileSync(destinationIndex, 'utf-8').includes(generatedMarker)
+          routeItem.isFile()
+          && routeItem.name === 'index.html'
+          && !fs.existsSync(generatedPath)
+          && fs.readFileSync(destinationPath, 'utf-8').includes(generatedMarker)
         ) {
-          fs.unlinkSync(destinationIndex);
-          const destinationRouteDir = path.dirname(destinationIndex);
-          if (fs.readdirSync(destinationRouteDir).length === 0) fs.rmdirSync(destinationRouteDir);
-          console.log(`[post-build] Removed stale blog route ${routeDir.name}`);
+          fs.unlinkSync(destinationPath);
+          console.log(`[post-build] Removed stale blog route ${path.relative(destinationBlogDir, destinationPath)}`);
         }
       }
-    }
+    };
+
+    removeStaleGeneratedBlogRoutes(destinationBlogDir, generatedBlogDir);
 
     const copyHtml = (currentDir) => {
       const items = fs.readdirSync(currentDir, { withFileTypes: true });

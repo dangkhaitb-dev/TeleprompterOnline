@@ -11,6 +11,8 @@ lang: en
 {%- set pageData = i18nPages['blog'][lang] or i18nPages['blog']['en'] -%}
 {%- set canonical = site.url + '/' + simplePage.slug -%}
 {%- set simplePageUrl = '/' + simplePage.slug -%}
+{%- set home = site.url + '/' -%}
+{%- set socialImage = site.url + (simplePage.seo.ogImage or '') -%}
 {%- from "partials/logo.njk" import brandLogo -%}
 {%- set logoSvg = brandLogo('currentColor') -%}
 
@@ -34,6 +36,81 @@ lang: en
 </header>
 
 <main id="page-content" class="simple-page-main" tabindex="-1">
+    {%- if simplePage.article %}
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "Article",
+                    "@id": "{{ canonical }}#article",
+                    "mainEntityOfPage": { "@id": "{{ canonical }}#webpage" },
+                    "headline": "{{ simplePage.title | jsonString | safe }}",
+                    "description": "{{ simplePage.seo.description | jsonString | safe }}",
+                    "image": { "@id": "{{ canonical }}#primaryimage" },
+                    "dateModified": "{{ simplePage.article.dateModified }}",
+                    "author": {
+                        "@type": "Organization",
+                        "name": "{{ simplePage.article.author.name | jsonString | safe }}",
+                        "url": "{{ site.url }}{{ simplePage.article.author.url }}"
+                    },
+                    "publisher": {
+                        "@type": "Organization",
+                        "name": "{{ site.name }}",
+                        "url": "{{ home }}"
+                    },
+                    "isPartOf": { "@id": "{{ home }}#website" },
+                    "breadcrumb": { "@id": "{{ canonical }}#breadcrumb" },
+                    "inLanguage": "en"
+                },
+                {
+                    "@type": "WebPage",
+                    "@id": "{{ canonical }}#webpage",
+                    "url": "{{ canonical }}",
+                    "name": "{{ simplePage.seo.title | jsonString | safe }}",
+                    "description": "{{ simplePage.seo.description | jsonString | safe }}",
+                    "isPartOf": {
+                        "@type": "WebSite",
+                        "@id": "{{ home }}#website",
+                        "name": "{{ site.name }}",
+                        "url": "{{ home }}"
+                    },
+                    "primaryImageOfPage": { "@id": "{{ canonical }}#primaryimage" },
+                    "breadcrumb": { "@id": "{{ canonical }}#breadcrumb" },
+                    "dateModified": "{{ simplePage.article.dateModified }}",
+                    "inLanguage": "en"
+                },
+                {
+                    "@type": "ImageObject",
+                    "@id": "{{ canonical }}#primaryimage",
+                    "url": "{{ socialImage }}",
+                    "contentUrl": "{{ socialImage }}",
+                    "width": {{ simplePage.seo.ogImageWidth }},
+                    "height": {{ simplePage.seo.ogImageHeight }},
+                    "caption": "{{ simplePage.seo.ogImageAlt | jsonString | safe }}"
+                },
+                {
+                    "@type": "BreadcrumbList",
+                    "@id": "{{ canonical }}#breadcrumb",
+                    "itemListElement": [
+                        {
+                            "@type": "ListItem",
+                            "position": 1,
+                            "name": "{{ simplePage.breadcrumb.homeLabel | jsonString | safe }}",
+                            "item": "{{ home }}"
+                        },
+                        {
+                            "@type": "ListItem",
+                            "position": 2,
+                            "name": "{{ simplePage.breadcrumb.currentLabel | jsonString | safe }}",
+                            "item": "{{ canonical }}"
+                        }
+                    ]
+                }
+            ]
+        }
+    </script>
+    {%- else %}
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -50,18 +127,67 @@ lang: en
             "inLanguage": "en-US"
         }
     </script>
+    {%- endif %}
 
     <article class="simple-page-content">
         <header class="simple-page-header">
+            {%- if simplePage.breadcrumb %}
+            <nav class="simple-page-breadcrumb" aria-label="{{ simplePage.breadcrumb.label }}">
+                <ol>
+                    <li><a href="/">{{ simplePage.breadcrumb.homeLabel }}</a></li>
+                    <li aria-current="page">{{ simplePage.breadcrumb.currentLabel }}</li>
+                </ol>
+            </nav>
+            {%- endif %}
             <h1>{{ simplePage.title }}</h1>
+            {%- if simplePage.article %}
+            <div class="simple-page-article-meta">
+                <span>{{ simplePage.article.byLabel }} <a rel="author" href="{{ simplePage.article.author.url }}">{{ simplePage.article.author.name }}</a></span>
+                <span>{{ simplePage.article.updatedLabel }} <time datetime="{{ simplePage.article.dateModified }}">{{ simplePage.article.dateModifiedDisplay }}</time></span>
+            </div>
+            {%- endif %}
         </header>
 
         <div class="simple-page-prose">
+            {%- if simplePage.toc %}
+            <nav class="simple-page-toc" aria-labelledby="simple-page-toc-title">
+                <h2 id="simple-page-toc-title">{{ simplePage.toc.title }}</h2>
+                <ol>
+                    {%- for block in simplePage.content %}
+                    {%- if block.type == 'heading' and block.id %}
+                    <li><a href="#{{ block.id }}">{{ block.text }}</a></li>
+                    {%- endif %}
+                    {%- endfor %}
+                </ol>
+            </nav>
+            {%- endif %}
+            {%- if simplePage.toc %}
+            {%- for block in simplePage.content %}
+                {%- if block.type == 'paragraph' %}
+                <p>{{ block.html | safe }}</p>
+                {%- elif block.type == 'heading' %}
+                <h2{% if block.id %} id="{{ block.id }}"{% endif %}>{{ block.text }}</h2>
+                {%- elif block.type == 'list' %}
+                <ul>
+                    {%- for item in block.items %}
+                    <li>{{ item }}</li>
+                    {%- endfor %}
+                </ul>
+                {%- elif block.type == 'image' %}
+                <figure class="simple-page-figure">
+                    <img src="{{ block.src }}" alt="{{ block.alt }}" width="{{ block.width }}" height="{{ block.height }}" loading="lazy" decoding="async">
+                    {%- if block.caption %}
+                    <figcaption>{{ block.caption }}</figcaption>
+                    {%- endif %}
+                </figure>
+                {%- endif %}
+            {%- endfor %}
+            {%- else %}
             {%- for block in simplePage.content %}
                 {% if block.type == 'paragraph' %}
                 <p>{{ block.html | safe }}</p>
                 {% elif block.type == 'heading' %}
-                <h2>{{ block.text }}</h2>
+                <h2{% if block.id %} id="{{ block.id }}"{% endif %}>{{ block.text }}</h2>
                 {% elif block.type == 'list' %}
                 <ul>
                     {%- for item in block.items %}
@@ -77,6 +203,7 @@ lang: en
                 </figure>
                 {% endif %}
             {%- endfor %}
+            {%- endif %}
         </div>
     </article>
 </main>

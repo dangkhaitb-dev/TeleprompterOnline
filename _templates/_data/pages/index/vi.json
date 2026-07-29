@@ -1,12 +1,13 @@
 {
   "seo": {
     "title": "Teleprompter Online Miễn Phí với Cuộn Theo Giọng Nói AI | SolPrompter",
-    "description": "Máy nhắc chữ online miễn phí. Tự động cuộn theo giọng nói AI, chế độ notch tránh đảo mắt, điều khiển từ xa và quay video 4K. Riêng tư 100%, không quảng cáo.",
-    "canonical": "/",
+    "description": "Máy nhắc chữ trực tuyến miễn phí với tính năng cuộn kích hoạt bằng giọng nói, chế độ notch và điều khiển từ xa bằng mã QR. Không có quảng cáo hoặc đăng ký; kịch bản và bản ghi được lưu trữ trên thiết bị của bạn.",
+    "canonical": "/vi/",
     "ogTitle": "Máy nhắc chữ online miễn phí — SolPrompter",
     "ogDescription": "Thuyết trình tự nhiên với máy nhắc chữ chạy trên trình duyệt. Tự động cuộn chữ theo giọng nói, căn sát camera tránh đảo mắt và điều khiển từ xa bằng điện thoại.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg"
+    "ogImage": "/og-solprompter.jpg",
+    "ogImageAlt": "Giao diện máy nhắc chữ điều khiển bằng giọng nói SolPrompter"
   },
   "schema": {
     "orgDescription": "SolPrompter cung cấp máy nhắc chữ online miễn phí để thuyết trình tự nhiên và quay video chuyên nghiệp.",
@@ -82,7 +83,7 @@
   "hero": {
     "eyebrow": "SolPrompter — Máy nhắc chữ online miễn phí",
     "title": "Teleprompter Online Miễn Phí",
-    "subtitle": "Tự động cuộn kịch bản bám theo giọng đọc thực tế, căn chỉnh dòng chữ sát camera tránh đảo mắt, và điều khiển từ xa bằng điện thoại qua mã QR. Hoàn toàn miễn phí, không quảng cáo, bảo mật tuyệt đối.",
+    "subtitle": "Tự động cuộn theo giọng nói của bạn và neo văn bản gần ống kính máy ảnh để giảm chuyển động của mắt. Kịch bản và bản ghi được lưu trữ trên thiết bị của bạn.",
     "placeholder": "Dán kịch bản của bạn hoặc tải tệp lên để bắt đầu...",
     "uploadLabel": "Tải tệp lên",
     "uploadLabelShort": "Tải lên",
@@ -94,7 +95,7 @@
   },
   "messages": {
     "errorEmpty": "Vui lòng nhập nội dung kịch bản trước khi bắt đầu.",
-    "errorRead": "Định dạng không được hỗ trợ. Vui lòng chọn tệp .txt hoặc .md."
+    "errorRead": "Định dạng không được hỗ trợ. Vui lòng chọn tệp .txt, .md hoặc .docx."
   },
   "features": {
     "eyebrow": "Tính năng nổi bật",
@@ -131,6 +132,10 @@
     "eyebrow": "Quy trình sử dụng",
     "title": "Cách hoạt động đơn giản",
     "description": "Chuẩn bị bài nói của bạn và bắt đầu thuyết trình hoặc quay video chỉ với vài bước đơn giản.",
+    "resourceLink": {
+      "label": "Đọc hướng dẫn sử dụng máy nhắc chữ toàn diện",
+      "url": "/teleprompter-guide"
+    },
     "steps": [
       {
         "anchor": "step-add-script",
@@ -162,9 +167,9 @@
       "problemTitle": "Vấn đề: Máy nhắc chữ truyền thống cuộn với tốc độ cố định",
       "problemDesc": "Nếu bạn nói nhanh hơn, bạn sẽ bị mất dấu chữ. Nếu bạn dừng lại nghỉ, kịch bản vẫn tiếp tục chạy. Điều này làm cho video thuyết trình trở nên cứng nhắc và căng thẳng.",
       "solutionTitle": "Giải pháp: Cuộn chữ theo giọng nói tự động AI",
-      "solutionDesc": "SolPrompter lắng nghe và tự động cuộn chữ chạy theo tiếng nói của bạn trong thời gian thực, thích ứng ngay lập tức với tốc độ đọc tự nhiên."
+      "solutionDesc": "SolPrompter lắng nghe và tự động cuộn kịch bản khi bạn đọc, điều chỉnh theo những thay đổi trong tốc độ nói của bạn."
     },
-    "description": "Tính năng nhận diện giọng nói tự động cuộn kịch bản theo lời đọc và thích ứng ngay khi tốc độ nói của bạn thay đổi.",
+    "description": "Nhận dạng giọng nói theo sát tiến trình đọc của bạn và cuộn kịch bản khi bạn nói, phản hồi bất cứ khi nào tốc độ của bạn thay đổi.",
     "benefits": [
       {
         "title": "Đọc tự nhiên như đang trò chuyện",
@@ -212,7 +217,7 @@
   "remote": {
     "eyebrow": "Điều khiển từ xa",
     "title": "Biến điện thoại thành remote điều khiển",
-    "description": "Kết nối điện thoại hoặc tablet qua mã QR bằng công nghệ WebSockets. Điều khiển kịch bản từ xa ngay trên trình duyệt mà không cần cài đặt bất kỳ ứng dụng nào.",
+    "description": "Kết nối điện thoại hoặc máy tính bảng bằng mã QR và phiên WebSocket được ghép nối. Điều khiển bài thuyết trình của bạn mà không cần cài đặt ứng dụng khác.",
     "items": [
       {
         "title": "Chạy và tạm dừng kịch bản",
@@ -244,11 +249,11 @@
   "recording": {
     "eyebrow": "Ghi hình & Bảo mật",
     "title": "Quay video sắc nét và Lưu trữ bảo mật tại chỗ",
-    "description": "Quay phim chất lượng cao trực tiếp trên trình duyệt, kết hợp lưu trữ an toàn ngay trên thiết bị của bạn mà không cần tải kịch bản lên máy chủ đám mây.",
+    "description": "Ghi video trực tiếp trên trình duyệt trong khi vẫn lưu giữ kịch bản và bản ghi trong bộ nhớ cục bộ của trình duyệt trên thiết bị của bạn.",
     "items": [
       {
         "title": "Live Camera Preview",
-        "description": "Xem trước khung hình của camera để căn chỉnh góc chụp trước khi ghi hình."
+        "description": "Xem trước và kiểm tra bố cục khung hình cũng như căn chỉnh trước khi ghi hình."
       },
       {
         "title": "Quay video Full HD & 4K",
@@ -270,6 +275,10 @@
     "cta": {
       "label": "Quay video ngay",
       "url": "/teleprompter.html"
+    },
+    "resourceLink": {
+      "label": "Đọc cách SolPrompter xử lý nội dung cục bộ",
+      "url": "/policy"
     }
   },
   "workspace": {
@@ -364,69 +373,17 @@
   "comparison": {
     "eyebrow": "So sánh tính năng",
     "title": "Máy nhắc chữ online toàn diện hơn",
-    "description": "Bảng so sánh tính năng thực tế giữa SolPrompter và các giải pháp nhắc chữ khác trên thị trường.",
-    "table": {
-      "headers": [
-        "Tính năng",
-        "SolPrompter",
-        "PromptSmart",
-        "TeleprompterMirror"
-      ],
-      "rows": [
-        {
-          "feature": "Tự động cuộn theo giọng nói",
-          "sol": "Miễn phí",
-          "smart": "Trả phí thuê bao",
-          "mirror": "Không hỗ trợ"
-        },
-        {
-          "feature": "Chạy ngay trên trình duyệt",
-          "sol": "Có",
-          "smart": "Không (Phải cài App)",
-          "mirror": "Có"
-        },
-        {
-          "feature": "Bảo mật kịch bản",
-          "sol": "Lưu 100% tại thiết bị",
-          "smart": "Lưu tại thiết bị",
-          "mirror": "Lưu tại thiết bị"
-        },
-        {
-          "feature": "Remote qua mã QR",
-          "sol": "Có (Không cần cài app)",
-          "smart": "Có (Yêu cầu tải app)",
-          "mirror": "Không hỗ trợ"
-        },
-        {
-          "feature": "Quảng cáo banner",
-          "sol": "Không quảng cáo",
-          "smart": "Không quảng cáo",
-          "mirror": "Có quảng cáo banner"
-        },
-        {
-          "feature": "Quay video 4K",
-          "sol": "Hỗ trợ (Desktop)",
-          "smart": "Không hỗ trợ",
-          "mirror": "Không hỗ trợ"
-        },
-        {
-          "feature": "Chi phí",
-          "sol": "Hoàn toàn miễn phí",
-          "smart": "Trả phí hàng tháng",
-          "mirror": "Miễn phí (kèm quảng cáo)"
-        }
-      ]
-    },
+    "description": "Sử dụng tính năng cuộn bằng giọng nói, tốc độ cố định hoặc cuộn thủ công; điều khiển máy nhắc chữ từ xa; và ghi hình từ một không gian làm việc duy nhất trên trình duyệt.",
     "whyChoose": {
       "title": "Điểm khác biệt của SolPrompter",
       "items": [
         {
           "title": "Tính năng tự cuộn bằng giọng nói hoàn toàn miễn phí",
-          "description": "Trong khi PromptSmart yêu cầu bạn phải đóng tiền đăng ký hàng tháng để sử dụng tính năng cuộn theo tiếng nói, SolPrompter cung cấp tính năng này miễn phí bằng công nghệ nhận dạng giọng nói tích hợp sẵn trên trình duyệt."
+          "description": "Tính năng cuộn kích hoạt bằng giọng nói khả dụng mà không cần đăng ký hoặc thanh toán và sử dụng công nghệ nhận dạng giọng nói do trình duyệt của bạn cung cấp."
         },
         {
           "title": "Kịch bản của bạn luôn an sau trên máy",
-          "description": "Kịch bản không bao giờ được gửi lên bất kỳ máy chủ nào. Mọi dữ liệu được lưu trữ cục bộ trong bộ nhớ trình duyệt, đảm bảo an toàn tuyệt đối cho các thông tin nhạy cảm của bạn."
+          "description": "Kịch bản và bản ghi được lưu trữ trong bộ nhớ cục bộ của trình duyệt. Tùy thuộc vào sự hỗ trợ của trình duyệt, tính năng nhận dạng giọng nói có thể chạy trên thiết bị hoặc sử dụng dịch vụ nhận dạng của nhà cung cấp trình duyệt."
         },
         {
           "title": "Không cần tải phần mềm hay tạo tài khoản",
@@ -441,7 +398,7 @@
     "title": "Giúp việc thuyết trình trước camera trở nên tự nhiên hơn",
     "paragraphs": [
       "SolPrompter được phát triển nhằm mục đích hỗ trợ mọi người tự tin trình bày trước camera mà không cần học thuộc lòng từng chữ hay phải liên tục cúi xuống chỉnh nút cuộn chữ.",
-      "Chúng tôi tập trung xây dựng một công cụ nhắc chữ trực tuyến tối giản nhưng mạnh mẽ, kết hợp tính năng nhận diện giọng nói chính xác, thiết kế tinh tế và các công cụ giúp tối ưu góc nhìn của mắt khi đọc kịch bản.",
+      "Chúng tôi tập trung vào việc tạo ra một máy nhắc chữ trực tuyến tối giản kết hợp tính năng cuộn đồng bộ với giọng nói, thiết kế công thái học và khả năng ghi video đơn giản.",
       "Dù bạn đang quay video bằng điện thoại, thuyết trình trên máy tính hay quản lý một studio ghi hình chuyên nghiệp, SolPrompter sẽ luôn giúp bạn giữ được sự tập trung cao nhất hướng về khán giả."
     ]
   },
@@ -462,17 +419,17 @@
       {
         "anchor": "faq-maintain-eye-contact",
         "q": "Làm thế nào để tránh mắt bị đảo qua lại khi đọc kịch bản?",
-        "a": "<strong>Bạn hãy kích hoạt Chế độ Notch của SolPrompter để neo kịch bản ngay sát camera.</strong> Tính năng này thu hẹp chiều rộng văn bản xuống 50-70 ký tự và căn giữa ở sát mép trên màn hình. Thiết lập này giúp giảm góc đảo mắt xuống dưới 3 độ, người xem sẽ có cảm giác bạn đang nhìn thẳng vào camera trò chuyện chứ không phải đang đọc kịch bản."
+        "a": "<strong>Kích hoạt Chế độ Notch của SolPrompter để định vị kịch bản ngay dưới ống kính máy ảnh.</strong> Cột đọc hẹp hơn giúp giảm chuyển động quét mắt sang hai bên, nhưng kết quả vẫn phụ thuộc vào kích thước màn hình, vị trí máy ảnh và khoảng cách đọc của bạn."
       },
       {
         "anchor": "faq-vs-app-store",
         "q": "Tại sao nên dùng SolPrompter thay vì tải các app máy nhắc chữ trên App Store?",
-        "a": "<strong>SolPrompter chạy trực tiếp trên trình duyệt, không cần cài đặt, hoàn toàn miễn phí và không chèn logo (watermark) vào video của bạn.</strong> Hầu hết các ứng dụng di động hiện nay đều giới hạn số lượng chữ hoặc bắt trả phí để dùng các chức năng nâng cao như điều chỉnh tốc độ, lật chữ ngược (kính phản chiếu). SolPrompter cung cấp toàn bộ các tính năng cao cấp đó miễn phí."
+        "a": "<strong>SolPrompter hoạt động trực tiếp trên web, không cần tải xuống và không chèn logo mờ (watermark) vào video xuất bản.</strong> Đây là một lựa chọn thực tế khi bạn muốn dán kịch bản và bắt đầu ngay mà không cần cài đặt hoặc tạo tài khoản."
       },
       {
         "anchor": "faq-remote-control-stability",
         "q": "Điện thoại làm remote có bị ngắt kết nối khi màn hình tắt hoặc khóa không?",
-        "a": "<strong>Không, hệ thống remote của SolPrompter sử dụng công nghệ WebSockets với cơ chế duy trì kết nối liên tục (heartbeat).</strong> Miễn là tab trình duyệt nhắc chữ vẫn đang mở, kết nối điều khiển từ điện thoại vẫn được giữ ổn định với độ trễ dưới 10ms, giúp bạn điều khiển bài nói trơn tru không bị gián đoạn."
+        "a": "<strong>Điều khiển từ xa của SolPrompter sử dụng phiên WebSocket liên tục với tín hiệu heartbeat để phát hiện mất kết nối.</strong> Độ trễ thực tế và hoạt động khi điện thoại bị khóa phụ thuộc vào thiết bị, quy tắc tiết kiệm pin của trình duyệt và chất lượng mạng."
       },
       {
         "anchor": "faq-physical-beamsplitter",
@@ -482,7 +439,7 @@
       {
         "anchor": "faq-script-privacy",
         "q": "Kịch bản bí mật hoặc tài liệu kinh doanh nội bộ của tôi có bị lộ không?",
-        "a": "<strong>Kịch bản và bản ghi vẫn nằm trên thiết bị trong suốt quá trình bạn làm việc.</strong> SolPrompter không tải nội dung này lên máy chủ, giúp bạn chủ động kiểm soát các tài liệu nhạy cảm."
+        "a": "<strong>Kịch bản và bản ghi của bạn vẫn nằm trên thiết bị của bạn trong quá trình làm việc.</strong> SolPrompter không tải nội dung đó lên máy chủ của mình. Nhận dạng giọng nói vẫn có thể sử dụng công cụ chạy trên thiết bị hoặc dịch vụ nhận dạng do trình duyệt của bạn cung cấp."
       },
       {
         "anchor": "faq-ghosting-blur",
@@ -492,23 +449,23 @@
       {
         "anchor": "faq-offline-use",
         "q": "Tôi có thể dùng máy nhắc chữ này khi không có mạng Internet không?",
-        "a": "<strong>Giao diện nhắc chữ cơ bản có thể hoạt động ngoại tuyến sau khi tải xong trang web, riêng tính năng cuộn theo giọng nói (AI) sẽ cần có kết nối mạng.</strong> Chức năng cuộn giọng nói dựa trên Speech API của trình duyệt và cần kết nối Internet để xử lý giọng nói thành văn bản. Nếu ghi hình ở nơi không có mạng, bạn hãy chuyển sang chế độ tự cuộn theo tốc độ đặt trước hoặc cuộn thủ công."
+        "a": "<strong>Không gian làm việc của máy nhắc chữ có thể tiếp tục hoạt động sau khi trang đã tải xong, nhưng tính khả dụng của đồng bộ giọng nói phụ thuộc vào chế độ nhận dạng của trình duyệt.</strong> Sử dụng tính năng cuộn theo tốc độ cố định hoặc cuộn thủ công khi công cụ nhận dạng giọng nói ngoại tuyến không khả dụng."
       },
       {
         "anchor": "faq-font-size-distance",
         "q": "Làm thế nào để căn chỉnh kích thước chữ phù hợp với khoảng cách đứng đọc?",
-        "a": "<strong>Quy tắc cơ bản là tăng chiều cao chữ thêm khoảng 2.5cm cho mỗi 3 mét khoảng cách từ bạn tới màn hình.</strong> Nếu đứng đọc gần (khoảng 1 mét trước máy tính bàn), bạn nên thu hẹp vùng hiển thị chữ lại để tránh mắt phải lia liên tục từ trái sang phải, làm mất tự nhiên khi ghi hình."
+        "a": "<strong>Tăng kích thước phông chữ khi khoảng cách đọc của bạn tăng lên, sau đó kiểm tra ở vị trí máy ảnh chính xác trước khi ghi hình.</strong> Để đọc gần trên máy tính xách tay, hãy sử dụng cột văn bản hẹp hơn để giảm chuyển động quét mắt sang hai bên."
       }
     ]
   },
   "engineering": {
     "eyebrow": "Được xây dựng cho sử dụng thực tế",
     "title": "Nhanh, riêng tư và sẵn sàng khi bạn lên hình",
-    "description": "Tìm hiểu cách SolPrompter lưu kịch bản trên thiết bị, phản hồi theo thời gian thực và hoạt động ngay trong trình duyệt mà không cần tải xuống hay cài đặt phức tạp.",
+    "description": "Xem cách SolPrompter lưu trữ kịch bản trên thiết bị của bạn, cuộn theo các từ được nói và chạy trực tiếp trên trình duyệt mà không cần tải xuống hay thiết lập phức tạp.",
     "principles": [
       {
         "title": "Tại sao chúng tôi xây dựng SolPrompter",
-        "description": "Các phần mềm nhắc chữ hiện nay thường khóa các tính năng thiết yếu (như cuộn bằng giọng nói hoặc quay video không có watermark) sau các gói đăng ký trả phí đắt đỏ. Chúng tôi xây dựng SolPrompter để cung cấp một máy nhắc chữ online hoàn toàn miễn phí, không cần đăng ký tài khoản, giúp tất cả các nhà sáng tạo nội dung dễ dàng tiếp cận công cụ chất lượng cao."
+        "description": "Chúng tôi xây dựng SolPrompter để mang lại tính năng cuộn bằng giọng nói, các nút điều khiển đọc linh hoạt và ghi hình không chứa watermark trong một công cụ trình duyệt miễn phí mà không cần đăng ký."
       },
       {
         "title": "Tại sao chạy trực tiếp trên trình duyệt?",
@@ -519,35 +476,12 @@
         "description": "Kịch bản và bản ghi được giữ trên thiết bị thay vì tải lên SolPrompter, giúp bạn trực tiếp kiểm soát các nội dung nhạy cảm."
       }
     ],
-    "benchmarksTitle": "Hiệu năng đo được",
-    "benchmarks": [
-      {
-        "metric": "Độ trễ cuộn giọng nói AI",
-        "sol": "< 50ms (Thời gian thực)",
-        "trad": "Không hỗ trợ"
-      },
-      {
-        "metric": "Độ chính xác nhận diện",
-        "sol": "98% (Đa ngôn ngữ)",
-        "trad": "Chỉ điều khiển thủ công"
-      },
-      {
-        "metric": "Sử dụng CPU (Chờ/Cuộn)",
-        "sol": "< 2% / 5%",
-        "trad": "Cao (Ứng dụng Desktop)"
-      },
-      {
-        "metric": "Tiêu thụ pin thiết bị",
-        "sol": "Cực thấp (Web API gốc)",
-        "trad": "Trung bình đến Cao"
-      },
-      {
-        "metric": "Trình duyệt hỗ trợ",
-        "sol": "Chrome, Edge, Safari, Firefox",
-        "trad": "Giới hạn theo Hệ điều hành"
-      }
-    ],
-    "benchmarksSupport": "Đo lường thực tế trên chip Apple M2 (macOS) và Intel Core i7 (Windows 11) bằng trình duyệt Chrome 120."
+    "evidenceTitle": "Hiệu suất với các giới hạn đã được ghi chép",
+    "evidenceSummary": "Độ chính xác và thời gian phản hồi của nhận dạng giọng nói thay đổi tùy thuộc vào trình duyệt, ngôn ngữ, micrô, tiếng ồn xung quanh và phong cách đọc.",
+    "benchmarkLink": {
+      "label": "Đọc ghi chú về các tính năng của SolPrompter",
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+    }
   },
   "footer": {
     "brand": "SolPrompter",

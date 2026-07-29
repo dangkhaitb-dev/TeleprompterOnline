@@ -1,12 +1,13 @@
 {
   "seo": {
     "title": "Gobbo online gratuito con scorrimento vocale IA | SolPrompter",
-    "description": "Teleprompter online gratuito con scorrimento AI attivato dalla voce, modalità notch e telecomando QR. Nessuna pubblicità, nessuna registrazione, 100% privato.",
+    "description": "Gobbo online gratuito con scorrimento ad attivazione vocale, modalità notch e controllo remoto tramite QR. Senza pubblicità né registrazione; testi e registrazioni rimangono sul tuo dispositivo.",
     "canonical": "/it/",
     "ogTitle": "Teleprompter online gratuito — SolPrompter",
     "ogDescription": "Presentati in modo naturale con il nostro teleprompter basato su browser. Scorre automaticamente con la tua voce, riduce al minimo il movimento degli occhi e supporta il controllo remoto QR.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg"
+    "ogImage": "/og-solprompter.jpg",
+    "ogImageAlt": "Interfaccia del gobbo elettronico a controllo vocale SolPrompter"
   },
   "schema": {
     "orgDescription": "SolPrompter fornisce un teleprompter online gratuito per presentazioni naturali e registrazioni video professionali.",
@@ -82,7 +83,7 @@
   "hero": {
     "eyebrow": "SolPrompter — Teleprompter online gratuito",
     "title": "Gobbo online gratuito",
-    "subtitle": "Scorre automaticamente con la tua voce, ancora il testo vicino all'obiettivo della fotocamera per evitare deviazioni dell'occhio e supporta il controllo remoto tramite codice QR. Gratuito, senza pubblicità e privato al 100%.",
+    "subtitle": "Scorre automaticamente con la tua voce e ancora il testo vicino all'obiettivo della fotocamera per ridurre il movimento degli occhi. Testi e registrazioni rimangono sul tuo dispositivo.",
     "placeholder": "Incolla il tuo script o carica un file per iniziare...",
     "uploadLabel": "Carica file",
     "uploadLabelShort": "Carica",
@@ -94,7 +95,7 @@
   },
   "messages": {
     "errorEmpty": "Inserisci il contenuto del tuo script prima di avviare il gobbo.",
-    "errorRead": "Formato non supportato. Seleziona un file .txt o .md."
+    "errorRead": "Formato non supportato. Seleziona un file .txt, .md o .docx."
   },
   "features": {
     "eyebrow": "Caratteristiche principali",
@@ -131,6 +132,10 @@
     "eyebrow": "Flusso di lavoro",
     "title": "Semplice e immediato",
     "description": "Prepara il tuo script e inizia a presentare o registrare in pochi passaggi.",
+    "resourceLink": {
+      "label": "Leggi la guida completa al gobbo elettronico",
+      "url": "/teleprompter-guide"
+    },
     "steps": [
       {
         "anchor": "step-add-script",
@@ -162,9 +167,9 @@
       "problemTitle": "Problema: i teleprompter tradizionali scorrono a una velocità fissa",
       "problemDesc": "Se parli più velocemente, perdi il posto. Se fai una pausa, la sceneggiatura continua a muoversi. Ciò rende le presentazioni rigide e stressanti.",
       "solutionTitle": "Soluzione: scorrimento attivato tramite intelligenza artificiale",
-      "solutionDesc": "SolPrompter ascolta e fa avanzare automaticamente la sceneggiatura mentre leggi, adattandosi istantaneamente alla tua velocità naturale in tempo reale."
+      "solutionDesc": "SolPrompter ascolta e fa avanzare il testo mentre leggi, adattandosi ai cambiamenti del tuo ritmo di pronuncia."
     },
-    "description": "Il riconoscimento vocale segue la tua pronuncia e fa avanzare la sceneggiatura mentre parli, adattandosi istantaneamente ogni volta che il tuo ritmo cambia.",
+    "description": "Il riconoscimento vocale segue la tua dizione e fa avanzare il testo mentre parli, rispondendo a ogni variazione del ritmo.",
     "benefits": [
       {
         "title": "Parla in modo naturale",
@@ -212,7 +217,7 @@
   "remote": {
     "eyebrow": "Telecomando",
     "title": "Scansiona un QR per controllarlo da qualsiasi dispositivo",
-    "description": "Connetti un telefono o un tablet tramite codice QR utilizzando WebSocket sicuri. Controlla la tua presentazione senza installare applicazioni esterne.",
+    "description": "Connetti un telefono o un tablet tramite codice QR e una sessione WebSocket accoppiata. Controlla la tua presentazione senza installare altre applicazioni.",
     "items": [
       {
         "title": "Riproduci e metti in pausa lo script",
@@ -244,11 +249,11 @@
   "recording": {
     "eyebrow": "Registrazione e privacy",
     "title": "Registrazione 4K nel browser e privacy degli script locali",
-    "description": "Cattura video nitidi direttamente dal browser mantenendo i tuoi script privati ​​al 100% nella memoria locale.",
+    "description": "Acquisisci video nel browser mantenendo i testi e le registrazioni nella memoria locale del browser sul tuo dispositivo.",
     "items": [
       {
         "title": "Anteprima fotocamera in tempo reale",
-        "description": "Visualizza in anteprima e controlla l'inquadratura e l'allineamento prima di iniziare la registrazione."
+        "description": "Visualizza l'anteprima e verifica l'inquadratura e l'allineamento prima di registrare."
       },
       {
         "title": "Registra in Full HD e 4K",
@@ -270,6 +275,10 @@
     "cta": {
       "label": "Inizia a registrare",
       "url": "/teleprompter.html"
+    },
+    "resourceLink": {
+      "label": "Scopri come SolPrompter gestisce i contenuti locali",
+      "url": "/policy"
     }
   },
   "workspace": {
@@ -364,69 +373,17 @@
   "comparison": {
     "eyebrow": "Confronto",
     "title": "Un browser teleprompter completo",
-    "description": "Confronta le funzionalità principali di SolPrompter con le alternative esistenti sul mercato.",
-    "table": {
-      "headers": [
-        "Caratteristica",
-        "SolPrompter",
-        "PromptSmart",
-        "TeleprompterMirror"
-      ],
-      "rows": [
-        {
-          "feature": "Scorrimento vocale AI",
-          "sol": "Gratuito",
-          "smart": "È richiesto l'abbonamento",
-          "mirror": "Non supportato"
-        },
-        {
-          "feature": "Basato su browser",
-          "sol": "SÌ",
-          "smart": "No (download dell'app)",
-          "mirror": "SÌ"
-        },
-        {
-          "feature": "Privacy della sceneggiatura",
-          "sol": "100% locale sul dispositivo",
-          "smart": "Locale sul dispositivo",
-          "mirror": "Locale sul dispositivo"
-        },
-        {
-          "feature": "Controllo remoto QR",
-          "sol": "Sì (nessuna installazione)",
-          "smart": "Sì (download dell'app)",
-          "mirror": "Non supportato"
-        },
-        {
-          "feature": "Banner pubblicitari",
-          "sol": "Senza pubblicità",
-          "smart": "Senza pubblicità",
-          "mirror": "Sì (annunci banner)"
-        },
-        {
-          "feature": "Registrazione video 4K",
-          "sol": "Supportato (desktop)",
-          "smart": "Non supportato",
-          "mirror": "Non supportato"
-        },
-        {
-          "feature": "Prezzo",
-          "sol": "Completamente gratuito",
-          "smart": "Abbonamento a pagamento",
-          "mirror": "Gratuito (supportato da pubblicità)"
-        }
-      ]
-    },
+    "description": "Usa lo scorrimento vocale, a velocità fissa o manuale; controlla il gobbo da remoto; e registra da un unico spazio di lavoro basato sul browser.",
     "whyChoose": {
       "title": "Perché i creatori scelgono SolPrompter",
       "items": [
         {
           "title": "Scorrimento vocale gratuito",
-          "description": "A differenza degli strumenti di abbonamento che bloccano la sincronizzazione vocale dietro paywall, SolPrompter la include gratuitamente, alimentata direttamente dal riconoscimento vocale del browser."
+          "description": "Lo scorrimento ad attivazione vocale è disponibile senza registrazione o pagamento e utilizza il riconoscimento vocale fornito dal browser."
         },
         {
           "title": "I tuoi dati rimangono sul tuo computer",
-          "description": "I tuoi script vengono elaborati localmente nel tuo browser. Non trasmettiamo mai i tuoi contenuti, garantendo la totale privacy per le bozze."
+          "description": "Testi e registrazioni rimangono nella memoria locale del browser. A seconda del supporto del browser, il riconoscimento vocale può essere eseguito sul dispositivo o utilizzare il servizio di riconoscimento del provider del browser."
         },
         {
           "title": "Nessuna registrazione o configurazione richiesta",
@@ -441,7 +398,7 @@
     "title": "Rendere la lettura online una conversazione naturale",
     "paragraphs": [
       "SolPrompter è stato creato per aiutare gli oratori a presentare con sicurezza senza memorizzare testi lunghi o perdere tempo con la velocità di scorrimento.",
-      "Ci concentriamo sulla creazione di un teleprompter online minimale e di fascia alta che unisca tracciamento vocale accurato, design ergonomico e registrazione video semplice.",
+      "Ci concentriamo sulla creazione di un gobbo online minimale che combina scorrimento allineato al parlato, design ergonomico e registrazione video semplice.",
       "Che tu stia girando su un telefono, registrando da un laptop o gestendo uno studio, SolPrompter ti mantiene concentrato sul tuo pubblico."
     ]
   },
@@ -462,17 +419,17 @@
       {
         "anchor": "faq-mantieni-contatto-visivo",
         "q": "Come posso evitare di sembrare come se stessi leggendo e mantenere il contatto visivo?",
-        "a": "<strong>Attiva la modalità Notch di SolPrompter per posizionare il tuo script direttamente sotto l'obiettivo.</strong> Questo restringe la larghezza del testo a 50-70 caratteri e lo ancora in alto al centro. Riducendo il movimento degli occhi a meno di 3 gradi, si ha l'impressione di parlare direttamente allo spettatore."
+        "a": "<strong>Attiva la modalità Notch di SolPrompter per posizionare il testo direttamente sotto l'obiettivo.</strong> Una colonna di lettura più stretta riduce lo scorrimento visivo laterale degli occhi, ma il risultato dipende comunque dalle dimensioni dello schermo, dalla posizione della fotocamera e dalla distanza di lettura."
       },
       {
         "anchor": "faq-vs-app-store",
         "q": "Perché scegliere SolPrompter invece di un'applicazione dell'App Store?",
-        "a": "<strong>SolPrompter funziona direttamente sul Web, non richiede download e non inserisce filigrane sulle esportazioni video.</strong> La maggior parte delle applicazioni mobili limita la lunghezza dello script o addebita tariffe mensili per attivare/disattivare funzionalità semplici. SolPrompter fornisce funzionalità complete immediatamente."
+        "a": "<strong>SolPrompter funziona direttamente sul web, non richiede download e non inserisce filigrane nelle esportazioni video.</strong> È un'opzione pratica quando vuoi incollare un testo e iniziare subito senza installare o creare un account."
       },
       {
         "anchor": "faq-telecomando-stabilità",
         "q": "Il telecomando si disconnetterà quando il telefono si blocca o entra in modalità di sospensione?",
-        "a": "<strong>No, il telecomando di SolPrompter utilizza WebSocket persistenti con un protocollo heartbeat per garantire stabilità.</strong> Finché la scheda del teleprompter rimane attiva, il collegamento rimane attivo con una latenza inferiore a 10 ms, prevenendo gli abbandoni comuni nei clicker hardware."
+        "a": "<strong>Il telecomando di SolPrompter utilizza una sessione WebSocket persistente con un heartbeat per rilevare la perdita di connessione.</strong> La latenza effettiva e il comportamento mentre il telefono è bloccato dipendono dai dispositivi, dalle regole di risparmio energetico del browser e dalla qualità della rete."
       },
       {
         "anchor": "faq-physical-beamsplitter",
@@ -482,7 +439,7 @@
       {
         "anchor": "faq-script-privacy",
         "q": "I miei script e le mie bozze aziendali sono al sicuro?",
-        "a": "<strong>Sì. I tuoi script e le tue registrazioni rimangono sul tuo dispositivo mentre lavori.</strong> SolPrompter non carica questi contenuti sui suoi server, aiutandoti a mantenere le bozze riservate sotto il tuo controllo."
+        "a": "<strong>I tuoi testi e le tue registrazioni rimangono sul tuo dispositivo mentre lavori.</strong> SolPrompter non carica tali contenuti sui propri server. Il riconoscimento vocale può comunque utilizzare un motore sul dispositivo o un servizio di riconoscimento fornito dal browser."
       },
       {
         "anchor": "faq-ghosting-blur",
@@ -492,23 +449,23 @@
       {
         "anchor": "faq-uso-offline",
         "q": "Posso eseguire il teleprompter offline?",
-        "a": "<strong>L'area di lavoro del teleprompter funziona offline una volta caricata, ma la sincronizzazione vocale richiede Internet.</strong> Il riconoscimento vocale utilizza API del browser native, che elaborano l'audio tramite i server cloud di Google o Apple. Per le impostazioni offline, passa allo scorrimento a velocità fissa o manuale."
+        "a": "<strong>Lo spazio di lavoro del gobbo può continuare a funzionare dopo il caricamento della pagina, ma la disponibilità della sincronizzazione vocale dipende dalla modalità di riconoscimento del browser.</strong> Usa lo scorrimento a velocità fissa o manuale quando non è disponibile un motore di riconoscimento vocale offline."
       },
       {
         "anchor": "faq-dimensione-carattere-distanza",
         "q": "Come posso determinare la giusta dimensione del carattere per la mia distanza di lettura?",
-        "a": "<strong>Un punto di riferimento generale consiste nel dimensionare il carattere a 1 pollice di altezza per ogni 10 piedi di distanza di lettura.</strong> Per la lettura ravvicinata del laptop, è preferibile un layout di testo più piccolo e stretto per impedire agli occhi di scansionare visibilmente a destra e a sinistra."
+        "a": "<strong>Aumenta la dimensione del carattere all'aumentare della distanza di lettura, quindi testala nella posizione esatta della fotocamera prima di registrare.</strong> Per la lettura ravvicinata da laptop, usa una colonna di testo più stretta per ridurre lo scorrimento laterale degli occhi."
       }
     ]
   },
   "engineering": {
     "eyebrow": "Costruito per il mondo reale",
     "title": "Veloce, privato e pronto per l'esecuzione",
-    "description": "Scopri come SolPrompter conserva gli script sul tuo dispositivo, risponde in tempo reale e viene eseguito direttamente nel browser senza download o configurazioni complicate.",
+    "description": "Scopri come SolPrompter conserva i testi sul tuo dispositivo, segue le parole pronunciate e viene eseguito direttamente nel browser senza download o configurazioni complesse.",
     "principles": [
       {
         "title": "Perché abbiamo creato SolPrompter",
-        "description": "I software di teleprompter esistenti spesso bloccano funzionalità essenziali (come lo scorrimento vocale o la registrazione senza filigrana) dietro costosi abbonamenti mensili. Abbiamo creato SolPrompter per fornire un teleprompter online di fascia alta, completamente gratuito senza necessità di registrazione, rendendo gli strumenti professionali accessibili a tutti i creatori."
+        "description": "Abbiamo creato SolPrompter per rendere disponibili lo scorrimento vocale, i controlli di lettura flessibili e la registrazione senza filigrana in uno strumento browser gratuito senza registrazione richiesta."
       },
       {
         "title": "Perché funziona nel tuo browser",
@@ -519,35 +476,12 @@
         "description": "I tuoi script e le tue registrazioni rimangono sul tuo dispositivo invece di essere caricati su SolPrompter, offrendoti il ​​controllo diretto sui contenuti sensibili."
       }
     ],
-    "benchmarksTitle": "Prestazioni misurate",
-    "benchmarks": [
-      {
-        "metric": "Latenza di scorrimento vocale AI",
-        "sol": "< 50 ms (in tempo reale)",
-        "trad": "N/D (velocità fissa)"
-      },
-      {
-        "metric": "Precisione del rilevamento vocale",
-        "sol": "98% (multilingue)",
-        "trad": "Solo controllo manuale"
-      },
-      {
-        "metric": "Utilizzo della CPU (inattività/scorrimento)",
-        "sol": "<2%/5%",
-        "trad": "Alto (app desktop)"
-      },
-      {
-        "metric": "Consumo della batteria",
-        "sol": "Minimo (API Web nativa)",
-        "trad": "Da moderato ad alto"
-      },
-      {
-        "metric": "Browser supportati",
-        "sol": "Chrome, Edge, Safari, Firefox",
-        "trad": "App limitate al sistema operativo"
-      }
-    ],
-    "benchmarksSupport": "Testato su Apple M2 (macOS) e Intel Core i7 (Windows 11) utilizzando Chrome 120."
+    "evidenceTitle": "Prestazioni con limiti documentati",
+    "evidenceSummary": "L'accuratezza del riconoscimento vocale e i tempi di risposta variano in base al browser, alla lingua, al microfono, al rumore di fondo e allo stile di lettura.",
+    "benchmarkLink": {
+      "label": "Leggi le note sulle funzionalità di SolPrompter",
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+    }
   },
   "footer": {
     "brand": "SolPrompter",

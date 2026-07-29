@@ -96,43 +96,6 @@ function initHeroVideo() {
   };
 }
 
-function initContentReveals() {
-  if (!('IntersectionObserver' in window)) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  const targets = document.querySelectorAll([
-    'main.landing-main > .section .section-head',
-    'main.landing-main > .section .features-editorial-grid',
-    'main.landing-main > .section .split-section',
-    'main.landing-main > .section .spotlight-grid',
-    'main.landing-main > .section .steps-editorial-flow',
-    'main.landing-main > .section .use-cases-editorial-grid',
-    'main.landing-main > .section .comparison-table-wrapper',
-    'main.landing-main > .section .why-choose-details',
-    'main.landing-main > .section .prose-content',
-    'main.landing-main > .section .faq-container',
-    'main.landing-main > .section .section-cta',
-  ].join(','));
-
-  if (!targets.length) return;
-
-  const observer = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('is-visible');
-        observer.unobserve(entry.target);
-      });
-    },
-    { rootMargin: '0px 0px -8%', threshold: 0.08 },
-  );
-
-  targets.forEach((target) => {
-    target.classList.add('content-reveal');
-    observer.observe(target);
-  });
-}
-
 export function initHomeUI() {
   const form = document.getElementById('composerForm');
   const textarea = document.getElementById('paste-textarea');
@@ -144,7 +107,6 @@ export function initHomeUI() {
 
   initMobileNav();
   initLanguageSwitcher();
-  initContentReveals();
   const heroVideo = initHeroVideo();
 
   if (!form || !textarea) {

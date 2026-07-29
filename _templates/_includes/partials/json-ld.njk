@@ -1,10 +1,9 @@
 {#- Build-time JSON-LD generator.
 
-    Emits a schema.org @graph for the current page, assembled entirely from the
-    page's content data (pageData.seo / pageData.schema) plus the shared `site`
-    config, so the structured data can never drift from the visible copy:
-      - HowTo steps  loop over pageData.howItWorks.steps
-      - FAQ entries  loop over pageData.faq.items
+    Emits a compact schema.org @graph for the current page, assembled entirely
+    from pageData.seo / pageData.schema plus the shared `site` config. FAQ and
+    HowTo remain useful visible content, but are intentionally not emitted as
+    Google no longer shows those rich results for a general SaaS site.
 
     All text is escaped through the `jsonString` filter (eleventy.config.cjs).
     No-op on pages that don't declare `pageData.schema`. -#}
@@ -49,38 +48,33 @@
       "name": "{{ site.name | jsonString | safe }}",
       "alternateName": [{% for n in sc.alternateNames %}"{{ n | jsonString | safe }}"{% if not loop.last %}, {% endif %}{% endfor %}],
       "description": "{{ sc.websiteDescription | jsonString | safe }}",
-      "publisher": { "@id": "{{ home }}#organization" },
-      "inLanguage": "{{ langCode }}"
+      "publisher": { "@id": "{{ home }}#organization" }
     },
     {
       "@type": "WebPage",
-      "@id": "{{ home }}#webpage",
+      "@id": "{{ canonicalUrl }}#webpage",
       "url": "{{ canonicalUrl }}",
       "name": "{{ (sc.webpageName or s.title) | jsonString | safe }}",
       "description": "{{ s.description | jsonString | safe }}",
       "isPartOf": { "@id": "{{ home }}#website" },
       "publisher": { "@id": "{{ home }}#organization" },
-      "about": { "@id": "{{ home }}#application" },
-      "mainEntity": { "@id": "{{ home }}#application" },
+      "about": { "@id": "{{ canonicalUrl }}#application" },
+      "mainEntity": { "@id": "{{ canonicalUrl }}#application" },
       "primaryImageOfPage": {
         "@type": "ImageObject",
-        "@id": "{{ home }}#primary-image",
+        "@id": "{{ canonicalUrl }}#primary-image",
         "url": "{{ base }}{{ sc.primaryImage }}",
         "contentUrl": "{{ base }}{{ sc.primaryImage }}",
         "caption": "{{ sc.primaryImageCaption | jsonString | safe }}"
       },
-      "hasPart": [
-        { "@id": "{{ home }}#how-to" },
-        { "@id": "{{ home }}#faq" }
-      ],
       "inLanguage": "{{ langCode }}"
     },
     {
       "@type": ["SoftwareApplication", "WebApplication"],
-      "@id": "{{ home }}#application",
+      "@id": "{{ canonicalUrl }}#application",
       "name": "{{ site.name | jsonString | safe }}",
       "alternateName": "{{ sc.appAlternateName | jsonString | safe }}",
-      "url": "{{ home }}",
+      "url": "{{ canonicalUrl }}",
       "description": "{{ sc.appDescription | jsonString | safe }}",
       "applicationCategory": "{{ sc.applicationCategory | jsonString | safe }}",
       "applicationSubCategory": "{{ sc.applicationSubCategory | jsonString | safe }}",
@@ -90,64 +84,19 @@
       "isAccessibleForFree": true,
       "offers": {
         "@type": "Offer",
-        "@id": "{{ home }}#free-offer",
-        "url": "{{ home }}",
+        "@id": "{{ canonicalUrl }}#free-offer",
+        "url": "{{ canonicalUrl }}",
         "price": "0",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
         "description": "{{ sc.offerDescription | jsonString | safe }}"
       },
       "featureList": [{% for f in sc.featureList %}"{{ f | jsonString | safe }}"{% if not loop.last %}, {% endif %}{% endfor %}],
-      "image": { "@id": "{{ home }}#primary-image" },
+      "image": { "@id": "{{ canonicalUrl }}#primary-image" },
       "brand": { "@id": "{{ home }}#brand" },
       "creator": { "@id": "{{ home }}#organization" },
       "provider": { "@id": "{{ home }}#organization" },
-      "mainEntityOfPage": { "@id": "{{ home }}#webpage" },
-      "inLanguage": "{{ langCode }}"
-    },
-    {
-      "@type": "HowTo",
-      "@id": "{{ home }}#how-to",
-      "url": "{{ home }}#how-it-works",
-      "name": "{{ sc.howToName | jsonString | safe }}",
-      "description": "{{ sc.howToDescription | jsonString | safe }}",
-      "about": { "@id": "{{ home }}#application" },
-      "mainEntityOfPage": { "@id": "{{ home }}#webpage" },
-      "step": [
-        {%- for step in pageData.howItWorks.steps %}
-        {
-          "@type": "HowToStep",
-          "@id": "{{ home }}#{{ step.anchor }}",
-          "position": {{ loop.index }},
-          "url": "{{ home }}#{{ step.anchor }}",
-          "name": "{{ step.title | jsonString | safe }}",
-          "text": "{{ step.description | jsonString | safe }}"
-        }{% if not loop.last %},{% endif %}
-        {%- endfor %}
-      ],
-      "inLanguage": "{{ langCode }}"
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "{{ home }}#faq",
-      "url": "{{ home }}#faq",
-      "name": "{{ sc.faqName | jsonString | safe }}",
-      "description": "{{ sc.faqDescription | jsonString | safe }}",
-      "isPartOf": { "@id": "{{ home }}#webpage" },
-      "about": { "@id": "{{ home }}#application" },
-      "mainEntity": [
-        {%- for item in pageData.faq.items %}
-        {
-          "@type": "Question",
-          "@id": "{{ home }}#{{ item.anchor }}",
-          "name": "{{ item.q | jsonString | safe }}",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "{{ item.a | jsonString | safe }}"
-          }
-        }{% if not loop.last %},{% endif %}
-        {%- endfor %}
-      ],
+      "mainEntityOfPage": { "@id": "{{ canonicalUrl }}#webpage" },
       "inLanguage": "{{ langCode }}"
     }
   ]

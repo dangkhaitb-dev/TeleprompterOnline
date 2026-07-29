@@ -1,12 +1,13 @@
 {
   "seo": {
     "title": "Free Online Teleprompter with AI Voice Scroll | SolPrompter",
-    "description": "Free online teleprompter with AI voice-activated scrolling, notch mode, and QR remote control. No ads, no sign-up, 100% private.",
+    "description": "Free online teleprompter with voice-activated scrolling, notch mode, and QR remote control. No ads or sign-up; scripts and recordings stay on your device.",
     "canonical": "/",
     "ogTitle": "Free Online Teleprompter — SolPrompter",
     "ogDescription": "Present naturally with our browser-based teleprompter. Automatically scrolls with your voice, minimizes eye movement, and supports QR remote control.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg"
+    "ogImage": "/og-solprompter.jpg",
+    "ogImageAlt": "SolPrompter voice-controlled teleprompter interface"
   },
   "schema": {
     "orgDescription": "SolPrompter provides a free online teleprompter for natural presentations and professional video recording.",
@@ -82,7 +83,7 @@
   "hero": {
     "eyebrow": "SolPrompter — Free Online Teleprompter",
     "title": "Free Online Teleprompter",
-    "subtitle": "Automatically scrolls with your voice, anchors text near the camera lens to prevent eye deviation, and supports remote control via QR code. Free, ad-free, and 100% private.",
+    "subtitle": "Automatically scrolls with your voice and anchors text near the camera lens to reduce eye movement. Scripts and recordings stay on your device.",
     "placeholder": "Paste your script or upload a file to begin...",
     "uploadLabel": "Upload file",
     "uploadLabelShort": "Upload",
@@ -94,7 +95,7 @@
   },
   "messages": {
     "errorEmpty": "Please enter your script content before starting the Teleprompter.",
-    "errorRead": "Unsupported format. Please select a .txt or .md file."
+    "errorRead": "Unsupported format. Please select a .txt, .md, or .docx file."
   },
   "features": {
     "eyebrow": "Key Features",
@@ -131,6 +132,10 @@
     "eyebrow": "Workflow",
     "title": "Simple and Instant",
     "description": "Prepare your script and start presenting or recording in just a few steps.",
+    "resourceLink": {
+      "label": "Read the complete teleprompter guide",
+      "url": "/teleprompter-guide"
+    },
     "steps": [
       {
         "anchor": "step-add-script",
@@ -162,9 +167,9 @@
       "problemTitle": "Problem: Traditional teleprompters scroll at a fixed speed",
       "problemDesc": "If you speak faster, you lose your place. If you pause, the script keeps moving. This makes presentations feel rigid and stressful.",
       "solutionTitle": "Solution: AI Voice-Activated Scrolling",
-      "solutionDesc": "SolPrompter listens and automatically advances the script as you read, adapting instantly to your natural speed in real-time."
+      "solutionDesc": "SolPrompter listens and advances the script as you read, adjusting to changes in your speaking pace."
     },
-    "description": "Voice recognition follows your delivery and advances the script as you speak, adapting instantly whenever your pace changes.",
+    "description": "Voice recognition follows your delivery and advances the script as you speak, responding whenever your pace changes.",
     "benefits": [
       {
         "title": "Speak naturally",
@@ -212,7 +217,7 @@
   "remote": {
     "eyebrow": "Remote Control",
     "title": "Scan a QR to control from any device",
-    "description": "Connect a phone or tablet via QR code using secure WebSockets. Control your presentation without installing external applications.",
+    "description": "Connect a phone or tablet with a QR code and a paired WebSocket session. Control your presentation without installing another application.",
     "items": [
       {
         "title": "Play & pause script",
@@ -244,11 +249,11 @@
   "recording": {
     "eyebrow": "Recording & Privacy",
     "title": "In-Browser 4K Recording & Local Script Privacy",
-    "description": "Capture crisp video straight from the browser while keeping your scripts 100% private in local storage.",
+    "description": "Capture video in the browser while keeping scripts and recordings in local browser storage on your device.",
     "items": [
       {
         "title": "Live Camera Preview",
-        "description": "Preview and check your framing and alignment before hit recording."
+        "description": "Preview and check your framing and alignment before recording."
       },
       {
         "title": "Record Full HD & 4K",
@@ -270,6 +275,10 @@
     "cta": {
       "label": "Start recording",
       "url": "/teleprompter.html"
+    },
+    "resourceLink": {
+      "label": "Read how SolPrompter handles local content",
+      "url": "/policy"
     }
   },
   "workspace": {
@@ -364,69 +373,17 @@
   "comparison": {
     "eyebrow": "Comparison",
     "title": "A Complete Browser Teleprompter",
-    "description": "Compare SolPrompter's core features against existing marketplace alternatives.",
-    "table": {
-      "headers": [
-        "Feature",
-        "SolPrompter",
-        "PromptSmart",
-        "TeleprompterMirror"
-      ],
-      "rows": [
-        {
-          "feature": "AI Voice Scrolling",
-          "sol": "Free",
-          "smart": "Subscription required",
-          "mirror": "Not supported"
-        },
-        {
-          "feature": "Browser Based",
-          "sol": "Yes",
-          "smart": "No (App download)",
-          "mirror": "Yes"
-        },
-        {
-          "feature": "Script Privacy",
-          "sol": "100% Local on Device",
-          "smart": "Local on Device",
-          "mirror": "Local on Device"
-        },
-        {
-          "feature": "QR Remote Control",
-          "sol": "Yes (No installation)",
-          "smart": "Yes (App download)",
-          "mirror": "Not supported"
-        },
-        {
-          "feature": "Banner Advertisements",
-          "sol": "Ad-free",
-          "smart": "Ad-free",
-          "mirror": "Yes (Banner ads)"
-        },
-        {
-          "feature": "4K Video Recording",
-          "sol": "Supported (Desktop)",
-          "smart": "Not supported",
-          "mirror": "Not supported"
-        },
-        {
-          "feature": "Price",
-          "sol": "Completely free",
-          "smart": "Paid subscription",
-          "mirror": "Free (Ad-supported)"
-        }
-      ]
-    },
+    "description": "Use voice, fixed-speed, or manual scrolling; control the prompt remotely; and record from one browser-based workspace.",
     "whyChoose": {
       "title": "Why Creators Choose SolPrompter",
       "items": [
         {
           "title": "Free voice-activated scrolling",
-          "description": "Unlike subscription tools that lock voice sync behind paywalls, SolPrompter includes it for free, powered directly by browser speech recognition."
+          "description": "Voice-activated scrolling is available without signup or payment and uses speech recognition supplied by your browser."
         },
         {
           "title": "Your data stays on your machine",
-          "description": "Your scripts are processed locally in your browser. We never transmit your content, guaranteeing total privacy for drafts."
+          "description": "Scripts and recordings stay in local browser storage. Depending on browser support, voice recognition may run on-device or use the browser provider's recognition service."
         },
         {
           "title": "No signup or setup required",
@@ -441,7 +398,7 @@
     "title": "Making online reading feel like a natural conversation",
     "paragraphs": [
       "SolPrompter was built to help speakers present confidently without memorizing long texts or fidgeting with scroll speeds.",
-      "We focus on creating a minimal, high-end online teleprompter that blends accurate voice tracking, ergonomic design, and simple video recording.",
+      "We focus on creating a minimal online teleprompter that combines speech-aligned scrolling, ergonomic design, and simple video recording.",
       "Whether you are shooting on a phone, recording from a laptop, or managing a studio, SolPrompter keeps you focused on your audience."
     ]
   },
@@ -462,17 +419,17 @@
       {
         "anchor": "faq-maintain-eye-contact",
         "q": "How do I avoid looking like I am reading and maintain eye contact?",
-        "a": "<strong>Activate SolPrompter's Notch Mode to position your script directly below the lens.</strong> This narrows the text width to 50-70 characters and anchors it at the top-center. By reducing eye movement to under 3 degrees, it gives the appearance that you are speaking directly to the viewer."
+        "a": "<strong>Activate SolPrompter's Notch Mode to position your script directly below the lens.</strong> A narrower reading column reduces visible side-to-side scanning, but the result still depends on your screen size, camera position, and reading distance."
       },
       {
         "anchor": "faq-vs-app-store",
         "q": "Why choose SolPrompter over an App Store application?",
-        "a": "<strong>SolPrompter works directly on the web, requires no download, and does not put watermarks on your video exports.</strong> Most mobile applications limit script length or charge monthly fees to toggle simple features. SolPrompter provides full functionality out of the box."
+        "a": "<strong>SolPrompter works directly on the web, requires no download, and does not put watermarks on your video exports.</strong> It is a practical option when you want to paste a script and start without installing or creating an account."
       },
       {
         "anchor": "faq-remote-control-stability",
         "q": "Will the remote disconnect when my phone locks or goes to sleep?",
-        "a": "<strong>No, SolPrompter's remote uses persistent WebSockets with a heartbeat protocol to ensure stability.</strong> As long as the teleprompter tab remains active, the link stays alive with under 10ms latency, preventing the dropouts common in hardware clickers."
+        "a": "<strong>SolPrompter's remote uses a persistent WebSocket session with a heartbeat to detect connection loss.</strong> Actual latency and behavior while a phone is locked depend on the devices, browser power-saving rules, and network quality."
       },
       {
         "anchor": "faq-physical-beamsplitter",
@@ -482,7 +439,7 @@
       {
         "anchor": "faq-script-privacy",
         "q": "Are my scripts and corporate drafts secure?",
-        "a": "<strong>Yes. Your scripts and recordings remain on your device while you work.</strong> SolPrompter does not upload this content to its servers, helping keep confidential drafts under your control."
+        "a": "<strong>Your scripts and recordings remain on your device while you work.</strong> SolPrompter does not upload that content to its servers. Voice recognition may still use an on-device engine or a recognition service supplied by your browser."
       },
       {
         "anchor": "faq-ghosting-blur",
@@ -492,23 +449,23 @@
       {
         "anchor": "faq-offline-use",
         "q": "Can I run the teleprompter offline?",
-        "a": "<strong>The teleprompter workspace operates offline once loaded, but voice sync requires internet.</strong> The speech recognition uses native browser APIs, which process audio via Google or Apple cloud servers. For offline settings, switch to fixed-speed or manual scrolling."
+        "a": "<strong>The teleprompter workspace can continue after the page has loaded, but voice sync availability depends on your browser's recognition mode.</strong> Use fixed-speed or manual scrolling when an offline speech-recognition engine is unavailable."
       },
       {
         "anchor": "faq-font-size-distance",
         "q": "How do I determine the right font size for my reading distance?",
-        "a": "<strong>A general benchmark is to size your font to 1 inch of height for every 10 feet of reading distance.</strong> For close-up laptop reading, a smaller, narrow text layout is preferred to prevent eyes from visibly scanning left and right."
+        "a": "<strong>Increase the font size as your reading distance grows, then test it at the exact camera position before recording.</strong> For close laptop reading, use a narrower text column to reduce visible side-to-side scanning."
       }
     ]
   },
   "engineering": {
     "eyebrow": "Built for the Real World",
     "title": "Fast, Private, and Ready to Perform",
-    "description": "See how SolPrompter keeps scripts on your device, responds in real time, and runs directly in the browser without downloads or complicated setup.",
+    "description": "See how SolPrompter keeps scripts on your device, follows spoken words, and runs directly in the browser without downloads or complicated setup.",
     "principles": [
       {
         "title": "Why We Built SolPrompter",
-        "description": "Existing teleprompter software often locks essential features (like voice scrolling or watermark-free recording) behind expensive monthly subscriptions. We built SolPrompter to provide a high-end, completely free online teleprompter with no signup required, making professional tools accessible to all creators."
+        "description": "We built SolPrompter to make voice scrolling, flexible reading controls, and watermark-free recording available in a free browser tool with no signup required."
       },
       {
         "title": "Why It Runs in Your Browser",
@@ -519,35 +476,12 @@
         "description": "Your scripts and recordings remain on your device instead of being uploaded to SolPrompter, giving you direct control over sensitive content."
       }
     ],
-    "benchmarksTitle": "Measured Performance",
-    "benchmarks": [
-      {
-        "metric": "AI Voice Scroll Latency",
-        "sol": "< 50ms (Real-time)",
-        "trad": "N/A (Fixed Speed)"
-      },
-      {
-        "metric": "Speech Detection Accuracy",
-        "sol": "98% (Multi-language)",
-        "trad": "Manual Control Only"
-      },
-      {
-        "metric": "CPU Usage (Idle/Scroll)",
-        "sol": "< 2% / 5%",
-        "trad": "High (Desktop App)"
-      },
-      {
-        "metric": "Battery Consumption",
-        "sol": "Minimal (Native Web API)",
-        "trad": "Moderate to High"
-      },
-      {
-        "metric": "Supported Browsers",
-        "sol": "Chrome, Edge, Safari, Firefox",
-        "trad": "OS-restricted Apps"
-      }
-    ],
-    "benchmarksSupport": "Tested on Apple M2 (macOS) and Intel Core i7 (Windows 11) using Chrome 120."
+    "evidenceTitle": "Performance with documented limits",
+    "evidenceSummary": "Voice recognition accuracy and response time vary with the browser, language, microphone, background noise, and reading style.",
+    "benchmarkLink": {
+      "label": "Read the SolPrompter feature notes",
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+    }
   },
   "footer": {
     "brand": "SolPrompter",

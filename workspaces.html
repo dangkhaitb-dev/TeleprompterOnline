@@ -82,7 +82,7 @@
   "toastDeleteError": "Could not delete that script",
   "toastFolderDeleted": "Folder deleted",
   "toastMoved": "Moved",
-  "toastUploadUnsupported": "Unsupported format. Choose a .txt, .md, or .json file.",
+  "toastUploadUnsupported": "Unsupported format. Choose a .txt, .md, .docx, or .json file.",
   "toastUploadEmpty": "That file looks empty. Add some text and try again.",
   "toastReadError": "Could not read that file.",
   "toastExportedJson": "Script exported as JSON",
@@ -206,7 +206,7 @@
         </nav>
 
         <!-- Hidden file input (Upload) -->
-        <input type="file" accept=".txt,.md,.markdown,.fountain,.text,.json,text/plain,application/json" hidden id="wsFileInput">
+        <input type="file" accept=".txt,.md,.markdown,.fountain,.text,.docx,.json,text/plain,application/json,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden id="wsFileInput">
 
         <div class="ws-credits-card ws-credits-card--free">
           <div class="ws-credits-header">
@@ -268,7 +268,7 @@
             <div class="ws-video-grid" id="videoGrid"></div>
             <div class="ws-scripts-empty" id="wsScriptsEmpty" hidden>
               <h3 class="ws-empty-title">No scripts yet</h3>
-              <p class="ws-empty-body">Create a new script or upload a .txt / .md file to start your first teleprompter recording.</p>
+              <p class="ws-empty-body">Create a new script or upload a .txt, .md, or .docx file to start your first teleprompter recording.</p>
             </div>
           </div>
         </section>
@@ -354,7 +354,7 @@
       <line x1="12" y1="3" x2="12" y2="15"/>
     </svg>
     <h2>Drop your script here</h2>
-    <p>Plain text or Markdown (.txt, .md)</p>
+    <p>Plain text, Markdown, or Word (.txt, .md, .docx)</p>
   </div>
 </div>
 

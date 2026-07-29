@@ -1,12 +1,13 @@
 {
   "seo": {
     "title": "支持 AI 语音滚动的免费在线提词器 | SolPrompter",
-    "description": "免费在线提词器，具有人工智能语音激活滚动、缺口模式和二维码遥控功能。无广告，无需注册，100% 私密。",
+    "description": "免费在线提词器，配备语音激活滚动、相机贴齐模式（notch mode）及 QR 码远程控制。无广告、免注册，文稿与录像均保留在您的设备上。",
     "canonical": "/zh/",
     "ogTitle": "免费在线提词器 — SolPrompter",
     "ogDescription": "使用我们基于浏览器的提词器自然地呈现。随着您的声音自动滚动，最大限度地减少眼球运动，并支持二维码远程控制。",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg"
+    "ogImage": "/og-solprompter.jpg",
+    "ogImageAlt": "SolPrompter 语音控制提词器界面"
   },
   "schema": {
     "orgDescription": "SolPrompter 提供免费的在线提词器，用于自然演示和专业视频录制。",
@@ -82,7 +83,7 @@
   "hero": {
     "eyebrow": "SolPrompter — 免费在线提词器",
     "title": "免费在线提词器",
-    "subtitle": "随着您的声音自动滚动，将文本锚定在相机镜头附近以防止视线偏差，并支持通过二维码进行远程控制。免费、无广告且 100% 私密。",
+    "subtitle": "自动随您的声音滚动，并将文字锚定在相机镜头附近，以减少眼球转动。文稿与录像均保留在您的设备上。",
     "placeholder": "粘贴您的脚本或上传文件即可开始……",
     "uploadLabel": "上传文件",
     "uploadLabelShort": "上传",
@@ -94,7 +95,7 @@
   },
   "messages": {
     "errorEmpty": "开始使用提词器前，请先输入您的脚本内容。",
-    "errorRead": "不支持的格式。请选择 .txt 或 .md 文件。"
+    "errorRead": "不支持的格式。请选择 .txt、.md 或 .docx 文件。"
   },
   "features": {
     "eyebrow": "主要特点",
@@ -131,6 +132,10 @@
     "eyebrow": "工作流程",
     "title": "简单即时",
     "description": "只需几个步骤即可准备好脚本并开始演示或录制。",
+    "resourceLink": {
+      "label": "阅读完整的提词器指南",
+      "url": "/teleprompter-guide"
+    },
     "steps": [
       {
         "anchor": "step-add-script",
@@ -162,9 +167,9 @@
       "problemTitle": "问题：传统提词器以固定速度滚动",
       "problemDesc": "如果你说得更快，你就会失去位置。如果你暂停，脚本就会继续移动。这使得演示感觉僵化且有压力。",
       "solutionTitle": "解决方案：AI语音滚动",
-      "solutionDesc": "SolPrompter 会在您阅读时聆听并自动推进脚本，实时适应您的自然速度。"
+      "solutionDesc": "SolPrompter 会在您朗读时进行聆听并推进文稿，从而适应您说话速度的变化。"
     },
-    "description": "语音识别会跟随您的讲话并在您说话时推进脚本，只要您的节奏发生变化，就会立即适应。",
+    "description": "语音识别会跟随您的表达并在您说话时推进文稿，在您的速度发生任何变化时即时做出响应。",
     "benefits": [
       {
         "title": "说话自然",
@@ -212,7 +217,7 @@
   "remote": {
     "eyebrow": "遥控",
     "title": "扫描二维码即可从任何设备进行控制",
-    "description": "使用安全 WebSocket 通过 QR 码连接手机或平板电脑。无需安装外部应用程序即可控制您的演示文稿。",
+    "description": "通过 QR 码和配对的 WebSocket 会话连接手机或平板电脑。无需安装其他应用程序即可控制您的演示。",
     "items": [
       {
         "title": "播放和暂停脚本",
@@ -244,11 +249,11 @@
   "recording": {
     "eyebrow": "录音与隐私",
     "title": "浏览器内 4K 录制和本地脚本隐私",
-    "description": "直接从浏览器捕获清晰的视频，同时在本地存储中保持脚本 100% 私密。",
+    "description": "在浏览器中录制视频，同时将文稿和录像保留在您设备的浏览器本地存储空间中。",
     "items": [
       {
         "title": "实时摄像头预览",
-        "description": "在录制之前预览并检查您的取景和对齐情况。"
+        "description": "在录制前预览并检查您的构图与对齐情况。"
       },
       {
         "title": "录制全高清和 4K",
@@ -270,6 +275,10 @@
     "cta": {
       "label": "开始录音",
       "url": "/teleprompter.html"
+    },
+    "resourceLink": {
+      "label": "阅读 SolPrompter 如何处理本地内容",
+      "url": "/policy"
     }
   },
   "workspace": {
@@ -364,69 +373,17 @@
   "comparison": {
     "eyebrow": "比较",
     "title": "完整的浏览器提词器",
-    "description": "将 SolPrompter 的核心功能与现有市场替代方案进行比较。",
-    "table": {
-      "headers": [
-        "特征",
-        "索尔提示器",
-        "提示智能",
-        "提词镜"
-      ],
-      "rows": [
-        {
-          "feature": "AI语音滚动",
-          "sol": "自由的",
-          "smart": "需要订阅",
-          "mirror": "不支持"
-        },
-        {
-          "feature": "基于浏览器",
-          "sol": "是的",
-          "smart": "否（应用程序下载）",
-          "mirror": "是的"
-        },
-        {
-          "feature": "脚本隐私",
-          "sol": "100% 设备本地",
-          "smart": "设备本地",
-          "mirror": "设备本地"
-        },
-        {
-          "feature": "二维码遥控器",
-          "sol": "是（无需安装）",
-          "smart": "是（应用程序下载）",
-          "mirror": "不支持"
-        },
-        {
-          "feature": "横幅广告",
-          "sol": "无广告",
-          "smart": "无广告",
-          "mirror": "是（横幅广告）"
-        },
-        {
-          "feature": "4K视频录制",
-          "sol": "支持（桌面）",
-          "smart": "不支持",
-          "mirror": "不支持"
-        },
-        {
-          "feature": "价格",
-          "sol": "完全免费",
-          "smart": "付费订阅",
-          "mirror": "免费（有广告）"
-        }
-      ]
-    },
+    "description": "使用语音、固定速度或手动滚动；远程控制提词器；并从单个浏览器工作区进行录制。",
     "whyChoose": {
       "title": "为什么创作者选择 SolPrompter",
       "items": [
         {
           "title": "免费声控滚动",
-          "description": "与将语音同步锁定在付费墙后面的订阅工具不同，SolPrompter 是免费提供的，直接由浏览器语音识别提供支持。"
+          "description": "语音激活滚动免注册或付费即可使用，并使用浏览器提供的语音识别功能。"
         },
         {
           "title": "您的数据保留在您的机器上",
-          "description": "您的脚本在浏览器中本地处理。我们绝不会传输您的内容，保证草稿的完全隐私。"
+          "description": "文稿和录像保留在浏览器本地存储空间中。视浏览器支持情况而定，语音识别可能会在设备上运行，或使用浏览器供应商的识别服务。"
         },
         {
           "title": "无需注册或设置",
@@ -441,7 +398,7 @@
     "title": "让在线阅读感觉像一次自然的对话",
     "paragraphs": [
       "SolPrompter 旨在帮助演讲者自信地进行演示，而无需记住长文本或担心滚动速度。",
-      "我们专注于创建一个最小的高端在线提词器，融合了准确的语音跟踪、人体工程学设计和简单的视频录制。",
+      "我们专注于打造一个极简的在线提词器，结合语音同步滚动、人机工程学设计与简易的视频录制功能。",
       "无论您是用手机拍摄、用笔记本电脑录音还是管理工作室，SolPrompter 都能让您专注于观众。"
     ]
   },
@@ -462,17 +419,17 @@
       {
         "anchor": "常见问题保持目光接触",
         "q": "如何避免看起来像是在读书并保持目光接触？",
-        "a": "<strong>激活 SolPrompter 的缺口模式，将脚本直接放置在镜头下方。</strong>这会将文本宽度缩小到 50-70 个字符，并将其固定在顶部中心。通过将眼球运动减少到 3 度以下，您看起来就像是在直接与观众交谈。"
+        "a": "<strong>启用 SolPrompter 的相机贴齐模式（Notch Mode），将您的文稿直接置于镜头下方。</strong> 较窄的阅读栏目可减少显著的左右扫视，但结果仍取决于您的屏幕大小、相机位置和阅读距离。"
       },
       {
         "anchor": "常见问题与应用商店",
         "q": "为什么选择 SolPrompter 而不是 App Store 应用程序？",
-        "a": "<strong>SolPrompter 直接在网络上运行，无需下载，并且不会在导出的视频上添加水印。</strong>大多数移动应用程序都会限制脚本长度或收取月费来切换简单功能。 SolPrompter 提供开箱即用的完整功能。"
+        "a": "<strong>SolPrompter 直接在网页上运行，无需下载，且导出的视频不会加上水印。</strong> 当您想直接粘贴文稿并开始使用，而不想安装或创建账户时，这是一个实用的选择。"
       },
       {
         "anchor": "遥控器稳定性常见问题解答",
         "q": "当我的手机锁定或进入睡眠状态时，遥控器会断开连接吗？",
-        "a": "<strong>不会，SolPrompter 的远程使用持久性 WebSocket 和心跳协议来确保稳定性。</strong>只要提词器选项卡保持活动状态，链接就会保持活动状态，延迟时间低于 10 毫秒，从而防止硬件答题器中常见的丢失情况。"
+        "a": "<strong>SolPrompter 的远程控制使用具有心跳机制的持久 WebSocket 会话，以检测连接中断。</strong> 手机锁定时实际延迟与行为取决于设备、浏览器省电规则及网络质量。"
       },
       {
         "anchor": "物理分束器常见问题解答",
@@ -482,7 +439,7 @@
       {
         "anchor": "常见问题解答脚本隐私",
         "q": "我的脚本和公司草稿安全吗？",
-        "a": "<strong>是的。当您工作时，您的脚本和录音会保留在您的设备上。</strong>SolPrompter 不会将此内容上传到其服务器，从而帮助您控制机密草稿。"
+        "a": "<strong>您的文稿和录像在您工作时会保留在您的设备上。</strong> SolPrompter 不会将该内容上传到其服务器。语音识别仍可能使用设备端引擎或浏览器提供的识别服务。"
       },
       {
         "anchor": "重影模糊常见问题解答",
@@ -492,23 +449,23 @@
       {
         "anchor": "离线使用常见问题解答",
         "q": "我可以离线运行提词器吗？",
-        "a": "<strong>提词器工作区加载后即可离线运行，但语音同步需要互联网。</strong>语音识别使用本机浏览器 API，通过 Google 或 Apple 云服务器处理音频。对于离线设置，请切换到固定速度或手动滚动。"
+        "a": "<strong>提词器工作区可在网页加载后离线继续使用，但语音同步的可用性取决于您浏览器的识别模式。</strong> 当无法使用离线语音识别引擎时，请使用固定速度或手动滚动。"
       },
       {
         "anchor": "常见问题解答-字体大小-距离",
         "q": "如何确定适合我的阅读距离的字体大小？",
-        "a": "<strong>一般基准是，每 10 英尺的阅读距离，字体高度为 1 英寸。</strong>对于近距离笔记本电脑阅读，首选较小、较窄的文本布局，以防止眼睛明显地左右扫视。"
+        "a": "<strong>随着阅读距离增加，请加大字体大小，并在录像前在准确的相机位置进行测试。</strong> 对于笔记本电脑的近距离阅读，请使用较窄的文本栏以减少显著的左右扫视。"
       }
     ]
   },
   "engineering": {
     "eyebrow": "为现实世界而打造",
     "title": "快速、私密且随时可用",
-    "description": "了解 SolPrompter 如何将脚本保留在您的设备上、实时响应并直接在浏览器中运行，无需下载或复杂的设置。",
+    "description": "了解 SolPrompter 如何将文稿保留在您的设备上、随说话字词滚动，并直接在浏览器中运行，无需下载或复杂的设置。",
     "principles": [
       {
         "title": "我们为什么构建 SolPrompter",
-        "description": "现有的提词器软件通常将基本功能（如语音滚动或无水印录音）锁定在昂贵的每月订阅后面。我们构建 SolPrompter 是为了提供高端、完全免费的在线提词器，无需注册，使所有创作者都可以使用专业工具。"
+        "description": "我们打造 SolPrompter，旨在在免注册的免费浏览器工具中，提供语音滚动、灵活的阅读控制以及无水印的录像功能。"
       },
       {
         "title": "为什么它在您的浏览器中运行",
@@ -519,35 +476,12 @@
         "description": "您的脚本和录音保留在您的设备上，而不是上传到 SolPrompter，让您可以直接控制敏感内容。"
       }
     ],
-    "benchmarksTitle": "实测性能",
-    "benchmarks": [
-      {
-        "metric": "AI语音滚动延迟",
-        "sol": "< 50ms（实时）",
-        "trad": "不适用（定速）"
-      },
-      {
-        "metric": "语音检测准确度",
-        "sol": "98%（多语言）",
-        "trad": "仅手动控制"
-      },
-      {
-        "metric": "CPU 使用率（空闲/滚动）",
-        "sol": "< 2% / 5%",
-        "trad": "高（桌面应用程序）"
-      },
-      {
-        "metric": "电池消耗",
-        "sol": "最小（本机 Web API）",
-        "trad": "中到高"
-      },
-      {
-        "metric": "支持的浏览器",
-        "sol": "Chrome、Edge、Safari、火狐",
-        "trad": "操作系统限制的应用程序"
-      }
-    ],
-    "benchmarksSupport": "使用 Chrome 120 在 Apple M2 (macOS) 和 Intel Core i7 (Windows 11) 上进行了测试。"
+    "evidenceTitle": "具备已记录限制的性能表现",
+    "evidenceSummary": "语音识别的准确度与响应时间会因浏览器、语言、麦克风、背景噪音及朗读风格而异。",
+    "benchmarkLink": {
+      "label": "阅读 SolPrompter 功能记录",
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+    }
   },
   "footer": {
     "brand": "SolPrompter",

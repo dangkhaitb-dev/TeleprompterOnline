@@ -6,9 +6,10 @@ lang: en
 ---
 {%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
 {%- from "partials/logo.njk" import brandLogo -%}
+{%- from "partials/blog-listing.njk" import blogListing -%}
 {%- set logoSvg = brandLogo('currentColor') -%}
 
-<a class="skip-link" href="#main">Skip to articles</a>
+<a class="skip-link" href="#main">{{ pageData.skipToArticles }}</a>
 
 <header class="nav blog-nav">
     <div class="nav-inner">
@@ -32,7 +33,7 @@ lang: en
             "@context": "https://schema.org",
             "@type": "Blog",
             "@id": "{{ site.url }}/blog/#blog",
-            "name": "{{ pageData.heading | jsonString | safe }}",
+            "name": "{{ pageData.hero.heading | jsonString | safe }}",
             "description": "{{ pageData.seo.description | jsonString | safe }}",
             "url": "{{ site.url }}/blog",
             "inLanguage": "en-US",
@@ -45,10 +46,10 @@ lang: en
                 {%- for article in blogArticles %}
                 {
                     "@type": "BlogPosting",
-                    "@id": "{{ site.url }}/blog/{{ article.slug }}/#article",
+                    "@id": "{{ site.url }}/blog/{{ article.categorySlug }}/{{ article.slug }}/#article",
                     "headline": "{{ article.title | jsonString | safe }}",
                     "description": "{{ article.seo.description | jsonString | safe }}",
-                    "url": "{{ site.url }}/blog/{{ article.slug }}/",
+                    "url": "{{ site.url }}/blog/{{ article.categorySlug }}/{{ article.slug }}/",
                     "image": "{{ article.seo.image }}",
                     "datePublished": "{{ article.date }}",
                     "dateModified": "{{ article.modified }}",
@@ -61,32 +62,32 @@ lang: en
             ]
         }
     </script>
-    <section class="blog-posts-section" aria-labelledby="articles-heading">
-        <h1 id="articles-heading" class="blog-heading">{{ pageData.heading }}</h1>
+    <section class="blog-hero" aria-labelledby="blog-heading">
+        <div class="blog-hero-inner">
+            <p class="blog-eyebrow">{{ pageData.hero.eyebrow }}</p>
+            <div class="blog-hero-copy">
+                <h1 id="blog-heading" class="blog-heading">{{ pageData.hero.heading }}</h1>
+                <p class="blog-intro">{{ pageData.hero.description }}</p>
+            </div>
+        </div>
+    </section>
 
-        <div class="blog-posts">
-            {%- for article in blogArticles %}
-            <article class="blog-post">
-                <a class="blog-post-item" href="/blog/{{ article.slug }}/">
-                    <div class="blog-post-image">
-                        <img
-                            src="{{ article.hero.src }}"
-                            width="{{ article.hero.width }}"
-                            height="{{ article.hero.height }}"
-                            alt="{{ article.hero.alt }}"
-                            loading="lazy"
-                            fetchpriority="auto"
-                            decoding="async"
-                            class="blog-post-thumbnail">
-                    </div>
-                    <div class="blog-post-content">
-                        <time class="blog-meta" datetime="{{ article.date }}">{{ article.dateDisplay }}</time>
-                        <h2 class="blog-post-title">{{ article.title }}</h2>
-                    </div>
-                </a>
-            </article>
+    <nav class="blog-category-nav" aria-label="{{ pageData.categoriesLabel }}">
+        <div class="blog-category-nav-inner">
+            <a class="blog-category-nav-link is-current" href="/blog" aria-current="page">
+                {{ pageData.allArticles }} <span>{{ blogArticles.length }}</span>
+            </a>
+            {%- for category in blogCategories %}
+            <a class="blog-category-nav-link" href="/blog/{{ category.slug }}/">
+                {{ category.name }} <span>{{ category.articles.length }}</span>
+            </a>
             {%- endfor %}
         </div>
+    </nav>
+
+    <section class="blog-posts-section" aria-labelledby="articles-heading">
+        <h2 id="articles-heading" class="blog-section-heading">{{ pageData.articlesHeading }}</h2>
+        {{- blogListing(blogArticles, pageData) -}}
     </section>
 </main>
 

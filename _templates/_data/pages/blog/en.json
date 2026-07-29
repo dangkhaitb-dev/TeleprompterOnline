@@ -1,7 +1,10 @@
 {
   "seo": {
     "title": "Blog — SolPrompter",
-    "description": "Read the latest articles, research and product news from SolPrompter."
+    "description": "Read product notes, practical teleprompter guides and research from the SolPrompter team.",
+    "categoryTitleSuffix": "articles — SolPrompter Blog",
+    "categoryDescriptionPrefix": "Read SolPrompter articles in the ",
+    "categoryDescriptionSuffix": " category."
   },
   "nav": {
     "items": [
@@ -12,7 +15,33 @@
     ],
     "workspaces": "Workspaces"
   },
-  "heading": "SolPrompter Blog",
+  "hero": {
+    "eyebrow": "Notes from the studio",
+    "heading": "Ideas for a more natural take.",
+    "description": "Product decisions, field tests and practical guidance for people who speak on camera."
+  },
+  "categoriesLabel": "Browse blog categories",
+  "skipToArticles": "Skip to articles",
+  "skipToArticle": "Skip to article",
+  "breadcrumbLabel": "Breadcrumb",
+  "allArticles": "All articles",
+  "articlesHeading": "Latest articles",
+  "featuredArticle": "Featured article",
+  "readArticle": "Read article",
+  "category": {
+    "eyebrow": "Category",
+    "backLabel": "All articles",
+    "descriptionPrefix": "Product notes, tests and practical guidance filed under ",
+    "descriptionSuffix": "."
+  },
+  "empty": "No published articles yet.",
+  "breadcrumb": {
+    "blog": "Blog"
+  },
+  "review": {
+    "reviewedBy": "Reviewed by",
+    "updated": "Updated"
+  },
   "footer": {
     "version": "- v1.2.0",
     "links": [

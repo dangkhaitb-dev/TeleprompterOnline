@@ -30,7 +30,7 @@
   },
   "empty": {
     "title": "No scripts yet",
-    "body": "Create a new script or upload a .txt / .md file to start your first teleprompter recording."
+    "body": "Create a new script or upload a .txt, .md, or .docx file to start your first teleprompter recording."
   },
   "recordings": {
     "emptyTitle": "No recordings yet",
@@ -129,7 +129,7 @@
     "deleteError": "Could not delete that script",
     "folderDeleted": "Folder deleted",
     "moved": "Moved",
-    "uploadUnsupported": "Unsupported format. Choose a .txt, .md, or .json file.",
+    "uploadUnsupported": "Unsupported format. Choose a .txt, .md, .docx, or .json file.",
     "uploadEmpty": "That file looks empty. Add some text and try again.",
     "readError": "Could not read that file.",
     "exportedJson": "Script exported as JSON",
@@ -145,7 +145,7 @@
   },
   "drag": {
     "dropTitle": "Drop your script here",
-    "dropHint": "Plain text or Markdown (.txt, .md)"
+    "dropHint": "Plain text, Markdown, or Word (.txt, .md, .docx)"
   },
   "storage": {
     "label": "Storage",

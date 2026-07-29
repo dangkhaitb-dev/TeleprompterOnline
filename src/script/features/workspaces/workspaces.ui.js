@@ -70,7 +70,8 @@ const LONG_PRESS_MOVE_TOLERANCE = 10;
 const TOUCH_DRAG_ARM_MS = 260;
 const TOUCH_DRAG_START_DISTANCE = 6;
 const TOUCH_DRAG_EDGE_SCROLL = 64;
-const ACCEPTED_EXT = ['txt', 'md', 'markdown', 'fountain', 'text', 'json'];
+const ACCEPTED_EXT = ['txt', 'md', 'markdown', 'fountain', 'text', 'docx', 'json'];
+const DOCX_MIME_TYPE = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document';
 const MAX_JSON_UPLOAD_BYTES = 10 * 1024 * 1024;
 function readCopy() {
   const el = document.getElementById('wsCopy');
@@ -1167,8 +1168,8 @@ export function initWorkspacesUI() {
   const ingestFile = async (file, trigger = null) => {
     if (!file) return;
     const ext = (file.name.split('.').pop() || '').toLowerCase();
-    if (!ACCEPTED_EXT.includes(ext)) {
-      showToast(t('toastUploadUnsupported', 'Unsupported format. Choose a .txt, .md, or .json file.'), {
+    if (!ACCEPTED_EXT.includes(ext) && file.type !== DOCX_MIME_TYPE) {
+      showToast(t('toastUploadUnsupported', 'Unsupported format. Choose a .txt, .md, .docx, or .json file.'), {
         variant: 'error',
       });
       return;

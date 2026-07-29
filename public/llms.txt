@@ -16,7 +16,7 @@ SolPrompter is currently free to use, without advertisements or a branded video 
 ## Research and Updates
 
 - [SolPrompter blog](https://solprompter.com/blog): Product research, announcements and articles.
-- [Inside SolPrompter: Every AI Teleprompter Feature Tested](https://solprompter.com/blog/inside-solprompter-every-ai-teleprompter-feature-tested): Detailed testing of AI Voice Scroll, Notch Mode, remote control, recording, privacy and performance.
+- [SolPrompter AI Teleprompter: Features Tested](https://solprompter.com/blog/product/solprompter-ai-teleprompter-features-tested/): Feature-by-feature coverage of AI Voice Scroll, Notch Mode, remote control, recording, privacy and performance considerations.
 
 ## Policies
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 // Auto-generates public/sitemap.xml from the HTML that 11ty emits to the repo
-// root (+ blog/<slug>/index.html and future pages/<lang>/index.html). Runs in
+// root (+ nested blog routes and future pages/<lang>/index.html). Runs in
 // the build pipeline between `build:11ty` and `vite build` (see gen:sitemap).
 //
 // Pages carrying `<meta name="robots" content="noindex">` (e.g. the app views
@@ -45,13 +45,25 @@ function urlEntry(loc, priority, alternatesXml = '') {
   </url>`;
 }
 
-// blog/<slug>/index.html -> { relPath, urlPath }
-function collectBlogArticles() {
-  if (!fs.existsSync(CONFIG.blogDir)) return [];
-  return fs
-    .readdirSync(CONFIG.blogDir, { withFileTypes: true })
-    .filter((e) => e.isDirectory() && fs.existsSync(path.join(CONFIG.blogDir, e.name, 'index.html')))
-    .map((e) => ({ relPath: `blog/${e.name}/index.html`, urlPath: `blog/${e.name}` }));
+// blog/**/index.html -> { relPath, urlPath }
+function collectBlogRoutes(currentDir = CONFIG.blogDir, segments = []) {
+  if (!fs.existsSync(currentDir)) return [];
+
+  return fs.readdirSync(currentDir, { withFileTypes: true }).flatMap((entry) => {
+    if (!entry.isDirectory()) return [];
+
+    const nextSegments = [...segments, entry.name];
+    const nestedDir = path.join(currentDir, entry.name);
+    const indexPath = path.join(nestedDir, 'index.html');
+    const currentRoute = fs.existsSync(indexPath)
+      ? [{
+        relPath: path.posix.join('blog', ...nextSegments, 'index.html'),
+        urlPath: `${path.posix.join('blog', ...nextSegments)}/`,
+      }]
+      : [];
+
+    return [...currentRoute, ...collectBlogRoutes(nestedDir, nextSegments)];
+  });
 }
 
 // pages/<lang>/index.html -> localized home pages. The directory name is the
@@ -104,10 +116,10 @@ function generateSitemap() {
     entries.push({ relPath: page.relPath, urlPath: page.urlPath, priority: CONFIG.homePriority, isHome: true, hreflang: page.hreflang });
   }
 
-  // Blog articles: blog/<slug>/index.html
-  for (const article of collectBlogArticles()) {
-    if (isNoindex(path.join(CONFIG.rootDir, article.relPath))) continue;
-    entries.push({ relPath: article.relPath, urlPath: article.urlPath, priority: CONFIG.defaultPriority });
+  // Blog category and article routes: blog/**/index.html
+  for (const blogRoute of collectBlogRoutes()) {
+    if (isNoindex(path.join(CONFIG.rootDir, blogRoute.relPath))) continue;
+    entries.push({ relPath: blogRoute.relPath, urlPath: blogRoute.urlPath, priority: CONFIG.defaultPriority });
   }
 
   const sorted = entries.sort((a, b) => a.urlPath.localeCompare(b.urlPath));

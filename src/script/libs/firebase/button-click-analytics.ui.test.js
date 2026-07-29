@@ -34,7 +34,11 @@ describe('button click analytics naming', () => {
     expect(getPageAnalyticsName(document, pageLocation('/vi/index.html'))).toBe('home');
     expect(getPageAnalyticsName(
       document,
-      pageLocation('/blog/inside-solprompter/index.html'),
+      pageLocation('/blog/product/index.html'),
+    )).toBe('blog-product');
+    expect(getPageAnalyticsName(
+      document,
+      pageLocation('/blog/product/inside-solprompter/index.html'),
     )).toBe('blog-inside-solprompter');
   });
 

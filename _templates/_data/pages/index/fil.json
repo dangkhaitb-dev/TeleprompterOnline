@@ -1,12 +1,13 @@
 {
   "seo": {
     "title": "Libreng Online Teleprompter na may AI Voice Scroll | SolPrompter",
-    "description": "Libreng online teleprompter na may AI voice-activated scrolling, notch mode, at QR remote control. Walang mga ad, walang pag-sign-up, 100% pribado.",
+    "description": "Libreng online teleprompter na may voice-activated scrolling, notch mode, at QR remote control. Walang mga ad o sign-up; ang mga script at recording ay nananatili sa iyong aparato.",
     "canonical": "/fil/",
     "ogTitle": "Libreng Online Teleprompter — SolPrompter",
     "ogDescription": "Natural na ipakita gamit ang aming teleprompter na nakabatay sa browser. Awtomatikong nag-i-scroll gamit ang iyong boses, pinapaliit ang paggalaw ng mata, at sinusuportahan ang QR remote control.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg"
+    "ogImage": "/og-solprompter.jpg",
+    "ogImageAlt": "Interface ng SolPrompter voice-controlled teleprompter"
   },
   "schema": {
     "orgDescription": "Nagbibigay ang SolPrompter ng libreng online na teleprompter para sa mga natural na presentasyon at propesyonal na pag-record ng video.",
@@ -82,7 +83,7 @@
   "hero": {
     "eyebrow": "SolPrompter — Libreng Online Teleprompter",
     "title": "Libreng Online Teleprompter",
-    "subtitle": "Awtomatikong nag-i-scroll gamit ang iyong boses, nag-anchor ng text malapit sa lens ng camera para maiwasan ang paglihis ng mata, at sinusuportahan ang remote control sa pamamagitan ng QR code. Libre, walang ad, at 100% pribado.",
+    "subtitle": "Awtomatikong nag-i-scroll kasabay ng iyong boses at nag-a-anchor ng teksto malapit sa lens ng camera upang mabawasan ang galaw ng mata. Ang mga script at recording ay nananatili sa iyong aparato.",
     "placeholder": "I-paste ang iyong script o mag-upload ng file para magsimula...",
     "uploadLabel": "Mag-upload ng file",
     "uploadLabelShort": "Upload",
@@ -94,7 +95,7 @@
   },
   "messages": {
     "errorEmpty": "Pakilagay ang nilalaman ng iyong script bago simulan ang Teleprompter.",
-    "errorRead": "Hindi suportadong format. Pumili ng .txt o .md na file."
+    "errorRead": "Hindi sinusuportahang format. Mangyaring pumili ng .txt, .md, o .docx na file."
   },
   "features": {
     "eyebrow": "Mga Pangunahing Tampok",
@@ -131,6 +132,10 @@
     "eyebrow": "Daloy ng trabaho",
     "title": "Simple at Instant",
     "description": "Ihanda ang iyong script at simulan ang paglalahad o pag-record sa loob lamang ng ilang hakbang.",
+    "resourceLink": {
+      "label": "Basahin ang kumpletong gabay sa teleprompter",
+      "url": "/teleprompter-guide"
+    },
     "steps": [
       {
         "anchor": "step-add-script",
@@ -162,9 +167,9 @@
       "problemTitle": "Problema: Ang mga tradisyunal na teleprompter ay nag-scroll sa isang nakapirming bilis",
       "problemDesc": "Kung mas mabilis kang magsalita, mawawalan ka ng lugar. Kung i-pause mo, patuloy na gumagalaw ang script. Ginagawa nitong matigas at mabigat ang mga presentasyon.",
       "solutionTitle": "Solusyon: AI Voice-Activated Scrolling",
-      "solutionDesc": "Nakikinig at awtomatikong isinusulong ng SolPrompter ang script habang nagbabasa ka, na agad na umaangkop sa iyong natural na bilis sa real-time."
+      "solutionDesc": "Nakikinig ang SolPrompter at isinusulong ang script habang nagbabasa ka, na umaangkop sa mga pagbabago sa bilis ng iyong pagsasalita."
     },
-    "description": "Sinusundan ng voice recognition ang iyong paghahatid at isinusulong ang script habang nagsasalita ka, na agad na umaangkop sa tuwing nagbabago ang iyong bilis.",
+    "description": "Sinusundan ng voice recognition ang iyong paghahatid at isinusulong ang script habang nagsasalita ka, na tumutugon sa tuwing nagbabago ang iyong bilis.",
     "benefits": [
       {
         "title": "Magsalita ng natural",
@@ -212,7 +217,7 @@
   "remote": {
     "eyebrow": "Remote Control",
     "title": "Mag-scan ng QR upang makontrol mula sa anumang device",
-    "description": "Ikonekta ang isang telepono o tablet sa pamamagitan ng QR code gamit ang secure na WebSockets. Kontrolin ang iyong presentasyon nang hindi nag-i-install ng mga panlabas na application.",
+    "description": "Ikonekta ang isang telepono o tablet gamit ang isang QR code at isang nakapares na WebSocket session. Kontrolin ang iyong presentasyon nang hindi nag-i-install ng isa pang application.",
     "items": [
       {
         "title": "I-play at i-pause ang script",
@@ -244,11 +249,11 @@
   "recording": {
     "eyebrow": "Pagre-record at Privacy",
     "title": "In-Browser 4K Recording at Local Script Privacy",
-    "description": "Kumuha ng malutong na video nang direkta mula sa browser habang pinapanatili ang iyong mga script na 100% pribado sa lokal na storage.",
+    "description": "Kumuha ng video sa browser habang pinapanatili ang mga script at recording sa lokal na imbakan ng browser sa iyong aparato.",
     "items": [
       {
         "title": "Live Camera Preview",
-        "description": "I-preview at suriin ang iyong framing at alignment bago pindutin ang recording."
+        "description": "I-preview at suriin ang iyong pag-frame at pagkakahanay bago mag-record."
       },
       {
         "title": "Mag-record ng Buong HD at 4K",
@@ -270,6 +275,10 @@
     "cta": {
       "label": "Simulan ang pagre-record",
       "url": "/teleprompter.html"
+    },
+    "resourceLink": {
+      "label": "Basahin kung paano pinangangasiwaan ng SolPrompter ang lokal na nilalaman",
+      "url": "/policy"
     }
   },
   "workspace": {
@@ -364,69 +373,17 @@
   "comparison": {
     "eyebrow": "Paghahambing",
     "title": "Isang Kumpletong Browser Teleprompter",
-    "description": "Ihambing ang mga pangunahing tampok ng SolPrompter laban sa mga kasalukuyang alternatibo sa marketplace.",
-    "table": {
-      "headers": [
-        "Tampok",
-        "SolPrompter",
-        "PromptSmart",
-        "TeleprompterMirror"
-      ],
-      "rows": [
-        {
-          "feature": "AI Voice Scrolling",
-          "sol": "Libre",
-          "smart": "Kinakailangan ang subscription",
-          "mirror": "Hindi suportado"
-        },
-        {
-          "feature": "Batay sa Browser",
-          "sol": "Oo",
-          "smart": "Hindi (Pag-download ng app)",
-          "mirror": "Oo"
-        },
-        {
-          "feature": "Privacy ng Script",
-          "sol": "100% Lokal sa Device",
-          "smart": "Lokal sa Device",
-          "mirror": "Lokal sa Device"
-        },
-        {
-          "feature": "QR Remote Control",
-          "sol": "Oo (Walang pag-install)",
-          "smart": "Oo (Pag-download ng app)",
-          "mirror": "Hindi suportado"
-        },
-        {
-          "feature": "Mga Advertisement ng Banner",
-          "sol": "Walang ad",
-          "smart": "Walang ad",
-          "mirror": "Oo (Mga banner ad)"
-        },
-        {
-          "feature": "4K na Pag-record ng Video",
-          "sol": "Sinusuportahan (Desktop)",
-          "smart": "Hindi suportado",
-          "mirror": "Hindi suportado"
-        },
-        {
-          "feature": "Presyo",
-          "sol": "Ganap na libre",
-          "smart": "Bayad na subscription",
-          "mirror": "Libre (Suportado ng ad)"
-        }
-      ]
-    },
+    "description": "Gamitin ang boses, fixed-speed, o manu-manong pag-scroll; kontrolin ang prompt nang malayuan; at mag-record mula sa isang workspace na nakabase sa browser.",
     "whyChoose": {
       "title": "Bakit Pinipili ng Mga Tagalikha ang SolPrompter",
       "items": [
         {
           "title": "Libreng voice-activated scrolling",
-          "description": "Hindi tulad ng mga tool sa subscription na nagla-lock ng voice sync sa likod ng mga paywall, isinasama ito ng SolPrompter nang libre, na direktang pinapagana ng pagkilala sa speech ng browser."
+          "description": "Ang voice-activated scrolling ay magagamit nang walang sign-up o bayad at gumagamit ng speech recognition na ibinibigay ng iyong browser."
         },
         {
           "title": "Ang iyong data ay mananatili sa iyong makina",
-          "description": "Ang iyong mga script ay lokal na pinoproseso sa iyong browser. Hindi namin kailanman ipinapadala ang iyong nilalaman, na ginagarantiyahan ang kabuuang privacy para sa mga draft."
+          "description": "Ang mga script at recording ay nananatili sa lokal na imbakan ng browser. Depende sa suporta ng browser, ang voice recognition ay maaaring tumakbo sa mismong aparato o gumamit ng serbisyo sa pagkilala ng provider ng browser."
         },
         {
           "title": "Walang kinakailangang pag-signup o pag-setup",
@@ -441,7 +398,7 @@
     "title": "Ang paggawa ng online na pagbabasa ay parang isang natural na pag-uusap",
     "paragraphs": [
       "Binuo ang SolPrompter upang tulungan ang mga nagsasalita na magpresenta nang may kumpiyansa nang hindi nagsasaulo ng mahahabang teksto o nalilikot sa bilis ng pag-scroll.",
-      "Nakatuon kami sa paggawa ng minimal, high-end na online teleprompter na pinagsasama ang tumpak na pagsubaybay sa boses, ergonomic na disenyo, at simpleng pag-record ng video.",
+      "Nakatuon kami sa paglikha ng isang minimal na online teleprompter na pinagsasama ang speech-aligned scrolling, ergonomikong disenyo, at simpleng pag-record ng video.",
       "Nag-shoot ka man sa isang telepono, nagre-record mula sa isang laptop, o namamahala sa isang studio, pinapanatili ka ng SolPrompter na nakatuon sa iyong audience."
     ]
   },
@@ -462,17 +419,17 @@
       {
         "anchor": "faq-maintain-eye-contact",
         "q": "Paano ko maiiwasan na magmukha akong nagbabasa at nagpapanatili ng eye contact?",
-        "a": "<strong>I-activate ang SolPrompter's Notch Mode upang iposisyon ang iyong script nang direkta sa ibaba ng lens.</strong> Pinaliit nito ang lapad ng teksto sa 50-70 character at ini-angkla ito sa tuktok na gitna. Sa pamamagitan ng pagbabawas ng paggalaw ng mata sa ilalim ng 3 degrees, binibigyan nito ang hitsura na direktang nagsasalita ka sa manonood."
+        "a": "<strong>I-activate ang Notch Mode ng SolPrompter upang iposisyon ang iyong script nang direkta sa ibaba ng lens.</strong> Ang isang mas makitid na column ng pagbabasa ay nagbabawas ng nakikitang pag-scan mula sa magkabilang gilid, ngunit ang resulta ay nakadepende pa rin sa laki ng iyong screen, posisyon ng camera, at distansya ng pagbabasa."
       },
       {
         "anchor": "faq-vs-app-store",
         "q": "Bakit pipiliin ang SolPrompter sa isang App Store na application?",
-        "a": "<strong>Direktang gumagana ang SolPrompter sa web, hindi nangangailangan ng pag-download, at hindi naglalagay ng mga watermark sa iyong mga pag-export ng video.</strong> Karamihan sa mga mobile application ay nililimitahan ang haba ng script o naniningil ng buwanang bayarin upang i-toggle ang mga simpleng feature. Nagbibigay ang SolPrompter ng buong functionality out of the box."
+        "a": "<strong>Direktang gumagana ang SolPrompter sa web, hindi nangangailangan ng download, at hindi naglalagay ng mga watermark sa iyong mga na-export na video.</strong> Ito ay isang praktikal na opsyon kapag nais mong i-paste ang isang script at magsimula nang hindi nag-i-install o gumagawa ng account."
       },
       {
         "anchor": "faq-remote-control-stability",
         "q": "Madidiskonekta ba ang remote kapag nag-lock o natutulog ang aking telepono?",
-        "a": "<strong>Hindi, ang remote ng SolPrompter ay gumagamit ng mga persistent WebSockets na may heartbeat protocol upang matiyak ang katatagan.</strong> Hangga't ang teleprompter tab ay nananatiling aktibo, ang link ay mananatiling buhay na wala pang 10ms latency, na pumipigil sa mga dropout na karaniwan sa mga nag-click sa hardware."
+        "a": "<strong>Ang remote ng SolPrompter ay gumagamit ng isang persistent WebSocket session na may heartbeat upang matukoy ang pagkawala ng koneksyon.</strong> Ang aktwal na latency at pag-uugali habang naka-lock ang telepono ay nakadepende sa mga aparato, mga patakaran sa pagtitipid ng kuryente ng browser, at kalidad ng network."
       },
       {
         "anchor": "faq-pisikal-beamsplitter",
@@ -482,7 +439,7 @@
       {
         "anchor": "faq-script-privacy",
         "q": "Secure ba ang aking mga script at corporate draft?",
-        "a": "<strong>Oo. Mananatili ang iyong mga script at recording sa iyong device habang nagtatrabaho ka.</strong> Hindi ina-upload ng SolPrompter ang nilalamang ito sa mga server nito, na tumutulong na panatilihing nasa ilalim ng iyong kontrol ang mga kumpidensyal na draft."
+        "a": "<strong>Ang iyong mga script at recording ay nananatili sa iyong aparato habang nagtatrabaho ka.</strong> Hindi ina-upload ng SolPrompter ang nilalamang iyon sa mga server nito. Ang voice recognition ay maaari pa ring gumamit ng isang on-device engine o isang serbisyo sa pagkilala na ibinigay ng iyong browser."
       },
       {
         "anchor": "faq-ghosting-blur",
@@ -492,23 +449,23 @@
       {
         "anchor": "faq-offline-use",
         "q": "Maaari ko bang patakbuhin ang teleprompter offline?",
-        "a": "<strong>Gumagana nang offline ang teleprompter workspace kapag na-load, ngunit nangangailangan ng internet ang voice sync.</strong> Gumagamit ang speech recognition ng mga native browser API, na nagpoproseso ng audio sa pamamagitan ng Google o Apple cloud server. Para sa mga offline na setting, lumipat sa fixed-speed o manu-manong pag-scroll."
+        "a": "<strong>Ang workspace ng teleprompter ay maaaring magpatuloy pagkatapos ma-load ang pahina, ngunit ang pagkakaroon ng voice sync ay nakadepende sa mode ng pagkilala ng iyong browser.</strong> Gamitin ang fixed-speed o manu-manong pag-scroll kapag hindi magagamit ang isang offline speech-recognition engine."
       },
       {
         "anchor": "faq-font-size-distansya",
         "q": "Paano ko matutukoy ang tamang laki ng font para sa aking distansya sa pagbabasa?",
-        "a": "<strong>Ang isang pangkalahatang benchmark ay ang laki ng iyong font sa 1 pulgada ng taas para sa bawat 10 talampakan ng distansya ng pagbabasa.</strong> Para sa close-up na pagbabasa ng laptop, mas gusto ang isang mas maliit, makitid na layout ng teksto upang maiwasan ang mga mata na makitang mag-scan sa kaliwa at kanan."
+        "a": "<strong>Lakihan ang laki ng font habang lumalaki ang iyong distansya sa pagbabasa, pagkatapos ay subukan ito sa eksaktong posisyon ng camera bago mag-record.</strong> Para sa malapitang pagbabasa sa laptop, gumamit ng mas makitid na column ng teksto upang mabawasan ang nakikitang pag-scan mula sa magkabilang gilid."
       }
     ]
   },
   "engineering": {
     "eyebrow": "Binuo para sa Tunay na Mundo",
     "title": "Mabilis, Pribado, at Handa nang Magsagawa",
-    "description": "Tingnan kung paano pinapanatili ng SolPrompter ang mga script sa iyong device, tumutugon sa real time, at direktang tumatakbo sa browser nang walang pag-download o kumplikadong setup.",
+    "description": "Tingnan kung paano pinapanatili ng SolPrompter mga script sa iyong aparato, sinusundan ang mga binibigkas na salita, at tumatakbo nang direkta sa browser nang walang mga download o kumplikadong setup.",
     "principles": [
       {
         "title": "Bakit Namin Bumuo ng SolPrompter",
-        "description": "Ang kasalukuyang teleprompter software ay kadalasang nagla-lock ng mahahalagang feature (tulad ng voice scrolling o watermark-free recording) sa likod ng mamahaling buwanang subscription. Binuo namin ang SolPrompter upang magbigay ng isang high-end, ganap na libreng online na teleprompter na walang kinakailangang pag-signup, na ginagawang naa-access ng lahat ng mga creator ang mga propesyonal na tool."
+        "description": "Binuo namin ang SolPrompter upang gawing magagamit ang voice scrolling, nababagay na mga kontrol sa pagbabasa, at pag-record na walang watermark sa isang libreng tool sa browser nang walang kinakailangang sign-up."
       },
       {
         "title": "Bakit Ito Tumatakbo sa Iyong Browser",
@@ -519,35 +476,12 @@
         "description": "Ang iyong mga script at recording ay nananatili sa iyong device sa halip na i-upload sa SolPrompter, na nagbibigay sa iyo ng direktang kontrol sa sensitibong nilalaman."
       }
     ],
-    "benchmarksTitle": "Sinusukat na Pagganap",
-    "benchmarks": [
-      {
-        "metric": "AI Voice Scroll Latency",
-        "sol": "< 50ms (Real-time)",
-        "trad": "N/A (Fixed Speed)"
-      },
-      {
-        "metric": "Katumpakan ng Speech Detection",
-        "sol": "98% (Multi-wika)",
-        "trad": "Manual Control Lang"
-      },
-      {
-        "metric": "Paggamit ng CPU (Idle/Scroll)",
-        "sol": "< 2% / 5%",
-        "trad": "Mataas (Desktop App)"
-      },
-      {
-        "metric": "Pagkonsumo ng Baterya",
-        "sol": "Minimal (Native Web API)",
-        "trad": "Katamtaman hanggang Mataas"
-      },
-      {
-        "metric": "Mga Sinusuportahang Browser",
-        "sol": "Chrome, Edge, Safari, Firefox",
-        "trad": "Mga App na pinaghihigpitan ng OS"
-      }
-    ],
-    "benchmarksSupport": "Sinubukan sa Apple M2 (macOS) at Intel Core i7 (Windows 11) gamit ang Chrome 120."
+    "evidenceTitle": "Pagganap na may mga dokumentadong limitasyon",
+    "evidenceSummary": "Ang katumpakan ng voice recognition at oras ng pagtugon ay nag-iiba depende sa browser, wika, mikropono, ingay sa background, at estilo ng pagbabasa.",
+    "benchmarkLink": {
+      "label": "Basahin ang mga tala sa tampok ng SolPrompter",
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+    }
   },
   "footer": {
     "brand": "SolPrompter",

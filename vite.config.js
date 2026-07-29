@@ -11,6 +11,23 @@ import { existsSync, readdirSync, readFileSync, writeFileSync, renameSync, rmdir
 import { join } from 'path'
 import { minify } from 'terser'
 
+function collectNestedIndexFiles(directory, segments = []) {
+  if (!existsSync(directory)) return []
+
+  return readdirSync(directory, { withFileTypes: true }).flatMap(item => {
+    if (!item.isDirectory()) return []
+
+    const nextSegments = [...segments, item.name]
+    const nestedDirectory = resolve(directory, item.name)
+    const indexFile = resolve(nestedDirectory, 'index.html')
+    const currentRoute = existsSync(indexFile)
+      ? [{ indexFile, routeSegments: nextSegments }]
+      : []
+
+    return [...currentRoute, ...collectNestedIndexFiles(nestedDirectory, nextSegments)]
+  })
+}
+
 // 🚀 AUTO-DETECT ALL HTML PAGES
 function generateInputEntries() {
   const root = process.cwd()
@@ -30,18 +47,20 @@ function generateInputEntries() {
       console.log(`📄 Auto-detected root: ${f.name}`)
     })
 
-  // Clean nested article routes: blog/<slug>/index.html
-  if (existsSync(blogDir)) {
-    readdirSync(blogDir, { withFileTypes: true })
-      .filter(item => item.isDirectory())
-      .forEach(item => {
-        const indexFile = resolve(blogDir, item.name, 'index.html')
-        if (existsSync(indexFile)) {
-          inputs[`blog-${item.name}`] = indexFile
-          console.log(`📝 Auto-detected article: blog/${item.name}/index.html`)
-        }
-      })
-  }
+  // Blog category and article routes can be nested to any depth.
+  collectNestedIndexFiles(blogDir).forEach(({ indexFile, routeSegments }) => {
+    const route = routeSegments.join('/')
+    const inputName = `blog-${routeSegments
+      .map(segment => `${segment.length}-${segment}`)
+      .join('-')}`
+
+    if (inputs[inputName]) {
+      throw new Error(`Duplicate Vite input name "${inputName}" for blog/${route}/index.html`)
+    }
+
+    inputs[inputName] = indexFile
+    console.log(`📝 Auto-detected blog route: blog/${route}/index.html`)
+  })
 
   // pages/lang/index.html entries
   if (existsSync(pagesDir)) {

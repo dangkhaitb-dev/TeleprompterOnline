@@ -1,4 +1,5 @@
 {%- set canonical = site.url + '/' + simplePage.slug -%}
+{%- set socialImage = site.url + (simplePage.seo.ogImage or '') -%}
 <!DOCTYPE html>
 <html lang="{{ lang or 'en' }}" data-theme="light">
 
@@ -9,10 +10,29 @@
     <meta name="robots" content="index, follow">
     <meta name="color-scheme" content="light">
     <meta name="theme-color" content="#fbfcfd">
+    {%- if simplePage.article %}
+    <meta name="author" content="{{ simplePage.article.author.name }}">
+    {%- endif %}
     <meta property="og:title" content="{{ simplePage.seo.title }}">
     <meta property="og:description" content="{{ simplePage.seo.description }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ simplePage.article and 'article' or 'website' }}">
     <meta property="og:url" content="{{ canonical }}">
+    <meta property="og:site_name" content="{{ site.name }}">
+    {%- if simplePage.seo.ogImage %}
+    <meta property="og:image" content="{{ socialImage }}">
+    <meta property="og:image:width" content="{{ simplePage.seo.ogImageWidth }}">
+    <meta property="og:image:height" content="{{ simplePage.seo.ogImageHeight }}">
+    <meta property="og:image:type" content="{{ simplePage.seo.ogImageType }}">
+    <meta property="og:image:alt" content="{{ simplePage.seo.ogImageAlt }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ simplePage.seo.title }}">
+    <meta name="twitter:description" content="{{ simplePage.seo.description }}">
+    <meta name="twitter:image" content="{{ socialImage }}">
+    <meta name="twitter:image:alt" content="{{ simplePage.seo.ogImageAlt }}">
+    {%- endif %}
+    {%- if simplePage.article %}
+    <meta property="article:modified_time" content="{{ simplePage.article.dateModified }}">
+    {%- endif %}
     <link rel="canonical" href="{{ canonical }}">
     <title>{{ simplePage.seo.title }}</title>
     {% include "partials/head-icons.njk" %}

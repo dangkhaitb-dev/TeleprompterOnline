@@ -25,9 +25,21 @@
 
 <body>
     <main class="stage" id="main" tabindex="-1">
-    <p class="stage__eyebrow">404 · Not found</p>
-    <h1 class="stage__title">Page not found</h1>
-    <p class="stage__lead">The page you requested does not exist or may have moved. <a href="/">Return to SolPrompter</a></p>
+    <a class="stage__brand" href="/" aria-label="Return to SolPrompter">
+        <img src="/logo.webp" alt="" width="36" height="36">
+    </a>
+
+    <div class="stage__content">
+        <div class="stage__heading">
+            <p class="stage__eyebrow">404 · Not found</p>
+            <h1 class="stage__title">Page not found</h1>
+        </div>
+
+        <div class="stage__support">
+            <p class="stage__lead">The page you requested does not exist or may have moved.</p>
+            <a class="stage__action" href="/">Return to SolPrompter</a>
+        </div>
+    </div>
 </main>
 
 </body>

@@ -6,7 +6,19 @@ lang: en
 ---
 {%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
 <main class="stage" id="main" tabindex="-1">
-    <p class="stage__eyebrow">{{ pageData.eyebrow }}</p>
-    <h1 class="stage__title">{{ pageData.title }}</h1>
-    <p class="stage__lead">{{ pageData.description }} <a href="/">{{ pageData.homeLink }}</a></p>
+    <a class="stage__brand" href="/" aria-label="{{ pageData.homeLink }}">
+        <img src="/logo.webp" alt="" width="36" height="36">
+    </a>
+
+    <div class="stage__content">
+        <div class="stage__heading">
+            <p class="stage__eyebrow">{{ pageData.eyebrow }}</p>
+            <h1 class="stage__title">{{ pageData.title }}</h1>
+        </div>
+
+        <div class="stage__support">
+            <p class="stage__lead">{{ pageData.description }}</p>
+            <a class="stage__action" href="/">{{ pageData.homeLink }}</a>
+        </div>
+    </div>
 </main>

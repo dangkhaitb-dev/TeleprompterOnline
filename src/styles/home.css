@@ -2810,10 +2810,11 @@ body.home .step-editorial-item:last-child {
 
 body.home .step-editorial-item .step-num {
   margin-bottom: auto;
-  color: var(--ink-faint);
+  color: var(--ink-muted);
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 500;
   letter-spacing: -0.06em;
+  opacity: 1;
 }
 
 body.home .step-editorial-item .step-title {

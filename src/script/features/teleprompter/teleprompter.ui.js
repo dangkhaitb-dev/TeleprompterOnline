@@ -42,6 +42,7 @@ import { handlePlainTextPaste } from '../../utils/plain-paste.js';
 import { isFullscreen, onFullscreenChange } from '../../utils/fullscreen.js';
 import { createScrollController } from './components/scroll-controller.js';
 import { createReadingSessionController } from './components/reading-session-controller.js';
+import { createVoiceLanguagePreflight } from './components/voice-language-preflight.js';
 import { createColorPicker } from './components/color-picker.ui.js';
 import { initFormatToolbar } from './components/format-toolbar.ui.js';
 import { initSettingsTheme } from './components/settings-theme.ui.js';
@@ -735,8 +736,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     return check;
   }
 
+  const voiceLanguagePreflight = createVoiceLanguagePreflight({
+    getScrollMode: () => selectedScrollMode,
+    prepare: runVoiceLanguageCheck,
+  });
+
   const voiceLanguageEditPreflight = debounce((surface) => {
-    void runVoiceLanguageCheck({ surface, reason: 'edit' });
+    void voiceLanguagePreflight.prepareInBackground({ surface, reason: 'edit' });
   }, VOICE_LANGUAGE_EDIT_DEBOUNCE_MS);
 
   function scheduleVoiceLanguageEditCheck(surface) {
@@ -744,16 +750,14 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   function armVoiceLanguageCheck(reason) {
-    pendingVoiceLanguageCheck = selectedScrollMode === 'auto'
-      ? runVoiceLanguageCheck({ force: true, reason })
-      : null;
+    pendingVoiceLanguageCheck = voiceLanguagePreflight.prepareForAction({ reason });
     return pendingVoiceLanguageCheck;
   }
 
   // Existing workspaces can mount with a complete script before the user
   // touches the editor. Detect it now so both detector and ASR pack preparation
   // are already under way before the first Play or Record action.
-  void runVoiceLanguageCheck({ reason: 'studio-init' });
+  void voiceLanguagePreflight.prepareInBackground({ reason: 'studio-init' });
 
   function setSpeedModePanel(mode) {
     const auto = mode === 'auto';
@@ -857,7 +861,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
     try {
       const languageCheck = pendingVoiceLanguageCheck
-        || runVoiceLanguageCheck({ force: true, reason: 'voice-start' });
+        || voiceLanguagePreflight.prepareForAction({ reason: 'voice-start' });
       if (pendingVoiceLanguageCheck === languageCheck) pendingVoiceLanguageCheck = null;
       const languageResult = await languageCheck;
       if (attempt !== voiceScrollAttempt) return;
@@ -1700,7 +1704,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     // edit preflight and check the newly pasted script once, immediately.
     queueMicrotask(() => {
       voiceLanguageEditPreflight.cancel();
-      void runVoiceLanguageCheck({ surface, reason: 'paste' });
+      void voiceLanguagePreflight.prepareInBackground({ surface, reason: 'paste' });
     });
   };
   on(promptBox, 'paste', handleScriptPaste);

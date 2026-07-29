@@ -74,6 +74,7 @@ export function createMediaPlayer({ signal }) {
   const progressFilled = el.querySelector('.se-media-progress-filled');
   const volumeBtn = el.querySelector('.se-media-volume-btn');
   const volumeInput = el.querySelector('.se-media-volume-input');
+  const volumeSliderWrap = el.querySelector('.se-media-volume-slider-wrap');
   const volumeFilled = el.querySelector('.se-media-volume-filled');
   const volumeKnob = el.querySelector('.se-media-volume-knob');
   const timeCurrent = el.querySelector('.se-media-time-current');
@@ -86,10 +87,7 @@ export function createMediaPlayer({ signal }) {
   let mediaClickTarget = null;
   let currentDuration = 0;
   let desiredVolume = 1.0;
-  let needsAudioGain = false;
-  let audioContext = null;
-  let audioSource = null;
-  let audioGain = null;
+  let canSetMediaVolume = true;
 
   function mediaAcceptsVolume(media) {
     const original = media.volume;
@@ -104,43 +102,16 @@ export function createMediaPlayer({ signal }) {
     }
   }
 
-  // iOS keeps HTMLMediaElement.volume fixed at 1. Route audio through a gain
-  // node when necessary so the custom slider still has a real effect.
-  function ensureAudioGain() {
-    if (!needsAudioGain || !activeMedia) return null;
-    if (!audioContext) {
-      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContextClass) return null;
-      try {
-        audioContext = new AudioContextClass();
-      } catch {
-        return null;
-      }
-    }
-    if (!audioSource) {
-      try {
-        const nextSource = audioContext.createMediaElementSource(activeMedia);
-        const nextGain = audioContext.createGain();
-        nextSource.connect(nextGain);
-        nextGain.connect(audioContext.destination);
-        audioSource = nextSource;
-        audioGain = nextGain;
-      } catch {
-        return null;
-      }
-    }
-    audioGain.gain.value = desiredVolume;
-    if (audioContext.state === 'suspended') audioContext.resume().catch(() => {});
-    return audioGain;
-  }
-
   function applyVolume(volume) {
     desiredVolume = Math.max(0, Math.min(1, volume));
-    if (needsAudioGain) {
-      const gain = ensureAudioGain();
-      if (gain) gain.gain.value = desiredVolume;
-    } else if (activeMedia) {
+    if (!activeMedia) return;
+    if (canSetMediaVolume) {
       activeMedia.volume = desiredVolume;
+    } else {
+      // iOS fixes HTMLMediaElement.volume at 1. Keep playback on the native
+      // media path (MediaElementAudioSourceNode can stall recorded blobs in
+      // WebKit) and retain the one volume operation iOS supports: mute.
+      activeMedia.muted = desiredVolume === 0;
     }
     updateVolumeState();
   }
@@ -178,7 +149,6 @@ export function createMediaPlayer({ signal }) {
   function togglePlay() {
     if (!activeMedia) return;
     if (activeMedia.paused) {
-      ensureAudioGain();
       activeMedia.play().catch(err => console.log('Playback failed:', err));
     } else {
       activeMedia.pause();
@@ -366,9 +336,12 @@ export function createMediaPlayer({ signal }) {
       activeMedia.controls = false;
       activeMedia.playsInline = true;
       currentDuration = fallbackDurationSec || 0;
-      desiredVolume = activeMedia.volume;
-      needsAudioGain = activeMedia.tagName === 'AUDIO'
-        && !mediaAcceptsVolume(activeMedia);
+      desiredVolume = activeMedia.muted ? 0 : activeMedia.volume;
+      canSetMediaVolume = mediaAcceptsVolume(activeMedia);
+      // A partial-volume slider would be misleading on iOS. The adjacent
+      // speaker button remains available and toggles the native muted state.
+      volumeSliderWrap.hidden = !canSetMediaVolume;
+      volumeSliderWrap.style.display = canSetMediaVolume ? '' : 'none';
       el.hidden = false;
 
       // Setup listeners on media
@@ -433,20 +406,16 @@ export function createMediaPlayer({ signal }) {
       }
 
       activeMedia.controls = true; // Restore native controls
-      if (audioSource) audioSource.disconnect();
-      if (audioGain) audioGain.disconnect();
-      audioSource = null;
-      audioGain = null;
       activeMedia = null;
       el.hidden = false;
+      volumeSliderWrap.hidden = false;
+      volumeSliderWrap.style.display = '';
       parentEl = null;
       clearTimeout(hideTimer);
     },
 
     destroy() {
       this.detachMedia();
-      if (audioContext) audioContext.close().catch(() => {});
-      audioContext = null;
       el.remove();
     }
   };

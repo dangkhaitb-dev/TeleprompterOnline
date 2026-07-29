@@ -72,28 +72,26 @@ describe('scene editor media player', () => {
     player.destroy();
   });
 
-  it('uses Web Audio gain when iOS locks media.volume', () => {
-    const gain = { gain: { value: 1 }, connect: vi.fn(), disconnect: vi.fn() };
-    const source = { connect: vi.fn(), disconnect: vi.fn() };
+  it('does not route playback through Web Audio when iOS locks media.volume', () => {
+    const createMediaElementSource = vi.fn();
     window.AudioContext = class {
-      constructor() {
-        this.state = 'suspended';
-        this.destination = {};
-      }
-      createMediaElementSource() { return source; }
-      createGain() { return gain; }
-      resume() { this.state = 'running'; return Promise.resolve(); }
-      close() { return Promise.resolve(); }
+      createMediaElementSource(...args) { return createMediaElementSource(...args); }
     };
     const audio = createAudio({ lockedVolume: true });
     const { controller, player } = mount(audio);
-    const volume = player.el.querySelector('.se-media-volume-input');
+    const play = player.el.querySelector('.se-media-play-btn');
+    const volumeButton = player.el.querySelector('.se-media-volume-btn');
+    const volumeSlider = player.el.querySelector('.se-media-volume-slider-wrap');
 
-    volume.value = '35';
-    volume.dispatchEvent(new Event('input', { bubbles: true }));
+    play.click();
+    expect(audio.play).toHaveBeenCalledOnce();
+    expect(createMediaElementSource).not.toHaveBeenCalled();
+    expect(volumeSlider.hidden).toBe(true);
 
-    expect(source.connect).toHaveBeenCalledWith(gain);
-    expect(gain.gain.value).toBe(0.35);
+    volumeButton.click();
+    expect(audio.muted).toBe(true);
+    volumeButton.click();
+    expect(audio.muted).toBe(false);
     controller.abort();
     player.destroy();
   });

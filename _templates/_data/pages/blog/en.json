@@ -10,10 +10,13 @@
     "items": [
       { "label": "About", "url": "/about" },
       { "label": "Blog", "url": "/blog" },
-      { "label": "Workspaces", "url": "/workspaces" },
+      { "label": "Home", "url": "/" },
       { "label": "Terms", "url": "/term" }
     ],
-    "workspaces": "Workspaces"
+    "cta": {
+      "label": "Home",
+      "url": "/"
+    }
   },
   "hero": {
     "eyebrow": "Notes from the studio",
@@ -39,6 +42,8 @@
     "blog": "Blog"
   },
   "review": {
+    "by": "By",
+    "published": "Published",
     "reviewedBy": "Reviewed by",
     "updated": "Updated"
   },
@@ -47,7 +52,7 @@
     "links": [
       { "label": "About", "url": "/about" },
       { "label": "Blog", "url": "/blog" },
-      { "label": "Workspaces", "url": "/workspaces" },
+      { "label": "Home", "url": "/" },
       { "label": "Terms", "url": "/term" },
       { "label": "Privacy", "url": "/policy" },
       { "label": "Billing", "url": "/billing" }

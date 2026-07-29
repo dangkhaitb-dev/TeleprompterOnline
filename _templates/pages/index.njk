@@ -9,6 +9,7 @@ eleventyComputed:
   pageKey: "{{ pageInfo.pageKey }}"
   lang: "{{ pageInfo.lang }}"
 ---
+<!-- Generated from the shared language registry and localized index data. -->
 {%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
 
 <!-- NAV -->
@@ -162,7 +163,7 @@ eleventyComputed:
                         <span class="chrome-dot green"></span>
                     </div>
                     <div class="browser-viewport">
-                        <img src="/media/teleprompter-screenshot.jpg" alt="SolPrompter Studio Screen" class="app-screenshot" width="2560" height="1600" loading="lazy" decoding="async">
+                        <img src="/media/teleprompter-screenshot.jpg" alt="SolPrompter — {{ voiceScroll.title }}" class="app-screenshot" width="2560" height="1600" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>
@@ -202,7 +203,7 @@ eleventyComputed:
                                 <span class="chrome-dot green"></span>
                             </div>
                             <div class="browser-viewport">
-                                <img src="/media/notch-screenshot.jpg" alt="SolPrompter Notch Mode Screen" class="app-screenshot" width="2560" height="1600" loading="lazy" decoding="async">
+                                <img src="/media/notch-screenshot.jpg" alt="SolPrompter — {{ notch.title }}" class="app-screenshot" width="2560" height="1600" loading="lazy" decoding="async">
                             </div>
                         </div>
                     </div>
@@ -234,7 +235,7 @@ eleventyComputed:
                     </div>
                     <div class="split-visual-col" style="margin-top: 2rem;">
                         <div class="remote-phone-visual">
-                            <div class="remote-phone-mockup" role="img" aria-label="SolPrompter mobile interface displayed inside the supplied iPhone mockup">
+                            <div class="remote-phone-mockup" role="img" aria-label="SolPrompter — {{ remote.title }}">
                                 <img class="remote-phone-frame-base" src="/media/iphone-frame.png" alt="" width="855" height="1721" loading="lazy" decoding="async" aria-hidden="true">
                                 <div class="remote-phone-screen" aria-hidden="true">
                                     <img src="/media/teleprompter-mobile-screenshot.jpg" alt="" width="750" height="1624" loading="lazy" decoding="async">
@@ -325,7 +326,7 @@ eleventyComputed:
                         <span class="chrome-dot green"></span>
                     </div>
                     <div class="browser-viewport">
-                        <img src="/media/workspaces-screenshot.jpg" alt="SolPrompter Workspace Library" class="app-screenshot" width="2560" height="1600" loading="lazy" decoding="async">
+                        <img src="/media/workspaces-screenshot.jpg" alt="SolPrompter — {{ workspace.title }}" class="app-screenshot" width="2560" height="1600" loading="lazy" decoding="async">
                     </div>
                 </div>
             </div>

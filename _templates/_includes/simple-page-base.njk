@@ -1,5 +1,7 @@
 {%- set canonical = site.url + '/' + simplePage.slug -%}
-{%- set socialImage = site.url + (simplePage.seo.ogImage or '') -%}
+{%- set socialImagePath = simplePage.seo.ogImage or site.socialImage.path -%}
+{%- set socialImage = site.url + socialImagePath -%}
+{%- set socialImageAlt = simplePage.seo.ogImageAlt or simplePage.seo.title or site.socialImage.alt -%}
 <!DOCTYPE html>
 <html lang="{{ lang or 'en' }}" data-theme="light">
 
@@ -18,18 +20,16 @@
     <meta property="og:type" content="{{ simplePage.article and 'article' or 'website' }}">
     <meta property="og:url" content="{{ canonical }}">
     <meta property="og:site_name" content="{{ site.name }}">
-    {%- if simplePage.seo.ogImage %}
     <meta property="og:image" content="{{ socialImage }}">
-    <meta property="og:image:width" content="{{ simplePage.seo.ogImageWidth }}">
-    <meta property="og:image:height" content="{{ simplePage.seo.ogImageHeight }}">
-    <meta property="og:image:type" content="{{ simplePage.seo.ogImageType }}">
-    <meta property="og:image:alt" content="{{ simplePage.seo.ogImageAlt }}">
+    <meta property="og:image:width" content="{{ simplePage.seo.ogImageWidth or site.socialImage.width }}">
+    <meta property="og:image:height" content="{{ simplePage.seo.ogImageHeight or site.socialImage.height }}">
+    <meta property="og:image:type" content="{{ simplePage.seo.ogImageType or site.socialImage.type }}">
+    <meta property="og:image:alt" content="{{ socialImageAlt }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ simplePage.seo.title }}">
     <meta name="twitter:description" content="{{ simplePage.seo.description }}">
     <meta name="twitter:image" content="{{ socialImage }}">
-    <meta name="twitter:image:alt" content="{{ simplePage.seo.ogImageAlt }}">
-    {%- endif %}
+    <meta name="twitter:image:alt" content="{{ socialImageAlt }}">
     {%- if simplePage.article %}
     <meta property="article:modified_time" content="{{ simplePage.article.dateModified }}">
     {%- endif %}

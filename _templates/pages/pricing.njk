@@ -22,7 +22,7 @@ lang: en
             </nav>
         </div>
         <div class="nav-right">
-            <a href="{{ chrome.nav.cta.url }}" class="btn btn-workspaces">{{ chrome.nav.cta.label }}</a>
+            <a href="{{ pageData.navCta.url }}" class="btn btn-workspaces">{{ pageData.navCta.label }}</a>
             <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
                 <span class="nav-toggle-bar"></span>
                 <span class="nav-toggle-bar"></span>
@@ -47,7 +47,7 @@ lang: en
         <li><a href="{{ navHref }}" class="mobile-nav-link">{{ item.label }}</a></li>
         {%- endfor %}
     </ul>
-    <a href="{{ chrome.nav.cta.url }}" class="btn btn-workspaces mobile-nav-cta">{{ chrome.nav.cta.label }}</a>
+    <a href="{{ pageData.navCta.url }}" class="btn btn-workspaces mobile-nav-cta">{{ pageData.navCta.label }}</a>
 </nav>
 
 <!-- HERO + MAIN -->
@@ -77,12 +77,23 @@ lang: en
                     <p class="plan-desc">{{ plan.description }}</p>
                     <p class="plan-price">{{ plan.price }}{% if plan.priceWas %}<span class="plan-price-was"><span class="visually-hidden">Regular price </span><s>{{ plan.priceWas }}</s></span>{% endif %}</p>
                     <p class="plan-price-note">{{ plan.priceNote }}</p>
+                    {%- if plan.cta.unavailable %}
+                    <button class="btn plan-cta plan-cta--unavailable{% if plan.featured %} btn-primary{% else %} plan-cta--ghost{% endif %}" type="button" disabled aria-disabled="true">{{ plan.cta.label }}</button>
+                    {%- else %}
                     <a class="btn plan-cta{% if plan.featured %} btn-primary{% else %} plan-cta--ghost{% endif %}" href="{{ plan.cta.url }}" data-plan="{{ plan.id }}">{{ plan.cta.label }}</a>
+                    {%- endif %}
                     {%- if plan.ctaNote %}
                     <p class="plan-cta-note">{{ plan.ctaNote }}</p>
                     {%- endif %}
                     {%- if plan.ctaOffer %}
-                    <p class="plan-cta-offer">{{ plan.ctaOffer.text }} <a class="text-link" href="{{ plan.ctaOffer.link.url }}" data-plan="{{ plan.id }}-annual">{{ plan.ctaOffer.link.label }}</a>{% if plan.ctaOffer.note %} <span class="plan-save">{{ plan.ctaOffer.note }}</span>{% endif %}</p>
+                    <p class="plan-cta-offer">{{ plan.ctaOffer.text }}
+                        {%- if plan.ctaOffer.link.unavailable %}
+                        <span class="text-link text-link--unavailable" aria-disabled="true">{{ plan.ctaOffer.link.label }}</span>
+                        {%- else %}
+                        <a class="text-link" href="{{ plan.ctaOffer.link.url }}" data-plan="{{ plan.id }}-annual">{{ plan.ctaOffer.link.label }}</a>
+                        {%- endif %}
+                        {% if plan.ctaOffer.note %}<span class="plan-save">{{ plan.ctaOffer.note }}</span>{% endif %}
+                    </p>
                     {%- endif %}
                     <ul class="plan-features">
                         {%- for feature in plan.features %}
@@ -143,7 +154,8 @@ lang: en
                     <h3 class="footer-col-title">{{ column.title }}</h3>
                     <ul class="footer-col-links">
                         {%- for link in column.links %}
-                        <li><a href="{{ link.url }}" class="footer-link">{{ link.label }}</a></li>
+                        {%- set footerHref = ('/' + link.url) if '#' in link.url else link.url %}
+                        <li><a href="{{ footerHref }}" class="footer-link">{{ link.label }}</a></li>
                         {%- endfor %}
                     </ul>
                 </div>

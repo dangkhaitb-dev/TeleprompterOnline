@@ -195,7 +195,7 @@
     "supporting": "Віддаєте перевагу традиційній прокрутці? Завжди доступні ручне керування та керування з фіксованою швидкістю.",
     "cta": {
       "label": "Спробуйте голосове прокручування",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "notch": {
@@ -211,7 +211,7 @@
     "supporting": "Ідеально підходить для голосових відео, відеодзвінків, віддалених співбесід та онлайн-уроків.",
     "cta": {
       "label": "Відкрити телесуфлер",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "remote": {
@@ -243,7 +243,7 @@
     "supporting": "Важливий робочий процес для сольних творців, корпоративних ведучих і спікерів.",
     "cta": {
       "label": "Підключити пульт",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "recording": {
@@ -274,7 +274,7 @@
     },
     "cta": {
       "label": "Почніть запис",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "resourceLink": {
       "label": "Читати, як SolPrompter обробляє локальний вміст",
@@ -408,7 +408,7 @@
     "description": "Введіть свій сценарій, налаштуйте параметри відображення та запишіть відео сьогодні.",
     "cta": {
       "label": "Відкрити телесуфлер",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "supporting": "Безкоштовно, без реклами, без водяних знаків."
   },
@@ -480,7 +480,7 @@
     "evidenceSummary": "Точність розпізнавання голосу та час відгуку залежать від браузера, мови, мікрофона, фонового шуму та стилю читання.",
     "benchmarkLink": {
       "label": "Читати нотатки про функції SolPrompter",
-      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested/"
     }
   },
   "footer": {

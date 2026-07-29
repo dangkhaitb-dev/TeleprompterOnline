@@ -14,7 +14,7 @@
 // To add a language: add a row + create _data/pages/index/<code>.json.
 // To remove one: delete the row + its JSON file.
 
-// [code, English name, endonym, dir, isDefault]
+// [code, English name, endonym, dir, isDefault, Google hreflang code]
 const rows = [
   ['en', 'English', 'English', 'ltr', true],
   ['es', 'Spanish', 'Español', 'ltr'],
@@ -31,7 +31,7 @@ const rows = [
   ['th', 'Thai', 'ไทย', 'ltr'],
   ['id', 'Indonesian', 'Bahasa Indonesia', 'ltr'],
   ['ms', 'Malay', 'Bahasa Melayu', 'ltr'],
-  ['fil', 'Filipino', 'Filipino', 'ltr'],
+  ['fil', 'Filipino', 'Filipino', 'ltr', false, 'tl'],
   ['ja', 'Japanese', '日本語', 'ltr'],
   ['ko', 'Korean', '한국어', 'ltr'],
   ['zh', 'Chinese (Simplified)', '简体中文', 'ltr'],
@@ -42,8 +42,9 @@ const rows = [
   ['fa', 'Persian', 'فارسی', 'rtl'],
 ];
 
-module.exports = rows.map(([code, name, endonym, dir, isDefault]) => ({
+module.exports = rows.map(([code, name, endonym, dir, isDefault, hreflang]) => ({
   code,
+  hreflang: hreflang || code,
   name,
   endonym,
   dir,

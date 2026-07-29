@@ -31,7 +31,7 @@
         (e.g. about) reuse this layout but have no translations, so they must
         not emit these alternates. -#}
     {%- for l in site.languages %}
-    <link rel="alternate" hreflang="{{ l.code }}" href="{{ site.url }}{{ l.homePath }}">
+    <link rel="alternate" hreflang="{{ l.hreflang }}" href="{{ site.url }}{{ l.homePath }}">
     {%- endfor %}
     <link rel="alternate" hreflang="x-default" href="{{ site.url }}/">
     {%- endif %}
@@ -40,8 +40,8 @@
     {%- if pageKey == 'about' %}
     <link rel="stylesheet" href="/src/styles/about.css">
     {%- endif %}
-    {% include "partials/json-ld.njk" %}
-    {% include "partials/pricing-json-ld.njk" %}
+    {%- include "partials/json-ld.njk" -%}
+    {%- include "partials/pricing-json-ld.njk" %}
 </head>
 
 <body class="home">

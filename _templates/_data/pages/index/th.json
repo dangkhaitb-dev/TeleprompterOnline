@@ -195,7 +195,7 @@
     "supporting": "ชอบการเลื่อนแบบดั้งเดิมหรือไม่? มีการควบคุมแบบแมนนวลและแบบความเร็วคงที่อยู่เสมอ",
     "cta": {
       "label": "ลองเลื่อนด้วยเสียง",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "notch": {
@@ -211,7 +211,7 @@
     "supporting": "เหมาะสำหรับวิดีโอพูดคุย การสนทนาทางวิดีโอ การสัมภาษณ์ทางไกล และบทเรียนออนไลน์",
     "cta": {
       "label": "เปิดเครื่องส่งสัญญาณทางไกล",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "remote": {
@@ -243,7 +243,7 @@
     "supporting": "ขั้นตอนการทำงานที่จำเป็นสำหรับผู้สร้างเดี่ยว ผู้นำเสนอขององค์กร และผู้บรรยายบนเวที",
     "cta": {
       "label": "เชื่อมต่อระยะไกล",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "recording": {
@@ -274,7 +274,7 @@
     },
     "cta": {
       "label": "เริ่มการบันทึก",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "resourceLink": {
       "label": "อ่านวิธีที่ SolPrompter จัดการกับเนื้อหาในเครื่อง",
@@ -408,7 +408,7 @@
     "description": "ป้อนสคริปต์ของคุณ กำหนดการตั้งค่าการแสดงผล และบันทึกวิดีโอของคุณวันนี้",
     "cta": {
       "label": "เปิดเครื่องส่งสัญญาณทางไกล",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "supporting": "ฟรี ไม่มีโฆษณา ไม่มีลายน้ำ"
   },
@@ -480,7 +480,7 @@
     "evidenceSummary": "ความแม่นยำในการจดจำเสียงและเวลาในการตอบสนองจะแตกต่างกันไปตามเบราว์เซอร์ ภาษา ไมโครโฟน เสียงรบกวนรอบข้าง และสไตล์การอ่าน",
     "benchmarkLink": {
       "label": "อ่านบันทึกฟีเจอร์ของ SolPrompter",
-      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested/"
     }
   },
   "footer": {

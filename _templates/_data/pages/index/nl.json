@@ -195,7 +195,7 @@
     "supporting": "Liever traditioneel scrollen? Handmatige en vaste snelheidsregelaars zijn altijd beschikbaar.",
     "cta": {
       "label": "Probeer voicescroll",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "notch": {
@@ -211,7 +211,7 @@
     "supporting": "Perfect voor video's met pratende hoofden, videogesprekken, interviews op afstand en online lessen.",
     "cta": {
       "label": "Teleprompter openen",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "remote": {
@@ -243,7 +243,7 @@
     "supporting": "Een essentiële workflow voor solomakers, bedrijfspresentatoren en podiumsprekers.",
     "cta": {
       "label": "Verbind afstandsbediening",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "recording": {
@@ -274,7 +274,7 @@
     },
     "cta": {
       "label": "Begin met opnemen",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "resourceLink": {
       "label": "Lees hoe SolPrompter omgaat met lokale inhoud",
@@ -408,7 +408,7 @@
     "description": "Voer uw script in, configureer uw weergave-instellingen en neem vandaag nog uw video op.",
     "cta": {
       "label": "Teleprompter openen",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "supporting": "Gratis, advertentievrij, watermerkvrij."
   },
@@ -480,7 +480,7 @@
     "evidenceSummary": "De nauwkeurigheid van de spraakherkenning en de reactietijd variëren afhankelijk van de browser, taal, microfoon, achtergrondgeluid en leesstijl.",
     "benchmarkLink": {
       "label": "Lees de SolPrompter-functienotities",
-      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested/"
     }
   },
   "footer": {

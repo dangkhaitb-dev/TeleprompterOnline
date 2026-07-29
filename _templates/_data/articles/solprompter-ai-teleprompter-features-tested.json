@@ -7,7 +7,9 @@
   "dateDisplay": "July 10, 2026",
   "modified": "2026-07-29",
   "author": {
-    "name": "The SolPrompter Team"
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
   },
   "review": {
     "by": "the SolPrompter team",

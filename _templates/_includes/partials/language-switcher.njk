@@ -16,7 +16,7 @@
         <ul class="lang-switcher-list">
             {%- for l in site.languages %}
             <li>
-                <a href="{{ l.homePath }}" hreflang="{{ l.code }}" lang="{{ l.code }}" dir="{{ l.dir }}" class="lang-switcher-item{% if l.code == currentLang %} is-current{% endif %}"{% if l.code == currentLang %} aria-current="true"{% endif %}>
+                <a href="{{ l.homePath }}" hreflang="{{ l.hreflang }}" lang="{{ l.code }}" dir="{{ l.dir }}" class="lang-switcher-item{% if l.code == currentLang %} is-current{% endif %}"{% if l.code == currentLang %} aria-current="true"{% endif %}>
                     <span class="lang-switcher-endonym">{{ l.endonym }}</span>
                     <span class="lang-switcher-name">{{ l.name }}</span>
                     {%- if l.code == currentLang %}

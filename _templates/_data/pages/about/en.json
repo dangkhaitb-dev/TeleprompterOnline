@@ -8,6 +8,10 @@
     "ogType": "website",
     "ogImage": "/og-solprompter.jpg"
   },
+  "navCta": {
+    "label": "Home",
+    "url": "/"
+  },
   "hero": {
     "eyebrow": "About SolPrompter",
     "title": "Present Naturally. Stay Focused.",
@@ -104,7 +108,7 @@
     "eyebrow": "Your Message Deserves a Confident Delivery",
     "title": "Start Presenting with SolPrompter",
     "description": "Add your script, choose how you want it to scroll and focus on delivering your message naturally.",
-    "cta": { "label": "Open SolPrompter", "url": "/workspaces" },
+    "cta": { "label": "Open SolPrompter", "url": "/" },
     "supporting": "Currently free to use · No ads · No watermark"
   }
 }

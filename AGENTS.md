@@ -239,3 +239,16 @@ custom agent type with a full-history fork.
   references. Ignore style-only commentary already enforced by lint.
 - Before completion, inspect `git diff` and make sure unrelated user changes
   remain untouched.
+
+## Deployment safety
+
+- Before any deployment, explicitly ask the user which production domain and
+  Cloudflare Pages project should receive the deployment. Do not infer the
+  target from the repository name or create a new project automatically.
+- Never deploy to a `*.pages.dev` project or create a Pages project without the
+  user's explicit confirmation of that target.
+- Treat custom-domain setup, redirects, project deletion, and deployment
+  deletion as destructive or externally visible operations. Explain their
+  impact and obtain explicit confirmation before performing them.
+- A Pages `*.pages.dev` alias cannot be removed independently from its project;
+  deleting the project also removes its deployments and custom-domain binding.

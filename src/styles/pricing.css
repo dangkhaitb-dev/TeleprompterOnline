@@ -205,6 +205,15 @@
   outline-offset: 2px;
 }
 
+.plan-cta--unavailable,
+.plan-cta--unavailable:hover {
+  border-color: var(--line);
+  background: var(--line-soft);
+  color: var(--ink-muted);
+  cursor: not-allowed;
+  opacity: 0.72;
+}
+
 /* Hint under the day-pass CTA. */
 .plan-cta-note {
   margin: 0.7rem 0 0;
@@ -240,6 +249,13 @@
 .plan-cta-offer .text-link:hover {
   color: var(--ink);
   text-decoration: underline;
+}
+
+.plan-cta-offer .text-link--unavailable,
+.plan-cta-offer .text-link--unavailable:hover {
+  color: var(--ink-muted);
+  cursor: not-allowed;
+  text-decoration: none;
 }
 
 .plan-save {

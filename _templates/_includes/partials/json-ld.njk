@@ -1,9 +1,8 @@
 {#- Build-time JSON-LD generator.
 
     Emits a compact schema.org @graph for the current page, assembled entirely
-    from pageData.seo / pageData.schema plus the shared `site` config. FAQ and
-    HowTo remain useful visible content, but are intentionally not emitted as
-    Google no longer shows those rich results for a general SaaS site.
+    from pageData.seo / pageData.schema plus the shared `site` config. HowTo
+    and FAQPage mirror the visible workflow and FAQ content on the page.
 
     All text is escaped through the `jsonString` filter (eleventy.config.cjs).
     No-op on pages that don't declare `pageData.schema`. -#}
@@ -97,6 +96,49 @@
       "creator": { "@id": "{{ home }}#organization" },
       "provider": { "@id": "{{ home }}#organization" },
       "mainEntityOfPage": { "@id": "{{ canonicalUrl }}#webpage" },
+      "inLanguage": "{{ langCode }}"
+    },
+    {
+      "@type": "HowTo",
+      "@id": "{{ canonicalUrl }}#how-to",
+      "url": "{{ canonicalUrl }}#how-it-works",
+      "name": "{{ sc.howToName | jsonString | safe }}",
+      "description": "{{ sc.howToDescription | jsonString | safe }}",
+      "isPartOf": { "@id": "{{ canonicalUrl }}#webpage" },
+      "step": [
+        {%- for step in pageData.howItWorks.steps %}
+        {
+          "@type": "HowToStep",
+          "@id": "{{ canonicalUrl }}#how-to-step-{{ loop.index }}",
+          "position": {{ loop.index }},
+          "url": "{{ canonicalUrl }}#{{ step.anchor | jsonString | safe }}",
+          "name": "{{ step.title | jsonString | safe }}",
+          "text": "{{ step.description | jsonString | safe }}"
+        }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ],
+      "inLanguage": "{{ langCode }}"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "{{ canonicalUrl }}#faq",
+      "url": "{{ canonicalUrl }}#faq",
+      "name": "{{ sc.faqName | jsonString | safe }}",
+      "description": "{{ sc.faqDescription | jsonString | safe }}",
+      "isPartOf": { "@id": "{{ canonicalUrl }}#webpage" },
+      "mainEntity": [
+        {%- for item in pageData.faq.items %}
+        {
+          "@type": "Question",
+          "@id": "{{ canonicalUrl }}#faq-question-{{ loop.index }}",
+          "name": "{{ item.q | jsonString | safe }}",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "{{ item.a | jsonString | safe }}"
+          }
+        }{% if not loop.last %},{% endif %}
+        {%- endfor %}
+      ],
       "inLanguage": "{{ langCode }}"
     }
   ]

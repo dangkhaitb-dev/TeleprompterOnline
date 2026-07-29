@@ -8,7 +8,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -27,13 +27,9 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/about</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://solprompter.com/ar/</loc>
@@ -43,7 +39,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -62,28 +58,18 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/billing</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://solprompter.com/blog</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://solprompter.com/blog/product/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://solprompter.com/blog/product/solprompter-ai-teleprompter-features-tested/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://solprompter.com/bn/</loc>
@@ -93,7 +79,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -112,8 +98,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/de/</loc>
@@ -123,7 +107,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -142,8 +126,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/es/</loc>
@@ -153,7 +135,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -172,8 +154,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/fa/</loc>
@@ -183,7 +163,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -202,8 +182,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/fil/</loc>
@@ -213,7 +191,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -232,8 +210,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/fr/</loc>
@@ -243,7 +219,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -262,8 +238,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/hi/</loc>
@@ -273,7 +247,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -292,8 +266,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/id/</loc>
@@ -303,7 +275,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -322,8 +294,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/it/</loc>
@@ -333,7 +303,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -352,8 +322,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/ja/</loc>
@@ -363,7 +331,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -382,8 +350,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/ko/</loc>
@@ -393,7 +359,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -412,8 +378,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/ms/</loc>
@@ -423,7 +387,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -442,8 +406,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/nl/</loc>
@@ -453,7 +415,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -472,8 +434,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/pl/</loc>
@@ -483,7 +443,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -502,18 +462,12 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/policy</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://solprompter.com/pricing</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://solprompter.com/pt/</loc>
@@ -523,7 +477,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -542,8 +496,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/ru/</loc>
@@ -553,7 +505,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -572,18 +524,12 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/teleprompter-guide</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://solprompter.com/term</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://solprompter.com/th/</loc>
@@ -593,7 +539,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -612,8 +558,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/tr/</loc>
@@ -623,7 +567,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -642,8 +586,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/uk/</loc>
@@ -653,7 +595,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -672,8 +614,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/vi/</loc>
@@ -683,7 +623,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -702,8 +642,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/zh-Hant/</loc>
@@ -713,7 +651,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -732,8 +670,6 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
   <url>
     <loc>https://solprompter.com/zh/</loc>
@@ -743,7 +679,7 @@
     <xhtml:link rel="alternate" hreflang="de" href="https://solprompter.com/de/"/>
     <xhtml:link rel="alternate" hreflang="es" href="https://solprompter.com/es/"/>
     <xhtml:link rel="alternate" hreflang="fa" href="https://solprompter.com/fa/"/>
-    <xhtml:link rel="alternate" hreflang="fil" href="https://solprompter.com/fil/"/>
+    <xhtml:link rel="alternate" hreflang="tl" href="https://solprompter.com/fil/"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://solprompter.com/fr/"/>
     <xhtml:link rel="alternate" hreflang="hi" href="https://solprompter.com/hi/"/>
     <xhtml:link rel="alternate" hreflang="id" href="https://solprompter.com/id/"/>
@@ -762,7 +698,5 @@
     <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://solprompter.com/zh-Hant/"/>
     <xhtml:link rel="alternate" hreflang="zh" href="https://solprompter.com/zh/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://solprompter.com/"/>
-    <changefreq>weekly</changefreq>
-    <priority>1</priority>
   </url>
 </urlset>

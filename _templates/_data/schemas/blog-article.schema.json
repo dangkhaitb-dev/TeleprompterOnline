@@ -45,9 +45,11 @@
     "author": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["name"],
+      "required": ["type", "name", "url"],
       "properties": {
-        "name": { "type": "string", "minLength": 1 }
+        "type": { "enum": ["Person", "Organization"] },
+        "name": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "pattern": "^/" }
       }
     },
     "review": {

@@ -165,6 +165,39 @@ describe('initButtonClickTracking', () => {
     document.body.innerHTML = '';
   });
 
+  it('loads Firebase lazily on the first tracked interaction and reuses the client', async () => {
+    const logEvent = vi.fn();
+    const analytics = {};
+    const loadClient = vi.fn(async () => ({ analytics, logEvent }));
+    const stop = initButtonClickTracking({
+      loadClient,
+      pageName: 'home',
+    });
+
+    try {
+      await Promise.resolve();
+      expect(loadClient).not.toHaveBeenCalled();
+
+      document.body.click();
+      await Promise.resolve();
+      expect(loadClient).not.toHaveBeenCalled();
+
+      const button = document.createElement('button');
+      button.id = 'start-btn';
+      document.body.appendChild(button);
+
+      button.click();
+      await vi.waitFor(() => expect(logEvent).toHaveBeenCalledTimes(1));
+      expect(loadClient).toHaveBeenCalledTimes(1);
+
+      button.click();
+      await vi.waitFor(() => expect(logEvent).toHaveBeenCalledTimes(2));
+      expect(loadClient).toHaveBeenCalledTimes(1);
+    } finally {
+      stop();
+    }
+  });
+
   it('tracks static and dynamically-added buttons through one delegated listener', async () => {
     const logEvent = vi.fn();
     const analytics = {};

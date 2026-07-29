@@ -4,7 +4,7 @@
   "description": "Teleprompter web app — base (Vite + 11ty, vanilla JS ES modules)",
   "main": "index.js",
   "scripts": {
-    "prepare": "lefthook install",
+    "prepare": "node scripts/install-git-hooks.mjs",
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint src/script",
     "lint:css": "stylelint \"src/**/*.css\"",

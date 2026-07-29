@@ -195,7 +195,7 @@
     "supporting": "Geleneksel kaydırmayı mı tercih ediyorsunuz? Manuel ve sabit hızlı kontroller her zaman mevcuttur.",
     "cta": {
       "label": "Ses kaydırmayı deneyin",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "notch": {
@@ -211,7 +211,7 @@
     "supporting": "Konuşan kafalı videolar, görüntülü aramalar, uzaktan röportajlar ve çevrimiçi dersler için mükemmeldir.",
     "cta": {
       "label": "Teleprompter'ı aç",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "remote": {
@@ -243,7 +243,7 @@
     "supporting": "Tek başına yaratıcılar, kurumsal sunum yapan kişiler ve sahne konuşmacıları için vazgeçilmez bir iş akışı.",
     "cta": {
       "label": "Uzaktan bağlan",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "recording": {
@@ -274,7 +274,7 @@
     },
     "cta": {
       "label": "Kaydı başlat",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "resourceLink": {
       "label": "SolPrompter'ın yerel içeriği nasıl işlediğini okuyun",
@@ -408,7 +408,7 @@
     "description": "Komut dosyanızı girin, görüntü ayarlarınızı yapılandırın ve videonuzu bugün kaydedin.",
     "cta": {
       "label": "Teleprompter'ı aç",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "supporting": "Ücretsiz, reklamsız, filigransız."
   },
@@ -480,7 +480,7 @@
     "evidenceSummary": "Ses tanıma doğruluğu ve yanıt süresi tarayıcıya, dile, mikrofona, arka plan gürültüsüne ve okuma tarzına göre değişiklik gösterir.",
     "benchmarkLink": {
       "label": "SolPrompter özellik notlarını okuyun",
-      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested/"
     }
   },
   "footer": {

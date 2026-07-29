@@ -26,7 +26,7 @@ lang: en
             </nav>
         </div>
         <div class="nav-right">
-            <a href="/workspaces" class="btn btn-workspaces">{{ pageData.nav.workspaces }}</a>
+            <a href="{{ pageData.nav.cta.url }}" class="btn btn-workspaces">{{ pageData.nav.cta.label }}</a>
         </div>
     </div>
 </header>
@@ -41,6 +41,10 @@ lang: en
             </nav>
             <h1 class="article-title">{{ article.title }}</h1>
             <p class="article-review">
+                {{ pageData.review.by }} <strong>{{ article.author.name }}</strong>
+                <span aria-hidden="true">·</span>
+                {{ pageData.review.published }} <time datetime="{{ article.date }}">{{ article.dateDisplay }}</time>
+                <span aria-hidden="true">·</span>
                 {{ pageData.review.reviewedBy }} <strong>{{ article.review.by }}</strong>
                 <span aria-hidden="true">·</span>
                 {{ pageData.review.updated }} <time datetime="{{ article.modified }}">{{ article.review.updatedDisplay }}</time>
@@ -63,8 +67,17 @@ lang: en
                             "image": { "@id": "{{ canonical }}#primaryimage" },
                             "datePublished": "{{ article.date }}",
                             "dateModified": "{{ article.modified }}",
-                            "author": { "@id": "{{ home }}#organization" },
-                            "publisher": { "@id": "{{ home }}#organization" },
+                            "author": {
+                                "@type": "{{ article.author.type }}",
+                                "name": "{{ article.author.name | jsonString | safe }}",
+                                "url": "{{ site.url }}{{ article.author.url }}"
+                            },
+                            "publisher": {
+                                "@type": "Organization",
+                                "@id": "{{ home }}#organization",
+                                "name": "{{ site.name }}",
+                                "url": "{{ home }}"
+                            },
                             "articleSection": "{{ (article.category or 'Product') | jsonString | safe }}",
                             {%- if article.keywords %}
                             "keywords": [{% for k in article.keywords %}"{{ k | jsonString | safe }}"{% if not loop.last %}, {% endif %}{% endfor %}],
@@ -73,7 +86,7 @@ lang: en
                             "mentions": [{% for m in article.mentions %}{ "@type": "Thing", "name": "{{ m | jsonString | safe }}" }{% if not loop.last %}, {% endif %}{% endfor %}],
                             {%- endif %}
                             "about": { "@id": "{{ home }}#application" },
-                            "isPartOf": { "@id": "{{ site.url }}/blog/#blog" },
+                            "isPartOf": { "@id": "{{ site.url }}/blog#blog" },
                             "breadcrumb": { "@id": "{{ canonical }}#breadcrumb" },
                             "inLanguage": "en"
                         },
@@ -104,7 +117,7 @@ lang: en
                             "@id": "{{ canonical }}#breadcrumb",
                             "itemListElement": [
                                 { "@type": "ListItem", "position": 1, "name": "Home", "item": "{{ home }}" },
-                                { "@type": "ListItem", "position": 2, "name": "Blog", "item": "{{ site.url }}/blog/" },
+                                { "@type": "ListItem", "position": 2, "name": "Blog", "item": "{{ site.url }}/blog" },
                                 { "@type": "ListItem", "position": 3, "name": "{{ article.category | jsonString | safe }}", "item": "{{ site.url }}/blog/{{ article.categorySlug }}/" },
                                 { "@type": "ListItem", "position": 4, "name": "{{ (article.shortName or article.title) | jsonString | safe }}", "item": "{{ canonical }}" }
                             ]
@@ -115,7 +128,7 @@ lang: en
 
             <div class="article-prose">
                 {%- for block in article.content %}
-                    {% if block.type == 'paragraph' %}
+                    {%- if block.type == 'paragraph' %}
                     <p>{{ block.html | safe }}</p>
                     {% elif block.type == 'heading' and block.level == 3 %}
                     <h3 id="{{ block.id }}">{{ block.text }}</h3>
@@ -139,7 +152,7 @@ lang: en
                             {%- endfor %}
                         </ol>
                     </nav>
-                    {% elif block.type == 'quote' %}
+                    {%- elif block.type == 'quote' %}
                     <blockquote><p>{{ block.text }}</p></blockquote>
                     {% elif block.type == 'list' and block.style == 'principles' %}
                     <ul class="article-principles">

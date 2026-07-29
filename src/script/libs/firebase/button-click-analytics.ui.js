@@ -239,10 +239,17 @@ export function initButtonClickTracking({
   pageName,
   loadClient = loadAnalyticsClient,
 } = {}) {
-  const clientPromise = Promise.resolve().then(() => loadClient()).catch(() => null);
+  let clientPromise;
+
+  const getClient = () => {
+    if (!clientPromise) {
+      clientPromise = Promise.resolve().then(() => loadClient()).catch(() => null);
+    }
+    return clientPromise;
+  };
 
   const send = (analyticsEvent) => {
-    void clientPromise.then((client) => {
+    void getClient().then((client) => {
       if (!client?.analytics || typeof client.logEvent !== 'function') return;
       client.logEvent(client.analytics, analyticsEvent.name, analyticsEvent.params);
     });

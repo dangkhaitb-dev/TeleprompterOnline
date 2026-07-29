@@ -8,10 +8,9 @@
     "ogType": "website",
     "ogImage": "/og-solprompter.jpg"
   },
-  "pricingSchema": {
-    "productName": "SolPrompter",
-    "productDescription": "Online AI teleprompter with voice-following scroll, notch mode, remote control and 4K recording.",
-    "currency": "USD"
+  "navCta": {
+    "label": "Home",
+    "url": "/"
   },
   "hero": {
     "eyebrow": "Early Adopter Pricing",
@@ -40,7 +39,7 @@
           "Premium Themes",
           "Mirror and Fullscreen Mode"
         ],
-        "cta": { "label": "Buy Day Pass", "url": "#" },
+        "cta": { "label": "Coming soon", "unavailable": true },
         "ctaNote": "Perfect for one-time recordings."
       },
       {
@@ -63,10 +62,10 @@
           "Script History",
           "Priority Support"
         ],
-        "cta": { "label": "Start Pro", "url": "#" },
+        "cta": { "label": "Coming soon", "unavailable": true },
         "ctaOffer": {
           "text": "Prefer annual billing?",
-          "link": { "label": "Get Pro for $49/year", "url": "#" },
+          "link": { "label": "Annual checkout coming soon", "unavailable": true },
           "note": "Save $34",
           "amount": "49",
           "name": "Pro Annual"
@@ -90,7 +89,7 @@
           "Founder Badge",
           "Early Feature Access"
         ],
-        "cta": { "label": "Get Lifetime", "url": "#" }
+        "cta": { "label": "Coming soon", "unavailable": true }
       }
     ]
   },

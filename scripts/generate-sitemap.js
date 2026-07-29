@@ -10,10 +10,15 @@
 
 import fs from 'fs';
 import path from 'path';
+import { createRequire } from 'module';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const require = createRequire(import.meta.url);
+const languages = require('../_templates/_data/languages.cjs');
+const hreflangByRouteCode = new Map(languages.map((language) => [language.code, language.hreflang]));
+const defaultLanguage = languages.find((language) => language.isDefault) || languages[0];
 
 const CONFIG = {
   baseUrl: (process.env.SITE_URL || 'https://solprompter.com').replace(/\/$/, ''),
@@ -21,9 +26,6 @@ const CONFIG = {
   blogDir: path.resolve(__dirname, '../blog'),
   pagesDir: path.resolve(__dirname, '../pages'),
   outputPath: path.resolve(__dirname, '../public/sitemap.xml'),
-  changefreq: 'weekly',
-  defaultPriority: 0.8,
-  homePriority: 1.0,
 };
 
 const EXCLUDE_FILES = ['404.html'];
@@ -37,11 +39,9 @@ function isNoindex(absPath) {
   }
 }
 
-function urlEntry(loc, priority, alternatesXml = '') {
+function urlEntry(loc, alternatesXml = '') {
   return `  <url>
     <loc>${loc}</loc>${alternatesXml}
-    <changefreq>${CONFIG.changefreq}</changefreq>
-    <priority>${priority}</priority>
   </url>`;
 }
 
@@ -67,13 +67,19 @@ function collectBlogRoutes(currentDir = CONFIG.blogDir, segments = []) {
 }
 
 // pages/<lang>/index.html -> localized home pages. The directory name is the
-// language code (e.g. es, vi, zh-Hant), also used as the hreflang value.
+// language code (e.g. es, vi, zh-Hant). Google-specific hreflang values come
+// from the shared language registry so route codes can stay stable.
 function collectLangPages() {
   if (!fs.existsSync(CONFIG.pagesDir)) return [];
   return fs
     .readdirSync(CONFIG.pagesDir, { withFileTypes: true })
     .filter((e) => e.isDirectory() && fs.existsSync(path.join(CONFIG.pagesDir, e.name, 'index.html')))
-    .map((e) => ({ relPath: `pages/${e.name}/index.html`, urlPath: `${e.name}/`, isHome: true, hreflang: e.name }));
+    .map((e) => ({
+      relPath: `pages/${e.name}/index.html`,
+      urlPath: `${e.name}/`,
+      isHome: true,
+      hreflang: hreflangByRouteCode.get(e.name) || e.name,
+    }));
 }
 
 // Build the shared <xhtml:link> alternates block attached to every home-page
@@ -104,22 +110,21 @@ function generateSitemap() {
     entries.push({
       relPath: file,
       urlPath: isHome ? '' : slug,
-      priority: isHome ? CONFIG.homePriority : CONFIG.defaultPriority,
       isHome,
-      hreflang: isHome ? 'en' : undefined,
+      hreflang: isHome ? defaultLanguage.hreflang : undefined,
     });
   }
 
   // Localized home pages: pages/<lang>/index.html
   for (const page of collectLangPages()) {
     if (isNoindex(path.join(CONFIG.rootDir, page.relPath))) continue;
-    entries.push({ relPath: page.relPath, urlPath: page.urlPath, priority: CONFIG.homePriority, isHome: true, hreflang: page.hreflang });
+    entries.push(page);
   }
 
   // Blog category and article routes: blog/**/index.html
   for (const blogRoute of collectBlogRoutes()) {
     if (isNoindex(path.join(CONFIG.rootDir, blogRoute.relPath))) continue;
-    entries.push({ relPath: blogRoute.relPath, urlPath: blogRoute.urlPath, priority: CONFIG.defaultPriority });
+    entries.push(blogRoute);
   }
 
   const sorted = entries.sort((a, b) => a.urlPath.localeCompare(b.urlPath));
@@ -128,7 +133,6 @@ function generateSitemap() {
   const urls = sorted.map((e) =>
     urlEntry(
       `${CONFIG.baseUrl}/${e.urlPath}`,
-      e.priority,
       e.isHome ? homeAlternatesXml : ''
     )
   );

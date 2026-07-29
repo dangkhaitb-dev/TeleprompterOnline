@@ -3,11 +3,7 @@
     at the top instead of jumping to the previous scroll position. Runs in <head> before any
     paint so restoration never kicks in. #}
 <script>if ("scrollRestoration" in history) history.scrollRestoration = "manual";</script>
-{#- Favicon set. Assets live in public/ (Vite copies as-is).
-    favicon.svg is the source of truth; rasterize with macOS `sips` (ImageMagick's SVG renderer
-    breaks the chevron's matrix transform), then package ICO: magick favicon-{16x16,32x32,48x48}.png favicon.ico -#}
-<link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+{#- PNG favicon set generated from the square brand icon. Assets live in public/. -#}
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">

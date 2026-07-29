@@ -22,7 +22,7 @@ lang: en
             </nav>
         </div>
         <div class="nav-right">
-            <a href="/workspaces" class="btn btn-workspaces">{{ pageData.nav.workspaces }}</a>
+            <a href="{{ pageData.nav.cta.url }}" class="btn btn-workspaces">{{ pageData.nav.cta.label }}</a>
         </div>
     </div>
 </header>
@@ -32,7 +32,7 @@ lang: en
         {
             "@context": "https://schema.org",
             "@type": "Blog",
-            "@id": "{{ site.url }}/blog/#blog",
+            "@id": "{{ site.url }}/blog#blog",
             "name": "{{ pageData.hero.heading | jsonString | safe }}",
             "description": "{{ pageData.seo.description | jsonString | safe }}",
             "url": "{{ site.url }}/blog",
@@ -54,8 +54,9 @@ lang: en
                     "datePublished": "{{ article.date }}",
                     "dateModified": "{{ article.modified }}",
                     "author": {
-                        "@type": "Person",
-                        "name": "{{ article.author.name | jsonString | safe }}"
+                        "@type": "{{ article.author.type }}",
+                        "name": "{{ article.author.name | jsonString | safe }}",
+                        "url": "{{ site.url }}{{ article.author.url }}"
                     }
                 }{% if not loop.last %},{% endif %}
                 {%- endfor %}

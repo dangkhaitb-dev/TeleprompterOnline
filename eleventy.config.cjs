@@ -1,7 +1,20 @@
 const fs = require('fs');
 const path = require('path');
 
-module.exports = function (eleventyConfig) {
+const allocateUniqueId = (baseId, allocatedIds) => {
+  let candidateId = baseId;
+  let suffix = 2;
+
+  while (allocatedIds.has(candidateId)) {
+    candidateId = `${baseId}-${suffix}`;
+    suffix += 1;
+  }
+
+  allocatedIds.add(candidateId);
+  return candidateId;
+};
+
+function configureEleventy(eleventyConfig) {
   eleventyConfig.addWatchTarget('_templates/_data/');
 
   const articlesDataDir = path.join(__dirname, '_templates/_data/articles');
@@ -52,8 +65,8 @@ module.exports = function (eleventyConfig) {
         throw new Error(`[articles] ${file}: "seo.title" and "seo.description" are required.`);
       }
 
-      if (!article.author?.name) {
-        throw new Error(`[articles] ${file}: "author.name" is required.`);
+      if (!article.author?.name || !article.author?.type || !article.author?.url) {
+        throw new Error(`[articles] ${file}: author type, name and URL are required.`);
       }
 
       if (!article.review?.by || !article.review?.updatedDisplay) {
@@ -68,7 +81,7 @@ module.exports = function (eleventyConfig) {
         throw new Error(`[articles] ${file}: "content" must contain at least one block.`);
       }
 
-      const headingIdCounts = new Map();
+      const allocatedHeadingIds = new Set(['article-content', 'article-toc-title']);
       const tocItems = [];
       let currentTocSection = null;
       let tocBlockCount = 0;
@@ -80,6 +93,9 @@ module.exports = function (eleventyConfig) {
 
         if (block.type === 'toc') {
           tocBlockCount += 1;
+          if (typeof block.title !== 'string' || !block.title.trim()) {
+            throw new Error(`[articles] ${file}: table-of-contents block ${index + 1} requires a title.`);
+          }
           if (tocBlockCount > 1) {
             throw new Error(`[articles] ${file}: only one table-of-contents block is allowed.`);
           }
@@ -87,17 +103,22 @@ module.exports = function (eleventyConfig) {
 
         if (block.type !== 'heading') return;
 
+        if (block.includeInToc && block.level !== 3) {
+          throw new Error(`[articles] ${file}: only level-three headings may opt into the table of contents.`);
+        }
+
         const baseHeadingId = slugifyUrlPart(block.text);
         if (!baseHeadingId) {
           throw new Error(`[articles] ${file}: heading ${index + 1} could not be converted to an anchor.`);
         }
 
-        const headingIdCount = (headingIdCounts.get(baseHeadingId) || 0) + 1;
-        headingIdCounts.set(baseHeadingId, headingIdCount);
-        block.id = headingIdCount === 1 ? baseHeadingId : `${baseHeadingId}-${headingIdCount}`;
+        block.id = allocateUniqueId(baseHeadingId, allocatedHeadingIds);
 
         if (block.level === 3) {
-          if (block.includeInToc && currentTocSection) {
+          if (block.includeInToc && !currentTocSection) {
+            throw new Error(`[articles] ${file}: heading ${index + 1} cannot enter the table of contents before a level-two heading.`);
+          }
+          if (block.includeInToc) {
             currentTocSection.children.push({ id: block.id, text: block.text });
           }
           return;
@@ -255,11 +276,11 @@ module.exports = function (eleventyConfig) {
       .replace(/\t/g, ' ');
   });
 
-  // Eleventy does not clean removed pagination outputs by default. Blog routes
-  // are entirely generated, so reset only that output subtree before writing.
+  // Eleventy does not clean removed pagination outputs by default. The output
+  // directory is entirely disposable, so rebuild it from a clean slate.
   eleventyConfig.on('eleventy.before', () => {
-    const outputBlogDir = path.join(__dirname, '_11ty-output', 'blog');
-    if (fs.existsSync(outputBlogDir)) fs.rmSync(outputBlogDir, { recursive: true, force: true });
+    const outputDir = path.join(__dirname, '_11ty-output');
+    if (fs.existsSync(outputDir)) fs.rmSync(outputDir, { recursive: true, force: true });
   });
 
   // Copy generated HTML from _11ty-output into the matching project path so
@@ -267,7 +288,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.on('eleventy.after', () => {
     const outputDir = path.join(__dirname, '_11ty-output');
     const rootDir = __dirname;
-    const generatedMarker = 'Generated from _templates/_data/articles/*.json';
+    const generatedArticleMarker = 'Generated from _templates/_data/articles/*.json';
+    const generatedSimplePageMarker = 'Generated from _templates/_data/simple-pages/*.json';
+    const generatedLocaleMarker = 'Generated from the shared language registry and localized index data';
 
     if (!fs.existsSync(outputDir)) return;
 
@@ -293,7 +316,7 @@ module.exports = function (eleventyConfig) {
           routeItem.isFile()
           && routeItem.name === 'index.html'
           && !fs.existsSync(generatedPath)
-          && fs.readFileSync(destinationPath, 'utf-8').includes(generatedMarker)
+          && fs.readFileSync(destinationPath, 'utf-8').includes(generatedArticleMarker)
         ) {
           fs.unlinkSync(destinationPath);
           console.log(`[post-build] Removed stale blog route ${path.relative(destinationBlogDir, destinationPath)}`);
@@ -301,7 +324,45 @@ module.exports = function (eleventyConfig) {
       }
     };
 
+    const removeStaleGeneratedRootPages = () => {
+      for (const file of fs.readdirSync(rootDir).filter((name) => name.endsWith('.html'))) {
+        const destinationPath = path.join(rootDir, file);
+        const generatedPath = path.join(outputDir, file);
+        if (
+          !fs.existsSync(generatedPath)
+          && fs.readFileSync(destinationPath, 'utf-8').includes(generatedSimplePageMarker)
+        ) {
+          fs.unlinkSync(destinationPath);
+          console.log(`[post-build] Removed stale simple page ${file}`);
+        }
+      }
+    };
+
+    const removeStaleGeneratedLocaleRoutes = () => {
+      const destinationPagesDir = path.join(rootDir, 'pages');
+      const generatedPagesDir = path.join(outputDir, 'pages');
+      if (!fs.existsSync(destinationPagesDir)) return;
+
+      for (const route of fs.readdirSync(destinationPagesDir, { withFileTypes: true })) {
+        if (!route.isDirectory()) continue;
+        const destinationPath = path.join(destinationPagesDir, route.name, 'index.html');
+        const generatedPath = path.join(generatedPagesDir, route.name, 'index.html');
+        if (
+          fs.existsSync(destinationPath)
+          && !fs.existsSync(generatedPath)
+          && fs.readFileSync(destinationPath, 'utf-8').includes(generatedLocaleMarker)
+        ) {
+          fs.unlinkSync(destinationPath);
+          const routeDir = path.dirname(destinationPath);
+          if (fs.readdirSync(routeDir).length === 0) fs.rmdirSync(routeDir);
+          console.log(`[post-build] Removed stale locale route ${route.name}`);
+        }
+      }
+    };
+
     removeStaleGeneratedBlogRoutes(destinationBlogDir, generatedBlogDir);
+    removeStaleGeneratedRootPages();
+    removeStaleGeneratedLocaleRoutes();
 
     const copyHtml = (currentDir) => {
       const items = fs.readdirSync(currentDir, { withFileTypes: true });
@@ -338,4 +399,7 @@ module.exports = function (eleventyConfig) {
     htmlTemplateEngine: 'njk',
     markdownTemplateEngine: 'njk',
   };
-};
+}
+
+module.exports = configureEleventy;
+module.exports.allocateUniqueId = allocateUniqueId;

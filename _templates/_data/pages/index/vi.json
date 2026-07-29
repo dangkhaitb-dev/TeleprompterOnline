@@ -195,7 +195,7 @@
     "supporting": "Bạn thích kiểu nhắc chữ truyền thống? Chế độ cuộn thủ công và cuộn tốc độ cố định luôn sẵn sàng.",
     "cta": {
       "label": "Thử cuộn bằng giọng nói",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "notch": {
@@ -211,7 +211,7 @@
     "supporting": "Chế độ này đặc biệt phù hợp để quay video nói chuyện trực tiếp (talking-head), họp trực tuyến, giảng dạy hoặc phỏng vấn từ xa.",
     "cta": {
       "label": "Mở máy nhắc chữ",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "remote": {
@@ -243,7 +243,7 @@
     "supporting": "Giải pháp hoàn hảo cho creators quay một mình, diễn giả hoặc các buổi thuyết trình trên sân khấu.",
     "cta": {
       "label": "Kết nối remote",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     }
   },
   "recording": {
@@ -274,7 +274,7 @@
     },
     "cta": {
       "label": "Quay video ngay",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "resourceLink": {
       "label": "Đọc cách SolPrompter xử lý nội dung cục bộ",
@@ -408,7 +408,7 @@
     "description": "Nhập kịch bản, chọn chế độ cuộn chữ phù hợp và bắt đầu ghi hình ngay hôm nay.",
     "cta": {
       "label": "Mở máy nhắc chữ miễn phí",
-      "url": "/teleprompter.html"
+      "url": "/teleprompter"
     },
     "supporting": "Miễn phí, không quảng cáo, không giới hạn."
   },
@@ -480,7 +480,7 @@
     "evidenceSummary": "Độ chính xác và thời gian phản hồi của nhận dạng giọng nói thay đổi tùy thuộc vào trình duyệt, ngôn ngữ, micrô, tiếng ồn xung quanh và phong cách đọc.",
     "benchmarkLink": {
       "label": "Đọc ghi chú về các tính năng của SolPrompter",
-      "url": "/blog/product/solprompter-ai-teleprompter-features-tested"
+      "url": "/blog/product/solprompter-ai-teleprompter-features-tested/"
     }
   },
   "footer": {

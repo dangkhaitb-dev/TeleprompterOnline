@@ -6,7 +6,7 @@
     "ogTitle": "الملقن عبر الإنترنت مجانًا — SolPrompter",
     "ogDescription": "قم بالتقديم بشكل طبيعي باستخدام الملقن المستند إلى المتصفح. يتم التمرير تلقائيًا بصوتك، ويقلل من حركة العين، ويدعم جهاز التحكم عن بعد QR.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "واجهة جهاز التلقين الصوتي SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter الملقن المجاني على الإنترنت",
     "appAlternateName": "SolPrompter الملقن المجاني على الإنترنت",
     "appDescription": "جهاز تلقين مجاني عبر الإنترنت مزود بتمرير يتم تنشيطه بالصوت، ووضع الشق للاتصال بالعين، وجهاز تحكم عن بعد لاسلكي، وإدارة النصوص، وتسجيل فيديو احترافي بدقة Full HD و4K.",

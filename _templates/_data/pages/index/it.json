@@ -6,7 +6,7 @@
     "ogTitle": "Teleprompter online gratuito — SolPrompter",
     "ogDescription": "Presentati in modo naturale con il nostro teleprompter basato su browser. Scorre automaticamente con la tua voce, riduce al minimo il movimento degli occhi e supporta il controllo remoto QR.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "Interfaccia del gobbo elettronico a controllo vocale SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter teleprompter online gratuito",
     "appAlternateName": "SolPrompter Teleprompter online gratuito",
     "appDescription": "Un gobbo online gratuito con scorrimento ad attivazione vocale, modalità notch per il contatto visivo, telecomando wireless, gestione degli script e registrazione video professionale Full HD e 4K.",

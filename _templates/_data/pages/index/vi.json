@@ -6,7 +6,7 @@
     "ogTitle": "Máy nhắc chữ online miễn phí — SolPrompter",
     "ogDescription": "Thuyết trình tự nhiên với máy nhắc chữ chạy trên trình duyệt. Tự động cuộn chữ theo giọng nói, căn sát camera tránh đảo mắt và điều khiển từ xa bằng điện thoại.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "Giao diện máy nhắc chữ điều khiển bằng giọng nói SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "Máy nhắc chữ online miễn phí SolPrompter",
     "appAlternateName": "Máy nhắc chữ online SolPrompter",
     "appDescription": "Máy nhắc chữ online miễn phí với tính năng tự động cuộn bằng giọng nói, chế độ notch giữ giao tiếp mắt, điều khiển từ xa và quay video Full HD, 4K chuyên nghiệp.",

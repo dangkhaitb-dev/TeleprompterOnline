@@ -6,7 +6,7 @@
     "ogTitle": "Libreng Online Teleprompter — SolPrompter",
     "ogDescription": "Natural na ipakita gamit ang aming teleprompter na nakabatay sa browser. Awtomatikong nag-i-scroll gamit ang iyong boses, pinapaliit ang paggalaw ng mata, at sinusuportahan ang QR remote control.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "Interface ng SolPrompter voice-controlled teleprompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter libreng online na teleprompter",
     "appAlternateName": "SolPrompter Libreng Online Teleprompter",
     "appDescription": "Isang libreng online na teleprompter na may voice-activated scrolling, notch mode para sa eye contact, wireless remote control, pamamahala ng script, at propesyonal na Full HD at 4K na pag-record ng video.",

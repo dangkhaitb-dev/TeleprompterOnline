@@ -6,7 +6,7 @@
     "ogTitle": "Kostenloser Online-Teleprompter – SolPrompter",
     "ogDescription": "Präsentieren Sie ganz natürlich mit unserem browserbasierten Teleprompter. Scrollt automatisch mit Ihrer Stimme, minimiert Augenbewegungen und unterstützt die QR-Fernsteuerung.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter sprachgesteuerte Teleprompter-Benutzeroberfläche"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter kostenloser Online-Teleprompter",
     "appAlternateName": "SolPrompter Kostenloser Online-Teleprompter",
     "appDescription": "Ein kostenloser Online-Teleprompter mit sprachaktiviertem Scrollen, Notch-Modus für Augenkontakt, drahtloser Fernbedienung, Skriptverwaltung und professioneller Full HD- und 4K-Videoaufzeichnung.",

@@ -6,7 +6,7 @@
     "ogTitle": "Ücretsiz Çevrimiçi Teleprompter — SolPrompter",
     "ogDescription": "Tarayıcı tabanlı teleprompter'ımızla doğal bir şekilde sunum yapın. Sesinizle otomatik olarak kayar, göz hareketini en aza indirir ve QR uzaktan kumandayı destekler.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter ses kontrollü teleprompter arayüzü"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter ücretsiz çevrimiçi teleprompter",
     "appAlternateName": "SolPrompter Ücretsiz Çevrimiçi Teleprompter",
     "appDescription": "Sesle etkinleştirilen kaydırma, göz teması için çentik modu, kablosuz uzaktan kumanda, komut dosyası yönetimi ve profesyonel Full HD ve 4K video kaydı özelliklerine sahip ücretsiz bir çevrimiçi teleprompter.",

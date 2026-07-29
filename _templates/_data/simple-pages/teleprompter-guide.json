@@ -24,11 +24,11 @@
   "seo": {
     "title": "How to Use SolPrompter: Complete Teleprompter Guide",
     "description": "Learn how to use SolPrompter: add a script, choose AI voice or auto-scroll, adjust your reading view, use remote control, and record up to 4K.",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter teleprompter interface with script and recording controls",
-    "ogImageWidth": 1200,
-    "ogImageHeight": 630,
-    "ogImageType": "image/jpeg"
+    "ogImageWidth": 1536,
+    "ogImageHeight": 1024,
+    "ogImageType": "image/png"
   },
   "content": [
     {

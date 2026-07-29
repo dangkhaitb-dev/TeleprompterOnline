@@ -6,7 +6,7 @@
     "ogTitle": "Teleprompter آنلاین رایگان — SolPrompter",
     "ogDescription": "به طور طبیعی با تله پرومتر مبتنی بر مرورگر ما ارائه دهید. به طور خودکار با صدای شما پیمایش می کند، حرکت چشم را به حداقل می رساند و از کنترل از راه دور QR پشتیبانی می کند.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "رابط تله‌پرامپتر کنترل‌شونده با صدای SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "تله پرومتر آنلاین رایگان SolPrompter",
     "appAlternateName": "SolPrompter Teleprompter آنلاین رایگان",
     "appDescription": "یک تله پرومتر آنلاین رایگان با پیمایش فعال شده با صدا، حالت بریدگی برای تماس چشمی، کنترل از راه دور بی سیم، مدیریت اسکریپت، و فیلمبرداری حرفه ای Full HD و 4K.",

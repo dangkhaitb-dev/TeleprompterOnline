@@ -6,7 +6,7 @@
     "ogTitle": "Teleprompter Online Gratis — SolPrompter",
     "ogDescription": "Hadir secara alami dengan teleprompter berbasis browser kami. Secara otomatis menggulir dengan suara Anda, meminimalkan gerakan mata, dan mendukung remote control QR.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "Antarmuka teleprompter kontrol suara SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter teleprompter online gratis",
     "appAlternateName": "SolPrompter Teleprompter Online Gratis",
     "appDescription": "Teleprompter online gratis dengan pengguliran yang diaktifkan dengan suara, mode takik untuk kontak mata, kendali jarak jauh nirkabel, manajemen skrip, dan perekaman video Full HD dan 4K profesional.",

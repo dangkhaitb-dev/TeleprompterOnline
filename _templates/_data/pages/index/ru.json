@@ -6,7 +6,7 @@
     "ogTitle": "Бесплатный онлайн-телесуфлер — SolPrompter",
     "ogDescription": "Естественная презентация с помощью телесуфлера на базе браузера. Автоматически прокручивает голосом, сводит к минимуму движения глаз и поддерживает дистанционное управление QR.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "Интерфейс голосового телесуфлера SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter бесплатный онлайн-телесуфлер",
     "appAlternateName": "SolPrompter Бесплатный онлайн-телесуфлер",
     "appDescription": "Бесплатный онлайн-телесуфлер с голосовой прокруткой, режимом метки для зрительного контакта, беспроводным пультом дистанционного управления, управлением сценариями и профессиональной записью видео в формате Full HD и 4K.",

@@ -6,7 +6,7 @@
     "ogTitle": "Bezpłatny teleprompter online — SolPrompter",
     "ogDescription": "Prezentuj się naturalnie dzięki naszemu teleprompterowi opartemu na przeglądarce. Automatycznie przewija za pomocą Twojego głosu, minimalizuje ruchy oczu i obsługuje zdalne sterowanie QR.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "Interfejs telepromptera sterowanego głosem SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "Bezpłatny teleprompter online SolPrompter",
     "appAlternateName": "SolPrompter Darmowy teleprompter online",
     "appDescription": "Bezpłatny teleprompter online z przewijaniem aktywowanym głosem, trybem wcięcia umożliwiającym kontakt wzrokowy, bezprzewodowym pilotem, zarządzaniem skryptami i profesjonalnym nagrywaniem wideo w rozdzielczości Full HD i 4K.",

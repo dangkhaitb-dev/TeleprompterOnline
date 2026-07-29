@@ -6,7 +6,7 @@
     "ogTitle": "免费在线提词器 — SolPrompter",
     "ogDescription": "使用我们基于浏览器的提词器自然地呈现。随着您的声音自动滚动，最大限度地减少眼球运动，并支持二维码远程控制。",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter 语音控制提词器界面"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter 免费在线提词器",
     "appAlternateName": "SolPrompter 免费在线提词器",
     "appDescription": "免费的在线提词器，具有声控滚动、眼神接触的缺口模式、无线遥控、脚本管理以及专业的全高清和 4K 视频录制。",

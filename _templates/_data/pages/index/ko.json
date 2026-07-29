@@ -6,7 +6,7 @@
     "ogTitle": "무료 온라인 텔레프롬프터 — SolPrompter",
     "ogDescription": "브라우저 기반 텔레프롬프터를 사용하여 자연스럽게 프레젠테이션을 진행하세요. 음성으로 자동 스크롤하고 눈 움직임을 최소화하며 QR 리모컨을 지원합니다.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter 음성 제어 텔레프롬프터 인터페이스"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter 무료 온라인 텔레프롬프터",
     "appAlternateName": "SolPrompter 무료 온라인 텔레프롬프터",
     "appDescription": "음성 인식 스크롤링, 눈맞춤을 위한 노치 모드, 무선 원격 제어, 스크립트 관리, 전문 Full HD 및 4K 비디오 녹화 기능을 갖춘 무료 온라인 텔레프롬프터입니다.",

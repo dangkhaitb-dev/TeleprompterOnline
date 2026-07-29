@@ -6,7 +6,7 @@
     "ogTitle": "Teleprompter online gratuito – SolPrompter",
     "ogDescription": "Apresente naturalmente com nosso teleprompter baseado em navegador. Rola automaticamente com sua voz, minimiza o movimento dos olhos e suporta controle remoto QR.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "Interface do teleprompter controlado por voz SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "Teleprompter online gratuito SolPrompter",
     "appAlternateName": "SolPrompter Teleprompter Online Grátis",
     "appDescription": "Um teleprompter online gratuito com rolagem ativada por voz, modo notch para contato visual, controle remoto sem fio, gerenciamento de script e gravação de vídeo profissional Full HD e 4K.",

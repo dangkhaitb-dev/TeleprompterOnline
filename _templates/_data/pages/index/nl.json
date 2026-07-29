@@ -6,7 +6,7 @@
     "ogTitle": "Gratis online teleprompter — SolPrompter",
     "ogDescription": "Presenteer op natuurlijke wijze met onze browsergebaseerde teleprompter. Scrollt automatisch met uw stem, minimaliseert oogbewegingen en ondersteunt QR-afstandsbediening.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter spraakgestuurde teleprompter-interface"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter gratis online teleprompter",
     "appAlternateName": "SolPrompter Gratis online teleprompter",
     "appDescription": "Een gratis online teleprompter met spraakgestuurd scrollen, notch-modus voor oogcontact, draadloze afstandsbediening, scriptbeheer en professionele Full HD- en 4K-video-opname.",

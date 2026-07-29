@@ -6,7 +6,7 @@
     "ogTitle": "Teleprompter ออนไลน์ฟรี — SolPrompter",
     "ogDescription": "นำเสนออย่างเป็นธรรมชาติด้วยเครื่องส่งสัญญาณทางไกลบนเบราว์เซอร์ของเรา เลื่อนด้วยเสียงของคุณโดยอัตโนมัติ ลดการเคลื่อนไหวของดวงตา และรองรับการควบคุมระยะไกล QR",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "อินเทอร์เฟซเครื่องบอกบทควบคุมด้วยเสียง SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter โปรแกรมส่งสัญญาณทางไกลออนไลน์ฟรี",
     "appAlternateName": "SolPrompter โปรแกรมส่งสัญญาณทางไกลออนไลน์ฟรี",
     "appDescription": "เครื่องส่งสัญญาณทางไกลออนไลน์ฟรีพร้อมการเลื่อนที่สั่งงานด้วยเสียง โหมดรอยบากสำหรับการสบตา รีโมทคอนโทรลไร้สาย การจัดการสคริปต์ และการบันทึกวิดีโอ Full HD และ 4K ระดับมืออาชีพ",

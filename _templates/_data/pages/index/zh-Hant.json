@@ -6,7 +6,7 @@
     "ogTitle": "免費線上提詞器 — SolPrompter",
     "ogDescription": "使用我們基於瀏覽器的提詞器自然地呈現。隨著您的聲音自動滾動，最大限度地減少眼球運動，並支援二維碼遠端控制。",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter 語音控制讀稿機介面"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter 免費線上提詞器",
     "appAlternateName": "SolPrompter 免費線上提詞器",
     "appDescription": "免費的線上提詞器，具有聲控滾動、眼神接觸的缺口模式、無線遙控、腳本管理以及專業的全高清和 4K 視訊錄製。",

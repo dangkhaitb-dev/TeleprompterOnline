@@ -6,7 +6,7 @@
     "ogTitle": "無料オンラインテレプロンプター — SolPrompter",
     "ogDescription": "ブラウザベースのテレプロンプターを使用して自然にプレゼンテーションを行います。声に合わせて自動的にスクロールし、目の動きを最小限に抑え、QR リモコンをサポートします。",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter音声操作テレプロンプター画面"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter 無料のオンライン テレプロンプター",
     "appAlternateName": "SolPrompter 無料のオンライン テレプロンプター",
     "appDescription": "音声起動スクロール、アイコンタクト用のノッチモード、ワイヤレスリモコン、スクリプト管理、プロフェッショナルなフル HD および 4K ビデオ録画を備えた無料のオンライン テレプロンプター。",

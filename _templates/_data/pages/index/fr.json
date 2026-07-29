@@ -6,7 +6,7 @@
     "ogTitle": "Téléprompteur en ligne gratuit — SolPrompter",
     "ogDescription": "Présentez naturellement avec notre téléprompteur basé sur un navigateur. Défile automatiquement avec votre voix, minimise les mouvements oculaires et prend en charge la télécommande QR.",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "Interface du téléprompteur à commande vocale SolPrompter"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "Téléprompteur en ligne gratuit SolPrompter",
     "appAlternateName": "SolPrompter Téléprompteur en ligne gratuit",
     "appDescription": "Un téléprompteur en ligne gratuit avec défilement à commande vocale, mode cran pour le contact visuel, télécommande sans fil, gestion des scripts et enregistrement vidéo professionnel Full HD et 4K.",

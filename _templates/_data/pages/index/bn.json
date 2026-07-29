@@ -6,7 +6,7 @@
     "ogTitle": "বিনামূল্যে অনলাইন টেলিপ্রম্পটার — SolPrompter",
     "ogDescription": "আমাদের ব্রাউজার-ভিত্তিক টেলিপ্রম্পটারের সাথে স্বাভাবিকভাবে উপস্থাপন করুন। স্বয়ংক্রিয়ভাবে আপনার ভয়েস দিয়ে স্ক্রোল করে, চোখের নড়াচড়া কম করে এবং QR রিমোট কন্ট্রোল সমর্থন করে।",
     "ogType": "website",
-    "ogImage": "/og-solprompter.jpg",
+    "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter ভয়েস-নিয়ন্ত্রিত টেলিপম্পটার ইন্টারফেস"
   },
   "schema": {
@@ -20,7 +20,7 @@
     ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
-    "primaryImage": "/og-solprompter.jpg",
+    "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter বিনামূল্যে অনলাইন টেলিপ্রম্পটার",
     "appAlternateName": "SolPrompter বিনামূল্যে অনলাইন টেলিপ্রম্পটার",
     "appDescription": "ভয়েস-অ্যাক্টিভেটেড স্ক্রোলিং, চোখের যোগাযোগের জন্য নচ মোড, ওয়্যারলেস রিমোট কন্ট্রোল, স্ক্রিপ্ট ম্যানেজমেন্ট এবং পেশাদার ফুল HD এবং 4K ভিডিও রেকর্ডিং সহ একটি বিনামূল্যের অনলাইন টেলিপ্রম্পটার।",

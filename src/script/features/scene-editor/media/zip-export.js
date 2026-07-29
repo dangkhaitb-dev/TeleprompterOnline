@@ -10,6 +10,7 @@ import {
   ZipAbortError,
   ZipStorageError,
 } from '../../../utils/streaming-zip.js';
+import { ensureWebmDuration } from '../../../utils/webm-duration.js';
 
 export { MAX_IN_MEMORY_ZIP_BYTES };
 export { ZipAbortError as ZipExportAbortError };
@@ -21,13 +22,19 @@ export class ZipExportStorageError extends ZipStorageError {
   }
 }
 
-function recordingEntries(scenes = []) {
-  return scenes
-    .filter((scene) => scene?.blob)
-    .map((scene, index) => ({
-      blob: scene.blob,
+async function recordingEntries(scenes = []) {
+  const entries = [];
+  const available = scenes.filter((scene) => scene?.blob);
+  for (const [index, scene] of available.entries()) {
+    const blob = scene.durationMetadataFixed
+      ? scene.blob
+      : await ensureWebmDuration(scene.blob, scene.duration);
+    entries.push({
+      blob,
       name: `solprompter-clip-${String(index + 1).padStart(2, '0')}.${fileExtension(scene)}`,
-    }));
+    });
+  }
+  return entries;
 }
 
 function requireMultiple(entries) {
@@ -35,13 +42,13 @@ function requireMultiple(entries) {
 }
 
 export async function createRecordingsZip(scenes, options = {}) {
-  const entries = recordingEntries(scenes);
+  const entries = await recordingEntries(scenes);
   requireMultiple(entries);
   return createStreamingZip(entries, options);
 }
 
 export async function createRecordingsZipArtifact(scenes, options = {}) {
-  const entries = recordingEntries(scenes);
+  const entries = await recordingEntries(scenes);
   requireMultiple(entries);
   try {
     return await createStreamingZipArtifact(entries, options);

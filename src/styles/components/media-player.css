@@ -79,15 +79,15 @@
 }
 
 /* Play/Pause Button */
-.se-media-play-btn {
-  background: rgba(255, 255, 255, 0.08);
+.se .se-media-play-btn {
+  background: rgba(255, 255, 255, 0.15);
   border: 0;
   padding: 0;
   margin: 0;
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  color: var(--se-on-accent);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -96,12 +96,12 @@
   touch-action: manipulation;
 }
 
-.se-media-play-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
+.se .se-media-play-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
   transform: scale(1.05);
 }
 
-.se-media-play-btn:active {
+.se .se-media-play-btn:active {
   transform: scale(0.95);
 }
 
@@ -118,12 +118,12 @@
   gap: 8px;
 }
 
-.se-media-volume-btn {
+.se .se-media-volume-btn {
   background: transparent;
   border: 0;
   padding: 4px;
   margin: 0;
-  color: rgba(255, 255, 255, 0.85);
+  color: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,9 +133,9 @@
   touch-action: manipulation;
 }
 
-.se-media-volume-btn:hover {
-  color: var(--se-on-accent);
-  background: rgba(255, 255, 255, 0.08);
+.se .se-media-volume-btn:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.15);
 }
 
 .se-media-volume-btn svg {

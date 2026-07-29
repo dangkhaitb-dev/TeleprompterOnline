@@ -51,4 +51,21 @@ describe('createScrollController surface binding', () => {
     expect(controller.getTarget()).toBe(notch);
     expect(notch.scrollTop).toBe(24);
   });
+
+  it('moves auto-scroll at the configured speed without a startup easing ramp', () => {
+    const surface = { scrollTop: 0, scrollHeight: 1000, clientHeight: 100 };
+    const controller = createScrollController({
+      getSurface: () => surface,
+      portal: { appendChild() {} },
+    });
+    controller.setWpm(130); // 40 px/s
+    controller.start(surface);
+
+    frames.shift()(16); // Seed the frame timestamp.
+    frames.shift()(32);
+    expect(surface.scrollTop).toBeCloseTo(0.64);
+
+    frames.shift()(48);
+    expect(surface.scrollTop).toBeCloseTo(1.28);
+  });
 });

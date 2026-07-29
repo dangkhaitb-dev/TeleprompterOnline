@@ -26,6 +26,7 @@ import {
 } from './media/zip-export.js';
 import { waitForMinimumZipProcessing } from '../../utils/export-timing.js';
 import { createMediaPlayer } from './components/media-player.ui.js';
+import { ensureWebmDuration } from '../../utils/webm-duration.js';
 
 function shellTemplate(copy) {
   return `
@@ -268,11 +269,21 @@ export async function mountSceneEditor(container, opts = {}) {
   }
 
   // --- export -------------------------------------------------------------
-  function handleExportOriginal() {
+  async function handleExportOriginal() {
     if (exporting) return;
     const [scene] = exportableScenes(scenes);
     if (!scene) { showToast(copy.noExport || 'No video to export'); return; }
-    downloadBlob(scene.blob, `solprompter-recording.${fileExtension(scene)}`);
+    exporting = true;
+    exportMenu.setBusy(true, copy.preparingExport || 'Preparing…');
+    try {
+      const blob = scene.durationMetadataFixed
+        ? scene.blob
+        : await ensureWebmDuration(scene.blob, scene.duration);
+      downloadBlob(blob, `solprompter-recording.${fileExtension(scene)}`);
+    } finally {
+      exporting = false;
+      exportMenu.setBusy(false);
+    }
   }
 
   async function handleExportArchive() {

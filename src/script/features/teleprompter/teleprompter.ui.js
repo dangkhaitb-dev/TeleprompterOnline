@@ -911,7 +911,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       app.classList.add('voice-scroll-active');
       setVoiceScrollButton({ active: true, phase: 'listening' });
       setPlayIcon(true);
-      showToast('Voice scroll is listening');
     } catch (err) {
       console.error('[VoiceScroll] failed to start', err);
       if (attempt === voiceScrollAttempt) {

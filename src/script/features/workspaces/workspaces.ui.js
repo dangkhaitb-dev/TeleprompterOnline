@@ -47,6 +47,7 @@ import {
   garbageCollectStreamingZipArtifacts,
 } from '../../utils/streaming-zip.js';
 import { waitForMinimumZipProcessing } from '../../utils/export-timing.js';
+import { ensureWebmDuration } from '../../utils/webm-duration.js';
 
 const MORE_ICON =
   '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>';
@@ -1360,11 +1361,14 @@ export function initWorkspacesUI() {
 
   // Save the take to disk (a real backup — client storage is never permanent).
   async function downloadRecording(card) {
-    const blob = await resolveCardBlob(card);
-    if (!blob) {
+    const sourceBlob = await resolveCardBlob(card);
+    if (!sourceBlob) {
       showToast(t('recPreviewMissing', 'This recording is unavailable.'), { variant: 'error' });
       return;
     }
+    const blob = card.durationMetadataFixed
+      ? sourceBlob
+      : await ensureWebmDuration(sourceBlob, card.duration);
     const subtype = ((blob.type || card.mimeType || '').split('/')[1] || 'webm').split(';')[0].trim();
     const base = safeFileName(card.workspaceTitle || t('recUnknownScript', 'Untitled script'));
     downloadBlob(blob, `${base}.${subtype || 'webm'}`);
@@ -1379,8 +1383,11 @@ export function initWorkspacesUI() {
   async function recordingArchiveEntries(cards) {
     const entries = [];
     for (const [index, card] of cards.entries()) {
-      const blob = await resolveCardBlob(card);
-      if (!blob) continue;
+      const sourceBlob = await resolveCardBlob(card);
+      if (!sourceBlob) continue;
+      const blob = card.durationMetadataFixed
+        ? sourceBlob
+        : await ensureWebmDuration(sourceBlob, card.duration);
       const subtype = ((blob.type || card.mimeType || '').split('/')[1] || 'webm').split(';')[0].trim();
       const base = safeFileName(card.workspaceTitle || t('recUnknownScript', 'Untitled script'));
       entries.push({

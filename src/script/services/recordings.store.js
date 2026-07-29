@@ -176,6 +176,7 @@ export async function putRecording(recording = {}) {
     kind: recording.kind || 'video',
     mimeType: recording.mimeType || (recording.blob && recording.blob.type) || '',
     duration: recording.duration || 0,
+    durationMetadataFixed: !!recording.durationMetadataFixed,
     order: typeof recording.order === 'number' ? recording.order : Date.now(),
     trimStart: recording.trimStart ?? null,
     trimEnd: recording.trimEnd ?? null,

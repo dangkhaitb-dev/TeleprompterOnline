@@ -122,16 +122,22 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
 
     if (scrolling && !manualScrollActive) {
       scrollTarget = Math.min(maxScroll, scrollTarget + scrollDelta(elapsed, pxPerSec));
-    }
-
-    const diff = scrollTarget - scrollPosition;
-    const ease = 0.15; // Smooth scroll interpolation rate (0.15 is very natural)
-
-    if (Math.abs(diff) < 0.5) {
+      // Auto-scroll already advances by a time-based, subpixel delta. Applying
+      // another easing layer here makes startup ramp up slowly and leaves the
+      // rendered position chasing the target, which looks like stuttering at
+      // low speeds. Keep auto-scroll at its exact configured speed.
       scrollPosition = scrollTarget;
-      manualScrollActive = false; // Release the manual scroll block
     } else {
-      scrollPosition += diff * ease;
+      const diff = scrollTarget - scrollPosition;
+      const ease = 0.15;
+
+      if (Math.abs(diff) < 0.5) {
+        scrollPosition = scrollTarget;
+        manualScrollActive = false; // Release the manual scroll block
+      } else {
+        // Discrete manual actions retain their short smooth transition.
+        scrollPosition += diff * ease;
+      }
     }
 
     surface.scrollTop = scrollPosition;

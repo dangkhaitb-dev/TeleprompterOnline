@@ -24,6 +24,7 @@ import { getItem, setItem } from '../../utils/storage.js';
 import { LS_GLOBAL_SETTING_PROMPTER } from '../../utils/storage-keys.js';
 import { createOPFSWriter, isOPFSSupported } from '../../utils/opfs-writer.js';
 import { makeId } from '../../utils/id.js';
+import { ensureWebmDuration, isWebmMedia } from '../../utils/webm-duration.js';
 import {
   recordingKind,
   recordingMimeType,
@@ -273,11 +274,19 @@ export function createRecordingController({ onError } = {}) {
         chunks = [];
 
         releaseStream();
+        // Chrome MediaRecorder produces a streaming WebM with no EBML Duration
+        // field. The packets are complete, but downloaded files otherwise show
+        // Infinity/a truncated seek bar. Repair the container before IndexedDB
+        // owns it so preview, direct download and ZIP export all share the same
+        // seekable artifact.
+        const recordedBlob = blob;
+        blob = await ensureWebmDuration(blob, duration);
         const recordFields = {
           workspaceId: workspaceId || null,
           kind: recordingKind(hasVideo),
           mimeType: blob.type || type,
           duration,
+          durationMetadataFixed: !isWebmMedia(recordedBlob) || blob !== recordedBlob,
           temporary: !isRecordingSaveEnabled(),
         };
         let record = null;

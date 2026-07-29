@@ -8,6 +8,7 @@
 
 import { mediaExportBounds } from '../scene-editor.model.js';
 import { waitForMediaReady, seekMedia } from './media-element.js';
+import { ensureWebmDuration } from '../../../utils/webm-duration.js';
 import {
   MIN_TRIM_SECONDS,
   EXPORT_CANVAS_WIDTH,
@@ -140,7 +141,8 @@ async function renderTrimmedAudio(recording, signal) {
     const stopped = new Promise((resolve) => recorder.addEventListener('stop', resolve, { once: true }));
     recorder.stop();
     await stopped;
-    return new Blob(chunks, { type: recorder.mimeType || 'audio/webm' });
+    const blob = new Blob(chunks, { type: recorder.mimeType || 'audio/webm' });
+    return ensureWebmDuration(blob, (bounds.end - bounds.start) * 1000);
   } finally {
     if (recorder.state !== 'inactive') recorder.stop();
     source.disconnect();
@@ -180,6 +182,7 @@ export async function mergeRecordings(clips, { signal, onProgress } = {}) {
   const mimeType = pickMime(undefined, VIDEO_MIME_CANDIDATES);
   const chunks = [];
   const recorder = new MediaRecorder(outputStream, mimeType ? { mimeType } : undefined);
+  let outputDurationMs = 0;
   recorder.addEventListener('dataavailable', (event) => {
     if (event.data.size) chunks.push(event.data);
   });
@@ -216,6 +219,7 @@ export async function mergeRecordings(clips, { signal, onProgress } = {}) {
       };
       draw();
       const bounds = mediaExportBounds(recording, media.duration);
+      outputDurationMs += Math.max(0, bounds.end - bounds.start) * 1000;
       try {
         await playRange(media, bounds.start, bounds.end, signal);
       } finally {
@@ -227,7 +231,8 @@ export async function mergeRecordings(clips, { signal, onProgress } = {}) {
     const stopped = new Promise((resolve) => recorder.addEventListener('stop', resolve, { once: true }));
     recorder.stop();
     await stopped;
-    return new Blob(chunks, { type: recorder.mimeType || 'video/webm' });
+    const blob = new Blob(chunks, { type: recorder.mimeType || 'video/webm' });
+    return ensureWebmDuration(blob, outputDurationMs);
   } finally {
     if (recorder.state !== 'inactive') recorder.stop();
     sources.forEach(({ media, url }) => {

@@ -140,6 +140,7 @@ export function toRecordingCard(raw = {}, workspaceTitle = '') {
     workspaceId: raw.workspaceId,
     workspaceTitle: (workspaceTitle || '').trim(),
     kind: raw.kind === 'audio' ? 'audio' : 'video',
+    duration: raw.duration || 0,
     durationLabel: formatDuration(raw.duration),
     createdAt: raw.createdAt || 0,
     createdDate: formatUpdatedDate(raw.createdAt),
@@ -148,6 +149,7 @@ export function toRecordingCard(raw = {}, workspaceTitle = '') {
     // bytes on demand (preview/download/thumbnail) via ensureRecordingBlob.
     hasBytes: !!raw.hasBytes,
     mimeType: raw.mimeType || '',
+    durationMetadataFixed: !!raw.durationMetadataFixed,
   };
 }
 

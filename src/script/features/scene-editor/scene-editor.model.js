@@ -19,6 +19,7 @@ export function toScene(recording) {
     blob: recording.blob,
     mimeType: recording.mimeType || (recording.blob && recording.blob.type) || '',
     duration: recording.duration || 0, // ms
+    durationMetadataFixed: !!recording.durationMetadataFixed,
     trimStart: recording.trimStart ?? null, // ms | null
     trimEnd: recording.trimEnd ?? null, // ms | null
     order: recording.order || recording.createdAt || 0,

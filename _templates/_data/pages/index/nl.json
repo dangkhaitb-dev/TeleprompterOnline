@@ -1,17 +1,17 @@
 {
   "seo": {
     "title": "Gratis Online Teleprompter met AI-stemscrollen | SolPrompter",
-    "description": "Gebruik SolPrompter, een gratis online teleprompter met AI-stemscrollen, notch-modus, afstandsbediening en 4K-opname. Geen advertenties of watermerk.",
+    "description": "Gratis online teleprompter met AI-stemgestuurd scrollen, notch-modus en QR-afstandsbediening. Geen advertenties, geen aanmelding, 100% privé.",
     "canonical": "/nl/",
-    "ogTitle": "Gratis Online AI-teleprompter — SolPrompter",
-    "ogDescription": "Presenteer natuurlijk met AI-stemscrollen, notch-modus, afstandsbediening en professionele video-opname.",
+    "ogTitle": "Gratis online teleprompter — SolPrompter",
+    "ogDescription": "Presenteer op natuurlijke wijze met onze browsergebaseerde teleprompter. Scrollt automatisch met uw stem, minimaliseert oogbewegingen en ondersteunt QR-afstandsbediening.",
     "ogType": "website",
     "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "SolPrompter biedt een gratis online AI-teleprompter voor natuurlijke presentaties en professionele video-opname.",
-    "brandDescription": "SolPrompter is een online AI-teleprompter ontworpen voor natuurlijke presentaties en professionele video-opname.",
-    "websiteDescription": "Een gratis online teleprompter met AI-stemscrollen, notch-modus, afstandsbediening en professionele video-opname.",
+    "orgDescription": "SolPrompter biedt een gratis online teleprompter voor natuurlijke presentaties en professionele video-opnames.",
+    "brandDescription": "SolPrompter is een gratis online teleprompter ontworpen voor natuurlijke presentaties en professionele video-opnames.",
+    "websiteDescription": "Een gratis online teleprompter met AI voice scrolling, notch-modus, draadloze afstandsbediening en professionele 4K-video-opname.",
     "webpageName": "Gratis Online Teleprompter met AI-stemscrollen | SolPrompter",
     "alternateNames": [
       "SolPrompter",
@@ -20,9 +20,9 @@
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
     "primaryImage": "/og-solprompter.jpg",
-    "primaryImageCaption": "SolPrompter gratis online AI-teleprompter",
-    "appAlternateName": "SolPrompter Online Teleprompter",
-    "appDescription": "Een gratis online AI-teleprompter met spraakgestuurd scrollen, notch-modus, afstandsbediening, scriptbeheer en professionele Full HD- en 4K-video-opname.",
+    "primaryImageCaption": "SolPrompter gratis online teleprompter",
+    "appAlternateName": "SolPrompter Gratis online teleprompter",
+    "appDescription": "Een gratis online teleprompter met spraakgestuurd scrollen, notch-modus voor oogcontact, draadloze afstandsbediening, scriptbeheer en professionele Full HD- en 4K-video-opname.",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "Online Teleprompter",
     "operatingSystem": "Elk besturingssysteem met een moderne webbrowser",
@@ -52,7 +52,7 @@
     "offerDescription": "Gratis toegang tot de functies van de SolPrompter online teleprompter.",
     "howToName": "Hoe gebruik je SolPrompter",
     "howToDescription": "Leer hoe je een script toevoegt, een scrollmodus kiest, je teleprompter aanpast en begint met presenteren of opnemen met SolPrompter.",
-    "faqName": "SolPrompter Veelgestelde Vragen",
+    "faqName": "Veelgestelde vragen over SolPrompter Online Teleprompter",
     "faqDescription": "Veelgestelde vragen over SolPrompter, AI-stemscrollen, notch-modus, afstandsbediening, ondersteunde apparaten en video-opname."
   },
   "nav": {
@@ -62,16 +62,16 @@
         "url": "#features"
       },
       {
-        "label": "Notch-modus",
-        "url": "#notch"
-      },
-      {
-        "label": "Stemscrollen",
+        "label": "Automatisch scrollen",
         "url": "#voice-scroll"
       },
       {
-        "label": "Op afstand",
-        "url": "#remote"
+        "label": "Installatie en controle",
+        "url": "#notch"
+      },
+      {
+        "label": "Opname en privacy",
+        "url": "#recording"
       }
     ],
     "cta": {
@@ -80,9 +80,9 @@
     }
   },
   "hero": {
-    "eyebrow": "SolPrompter — AI-teleprompter",
+    "eyebrow": "SolPrompter - Gratis online teleprompter",
     "title": "Gratis Online Teleprompter",
-    "subtitle": "Presenteer natuurlijk met AI-stemscrollen, notch-modus, afstandsbediening en professionele 4K-opname.",
+    "subtitle": "Scrollt automatisch met uw stem, verankert tekst in de buurt van de cameralens om oogafwijkingen te voorkomen en ondersteunt afstandsbediening via QR-code. Gratis, advertentievrij en 100% privé.",
     "placeholder": "Plak je script of upload een bestand om te beginnen...",
     "uploadLabel": "Bestand uploaden",
     "uploadLabelShort": "Uploaden",
@@ -97,202 +97,212 @@
     "errorRead": "Niet-ondersteund formaat. Selecteer een .txt- of .md-bestand."
   },
   "features": {
-    "eyebrow": "Alles wat je nodig hebt om beter te presenteren",
-    "title": "Eén teleprompter voor elke opname",
-    "description": "SolPrompter combineert een online teleprompter, AI-stemscrollen, notch-modus, afstandsbediening, scriptbeheer en professionele video-opname in één eenvoudige werkruimte.",
+    "eyebrow": "Belangrijkste kenmerken",
+    "title": "Ontworpen voor natuurlijke bevalling",
+    "description": "Een complete browsergebaseerde workflow om te schrijven, lezen en opnemen zonder software te installeren.",
     "items": [
       {
         "title": "AI-stemscrollen",
-        "description": "SolPrompter volgt je spraak en scrollt automatisch door je script op je natuurlijke spreektempo."
+        "description": "Scrollt automatisch terwijl u spreekt met behulp van de spraakherkenning van de native browser."
       },
       {
-        "title": "Notch-teleprompter",
-        "description": "Houd je script dicht bij de camera om zichtbare oogbewegingen te verminderen en natuurlijker oogcontact te behouden."
+        "title": "Notch-leesmodus",
+        "description": "Verankert een smal leesblok direct onder de cameralens om oogbewegingen te minimaliseren."
       },
       {
-        "title": "Afstandsbediening",
-        "description": "Gebruik een andere telefoon, tablet of computer om het scrollen te bedienen, door je script te navigeren en je presentatie op afstand te beheren."
+        "title": "QR-afstandsbediening",
+        "description": "Scan een QR-code met uw telefoon om vanaf de andere kant van de kamer te pauzeren, af te spelen of de snelheid aan te passen."
       },
       {
-        "title": "Full HD- en 4K-opname",
-        "description": "Neem professionele video's op terwijl je je script rechtstreeks van de teleprompter leest."
+        "title": "4K-opname in browser",
+        "description": "Neem tijdens het lezen video's met een hoge resolutie op en sla deze rechtstreeks op uw computer op."
       },
       {
-        "title": "Opnamebibliotheek",
-        "description": "Bewaar, bekijk en beheer je opnames samen met de scripts waarmee ze zijn gemaakt."
+        "title": "Geoptimaliseerd voor tablets",
+        "description": "Een responsieve lay-out past het leesgebied, de navigatie en de bedieningselementen aan portret- of landschapsschermen aan voor een gerichte, app-achtige ervaring."
       },
       {
-        "title": "Gemaakt voor mobiel",
-        "description": "Gebruik SolPrompter comfortabel op telefoons, tablets, laptops en desktopcomputers met een responsieve interface voor elk scherm."
-      },
-      {
-        "title": "Geen advertenties of watermerk",
-        "description": "Presenteer en neem op zonder storende advertenties of merkwatermerken op je video's."
+        "title": "Geen watermerken",
+        "description": "Exporteer schone, merkloze video-opnamen zonder beperkingen."
       }
     ]
   },
   "howItWorks": {
-    "eyebrow": "Eenvoudig vanaf de eerste take",
-    "title": "Hoe SolPrompter werkt",
-    "description": "Verander elk script in een vloeiende presentatie of professionele opname in slechts een paar stappen.",
+    "eyebrow": "Werkstroom",
+    "title": "Eenvoudig en direct",
+    "description": "Bereid uw script voor en begin in slechts een paar stappen met presenteren of opnemen.",
     "steps": [
       {
         "anchor": "step-add-script",
-        "title": "Voeg je script toe",
-        "description": "Plak je tekst rechtstreeks in SolPrompter of upload een bestaand script vanaf je apparaat."
+        "title": "Invoerscript",
+        "description": "Plak uw tekst direct of upload een document vanaf uw apparaat."
       },
       {
         "anchor": "step-choose-scroll-mode",
-        "title": "Kies je scrollmodus",
-        "description": "Stel een vaste scrollsnelheid in, bedien het script handmatig of activeer AI-stemscrollen."
+        "title": "Kies de scrollmodus",
+        "description": "Stel een vaste automatische snelheid in, gebruik spraaksynchronisatie of scroll handmatig."
       },
       {
         "anchor": "step-customize-view",
-        "title": "Pas je weergave aan",
-        "description": "Pas het lettertype, de tekstgrootte, regelafstand, het leesgebied en de teleprompterpositie aan voor comfortabel lezen."
+        "title": "Weergave aanpassen",
+        "description": "Pas lettergroottes, lijnhoogtes en marges aan voor leescomfort."
       },
       {
         "anchor": "step-start-presenting",
         "title": "Begin met presenteren",
-        "description": "Open de teleprompter, verbind indien nodig een afstandsbediening en begin met presenteren of opnemen."
+        "description": "Open de teleprompter, sluit indien nodig een afstandsbediening aan en begin te spreken."
       }
     ]
   },
   "voiceScroll": {
-    "eyebrow": "Scrol op het tempo van je stem",
-    "title": "AI-stemscrollen dat jou volgt",
-    "description": "Stop met het aanpassen van je spreektempo aan een vaste scrollsnelheid. SolPrompter volgt je stem zodat je je kunt concentreren op het natuurlijk overbrengen van je boodschap.",
+    "eyebrow": "Spraaksynchronisatie",
+    "title": "AI Voice Scroll-teleprompter",
+    "subTitle": "Scroll met de snelheid van uw stem",
+    "problemSolution": {
+      "problemTitle": "Probleem: Traditionele teleprompters scrollen met een vaste snelheid",
+      "problemDesc": "Als je sneller spreekt, verlies je je plaats. Als u pauzeert, blijft het script in beweging. Hierdoor voelen presentaties rigide en stressvol aan.",
+      "solutionTitle": "Oplossing: AI-stemgestuurd scrollen",
+      "solutionDesc": "SolPrompter luistert en laat het script automatisch vooruitgaan terwijl u leest, en past zich onmiddellijk in realtime aan uw natuurlijke snelheid aan."
+    },
+    "description": "Stemherkenning volgt uw voordracht en versnelt het script terwijl u spreekt, en past zich onmiddellijk aan wanneer uw tempo verandert.",
     "benefits": [
       {
-        "title": "Spreek natuurlijk",
-        "description": "Lees op je eigen tempo zonder gehaast, traag of robotachtig te klinken."
+        "title": "Spreek op natuurlijke wijze",
+        "description": "Lees in je eigen tempo zonder je gehaast te voelen of robotachtig te klinken."
       },
       {
-        "title": "Pauzeer wanneer nodig",
-        "description": "Haal adem, benadruk een idee of pauzeer tussen secties zonder direct je plek kwijt te raken."
+        "title": "Pauzeer wanneer dat nodig is",
+        "description": "Haal diep adem, benadruk een idee of pauzeer tussen secties zonder je plaats te verliezen."
       },
       {
         "title": "Blijf gefocust",
-        "description": "Houd het juiste deel van je script zichtbaar terwijl je je concentreert op je presentatie."
+        "description": "De actieve lijnen worden precies op het midden van uw ooghoogte gehouden."
       },
       {
-        "title": "Minder herkansingen",
-        "description": "Vermijd fouten doordat scripts te snel of te langzaam bewegen tijdens het opnemen."
+        "title": "Minimaliseer herkansingen",
+        "description": "Voorkom fouten die worden veroorzaakt doordat een script te snel of te langzaam scrollt."
       }
     ],
-    "supporting": "Liever een traditionele online autocue? Handmatige scrollbediening en scrollen met vaste snelheid zijn altijd beschikbaar.",
+    "qa": {
+      "q": "Is voor AI Voice Scroll een account vereist?",
+      "a": "Nee, SolPrompter is een gratis teleprompter waarvoor geen aanmelding vereist is. U kunt uw videoscript of spraakscript plakken en direct beginnen met vragen."
+    },
+    "supporting": "Liever traditioneel scrollen? Handmatige en vaste snelheidsregelaars zijn altijd beschikbaar.",
     "cta": {
-      "label": "Probeer AI-stemscrollen",
-      "url": "/workspaces"
+      "label": "Probeer voicescroll",
+      "url": "/teleprompter.html"
     }
   },
   "notch": {
-    "eyebrow": "Natuurlijk oogcontact",
-    "title": "Houd je script dicht bij de camera",
-    "description": "De notch-modus van SolPrompter plaatst een compact leesgebied dicht bij je camera, zodat je ogen dichter bij de lens gefocust blijven.",
+    "eyebrow": "Professionele installatie van rigs",
+    "title": "Notch-modus voor natuurlijk oogcontact",
+    "description": "Optimaliseer uw camerahoeken door lijnen direct onder uw lens te plaatsen en een telefoon te synchroniseren voor aanpassingen op afstand om natuurlijk oogcontact met de camera te behouden.",
     "items": [
-      "Verminder duidelijke zijwaartse oogbewegingen.",
-      "Plaats het script dicht bij je webcam of telefooncamera.",
-      "Pas de grootte van het leesgebied aan om alleen de regels te tonen die je nodig hebt.",
-      "Verplaats de teleprompter naar elke plek op je scherm.",
-      "Behoud natuurlijker oogcontact tijdens opnames en videogesprekken."
+      "Beperk de lijnbreedte tot 50-70 tekens om horizontaal scannen te voorkomen.",
+      "Veranker de tekst direct onder de cameralens.",
+      "Pas de hoogte van de viewport aan, zodat alleen de lijnen worden weergegeven die u nodig hebt.",
+      "Zorg voor een directe, natuurlijke oogverbinding met uw publiek."
     ],
-    "supporting": "De notch-modus is ideaal voor interviews, presentaties, productdemo's, online lessen, videogesprekken en talking-head-content.",
+    "supporting": "Perfect voor video's met pratende hoofden, videogesprekken, interviews op afstand en online lessen.",
     "cta": {
-      "label": "Open notch-modus",
-      "url": "/workspaces"
+      "label": "Teleprompter openen",
+      "url": "/teleprompter.html"
     }
   },
   "remote": {
-    "eyebrow": "Bedien vanaf overal",
-    "title": "Gebruik elk apparaat als teleprompter-afstandsbediening",
-    "description": "Verbind een andere telefoon, tablet of computer en bedien je teleprompter zonder het hoofdopnameapparaat aan te raken.",
+    "eyebrow": "Afstandsbediening",
+    "title": "Scan een QR om vanaf elk apparaat te bedienen",
+    "description": "Verbind een telefoon of tablet via QR-code met behulp van beveiligde WebSockets. Beheer uw presentatie zonder externe applicaties te installeren.",
     "items": [
       {
-        "title": "Starten en pauzeren",
-        "description": "Bedien de teleprompter discreet terwijl je presenteert."
+        "title": "Script afspelen en pauzeren",
+        "description": "Start of bevries de teleprompter discreet tijdens het presenteren."
       },
       {
-        "title": "Scrollsnelheid aanpassen",
-        "description": "Verhoog of verlaag de snelheid vanaf je verbonden afstandsbediening."
+        "title": "Pas de snelheid aan",
+        "description": "Pas de scrollsnelheid rechtstreeks vanaf het scherm van uw telefoon aan."
       },
       {
-        "title": "Navigeer door je script",
-        "description": "Ga vooruit, ga terug of spring naar een ander deel van je script."
+        "title": "Navigeer door het script",
+        "description": "Spring vooruit, achteruit of ga direct naar andere secties."
       },
       {
-        "title": "Opname beheren",
-        "description": "Start of stop de opname op afstand wanneer je apparaat en browser dit ondersteunen."
+        "title": "Opname activeren",
+        "description": "Start en stop de camera-opname vanaf de andere kant van de kamer."
       }
     ],
-    "supporting": "Perfect voor solomakers, sprekers, studio's, productieteams en presentaties op afstand.",
+    "qa": {
+      "q": "Werkt het op iPad en mobiele telefoons?",
+      "a": "Ja! SolPrompter werkt als een mobiele teleprompter of iPad-prompter. U kunt ook de QR-code scannen om uw telefoon te gebruiken als draadloze afstandsbediening voor de teleprompter op uw iPad, tablet of laptop."
+    },
+    "supporting": "Een essentiële workflow voor solomakers, bedrijfspresentatoren en podiumsprekers.",
     "cta": {
-      "label": "Verbind een afstandsbediening",
-      "url": "/workspaces"
+      "label": "Verbind afstandsbediening",
+      "url": "/teleprompter.html"
     }
   },
   "recording": {
-    "eyebrow": "Neem op terwijl je leest",
-    "title": "Maak professionele video's in Full HD of 4K",
-    "description": "Gebruik je camera en teleprompter in één gestroomlijnde workflow. Lees natuurlijk, controleer je kadrering en neem op zonder tussen verschillende applicaties te wisselen.",
+    "eyebrow": "Opname en privacy",
+    "title": "In-Browser 4K-opname en lokale scriptprivacy",
+    "description": "Leg scherpe videobeelden rechtstreeks vanuit de browser vast, terwijl uw scripts 100% privé blijven in de lokale opslag.",
     "items": [
       {
         "title": "Live camerapreview",
-        "description": "Controleer je positie, kadrering en uiterlijk voor en tijdens je opname."
+        "description": "Bekijk een voorbeeld en controleer uw kadrering en uitlijning voordat u op de opname drukt."
       },
       {
-        "title": "Full HD-opname",
-        "description": "Maak heldere, hoogwaardige video's voor sociale media, lessen, presentaties en zakelijke content."
+        "title": "Neem Full HD en 4K op",
+        "description": "Neem video's met hoge resolutie rechtstreeks in de browser op het bureaublad op (1080p op iOS)."
       },
       {
-        "title": "4K-opname",
-        "description": "Leg professionele video op in hoge resolutie wanneer je camera, browser en apparaat dit ondersteunen."
-      },
-      {
-        "title": "Geen watermerk",
-        "description": "Exporteer schone opnames zonder SolPrompter-logo of merkoverlay."
+        "title": "Geen watermerken",
+        "description": "Uw geëxporteerde videobestanden zijn merkloos en vrij van watermerken."
       },
       {
         "title": "Opnamebibliotheek",
-        "description": "Houd je takes georganiseerd en vind snel de opname die bij elk script hoort."
+        "description": "Houd al uw opgenomen opnames georganiseerd en gekoppeld aan hun respectievelijke scripts."
       }
     ],
+    "qa": {
+      "q": "Kan ik video opnemen met SolPrompter?",
+      "a": "Ja! SolPrompter biedt hoogwaardige browservideo-opnames (tot 4K resolutie op ondersteunde desktops en 1080p op iOS-apparaten) zonder watermerken. Uw opgenomen clips worden lokaal op uw apparaat opgeslagen voor maximale privacy."
+    },
     "cta": {
       "label": "Begin met opnemen",
-      "url": "/workspaces"
+      "url": "/teleprompter.html"
     }
   },
   "workspace": {
-    "eyebrow": "Jouw contentwerkruimte",
-    "title": "Beheer scripts en opnames samen",
-    "description": "Stop met zoeken in mappen, documenten en aparte applicaties. SolPrompter houdt je scripts en opnames in één georganiseerde werkruimte.",
+    "eyebrow": "Privé-werkruimte",
+    "title": "Uw scripts blijven privé",
+    "description": "Uw scripts en opnames blijven op uw apparaat staan, zodat u met gevoelige inhoud kunt werken zonder deze naar SolPrompter te sturen.",
     "items": [
       {
-        "title": "Scripts maken en bewerken",
-        "description": "Schrijf nieuwe scripts of werk bestaande content rechtstreeks in SolPrompter bij."
+        "title": "Scripts schrijven en redigeren",
+        "description": "Maak nieuwe concepten of bewerk bestaande concepten rechtstreeks in de tool."
       },
       {
-        "title": "Bestaande content uploaden",
-        "description": "Importeer scripts uit ondersteunde documenten in plaats van elke sectie handmatig te kopiëren."
+        "title": "Snel bestanden importeren",
+        "description": "Upload TXT-, DOCX- of Markdown-bestanden rechtstreeks in plaats van te kopiëren en plakken."
       },
       {
-        "title": "Organiseer je bibliotheek",
-        "description": "Houd scripts en opnames georganiseerd zodat ze klaar zijn voor toekomstige presentaties."
+        "title": "Onbeperkte scripts",
+        "description": "Bewaar zoveel scripts als de lokale database van uw browser toestaat."
       },
       {
-        "title": "Hergebruik je scripts",
-        "description": "Open eerdere scripts, breng snelle wijzigingen aan en neem nieuwe versies op zonder opnieuw te beginnen."
-      },
-      {
-        "title": "Toegang vanaf elk scherm",
-        "description": "Werk verder vanaf je telefoon, tablet, laptop of desktopcomputer."
+        "title": "Direct hergebruik",
+        "description": "Open eerdere scripts, update details en neem binnen enkele seconden nieuwe opnames op."
       }
-    ]
+    ],
+    "qa": {
+      "q": "Kan ik DOCX-bestanden uploaden?",
+      "a": "Ja! U kunt eenvoudig TXT-, Markdown- en DOCX-documenten rechtstreeks in uw lokale werkruimte importeren. De scripts worden lokaal in uw browser verwerkt en worden nooit naar een server geüpload."
+    }
   },
   "mobile": {
     "eyebrow": "Ontworpen voor elk scherm",
     "title": "Een mobielvriendelijke online teleprompter",
-    "description": "SolPrompter is ontworpen om snel, helder en gemakkelijk te bedienen aan te voelen op zowel desktop- als mobiele apparaten.",
+    "description": "SolPrompter past het leesgebied, de navigatie en de bedieningselementen aan op telefoons en tablets, waardoor een gerichte app-achtige ervaring in portret of landschap wordt geboden.",
     "items": [
       {
         "title": "Responsieve interface",
@@ -311,142 +321,237 @@
         "description": "Open SolPrompter in een ondersteunde browser en begin met de teleprompter online te gebruiken."
       }
     ],
-    "supporting": "Gebruik SolPrompter als mobiele teleprompter, desktop-teleprompter of browsergebaseerde online autocue."
+    "supporting": "Gebruik SolPrompter als uw mobiele teleprompter, desktopteleprompter of browsergebaseerde online autocue."
   },
   "useCases": {
-    "eyebrow": "Gemaakt voor elke presentator",
-    "title": "Voor wie is SolPrompter?",
+    "eyebrow": "Gebruiksscenario's",
+    "title": "Voor wie is SolPrompter bedoeld?",
     "items": [
       {
         "title": "Contentmakers",
-        "description": "Neem TikTok-video's, YouTube-video's, Shorts, Reels en andere sociale content op zonder elke regel uit je hoofd te leren."
+        "description": "Neem TikToks, Shorts en Reels op zonder dat u uw tekst uit uw hoofd hoeft te leren."
       },
       {
         "title": "YouTubers",
-        "description": "Presenteer reviews, tutorials, uitlegvideo's en talking-head-video's met een vlottere, zelfverzekerdere presentatie."
+        "description": "Geef tutorials, uitleggers en recensies met een natuurlijke en vloeiende spreekstijl."
       },
       {
         "title": "Podcasters",
-        "description": "Volg introducties, sponsorboodschappen, gestructureerde vragen en afleveringsnotities tijdens het opnemen."
+        "description": "Lees intro's, sponsorvoorlezingen en belangrijke gesprekspunten tijdens het opnemen van audio."
       },
       {
-        "title": "Leraren en docenten",
-        "description": "Presenteer online lessen, cursusvideo's en educatieve content helder en consistent."
+        "title": "Leraren en onderwijzers",
+        "description": "Presenteer gestructureerde, duidelijke en professionele lezingen voor online cursussen."
       },
       {
         "title": "Zakelijke professionals",
-        "description": "Bereid productdemo's, bedrijfsupdates, webinars, verkooppresentaties en trainingsvideo's voor."
+        "description": "Lever bedrijfspresentaties, verkoopdemo's en trainingsmateriaal."
       },
       {
         "title": "Sprekers",
-        "description": "Oefen toespraken, repeteer presentaties en breng voorbereide boodschappen met vertrouwen over."
+        "description": "Oefen toespraken, pas het tempo aan en bouw zelfvertrouwen op voor een camera."
       },
       {
-        "title": "Journalisten en interviewers",
-        "description": "Volg scripts, vragen en belangrijke gesprekspunten terwijl je gefocust blijft op de camera."
+        "title": "Journalisten en nieuwslezers",
+        "description": "Lees scripts soepel en behoud een continue verbinding met de lens."
       },
       {
         "title": "Teams op afstand",
-        "description": "Gebruik de notch-modus tijdens videogesprekken, online presentaties en interviews op afstand."
+        "description": "Gebruik de Notch-modus om dia's te presenteren, de status te rapporteren en videogesprekken te voeren."
       }
     ]
   },
   "comparison": {
-    "eyebrow": "Waarom SolPrompter?",
-    "title": "Een completere gratis teleprompter",
-    "description": "SolPrompter is gebouwd om een complete teleprompter-ervaring te bieden zonder gebruikers te dwingen meerdere applicaties te combineren of te betalen voor basisfuncties.",
-    "items": [
-      "AI-spraakgestuurd scrollen",
-      "Notch-teleprompter-modus",
-      "Bediening vanaf een ander apparaat",
-      "Full HD- en 4K-video-opname",
-      "Script- en opnamebeheer",
-      "Ondersteuning voor desktop en mobiel",
-      "Geen advertenties",
-      "Geen videowatermerk",
-      "Eenvoudige en moderne gebruikerservaring",
-      "Gratis toegang tot essentiële teleprompterfuncties"
-    ],
-    "supporting": "Van het schrijven van je script tot het opnemen van de definitieve take: SolPrompter geeft je de tools die je nodig hebt op één plek."
+    "eyebrow": "Vergelijking",
+    "title": "Een complete browserteleprompter",
+    "description": "Vergelijk de kernfuncties van SolPrompter met bestaande marktplaatsalternatieven.",
+    "table": {
+      "headers": [
+        "Functie",
+        "SolPrompter",
+        "PromptSmart",
+        "TeleprompterSpiegel"
+      ],
+      "rows": [
+        {
+          "feature": "AI-stemscrollen",
+          "sol": "Vrij",
+          "smart": "Abonnement vereist",
+          "mirror": "Niet ondersteund"
+        },
+        {
+          "feature": "Browsergebaseerd",
+          "sol": "Ja",
+          "smart": "Nee (app-download)",
+          "mirror": "Ja"
+        },
+        {
+          "feature": "Scriptprivacy",
+          "sol": "100% lokaal op apparaat",
+          "smart": "Lokaal op apparaat",
+          "mirror": "Lokaal op apparaat"
+        },
+        {
+          "feature": "QR-afstandsbediening",
+          "sol": "Ja (geen installatie)",
+          "smart": "Ja (app-download)",
+          "mirror": "Niet ondersteund"
+        },
+        {
+          "feature": "Banneradvertenties",
+          "sol": "Advertentievrij",
+          "smart": "Advertentievrij",
+          "mirror": "Ja (banneradvertenties)"
+        },
+        {
+          "feature": "4K-video-opname",
+          "sol": "Ondersteund (desktop)",
+          "smart": "Niet ondersteund",
+          "mirror": "Niet ondersteund"
+        },
+        {
+          "feature": "Prijs",
+          "sol": "Volledig gratis",
+          "smart": "Betaald abonnement",
+          "mirror": "Gratis (advertentie-ondersteund)"
+        }
+      ]
+    },
+    "whyChoose": {
+      "title": "Waarom makers voor SolPrompter kiezen",
+      "items": [
+        {
+          "title": "Gratis spraakgestuurd scrollen",
+          "description": "In tegenstelling tot abonnementstools die stemsynchronisatie achter betaalmuren vergrendelen, bevat SolPrompter dit gratis, rechtstreeks mogelijk gemaakt door spraakherkenning in de browser."
+        },
+        {
+          "title": "Uw gegevens blijven op uw machine",
+          "description": "Uw scripts worden lokaal in uw browser verwerkt. We verzenden uw inhoud nooit, waardoor volledige privacy voor concepten wordt gegarandeerd."
+        },
+        {
+          "title": "Geen aanmelding of configuratie vereist",
+          "description": "Geen accounts, geen onboardingvragen. Bezoek gewoon de site, plak uw script en begin direct met presenteren."
+        }
+      ]
+    },
+    "supporting": "Van het schrijven van uw eerste script tot het opnemen van de uiteindelijke video, SolPrompter biedt alle tools in één browservenster."
   },
   "about": {
-    "eyebrow": "Over SolPrompter",
-    "title": "Gebouwd om presenteren natuurlijk te laten voelen",
+    "eyebrow": "Over",
+    "title": "Online lezen voelt als een natuurlijk gesprek",
     "paragraphs": [
-      "SolPrompter is een AI-teleprompter gemaakt voor mensen die zelfverzekerd willen spreken zonder elk woord uit hun hoofd te leren of voortdurend scrollbediening te moeten beheren.",
-      "Ons doel is om de meest complete en toegankelijke online teleprompter-ervaring te creëren, met betrouwbaar AI-scrollen, doordacht ontwerp, tools voor natuurlijk oogcontact en professionele opnamefuncties.",
-      "Of je nu opneemt vanaf een telefoon, presenteert vanaf een laptop of een studio-opstelling op afstand bedient, SolPrompter helpt je gefocust te blijven op je publiek in plaats van op de software."
+      "SolPrompter is gebouwd om sprekers te helpen zelfverzekerd te presenteren zonder lange teksten uit het hoofd te leren of te friemelen met scrollsnelheden.",
+      "We richten ons op het creëren van een minimale, hoogwaardige online teleprompter die nauwkeurige stemregistratie, ergonomisch ontwerp en eenvoudige video-opname combineert.",
+      "Of u nu opnamen maakt met een telefoon, opneemt vanaf een laptop of een studio beheert, SolPrompter houdt u gefocust op uw publiek."
     ]
   },
   "finalCta": {
-    "eyebrow": "Klaar om te presenteren?",
-    "title": "Begin met SolPrompter",
-    "description": "Voeg je script toe, kies je voorkeursleesmodus en begin natuurlijk te presenteren.",
+    "eyebrow": "Begin met praten",
+    "title": "Presenteer op natuurlijke wijze met SolPrompter",
+    "description": "Voer uw script in, configureer uw weergave-instellingen en neem vandaag nog uw video op.",
     "cta": {
-      "label": "Open gratis teleprompter",
-      "url": "/workspaces"
+      "label": "Teleprompter openen",
+      "url": "/teleprompter.html"
     },
-    "supporting": "Geen advertenties. Geen watermerk. Geen ingewikkelde installatie."
+    "supporting": "Gratis, advertentievrij, watermerkvrij."
   },
   "faq": {
-    "eyebrow": "Vragen en antwoorden",
+    "eyebrow": "Veelgestelde vragen",
     "title": "Veelgestelde vragen",
     "items": [
       {
-        "anchor": "faq-is-solprompter-free",
-        "q": "Is SolPrompter gratis te gebruiken?",
-        "a": "SolPrompter is momenteel gratis te gebruiken. Je kunt de essentiële teleprompter-, script- en opnamefuncties gebruiken zonder advertenties of een merkwatermerk op video's."
+        "anchor": "faq-oogcontact onderhouden",
+        "q": "Hoe voorkom ik dat het lijkt alsof ik aan het lezen ben en houd ik oogcontact?",
+        "a": "<strong>Activeer de Notch-modus van SolPrompter om uw script direct onder de lens te plaatsen.</strong> Dit verkleint de tekstbreedte tot 50-70 tekens en verankert deze bovenaan in het midden. Door de oogbewegingen terug te brengen tot minder dan 3 graden, lijkt het alsof u rechtstreeks met de kijker spreekt."
       },
       {
-        "anchor": "faq-what-is-ai-voice-scroll",
-        "q": "Wat is AI-stemscrollen?",
-        "a": "AI-stemscrollen luistert naar je spraak en beweegt door het script op basis van je natuurlijke spreektempo. Het helpt je te pauzeren, door te gaan en te presenteren zonder voortdurend een vaste scrollsnelheid aan te passen."
+        "anchor": "faq-vs-app-store",
+        "q": "Waarom kiezen voor SolPrompter boven een App Store-applicatie?",
+        "a": "<strong>SolPrompter werkt rechtstreeks op internet, vereist geen download en plaatst geen watermerken op uw video-exports.</strong> De meeste mobiele applicaties beperken de scriptlengte of brengen maandelijkse kosten in rekening om eenvoudige functies in te schakelen. SolPrompter biedt volledige functionaliteit out-of-the-box."
       },
       {
-        "anchor": "faq-what-is-notch-mode",
-        "q": "Wat is de SolPrompter notch-modus?",
-        "a": "De notch-modus plaatst een compact leesgebied van de teleprompter dicht bij je camera. Dit helpt zichtbare oogbewegingen te verminderen en laat je oogcontact natuurlijker lijken tijdens opnames, presentaties en videogesprekken."
+        "anchor": "faq-afstandsbediening-stabiliteit",
+        "q": "Zal de afstandsbediening de verbinding verbreken wanneer mijn telefoon vergrendelt of in de sluimerstand gaat?",
+        "a": "<strong>Nee, de afstandsbediening van SolPrompter maakt gebruik van permanente WebSockets met een hartslagprotocol om stabiliteit te garanderen.</strong> Zolang het tabblad Teleprompter actief blijft, blijft de link actief met een latentie van minder dan 10 ms, waardoor de uitval die vaak voorkomt bij hardwareklikkers wordt voorkomen."
       },
       {
-        "anchor": "faq-mobile-devices",
-        "q": "Kan ik SolPrompter op een telefoon of tablet gebruiken?",
-        "a": "Ja. SolPrompter heeft een responsieve interface ontworpen voor smartphones, tablets, laptops en desktopcomputers. Beschikbare functies kunnen afhangen van de browser, camera en mogelijkheden van het apparaat."
+        "anchor": "faq-fysieke-beamsplitter",
+        "q": "Kan ik SolPrompter gebruiken met een fysieke glazen beamsplitter-installatie?",
+        "a": "<strong>Ja, schakel de \"Spiegelmodus\" in de instellingen van SolPrompter in om de tekst horizontaal te spiegelen.</strong> Om het leescontrast te maximaliseren, schakelt u de interface naar de donkere modus (witte tekst op een puur zwarte achtergrond) om dubbele reflecties te elimineren."
       },
       {
-        "anchor": "faq-installation",
-        "q": "Moet ik SolPrompter installeren?",
-        "a": "Voor de webversie is geen installatie nodig. Je kunt SolPrompter openen in een ondersteunde moderne browser, je script toevoegen en online beginnen met presenteren."
+        "anchor": "veelgestelde vragen-script-privacy",
+        "q": "Zijn mijn scripts en bedrijfsconcepten veilig?",
+        "a": "<strong>Ja. Uw scripts en opnamen blijven op uw apparaat staan ​​terwijl u werkt.</strong> SolPrompter uploadt deze inhoud niet naar zijn servers, waardoor u vertrouwelijke concepten onder uw controle kunt houden."
       },
       {
-        "anchor": "faq-remote-control",
-        "q": "Kan ik SolPrompter vanaf een ander apparaat bedienen?",
-        "a": "Ja. Met de afstandsbediening van SolPrompter kun je een andere telefoon, tablet of computer gebruiken om de teleprompter te starten of pauzeren, het scrollen aan te passen en door je script te navigeren."
+        "anchor": "faq-ghosting-onscherpte",
+        "q": "Waarom ziet de gereflecteerde tekst op mijn glas er wazig uit?",
+        "a": "<strong>Dubbele reflecties (ghosting) komen voor op normaal glas. Gebruik professioneel beamsplitterglas en een lagere schermhelderheid.</strong> Een professioneel 70/30 glas heeft aan één zijde een antireflectiecoating. Het afdekken van de achterkant van het glas met een donkere doek is ook nodig om lichtlekken te voorkomen."
       },
       {
-        "anchor": "faq-4k-recording",
-        "q": "Kan SolPrompter video's opnemen in 4K?",
-        "a": "SolPrompter ondersteunt Full HD- en 4K-opname wanneer de camera, browser en het apparaat de gekozen resolutie ondersteunen. De werkelijke opnamekwaliteit hangt af van de mogelijkheden en machtigingen van je apparaat."
+        "anchor": "FAQ-offline-gebruik",
+        "q": "Kan ik de teleprompter offline gebruiken?",
+        "a": "<strong>De werkruimte van de teleprompter werkt offline zodra deze is geladen, maar voor spraaksynchronisatie is internet vereist.</strong> De spraakherkenning maakt gebruik van native browser-API's, die audio verwerken via de cloudservers van Google of Apple. Voor offline instellingen schakelt u over naar scrollen met vaste snelheid of handmatig."
       },
       {
-        "anchor": "faq-watermark",
-        "q": "Voegt SolPrompter een watermerk toe aan opnames?",
-        "a": "SolPrompter voegt geen merkwatermerk toe aan je opgenomen video's."
-      },
-      {
-        "anchor": "faq-supported-files",
-        "q": "Welke scriptbestandsformaten ondersteunt SolPrompter?",
-        "a": "SolPrompter ondersteunt het rechtstreeks plakken van tekst en het uploaden van ondersteunde scriptdocumenten zoals TXT-, DOCX-, PDF- en Markdown-bestanden."
-      },
-      {
-        "anchor": "faq-online-autocue",
-        "q": "Kan SolPrompter als online autocue worden gebruikt?",
-        "a": "Ja. SolPrompter kan worden gebruikt als browsergebaseerde online autocue met handmatig scrollen, automatisch scrollen met vaste snelheid en AI-spraakgestuurd scrollen."
+        "anchor": "faq-lettergrootte-afstand",
+        "q": "Hoe bepaal ik de juiste lettergrootte voor mijn leesafstand?",
+        "a": "<strong>Een algemene maatstaf is om uw lettertype te verkleinen tot 2,5 cm hoog voor elke 3 meter leesafstand.</strong> Voor close-uplezen op een laptop wordt de voorkeur gegeven aan een kleinere, smalle tekstindeling om te voorkomen dat de ogen zichtbaar naar links en rechts scannen."
       }
     ]
   },
+  "engineering": {
+    "eyebrow": "Gebouwd voor de echte wereld",
+    "title": "Snel, privé en klaar om te presteren",
+    "description": "Ontdek hoe SolPrompter scripts op uw apparaat bewaart, in realtime reageert en rechtstreeks in de browser draait, zonder downloads of ingewikkelde instellingen.",
+    "principles": [
+      {
+        "title": "Waarom we SolPrompter hebben gebouwd",
+        "description": "Bestaande telepromptersoftware verbergt vaak essentiële functies (zoals voice scrolling of watermerkvrij opnemen) achter dure maandelijkse abonnementen. We hebben SolPrompter gebouwd om een ​​hoogwaardige, volledig gratis online teleprompter te bieden waarvoor geen aanmelding vereist is, waardoor professionele tools toegankelijk worden voor alle makers."
+      },
+      {
+        "title": "Waarom het in uw browser draait",
+        "description": "SolPrompter werkt rechtstreeks in uw browser, zodat u voice-scrolling kunt gebruiken en video kunt opnemen zonder extra software te downloaden."
+      },
+      {
+        "title": "Standaard privacy",
+        "description": "Uw scripts en opnames blijven op uw apparaat staan ​​in plaats van te worden geüpload naar SolPrompter, waardoor u directe controle heeft over gevoelige inhoud."
+      }
+    ],
+    "benchmarksTitle": "Gemeten prestaties",
+    "benchmarks": [
+      {
+        "metric": "AI Voice Scroll-latentie",
+        "sol": "< 50 ms (realtime)",
+        "trad": "N.v.t. (vaste snelheid)"
+      },
+      {
+        "metric": "Nauwkeurigheid van spraakdetectie",
+        "sol": "98% (meertalig)",
+        "trad": "Alleen handmatige bediening"
+      },
+      {
+        "metric": "CPU-gebruik (inactief/scrollen)",
+        "sol": "< 2% / 5%",
+        "trad": "Hoog (desktopapp)"
+      },
+      {
+        "metric": "Batterijverbruik",
+        "sol": "Minimaal (native web-API)",
+        "trad": "Matig tot hoog"
+      },
+      {
+        "metric": "Ondersteunde browsers",
+        "sol": "Chrome, Rand, Safari, Firefox",
+        "trad": "Apps met besturingssysteembeperking"
+      }
+    ],
+    "benchmarksSupport": "Getest op Apple M2 (macOS) en Intel Core i7 (Windows 11) met Chrome 120."
+  },
   "footer": {
     "brand": "SolPrompter",
-    "description": "Een gratis online AI-teleprompter voor natuurlijke presentaties en professionele video-opname.",
+    "description": "Een gratis online teleprompter voor natuurlijke presentaties en professionele video-opnames.",
     "columns": [
       {
         "title": "Product",
@@ -464,16 +569,12 @@
             "url": "#how-it-works"
           },
           {
-            "label": "AI-stemscrollen",
+            "label": "Stem scrollen",
             "url": "#voice-scroll"
           },
           {
             "label": "Notch-modus",
             "url": "#notch"
-          },
-          {
-            "label": "Afstandsbediening",
-            "url": "#remote"
           },
           {
             "label": "4K-opname",

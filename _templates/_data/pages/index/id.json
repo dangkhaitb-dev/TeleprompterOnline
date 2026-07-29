@@ -1,17 +1,17 @@
 {
   "seo": {
     "title": "Teleprompter Online Gratis dengan Gulir Suara AI | SolPrompter",
-    "description": "Gunakan SolPrompter, teleprompter online gratis dengan gulir suara AI, mode notch, kontrol jarak jauh, dan perekaman 4K. Tanpa iklan atau watermark.",
+    "description": "Teleprompter online gratis dengan pengguliran yang diaktifkan suara AI, mode takik, dan kendali jarak jauh QR. Tanpa iklan, tanpa pendaftaran, 100% pribadi.",
     "canonical": "/id/",
-    "ogTitle": "Teleprompter AI Online Gratis — SolPrompter",
-    "ogDescription": "Presentasi secara alami dengan gulir suara AI, mode notch, kontrol jarak jauh, dan perekaman video profesional.",
+    "ogTitle": "Teleprompter Online Gratis — SolPrompter",
+    "ogDescription": "Hadir secara alami dengan teleprompter berbasis browser kami. Secara otomatis menggulir dengan suara Anda, meminimalkan gerakan mata, dan mendukung remote control QR.",
     "ogType": "website",
     "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "SolPrompter menyediakan teleprompter AI online gratis untuk presentasi alami dan perekaman video profesional.",
-    "brandDescription": "SolPrompter adalah teleprompter AI online yang dirancang untuk presentasi alami dan perekaman video profesional.",
-    "websiteDescription": "Teleprompter online gratis dengan gulir suara AI, mode notch, kontrol jarak jauh, dan perekaman video profesional.",
+    "orgDescription": "SolPrompter menyediakan teleprompter online gratis untuk presentasi alami dan perekaman video profesional.",
+    "brandDescription": "SolPrompter adalah teleprompter online gratis yang dirancang untuk presentasi alami dan perekaman video profesional.",
+    "websiteDescription": "Teleprompter online gratis yang dilengkapi pengguliran suara AI, mode takik, kendali jarak jauh nirkabel, dan perekaman video 4K profesional.",
     "webpageName": "Teleprompter Online Gratis dengan Gulir Suara AI | SolPrompter",
     "alternateNames": [
       "SolPrompter",
@@ -20,9 +20,9 @@
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
     "primaryImage": "/og-solprompter.jpg",
-    "primaryImageCaption": "SolPrompter teleprompter AI online gratis",
-    "appAlternateName": "SolPrompter Teleprompter Online",
-    "appDescription": "Teleprompter AI online gratis dengan gulir yang diaktifkan suara, mode notch, kontrol jarak jauh, manajemen naskah, serta perekaman video Full HD dan 4K profesional.",
+    "primaryImageCaption": "SolPrompter teleprompter online gratis",
+    "appAlternateName": "SolPrompter Teleprompter Online Gratis",
+    "appDescription": "Teleprompter online gratis dengan pengguliran yang diaktifkan dengan suara, mode takik untuk kontak mata, kendali jarak jauh nirkabel, manajemen skrip, dan perekaman video Full HD dan 4K profesional.",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "Teleprompter Online",
     "operatingSystem": "Sistem operasi apa pun dengan peramban web modern",
@@ -52,7 +52,7 @@
     "offerDescription": "Akses gratis ke fitur teleprompter online SolPrompter.",
     "howToName": "Cara Menggunakan SolPrompter",
     "howToDescription": "Pelajari cara menambahkan naskah, memilih mode gulir, menyesuaikan teleprompter, dan mulai presentasi atau merekam dengan SolPrompter.",
-    "faqName": "Pertanyaan yang Sering Diajukan tentang SolPrompter",
+    "faqName": "FAQ Teleprompter Online SolPrompter",
     "faqDescription": "Pertanyaan yang sering diajukan tentang SolPrompter, Gulir Suara AI, mode notch, kontrol jarak jauh, perangkat yang didukung, dan perekaman video."
   },
   "nav": {
@@ -62,16 +62,16 @@
         "url": "#features"
       },
       {
-        "label": "Mode Notch",
-        "url": "#notch"
-      },
-      {
-        "label": "Gulir Suara",
+        "label": "Gulir otomatis",
         "url": "#voice-scroll"
       },
       {
-        "label": "Jarak Jauh",
-        "url": "#remote"
+        "label": "Rig & Kontrol",
+        "url": "#notch"
+      },
+      {
+        "label": "Perekaman & Privasi",
+        "url": "#recording"
       }
     ],
     "cta": {
@@ -80,13 +80,13 @@
     }
   },
   "hero": {
-    "eyebrow": "SolPrompter — Teleprompter AI",
+    "eyebrow": "SolPrompter — Teleprompter Online Gratis",
     "title": "Teleprompter Online Gratis",
-    "subtitle": "Presentasi secara alami dengan gulir suara AI, mode notch, kontrol jarak jauh, dan perekaman 4K profesional.",
+    "subtitle": "Secara otomatis menggulir dengan suara Anda, menempatkan teks di dekat lensa kamera untuk mencegah penyimpangan mata, dan mendukung kendali jarak jauh melalui kode QR. Gratis, bebas iklan, dan 100% pribadi.",
     "placeholder": "Tempel naskah Anda atau unggah file untuk memulai...",
-    "uploadLabel": "Unggah File",
+    "uploadLabel": "Unggah berkas",
     "uploadLabelShort": "Unggah",
-    "startLabel": "Mulai Presentasi",
+    "startLabel": "Mulai presentasi",
     "startLabelShort": "Mulai",
     "supportedText": "Mendukung TXT, DOCX, dan Markdown",
     "dropTitle": "Letakkan file di sini untuk mengunggah",
@@ -97,202 +97,212 @@
     "errorRead": "Format tidak didukung. Silakan pilih file .txt atau .md."
   },
   "features": {
-    "eyebrow": "Semua yang Anda Butuhkan untuk Presentasi Lebih Baik",
-    "title": "Satu Teleprompter untuk Setiap Rekaman",
-    "description": "SolPrompter menggabungkan teleprompter online, gulir suara AI, mode notch, kontrol jarak jauh, manajemen naskah, dan perekaman video profesional dalam satu ruang kerja sederhana.",
+    "eyebrow": "Fitur Utama",
+    "title": "Dirancang untuk Pengiriman Alami",
+    "description": "Alur kerja lengkap berbasis browser untuk menulis, membaca, dan merekam tanpa menginstal perangkat lunak.",
     "items": [
       {
-        "title": "Gulir Suara AI",
-        "description": "SolPrompter mengikuti ucapan Anda dan menggulir naskah secara otomatis sesuai tempo bicara alami Anda."
+        "title": "Pengguliran Suara AI",
+        "description": "Secara otomatis bergulir saat Anda berbicara menggunakan pengenalan ucapan browser asli."
       },
       {
-        "title": "Teleprompter Notch",
-        "description": "Jaga naskah tetap dekat kamera untuk mengurangi gerakan mata yang terlihat dan mempertahankan kontak mata yang lebih alami."
+        "title": "Mode Membaca Takik",
+        "description": "Pasang blok bacaan sempit tepat di bawah lensa kamera untuk meminimalkan pergerakan mata."
       },
       {
-        "title": "Kontrol Jarak Jauh",
-        "description": "Gunakan ponsel, tablet, atau komputer lain untuk mengontrol gulir, berpindah dalam naskah, dan mengelola presentasi dari jarak jauh."
+        "title": "Kendali Jarak Jauh QR",
+        "description": "Pindai kode QR dengan ponsel Anda untuk menjeda, memutar, atau menyesuaikan kecepatan dari seberang ruangan."
       },
       {
-        "title": "Perekaman Full HD dan 4K",
-        "description": "Rekam video profesional sambil membaca naskah langsung dari teleprompter."
+        "title": "Rekaman 4K Dalam Peramban",
+        "description": "Rekam video resolusi tinggi saat membaca, simpan langsung ke komputer Anda."
       },
       {
-        "title": "Perpustakaan Rekaman",
-        "description": "Simpan, tinjau, dan kelola rekaman Anda bersama naskah yang digunakan untuk membuatnya."
+        "title": "Dioptimalkan untuk Tablet",
+        "description": "Tata letak responsif menyesuaikan area membaca, navigasi, dan kontrol ke layar potret atau lanskap untuk pengalaman terfokus seperti aplikasi."
       },
       {
-        "title": "Dirancang untuk Seluler",
-        "description": "Gunakan SolPrompter dengan nyaman di ponsel, tablet, laptop, dan komputer desktop dengan antarmuka responsif untuk setiap layar."
-      },
-      {
-        "title": "Tanpa Iklan atau Watermark",
-        "description": "Presentasi dan merekam tanpa iklan yang mengganggu atau watermark merek pada video Anda."
+        "title": "Tanpa Tanda Air",
+        "description": "Ekspor rekaman video yang bersih dan tidak bermerek tanpa batasan."
       }
     ]
   },
   "howItWorks": {
-    "eyebrow": "Sederhana Sejak Take Pertama",
-    "title": "Cara Kerja SolPrompter",
-    "description": "Ubah naskah apa pun menjadi presentasi yang mulus atau rekaman profesional hanya dalam beberapa langkah.",
+    "eyebrow": "Alur kerja",
+    "title": "Sederhana dan Instan",
+    "description": "Siapkan skrip Anda dan mulailah presentasi atau perekaman hanya dalam beberapa langkah.",
     "steps": [
       {
         "anchor": "step-add-script",
-        "title": "Tambahkan Naskah Anda",
-        "description": "Tempel teks Anda langsung ke SolPrompter atau unggah naskah yang sudah ada dari perangkat Anda."
+        "title": "skrip masukan",
+        "description": "Tempelkan teks Anda secara langsung atau unggah dokumen dari perangkat Anda."
       },
       {
         "anchor": "step-choose-scroll-mode",
-        "title": "Pilih Mode Gulir Anda",
-        "description": "Atur kecepatan gulir tetap, kendalikan naskah secara manual, atau aktifkan Gulir Suara AI."
+        "title": "Pilih mode gulir",
+        "description": "Atur kecepatan otomatis tetap, gunakan sinkronisasi suara, atau gulir secara manual."
       },
       {
         "anchor": "step-customize-view",
-        "title": "Sesuaikan Tampilan Anda",
-        "description": "Sesuaikan font, ukuran teks, spasi baris, area baca, dan posisi teleprompter untuk membaca yang nyaman."
+        "title": "Sesuaikan tampilan",
+        "description": "Sesuaikan ukuran font, tinggi garis, dan margin untuk kenyamanan membaca."
       },
       {
         "anchor": "step-start-presenting",
-        "title": "Mulai Presentasi",
-        "description": "Buka teleprompter, sambungkan remote jika perlu, dan mulai presentasi atau merekam."
+        "title": "Mulai presentasi",
+        "description": "Buka teleprompter, sambungkan remote jika diperlukan, dan mulailah berbicara."
       }
     ]
   },
   "voiceScroll": {
-    "eyebrow": "Bergulir Sesuai Kecepatan Suara Anda",
-    "title": "Gulir Suara AI yang Mengikuti Anda",
-    "description": "Berhenti menyesuaikan tempo bicara Anda dengan kecepatan gulir tetap. SolPrompter mengikuti suara Anda agar Anda dapat fokus menyampaikan pesan secara alami.",
+    "eyebrow": "Sinkronisasi Suara",
+    "title": "Teleprompter Gulir Suara AI",
+    "subTitle": "Gulir dengan kecepatan suara Anda",
+    "problemSolution": {
+      "problemTitle": "Masalah: Teleprompter tradisional bergulir dengan kecepatan tetap",
+      "problemDesc": "Jika Anda berbicara lebih cepat, Anda kehilangan tempat. Jika Anda menjeda, skrip terus bergerak. Hal ini membuat presentasi terasa kaku dan menegangkan.",
+      "solutionTitle": "Solusi: Pengguliran yang Diaktifkan Suara AI",
+      "solutionDesc": "SolPrompter mendengarkan dan secara otomatis memajukan skrip saat Anda membaca, langsung beradaptasi dengan kecepatan alami Anda secara real-time."
+    },
+    "description": "Pengenalan suara mengikuti penyampaian Anda dan memajukan skrip saat Anda berbicara, beradaptasi secara instan setiap kali kecepatan Anda berubah.",
     "benefits": [
       {
-        "title": "Berbicara Secara Alami",
-        "description": "Baca dengan tempo Anda sendiri tanpa terdengar terburu-buru, lambat, atau kaku."
+        "title": "Bicaralah secara alami",
+        "description": "Membaca sesuai kecepatan Anda sendiri tanpa merasa terburu-buru atau terdengar seperti robot."
       },
       {
-        "title": "Jeda Saat Anda Perlu",
-        "description": "Tarik napas, tekankan sebuah gagasan, atau berhenti sejenak antar bagian tanpa langsung kehilangan posisi."
+        "title": "Jeda saat Anda perlu",
+        "description": "Tarik napas, tekankan sebuah ide, atau jeda antar bagian tanpa kehilangan tempat."
       },
       {
-        "title": "Tetap Fokus",
-        "description": "Jaga bagian naskah yang tepat tetap terlihat sambil berkonsentrasi pada penyampaian Anda."
+        "title": "Tetap fokus",
+        "description": "Garis aktif dijaga tepat di tengah ketinggian mata Anda."
       },
       {
-        "title": "Kurangi Pengulangan",
-        "description": "Hindari kesalahan akibat naskah yang bergerak terlalu cepat atau terlalu lambat saat merekam."
+        "title": "Minimalkan pengambilan ulang",
+        "description": "Hindari kesalahan yang disebabkan oleh skrip yang bergulir terlalu cepat atau terlalu lambat."
       }
     ],
-    "supporting": "Lebih suka autocue online tradisional? Kontrol gulir manual dan kecepatan tetap selalu tersedia.",
+    "qa": {
+      "q": "Apakah gulir suara AI memerlukan akun?",
+      "a": "Tidak, SolPrompter adalah teleprompter gratis tanpa perlu mendaftar. Anda dapat menempelkan skrip video atau skrip ucapan dan langsung mulai meminta."
+    },
+    "supporting": "Lebih suka pengguliran tradisional? Kontrol manual dan kecepatan tetap selalu tersedia.",
     "cta": {
-      "label": "Coba Gulir Suara AI",
-      "url": "/workspaces"
+      "label": "Coba gulir suara",
+      "url": "/teleprompter.html"
     }
   },
   "notch": {
-    "eyebrow": "Kontak Mata Alami",
-    "title": "Jaga Naskah Anda Dekat dengan Kamera",
-    "description": "Mode notch SolPrompter menempatkan area baca yang ringkas dekat kamera Anda, membantu mata tetap fokus lebih dekat ke lensa.",
+    "eyebrow": "Pengaturan Rig Profesional",
+    "title": "Mode Takik untuk Kontak Mata Alami",
+    "description": "Optimalkan sudut kamera Anda dengan menempatkan garis tepat di bawah lensa Anda dan menyinkronkan ponsel untuk penyesuaian jarak jauh guna menjaga kontak mata kamera secara alami.",
     "items": [
-      "Kurangi gerakan mata ke kiri dan kanan yang mencolok.",
-      "Tempatkan naskah dekat webcam atau kamera ponsel Anda.",
-      "Ubah ukuran area baca untuk menampilkan hanya baris yang Anda butuhkan.",
-      "Pindahkan teleprompter ke mana saja di layar Anda.",
-      "Pertahankan kontak mata yang lebih alami selama perekaman dan panggilan video."
+      "Batasi lebar garis hingga 50-70 karakter untuk mencegah pemindaian sisi ke sisi.",
+      "Jangkar teks tepat di bawah lensa kamera.",
+      "Sesuaikan ketinggian area pandang untuk hanya menampilkan garis yang Anda perlukan.",
+      "Pertahankan hubungan mata yang langsung dan alami dengan audiens Anda."
     ],
-    "supporting": "Mode notch ideal untuk wawancara, presentasi, demo produk, pelajaran online, panggilan video, dan konten talking-head.",
+    "supporting": "Sempurna untuk video yang menarik, panggilan video, wawancara jarak jauh, dan pelajaran online.",
     "cta": {
-      "label": "Buka Mode Notch",
-      "url": "/workspaces"
+      "label": "Buka teleprompter",
+      "url": "/teleprompter.html"
     }
   },
   "remote": {
-    "eyebrow": "Kontrol dari Mana Saja",
-    "title": "Gunakan Perangkat Apa Pun sebagai Remote Teleprompter",
-    "description": "Sambungkan ponsel, tablet, atau komputer lain dan kendalikan teleprompter tanpa menyentuh perangkat perekaman utama.",
+    "eyebrow": "Kendali Jarak Jauh",
+    "title": "Pindai QR untuk mengontrol dari perangkat apa pun",
+    "description": "Hubungkan ponsel atau tablet melalui kode QR menggunakan WebSockets yang aman. Kontrol presentasi Anda tanpa menginstal aplikasi eksternal.",
     "items": [
       {
-        "title": "Mulai dan Jeda",
-        "description": "Kendalikan teleprompter secara diam-diam saat presentasi."
+        "title": "Putar & jeda skrip",
+        "description": "Mulai atau bekukan teleprompter secara diam-diam saat melakukan presentasi."
       },
       {
-        "title": "Sesuaikan Kecepatan Gulir",
-        "description": "Tingkatkan atau turunkan kecepatan dari perangkat remote yang tersambung."
+        "title": "Sesuaikan kecepatan",
+        "description": "Sempurnakan kecepatan gulir langsung dari layar ponsel Anda."
       },
       {
-        "title": "Navigasi Naskah Anda",
-        "description": "Maju, mundur, atau lompat ke bagian lain dari naskah Anda."
+        "title": "Navigasi skrip",
+        "description": "Lompat maju, mundur, atau lompat ke bagian lain secara instan."
       },
       {
-        "title": "Kelola Perekaman",
-        "description": "Mulai atau hentikan perekaman dari jarak jauh saat didukung perangkat dan peramban Anda."
+        "title": "Rekaman pemicu",
+        "description": "Mulai dan hentikan perekaman kamera dari seberang ruangan."
       }
     ],
-    "supporting": "Sempurna untuk kreator solo, pembicara, studio, tim produksi, dan presentasi jarak jauh.",
+    "qa": {
+      "q": "Apakah ini berfungsi di iPad dan ponsel?",
+      "a": "Ya! SolPrompter berfungsi sebagai teleprompter seluler atau bisikan iPad. Anda juga dapat memindai kode QR untuk menggunakan ponsel Anda sebagai remote control nirkabel untuk teleprompter yang berjalan di iPad, tablet, atau laptop Anda."
+    },
+    "supporting": "Alur kerja penting bagi pembuat konten solo, presenter perusahaan, dan pembicara panggung.",
     "cta": {
-      "label": "Sambungkan Remote",
-      "url": "/workspaces"
+      "label": "Hubungkan jarak jauh",
+      "url": "/teleprompter.html"
     }
   },
   "recording": {
-    "eyebrow": "Rekam Sambil Membaca",
-    "title": "Buat Video Profesional dalam Full HD atau 4K",
-    "description": "Gunakan kamera dan teleprompter dalam satu alur kerja yang efisien. Baca secara alami, pantau komposisi Anda, dan rekam tanpa berpindah antar aplikasi.",
+    "eyebrow": "Perekaman & Privasi",
+    "title": "Perekaman 4K Dalam Peramban & Privasi Skrip Lokal",
+    "description": "Rekam video tajam langsung dari browser sambil menjaga skrip Anda 100% pribadi di penyimpanan lokal.",
     "items": [
       {
         "title": "Pratinjau Kamera Langsung",
-        "description": "Periksa posisi, komposisi, dan penampilan sebelum dan selama perekaman."
+        "description": "Pratinjau dan periksa pembingkaian dan perataan Anda sebelum merekam hit."
       },
       {
-        "title": "Perekaman Full HD",
-        "description": "Buat video jernih berkualitas tinggi untuk media sosial, pelajaran, presentasi, dan konten bisnis."
+        "title": "Rekam Full HD & 4K",
+        "description": "Rekam video resolusi tinggi langsung di dalam browser di desktop (1080p di iOS)."
       },
       {
-        "title": "Perekaman 4K",
-        "description": "Rekam video resolusi tinggi profesional saat kamera, peramban, dan perangkat Anda mendukungnya."
-      },
-      {
-        "title": "Tanpa Watermark",
-        "description": "Ekspor rekaman bersih tanpa logo SolPrompter atau overlay merek."
+        "title": "Nol Tanda Air",
+        "description": "File video yang Anda ekspor tidak bermerek dan bebas dari tanda air apa pun."
       },
       {
         "title": "Perpustakaan Rekaman",
-        "description": "Jaga take Anda tetap teratur dan temukan dengan cepat rekaman yang terkait dengan setiap naskah."
+        "description": "Jaga agar semua rekaman Anda tetap teratur dan terikat pada skripnya masing-masing."
       }
     ],
+    "qa": {
+      "q": "Bisakah saya merekam video dengan SolPrompter?",
+      "a": "Ya! SolPrompter menghadirkan perekaman video browser berkualitas tinggi (hingga resolusi 4K pada desktop yang didukung dan 1080p pada perangkat iOS) tanpa tanda air. Klip rekaman Anda disimpan secara lokal di perangkat Anda untuk privasi maksimum."
+    },
     "cta": {
-      "label": "Mulai Merekam",
-      "url": "/workspaces"
+      "label": "Mulai merekam",
+      "url": "/teleprompter.html"
     }
   },
   "workspace": {
-    "eyebrow": "Ruang Konten Anda",
-    "title": "Kelola Naskah dan Rekaman Bersama",
-    "description": "Berhenti mencari di berbagai folder, dokumen, dan aplikasi terpisah. SolPrompter menyimpan naskah dan rekaman Anda dalam satu ruang kerja yang teratur.",
+    "eyebrow": "Ruang Kerja Pribadi",
+    "title": "Skrip Anda tetap bersifat pribadi",
+    "description": "Skrip dan rekaman Anda tetap ada di perangkat Anda, sehingga Anda dapat bekerja dengan konten sensitif tanpa mengirimkannya ke SolPrompter.",
     "items": [
       {
-        "title": "Buat dan Edit Naskah",
-        "description": "Tulis naskah baru atau perbarui konten yang ada langsung di dalam SolPrompter."
+        "title": "Menulis dan mengedit skrip",
+        "description": "Buat draf baru atau edit draf yang sudah ada langsung di dalam alat."
       },
       {
-        "title": "Unggah Konten yang Ada",
-        "description": "Impor naskah dari dokumen yang didukung alih-alih menyalin setiap bagian secara manual."
+        "title": "Impor file cepat",
+        "description": "Unggah file TXT, DOCX, atau Markdown secara langsung, bukan salin-tempel."
       },
       {
-        "title": "Atur Perpustakaan Anda",
-        "description": "Jaga naskah dan rekaman tetap teratur agar siap untuk presentasi mendatang."
+        "title": "Skrip tidak terbatas",
+        "description": "Simpan skrip sebanyak yang dimungkinkan oleh database lokal browser Anda."
       },
       {
-        "title": "Gunakan Kembali Naskah Anda",
-        "description": "Buka naskah sebelumnya, lakukan perubahan cepat, dan rekam versi baru tanpa memulai dari awal."
-      },
-      {
-        "title": "Akses dari Layar Mana Pun",
-        "description": "Lanjutkan bekerja dari ponsel, tablet, laptop, atau komputer desktop Anda."
+        "title": "Penggunaan kembali secara instan",
+        "description": "Buka skrip sebelumnya, perbarui detail, dan rekam rekaman baru dalam hitungan detik."
       }
-    ]
+    ],
+    "qa": {
+      "q": "Bisakah saya mengunggah file DOCX?",
+      "a": "Ya! Anda dapat dengan mudah mengimpor dokumen TXT, Markdown, dan DOCX langsung ke ruang kerja lokal Anda. Skrip diproses secara lokal di browser Anda dan tidak pernah diunggah ke server mana pun."
+    }
   },
   "mobile": {
     "eyebrow": "Dirancang untuk Setiap Layar",
     "title": "Teleprompter Online yang Ramah Seluler",
-    "description": "SolPrompter dirancang agar terasa cepat, jelas, dan mudah dikendalikan baik di perangkat desktop maupun seluler.",
+    "description": "SolPrompter mengadaptasi area membaca, navigasi, dan kontrolnya ke ponsel dan tablet, memberikan pengalaman seperti aplikasi yang terfokus dalam potret atau lanskap.",
     "items": [
       {
         "title": "Antarmuka Responsif",
@@ -311,142 +321,237 @@
         "description": "Buka SolPrompter di peramban yang didukung dan mulai gunakan teleprompter secara online."
       }
     ],
-    "supporting": "Gunakan SolPrompter sebagai teleprompter seluler, teleprompter desktop, atau autocue online berbasis peramban."
+    "supporting": "Gunakan SolPrompter sebagai teleprompter seluler, teleprompter desktop, atau autocue online berbasis browser."
   },
   "useCases": {
-    "eyebrow": "Dibuat untuk Setiap Presenter",
-    "title": "Untuk Siapa SolPrompter?",
+    "eyebrow": "Kasus Penggunaan",
+    "title": "Untuk siapa SolPrompter?",
     "items": [
       {
         "title": "Kreator Konten",
-        "description": "Rekam video TikTok, YouTube, Shorts, Reels, dan konten sosial lainnya tanpa menghafal setiap baris."
+        "description": "Rekam TikTok, Shorts, dan Reels tanpa harus menghafal dialog Anda."
       },
       {
         "title": "YouTuber",
-        "description": "Sampaikan ulasan, tutorial, penjelasan, dan video talking-head dengan presentasi yang lebih mulus dan percaya diri."
+        "description": "Menyampaikan tutorial, penjelasan, dan ulasan dengan gaya berbicara yang alami dan lancar."
       },
       {
         "title": "Podcaster",
-        "description": "Ikuti pembukaan, pesan sponsor, pertanyaan terstruktur, dan catatan episode saat merekam."
+        "description": "Baca intro, pembacaan sponsor, dan poin pembicaraan utama saat merekam audio."
       },
       {
-        "title": "Guru dan Pendidik",
-        "description": "Sampaikan pelajaran online, video kursus, dan konten edukatif dengan jelas dan konsisten."
+        "title": "Guru & Pendidik",
+        "description": "Menyajikan perkuliahan yang terstruktur, jelas, dan profesional untuk kursus online."
       },
       {
         "title": "Profesional Bisnis",
-        "description": "Siapkan demo produk, pembaruan perusahaan, webinar, presentasi penjualan, dan video pelatihan."
+        "description": "Menyampaikan presentasi perusahaan, demo penjualan, dan materi pelatihan."
       },
       {
         "title": "Pembicara Publik",
-        "description": "Latih pidato, gladi presentasi, dan sampaikan pesan yang telah disiapkan dengan percaya diri."
+        "description": "Latih pidato, sesuaikan tempo, dan bangun kepercayaan diri di depan kamera."
       },
       {
-        "title": "Jurnalis dan Pewawancara",
-        "description": "Ikuti naskah, pertanyaan, dan poin penting sambil tetap fokus pada kamera."
+        "title": "Jurnalis & Pembaca Berita",
+        "description": "Baca skrip dengan lancar sambil menjaga koneksi berkelanjutan dengan lensa."
       },
       {
         "title": "Tim Jarak Jauh",
-        "description": "Gunakan mode notch selama panggilan video, presentasi online, dan wawancara jarak jauh."
+        "description": "Gunakan mode takik untuk menyajikan slide, melaporkan status, dan memimpin panggilan video."
       }
     ]
   },
   "comparison": {
-    "eyebrow": "Mengapa SolPrompter?",
-    "title": "Teleprompter Gratis yang Lebih Lengkap",
-    "description": "SolPrompter dibangun untuk memberikan pengalaman teleprompter yang lengkap tanpa memaksa pengguna menggabungkan beberapa aplikasi atau membayar fitur dasar.",
-    "items": [
-      "Gulir yang diaktifkan suara AI",
-      "Mode teleprompter notch",
-      "Kontrol jarak jauh dari perangkat lain",
-      "Perekaman video Full HD dan 4K",
-      "Manajemen naskah dan rekaman",
-      "Dukungan desktop dan seluler",
-      "Tanpa iklan",
-      "Tanpa watermark video",
-      "Pengalaman pengguna yang sederhana dan modern",
-      "Akses gratis ke fitur teleprompter penting"
-    ],
-    "supporting": "Dari menulis naskah hingga merekam take akhir, SolPrompter memberi Anda alat yang dibutuhkan dalam satu tempat."
+    "eyebrow": "Perbandingan",
+    "title": "Teleprompter Browser Lengkap",
+    "description": "Bandingkan fitur inti SolPrompter dengan alternatif pasar yang ada.",
+    "table": {
+      "headers": [
+        "Fitur",
+        "SolPrompter",
+        "PromptSmart",
+        "TeleprompterCermin"
+      ],
+      "rows": [
+        {
+          "feature": "Pengguliran Suara AI",
+          "sol": "Bebas",
+          "smart": "Berlangganan diperlukan",
+          "mirror": "Tidak didukung"
+        },
+        {
+          "feature": "Berbasis Peramban",
+          "sol": "Ya",
+          "smart": "Tidak (Unduhan aplikasi)",
+          "mirror": "Ya"
+        },
+        {
+          "feature": "Privasi Skrip",
+          "sol": "100% Lokal di Perangkat",
+          "smart": "Lokal di Perangkat",
+          "mirror": "Lokal di Perangkat"
+        },
+        {
+          "feature": "Kendali Jarak Jauh QR",
+          "sol": "Ya (Tidak ada instalasi)",
+          "smart": "Ya (Unduhan aplikasi)",
+          "mirror": "Tidak didukung"
+        },
+        {
+          "feature": "Iklan Spanduk",
+          "sol": "Bebas iklan",
+          "smart": "Bebas iklan",
+          "mirror": "Ya (Iklan spanduk)"
+        },
+        {
+          "feature": "Perekaman Video 4K",
+          "sol": "Didukung (Desktop)",
+          "smart": "Tidak didukung",
+          "mirror": "Tidak didukung"
+        },
+        {
+          "feature": "Harga",
+          "sol": "Sepenuhnya gratis",
+          "smart": "Langganan berbayar",
+          "mirror": "Gratis (didukung iklan)"
+        }
+      ]
+    },
+    "whyChoose": {
+      "title": "Mengapa Kreator Memilih SolPrompter",
+      "items": [
+        {
+          "title": "Pengguliran gratis yang diaktifkan dengan suara",
+          "description": "Tidak seperti alat berlangganan yang mengunci sinkronisasi suara di balik paywall, SolPrompter menyertakannya secara gratis, didukung langsung oleh pengenalan ucapan browser."
+        },
+        {
+          "title": "Data Anda tetap ada di mesin Anda",
+          "description": "Skrip Anda diproses secara lokal di browser Anda. Kami tidak pernah mengirimkan konten Anda, menjamin privasi total untuk draf."
+        },
+        {
+          "title": "Tidak diperlukan pendaftaran atau pengaturan",
+          "description": "Tidak ada akun, tidak ada pertanyaan orientasi. Cukup kunjungi situsnya, tempel skrip Anda, dan langsung mulai presentasi."
+        }
+      ]
+    },
+    "supporting": "Dari menulis skrip pertama Anda hingga merekam video akhir, SolPrompter menyediakan semua alat dalam satu jendela browser."
   },
   "about": {
-    "eyebrow": "Tentang SolPrompter",
-    "title": "Dibuat agar Presentasi Terasa Alami",
+    "eyebrow": "Tentang",
+    "title": "Menjadikan membaca online terasa seperti percakapan alami",
     "paragraphs": [
-      "SolPrompter adalah teleprompter AI yang dibuat untuk orang-orang yang ingin berbicara dengan percaya diri tanpa menghafal setiap kata atau terus-menerus mengatur kontrol gulir.",
-      "Tujuan kami adalah menciptakan pengalaman teleprompter online yang paling lengkap dan mudah diakses, menggabungkan gulir AI yang andal, desain yang matang, alat kontak mata alami, dan fitur perekaman profesional.",
-      "Baik Anda merekam dari ponsel, presentasi dari laptop, atau mengendalikan pengaturan studio dari jarak jauh, SolPrompter membantu Anda tetap fokus pada audiens alih-alih pada perangkat lunaknya."
+      "SolPrompter dibuat untuk membantu pembicara menyajikan dengan percaya diri tanpa menghafal teks panjang atau gelisah dengan kecepatan gulir.",
+      "Kami fokus pada pembuatan teleprompter online minimal dan canggih yang memadukan pelacakan suara yang akurat, desain ergonomis, dan perekaman video sederhana.",
+      "Baik Anda memotret dengan ponsel, merekam dari laptop, atau mengelola studio, SolPrompter membuat Anda tetap fokus pada audiens Anda."
     ]
   },
   "finalCta": {
-    "eyebrow": "Siap Presentasi?",
-    "title": "Mulai Gunakan SolPrompter",
-    "description": "Tambahkan naskah Anda, pilih mode baca favorit Anda, dan mulai presentasi secara alami.",
+    "eyebrow": "Mulailah Berbicara",
+    "title": "Hadir secara alami dengan SolPrompter",
+    "description": "Masukkan skrip Anda, konfigurasikan pengaturan tampilan Anda, dan rekam video Anda hari ini.",
     "cta": {
-      "label": "Buka Teleprompter Gratis",
-      "url": "/workspaces"
+      "label": "Buka teleprompter",
+      "url": "/teleprompter.html"
     },
-    "supporting": "Tanpa iklan. Tanpa watermark. Tanpa pengaturan rumit."
+    "supporting": "Gratis, bebas iklan, bebas tanda air."
   },
   "faq": {
-    "eyebrow": "Tanya & Jawab",
+    "eyebrow": "Pertanyaan Umum",
     "title": "Pertanyaan yang Sering Diajukan",
     "items": [
       {
-        "anchor": "faq-is-solprompter-free",
-        "q": "Apakah SolPrompter gratis digunakan?",
-        "a": "SolPrompter saat ini gratis digunakan. Anda dapat mengakses fitur teleprompter, naskah, dan perekaman penting tanpa iklan atau watermark video bermerek."
+        "anchor": "faq-menjaga-kontak mata",
+        "q": "Bagaimana caranya agar saya tidak terlihat seperti sedang membaca dan menjaga kontak mata?",
+        "a": "<strong>Aktifkan Mode Notch SolPrompter untuk memposisikan skrip Anda tepat di bawah lensa.</strong> Ini mempersempit lebar teks menjadi 50-70 karakter dan menempatkannya di tengah atas. Dengan mengurangi gerakan mata hingga di bawah 3 derajat, hal ini memberikan kesan bahwa Anda sedang berbicara langsung kepada pemirsa."
       },
       {
-        "anchor": "faq-what-is-ai-voice-scroll",
-        "q": "Apa itu Gulir Suara AI?",
-        "a": "Gulir Suara AI mendengarkan ucapan Anda dan bergerak melalui naskah berdasarkan tempo bicara alami Anda. Ini membantu Anda berhenti sejenak, melanjutkan, dan presentasi tanpa terus-menerus menyesuaikan kecepatan gulir tetap."
+        "anchor": "faq-vs-app-store",
+        "q": "Mengapa memilih SolPrompter dibandingkan aplikasi App Store?",
+        "a": "<strong>SolPrompter berfungsi langsung di web, tidak memerlukan pengunduhan, dan tidak memberi tanda air pada ekspor video Anda.</strong> Sebagian besar aplikasi seluler membatasi panjang skrip atau membebankan biaya bulanan untuk beralih ke fitur sederhana. SolPrompter menyediakan fungsionalitas penuh di luar kotak."
       },
       {
-        "anchor": "faq-what-is-notch-mode",
-        "q": "Apa itu Mode Notch SolPrompter?",
-        "a": "Mode Notch menempatkan area baca teleprompter yang ringkas dekat kamera Anda. Ini membantu mengurangi gerakan mata yang terlihat dan membuat kontak mata Anda tampak lebih alami selama perekaman, presentasi, dan panggilan video."
+        "anchor": "faq-stabilitas-remote-kontrol",
+        "q": "Apakah remote akan terputus saat ponsel saya terkunci atau dalam mode tidur?",
+        "a": "<strong>Tidak, remote SolPrompter menggunakan WebSockets persisten dengan protokol detak jantung untuk memastikan stabilitas.</strong> Selama tab teleprompter tetap aktif, tautan tetap hidup dengan latensi di bawah 10 md, mencegah putusnya koneksi yang umum terjadi pada pengeklik perangkat keras."
       },
       {
-        "anchor": "faq-mobile-devices",
-        "q": "Bisakah saya menggunakan SolPrompter di ponsel atau tablet?",
-        "a": "Ya. SolPrompter memiliki antarmuka responsif yang dirancang untuk ponsel pintar, tablet, laptop, dan komputer desktop. Fitur yang tersedia dapat bergantung pada peramban, kamera, dan kemampuan perangkat."
+        "anchor": "faq-fisik-beamsplitter",
+        "q": "Bisakah saya menggunakan SolPrompter dengan rig beamsplitter kaca fisik?",
+        "a": "<strong>Ya, aktifkan \"Mode Cermin\" di pengaturan SolPrompter untuk membalik teks secara horizontal.</strong> Untuk memaksimalkan kontras pembacaan, alihkan antarmuka ke mode gelap (teks putih dengan latar belakang hitam murni) untuk menghilangkan pantulan ganda."
       },
       {
-        "anchor": "faq-installation",
-        "q": "Apakah saya perlu menginstal SolPrompter?",
-        "a": "Tidak ada instalasi yang diperlukan untuk versi web. Anda dapat membuka SolPrompter di peramban modern yang didukung, menambahkan naskah, dan mulai presentasi secara online."
+        "anchor": "faq-skrip-privasi",
+        "q": "Apakah skrip dan draf perusahaan saya aman?",
+        "a": "<strong>Ya. Skrip dan rekaman Anda tetap ada di perangkat saat Anda bekerja.</strong> SolPrompter tidak mengunggah konten ini ke servernya, sehingga membantu menjaga draf rahasia di bawah kendali Anda."
       },
       {
-        "anchor": "faq-remote-control",
-        "q": "Bisakah saya mengontrol SolPrompter dari perangkat lain?",
-        "a": "Ya. Kontrol jarak jauh SolPrompter memungkinkan Anda menggunakan ponsel, tablet, atau komputer lain untuk memulai atau menjeda teleprompter, menyesuaikan gulir, dan menavigasi naskah Anda."
+        "anchor": "faq-ghosting-blur",
+        "q": "Mengapa teks yang terpantul di kaca saya terlihat buram?",
+        "a": "<strong>Pantulan ganda (ghosting) terjadi pada kaca biasa. Gunakan kaca beamsplitter profesional dan turunkan kecerahan layar.</strong> Kaca profesional 70/30 memiliki lapisan antipantul di satu sisi. Menggantungkan bagian belakang kaca dengan kain berwarna gelap juga diperlukan untuk mencegah kebocoran cahaya."
       },
       {
-        "anchor": "faq-4k-recording",
-        "q": "Bisakah SolPrompter merekam video dalam 4K?",
-        "a": "SolPrompter mendukung perekaman Full HD dan 4K saat kamera, peramban, dan perangkat mendukung resolusi yang dipilih. Kualitas perekaman sebenarnya bergantung pada kemampuan dan izin perangkat Anda."
+        "anchor": "faq-penggunaan offline",
+        "q": "Bisakah saya menjalankan teleprompter secara offline?",
+        "a": "<strong>Ruang kerja teleprompter beroperasi offline setelah dimuat, namun sinkronisasi suara memerlukan internet.</strong> Pengenalan ucapan menggunakan API browser asli, yang memproses audio melalui server cloud Google atau Apple. Untuk pengaturan offline, alihkan ke kecepatan tetap atau pengguliran manual."
       },
       {
-        "anchor": "faq-watermark",
-        "q": "Apakah SolPrompter menambahkan watermark pada rekaman?",
-        "a": "SolPrompter tidak menambahkan watermark bermerek pada video yang Anda rekam."
-      },
-      {
-        "anchor": "faq-supported-files",
-        "q": "Format file naskah apa saja yang didukung SolPrompter?",
-        "a": "SolPrompter mendukung penempelan teks secara langsung dan pengunggahan dokumen naskah yang didukung seperti file TXT, DOCX, PDF, dan Markdown."
-      },
-      {
-        "anchor": "faq-online-autocue",
-        "q": "Bisakah SolPrompter digunakan sebagai autocue online?",
-        "a": "Ya. SolPrompter dapat digunakan sebagai autocue online berbasis peramban dengan gulir manual, gulir otomatis kecepatan tetap, dan gulir yang diaktifkan suara AI."
+        "anchor": "faq-font-ukuran-jarak",
+        "q": "Bagaimana cara menentukan ukuran font yang tepat untuk jarak membaca saya?",
+        "a": "<strong>Patokan umumnya adalah mengukur tinggi font Anda hingga 1 inci untuk setiap 10 kaki jarak membaca.</strong> Untuk pembacaan laptop jarak dekat, tata letak teks yang lebih kecil dan sempit lebih disukai untuk mencegah mata terlihat memindai ke kiri dan kanan."
       }
     ]
   },
+  "engineering": {
+    "eyebrow": "Dibangun untuk Dunia Nyata",
+    "title": "Cepat, Pribadi, dan Siap Berkinerja",
+    "description": "Lihat bagaimana SolPrompter menyimpan skrip di perangkat Anda, merespons secara real-time, dan berjalan langsung di browser tanpa pengunduhan atau penyiapan yang rumit.",
+    "principles": [
+      {
+        "title": "Mengapa Kami Membangun SolPrompter",
+        "description": "Perangkat lunak teleprompter yang ada sering kali mengunci fitur-fitur penting (seperti pengguliran suara atau rekaman bebas tanda air) di balik langganan bulanan yang mahal. Kami membangun SolPrompter untuk menyediakan teleprompter online kelas atas yang sepenuhnya gratis tanpa perlu mendaftar, sehingga alat profesional dapat diakses oleh semua pembuat konten."
+      },
+      {
+        "title": "Mengapa Ini Berjalan di Browser Anda",
+        "description": "SolPrompter bekerja langsung di browser Anda, sehingga Anda dapat menggunakan pengguliran suara dan merekam video tanpa mengunduh perangkat lunak tambahan."
+      },
+      {
+        "title": "Privasi secara Default",
+        "description": "Skrip dan rekaman Anda tetap ada di perangkat Anda alih-alih diunggah ke SolPrompter, sehingga memberi Anda kendali langsung atas konten sensitif."
+      }
+    ],
+    "benchmarksTitle": "Kinerja Terukur",
+    "benchmarks": [
+      {
+        "metric": "Latensi Gulir Suara AI",
+        "sol": "< 50ms (Waktu Nyata)",
+        "trad": "T/A (Kecepatan Tetap)"
+      },
+      {
+        "metric": "Akurasi Deteksi Ucapan",
+        "sol": "98% (Multi-bahasa)",
+        "trad": "Hanya Kontrol Manual"
+      },
+      {
+        "metric": "Penggunaan CPU (Idle/Gulir)",
+        "sol": "< 2% / 5%",
+        "trad": "Tinggi (Aplikasi Desktop)"
+      },
+      {
+        "metric": "Konsumsi Baterai",
+        "sol": "Minimal (API Web Asli)",
+        "trad": "Sedang hingga Tinggi"
+      },
+      {
+        "metric": "Browser yang Didukung",
+        "sol": "Chrome, Edge, Safari, Firefox",
+        "trad": "Aplikasi yang dibatasi OS"
+      }
+    ],
+    "benchmarksSupport": "Diuji pada Apple M2 (macOS) dan Intel Core i7 (Windows 11) menggunakan Chrome 120."
+  },
   "footer": {
     "brand": "SolPrompter",
-    "description": "Teleprompter AI online gratis untuk presentasi alami dan perekaman video profesional.",
+    "description": "Teleprompter online gratis untuk presentasi alami dan perekaman video profesional.",
     "columns": [
       {
         "title": "Produk",
@@ -464,16 +569,12 @@
             "url": "#how-it-works"
           },
           {
-            "label": "Gulir Suara AI",
+            "label": "Gulir Suara",
             "url": "#voice-scroll"
           },
           {
             "label": "Mode Notch",
             "url": "#notch"
-          },
-          {
-            "label": "Kontrol Jarak Jauh",
-            "url": "#remote"
           },
           {
             "label": "Perekaman 4K",

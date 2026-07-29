@@ -1,0 +1,4 @@
+interface:
+  display_name: "SolPrompter Development"
+  short_description: "Project workflow, architecture, and quality gates"
+  default_prompt: "Use $solprompter-development to implement this SolPrompter change with the repository workflow and verification gates."

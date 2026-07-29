@@ -168,7 +168,7 @@ body.home {
   margin: 0 0 1.5rem;
   font-size: clamp(2.5rem, 2rem + 3vw, 4rem);
   line-height: 1.08;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: -0.04em;
   color: var(--ink);
   font-family: var(--font-sans);
@@ -2439,3 +2439,935 @@ body.nav-open {
   border-bottom: 1px solid var(--line-soft) !important;
 }
 
+/* ===== APPLE-INSPIRED CONTENT SYSTEM =====
+   Header and hero intentionally remain governed by their existing rules. */
+body.home .landing-main > .section {
+  --content-width: 74rem;
+  --content-reading-width: 48rem;
+  --content-radius-lg: 2rem;
+  --content-radius-md: 1.25rem;
+  --content-shadow: 0 2rem 5rem rgb(28 25 23 / 8%);
+
+  position: relative;
+  padding: clamp(6rem, 10vw, 10rem) clamp(1.25rem, 4vw, 3rem);
+  overflow: clip;
+  background: var(--home-bg);
+  scroll-margin-top: 4.25rem;
+}
+
+body.home .landing-main > .section.section-alt {
+  background: var(--line-soft);
+}
+
+body.home .landing-main > .section .section-inner {
+  max-width: var(--content-width);
+}
+
+body.home .landing-main > .section .section-narrow {
+  max-width: var(--content-reading-width);
+}
+
+body.home .landing-main > .section .section-head {
+  max-width: 56rem;
+  margin: 0 auto clamp(3.5rem, 7vw, 6rem);
+}
+
+body.home .landing-main > .section .eyebrow {
+  margin-bottom: 1.15rem;
+  color: var(--ink-muted);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+body.home .landing-main > .section .section-title {
+  max-width: 18ch;
+  margin: 0 auto 1.5rem;
+  color: var(--ink);
+  font-size: clamp(2.65rem, 6vw, 5.5rem);
+  font-weight: 650;
+  letter-spacing: -0.055em;
+  line-height: 0.98;
+  text-wrap: balance;
+}
+
+body.home .landing-main > .section .section-desc {
+  max-width: 42rem;
+  color: var(--ink-muted);
+  font-size: clamp(1.05rem, 1.5vw, 1.35rem);
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+body.home .landing-main > .section .section-support {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+  line-height: 1.55;
+}
+
+/* Feature overview: an asymmetric, product-led bento composition. */
+body.home .features-editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 0;
+}
+
+body.home .feature-editorial-item {
+  position: relative;
+  grid-column: span 6;
+  min-height: 20rem;
+  justify-content: flex-end;
+  gap: 0.9rem;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  overflow: hidden;
+  border: 0;
+  border-radius: var(--content-radius-lg);
+  background: var(--line-soft);
+  counter-increment: feature;
+  transition:
+    transform 450ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 450ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+body.home .features-editorial-grid {
+  counter-reset: feature;
+}
+
+body.home .feature-editorial-item:nth-child(1),
+body.home .feature-editorial-item:nth-child(4) {
+  grid-column: span 7;
+}
+
+body.home .feature-editorial-item:nth-child(2),
+body.home .feature-editorial-item:nth-child(3) {
+  grid-column: span 5;
+}
+
+body.home .feature-editorial-item::before {
+  content: "0" counter(feature);
+  position: absolute;
+  inset: 1.75rem 2rem auto auto;
+  color: var(--ink-faint);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+body.home .feature-editorial-item:nth-child(1),
+body.home .feature-editorial-item:nth-child(6) {
+  background: var(--brand-strong);
+}
+
+body.home .feature-editorial-item:nth-child(1)::before,
+body.home .feature-editorial-item:nth-child(6)::before {
+  color: var(--ink-faint);
+}
+
+body.home .feature-editorial-item:nth-child(1) .feature-title,
+body.home .feature-editorial-item:nth-child(6) .feature-title {
+  color: var(--surface);
+}
+
+body.home .feature-editorial-item:nth-child(1) .feature-desc,
+body.home .feature-editorial-item:nth-child(6) .feature-desc {
+  color: var(--ink-faint);
+}
+
+body.home .feature-editorial-item .feature-title {
+  max-width: 16ch;
+  font-size: clamp(1.65rem, 3vw, 2.6rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+  text-wrap: balance;
+}
+
+body.home .feature-editorial-item .feature-desc {
+  max-width: 34rem;
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+  text-wrap: pretty;
+}
+
+@media (hover: hover) {
+  body.home .feature-editorial-item:hover {
+    z-index: 1;
+    box-shadow: var(--content-shadow);
+    transform: translateY(-0.35rem);
+  }
+}
+
+/* Product spotlights keep copy quiet and give the real interface room. */
+body.home .landing-main > #voice-scroll .split-section {
+  grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+  gap: clamp(3rem, 7vw, 7rem);
+  align-items: center;
+}
+
+body.home .landing-main > #voice-scroll .split-text-col {
+  max-width: 34rem;
+}
+
+body.home .landing-main > #voice-scroll .split-text-col .section-title {
+  max-width: 12ch;
+  margin: 0 0 1rem !important;
+  font-size: clamp(2.75rem, 5vw, 4.8rem);
+}
+
+body.home .landing-main > #voice-scroll .split-text-col > .section-desc {
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+body.home .problem-solution-box,
+body.home .inline-qa {
+  padding: 1.4rem 1.5rem !important;
+  border: 0 !important;
+  border-radius: var(--content-radius-md) !important;
+  background: var(--home-bg) !important;
+  box-shadow: inset 0 0 0 1px rgb(28 25 23 / 6%);
+}
+
+body.home .problem-solution-box strong,
+body.home .inline-qa strong {
+  color: var(--ink) !important;
+}
+
+body.home .custom-benefits-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+body.home .custom-benefits-list li {
+  padding: 1.35rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+body.home .custom-benefits-list li:nth-child(odd) {
+  padding-right: 1rem;
+}
+
+body.home .custom-benefits-list li:nth-child(even) {
+  padding-left: 1rem;
+}
+
+body.home .benefit-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+}
+
+body.home .benefit-desc {
+  color: var(--ink-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+body.home .app-screenshot-wrapper {
+  max-width: none;
+  border: 0;
+  border-radius: clamp(1rem, 2vw, 1.6rem);
+  background: var(--surface);
+  box-shadow:
+    0 0 0 1px rgb(28 25 23 / 8%),
+    0 2.5rem 6rem rgb(28 25 23 / 14%);
+  transition:
+    transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    box-shadow 500ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+body.home .app-screenshot-wrapper.browser-frame {
+  padding: 0;
+}
+
+body.home .app-screenshot-wrapper .browser-chrome {
+  height: 2.25rem;
+}
+
+body.home .app-screenshot-wrapper .chrome-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+}
+
+body.home .app-screenshot-wrapper .browser-viewport {
+  border-radius: 0 0 clamp(1rem, 2vw, 1.6rem) clamp(1rem, 2vw, 1.6rem);
+}
+
+@media (hover: hover) {
+  body.home .app-screenshot-wrapper:hover {
+    box-shadow:
+      0 0 0 1px rgb(28 25 23 / 8%),
+      0 3rem 7rem rgb(28 25 23 / 18%);
+    transform: translateY(-0.4rem);
+  }
+
+  body.home .app-screenshot-wrapper:hover .app-screenshot {
+    transform: none;
+  }
+}
+
+/* Paired capabilities become large, calm product tiles. */
+body.home .spotlight-grid {
+  gap: 1rem;
+  margin-top: 0;
+}
+
+body.home .spotlight-col {
+  min-width: 0;
+  padding: clamp(2rem, 4vw, 3.5rem);
+  border-radius: var(--content-radius-lg);
+  background: var(--line-soft);
+}
+
+body.home .section-alt .spotlight-col {
+  background: var(--home-bg);
+}
+
+body.home .spotlight-subtitle {
+  max-width: 18ch;
+  margin-bottom: 1.25rem;
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+
+body.home .spotlight-col > .section-desc,
+body.home .spotlight-text-block > .section-desc {
+  color: var(--ink-muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+body.home .modern-checklist {
+  gap: 0;
+  margin-bottom: 0;
+  border-top: 1px solid var(--line);
+}
+
+body.home .modern-checklist li {
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+body.home .modern-checklist .check-bullet {
+  width: auto;
+  height: auto;
+  margin-top: 0.05rem;
+  background: transparent;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+body.home .modern-checklist .check-text {
+  color: var(--ink-muted);
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+body.home .mobile-screenshot-wrapper {
+  max-width: 15rem;
+  border: 0.45rem solid var(--brand-strong);
+  border-radius: 2rem;
+}
+
+/* A simple four-step rail with oversized, editorial numbering. */
+body.home .steps-editorial-flow {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 0;
+  border-top: 1px solid var(--line);
+}
+
+body.home .step-editorial-item {
+  min-height: 18rem;
+  padding: 2rem clamp(1rem, 2.5vw, 2rem) 1.5rem;
+  border-right: 1px solid var(--line);
+}
+
+body.home .step-editorial-item:last-child {
+  border-right: 0;
+}
+
+body.home .step-editorial-item .step-num {
+  margin-bottom: auto;
+  color: var(--ink-faint);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 500;
+  letter-spacing: -0.06em;
+}
+
+body.home .step-editorial-item .step-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+body.home .step-editorial-item .step-desc {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
+/* Use cases read like one editorial index instead of a generic card grid. */
+body.home .use-cases-editorial-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  margin-top: 0;
+  border-top: 1px solid var(--line);
+}
+
+body.home .use-case-item {
+  min-height: 11rem;
+  gap: 0.75rem;
+  padding: 2rem clamp(1rem, 3vw, 2.5rem);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+body.home .use-case-item:nth-child(even) {
+  border-right: 0;
+}
+
+body.home .use-case-item .use-case-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+body.home .use-case-item .use-case-desc {
+  max-width: 31rem;
+  color: var(--ink-muted);
+  font-size: 0.94rem;
+}
+
+body.home .use-cases-platforms {
+  margin-top: 4rem !important;
+  padding-top: 2rem !important;
+}
+
+body.home .platforms-tags span {
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  color: var(--ink-muted) !important;
+}
+
+body.home .platforms-tags span:not(:last-child)::after {
+  content: " /";
+  margin-left: 0.75rem;
+  color: var(--ink-faint);
+}
+
+/* Comparison and benchmark tables use crisp rules and tabular figures. */
+body.home .comparison-table-wrapper,
+body.home .benchmarks-table-wrapper {
+  border-radius: var(--content-radius-lg);
+  background: var(--home-bg);
+  box-shadow: inset 0 0 0 1px rgb(28 25 23 / 7%);
+}
+
+body.home .comparison-table {
+  min-width: 42rem;
+  font-variant-numeric: tabular-nums;
+}
+
+body.home .comparison-table th,
+body.home .comparison-table td {
+  padding: 1.25rem clamp(1rem, 2.5vw, 2rem);
+}
+
+body.home .comparison-table th {
+  border-bottom-color: var(--ink) !important;
+  font-size: 0.8rem;
+  letter-spacing: 0.04em;
+}
+
+body.home .comparison-table td {
+  color: var(--ink-muted);
+}
+
+body.home .comparison-table td:first-child,
+body.home .comparison-table td:nth-child(2) {
+  color: var(--ink);
+}
+
+body.home .why-choose-editorial-grid {
+  gap: 1px !important;
+  overflow: hidden;
+  border-radius: var(--content-radius-lg);
+  background: var(--line);
+}
+
+body.home .why-choose-item {
+  padding: 2rem !important;
+  background: var(--home-bg);
+}
+
+body.home .why-choose-item h4 {
+  font-size: 1.1rem !important;
+  font-weight: 600 !important;
+}
+
+body.home .why-choose-item p {
+  color: var(--ink-muted) !important;
+}
+
+/* About becomes a quiet editorial statement. */
+body.home .landing-main > #about .section-head {
+  max-width: 68rem;
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+body.home .landing-main > #about .section-title {
+  max-width: 20ch;
+  margin-left: 0;
+  font-size: clamp(3rem, 7vw, 6rem);
+}
+
+body.home .landing-main > #about .section-narrow {
+  max-width: 68rem;
+}
+
+body.home .landing-main > #about .prose-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(2rem, 7vw, 7rem);
+  max-width: none;
+  margin: 0;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+body.home .landing-main > #about .prose-paragraph {
+  color: var(--ink-muted);
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  line-height: 1.7;
+}
+
+/* Engineering details feel like a product spec sheet. */
+body.home .landing-main > #engineering .spotlight-grid {
+  align-items: stretch !important;
+  gap: 1rem !important;
+}
+
+body.home .engineering-principle {
+  margin-bottom: 0 !important;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+body.home .engineering-principle:first-child {
+  padding-top: 0;
+}
+
+body.home .engineering-principle h3 {
+  font-weight: 600 !important;
+  letter-spacing: -0.025em;
+}
+
+body.home .engineering-principle .section-desc {
+  color: var(--ink-muted) !important;
+}
+
+/* Borderless FAQ rows with a larger, more touch-friendly rhythm. */
+body.home .landing-main > #faq .section-head {
+  margin-bottom: 2.5rem;
+}
+
+body.home .faq-container {
+  max-width: 52rem;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+body.home .faq-summary {
+  min-height: 5rem;
+  padding: 1.5rem 0 !important;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+body.home .faq-summary:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 0.4rem;
+}
+
+body.home .faq-chevron-icon {
+  color: var(--ink-muted);
+}
+
+body.home .faq-answer-text {
+  max-width: 43rem;
+  color: var(--ink-muted);
+  line-height: 1.7;
+}
+
+/* The single high-contrast close is intentional and conversion-focused. */
+body.home .landing-main > .final-cta {
+  background: var(--brand-strong);
+  color: var(--surface);
+}
+
+body.home .landing-main > .final-cta .eyebrow,
+body.home .landing-main > .final-cta .section-desc,
+body.home .landing-main > .final-cta .section-support {
+  color: var(--ink-faint);
+}
+
+body.home .landing-main > .final-cta .section-title {
+  color: var(--surface);
+}
+
+body.home .landing-main > .final-cta .btn-primary {
+  min-height: 3.25rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 50rem;
+  background: var(--surface);
+  color: var(--ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+body.home .landing-main > .final-cta .btn-primary:hover {
+  background: var(--line-soft);
+}
+
+/* Scroll entry is progressive enhancement; content stays visible without JS. */
+.content-reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition:
+    opacity 700ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.content-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 1023px) {
+  body.home .landing-main > #voice-scroll .split-section {
+    grid-template-columns: 1fr;
+  }
+
+  body.home .landing-main > #voice-scroll .split-text-col {
+    max-width: none;
+  }
+
+  body.home .landing-main > #voice-scroll .split-visual-col {
+    order: -1;
+  }
+
+  body.home .steps-editorial-flow {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  body.home .step-editorial-item:nth-child(2) {
+    border-right: 0;
+  }
+
+  body.home .step-editorial-item:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--line);
+  }
+}
+
+@media (max-width: 767px) {
+  body.home .landing-main > .section {
+    --content-radius-lg: 1.5rem;
+
+    padding-block: 5.5rem;
+  }
+
+  body.home .landing-main > .section .section-head {
+    margin-bottom: 3rem;
+    text-align: left;
+  }
+
+  body.home .landing-main > .section .section-title,
+  body.home .landing-main > .section .section-desc {
+    margin-left: 0;
+    text-align: left;
+  }
+
+  body.home .landing-main > .section .section-title {
+    font-size: clamp(2.5rem, 13vw, 4rem);
+  }
+
+  body.home .feature-editorial-item,
+  body.home .feature-editorial-item:nth-child(n) {
+    grid-column: 1 / -1;
+    min-height: 16rem;
+  }
+
+  body.home .custom-benefits-list {
+    grid-template-columns: 1fr;
+  }
+
+  body.home .custom-benefits-list li:nth-child(n) {
+    padding-inline: 0;
+  }
+
+  body.home .spotlight-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.home .use-cases-editorial-grid,
+  body.home .landing-main > #about .prose-content {
+    grid-template-columns: 1fr;
+  }
+
+  body.home .use-case-item {
+    min-height: auto;
+    padding-inline: 0;
+    border-right: 0;
+  }
+
+  body.home .comparison-table-wrapper,
+  body.home .benchmarks-table-wrapper {
+    margin-inline: -0.25rem;
+    border-radius: 1rem;
+  }
+
+  body.home .why-choose-editorial-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+@media (max-width: 540px) {
+  body.home .steps-editorial-flow {
+    grid-template-columns: 1fr;
+  }
+
+  body.home .step-editorial-item {
+    min-height: 14rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  body.home .step-editorial-item:last-child {
+    border-bottom: 0;
+  }
+
+  body.home .feature-editorial-item,
+  body.home .spotlight-col {
+    padding: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .content-reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===== CONTENT BALANCE REFINEMENTS ===== */
+/* Mobile-first reading order: visual, then the longer Voice Scroll explanation. */
+body.home .landing-main > #voice-scroll .split-section {
+  grid-template-columns: 1fr;
+}
+
+body.home .landing-main > #voice-scroll .split-visual-col {
+  position: static;
+  order: -1;
+  padding-top: 0;
+}
+
+/* Notch and Remote are separate chapters, not equal-height sibling cards. */
+body.home .landing-main > #notch .spotlight-grid {
+  grid-template-columns: 1fr;
+  gap: 5.5rem;
+  max-width: 68rem;
+  margin-inline: auto;
+}
+
+body.home .landing-main > #notch .spotlight-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+body.home .landing-main > #notch .spotlight-col + .spotlight-col {
+  padding-top: 5.5rem;
+  border-top: 1px solid var(--line);
+}
+
+body.home .landing-main > #notch .spotlight-text-block {
+  min-width: 0;
+  max-width: none;
+}
+
+body.home .landing-main > #notch .spotlight-col > .split-visual-col {
+  order: -1;
+  margin-top: 0 !important;
+}
+
+body.home .landing-main > #notch .spotlight-col:first-child .app-screenshot-wrapper {
+  max-width: none;
+}
+
+body.home .landing-main > #notch #remote .spotlight-text-block {
+  max-width: 38rem;
+}
+
+body.home .landing-main > #notch #remote .remote-phone-visual {
+  width: min(70vw, 16rem);
+  max-width: 16rem !important;
+  margin: 0 auto !important;
+  filter: drop-shadow(0 2.25rem 2.5rem rgb(28 25 23 / 18%));
+}
+
+body.home .landing-main > #notch #remote .remote-phone-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+body.home .landing-main > #notch .section-support {
+  margin-left: 0;
+  text-align: left;
+}
+
+/* Engineering principles and benchmarks are independent full-width rows. */
+body.home .landing-main > #engineering .spotlight-grid {
+  grid-template-columns: 1fr !important;
+  gap: 4.5rem !important;
+  max-width: 64rem;
+  margin-inline: auto;
+}
+
+body.home .landing-main > #engineering .spotlight-col {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+body.home .landing-main > #engineering .spotlight-col + .spotlight-col {
+  padding-top: 4.5rem;
+  border-top: 1px solid var(--line);
+}
+
+body.home .landing-main > #engineering .engineering-principle:last-child {
+  border-bottom: 0;
+}
+
+/* Finish on a quiet light surface with black display text. */
+body.home .landing-main > .final-cta {
+  background: var(--line-soft);
+  color: var(--ink);
+}
+
+body.home .landing-main > .final-cta .section-title {
+  color: var(--ink);
+}
+
+body.home .landing-main > .final-cta .eyebrow,
+body.home .landing-main > .final-cta .section-desc,
+body.home .landing-main > .final-cta .section-support {
+  color: var(--ink-muted);
+}
+
+body.home .landing-main > .final-cta .btn-primary {
+  background: var(--brand-strong);
+  color: var(--surface);
+}
+
+body.home .landing-main > .final-cta .btn-primary:hover {
+  background: var(--ink-soft);
+}
+
+@media (min-width: 900px) {
+  /* Keep the product visible while the longer desktop explanation moves. */
+  body.home .landing-main > #voice-scroll .split-section {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+    align-items: start;
+  }
+
+  body.home .landing-main > #voice-scroll .split-visual-col {
+    position: sticky;
+    top: 6rem;
+    order: initial;
+    align-self: start;
+    padding-top: 3.75rem;
+  }
+
+  body.home .landing-main > #notch .spotlight-grid {
+    gap: clamp(6rem, 11vw, 10rem);
+  }
+
+  body.home .landing-main > #notch .spotlight-col {
+    display: grid;
+    grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+    gap: clamp(3rem, 7vw, 6.5rem);
+    align-items: center;
+  }
+
+  body.home .landing-main > #notch .spotlight-col + .spotlight-col {
+    grid-template-columns: minmax(15rem, 0.72fr) minmax(0, 1.28fr);
+    padding-top: clamp(5rem, 9vw, 8rem);
+  }
+
+  body.home .landing-main > #notch .spotlight-text-block {
+    max-width: 31rem;
+  }
+
+  body.home .landing-main > #notch .spotlight-col > .split-visual-col {
+    order: initial;
+  }
+
+  body.home .landing-main > #notch #remote .spotlight-text-block {
+    grid-column: 2;
+    grid-row: 1;
+    max-width: 38rem;
+  }
+
+  body.home .landing-main > #notch #remote > .split-visual-col {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  body.home .landing-main > #notch #remote .remote-phone-visual {
+    width: min(100%, 17rem);
+    max-width: 17rem !important;
+  }
+
+  body.home .landing-main > #engineering .spotlight-grid {
+    gap: clamp(5rem, 8vw, 7rem) !important;
+  }
+
+  body.home .landing-main > #engineering .spotlight-col:first-child {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  body.home .landing-main > #engineering .engineering-principle {
+    padding: 0 clamp(1.5rem, 3vw, 2.5rem);
+    border-right: 1px solid var(--line);
+    border-bottom: 0;
+  }
+
+  body.home .landing-main > #engineering .engineering-principle:first-child {
+    padding-left: 0;
+  }
+
+  body.home .landing-main > #engineering .engineering-principle:last-child {
+    padding-right: 0;
+    border-right: 0;
+  }
+}

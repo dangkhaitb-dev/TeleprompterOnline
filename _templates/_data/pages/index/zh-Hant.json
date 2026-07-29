@@ -1,17 +1,17 @@
 {
   "seo": {
     "title": "支援 AI 語音捲動的免費線上提詞機 | SolPrompter",
-    "description": "SolPrompter 是一款免費線上提詞機，支援 AI 語音捲動、瀏海模式、遠端遙控與 4K 錄影。無廣告、無浮水印。",
+    "description": "免費線上提詞器，具有人工智慧語音啟動滾動、缺口模式和二維碼遙控器功能。無廣告，無需註冊，100% 私密。",
     "canonical": "/zh-Hant/",
-    "ogTitle": "免費線上 AI 提詞機 — SolPrompter",
-    "ogDescription": "透過 AI 語音捲動、瀏海模式、遠端遙控與專業影片錄製，自然地進行演說。",
+    "ogTitle": "免費線上提詞器 — SolPrompter",
+    "ogDescription": "使用我們基於瀏覽器的提詞器自然地呈現。隨著您的聲音自動滾動，最大限度地減少眼球運動，並支援二維碼遠端控制。",
     "ogType": "website",
     "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "SolPrompter 提供免費線上 AI 提詞機，助您自然演說並專業錄製影片。",
-    "brandDescription": "SolPrompter 是一款專為自然演說與專業影片錄製而設計的線上 AI 提詞機。",
-    "websiteDescription": "一款免費線上提詞機，支援 AI 語音捲動、瀏海模式、遠端遙控與專業影片錄製。",
+    "orgDescription": "SolPrompter 提供免費的線上提詞器，用於自然演示和專業視訊錄製。",
+    "brandDescription": "SolPrompter 是一款免費的線上提詞器，專為自然演示和專業視訊錄製而設計。",
+    "websiteDescription": "免費的線上提詞器，具有人工智慧語音滾動、缺口模式、無線遙控和專業4K錄影功能。",
     "webpageName": "支援 AI 語音捲動的免費線上提詞機 | SolPrompter",
     "alternateNames": [
       "SolPrompter",
@@ -20,9 +20,9 @@
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
     "primaryImage": "/og-solprompter.jpg",
-    "primaryImageCaption": "SolPrompter 免費線上 AI 提詞機",
-    "appAlternateName": "SolPrompter 線上提詞機",
-    "appDescription": "一款免費線上 AI 提詞機，支援語音啟動捲動、瀏海模式、遠端遙控、腳本管理，以及專業的 Full HD 與 4K 影片錄製。",
+    "primaryImageCaption": "SolPrompter 免費線上提詞器",
+    "appAlternateName": "SolPrompter 免費線上提詞器",
+    "appDescription": "免費的線上提詞器，具有聲控滾動、眼神接觸的缺口模式、無線遙控、腳本管理以及專業的全高清和 4K 視訊錄製。",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "線上提詞機",
     "operatingSystem": "任何配備現代網頁瀏覽器的作業系統",
@@ -52,7 +52,7 @@
     "offerDescription": "免費使用 SolPrompter 線上提詞機的各項功能。",
     "howToName": "如何使用 SolPrompter",
     "howToDescription": "了解如何新增腳本、選擇捲動模式、自訂提詞機，並使用 SolPrompter 開始演說或錄影。",
-    "faqName": "SolPrompter 常見問題",
+    "faqName": "SolPrompter 線上提詞器常見問題解答",
     "faqDescription": "關於 SolPrompter、AI 語音捲動、瀏海模式、遠端遙控、支援裝置與影片錄製的常見問題。"
   },
   "nav": {
@@ -62,16 +62,16 @@
         "url": "#features"
       },
       {
-        "label": "瀏海模式",
-        "url": "#notch"
-      },
-      {
-        "label": "語音捲動",
+        "label": "自動捲動",
         "url": "#voice-scroll"
       },
       {
-        "label": "遠端遙控",
-        "url": "#remote"
+        "label": "裝備與控制",
+        "url": "#notch"
+      },
+      {
+        "label": "錄音與隱私",
+        "url": "#recording"
       }
     ],
     "cta": {
@@ -80,13 +80,13 @@
     }
   },
   "hero": {
-    "eyebrow": "SolPrompter — AI 提詞機",
+    "eyebrow": "SolPrompter — 免費線上提詞器",
     "title": "免費線上提詞機",
-    "subtitle": "透過 AI 語音捲動、瀏海模式、遠端遙控與專業 4K 錄影，自然地進行演說。",
+    "subtitle": "隨著您的聲音自動滾動，將文字錨定在相機鏡頭附近以防止視線偏差，並支援透過二維碼進行遠端控制。免費、無廣告且 100% 私密。",
     "placeholder": "貼上您的腳本或上傳檔案即可開始……",
-    "uploadLabel": "上傳檔案",
+    "uploadLabel": "上傳文件",
     "uploadLabelShort": "上傳",
-    "startLabel": "開始演說",
+    "startLabel": "開始演示",
     "startLabelShort": "開始",
     "supportedText": "支援 TXT、DOCX 與 Markdown",
     "dropTitle": "將檔案拖放到此處以上傳",
@@ -97,202 +97,212 @@
     "errorRead": "不支援的格式。請選擇 .txt 或 .md 檔案。"
   },
   "features": {
-    "eyebrow": "更出色演說所需的一切",
-    "title": "一款提詞機，勝任每一次錄影",
-    "description": "SolPrompter 將線上提詞機、AI 語音捲動、瀏海模式、遠端遙控、腳本管理與專業影片錄製，整合到一個簡潔的工作區中。",
+    "eyebrow": "主要特點",
+    "title": "專為自然分娩而設計",
+    "description": "完整的基於瀏覽器的工作流程，無需安裝軟體即可進行寫入、讀取和記錄。",
     "items": [
       {
-        "title": "AI 語音捲動",
-        "description": "SolPrompter 跟隨您的語音，以自然的語速自動捲動您的腳本。"
+        "title": "AI語音滾動",
+        "description": "使用本機瀏覽器語音辨識功能在您說話時自動捲動。"
       },
       {
-        "title": "瀏海提詞機",
-        "description": "讓腳本貼近相機，減少明顯的視線移動，維持更自然的眼神交流。"
+        "title": "缺口讀取模式",
+        "description": "將狹窄的讀數塊直接固定在相機鏡頭下方，以最大限度地減少眼球運動。"
       },
       {
-        "title": "遠端遙控",
-        "description": "使用另一支手機、平板或電腦控制捲動、翻閱腳本並遠端管理您的演說。"
+        "title": "QR 圖碼遙控器",
+        "description": "使用手機掃描二維碼即可在房間另一側暫停、播放或調整速度。"
       },
       {
-        "title": "Full HD 與 4K 錄製",
-        "description": "直接從提詞機閱讀腳本的同時錄製專業影片。"
+        "title": "瀏覽器內 4K 錄製",
+        "description": "閱讀時錄製高解析度視頻，直接儲存到您的電腦。"
       },
       {
-        "title": "錄影資料庫",
-        "description": "將錄影內容與用於製作它們的腳本一同儲存、檢視與管理。"
+        "title": "針對平板電腦進行了最佳化",
+        "description": "響應式佈局可將閱讀區域、導航和控制調整為縱向或橫向螢幕，以獲得專注的、類似應用程式的體驗。"
       },
       {
-        "title": "為行動裝置而生",
-        "description": "自適應介面專為各種螢幕設計，讓您在手機、平板、筆電與桌機上都能舒適使用 SolPrompter。"
-      },
-      {
-        "title": "無廣告、無浮水印",
-        "description": "演說與錄影時，不會有分散注意力的廣告或品牌浮水印出現在您的影片上。"
+        "title": "無浮水印",
+        "description": "零限制匯出乾淨、無品牌的錄影內容。"
       }
     ]
   },
   "howItWorks": {
-    "eyebrow": "從第一次拍攝就輕鬆上手",
-    "title": "SolPrompter 的運作方式",
-    "description": "只需幾個步驟，即可將任何腳本變成流暢的演說或專業的錄影作品。",
+    "eyebrow": "工作流程",
+    "title": "簡單即時",
+    "description": "只需幾個步驟即可準備好腳本並開始演示或錄製。",
     "steps": [
       {
         "anchor": "step-add-script",
-        "title": "新增您的腳本",
-        "description": "將文字直接貼到 SolPrompter，或從您的裝置上傳現有腳本。"
+        "title": "輸入腳本",
+        "description": "直接貼上文字或從您的裝置上傳文件。"
       },
       {
         "anchor": "step-choose-scroll-mode",
         "title": "選擇捲動模式",
-        "description": "設定固定捲動速度、手動控制腳本，或啟用 AI 語音捲動。"
+        "description": "設定固定的自動速度、使用語音同步或手動滾動。"
       },
       {
         "anchor": "step-customize-view",
-        "title": "自訂檢視畫面",
-        "description": "調整字型、字級、行距、閱讀區域與提詞機位置，讓閱讀更舒適。"
+        "title": "自訂視圖",
+        "description": "調整字體大小、行高和邊距以提高閱讀舒適度。"
       },
       {
         "anchor": "step-start-presenting",
-        "title": "開始演說",
-        "description": "開啟提詞機，如有需要連接遙控裝置，即可開始演說或錄影。"
+        "title": "開始演示",
+        "description": "打開提詞器，根據需要連接遙控器，然後開始講話。"
       }
     ]
   },
   "voiceScroll": {
-    "eyebrow": "以您的語速捲動",
-    "title": "緊隨您節奏的 AI 語音捲動",
-    "description": "無需再為配合固定捲動速度而調整語速。SolPrompter 跟隨您的語音，讓您專注於自然地傳達訊息。",
+    "eyebrow": "語音同步",
+    "title": "AI語音捲軸提詞器",
+    "subTitle": "以你聲音的速度滾動",
+    "problemSolution": {
+      "problemTitle": "問題：傳統提詞器以固定速度滾動",
+      "problemDesc": "如果你說得更快，你就會失去位置。如果你暫停，腳本就會繼續移動。這使得演示感覺僵化且有壓力。",
+      "solutionTitle": "解決方案：AI語音滾動",
+      "solutionDesc": "SolPrompter 會在您閱讀時聆聽並自動推進腳本，即時適應您的自然速度。"
+    },
+    "description": "語音辨識會跟隨您的說話並在您說話時推進腳本，只要您的節奏發生變化，就會立即適應。",
     "benefits": [
       {
-        "title": "自然地開口",
-        "description": "以自己的節奏閱讀，不顯倉促、不拖沓，也不生硬機械。"
+        "title": "說話自然",
+        "description": "按照自己的步調閱讀，不會感到匆忙或聽起來很機械。"
       },
       {
-        "title": "需要時隨時停頓",
-        "description": "換氣、強調觀點或在段落之間稍作停頓，都不會立刻找不到閱讀位置。"
+        "title": "需要時暫停",
+        "description": "深吸一口氣，強調一個想法，或在各個部分之間暫停，而不會失去你的位置。"
       },
       {
         "title": "保持專注",
-        "description": "在專注表達的同時，讓腳本的正確部分始終可見。"
+        "description": "活動線精確地保持在您的視線水平中心。"
       },
       {
-        "title": "減少重拍",
-        "description": "避免因錄影時腳本捲動過快或過慢而造成的失誤。"
+        "title": "盡量減少重考",
+        "description": "避免因腳本滾動太快或太慢而導致的錯誤。"
       }
     ],
-    "supporting": "偏好傳統的線上提詞方式？手動與固定速度的捲動控制始終可用。",
+    "qa": {
+      "q": "AI語音滾動需要帳號嗎？",
+      "a": "不需要，SolPrompter 是一款免費提詞器，無需註冊。您可以貼上視訊腳本或語音腳本並立即開始提示。"
+    },
+    "supporting": "更喜歡傳統的滾動？手排和定速控制始終可用。",
     "cta": {
-      "label": "試用 AI 語音捲動",
-      "url": "/workspaces"
+      "label": "嘗試語音滾動",
+      "url": "/teleprompter.html"
     }
   },
   "notch": {
-    "eyebrow": "自然的眼神交流",
-    "title": "讓腳本緊貼相機",
-    "description": "SolPrompter 的瀏海模式將精巧的閱讀區域放置在相機附近，幫助您的目光更貼近鏡頭。",
+    "eyebrow": "專業裝備設定",
+    "title": "自然眼神接觸的凹口模式",
+    "description": "透過將線條直接放置在鏡頭下方並同步手機進行遠端調整，以保持自然的相機眼神接觸，從而優化相機角度。",
     "items": [
-      "減少明顯的左右視線移動。",
-      "將腳本放置在網路攝影機或手機相機附近。",
-      "調整閱讀區域大小，只顯示所需的行數。",
-      "將提詞機移動到螢幕上的任意位置。",
-      "在錄影與視訊通話中維持更自然的眼神交流。"
+      "將行寬限制為 50-70 個字符，以防止橫向掃描。",
+      "將文字直接固定在相機鏡頭下方。",
+      "自訂視窗高度以僅顯示您需要的線條。",
+      "與觀眾保持直接、自然的眼神接觸。"
     ],
-    "supporting": "瀏海模式非常適合訪談、演說、產品展示、線上課程、視訊通話以及口播類內容。",
+    "supporting": "非常適合主講視訊、視訊通話、遠端訪談和線上課程。",
     "cta": {
-      "label": "開啟瀏海模式",
-      "url": "/workspaces"
+      "label": "打開提詞器",
+      "url": "/teleprompter.html"
     }
   },
   "remote": {
-    "eyebrow": "隨時隨地遙控",
-    "title": "任何裝置皆可作為提詞機遙控器",
-    "description": "連接另一支手機、平板或電腦，無需碰觸主錄影裝置即可控制您的提詞機。",
+    "eyebrow": "遙控",
+    "title": "掃描二維碼即可從任何裝置控制",
+    "description": "使用安全 WebSocket 透過 QR 碼連接手機或平板電腦。無需安裝外部應用程式即可控制您的簡報。",
     "items": [
       {
-        "title": "開始與暫停",
-        "description": "演說時不動聲色地控制提詞機。"
+        "title": "播放和暫停腳本",
+        "description": "演示時謹慎啟動或凍結提詞器。"
       },
       {
-        "title": "調整捲動速度",
-        "description": "從連接的遙控裝置上加快或放慢速度。"
+        "title": "調整速度",
+        "description": "直接從手機螢幕上微調滾動速度。"
       },
       {
-        "title": "翻閱您的腳本",
-        "description": "向前、向後或跳至腳本的其他段落。"
+        "title": "導航腳本",
+        "description": "向前、向後跳轉或立即跳至其他部分。"
       },
       {
-        "title": "管理錄影",
-        "description": "在您的裝置與瀏覽器支援時，遠端開始或停止錄影。"
+        "title": "觸發錄音",
+        "description": "從房間另一端開始和停止攝影機錄製。"
       }
     ],
-    "supporting": "非常適合個人創作者、演講者、工作室、製作團隊與遠端演說。",
+    "qa": {
+      "q": "它可以在 iPad 和手機上使用嗎？",
+      "a": "是的！ SolPrompter 可用作行動提詞器或 iPad 提示器。您也可以掃描二維碼，將手機用作 iPad、平板電腦或筆記型電腦上運行的提詞器的無線遙控器。"
+    },
+    "supporting": "獨奏創作者、企業主持人和舞台演講者的基本工作流程。",
     "cta": {
-      "label": "連接遙控裝置",
-      "url": "/workspaces"
+      "label": "連線遠端",
+      "url": "/teleprompter.html"
     }
   },
   "recording": {
-    "eyebrow": "邊讀邊錄",
-    "title": "以 Full HD 或 4K 製作專業影片",
-    "description": "在一個流暢的工作流程中同時使用相機與提詞機。自然地閱讀、監看構圖並進行錄製，無需在不同應用程式間切換。",
+    "eyebrow": "錄音與隱私",
+    "title": "瀏覽器內 4K 錄製和本地腳本隱私",
+    "description": "直接從瀏覽器捕獲清晰的視頻，同時在本地存儲中保持腳本 100% 私密。",
     "items": [
       {
         "title": "即時相機預覽",
-        "description": "在錄影前與錄影過程中檢查您的位置、構圖與外觀。"
+        "description": "在錄製之前預覽並檢查您的取景和對齊情況。"
       },
       {
-        "title": "Full HD 錄製",
-        "description": "為社群媒體、課程、演說與商務內容製作清晰、高品質的影片。"
+        "title": "錄製全高清和 4K",
+        "description": "直接在桌面瀏覽器中錄製高解析度影片（iOS 上為 1080p）。"
       },
       {
-        "title": "4K 錄製",
-        "description": "在相機、瀏覽器與裝置支援時，拍攝專業的高解析度影片。"
-      },
-      {
-        "title": "無浮水印",
-        "description": "匯出不含 SolPrompter 標誌或品牌疊加層的乾淨錄影作品。"
+        "title": "零水印",
+        "description": "您匯出的影片檔案沒有品牌且沒有任何浮水印。"
       },
       {
         "title": "錄影資料庫",
-        "description": "讓您的拍攝內容井然有序，快速找到與每個腳本關聯的錄影作品。"
+        "description": "將所有錄製的鏡頭組織起來並與各自的腳本聯繫起來。"
       }
     ],
+    "qa": {
+      "q": "我可以使用 SolPrompter 錄製影片嗎？",
+      "a": "是的！ SolPrompter 具有零浮水印的高品質瀏覽器錄影功能（在支援的桌面上最高可達 4K 分辨率，在 iOS 裝置上最高可達 1080p）。您錄製的剪輯儲存在您的裝置本機，以最大限度地保護隱私。"
+    },
     "cta": {
-      "label": "開始錄影",
-      "url": "/workspaces"
+      "label": "開始錄音",
+      "url": "/teleprompter.html"
     }
   },
   "workspace": {
-    "eyebrow": "您的內容工作區",
-    "title": "一起管理腳本與錄影內容",
-    "description": "不必再在資料夾、文件與各種應用程式之間來回尋找。SolPrompter 將您的腳本與錄影內容集中在一個井然有序的工作區中。",
+    "eyebrow": "私人工作空間",
+    "title": "您的腳本保持私密",
+    "description": "您的腳本和錄音保留在您的裝置上，因此您可以處理敏感內容，而無需將其發送到 SolPrompter。",
     "items": [
       {
-        "title": "建立與編輯腳本",
-        "description": "直接在 SolPrompter 中撰寫新腳本或更新現有內容。"
+        "title": "編寫和編輯腳本",
+        "description": "直接在工具內建立新草稿或編輯現有草稿。"
       },
       {
-        "title": "上傳現有內容",
-        "description": "從支援的文件匯入腳本，無需逐段手動複製。"
+        "title": "快速文件導入",
+        "description": "直接上傳 TXT、DOCX 或 Markdown 文件，無需複製貼上。"
       },
       {
-        "title": "整理您的資料庫",
-        "description": "讓腳本與錄影內容井然有序，隨時可用於日後的演說。"
+        "title": "無限腳本",
+        "description": "儲存瀏覽器本機資料庫允許的盡可能多的腳本。"
       },
       {
-        "title": "重複使用您的腳本",
-        "description": "開啟以往的腳本，快速修改後錄製新版本，無需從頭開始。"
-      },
-      {
-        "title": "在任何螢幕上存取",
-        "description": "在手機、平板、筆電或桌機上繼續工作。"
+        "title": "即時重複使用",
+        "description": "打開過去的腳本、更新詳細資訊並在幾秒鐘內錄製新的鏡頭。"
       }
-    ]
+    ],
+    "qa": {
+      "q": "我可以上傳 DOCX 檔案嗎？",
+      "a": "是的！您可以輕鬆地將 TXT、Markdown 和 DOCX 文件直接匯入到本機工作區。這些腳本在您的瀏覽器中本地處理，並且永遠不會上傳到任何伺服器。"
+    }
   },
   "mobile": {
     "eyebrow": "為每一塊螢幕而設計",
     "title": "適配行動裝置的線上提詞機",
-    "description": "SolPrompter 力求在桌面與行動裝置上都做到快速、清晰、易於操控。",
+    "description": "SolPrompter 使其閱讀區域、導航和控制適應手機和平板電腦，在縱向或橫向方向上提供類似應用程式的集中體驗。",
     "items": [
       {
         "title": "自適應介面",
@@ -311,142 +321,237 @@
         "description": "在支援的瀏覽器中開啟 SolPrompter，即可開始線上使用提詞機。"
       }
     ],
-    "supporting": "將 SolPrompter 用作行動提詞機、桌面提詞機或以瀏覽器為基礎的線上提詞工具。"
+    "supporting": "使用 SolPrompter 作為您的行動提詞器、桌面提詞器或基於瀏覽器的線上自動提示。"
   },
   "useCases": {
-    "eyebrow": "為每一位演說者打造",
-    "title": "SolPrompter 適合誰使用？",
+    "eyebrow": "使用案例",
+    "title": "SolPrompter 適合誰？",
     "items": [
       {
         "title": "內容創作者",
-        "description": "無需逐字背誦，即可錄製 TikTok 影片、YouTube 影片、Shorts、Reels 等社群內容。"
+        "description": "錄製 TikTok、Shorts 和 Reels，無需記住台詞。"
       },
       {
         "title": "YouTuber",
-        "description": "以更流暢、更自信的表現呈現評測、教學、講解與口播影片。"
+        "description": "以自然流利的語言風格提供教學、解釋和評論。"
       },
       {
         "title": "Podcast 主持人",
-        "description": "錄製時跟隨開場白、贊助口播、結構化提問與節目筆記。"
+        "description": "在錄製音訊的同時閱讀簡介、贊助商讀出和關鍵談話要點。"
       },
       {
-        "title": "教師與教育工作者",
-        "description": "清晰、穩定地呈現線上課程、課程影片與教育內容。"
+        "title": "教師和教育工作者",
+        "description": "為線上課程呈現結構化、清晰且專業的講座。"
       },
       {
         "title": "商務人士",
-        "description": "準備產品展示、公司動態、網路研討會、銷售簡報與訓練影片。"
+        "description": "提供企業演示、銷售演示和培訓材料。"
       },
       {
         "title": "公眾演說者",
-        "description": "練習演說、排練簡報，自信地傳達事先準備的內容。"
+        "description": "練習演講、調整節奏並在鏡頭前建立自信。"
       },
       {
-        "title": "記者與採訪者",
-        "description": "跟隨腳本、問題與關鍵重點，同時始終專注於鏡頭。"
+        "title": "記者和新聞播音員",
+        "description": "流暢地閱讀劇本，同時保持與鏡頭的持續連結。"
       },
       {
         "title": "遠端團隊",
-        "description": "在視訊通話、線上簡報與遠端訪談中使用瀏海模式。"
+        "description": "使用缺口模式簡報投影片、報告狀態和引導視訊通話。"
       }
     ]
   },
   "comparison": {
-    "eyebrow": "為什麼選擇 SolPrompter？",
-    "title": "更完整的免費提詞機",
-    "description": "SolPrompter 旨在提供完整的提詞機體驗，無需使用者拼湊多款應用程式，也無需為基本功能付費。",
-    "items": [
-      "AI 語音啟動捲動",
-      "瀏海提詞機模式",
-      "透過其他裝置遠端遙控",
-      "Full HD 與 4K 影片錄製",
-      "腳本與錄影內容管理",
-      "支援桌面與行動裝置",
-      "無廣告",
-      "影片無浮水印",
-      "簡潔而現代的使用者體驗",
-      "免費使用核心提詞機功能"
-    ],
-    "supporting": "從撰寫腳本到錄製最終成品，SolPrompter 讓您在同一處即可取得所需的全部工具。"
+    "eyebrow": "比較",
+    "title": "完整的瀏覽器提詞器",
+    "description": "將 SolPrompter 的核心功能與現有市場替代方案進行比較。",
+    "table": {
+      "headers": [
+        "特徵",
+        "索爾提示器",
+        "提示智能",
+        "提詞鏡"
+      ],
+      "rows": [
+        {
+          "feature": "AI語音滾動",
+          "sol": "自由的",
+          "smart": "需要訂閱",
+          "mirror": "不支援"
+        },
+        {
+          "feature": "基於瀏覽器",
+          "sol": "是的",
+          "smart": "否（應用程式下載）",
+          "mirror": "是的"
+        },
+        {
+          "feature": "腳本隱私",
+          "sol": "100% 設備本地",
+          "smart": "設備本地",
+          "mirror": "設備本地"
+        },
+        {
+          "feature": "QR 圖碼遙控器",
+          "sol": "是（無需安裝）",
+          "smart": "是（應用程式下載）",
+          "mirror": "不支援"
+        },
+        {
+          "feature": "橫幅廣告",
+          "sol": "無廣告",
+          "smart": "無廣告",
+          "mirror": "是（橫幅廣告）"
+        },
+        {
+          "feature": "4K錄影",
+          "sol": "支援（桌面）",
+          "smart": "不支援",
+          "mirror": "不支援"
+        },
+        {
+          "feature": "價格",
+          "sol": "完全免費",
+          "smart": "付費訂閱",
+          "mirror": "免費（有廣告）"
+        }
+      ]
+    },
+    "whyChoose": {
+      "title": "為什麼創作者選擇 SolPrompter",
+      "items": [
+        {
+          "title": "免費聲控滾動",
+          "description": "與將語音同步鎖定在付費牆後面的訂閱工具不同，SolPrompter 是免費提供的，直接由瀏覽器語音辨識提供支援。"
+        },
+        {
+          "title": "您的資料保留在您的機器上",
+          "description": "您的腳本在瀏覽器中本地處理。我們絕不會傳輸您的內容，保證草稿的完全隱私。"
+        },
+        {
+          "title": "無需註冊或設置",
+          "description": "沒有帳戶，沒有入職問題。只需訪問該網站，貼上您的腳本，然後立即開始演示。"
+        }
+      ]
+    },
+    "supporting": "從編寫第一個腳本到錄製最終視頻，SolPrompter 在一個瀏覽器視窗中提供了所有工具。"
   },
   "about": {
-    "eyebrow": "關於 SolPrompter",
-    "title": "讓演說變得自然而然",
+    "eyebrow": "關於",
+    "title": "讓線上閱讀感覺像是自然的對話",
     "paragraphs": [
-      "SolPrompter 是一款 AI 提詞機，專為那些希望自信開口、又不想逐字背誦或頻繁操控捲動的人而打造。",
-      "我們的目標是打造最完整、最容易上手的線上提詞機體驗，將可靠的 AI 捲動、貼心的設計、自然眼神交流工具與專業錄製功能融為一體。",
-      "無論您是用手機錄影、用筆電演說，還是遠端操控工作室的設備，SolPrompter 都能協助您專注於觀眾，而非軟體本身。"
+      "SolPrompter 旨在幫助演講者自信地進行演示，而無需記住長文本或擔心滾動速度。",
+      "我們專注於創建一個最小的高端線上提詞器，融合了準確的語音追蹤、人體工學設計和簡單的視訊錄製。",
+      "無論您是用手機拍攝、用筆記型電腦錄音或管理工作室，SolPrompter 都能讓您專注於觀眾。"
     ]
   },
   "finalCta": {
-    "eyebrow": "準備好演說了嗎？",
-    "title": "開始使用 SolPrompter",
-    "description": "新增您的腳本，選擇您偏好的閱讀模式，自然地開始演說。",
+    "eyebrow": "開始說話",
+    "title": "使用 SolPrompter 自然呈現",
+    "description": "立即輸入腳本、配置顯示設定並錄製影片。",
     "cta": {
-      "label": "開啟免費提詞機",
-      "url": "/workspaces"
+      "label": "打開提詞器",
+      "url": "/teleprompter.html"
     },
-    "supporting": "無廣告。無浮水印。無需繁瑣設定。"
+    "supporting": "免費、無廣告、無浮水印。"
   },
   "faq": {
-    "eyebrow": "問與答",
+    "eyebrow": "常問問題",
     "title": "常見問題",
     "items": [
       {
-        "anchor": "faq-is-solprompter-free",
-        "q": "SolPrompter 是免費使用的嗎？",
-        "a": "SolPrompter 目前免費使用。您可以使用其核心的提詞機、腳本與錄影功能，沒有廣告，也沒有品牌影片浮水印。"
+        "anchor": "常見問題保持目光接觸",
+        "q": "如何避免看起來像是在閱讀並保持目光接觸？",
+        "a": "<strong>啟動 SolPrompter 的缺口模式，將腳本直接放置在鏡頭下方。 </strong>這會將文字寬度縮小到 50-70 個字符，並將其固定在頂部中心。透過將眼球運動減少到 3 度以下，您看起來就像是在直接與觀眾交談。"
       },
       {
-        "anchor": "faq-what-is-ai-voice-scroll",
-        "q": "什麼是 AI 語音捲動？",
-        "a": "AI 語音捲動會聆聽您的語音，並依據您自然的語速翻動腳本。它幫助您停頓、繼續與演說，無需不斷調整固定的捲動速度。"
+        "anchor": "常見問題與應用程式商店",
+        "q": "為什麼選擇 SolPrompter 而不是 App Store 應用程式？",
+        "a": "<strong>SolPrompter 直接在網路上運行，無需下載，並且不會在匯出的影片上添加浮水印。 </strong>大多數行動應用程式都會限制腳本長度或收取月費來切換簡單功能。 SolPrompter 提供開箱即用的完整功能。"
       },
       {
-        "anchor": "faq-what-is-notch-mode",
-        "q": "什麼是 SolPrompter 瀏海模式？",
-        "a": "瀏海模式將精巧的提詞機閱讀區域放置在相機附近。這有助於減少明顯的視線移動，讓您在錄影、演說與視訊通話中的眼神交流看起來更自然。"
+        "anchor": "遙控器穩定性常見問題解答",
+        "q": "當我的手機鎖定或進入睡眠狀態時，遙控器會斷開連接嗎？",
+        "a": "<strong>不會，SolPrompter 的遠端使用持久性 WebSocket 和心跳協定來確保穩定性。 </strong>只要提詞器標籤保持活動狀態，連結就會保持活動狀態，延遲時間低於 10 毫秒，從而防止硬體答題器中常見的遺失情況。"
       },
       {
-        "anchor": "faq-mobile-devices",
-        "q": "我可以在手機或平板上使用 SolPrompter 嗎？",
-        "a": "可以。SolPrompter 擁有專為智慧型手機、平板、筆電與桌機設計的自適應介面。可用功能可能取決於瀏覽器、相機與裝置效能。"
+        "anchor": "實體分束器常見問題解答",
+        "q": "我可以將 SolPrompter 與實體玻璃分束器裝置一起使用嗎？",
+        "a": "<strong>是的，在 SolPrompter 設定中切換「鏡像模式」以水平翻轉文字。 </strong>為了最大化閱讀對比度，請將介面切換到深色模式（純黑色背景上的白色文字）以消除雙重反射。"
       },
       {
-        "anchor": "faq-installation",
-        "q": "我需要安裝 SolPrompter 嗎？",
-        "a": "網頁版無需安裝。您可以在支援的現代瀏覽器中開啟 SolPrompter，新增腳本，即可線上開始演說。"
+        "anchor": "常見問題腳本隱私",
+        "q": "我的劇本和公司草稿安全嗎？",
+        "a": "<strong>是的。當您工作時，您的劇本和錄音會保留在您的裝置上。 </strong>SolPrompter 不會將此內容上傳到其伺服器，從而幫助您控制機密草稿。"
       },
       {
-        "anchor": "faq-remote-control",
-        "q": "我可以用另一台裝置控制 SolPrompter 嗎？",
-        "a": "可以。SolPrompter 遠端遙控功能讓您使用另一支手機、平板或電腦來開始或暫停提詞機、調整捲動並翻閱您的腳本。"
+        "anchor": "重影模糊常見問題解答",
+        "q": "為什麼玻璃上的反射文字看起來很模糊？",
+        "a": "<strong>普通玻璃上會發生雙重反射（重影）。使用專業分光玻璃並降低螢幕亮度。 </strong>專業的 70/30 玻璃一側有防反射塗層。還需要用深色布覆蓋玻璃背面以防止漏光。"
       },
       {
-        "anchor": "faq-4k-recording",
-        "q": "SolPrompter 可以錄製 4K 影片嗎？",
-        "a": "當相機、瀏覽器與裝置支援所選解析度時，SolPrompter 支援 Full HD 與 4K 錄製。實際錄影品質取決於您裝置的效能與權限。"
+        "anchor": "離線使用常見問題解答",
+        "q": "我可以離線運行提詞器嗎？",
+        "a": "<strong>提詞器工作區載入後即可離線運行，但語音同步需要網路。 </strong>語音辨識使用本機瀏覽器 API，透過 Google 或 Apple 雲端伺服器處理音訊。對於離線設置，請切換到固定速度或手動捲動。"
       },
       {
-        "anchor": "faq-watermark",
-        "q": "SolPrompter 會為錄影內容加上浮水印嗎？",
-        "a": "SolPrompter 不會在您錄製的影片上加上品牌浮水印。"
-      },
-      {
-        "anchor": "faq-supported-files",
-        "q": "SolPrompter 支援哪些腳本檔案格式？",
-        "a": "SolPrompter 支援直接貼上文字，以及上傳 TXT、DOCX、PDF 與 Markdown 等受支援的腳本文件。"
-      },
-      {
-        "anchor": "faq-online-autocue",
-        "q": "SolPrompter 可以用作線上提詞工具嗎？",
-        "a": "可以。SolPrompter 可用作以瀏覽器為基礎的線上提詞工具，支援手動捲動、固定速度自動捲動與 AI 語音啟動捲動。"
+        "anchor": "常見問題-字體大小-距離",
+        "q": "如何確定適合我的閱讀距離的字體大小？",
+        "a": "<strong>一般基準是，每 10 英尺的閱讀距離，字體高度為 1 英吋。 </strong>對於近距離筆記型電腦閱讀，首選較小、較窄的文字佈局，以防止眼睛明顯地左右掃視。"
       }
     ]
   },
+  "engineering": {
+    "eyebrow": "為現實世界打造",
+    "title": "快速、私密且隨時可用",
+    "description": "了解 SolPrompter 如何將腳本保留在您的裝置上、即時回應並直接在瀏覽器中運行，無需下載或複雜的設定。",
+    "principles": [
+      {
+        "title": "我們為什麼要建構 SolPrompter",
+        "description": "現有的提詞器軟體通常將基本功能（如語音滾動或無浮水印錄音）鎖定在昂貴的每月訂閱後面。我們建立 SolPrompter 是為了提供高端、完全免費的線上提詞器，無需註冊，使所有創作者都可以使用專業工具。"
+      },
+      {
+        "title": "為什麼它在您的瀏覽器中運行",
+        "description": "SolPrompter 直接在瀏覽器中工作，因此您可以使用語音滾動和錄製視頻，而無需下載其他軟體。"
+      },
+      {
+        "title": "預設隱私",
+        "description": "您的腳本和錄音保留在您的裝置上，而不是上傳到 SolPrompter，讓您可以直接控制敏感內容。"
+      }
+    ],
+    "benchmarksTitle": "實測性能",
+    "benchmarks": [
+      {
+        "metric": "AI語音滾動延遲",
+        "sol": "< 50ms（即時）",
+        "trad": "不適用（定速）"
+      },
+      {
+        "metric": "語音偵測準確度",
+        "sol": "98%（多語言）",
+        "trad": "僅手動控制"
+      },
+      {
+        "metric": "CPU 使用率（閒置/滾動）",
+        "sol": "< 2% / 5%",
+        "trad": "高（桌面應用程式）"
+      },
+      {
+        "metric": "電池消耗",
+        "sol": "最小（本機 Web API）",
+        "trad": "中到高"
+      },
+      {
+        "metric": "支援的瀏覽器",
+        "sol": "Chrome、Edge、Safari、火狐",
+        "trad": "作業系統限制的應用程式"
+      }
+    ],
+    "benchmarksSupport": "使用 Chrome 120 在 Apple M2 (macOS) 和 Intel Core i7 (Windows 11) 上進行了測試。"
+  },
   "footer": {
     "brand": "SolPrompter",
-    "description": "一款免費線上 AI 提詞機，助您自然演說並專業錄製影片。",
+    "description": "免費的線上提詞器，用於自然演示和專業視訊錄製。",
     "columns": [
       {
         "title": "產品",
@@ -464,16 +569,12 @@
             "url": "#how-it-works"
           },
           {
-            "label": "AI 語音捲動",
+            "label": "語音捲軸",
             "url": "#voice-scroll"
           },
           {
             "label": "瀏海模式",
             "url": "#notch"
-          },
-          {
-            "label": "遠端遙控",
-            "url": "#remote"
           },
           {
             "label": "4K 錄製",

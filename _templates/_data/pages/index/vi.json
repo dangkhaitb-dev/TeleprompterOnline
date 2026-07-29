@@ -75,8 +75,8 @@
       }
     ],
     "cta": {
-      "label": "Mở ứng dụng",
-      "url": "/teleprompter.html"
+      "label": "Workspaces",
+      "url": "/workspaces"
     }
   },
   "hero": {

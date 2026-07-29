@@ -131,7 +131,7 @@ lang: en
                 {%- for item in faq.items %}
                 <details class="faq-item" id="{{ item.anchor }}">
                     <summary class="faq-q">{{ item.q }}</summary>
-                    <p class="faq-a">{{ item.a }}</p>
+                    <p class="faq-a">{{ item.a | safe }}</p>
                 </details>
                 {%- endfor %}
             </div>

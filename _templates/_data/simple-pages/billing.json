@@ -111,7 +111,7 @@
 
     { "type": "heading", "text": "6. Canceling a Subscription" },
     { "type": "paragraph", "html": "You may cancel a subscription through the account billing settings where available." },
-    { "type": "paragraph", "html": "You may also request cancellation by emailing: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a>" },
+    { "type": "paragraph", "html": "You may also request cancellation by emailing: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a>" },
     { "type": "paragraph", "html": "A clear email cancellation request will be treated as submitted at the time shown in the email, even if our team processes it later." },
     { "type": "paragraph", "html": "Include:" },
     { "type": "list", "items": [
@@ -173,7 +173,7 @@
       "Charges made after a confirmed cancellation caused by our error.",
       "Other billing errors attributable to SolPrompter."
     ] },
-    { "type": "paragraph", "html": "Report billing errors promptly to: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a>" },
+    { "type": "paragraph", "html": "Report billing errors promptly to: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a>" },
     { "type": "paragraph", "html": "Include a receipt, invoice or screenshot showing the charge." },
 
     { "type": "heading", "text": "12. Unauthorized Charges" },
@@ -241,7 +241,7 @@
       "Review the marketplace’s eligibility rules.",
       "Contact the marketplace for payment-method issues."
     ] },
-    { "type": "paragraph", "html": "Where a marketplace directs you to SolPrompter or allows developer-managed resolution, contact: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a>" },
+    { "type": "paragraph", "html": "Where a marketplace directs you to SolPrompter or allows developer-managed resolution, contact: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a>" },
 
     { "type": "heading", "text": "17. European and Other Withdrawal Rights" },
     { "type": "paragraph", "html": "Consumers in certain jurisdictions may have a legal cooling-off or withdrawal period for online services." },
@@ -256,7 +256,7 @@
     { "type": "paragraph", "html": "Where legally permitted, a consumer who withdraws after requesting that a service begin immediately may be responsible for a proportionate amount corresponding to the service already supplied." },
 
     { "type": "heading", "text": "18. How to Request a Refund" },
-    { "type": "paragraph", "html": "Send the request to: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a>" },
+    { "type": "paragraph", "html": "Send the request to: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a>" },
     { "type": "paragraph", "html": "Use the subject: <strong>Refund Request — SolPrompter</strong>" },
     { "type": "paragraph", "html": "Include:" },
     { "type": "list", "items": [
@@ -371,6 +371,6 @@
 
     { "type": "heading", "text": "27. Contact" },
     { "type": "paragraph", "html": "Billing, cancellation and refund requests may be sent to:" },
-    { "type": "paragraph", "html": "<strong>SolPrompter</strong><br>Website: <a href=\"https://solprompter.com\">https://solprompter.com</a><br>Email: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a><br>Country of operation: Vietnam" }
+    { "type": "paragraph", "html": "<strong>SolPrompter</strong><br>Website: <a href=\"https://solprompter.com\">https://solprompter.com</a><br>Email: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a><br>Country of operation: Vietnam" }
   ]
 }

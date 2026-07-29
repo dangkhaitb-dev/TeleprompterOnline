@@ -20,7 +20,7 @@
 
     { "type": "heading", "text": "1. Data Controller" },
     { "type": "paragraph", "html": "For personal data processed in connection with SolPrompter, the data controller is:" },
-    { "type": "paragraph", "html": "<strong>SolPrompter</strong><br>Website: <a href=\"https://solprompter.com\">https://solprompter.com</a><br>Email: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a><br>Country of operation: Vietnam" },
+    { "type": "paragraph", "html": "<strong>SolPrompter</strong><br>Website: <a href=\"https://solprompter.com\">https://solprompter.com</a><br>Email: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a><br>Country of operation: Vietnam" },
     { "type": "paragraph", "html": "Where a third-party provider independently determines how it processes information, that provider may act as a separate controller under its own privacy policy." },
 
     { "type": "heading", "text": "2. Scope" },
@@ -289,7 +289,7 @@
 
     { "type": "heading", "text": "9. Account and Content Deletion" },
     { "type": "paragraph", "html": "You may delete individual scripts or recordings through available controls." },
-    { "type": "paragraph", "html": "You may request account deletion by contacting: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a>" },
+    { "type": "paragraph", "html": "You may request account deletion by contacting: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a>" },
     { "type": "paragraph", "html": "Before processing a deletion request, we may verify your identity." },
     { "type": "paragraph", "html": "Deletion may not immediately remove information from:" },
     { "type": "list", "items": [
@@ -334,7 +334,7 @@
       "Receive equal service without unlawful discrimination for exercising privacy rights."
     ] },
     { "type": "paragraph", "html": "These rights may be subject to legal exceptions." },
-    { "type": "paragraph", "html": "To submit a request, contact: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a>" },
+    { "type": "paragraph", "html": "To submit a request, contact: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a>" },
     { "type": "paragraph", "html": "Your request should identify:" },
     { "type": "list", "items": [
       "The account email.",
@@ -396,7 +396,7 @@
     { "type": "heading", "text": "15. Children’s Privacy" },
     { "type": "paragraph", "html": "SolPrompter is not directed to children under 13." },
     { "type": "paragraph", "html": "We do not knowingly collect personal data from children under 13 without legally required parental permission." },
-    { "type": "paragraph", "html": "If you believe a child has provided personal data without appropriate permission, contact: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a>" },
+    { "type": "paragraph", "html": "If you believe a child has provided personal data without appropriate permission, contact: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a>" },
     { "type": "paragraph", "html": "We will investigate and take appropriate deletion or restriction measures." },
     { "type": "paragraph", "html": "Users between 13 and the age of legal majority should use SolPrompter with parental or guardian involvement where required." },
 
@@ -492,6 +492,6 @@
 
     { "type": "heading", "text": "21. Contact" },
     { "type": "paragraph", "html": "Privacy questions and requests may be sent to:" },
-    { "type": "paragraph", "html": "<strong>SolPrompter</strong><br>Website: <a href=\"https://solprompter.com\">https://solprompter.com</a><br>Email: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a><br>Country of operation: Vietnam" }
+    { "type": "paragraph", "html": "<strong>SolPrompter</strong><br>Website: <a href=\"https://solprompter.com\">https://solprompter.com</a><br>Email: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a><br>Country of operation: Vietnam" }
   ]
 }

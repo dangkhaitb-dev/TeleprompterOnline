@@ -167,7 +167,7 @@
       "A statement that the information provided is accurate.",
       "Your physical or electronic signature."
     ] },
-    { "type": "paragraph", "html": "Send copyright complaints to: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a>" },
+    { "type": "paragraph", "html": "Send copyright complaints to: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a>" },
     { "type": "paragraph", "html": "We may remove or restrict content when we reasonably believe it infringes intellectual property rights. We may also terminate repeat infringers where appropriate." },
     { "type": "paragraph", "html": "Submitting a knowingly false complaint may create legal liability." },
 
@@ -324,6 +324,6 @@
 
     { "type": "heading", "text": "25. Contact" },
     { "type": "paragraph", "html": "Questions about these Terms may be sent to:" },
-    { "type": "paragraph", "html": "<strong>SolPrompter</strong><br>Website: <a href=\"https://solprompter.com\">https://solprompter.com</a><br>Email: <a href=\"mailto:contact.solprompter@gmail.com\" rel=\"nofollow\">contact.solprompter@gmail.com</a><br>Country of operation: Vietnam" }
+    { "type": "paragraph", "html": "<strong>SolPrompter</strong><br>Website: <a href=\"https://solprompter.com\">https://solprompter.com</a><br>Email: <a href=\"mailto:contact.solplatform@gmail.com\" rel=\"nofollow\">contact.solplatform@gmail.com</a><br>Country of operation: Vietnam" }
   ]
 }

@@ -112,14 +112,6 @@
   color: var(--ws-logo-ink);
 }
 
-.ws-appbar .ws-content-actions {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-left: auto;
-  flex-shrink: 0;
-}
-
 .ws-action-btn {
   display: inline-flex;
   align-items: center;
@@ -400,6 +392,14 @@
   align-items: center;
   gap: 10px;
   flex-shrink: 0;
+}
+
+.ws-content-actions--desktop {
+  margin-left: auto;
+}
+
+.ws-content-actions--mobile {
+  display: none;
 }
 
 .ws-welcome {
@@ -892,6 +892,148 @@
 
 .ws-folder-grid:empty {
   display: none;
+}
+
+/* Server-rendered placeholders reserve the first visible grid row while the
+   Workspaces module loads local folder and script data. */
+.ws-skeleton-card {
+  cursor: default;
+  pointer-events: none;
+  animation: ws-skeleton-pulse 1.2s ease-in-out infinite alternate;
+}
+
+.ws-skeleton-block {
+  display: block;
+  background: var(--ws-border-light);
+}
+
+.ws-skeleton-folder-icon {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
+.ws-skeleton-line {
+  height: 12px;
+  border-radius: var(--radius-pill);
+}
+
+.ws-skeleton-line--folder-name {
+  width: min(72%, 132px);
+}
+
+.ws-skeleton-line--folder-meta {
+  width: min(46%, 84px);
+  height: 10px;
+}
+
+.ws-skeleton-more {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  border-radius: 7px;
+}
+
+.ws-script-skeleton .ws-script-thumb {
+  background: var(--ws-surface-soft);
+}
+
+.ws-skeleton-line--script-title {
+  width: 68%;
+  height: 14px;
+}
+
+.ws-skeleton-pill {
+  width: 54px;
+  height: 18px;
+  border-radius: var(--radius-pill);
+}
+
+.ws-skeleton-line--script-date {
+  width: 78px;
+  height: 10px;
+}
+
+.ws-loading-grid > .ws-skeleton-card:nth-child(n + 2) {
+  display: none;
+}
+
+@keyframes ws-skeleton-pulse {
+  from {
+    opacity: 0.58;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ws-skeleton-card {
+    animation: none;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 759px) {
+  .ws-loading-grid > .ws-folder-skeleton:nth-child(-n + 2),
+  .ws-loading-grid > .ws-script-skeleton:nth-child(-n + 2) {
+    display: flex;
+  }
+
+  .ws-loading-grid > .ws-script-skeleton:nth-child(-n + 2) {
+    display: block;
+  }
+}
+
+@media (min-width: 760px) and (max-width: 768px) {
+  .ws-loading-grid > .ws-folder-skeleton:nth-child(-n + 2) {
+    display: flex;
+  }
+
+  .ws-loading-grid > .ws-script-skeleton:nth-child(-n + 3) {
+    display: block;
+  }
+}
+
+@media (min-width: 900px) {
+  .ws-loading-grid > .ws-folder-skeleton:nth-child(-n + 2) {
+    display: flex;
+  }
+
+  .ws-loading-grid > .ws-script-skeleton:nth-child(-n + 2) {
+    display: block;
+  }
+}
+
+@media (min-width: 1150px) {
+  .ws-loading-grid > .ws-folder-skeleton:nth-child(-n + 3) {
+    display: flex;
+  }
+
+  .ws-loading-grid > .ws-script-skeleton:nth-child(-n + 3) {
+    display: block;
+  }
+}
+
+@media (min-width: 1400px) {
+  .ws-loading-grid > .ws-folder-skeleton:nth-child(-n + 4) {
+    display: flex;
+  }
+
+  .ws-loading-grid > .ws-script-skeleton:nth-child(-n + 4) {
+    display: block;
+  }
+}
+
+@media (min-width: 1650px) {
+  .ws-loading-grid > .ws-folder-skeleton:nth-child(-n + 5) {
+    display: flex;
+  }
+
+  .ws-loading-grid > .ws-script-skeleton:nth-child(-n + 5) {
+    display: block;
+  }
 }
 
 .ws-folder-card {
@@ -1511,7 +1653,7 @@
   }
 
   .ws-appbar-logo-text {
-    display: none;
+    display: none !important;
   }
 
   .ws-main {
@@ -1521,6 +1663,18 @@
 
   .ws-content {
     padding: 20px 16px 48px;
+  }
+
+  .ws-content-actions {
+    position: static;
+  }
+
+  .ws-content-actions--desktop {
+    display: none;
+  }
+
+  .ws-content-actions--mobile {
+    display: flex;
   }
 
   .ws-welcome {

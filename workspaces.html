@@ -169,6 +169,16 @@
         <span class="ws-appbar-logo-text shared-brand-text">SolPrompter</span>
       </a>
     </div>
+    <div class="ws-content-actions ws-content-actions--desktop">
+      <button type="button" id="wsNewScriptBtn" class="ws-action-btn ws-action-btn--primary" data-ws-new-script>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        <span>New script</span>
+      </button>
+      <button type="button" id="wsUploadBtn" class="ws-action-btn ws-action-btn--secondary" data-ws-upload>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <span>Upload</span>
+      </button>
+    </div>
   </header>
 
   <div class="ws-body-row">
@@ -223,12 +233,12 @@
       <div class="ws-content">
         <div class="ws-content-header">
           <h1 class="ws-welcome">Welcome to SolPrompter</h1>
-          <div class="ws-content-actions">
-            <button type="button" id="wsNewScriptBtn" class="ws-action-btn ws-action-btn--primary">
+          <div class="ws-content-actions ws-content-actions--mobile">
+            <button type="button" class="ws-new-script-btn ws-action-btn ws-action-btn--primary" data-ws-new-script>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
               <span>New script</span>
             </button>
-            <button type="button" id="wsUploadBtn" class="ws-action-btn ws-action-btn--secondary">
+            <button type="button" class="ws-upload-btn ws-action-btn ws-action-btn--secondary" data-ws-upload>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
               <span>Upload</span>
             </button>
@@ -251,7 +261,48 @@
             </button>
           </div>
           <div class="ws-section-body">
-            <div class="ws-folder-grid" id="wsFolderGrid"></div>
+            <div class="ws-folder-grid ws-loading-grid" id="wsFolderGrid" aria-busy="true">
+              <div class="ws-folder-card ws-skeleton-card ws-folder-skeleton" aria-hidden="true">
+                <span class="ws-skeleton-block ws-skeleton-folder-icon"></span>
+                <span class="ws-folder-body">
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-name"></span>
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-meta"></span>
+                </span>
+                <span class="ws-skeleton-block ws-skeleton-more"></span>
+              </div>
+              <div class="ws-folder-card ws-skeleton-card ws-folder-skeleton" aria-hidden="true">
+                <span class="ws-skeleton-block ws-skeleton-folder-icon"></span>
+                <span class="ws-folder-body">
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-name"></span>
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-meta"></span>
+                </span>
+                <span class="ws-skeleton-block ws-skeleton-more"></span>
+              </div>
+              <div class="ws-folder-card ws-skeleton-card ws-folder-skeleton" aria-hidden="true">
+                <span class="ws-skeleton-block ws-skeleton-folder-icon"></span>
+                <span class="ws-folder-body">
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-name"></span>
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-meta"></span>
+                </span>
+                <span class="ws-skeleton-block ws-skeleton-more"></span>
+              </div>
+              <div class="ws-folder-card ws-skeleton-card ws-folder-skeleton" aria-hidden="true">
+                <span class="ws-skeleton-block ws-skeleton-folder-icon"></span>
+                <span class="ws-folder-body">
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-name"></span>
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-meta"></span>
+                </span>
+                <span class="ws-skeleton-block ws-skeleton-more"></span>
+              </div>
+              <div class="ws-folder-card ws-skeleton-card ws-folder-skeleton" aria-hidden="true">
+                <span class="ws-skeleton-block ws-skeleton-folder-icon"></span>
+                <span class="ws-folder-body">
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-name"></span>
+                  <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--folder-meta"></span>
+                </span>
+                <span class="ws-skeleton-block ws-skeleton-more"></span>
+              </div>
+            </div>
           </div>
         </section>
 
@@ -263,7 +314,58 @@
             <h2 class="ws-section-title">Scripts</h2>
           </div>
           <div class="ws-section-body">
-            <div class="ws-video-grid" id="videoGrid"></div>
+            <div class="ws-video-grid ws-loading-grid" id="videoGrid" aria-busy="true">
+              <article class="ws-video-card ws-skeleton-card ws-script-skeleton" aria-hidden="true">
+                <div class="ws-video-thumb ws-script-thumb"></div>
+                <div class="ws-video-info">
+                  <div class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-title"></div>
+                  <div class="ws-script-meta">
+                    <span class="ws-skeleton-block ws-skeleton-pill"></span>
+                    <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-date"></span>
+                  </div>
+                </div>
+              </article>
+              <article class="ws-video-card ws-skeleton-card ws-script-skeleton" aria-hidden="true">
+                <div class="ws-video-thumb ws-script-thumb"></div>
+                <div class="ws-video-info">
+                  <div class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-title"></div>
+                  <div class="ws-script-meta">
+                    <span class="ws-skeleton-block ws-skeleton-pill"></span>
+                    <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-date"></span>
+                  </div>
+                </div>
+              </article>
+              <article class="ws-video-card ws-skeleton-card ws-script-skeleton" aria-hidden="true">
+                <div class="ws-video-thumb ws-script-thumb"></div>
+                <div class="ws-video-info">
+                  <div class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-title"></div>
+                  <div class="ws-script-meta">
+                    <span class="ws-skeleton-block ws-skeleton-pill"></span>
+                    <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-date"></span>
+                  </div>
+                </div>
+              </article>
+              <article class="ws-video-card ws-skeleton-card ws-script-skeleton" aria-hidden="true">
+                <div class="ws-video-thumb ws-script-thumb"></div>
+                <div class="ws-video-info">
+                  <div class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-title"></div>
+                  <div class="ws-script-meta">
+                    <span class="ws-skeleton-block ws-skeleton-pill"></span>
+                    <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-date"></span>
+                  </div>
+                </div>
+              </article>
+              <article class="ws-video-card ws-skeleton-card ws-script-skeleton" aria-hidden="true">
+                <div class="ws-video-thumb ws-script-thumb"></div>
+                <div class="ws-video-info">
+                  <div class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-title"></div>
+                  <div class="ws-script-meta">
+                    <span class="ws-skeleton-block ws-skeleton-pill"></span>
+                    <span class="ws-skeleton-block ws-skeleton-line ws-skeleton-line--script-date"></span>
+                  </div>
+                </div>
+              </article>
+            </div>
             <div class="ws-scripts-empty" id="wsScriptsEmpty" hidden>
               <h3 class="ws-empty-title">No scripts yet</h3>
               <p class="ws-empty-body">Create a new script or upload a .txt, .md, or .docx file to start your first teleprompter recording.</p>

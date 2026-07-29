@@ -145,8 +145,8 @@ export function initWorkspacesUI() {
   const sidebar = document.getElementById('wsSidebar');
   const overlay = document.getElementById('wsSidebarOverlay');
   const menuBtn = document.getElementById('wsMobileMenuBtn');
-  const newBtn = document.getElementById('wsNewScriptBtn');
-  const uploadBtn = document.getElementById('wsUploadBtn');
+  const newButtons = Array.from(document.querySelectorAll('[data-ws-new-script]'));
+  const uploadButtons = Array.from(document.querySelectorAll('[data-ws-upload]'));
   const exportSelectedBtn = document.getElementById('wsExportSelectedBtn');
   const fileInput = document.getElementById('wsFileInput');
   const dragOverlay = document.getElementById('wsDragOverlay');
@@ -176,7 +176,9 @@ export function initWorkspacesUI() {
     window.setTimeout(warmTeleprompter, 1200);
   }
   grid?.addEventListener('pointerenter', warmTeleprompter, { once: true });
-  newBtn?.addEventListener('pointerenter', warmTeleprompter, { once: true });
+  newButtons.forEach((button) => {
+    button.addEventListener('pointerenter', warmTeleprompter, { once: true });
+  });
   const storageValue = document.getElementById('wsStorageValue');
   const storageFill = document.getElementById('wsStorageFill');
   const storageNote = document.getElementById('wsStorageNote');
@@ -189,31 +191,6 @@ export function initWorkspacesUI() {
   const deleteSelectedBtn = document.getElementById('wsDeleteSelectedBtn');
 
   if (!grid) return;
-
-  // Reposition content actions responsive layout (Desktop: appbar, Mobile: content header)
-  const actionsContainer = document.querySelector('.ws-content-actions');
-  const appbar = document.querySelector('.ws-appbar');
-  const contentHeader = document.querySelector('.ws-content-header');
-
-  if (actionsContainer && appbar && contentHeader) {
-    const handleActionsPosition = (e) => {
-      if (e.matches) {
-        // Mobile: inside content header
-        contentHeader.appendChild(actionsContainer);
-      } else {
-        // Desktop: inside top appbar
-        appbar.appendChild(actionsContainer);
-      }
-    };
-
-    const mediaQuery = window.matchMedia('(max-width: 768px)');
-    handleActionsPosition(mediaQuery);
-    if (mediaQuery.addEventListener) {
-      mediaQuery.addEventListener('change', handleActionsPosition);
-    } else if (mediaQuery.addListener) {
-      mediaQuery.addListener(handleActionsPosition);
-    }
-  }
 
   const scriptMap = new Map();
   const folderMap = new Map();
@@ -668,6 +645,7 @@ export function initWorkspacesUI() {
       fragment.appendChild(buildFolderCard(folder));
     });
     folderGrid.appendChild(fragment);
+    folderGrid.setAttribute('aria-busy', 'false');
   }
 
   function renderScripts(scripts) {
@@ -680,11 +658,12 @@ export function initWorkspacesUI() {
       fragment.appendChild(buildScriptCard(card));
     });
     grid.appendChild(fragment);
+    grid.setAttribute('aria-busy', 'false');
     if (selectionView === 'scripts') updateSelectionUI();
   }
 
-  async function render() {
-    const { path, folders, scripts } = await loadLibrary(currentFolderId);
+  function render() {
+    const { path, folders, scripts } = loadLibrary(currentFolderId);
     closeMenu();
     currentPath = path;
     renderBreadcrumb(path);
@@ -1159,10 +1138,12 @@ export function initWorkspacesUI() {
   });
 
   // ---- New script + Upload (both land in the current folder) ----------------
-  newBtn?.addEventListener('click', () => {
-    const workspace = createBlankWorkspace();
-    moveWorkspaceToFolder(workspace.id, currentFolderId);
-    openWorkspace(workspace.id, newBtn);
+  newButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      const workspace = createBlankWorkspace();
+      moveWorkspaceToFolder(workspace.id, currentFolderId);
+      openWorkspace(workspace.id, button);
+    });
   });
 
   const ingestFile = async (file, trigger = null) => {
@@ -1206,11 +1187,18 @@ export function initWorkspacesUI() {
     openWorkspace(result.workspace.id, trigger);
   };
 
-  uploadBtn?.addEventListener('click', () => fileInput?.click());
+  let uploadTrigger = null;
+  uploadButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      uploadTrigger = button;
+      fileInput?.click();
+    });
+  });
   fileInput?.addEventListener('change', () => {
     const file = fileInput.files && fileInput.files[0];
-    if (file) ingestFile(file, uploadBtn);
+    if (file) ingestFile(file, uploadTrigger);
     fileInput.value = '';
+    uploadTrigger = null;
   });
 
   async function handleExportSelected() {

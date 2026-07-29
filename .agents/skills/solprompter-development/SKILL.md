@@ -1,85 +1,69 @@
 ---
 name: solprompter-development
-description: [TODO: Complete and informative explanation of what the skill does and when to use it. Include WHEN to use this skill - specific scenarios, file types, or tasks that trigger it.]
+description: Apply SolPrompter's repository-specific planning, architecture, implementation, frontend, testing, security, and review workflow. Use whenever Codex implements, fixes, refactors, reviews, tests, or documents code in the SolPrompter/VPromter repository; especially for changes under src/script, src/styles, or _templates.
 ---
 
-# Solprompter Development
+# SolPrompter development
 
-## Overview
+Follow `AGENTS.md` as the authoritative project contract. Use this skill to
+turn that contract into an execution workflow.
 
-[TODO: 1-2 sentences explaining what this skill enables]
+## Classify the task
 
-## Structuring This Skill
+Before editing:
 
-[TODO: Choose the structure that best fits this skill's purpose. Common patterns:
+1. Inspect `git status`, the affected entry points, nearby tests, and applicable
+   generated/source-file boundaries.
+2. Decide whether the planning gate in `AGENTS.md` applies.
+3. If it applies and the user has not already approved a concrete plan, present
+   the plan and wait for approval.
+4. Choose the narrowest relevant agent roles from `.codex/agents/`. Use
+   parallel roles only for independent work; never assign overlapping writes.
+   Spawn a named custom role with no inherited context or a bounded recent-turn
+   fork, never a full-history fork.
 
-**1. Workflow-Based** (best for sequential processes)
-- Works well when there are clear step-by-step procedures
-- Example: DOCX skill with "Workflow Decision Tree" -> "Reading" -> "Creating" -> "Editing"
-- Structure: ## Overview -> ## Workflow Decision Tree -> ## Step 1 -> ## Step 2...
+## Execute
 
-**2. Task-Based** (best for tool collections)
-- Works well when the skill offers different operations/capabilities
-- Example: PDF skill with "Quick Start" -> "Merge PDFs" -> "Split PDFs" -> "Extract Text"
-- Structure: ## Overview -> ## Quick Start -> ## Task Category 1 -> ## Task Category 2...
+1. State assumptions only when they materially affect implementation.
+2. Define behavior that can be verified.
+3. Trace the actual import and call path before changing a layer.
+4. For a feature or reproducible bug, prefer RED -> GREEN -> IMPROVE:
+   establish a failing test, make the smallest implementation pass, then
+   refactor only when necessary.
+5. Preserve the dependency direction
+   `constants -> http -> service -> model -> logic -> ui`.
+6. Keep DOM access in UI files, raw HTTP calls in services, mapping in models,
+   and orchestration in logic.
+7. Edit Nunjucks and JSON sources, never generated root HTML.
+8. Keep changes surgical and preserve unrelated user work.
 
-**3. Reference/Guidelines** (best for standards or specifications)
-- Works well for brand guidelines, coding standards, or requirements
-- Example: Brand styling with "Brand Guidelines" -> "Colors" -> "Typography" -> "Features"
-- Structure: ## Overview -> ## Guidelines -> ## Specifications -> ## Usage...
+## Apply conditional guidance
 
-**4. Capabilities-Based** (best for integrated systems)
-- Works well when the skill provides multiple interrelated features
-- Example: Product Management with "Core Capabilities" -> numbered capability list
-- Structure: ## Overview -> ## Core Capabilities -> ### 1. Feature -> ### 2. Feature...
+- For frontend or template work, read
+  [references/frontend-quality.md](references/frontend-quality.md).
+- For authentication, untrusted input, storage, filesystem, external API,
+  crypto, payment, or sensitive-data work, read
+  [references/security-review.md](references/security-review.md).
+- For verification selection and the final review, read
+  [references/verification.md](references/verification.md).
 
-Patterns can be mixed and matched as needed. Most skills combine patterns (e.g., start with task-based, add workflow for complex operations).
+## Verify and hand off
 
-Delete this entire "Structuring This Skill" section when done - it's just guidance.]
+1. Run the smallest relevant test or lint command while iterating.
+2. Run the final verification matrix from `references/verification.md` in
+   proportion to risk.
+3. Inspect the final diff and confirm generated files are intentional.
+4. Use `code-reviewer` after code changes. Add `security-reviewer` for the
+   security triggers above.
+5. Resolve verified regressions introduced by the current work. Report
+   unrelated pre-existing failures without changing them.
+6. Summarize the outcome, verification performed, and any remaining limitation.
 
-## [TODO: Replace with the first main section based on chosen structure]
+## Handle failures
 
-[TODO: Add content here. See examples in existing skills:
-- Code samples for technical skills
-- Decision trees for complex workflows
-- Concrete examples with realistic user requests
-- References to scripts/templates/references as needed]
-
-## Resources (optional)
-
-Create only the resource directories this skill actually needs. Delete this section if no resources are required.
-
-### scripts/
-Executable code (Python/Bash/etc.) that can be run directly to perform specific operations.
-
-**Examples from other skills:**
-- PDF skill: `fill_fillable_fields.py`, `extract_form_field_info.py` - utilities for PDF manipulation
-- DOCX skill: `document.py`, `utilities.py` - Python modules for document processing
-
-**Appropriate for:** Python scripts, shell scripts, or any executable code that performs automation, data processing, or specific operations.
-
-**Note:** Scripts may be executed without loading into context, but can still be read by Codex for patching or environment adjustments.
-
-### references/
-Documentation and reference material intended to be loaded into context to inform Codex's process and thinking.
-
-**Examples from other skills:**
-- Product management: `communication.md`, `context_building.md` - detailed workflow guides
-- BigQuery: API reference documentation and query examples
-- Finance: Schema documentation, company policies
-
-**Appropriate for:** In-depth documentation, API references, database schemas, comprehensive guides, or any detailed information that Codex should reference while working.
-
-### assets/
-Files not intended to be loaded into context, but rather used within the output Codex produces.
-
-**Examples from other skills:**
-- Brand styling: PowerPoint template files (.pptx), logo files
-- Frontend builder: HTML/React boilerplate project directories
-- Typography: Font files (.ttf, .woff2)
-
-**Appropriate for:** Templates, boilerplate code, document templates, images, icons, fonts, or any files meant to be copied or used in the final output.
-
----
-
-**Not every skill requires all three types of resources.**
+- When lint fails, fix errors in the edited scope before proceeding. Do not use
+  `--no-verify`.
+- When the build fails for a non-obvious reason, use `build-error-resolver`,
+  reproduce the smallest failing command, and fix incrementally.
+- When verification is blocked by environment or a pre-existing failure,
+  gather evidence and report the exact command and error.

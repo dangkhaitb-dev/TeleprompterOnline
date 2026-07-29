@@ -1,0 +1,43 @@
+{
+  "description": "SolPrompter edit linting and completion review gates.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/guard-git-commit.mjs\"",
+            "timeout": 10,
+            "statusMessage": "Checking Git commit policy"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/lint-changed.mjs\"",
+            "timeout": 30,
+            "statusMessage": "Linting edited SolPrompter files"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/review-gate.mjs\"",
+            "timeout": 15,
+            "statusMessage": "Checking whether a focused code review is due"
+          }
+        ]
+      }
+    ]
+  }
+}

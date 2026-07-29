@@ -3232,10 +3232,54 @@ body.home .landing-main > #notch #remote .remote-phone-visual {
   filter: drop-shadow(0 2.25rem 2.5rem rgb(28 25 23 / 18%));
 }
 
-body.home .landing-main > #notch #remote .remote-phone-svg {
+body.home .landing-main > #notch #remote .remote-phone-mockup {
+  position: relative;
   display: block;
   width: 100%;
-  height: auto;
+  aspect-ratio: 754 / 1555;
+  overflow: hidden;
+}
+
+body.home .landing-main > #notch #remote .remote-phone-frame-base,
+body.home .landing-main > #notch #remote .remote-phone-frame-island,
+body.home .landing-main > #notch #remote .remote-phone-status {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+body.home .landing-main > #notch #remote .remote-phone-screen {
+  position: absolute;
+  z-index: 2;
+  inset: 0.9% 2.1% 1.05%;
+  overflow: hidden;
+  border-radius: 11% / 5.1%;
+  background: #17181b;
+}
+
+body.home .landing-main > #notch #remote .remote-phone-screen img {
+  position: absolute;
+  top: 5.2%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 94.8%;
+  object-fit: fill;
+  object-position: center top;
+}
+
+body.home .landing-main > #notch #remote .remote-phone-status {
+  z-index: 3;
+}
+
+body.home .landing-main > #notch #remote .remote-phone-frame-island {
+  z-index: 4;
+  clip-path: inset(1.5% 34% 92.5%);
+  mix-blend-mode: multiply;
 }
 
 body.home .landing-main > #notch .section-support {

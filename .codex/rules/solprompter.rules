@@ -1,0 +1,13 @@
+prefix_rule(
+    pattern = ["git", "commit", ["--no-verify", "-n"]],
+    decision = "forbidden",
+    justification = "Do not bypass SolPrompter pre-commit checks; fix the lint or hook failure and commit normally.",
+    match = [
+        "git commit --no-verify -m fix",
+        "git commit -n -m fix",
+    ],
+    not_match = [
+        "git commit -m fix",
+        "git status --short",
+    ],
+)

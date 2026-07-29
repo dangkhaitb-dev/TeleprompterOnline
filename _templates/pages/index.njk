@@ -17,7 +17,10 @@ eleventyComputed:
 <header class="nav">
     <div class="nav-inner">
         <div class="nav-left">
-            <a href="/" class="brand framer-WFgEA framer-qdeek2 framer-v-qdeek2 framer-4n26gx" data-framer-name="On" data-highlight="true" data-framer-page-link-current="true" tabindex="0" style="height: 100%; opacity: 1; gap: 0.5rem;"><div data-framer-component-type="SVG" parentsize="0" _constraints="[object Object]" rotation="0" shadows="" class="framer-ngytjn shared-brand-logo" aria-hidden="true" style="image-rendering: auto; flex-shrink: 0; background-size: 100% 100%; background-image: url('/logo.webp'); opacity: 1; width: 21px; height: 21px;"></div><div class="framer-1gzwofs" data-framer-component-type="RichTextContainer" style="--extracted-2gg91v: &quot;opsz&quot; 32, &quot;wght&quot; 600; --extracted-r6o4lv: rgb(0, 0, 0); --framer-link-text-color: rgb(0, 153, 255); --framer-link-text-decoration: underline; transform: none; opacity: 1;"><p dir="auto" class="framer-text shared-brand-text" style="--font-selector:SW50ZXItVmFyaWFibGVWRj1JbTl3YzNvaUlETXlMQ0FpZDJkb2RDSWdOakF3;--framer-font-family:&quot;Inter Variable&quot;, &quot;Inter Variable Placeholder&quot;, sans-serif;--framer-font-open-type-features:'ss07' on, 'cv05' on, 'ss03' on, 'cv11' on;--framer-font-size:14px;--framer-font-variation-axes:var(--extracted-2gg91v, &quot;opsz&quot; 32, &quot;wght&quot; 600);--framer-letter-spacing:-0.01px;--framer-line-height:1em;--framer-text-alignment:left;--framer-text-color:var(--extracted-r6o4lv, rgb(0, 0, 0)); margin: 0;">SolPrompter</p></div></a>
+            <a href="/" class="brand" tabindex="0" style="height: 100%; opacity: 1; gap: 0.5rem;">
+                <div class="shared-brand-logo" aria-hidden="true" style="background-image: url('/logo.webp'); background-size: 100% 100%; width: 21px; height: 21px;"></div>
+                <p class="shared-brand-text" style="font-size: 14px !important; font-weight: 600 !important; margin: 0;">SolPrompter</p>
+            </a>
             <nav class="nav-menu" aria-label="Primary">
                 {%- for item in pageData.nav.items %}
                 <a href="{{ item.url }}" class="nav-item">{{ item.label }}</a>
@@ -89,6 +92,29 @@ eleventyComputed:
         </div>
     </section>
 
+    <!-- TOPIC COVERAGE -->
+    {%- set topic = pageData.topic %}
+    {%- if topic %}
+    <section class="section section-alt" id="what-is-teleprompter" style="background-color: var(--line-soft);">
+        <div class="section-inner section-narrow">
+            <div class="section-head" style="margin-bottom: 2.5rem;">
+                <p class="eyebrow">{{ topic.eyebrow }}</p>
+                <h2 class="section-title">{{ topic.title }}</h2>
+                <p class="section-desc">{{ topic.description }}</p>
+            </div>
+            <div class="prose-content">
+                {%- for part in topic.sections %}
+                <div class="topic-sub-section" style="margin-bottom: 2rem;">
+                    <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">{{ part.title }}</h3>
+                    <p class="prose-paragraph" style="font-size: 1.05rem; line-height: 1.7; color: var(--ink-soft); margin: 0;">{{ part.description | safe }}</p>
+                </div>
+                {%- endfor %}
+            </div>
+        </div>
+    </section>
+    {%- endif %}
+
+    <!-- FEATURES OVERVIEW -->
     {%- set features = pageData.features %}
     <section class="section" id="features">
         <div class="section-inner">
@@ -97,97 +123,45 @@ eleventyComputed:
                 <h2 class="section-title">{{ features.title }}</h2>
                 <p class="section-desc">{{ features.description }}</p>
             </div>
-            <ul class="bento-grid">
+            <div class="features-editorial-grid">
                 {%- for item in features.items %}
-                <li class="bento-card {% if loop.index == 1 %}bento-span-2 bento-card--voice{% elif loop.index == 4 %}bento-span-2 bento-card--recording{% elif loop.index == 5 %}bento-span-2 bento-card--mobile{% elif loop.index == 6 %}bento-span-2{% elif loop.index == 7 %}bento-span-2 bento-card--ads{% endif %}">
-                    <div class="bento-card-inner">
-                        <div class="card-icon-box">
-                            {% if loop.index == 1 %}
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" x2="12" y1="19" y2="22"/></svg>
-                            {% elif loop.index == 2 %}
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/><path d="M9 2h6"/></svg>
-                            {% elif loop.index == 3 %}
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><rect width="10" height="18" x="7" y="3" rx="2"/><path d="M11 7h2"/><path d="M11 11h2"/><path d="M12 15h.01"/></svg>
-                            {% elif loop.index == 4 %}
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M23 7a2 2 0 0 0-2.45-1.45L16 7V5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2l4.55 1.45A2 2 0 0 0 23 17V7z"/></svg>
-                            {% elif loop.index == 5 %}
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/><path d="M6 12h4"/></svg>
-                            {% elif loop.index == 6 %}
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><rect width="16" height="12" x="2" y="4" rx="2"/><path d="M12 18H7.5a1.5 1.5 0 0 1 0-3H18a1 1 0 0 1 1 1v2"/><path d="M8 20h8"/></svg>
-                            {% elif loop.index == 7 %}
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            {% endif %}
-                        </div>
-                        <div class="bento-card-text">
-                            <h3 class="card-title">{{ item.title }}</h3>
-                            <p class="card-desc">{{ item.description }}</p>
-                        </div>
-                        
-                        {# Custom visual decoration for large cards #}
-                        {% if loop.index == 1 %}
-                        <div class="bento-visual voice-waves">
-                            <span class="wave-line"></span>
-                            <span class="wave-line"></span>
-                            <span class="wave-line"></span>
-                            <span class="wave-line"></span>
-                            <span class="wave-line"></span>
-                        </div>
-                        {% elif loop.index == 4 %}
-                        <div class="bento-visual recording-badge">
-                            <span class="rec-dot"></span>
-                            <span class="rec-time">00:02:45</span>
-                        </div>
-                        {% elif loop.index == 5 %}
-                        <div class="bento-visual phone-outline">
-                            <div class="notch-indicator"></div>
-                        </div>
-                        {% elif loop.index == 7 %}
-                        <div class="bento-visual ads-visual">
-                            <div class="no-ads-shield">
-                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            </div>
-                        </div>
-                        {% endif %}
-                    </div>
-                </li>
+                <div class="feature-editorial-item">
+                    <h3 class="feature-title">{{ item.title }}</h3>
+                    <p class="feature-desc">{{ item.description }}</p>
+                </div>
                 {%- endfor %}
-            </ul>
-        </div>
-    </section>
- 
-    {%- set howItWorks = pageData.howItWorks %}
-    <section class="section section-alt" id="how-it-works">
-        <div class="section-inner">
-            <div class="section-head">
-                <p class="eyebrow">{{ howItWorks.eyebrow }}</p>
-                <h2 class="section-title">{{ howItWorks.title }}</h2>
-                <p class="section-desc">{{ howItWorks.description }}</p>
             </div>
-            <ol class="steps-flow">
-                {%- for step in howItWorks.steps %}
-                <li class="step-card" id="{{ step.anchor }}">
-                    <span class="step-giant-number">0{{ loop.index }}</span>
-                    <div class="step-card-content">
-                        <h3 class="card-title">{{ step.title }}</h3>
-                        <p class="card-desc">{{ step.description }}</p>
-                    </div>
-                </li>
-                {%- endfor %}
-            </ol>
         </div>
     </section>
- 
+
+    <!-- SPOTLIGHT 1: AI VOICE AUTO-SCROLL -->
     {%- set voiceScroll = pageData.voiceScroll %}
-    <section class="section" id="voice-scroll">
+    <section class="section section-alt" id="voice-scroll">
         <div class="section-inner split-section">
             <div class="split-text-col">
                 <p class="eyebrow">{{ voiceScroll.eyebrow }}</p>
-                <h2 class="section-title">{{ voiceScroll.title }}</h2>
+                <h2 class="section-title" style="margin-bottom: 0.5rem;">{{ voiceScroll.title }}</h2>
+                {%- if voiceScroll.subTitle -%}
+                <p class="section-desc" style="font-weight: 600; font-size: 1.2rem; margin-top: 0; margin-bottom: 1.5rem; color: var(--ink);">{{ voiceScroll.subTitle }}</p>
+                {%- endif -%}
+                
+                {%- if voiceScroll.problemSolution %}
+                <div class="problem-solution-box" style="margin-bottom: 2rem; padding: 1.5rem; background: var(--line-soft); border-radius: 12px; border: 1px solid var(--line); width: 100%;">
+                    <div class="problem-part" style="margin-bottom: 1rem;">
+                        <strong style="color: var(--danger-text); display: block; margin-bottom: 0.25rem;">{{ voiceScroll.problemSolution.problemTitle }}</strong>
+                        <p style="font-size: 0.95rem; margin: 0; color: var(--ink-soft); line-height: 1.5;">{{ voiceScroll.problemSolution.problemDesc }}</p>
+                    </div>
+                    <div class="solution-part">
+                        <strong style="color: var(--brand); display: block; margin-bottom: 0.25rem;">{{ voiceScroll.problemSolution.solutionTitle }}</strong>
+                        <p style="font-size: 0.95rem; margin: 0; color: var(--ink-soft); line-height: 1.5;">{{ voiceScroll.problemSolution.solutionDesc }}</p>
+                    </div>
+                </div>
+                {%- endif %}
+
                 <p class="section-desc">{{ voiceScroll.description }}</p>
                 <ul class="custom-benefits-list">
                     {%- for item in voiceScroll.benefits %}
                     <li>
-                        <span class="benefit-bullet">✓</span>
                         <div class="benefit-info">
                             <strong class="benefit-title">{{ item.title }}</strong>
                             <p class="benefit-desc">{{ item.description }}</p>
@@ -196,6 +170,13 @@ eleventyComputed:
                     {%- endfor %}
                 </ul>
                 <p class="section-support">{{ voiceScroll.supporting }}</p>
+                
+                {%- if voiceScroll.qa %}
+                <div class="inline-qa" style="margin-top: 1.5rem; padding: 1.25rem; background: var(--line-soft); border-radius: 10px; font-size: 0.95rem; width: 100%; border-inline-start: 4px solid var(--brand);">
+                    <strong style="display: block; color: var(--ink); margin-bottom: 0.35rem;">Q: {{ voiceScroll.qa.q }}</strong>
+                    <p style="margin: 0; color: var(--ink-soft); line-height: 1.5;">{{ voiceScroll.qa.a }}</p>
+                </div>
+                {%- endif %}
             </div>
             <div class="split-visual-col">
                 <div class="browser-frame app-screenshot-wrapper">
@@ -211,68 +192,83 @@ eleventyComputed:
             </div>
         </div>
     </section>
- 
+
+    <!-- SPOTLIGHT 2: NOTCH & REMOTE -->
     {%- set notch = pageData.notch %}
-    <section class="section section-alt" id="notch">
-        <div class="section-inner split-section split-reverse">
-            <div class="split-text-col">
+    {%- set remote = pageData.remote %}
+    <section class="section" id="notch">
+        <div class="section-inner">
+            <div class="section-head">
                 <p class="eyebrow">{{ notch.eyebrow }}</p>
                 <h2 class="section-title">{{ notch.title }}</h2>
                 <p class="section-desc">{{ notch.description }}</p>
-                <ul class="modern-checklist">
-                    {%- for point in notch.items %}
-                    <li>
-                        <span class="check-bullet">✓</span>
-                        <span class="check-text">{{ point }}</span>
-                    </li>
-                    {%- endfor %}
-                </ul>
-                <p class="section-support">{{ notch.supporting }}</p>
             </div>
-            <div class="split-visual-col">
-                <div class="browser-frame app-screenshot-wrapper">
-                    <div class="browser-chrome">
-                        <span class="chrome-dot red"></span>
-                        <span class="chrome-dot yellow"></span>
-                        <span class="chrome-dot green"></span>
+            
+            <div class="spotlight-grid">
+                <!-- Left: Notch Mode -->
+                <div class="spotlight-col">
+                    <div class="spotlight-text-block">
+                        <ul class="modern-checklist">
+                            {%- for point in notch.items %}
+                            <li>
+                                <span class="check-bullet">•</span>
+                                <span class="check-text">{{ point }}</span>
+                            </li>
+                            {%- endfor %}
+                        </ul>
+                        <p class="section-support" style="margin-top: 1.5rem;">{{ notch.supporting }}</p>
                     </div>
-                    <div class="browser-viewport">
-                        <img src="/media/notch-screenshot.jpg" alt="SolPrompter Notch Mode Screen" class="app-screenshot">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
- 
-    {%- set remote = pageData.remote %}
-    <section class="section" id="remote">
-        <div class="section-inner split-section">
-            <div class="split-text-col">
-                <p class="eyebrow">{{ remote.eyebrow }}</p>
-                <h2 class="section-title">{{ remote.title }}</h2>
-                <p class="section-desc">{{ remote.description }}</p>
-                <ul class="custom-benefits-list">
-                    {%- for item in remote.items %}
-                    <li>
-                        <span class="benefit-bullet">✓</span>
-                        <div class="benefit-info">
-                            <strong class="benefit-title">{{ item.title }}</strong>
-                            <p class="benefit-desc">{{ item.description }}</p>
+                    <div class="split-visual-col" style="margin-top: 2rem;">
+                        <div class="browser-frame app-screenshot-wrapper">
+                            <div class="browser-chrome">
+                                <span class="chrome-dot red"></span>
+                                <span class="chrome-dot yellow"></span>
+                                <span class="chrome-dot green"></span>
+                            </div>
+                            <div class="browser-viewport">
+                                <img src="/media/notch-screenshot.jpg" alt="SolPrompter Notch Mode Screen" class="app-screenshot">
+                            </div>
                         </div>
-                    </li>
-                    {%- endfor %}
-                </ul>
-                <p class="section-support">{{ remote.supporting }}</p>
-            </div>
-            <div class="split-visual-col">
-                <div class="app-screenshot-wrapper mobile-screenshot-wrapper">
-                    <img src="/media/teleprompter-mobile-screenshot.jpg" alt="VTeleprompter Mobile Studio Screen" class="app-screenshot">
+                    </div>
+                </div>
+
+                <!-- Right: Remote Control -->
+                <div class="spotlight-col" id="remote">
+                    <div class="spotlight-text-block">
+                        <h3 class="spotlight-subtitle">{{ remote.title }}</h3>
+                        <p class="section-desc" style="margin-top: 0;">{{ remote.description }}</p>
+                        <ul class="custom-benefits-list">
+                            {%- for item in remote.items %}
+                            <li>
+                                <div class="benefit-info">
+                                    <strong class="benefit-title">{{ item.title }}</strong>
+                                    <p class="benefit-desc">{{ item.description }}</p>
+                                </div>
+                            </li>
+                            {%- endfor %}
+                        </ul>
+                        <p class="section-support" style="margin-top: 1.5rem;">{{ remote.supporting }}</p>
+                        
+                        {%- if remote.qa %}
+                        <div class="inline-qa" style="margin-top: 1.5rem; padding: 1.25rem; background: var(--line-soft); border-radius: 10px; font-size: 0.95rem; width: 100%; border-inline-start: 4px solid var(--brand);">
+                            <strong style="display: block; color: var(--ink); margin-bottom: 0.35rem;">Q: {{ remote.qa.q }}</strong>
+                            <p style="margin: 0; color: var(--ink-soft); line-height: 1.5;">{{ remote.qa.a }}</p>
+                        </div>
+                        {%- endif %}
+                    </div>
+                    <div class="split-visual-col" style="margin-top: 2rem;">
+                        <div class="app-screenshot-wrapper mobile-screenshot-wrapper" style="max-width: 260px; margin: 0 auto;">
+                            <img src="/media/teleprompter-mobile-screenshot.jpg" alt="SolPrompter Mobile Studio Screen" class="app-screenshot">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
- 
+
+    <!-- SPOTLIGHT 3: RECORDING & PRIVACY -->
     {%- set recording = pageData.recording %}
+    {%- set workspace = pageData.workspace %}
     <section class="section section-alt" id="recording">
         <div class="section-inner">
             <div class="section-head">
@@ -280,38 +276,56 @@ eleventyComputed:
                 <h2 class="section-title">{{ recording.title }}</h2>
                 <p class="section-desc">{{ recording.description }}</p>
             </div>
-            <ul class="cards-interactive-grid">
-                {%- for item in recording.items %}
-                <li class="interactive-card">
-                    <span class="card-counter">0{{ loop.index }}</span>
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
-                </li>
-                {%- endfor %}
-            </ul>
-        </div>
-    </section>
- 
-    {%- set workspace = pageData.workspace %}
-    <section class="section" id="workspace">
-        <div class="section-inner split-section">
-            <div class="split-text-col">
-                <p class="eyebrow">{{ workspace.eyebrow }}</p>
-                <h2 class="section-title">{{ workspace.title }}</h2>
-                <p class="section-desc">{{ workspace.description }}</p>
-                <ul class="custom-benefits-list">
-                    {%- for item in workspace.items %}
-                    <li>
-                        <span class="benefit-bullet">✓</span>
-                        <div class="benefit-info">
-                            <strong class="benefit-title">{{ item.title }}</strong>
-                            <p class="benefit-desc">{{ item.description }}</p>
-                        </div>
-                    </li>
-                    {%- endfor %}
-                </ul>
+            
+            <div class="spotlight-grid">
+                <!-- Left: Studio Recording -->
+                <div class="spotlight-col">
+                    <ul class="custom-benefits-list">
+                        {%- for item in recording.items %}
+                        {% if loop.index <= 4 %}
+                        <li>
+                            <div class="benefit-info">
+                                <strong class="benefit-title">{{ item.title }}</strong>
+                                <p class="benefit-desc">{{ item.description }}</p>
+                            </div>
+                        </li>
+                        {% endif %}
+                        {%- endfor %}
+                    </ul>
+                    {%- if recording.qa %}
+                    <div class="inline-qa" style="margin-top: 1.5rem; padding: 1.25rem; background: var(--line-soft); border-radius: 10px; font-size: 0.95rem; border-inline-start: 4px solid var(--brand);">
+                        <strong style="display: block; color: var(--ink); margin-bottom: 0.35rem;">Q: {{ recording.qa.q }}</strong>
+                        <p style="margin: 0; color: var(--ink-soft); line-height: 1.5;">{{ recording.qa.a }}</p>
+                    </div>
+                    {%- endif %}
+                </div>
+
+                <!-- Right: Local-First Workspace -->
+                <div class="spotlight-col" id="workspace">
+                    <h3 class="spotlight-subtitle">{{ workspace.title }}</h3>
+                    <p class="section-desc" style="margin-top: 0;">{{ workspace.description }}</p>
+                    <ul class="custom-benefits-list">
+                        {%- for item in workspace.items %}
+                        {% if loop.index <= 4 %}
+                        <li>
+                            <div class="benefit-info">
+                                <strong class="benefit-title">{{ item.title }}</strong>
+                                <p class="benefit-desc">{{ item.description }}</p>
+                            </div>
+                        </li>
+                        {% endif %}
+                        {%- endfor %}
+                    </ul>
+                    {%- if workspace.qa %}
+                    <div class="inline-qa" style="margin-top: 1.5rem; padding: 1.25rem; background: var(--line-soft); border-radius: 10px; font-size: 0.95rem; border-inline-start: 4px solid var(--brand);">
+                        <strong style="display: block; color: var(--ink); margin-bottom: 0.35rem;">Q: {{ workspace.qa.q }}</strong>
+                        <p style="margin: 0; color: var(--ink-soft); line-height: 1.5;">{{ workspace.qa.a }}</p>
+                    </div>
+                    {%- endif %}
+                </div>
             </div>
-            <div class="split-visual-col">
+
+            <div class="split-visual-col" style="margin-top: 3.5rem;">
                 <div class="browser-frame app-screenshot-wrapper">
                     <div class="browser-chrome">
                         <span class="chrome-dot red"></span>
@@ -325,55 +339,61 @@ eleventyComputed:
             </div>
         </div>
     </section>
- 
-    {%- set mobile = pageData.mobile %}
-    <section class="section section-alt" id="mobile">
-        <div class="section-inner split-section">
-            <div class="split-text-col">
-                <p class="eyebrow">{{ mobile.eyebrow }}</p>
-                <h2 class="section-title">{{ mobile.title }}</h2>
-                <p class="section-desc">{{ mobile.description }}</p>
-                <ul class="cards-interactive-grid">
-                    {%- for item in mobile.items %}
-                    <li class="interactive-card">
-                        <h3 class="card-title">{{ item.title }}</h3>
-                        <p class="card-desc">{{ item.description }}</p>
-                    </li>
-                    {%- endfor %}
-                </ul>
-                <p class="section-support">{{ mobile.supporting }}</p>
+
+    <!-- HOW IT WORKS -->
+    {%- set howItWorks = pageData.howItWorks %}
+    <section class="section" id="how-it-works">
+        <div class="section-inner">
+            <div class="section-head">
+                <p class="eyebrow">{{ howItWorks.eyebrow }}</p>
+                <h2 class="section-title">{{ howItWorks.title }}</h2>
+                <p class="section-desc">{{ howItWorks.description }}</p>
             </div>
-            <div class="split-visual-col device-showcase-visual">
-                <div class="ipad-landscape-frame">
-                    <img src="/media/ipad-landscape.jpg" alt="iPad Landscape View" class="device-img" />
-                    <div class="mobile-qr-remote">
-                        <img src="/media/mobile-remote.jpg" alt="Mobile Remote Control" class="device-img-overlay" />
-                    </div>
+            <div class="steps-editorial-flow">
+                {%- for step in howItWorks.steps %}
+                <div class="step-editorial-item" id="{{ step.anchor }}">
+                    <span class="step-num">0{{ loop.index }}</span>
+                    <h3 class="step-title">{{ step.title }}</h3>
+                    <p class="step-desc">{{ step.description }}</p>
                 </div>
+                {%- endfor %}
             </div>
         </div>
     </section>
- 
+
+    <!-- USE CASES -->
     {%- set useCases = pageData.useCases %}
-    <section class="section" id="use-cases">
+    <section class="section section-alt" id="use-cases">
         <div class="section-inner">
             <div class="section-head">
                 <p class="eyebrow">{{ useCases.eyebrow }}</p>
                 <h2 class="section-title">{{ useCases.title }}</h2>
             </div>
-            <ul class="cards-interactive-grid">
+            <div class="use-cases-editorial-grid">
                 {%- for item in useCases.items %}
-                <li class="interactive-card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
-                </li>
+                <div class="use-case-item">
+                    <h3 class="use-case-title">{{ item.title }}</h3>
+                    <p class="use-case-desc">{{ item.description }}</p>
+                </div>
                 {%- endfor %}
-            </ul>
+            </div>
+            
+            {%- if useCases.platforms %}
+            <div class="use-cases-platforms" style="margin-top: 3.5rem; border-top: 1px solid var(--line); padding-top: 2.5rem; text-align: center;">
+                <h3 style="font-size: 1.25rem; font-weight: 600; color: var(--ink); margin-bottom: 1.5rem;">{{ useCases.platformsTitle }}</h3>
+                <div class="platforms-tags" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.75rem; max-width: 50rem; margin: 0 auto;">
+                    {%- for platform in useCases.platforms %}
+                    <span style="font-size: 0.9rem; font-weight: 500; background: var(--line-soft); color: var(--ink-soft); padding: 0.4rem 1rem; border-radius: 50rem; border: 1px solid var(--line);">{{ platform }}</span>
+                    {%- endfor %}
+                </div>
+            </div>
+            {%- endif %}
         </div>
     </section>
- 
+
+    <!-- COMPARISON TABLE -->
     {%- set comparison = pageData.comparison %}
-    <section class="section section-alt" id="why">
+    <section class="section" id="why">
         <div class="section-inner">
             <div class="section-head">
                 <p class="eyebrow">{{ comparison.eyebrow }}</p>
@@ -405,11 +425,11 @@ eleventyComputed:
             {%- if comparison.whyChoose %}
             <div class="why-choose-details" style="margin-top: 4rem;">
                 <h3 class="section-subtitle" style="text-align: center; margin-bottom: 2rem; font-size: 1.75rem; color: var(--text-heading);">{{ comparison.whyChoose.title }}</h3>
-                <div class="why-choose-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                <div class="why-choose-editorial-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 3rem; margin-top: 2rem;">
                     {%- for item in comparison.whyChoose.items %}
-                    <div class="why-choose-card" style="padding: 2rem; background: var(--bg-surface); border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
-                        <h4 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-heading);">{{ item.title }}</h4>
-                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">{{ item.description }}</p>
+                    <div class="why-choose-item" style="text-align: left;">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 0.75rem; color: var(--text-heading); font-weight: 600;">{{ item.title }}</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted); margin: 0;">{{ item.description }}</p>
                     </div>
                     {%- endfor %}
                 </div>
@@ -419,9 +439,10 @@ eleventyComputed:
             <p class="section-support" style="margin-top: 3rem; text-align: center;">{{ comparison.supporting }}</p>
         </div>
     </section>
- 
+
+    <!-- ABOUT -->
     {%- set about = pageData.about %}
-    <section class="section" id="about">
+    <section class="section section-alt" id="about">
         <div class="section-inner section-narrow">
             <div class="section-head">
                 <p class="eyebrow">{{ about.eyebrow }}</p>
@@ -434,9 +455,62 @@ eleventyComputed:
             </div>
         </div>
     </section>
- 
+
+    <!-- ENGINEERING & EEAT BENCHMARKS -->
+    {%- set engineering = pageData.engineering %}
+    {%- if engineering %}
+    <section class="section" id="engineering-eeat">
+        <div class="section-inner">
+            <div class="section-head" style="margin-bottom: 3.5rem;">
+                <p class="eyebrow">{{ engineering.eyebrow }}</p>
+                <h2 class="section-title">{{ engineering.title }}</h2>
+                <p class="section-desc">{{ engineering.description }}</p>
+            </div>
+            
+            <div class="spotlight-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: flex-start; text-align: left;">
+                <!-- Left: EEAT Decisions -->
+                <div class="spotlight-col">
+                    {%- for item in engineering.eeat %}
+                    <div class="eeat-block" style="margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">{{ item.title }}</h3>
+                        <p class="section-desc" style="font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin: 0;">{{ item.description | safe }}</p>
+                    </div>
+                    {%- endfor %}
+                </div>
+                
+                <!-- Right: Benchmarks -->
+                <div class="spotlight-col">
+                    <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 1.5rem; text-align: center;">{{ engineering.benchmarksTitle }}</h3>
+                    <div class="benchmarks-table-wrapper" style="overflow-x: auto; margin-top: 1rem;">
+                        <table class="comparison-table" style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid var(--ink);">
+                                    <th style="text-align: left; padding: 0.75rem 1rem; font-weight: 600;">Metric</th>
+                                    <th style="text-align: center; padding: 0.75rem 1rem; font-weight: 600;">SolPrompter</th>
+                                    <th style="text-align: center; padding: 0.75rem 1rem; font-weight: 600;">Traditional</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {%- for row in engineering.benchmarks %}
+                                <tr style="border-bottom: 1px solid var(--line-soft);">
+                                    <td style="text-align: left; padding: 0.75rem 1rem;"><strong>{{ row.metric }}</strong></td>
+                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--brand-strong); font-weight: 600;">{{ row.sol }}</td>
+                                    <td style="text-align: center; padding: 0.75rem 1rem; color: var(--ink-faint);">{{ row.trad }}</td>
+                                </tr>
+                                {%- endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="section-support" style="font-size: 0.85rem; margin-top: 1.5rem; text-align: center; color: var(--ink-muted);">{{ engineering.benchmarksSupport }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    {%- endif %}
+
+    <!-- FAQ -->
     {%- set faq = pageData.faq %}
-    <section class="section section-alt" id="faq">
+    <section class="section" id="faq">
         <div class="section-inner section-narrow">
             <div class="section-head">
                 <p class="eyebrow">{{ faq.eyebrow }}</p>
@@ -458,8 +532,9 @@ eleventyComputed:
         </div>
     </section>
 
+    <!-- FINAL CTA -->
     {%- set finalCta = pageData.finalCta %}
-    <section class="section final-cta" id="start">
+    <section class="section section-alt final-cta" id="start">
         <div class="section-inner section-narrow">
             <p class="eyebrow">{{ finalCta.eyebrow }}</p>
             <h2 class="section-title">{{ finalCta.title }}</h2>

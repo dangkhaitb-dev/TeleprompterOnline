@@ -770,9 +770,6 @@ body.home {
   box-sizing: border-box;
 }
 
-.section-alt {
-  border-top: 1px solid var(--line-soft);
-}
 
 .section-inner {
   max-width: var(--maxw-content);
@@ -2236,3 +2233,209 @@ body.nav-open {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
   box-sizing: border-box;
 }
+
+/* ===== EDITORIAL REDESIGN (No Cards, No Slop) ===== */
+
+/* Features Section */
+.features-editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .features-editorial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .features-editorial-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4rem 3.5rem;
+  }
+}
+
+.feature-editorial-item {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.feature-editorial-item .feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+.feature-editorial-item .feature-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Spotlight sections (Combined Notch/Remote and Recording/Workspace) */
+.spotlight-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  margin-top: 3rem;
+}
+
+@media (min-width: 768px) {
+  .spotlight-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+}
+
+.spotlight-col {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.spotlight-subtitle {
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 1rem 0;
+  letter-spacing: -0.01em;
+}
+
+/* Steps section */
+.steps-editorial-flow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .steps-editorial-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .steps-editorial-flow {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.step-editorial-item {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.step-editorial-item .step-num {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--brand);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  opacity: 0.85;
+}
+
+.step-editorial-item .step-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 0.5rem 0;
+}
+
+.step-editorial-item .step-desc {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Use cases section */
+.use-cases-editorial-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 3.5rem;
+}
+
+@media (min-width: 640px) {
+  .use-cases-editorial-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .use-cases-editorial-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.use-case-item {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.use-case-item .use-case-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+.use-case-item .use-case-desc {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin: 0;
+}
+
+/* Accordion borderless look */
+.faq-accordion-item {
+  border: none !important;
+  border-bottom: 1px solid var(--line) !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.faq-accordion-item:hover {
+  border-color: var(--brand) !important;
+}
+
+.faq-summary {
+  padding: 1.35rem 0 !important;
+}
+
+.faq-content {
+  padding: 0 0 1.5rem !important;
+}
+
+/* Clean up comparison table (borderless/shadowless) */
+.comparison-table {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+
+.comparison-table th {
+  border-bottom: 2px solid var(--ink) !important;
+  background: transparent !important;
+  font-weight: 600 !important;
+}
+
+.comparison-table td {
+  border-bottom: 1px solid var(--line-soft) !important;
+}
+

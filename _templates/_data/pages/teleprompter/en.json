@@ -1,7 +1,8 @@
 {
   "seo": {
     "title": "SolPrompter — Teleprompter Studio",
-    "description": "Read your script with auto-scroll and record yourself in a clean, distraction-free web teleprompter studio."
+    "description": "Read your script with auto-scroll and record yourself in a clean, distraction-free web teleprompter studio.",
+    "canonical": "/teleprompter"
   },
   "header": {
     "logoAria": "Logo",

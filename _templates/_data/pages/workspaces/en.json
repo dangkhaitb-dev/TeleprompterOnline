@@ -1,7 +1,8 @@
 {
   "seo": {
     "title": "Workspaces — SolPrompter",
-    "description": "Your saved teleprompter scripts. Open a workspace to record, or start a new script — everything stays private on your device."
+    "description": "Your saved teleprompter scripts. Open a workspace to record, or start a new script — everything stays private on your device.",
+    "canonical": "/workspaces"
   },
   "appbar": {
     "menuAria": "Open menu",

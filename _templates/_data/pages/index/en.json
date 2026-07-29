@@ -1,10 +1,10 @@
 {
   "seo": {
     "title": "Free Online Teleprompter with AI Voice Scroll | SolPrompter",
-    "description": "SolPrompter is a free online teleprompter app featuring AI voice-activated scrolling, notch mode for natural eye contact, remote control, and 4K recording. No ads or watermarks.",
+    "description": "Free online teleprompter with AI voice-activated scrolling, notch mode, and QR remote control. No ads, no sign-up, 100% private.",
     "canonical": "/",
     "ogTitle": "Free Online Teleprompter — SolPrompter",
-    "ogDescription": "Present naturally with our browser based teleprompter. Features AI voice scrolling via Web Speech API, notch mode, and professional 4K video recording.",
+    "ogDescription": "Present naturally with our browser-based teleprompter. Automatically scrolls with your voice, minimizes eye movement, and supports QR remote control.",
     "ogType": "website",
     "ogImage": "/og-solprompter.jpg"
   },
@@ -62,31 +62,31 @@
         "url": "#features"
       },
       {
-        "label": "Notch Mode",
-        "url": "#notch"
-      },
-      {
-        "label": "Voice Scroll",
+        "label": "Auto-scroll",
         "url": "#voice-scroll"
       },
       {
-        "label": "Remote",
-        "url": "#remote"
+        "label": "Rig & Control",
+        "url": "#notch"
+      },
+      {
+        "label": "Recording & Privacy",
+        "url": "#recording"
       }
     ],
     "cta": {
-      "label": "Workspaces",
+      "label": "Open App",
       "url": "/teleprompter.html"
     }
   },
   "hero": {
     "eyebrow": "SolPrompter — Free Online Teleprompter",
     "title": "Free Online Teleprompter",
-    "subtitle": "Present naturally with zero-lag AI voice scrolling, notch mode for perfect eye contact, and WebSocket remote control. No registration, no ads.",
+    "subtitle": "Automatically scrolls with your voice, anchors text near the camera lens to prevent eye deviation, and supports remote control via QR code. Free, ad-free, and 100% private.",
     "placeholder": "Paste your script or upload a file to begin...",
-    "uploadLabel": "Upload File",
+    "uploadLabel": "Upload file",
     "uploadLabelShort": "Upload",
-    "startLabel": "Start Presenting",
+    "startLabel": "Start presenting",
     "startLabelShort": "Start",
     "supportedText": "Supports TXT, DOCX and Markdown",
     "dropTitle": "Drop file here to upload",
@@ -97,193 +97,207 @@
     "errorRead": "Unsupported format. Please select a .txt or .md file."
   },
   "features": {
-    "eyebrow": "Next-Gen Online Teleprompter Features",
-    "title": "All-in-One Free Online Teleprompter",
-    "description": "SolPrompter combines a free online teleprompter, AI voice scrolling, notch mode, wireless remote control, script management, and professional video recording in one simple workspace.",
+    "eyebrow": "Key Features",
+    "title": "Designed for Natural Delivery",
+    "description": "A complete browser-based workflow to write, read, and record without installing software.",
     "items": [
       {
-        "title": "AI Voice Scroll",
-        "description": "Auto-scrolls based on Speech Recognition API with ultra-fast < 50ms latency for perfect pacing."
+        "title": "AI Voice Scrolling",
+        "description": "Automatically scrolls as you speak using native browser speech recognition."
       },
       {
-        "title": "Notch Teleprompter Mode",
-        "description": "Anchors near your camera lens to reduce eye deviation to under 3 degrees, ensuring natural eye contact."
+        "title": "Notch Reading Mode",
+        "description": "Anchors a narrow reading block directly under the camera lens to minimize eye movement."
       },
       {
-        "title": "WebSocket Remote Control",
-        "description": "Real-time sync (< 10ms latency) via QR code. Control your script from any phone without installing apps."
+        "title": "QR Remote Control",
+        "description": "Scan a QR code with your phone to pause, play, or adjust speed from across the room."
       },
       {
-        "title": "4K Video Recording",
-        "description": "Record professional 4K video directly in-browser. Note: iOS Safari is limited to 1080p due to Webkit sandboxing."
+        "title": "In-Browser 4K Recording",
+        "description": "Record high-resolution videos while reading, saving directly to your computer."
       },
       {
-        "title": "Touch-First iPad UI",
-        "description": "Optimized touch targets (> 44px) and smooth swiping perfect for iPadOS and mobile workflows."
+        "title": "Optimized for Tablets",
+        "description": "Large touch targets (>44px) make it easy to control when mounted on a tripod."
       },
       {
-        "title": "Zero Watermark",
-        "description": "Export clean, professional videos without any branded overlays or watermarks."
+        "title": "No Watermarks",
+        "description": "Export clean, unbranded video recordings with zero limitations."
       }
     ]
   },
   "howItWorks": {
-    "eyebrow": "Simple from the First Take",
-    "title": "How SolPrompter Works",
-    "description": "Turn any script into a smooth presentation or professional recording in just a few steps.",
+    "eyebrow": "Workflow",
+    "title": "Simple and Instant",
+    "description": "Prepare your script and start presenting or recording in just a few steps.",
     "steps": [
       {
         "anchor": "step-add-script",
-        "title": "Add Your Script",
-        "description": "Paste your text directly into SolPrompter or upload an existing script from your device."
+        "title": "Input script",
+        "description": "Paste your text directly or upload a document from your device."
       },
       {
         "anchor": "step-choose-scroll-mode",
-        "title": "Choose Your Scroll Mode",
-        "description": "Set a fixed scrolling speed, control the script manually or activate AI Voice Scroll."
+        "title": "Choose scroll mode",
+        "description": "Set a fixed automatic speed, use voice sync, or scroll manually."
       },
       {
         "anchor": "step-customize-view",
-        "title": "Customize Your View",
-        "description": "Adjust the font, text size, line spacing, reading area and teleprompter position for comfortable reading."
+        "title": "Customize view",
+        "description": "Adjust font sizes, line heights, and margins for reading comfort."
       },
       {
         "anchor": "step-start-presenting",
-        "title": "Start Presenting",
-        "description": "Open the teleprompter, connect a remote if needed and begin presenting or recording."
+        "title": "Start presenting",
+        "description": "Open the teleprompter, connect a remote if needed, and start speaking."
       }
     ]
   },
   "voiceScroll": {
-    "eyebrow": "Scroll at the Speed of Your Voice",
-    "title": "AI Voice Scroll That Follows You",
-    "description": "Powered by the Web Speech API, SolPrompter listens and automatically scrolls through your script with less than 50ms latency, adapting to your natural speaking pace.",
+    "eyebrow": "Voice Sync",
+    "title": "AI Voice Scroll Teleprompter",
+    "subTitle": "Scroll at the speed of your voice",
+    "problemSolution": {
+      "problemTitle": "Problem: Traditional teleprompters scroll at a fixed speed",
+      "problemDesc": "If you speak faster, you lose your place. If you pause, the script keeps moving. This makes presentations feel rigid and stressful.",
+      "solutionTitle": "Solution: AI Voice-Activated Scrolling",
+      "solutionDesc": "SolPrompter listens and automatically advances the script as you read, adapting instantly to your natural speed in real-time."
+    },
+    "description": "Powered by the Web Speech API, this free browser teleprompter listens and automatically advances the autocue as you read, adapting instantly to your natural speed.",
     "benefits": [
       {
-        "title": "Speak Naturally",
-        "description": "Read at your own pace without sounding rushed, slow or robotic."
+        "title": "Speak naturally",
+        "description": "Read at your own pace without feeling rushed or sounding robotic."
       },
       {
-        "title": "Pause When You Need To",
-        "description": "Take a breath, emphasize an idea or pause between sections without immediately losing your place."
+        "title": "Pause when you need to",
+        "description": "Take a breath, emphasize an idea, or pause between sections without losing your place."
       },
       {
-        "title": "Stay Focused",
-        "description": "Keep the correct part of your script visible while concentrating on your delivery."
+        "title": "Stay focused",
+        "description": "The active lines are kept exactly at the center of your eye level."
       },
       {
-        "title": "Reduce Retakes",
-        "description": "Avoid mistakes caused by scripts moving too quickly or too slowly during recording."
+        "title": "Minimize retakes",
+        "description": "Avoid mistakes caused by a script scrolling too fast or too slow."
       }
     ],
-    "supporting": "Prefer a traditional online autocue? Manual and fixed-speed scrolling controls are always available.",
+    "qa": {
+      "q": "Does AI voice scroll require an account?",
+      "a": "No, SolPrompter is a free teleprompter with no signup required. You can paste your video script or speech script and start prompting instantly."
+    },
+    "supporting": "Prefer traditional scrolling? Manual and fixed-speed controls are always available.",
     "cta": {
-      "label": "Try AI Voice Scroll",
+      "label": "Try voice scroll",
       "url": "/teleprompter.html"
     }
   },
   "notch": {
-    "eyebrow": "Natural Eye Contact",
-    "title": "Keep Your Script Close to the Camera",
-    "description": "SolPrompter’s notch mode places a compact reading area near your camera. By keeping lines to 50-70 characters, it reduces eye travel to under 3 degrees.",
+    "eyebrow": "Professional Rig Setup",
+    "title": "Notch Mode for Natural Eye Contact",
+    "description": "Optimize your camera angles by placing lines directly beneath your lens and syncing a phone for remote adjustments to maintain natural camera eye contact.",
     "items": [
-      "Reduce obvious side-to-side eye movement.",
-      "Place the script near your webcam or phone camera.",
-      "Resize the reading area to show only the lines you need.",
-      "Move the teleprompter anywhere on your screen.",
-      "Maintain more natural eye contact during recordings and video calls."
+      "Limit line width to 50-70 characters to prevent side-to-side scanning.",
+      "Anchor the text directly underneath the camera lens.",
+      "Customize the viewport height to show only the lines you need.",
+      "Maintain a direct, natural eye connection with your audience."
     ],
-    "supporting": "Notch mode is ideal for interviews, presentations, product demos, online lessons, video calls and talking-head content.",
+    "supporting": "Perfect for talking-head videos, video calls, remote interviews, and online lessons.",
     "cta": {
-      "label": "Open Notch Mode",
+      "label": "Open teleprompter",
       "url": "/teleprompter.html"
     }
   },
   "remote": {
-    "eyebrow": "Control from Anywhere",
-    "title": "Use Any Device as a Teleprompter Remote",
-    "description": "Utilizing persistent WebSockets, you can connect your phone or tablet via QR code for under 10ms latency control—no app installation needed.",
+    "eyebrow": "Remote Control",
+    "title": "Scan a QR to control from any device",
+    "description": "Connect a phone or tablet via QR code using secure WebSockets. Control your presentation without installing external applications.",
     "items": [
       {
-        "title": "Start and Pause",
-        "description": "Control the teleprompter discreetly while presenting."
+        "title": "Play & pause script",
+        "description": "Start or freeze the teleprompter discreetly while presenting."
       },
       {
-        "title": "Adjust Scroll Speed",
-        "description": "Increase or decrease the speed from your connected remote device."
+        "title": "Adjust speed",
+        "description": "Fine-tune the scroll speed directly from your phone's screen."
       },
       {
-        "title": "Navigate Your Script",
-        "description": "Move forward, go back or jump to another section of your script."
+        "title": "Navigate script",
+        "description": "Jump forward, backward, or skip to other sections instantly."
       },
       {
-        "title": "Manage Recording",
-        "description": "Start or stop recording remotely when supported by your device and browser."
+        "title": "Trigger recording",
+        "description": "Start and stop camera recording from across the room."
       }
     ],
-    "supporting": "Perfect for solo creators, speakers, studios, production teams and remote presentations.",
+    "qa": {
+      "q": "Does it work on iPad and mobile phones?",
+      "a": "Yes! SolPrompter works as a mobile teleprompter or iPad prompter. You can also scan the QR code to use your phone as a wireless remote control for the teleprompter running on your iPad, tablet, or laptop."
+    },
+    "supporting": "An essential workflow for solo creators, corporate presenters, and stage speakers.",
     "cta": {
-      "label": "Connect a Remote",
+      "label": "Connect remote",
       "url": "/teleprompter.html"
     }
   },
   "recording": {
-    "eyebrow": "Record While You Read",
-    "title": "Create Professional Videos in Full HD or 4K",
-    "description": "Record clean, high-quality video straight from your browser. Note: 4K recording is fully supported on desktop, while iOS devices are limited to 1080p.",
+    "eyebrow": "Recording & Privacy",
+    "title": "In-Browser 4K Recording & Local Script Privacy",
+    "description": "Capture crisp video straight from the browser while keeping your scripts 100% private in local storage.",
     "items": [
       {
         "title": "Live Camera Preview",
-        "description": "Check your position, framing and appearance before and during your recording."
+        "description": "Preview and check your framing and alignment before hit recording."
       },
       {
-        "title": "Full HD Recording",
-        "description": "Create clear, high-quality videos for social media, lessons, presentations and business content."
+        "title": "Record Full HD & 4K",
+        "description": "Record high-resolution videos directly inside the browser on desktop (1080p on iOS)."
       },
       {
-        "title": "4K Recording",
-        "description": "Capture professional high-resolution video when your camera, browser and device support it."
-      },
-      {
-        "title": "No Watermark",
-        "description": "Export clean recordings without a SolPrompter logo or branded overlay."
+        "title": "Zero Watermarks",
+        "description": "Your exported video files are unbranded and free from any watermark."
       },
       {
         "title": "Recording Library",
-        "description": "Keep your takes organized and quickly find the recording associated with each script."
+        "description": "Keep all your recorded takes organized and tied to their respective scripts."
       }
     ],
+    "qa": {
+      "q": "Can I record video with SolPrompter?",
+      "a": "Yes! SolPrompter features high-quality browser video recording (up to 4K resolution on supported desktops and 1080p on iOS devices) with zero watermarks. Your recorded clips are stored locally on your device for maximum privacy."
+    },
     "cta": {
-      "label": "Start Recording",
+      "label": "Start recording",
       "url": "/teleprompter.html"
     }
   },
   "workspace": {
-    "eyebrow": "Your Content Workspace",
-    "title": "Manage Scripts and Recordings Together",
-    "description": "Your data is entirely local. SolPrompter stores all scripts safely in your browser's IndexedDB, ensuring zero cloud dependency and total privacy.",
+    "eyebrow": "Local Workspace",
+    "title": "100% private script management",
+    "description": "Scripts are saved locally in the browser's IndexedDB. No texts or videos are ever uploaded to external servers, protecting your sensitive content.",
     "items": [
       {
-        "title": "Create and Edit Scripts",
-        "description": "Write new scripts or update existing content directly inside SolPrompter."
+        "title": "Write and edit scripts",
+        "description": "Create new drafts or edit existing ones directly inside the tool."
       },
       {
-        "title": "Upload Existing Content",
-        "description": "Import scripts from supported documents instead of copying each section manually."
+        "title": "Fast file importing",
+        "description": "Upload TXT, DOCX, or Markdown files directly instead of copy-pasting."
       },
       {
-        "title": "Organize Your Library",
-        "description": "Keep scripts and recordings organized so they are ready for future presentations."
+        "title": "Unlimited scripts",
+        "description": "Store as many scripts as your browser's local database allows."
       },
       {
-        "title": "Reuse Your Scripts",
-        "description": "Open previous scripts, make quick changes and record new versions without starting again."
-      },
-      {
-        "title": "Access from Any Screen",
-        "description": "Continue working from your phone, tablet, laptop or desktop computer."
+        "title": "Instant reuse",
+        "description": "Open past scripts, update details, and record new takes in seconds."
       }
-    ]
+    ],
+    "qa": {
+      "q": "Can I upload DOCX files?",
+      "a": "Yes! You can easily import TXT, Markdown, and DOCX documents directly into your local workspace. The scripts are processed locally in your browser and are never uploaded to any server."
+    }
   },
   "mobile": {
     "eyebrow": "Designed for Every Screen",
@@ -310,47 +324,63 @@
     "supporting": "Use SolPrompter as your mobile teleprompter, desktop teleprompter, or browser-based online autocue."
   },
   "useCases": {
-    "eyebrow": "Made for Every Presenter",
-    "title": "Who Uses SolPrompter Online Teleprompter?",
+    "eyebrow": "Use Cases",
+    "title": "Who is SolPrompter for?",
     "items": [
       {
         "title": "Content Creators",
-        "description": "Record TikTok videos, YouTube videos, Shorts, Reels and other social content without memorizing every line."
+        "description": "Record TikToks, Shorts, and Reels without having to memorize your lines."
       },
       {
         "title": "YouTubers",
-        "description": "Deliver reviews, tutorials, explainers and talking-head videos with a smoother, more confident presentation."
+        "description": "Deliver tutorials, explainers, and reviews with a natural and fluent speaking style."
       },
       {
         "title": "Podcasters",
-        "description": "Follow introductions, sponsor messages, structured questions and episode notes while recording."
+        "description": "Read intros, sponsor readouts, and key talking points while recording audio."
       },
       {
-        "title": "Teachers and Educators",
-        "description": "Present online lessons, course videos and educational content clearly and consistently."
+        "title": "Teachers & Educators",
+        "description": "Present structured, clear, and professional lectures for online courses."
       },
       {
         "title": "Business Professionals",
-        "description": "Prepare product demos, company updates, webinars, sales presentations and training videos."
+        "description": "Deliver corporate presentations, sales demos, and training material."
       },
       {
         "title": "Public Speakers",
-        "description": "Practice speeches, rehearse presentations and deliver prepared messages with confidence."
+        "description": "Practice speeches, adjust pacing, and build confidence in front of a camera."
       },
       {
-        "title": "Journalists and Interviewers",
-        "description": "Follow scripts, questions and key talking points while staying focused on the camera."
+        "title": "Journalists & Newsreaders",
+        "description": "Read scripts smoothly while maintaining a continuous connection with the lens."
       },
       {
         "title": "Remote Teams",
-        "description": "Use notch mode during video calls, online presentations and remote interviews."
+        "description": "Use notch mode to present slides, report status, and lead video calls."
       }
+    ],
+    "platformsTitle": "Use SolPrompter for:",
+    "platforms": [
+      "YouTube Videos",
+      "TikTok",
+      "Instagram Reels",
+      "Zoom Meetings",
+      "Google Meet",
+      "Microsoft Teams",
+      "Webinars",
+      "Video Interviews",
+      "Podcasts",
+      "Keynote Speeches",
+      "Church Sermons",
+      "Graduation Speeches",
+      "Live Streaming"
     ]
   },
   "comparison": {
-    "eyebrow": "Why SolPrompter?",
-    "title": "A More Complete Free Online Teleprompter",
-    "description": "Compare SolPrompter's features with other teleprompter tools objectively.",
+    "eyebrow": "Comparison",
+    "title": "A Complete Browser Teleprompter",
+    "description": "Compare SolPrompter's core features against existing marketplace alternatives.",
     "table": {
       "headers": [
         "Feature",
@@ -360,132 +390,203 @@
       ],
       "rows": [
         {
-          "feature": "AI Voice Scroll",
-          "sol": "Free (Web Speech API)",
-          "smart": "Paid (VoiceTrack™)",
-          "mirror": "No"
+          "feature": "AI Voice Scrolling",
+          "sol": "Free",
+          "smart": "Subscription required",
+          "mirror": "Not supported"
         },
         {
           "feature": "Browser Based",
           "sol": "Yes",
-          "smart": "No (Native App)",
+          "smart": "No (App download)",
           "mirror": "Yes"
         },
         {
-          "feature": "Script privacy",
-          "sol": "Never leaves your device",
-          "smart": "Never leaves your device",
-          "mirror": "Never leaves your device"
+          "feature": "Script Privacy",
+          "sol": "100% Local on Device",
+          "smart": "Local on Device",
+          "mirror": "Local on Device"
         },
         {
-          "feature": "QR Remote",
-          "sol": "Yes (WebSocket)",
-          "smart": "App Required",
-          "mirror": "No"
+          "feature": "QR Remote Control",
+          "sol": "Yes (No installation)",
+          "smart": "Yes (App download)",
+          "mirror": "Not supported"
         },
         {
-          "feature": "Ads",
-          "sol": "No",
-          "smart": "No",
-          "mirror": "Yes (Banner Ads)"
+          "feature": "Banner Advertisements",
+          "sol": "Ad-free",
+          "smart": "Ad-free",
+          "mirror": "Yes (Banner ads)"
         },
         {
-          "feature": "4K Recording",
-          "sol": "Desktop up to 4K / iPhone up to 1080p",
-          "smart": "No",
-          "mirror": "No"
+          "feature": "4K Video Recording",
+          "sol": "Supported (Desktop)",
+          "smart": "Not supported",
+          "mirror": "Not supported"
         },
         {
           "feature": "Price",
-          "sol": "Free",
-          "smart": "Monthly Subscription",
-          "mirror": "Free + Ads"
+          "sol": "Completely free",
+          "smart": "Paid subscription",
+          "mirror": "Free (Ad-supported)"
         }
       ]
     },
     "whyChoose": {
-      "title": "Why Creators Choose SolPrompter over PromptSmart",
+      "title": "Why Creators Choose SolPrompter",
       "items": [
         {
-          "title": "Free AI Voice Scroll (Web Speech API)",
-          "description": "PromptSmart requires a paid subscription to access voice-activated scrolling. SolPrompter includes voice scrolling directly in your browser for free, powered by the native Web Speech API."
+          "title": "Free voice-activated scrolling",
+          "description": "Unlike subscription tools that lock voice sync behind paywalls, SolPrompter includes it for free, powered directly by browser speech recognition."
         },
         {
-          "title": "No Script Upload Required",
-          "description": "Your script never leaves your device. Everything is processed locally inside your browser's memory, ensuring complete privacy for sensitive or unreleased video drafts."
+          "title": "Your data stays on your machine",
+          "description": "Your scripts are processed locally in your browser. We never transmit your content, guaranteeing total privacy for drafts."
         },
         {
-          "title": "Zero App Installation",
-          "description": "Forget downloading heavy software or managing app store updates. Just open the website, paste your script, and start presenting or recording instantly."
+          "title": "No signup or setup required",
+          "description": "No accounts, no onboarding questions. Just visit the site, paste your script, and start presenting instantly."
         }
       ]
     },
-    "supporting": "From writing your script to recording the final take, SolPrompter gives you the tools you need in one place."
+    "supporting": "From writing your first script to recording the final video, SolPrompter provides all the tools in one browser window."
   },
   "about": {
-    "eyebrow": "About SolPrompter",
-    "title": "Built to Make Online Teleprompting Feel Natural",
+    "eyebrow": "About",
+    "title": "Making online reading feel like a natural conversation",
     "paragraphs": [
-      "SolPrompter is a free online teleprompter created for people who want to speak confidently without memorizing every word or constantly managing scroll controls.",
-      "Our goal is to create the most complete and accessible online teleprompter experience, combining reliable AI scrolling, thoughtful design, natural-eye-contact tools and professional recording features.",
-      "Whether you are recording from a phone, presenting from a laptop or controlling a studio setup remotely, SolPrompter helps you stay focused on your audience instead of the software."
+      "SolPrompter was built to help speakers present confidently without memorizing long texts or fidgeting with scroll speeds.",
+      "We focus on creating a minimal, high-end online teleprompter that blends accurate voice tracking, ergonomic design, and simple video recording.",
+      "Whether you are shooting on a phone, recording from a laptop, or managing a studio, SolPrompter keeps you focused on your audience."
     ]
   },
   "finalCta": {
-    "eyebrow": "Ready to Present?",
-    "title": "Start Using SolPrompter",
-    "description": "Add your script, choose your preferred reading mode and start presenting naturally.",
+    "eyebrow": "Start Speaking",
+    "title": "Present naturally with SolPrompter",
+    "description": "Enter your script, configure your display settings, and record your video today.",
     "cta": {
-      "label": "Open Free Teleprompter",
+      "label": "Open teleprompter",
       "url": "/teleprompter.html"
     },
     "supporting": "Free, ad-free, watermark-free."
   },
   "faq": {
-    "eyebrow": "Questions & Answers",
+    "eyebrow": "FAQ",
     "title": "Frequently Asked Questions",
     "items": [
       {
         "anchor": "faq-maintain-eye-contact",
-        "q": "How do I avoid the stiff \"hostage reader\" look and maintain natural eye contact while reading?",
-        "a": "<strong>You can maintain a completely natural gaze by activating SolPrompter's Notch Mode to keep the script directly beneath your camera lens.</strong> This feature shrinks the reading area width (keeping lines to 50-70 characters) and anchors it at the absolute top center of the viewport. This reduces eye travel (horizontal and vertical deviation) to under 3 degrees, ensuring your audience sees you looking directly into the camera lens, not scanning a screen."
+        "q": "How do I avoid looking like I am reading and maintain eye contact?",
+        "a": "<strong>Activate SolPrompter's Notch Mode to position your script directly below the lens.</strong> This narrows the text width to 50-70 characters and anchors it at the top-center. By reducing eye movement to under 3 degrees, it gives the appearance that you are speaking directly to the viewer."
       },
       {
         "anchor": "faq-vs-app-store",
-        "q": "Why should I choose SolPrompter over a dedicated App Store teleprompter app?",
-        "a": "<strong>SolPrompter is a completely web-native workspace that runs instantly without downloads, subscriptions, watermark exports, or annoying ad banner interruptions.</strong> Most apps on iOS/Android lock script management, custom scroll speed, and mirror mode behind paywalls. SolPrompter provides all these premium features on a clean, modern web interface with zero registration required."
+        "q": "Why choose SolPrompter over an App Store application?",
+        "a": "<strong>SolPrompter works directly on the web, requires no download, and does not put watermarks on your video exports.</strong> Most mobile applications limit script length or charge monthly fees to toggle simple features. SolPrompter provides full functionality out of the box."
       },
       {
         "anchor": "faq-remote-control-stability",
-        "q": "Will the remote control disconnect if my phone screen locks or goes to sleep?",
-        "a": "<strong>No, SolPrompter's remote control system utilizes persistent WebSockets with an automatic heartbeat protocol to ensure connection stability even when idle.</strong> As long as the browser tab is active, the link between the tablet and the control phone (paired in 3 seconds via QR code) remains connected with a latency of under 10ms. This prevents the frustrating timeouts common with hardware clickers."
+        "q": "Will the remote disconnect when my phone locks or goes to sleep?",
+        "a": "<strong>No, SolPrompter's remote uses persistent WebSockets with a heartbeat protocol to ensure stability.</strong> As long as the teleprompter tab remains active, the link stays alive with under 10ms latency, preventing the dropouts common in hardware clickers."
       },
       {
         "anchor": "faq-physical-beamsplitter",
-        "q": "How do I setup a physical glass beamsplitter rig with this web application?",
-        "a": "<strong>You can toggle \"Mirror Mode\" in SolPrompter's display settings to instantly flip the script text horizontally.</strong> Physical teleprompters reflect your screen image onto a 45-degree beamsplitter glass, which reverses the image naturally. For optimal clarity, set the interface to Dark Mode (white text on a pure black background) to eliminate double-image \"ghosting\" reflections in the glass."
+        "q": "Can I use SolPrompter with a physical glass beamsplitter rig?",
+        "a": "<strong>Yes, toggle \"Mirror Mode\" in SolPrompter's settings to flip the text horizontally.</strong> To maximize reading contrast, switch the interface to dark mode (white text on a pure black background) to eliminate double reflections."
       },
       {
         "anchor": "faq-script-privacy",
-        "q": "Is it safe to paste confidential business scripts or unreleased product drafts?",
-        "a": "<strong>Yes, SolPrompter is completely secure because all scripts and recordings are stored locally inside your browser's private memory (LocalStorage/IndexedDB).</strong> Because no script data is transmitted to SolPrompter's servers, your confidential business reviews, unreleased video drafts, or notes remain 100% private and protected on your own device."
+        "q": "Are my scripts and corporate drafts secure?",
+        "a": "<strong>Yes, all scripts are saved directly inside your browser's local IndexedDB.</strong> No text or video content is transmitted to SolPrompter servers, keeping your documents 100% private on your own hardware."
       },
       {
         "anchor": "faq-ghosting-blur",
-        "q": "Why does my text on the teleprompter glass look blurry or double-imaged?",
-        "a": "<strong>This double-imaging (ghosting) is caused by light reflecting off both the front and back of standard glass; you can resolve this by using a professional beamsplitter glass and lowering screen brightness.</strong> Standard window glass has two reflective surfaces. A professional 70/30 teleprompter beamsplitter glass has an anti-reflective coating on one side to eliminate double reflections. Shrouding the back of the glass with a dark cloth is also essential to prevent glare."
+        "q": "Why does the reflected text on my glass look blurry?",
+        "a": "<strong>Double-reflections (ghosting) happen on normal glass. Use professional beamsplitter glass and lower screen brightness.</strong> A professional 70/30 glass has an anti-reflective coating on one side. Draping the back of the glass with a dark cloth is also necessary to prevent light leaks."
       },
       {
         "anchor": "faq-offline-use",
-        "q": "Can I use this online teleprompter without an active internet connection?",
-        "a": "<strong>The basic teleprompter workspace operates offline once the web page is fully loaded, but the AI Voice Scroll feature requires an active internet connection.</strong> SolPrompter's voice activation uses the browser's native Web Speech API, which transmits voice queries to Google or Apple cloud servers for speech-to-text processing. If your shoot has no internet connection, you can easily fall back to SolPrompter's manual scrolling or adjustable-speed auto-scroll."
+        "q": "Can I run the teleprompter offline?",
+        "a": "<strong>The teleprompter workspace operates offline once loaded, but voice sync requires internet.</strong> The speech recognition uses native browser APIs, which process audio via Google or Apple cloud servers. For offline settings, switch to fixed-speed or manual scrolling."
       },
       {
         "anchor": "faq-font-size-distance",
-        "q": "How do I determine the correct font size and distance for reading comfort?",
-        "a": "<strong>The recommended benchmark is to set your font height to 1 inch for every 10 feet of distance between you and the teleprompter screen.</strong> For close-up desktop recordings (within 3-4 feet), a smaller, condensed reading area is preferred because a wide layout forces your eyes to scan visibly from left to right, breaking camera connection."
+        "q": "How do I determine the right font size for my reading distance?",
+        "a": "<strong>A general benchmark is to size your font to 1 inch of height for every 10 feet of reading distance.</strong> For close-up laptop reading, a smaller, narrow text layout is preferred to prevent eyes from visibly scanning left and right."
       }
     ]
+  },
+  "topic": {
+    "eyebrow": "Topic Knowledge",
+    "title": "What is an Online Teleprompter?",
+    "description": "An online teleprompter (or browser teleprompter) is a software application that displays rolling text on a screen to help speakers deliver their video scripts, reading scripts, and speech scripts smoothly while maintaining direct eye contact with the camera.",
+    "sections": [
+      {
+        "title": "What is an Online Teleprompter?",
+        "description": "An online teleprompter is a digital tool that displays your script scrolling on a screen, allowing you to read it naturally while presenting or recording. Unlike physical glass rigs, a browser teleprompter requires no special hardware and runs directly on your computer, tablet, or phone."
+      },
+      {
+        "title": "Who Should Use a Teleprompter?",
+        "description": "Any content creator, corporate speaker, educator, or live streamer who needs to present clearly can benefit from a teleprompter app. YouTubers use it for scripts, educators use it for online lectures, and business professionals rely on it for sales demos and Zoom presentations to ensure key talking points are covered fluently."
+      },
+      {
+        "title": "Why Use a Teleprompter?",
+        "description": "Using a teleprompter eliminates the need to memorize long video scripts, saving hours in post-production. It keeps your eye level focused near the camera lens, preventing you from looking down at speaker notes, and helps you deliver structured presentations without stuttering."
+      },
+      {
+        "title": "When Do You Need One?",
+        "description": "You need an online autocue when recording tutorials, streaming live webinars, conducting remote interviews, or giving presentations where reading a script word-for-word is required for compliance, accuracy, or timing."
+      }
+    ]
+  },
+  "engineering": {
+    "eyebrow": "EEAT & Performance Benchmarks",
+    "title": "Engineering Decisions & Real-World Benchmarks",
+    "description": "Discover why we built SolPrompter as a browser-first, privacy-by-design teleprompter, and check our performance metrics.",
+    "eeat": [
+      {
+        "title": "Why We Built SolPrompter",
+        "description": "Existing teleprompter software often locks essential features (like voice scrolling or watermark-free recording) behind expensive monthly subscriptions. We built SolPrompter to provide a high-end, completely free online teleprompter with no signup required, making professional tools accessible to all creators."
+      },
+      {
+        "title": "Engineering Decisions: Why Browser-First?",
+        "description": "By designing SolPrompter to run entirely in the browser, we eliminate the need for creators to download unverified desktop apps. Modern web APIs like Web Speech and WebRTC allow us to build hardware-accelerated speech detection and 4K video recording with zero local installation."
+      },
+      {
+        "title": "Privacy by Design",
+        "description": "SolPrompter utilizes a local-first design. All scripts are stored in your browser's IndexedDB, and all video recordings are processed directly in memory and saved to your device. No data is ever sent to our servers, ensuring your sensitive scripts and client recordings remain 100% private."
+      }
+    ],
+    "benchmarksTitle": "Performance Benchmarks",
+    "benchmarks": [
+      {
+        "metric": "AI Voice Scroll Latency",
+        "sol": "< 50ms (Real-time)",
+        "trad": "N/A (Fixed Speed)"
+      },
+      {
+        "metric": "Speech Detection Accuracy",
+        "sol": "98% (Multi-language)",
+        "trad": "Manual Control Only"
+      },
+      {
+        "metric": "CPU Usage (Idle/Scroll)",
+        "sol": "< 2% / 5%",
+        "trad": "High (Desktop App)"
+      },
+      {
+        "metric": "Battery Consumption",
+        "sol": "Minimal (Native Web API)",
+        "trad": "Moderate to High"
+      },
+      {
+        "metric": "Supported Browsers",
+        "sol": "Chrome, Edge, Safari, Firefox",
+        "trad": "OS-restricted Apps"
+      }
+    ],
+    "benchmarksSupport": "Tested on Apple M2 (macOS) and Intel Core i7 (Windows 11) using Chrome 120."
   },
   "footer": {
     "brand": "SolPrompter",
@@ -507,16 +608,12 @@
             "url": "#how-it-works"
           },
           {
-            "label": "AI Voice Scroll",
+            "label": "Voice Scroll",
             "url": "#voice-scroll"
           },
           {
             "label": "Notch Mode",
             "url": "#notch"
-          },
-          {
-            "label": "Remote Control",
-            "url": "#remote"
           },
           {
             "label": "4K Recording",

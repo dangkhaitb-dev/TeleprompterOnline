@@ -18,6 +18,7 @@ import {
   clampScrollDuration,
   formatDuration,
   rangeFillPercent,
+  DEFAULT_SETTINGS,
   WPM_DEFAULT,
   BAR_SPEED_STEP,
   SCROLL_STEP,
@@ -627,7 +628,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   let voiceScrollUI = null;
   let voiceScrollStarting = false;
   let voiceScrollAttempt = 0;
-  let selectedScrollMode = savedSettings.scrollMode || 'auto';
+  let selectedScrollMode = savedSettings.scrollMode || DEFAULT_SETTINGS.scrollMode;
   let pendingVoiceLanguageCheck = null;
   let lastBackgroundVoiceSample = '';
   let lastBackgroundVoiceResult = null;

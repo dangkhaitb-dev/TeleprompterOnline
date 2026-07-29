@@ -520,18 +520,18 @@
       <div class="popup-title">Scroll mode</div>
       <div class="scroll-mode-options" role="radiogroup" aria-label="Choose scroll mode">
         <div class="scroll-mode-option">
-          <button class="scroll-mode-choice selected" id="speedModeAuto" type="button" role="radio" aria-checked="true">
+          <button class="scroll-mode-choice" id="speedModeAuto" type="button" role="radio" aria-checked="false">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
             <span>Auto scroll</span>
           </button>
         </div>
 
         <div class="scroll-mode-option">
-          <button class="scroll-mode-choice" id="speedMethodWpm" type="button" role="radio" aria-checked="false" aria-controls="speedWpmPanel">
+          <button class="scroll-mode-choice selected" id="speedMethodWpm" type="button" role="radio" aria-checked="true" aria-controls="speedWpmPanel">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
             <span>Word per minute</span>
           </button>
-          <section class="speed-mode-panel" id="speedWpmPanel" aria-labelledby="speedMethodWpm" hidden>
+          <section class="speed-mode-panel" id="speedWpmPanel" aria-labelledby="speedMethodWpm">
             <div class="speed-editor">
               <label class="speed-editor-header" for="speedRange">
                 <span>Scroll speed</span>

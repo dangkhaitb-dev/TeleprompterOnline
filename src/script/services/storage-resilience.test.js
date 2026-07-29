@@ -152,7 +152,7 @@ describe('localStorage resilience', () => {
 
   it('normalizes malformed settings and color values without throwing', () => {
     expect(normalizeSettings(['bad'])).toMatchObject({
-      scrollMode: 'auto',
+      scrollMode: 'wpm',
       color: '',
       fontSize: '',
       lineHeight: '1.25',

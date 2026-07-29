@@ -52,7 +52,13 @@ describe('createReadingSessionController', () => {
   });
 
   it.each(['play', 'record'])('starts %s through the same gated lifecycle', (kind) => {
-    const { controller, scroller, first, prepareSurface } = setup();
+    const {
+      controller,
+      scroller,
+      first,
+      prepareSurface,
+      startVoiceScroll,
+    } = setup();
 
     controller.begin(kind, { waitFor: ['layout', 'capture'] });
     expect(scroller.start).not.toHaveBeenCalled();
@@ -63,6 +69,7 @@ describe('createReadingSessionController', () => {
     controller.release('capture');
     expect(prepareSurface).toHaveBeenCalledWith(first, true);
     expect(scroller.start).toHaveBeenCalledWith(first);
+    expect(startVoiceScroll).not.toHaveBeenCalled();
   });
 
   it('pauses and resumes Record on the currently bound surface', () => {

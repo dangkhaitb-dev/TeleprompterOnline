@@ -38,6 +38,7 @@ describe('pxPerSecForDuration', () => {
 describe('normalizeSettings', () => {
   it('returns the defaults for an empty object', () => {
     expect(normalizeSettings({})).toEqual(DEFAULT_SETTINGS);
+    expect(DEFAULT_SETTINGS.scrollMode).toBe('wpm');
   });
 
   it('returns the defaults for non-object input', () => {
@@ -60,7 +61,7 @@ describe('normalizeSettings', () => {
     expect(normalizeSettings({ scrollMode: 'auto', scrollDurationSeconds: 125 }))
       .toMatchObject({ scrollMode: 'auto', scrollDurationSeconds: 125 });
     expect(normalizeSettings({ scrollMode: 'unknown', scrollDurationSeconds: 0 }))
-      .toMatchObject({ scrollMode: 'auto', scrollDurationSeconds: 1 });
+      .toMatchObject({ scrollMode: 'wpm', scrollDurationSeconds: 1 });
     expect(normalizeSettings({ scrollDurationSeconds: SCROLL_DURATION_MAX + 1 }).scrollDurationSeconds)
       .toBe(SCROLL_DURATION_MAX);
     expect(normalizeSettings({ scrollDurationSeconds: 'later' }).scrollDurationSeconds)

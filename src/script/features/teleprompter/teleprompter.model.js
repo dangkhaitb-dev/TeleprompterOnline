@@ -97,7 +97,7 @@ function eyeLineRatio(value) {
 
 export const DEFAULT_SETTINGS = Object.freeze({
   wpm: WPM_DEFAULT,
-  scrollMode: 'auto',
+  scrollMode: 'wpm',
   scrollDurationSeconds: SCROLL_DURATION_DEFAULT,
   mirror: false,
   pageTheme: 'dark',
@@ -131,7 +131,9 @@ export function normalizeSettings(raw = {}) {
   };
   return {
     wpm: clampWpm(s.wpm),
-    scrollMode: SCROLL_MODES.includes(s.scrollMode) ? s.scrollMode : 'auto',
+    scrollMode: SCROLL_MODES.includes(s.scrollMode)
+      ? s.scrollMode
+      : DEFAULT_SETTINGS.scrollMode,
     scrollDurationSeconds: clampScrollDuration(s.scrollDurationSeconds),
     mirror: !!s.mirror,
     pageTheme: theme(s.pageTheme),

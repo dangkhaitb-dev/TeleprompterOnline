@@ -434,18 +434,18 @@ lang: en
       <div class="popup-title">{{ pageData.speedMenu.title }}</div>
       <div class="scroll-mode-options" role="radiogroup" aria-label="{{ pageData.speedMenu.modeLabel }}">
         <div class="scroll-mode-option">
-          <button class="scroll-mode-choice selected" id="speedModeAuto" type="button" role="radio" aria-checked="true">
+          <button class="scroll-mode-choice" id="speedModeAuto" type="button" role="radio" aria-checked="false">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
             <span>{{ pageData.speedMenu.autoScroll }}</span>
           </button>
         </div>
 
         <div class="scroll-mode-option">
-          <button class="scroll-mode-choice" id="speedMethodWpm" type="button" role="radio" aria-checked="false" aria-controls="speedWpmPanel">
+          <button class="scroll-mode-choice selected" id="speedMethodWpm" type="button" role="radio" aria-checked="true" aria-controls="speedWpmPanel">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
             <span>{{ pageData.speedMenu.wordsPerMinute }}</span>
           </button>
-          <section class="speed-mode-panel" id="speedWpmPanel" aria-labelledby="speedMethodWpm" hidden>
+          <section class="speed-mode-panel" id="speedWpmPanel" aria-labelledby="speedMethodWpm">
             <div class="speed-editor">
               <label class="speed-editor-header" for="speedRange">
                 <span>{{ pageData.speedMenu.scrollSpeed }}</span>

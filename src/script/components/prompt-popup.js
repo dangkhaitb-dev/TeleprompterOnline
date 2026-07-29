@@ -19,8 +19,8 @@ export function showPrompt({
         <h2 class="prompt-title" id="prompt-title"></h2>
         <input class="prompt-input" type="text" spellcheck="false" autocomplete="off">
         <div class="prompt-actions">
-          <button class="prompt-btn prompt-cancel" type="button"></button>
-          <button class="prompt-btn prompt-ok" type="button"></button>
+          <button class="prompt-btn prompt-cancel" type="button" data-analytics-name="promptCancelClick"></button>
+          <button class="prompt-btn prompt-ok" type="button" data-analytics-name="promptSaveClick"></button>
         </div>
       </div>`;
     overlay.querySelector('.prompt-title').textContent = title;

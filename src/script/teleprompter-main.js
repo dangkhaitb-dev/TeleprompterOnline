@@ -13,8 +13,10 @@ import {
   loadWorkspace,
   createScratchWorkspace,
 } from './features/teleprompter/teleprompter.logic.js';
+import { initButtonClickTracking } from './libs/firebase/button-click-analytics.ui.js';
 import { releasePointerButtonFocus } from './utils/release-pointer-button-focus.js';
 
+initButtonClickTracking();
 releasePointerButtonFocus();
 
 const params = new URLSearchParams(window.location.search);

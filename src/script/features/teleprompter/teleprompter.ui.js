@@ -52,6 +52,7 @@ import { requestPersistentStorage } from '../../utils/storage-quota.js';
 import { scopedId } from '../../utils/scoped-query.js';
 import { initEditStaleBadge } from './collab/edit-stale-badge.ui.js';
 import { initVoiceScrollUI } from './components/voice-scroll.ui.js';
+import { nameTeleprompterAnalyticsControls } from './teleprompter-analytics.ui.js';
 import {
   preloadLanguageDetector,
   prepareSpeechPackForText,
@@ -81,6 +82,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // The entry always provides a workspace (an existing one, or a freshly created
   // scratch one), so there is no blocking empty state. Guard defensively anyway.
   if (!workspace) return;
+
+  nameTeleprompterAnalyticsControls(root);
 
   // Floating layers (color popup, scroll mirror) portal into the overlay root
   // when embedded; the standalone page keeps them on document.body.

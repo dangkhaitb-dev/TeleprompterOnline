@@ -38,7 +38,7 @@ export function showRecordingPreview({
             <h2 class="rec-preview-title" id="rec-preview-title"></h2>
             <p class="rec-preview-meta"></p>
           </div>
-          <button class="rec-preview-close" type="button">${CLOSE_ICON}</button>
+          <button class="rec-preview-close" type="button" data-analytics-name="previewCloseClick">${CLOSE_ICON}</button>
         </div>
         <div class="rec-preview-stage${isAudio ? ' is-audio' : ''}"></div>
       </div>`;

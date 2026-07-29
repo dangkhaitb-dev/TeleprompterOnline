@@ -139,6 +139,9 @@ export function initPopups({
     option.type = 'button';
     option.setAttribute('role', 'menuitemradio');
     option.dataset.deviceId = device.deviceId;
+    option.dataset.analyticsName = type === 'camera'
+      ? 'cameraDeviceClick'
+      : 'micDeviceClick';
 
     const label = document.createElement('span');
     label.textContent = device.label || `${entry.singular} ${index + 1}`;

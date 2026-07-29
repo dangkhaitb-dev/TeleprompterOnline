@@ -6,9 +6,11 @@ import '../styles/home.css';
 import '../styles/pricing.css';
 
 import { initHomeUI } from './features/home/home.ui.js';
+import { initButtonClickTracking } from './libs/firebase/button-click-analytics.ui.js';
 import { releasePointerButtonFocus } from './utils/release-pointer-button-focus.js';
 
 document.documentElement.setAttribute('data-theme', 'light');
 
+initButtonClickTracking();
 releasePointerButtonFocus();
 initHomeUI();

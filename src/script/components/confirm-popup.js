@@ -27,8 +27,8 @@ export function showConfirm({
         <h2 class="confirm-title" id="confirm-title"></h2>
         <p class="confirm-message"></p>
         <div class="confirm-actions">
-          <button class="confirm-btn confirm-cancel" type="button"></button>
-          <button class="confirm-btn confirm-ok${danger ? ' danger' : ''}" type="button"></button>
+          <button class="confirm-btn confirm-cancel" type="button" data-analytics-name="confirmCancelClick"></button>
+          <button class="confirm-btn confirm-ok${danger ? ' danger' : ''}" type="button" data-analytics-name="confirmOkClick"></button>
         </div>
       </div>`;
     overlay.querySelector('.confirm-title').textContent = title;

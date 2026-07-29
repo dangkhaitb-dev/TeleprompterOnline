@@ -61,6 +61,7 @@ export async function openTeleprompterOverlay(workspaceId, { onClosed } = {}) {
   // Mount synchronously in one task so no intermediate state ever paints.
   const rootEl = document.createElement('div');
   rootEl.className = 'tp-overlay';
+  rootEl.dataset.analyticsPage = 'teleprompter';
   rootEl.innerHTML = html;
   document.body.appendChild(rootEl);
   // tp-page on <html> applies the studio's page-level rules and doubles as the

@@ -29,7 +29,7 @@ import { createMediaPlayer } from './components/media-player.ui.js';
 
 function shellTemplate(copy) {
   return `
-  <div class="se">
+  <div class="se" data-analytics-page="scene-editor">
     <header class="se-header">
       <div class="se-header-left">
         <button class="se-logo-btn" type="button" data-role="logo" aria-label="${copy.logoAria || 'Logo'}">${LOGO}</button>

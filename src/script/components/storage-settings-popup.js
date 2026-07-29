@@ -33,12 +33,13 @@ export function showStorageSettings({
             <span class="stgs-toggle-title"></span>
             <span class="stgs-toggle-hint"></span>
           </span>
-          <input type="checkbox" class="stgs-switch" role="switch">
+          <input type="checkbox" class="stgs-switch" role="switch" data-analytics-name="storageSaveChange">
         </label>
         <div class="stgs-limit">
           <label class="stgs-limit-label" for="stgs-input"></label>
           <div class="stgs-field">
-            <input class="stgs-input" id="stgs-input" type="number" inputmode="decimal" autocomplete="off">
+            <input class="stgs-input" id="stgs-input" type="number" inputmode="decimal"
+              autocomplete="off" data-analytics-name="storageLimitChange">
             <span class="stgs-unit"></span>
           </div>
           <p class="stgs-limit-hint"></p>

@@ -12,10 +12,12 @@ import '../styles/workspaces.css';
 
 import { initWorkspacesUI } from './features/workspaces/workspaces.ui.js';
 import { indexedDbGarbageCollect } from './features/teleprompter/teleprompter.logic.js';
+import { initButtonClickTracking } from './libs/firebase/button-click-analytics.ui.js';
 import { releasePointerButtonFocus } from './utils/release-pointer-button-focus.js';
 
 document.documentElement.setAttribute('data-theme', 'light');
 
+initButtonClickTracking();
 releasePointerButtonFocus();
 initWorkspacesUI();
 

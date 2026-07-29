@@ -60,6 +60,7 @@ export function createColorPicker({ portal = document.body } = {}) {
   const grid = popup.querySelector('[data-role="grid"]');
   const dot = popup.querySelector('[data-role="dot"]');
   const hexInput = popup.querySelector('[data-role="hex"]');
+  hexInput.dataset.analyticsName = 'colorHexChange';
 
   let ctx = null; // { trigger, onPick }
   let hsv = { h: 0, s: 0, v: 0 };
@@ -88,6 +89,7 @@ export function createColorPicker({ portal = document.body } = {}) {
       b.type = 'button';
       b.className = `color-popup-swatch ${cls}`;
       b.dataset.hex = hex || '';
+      b.dataset.analyticsName = 'colorSwatchClick';
       b.style.background = hex || 'transparent';
       b.setAttribute('aria-label', label);
       if (hex && normalizeHexColor(hex) === normalizeHexColor(activeHex)) b.classList.add('selected');

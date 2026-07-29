@@ -6,8 +6,10 @@ import '../styles/reset.css';
 import '../styles/tokens.css';
 import '../styles/main.css';
 
+import { initButtonClickTracking } from './libs/firebase/button-click-analytics.ui.js';
 import { releasePointerButtonFocus } from './utils/release-pointer-button-focus.js';
 
+initButtonClickTracking();
 releasePointerButtonFocus();
 
 if (typeof window.requestIdleCallback !== 'function') {

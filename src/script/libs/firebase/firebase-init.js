@@ -31,26 +31,21 @@ const firebaseConfig = {
  *          Returns Firebase instances or null if initialization fails
  */
 export async function initializeFirebase() {
-  const isDev = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-
   try {
     // Check if analytics is supported (Safari private mode returns false)
     const analyticsSupported = await isSupported();
 
     if (!analyticsSupported) {
-      if (isDev) {
-      }
       return null;
     }
 
-    // Initialize Firebase app
-    const app = initializeApp(firebaseConfig);
+    // Reuse the app when Auth (or another Firebase feature) initialized first.
+    // Analytics and Auth are both started lazily, so their initialization order
+    // is intentionally not deterministic.
+    const app = getApps()[0] || initializeApp(firebaseConfig);
 
     // Initialize Analytics (auto-tracking enabled by default)
     const analytics = getAnalytics(app);
-
-    if (isDev) {
-    }
 
     return { app, analytics };
 

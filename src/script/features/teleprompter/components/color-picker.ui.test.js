@@ -46,6 +46,9 @@ describe('color picker swatch grid', () => {
     expect(swatches[0].classList).toContain('custom-swatch');
     expect(swatches.slice(1, 5).every((swatch) => swatch.classList.contains('history-swatch'))).toBe(true);
     expect(swatches.slice(5).every((swatch) => swatch.classList.contains('preset-swatch'))).toBe(true);
+    expect(swatches.every((swatch) => (
+      swatch.dataset.analyticsName === 'colorSwatchClick'
+    ))).toBe(true);
     expect(new Set(colors).size).toBe(colors.length);
     expect(colors.slice(1, 5)).not.toContain(colors[0]);
   });

@@ -497,6 +497,7 @@ export function initWorkspacesUI() {
       btn.type = 'button';
       btn.className = `ws-ctx-item${item.danger ? ' ws-ctx-item--danger' : ''}`;
       btn.setAttribute('role', 'menuitem');
+      btn.dataset.analyticsName = item.analyticsName || 'menuActionClick';
       btn.textContent = item.label;
       btn.addEventListener('click', (event) => {
         event.stopPropagation();
@@ -691,10 +692,10 @@ export function initWorkspacesUI() {
 
   // ---- Script actions -------------------------------------------------------
   const scriptMenuItems = (card) => [
-    { label: t('openLabel', 'Open'), onSelect: () => openWorkspace(card.id) },
-    { label: t('exportJsonLabel', 'Export'), onSelect: () => exportScriptFlow(card) },
-    { label: t('renameLabel', 'Rename'), onSelect: () => renameScriptFlow(card) },
-    { label: t('deleteLabel', 'Delete'), danger: true, onSelect: () => deleteScriptFlow(card) },
+    { label: t('openLabel', 'Open'), analyticsName: 'openScriptClick', onSelect: () => openWorkspace(card.id) },
+    { label: t('exportJsonLabel', 'Export'), analyticsName: 'exportScriptClick', onSelect: () => exportScriptFlow(card) },
+    { label: t('renameLabel', 'Rename'), analyticsName: 'renameScriptClick', onSelect: () => renameScriptFlow(card) },
+    { label: t('deleteLabel', 'Delete'), analyticsName: 'deleteScriptClick', danger: true, onSelect: () => deleteScriptFlow(card) },
   ];
 
   function exportScriptFlow(card) {
@@ -742,8 +743,8 @@ export function initWorkspacesUI() {
 
   // ---- Folder actions -------------------------------------------------------
   const folderMenuItems = (folder) => [
-    { label: t('renameLabel', 'Rename'), onSelect: () => renameFolderFlow(folder) },
-    { label: t('deleteLabel', 'Delete'), danger: true, onSelect: () => deleteFolderFlow(folder) },
+    { label: t('renameLabel', 'Rename'), analyticsName: 'renameFolderClick', onSelect: () => renameFolderFlow(folder) },
+    { label: t('deleteLabel', 'Delete'), analyticsName: 'deleteFolderClick', danger: true, onSelect: () => deleteFolderFlow(folder) },
   ];
 
   async function renameFolderFlow(folder) {
@@ -1370,9 +1371,9 @@ export function initWorkspacesUI() {
   }
 
   const recordingMenuItems = (card) => [
-    { label: t('recPreviewLabel', 'Preview'), onSelect: () => openRecordingPreview(card) },
-    { label: t('recDownloadLabel', 'Download'), onSelect: () => downloadRecording(card) },
-    { label: t('recDeleteLabel', 'Delete'), danger: true, onSelect: () => deleteRecordingFlow(card) },
+    { label: t('recPreviewLabel', 'Preview'), analyticsName: 'previewRecordingClick', onSelect: () => openRecordingPreview(card) },
+    { label: t('recDownloadLabel', 'Download'), analyticsName: 'downloadRecordingClick', onSelect: () => downloadRecording(card) },
+    { label: t('recDeleteLabel', 'Delete'), analyticsName: 'deleteRecordingClick', danger: true, onSelect: () => deleteRecordingFlow(card) },
   ];
 
   async function recordingArchiveEntries(cards) {

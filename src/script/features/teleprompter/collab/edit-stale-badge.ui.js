@@ -41,6 +41,7 @@ export function initEditStaleBadge({ mount, readWorkspace, isSyncPaused, modeEl,
   const badge = document.createElement('button');
   badge.type = 'button';
   badge.className = 'tp-stale-badge';
+  badge.dataset.analyticsName = 'reloadStaleClick';
   badge.hidden = true;
   badge.setAttribute('aria-live', 'polite');
   // Clear + concise, no separate action button — the whole pill reloads on click.

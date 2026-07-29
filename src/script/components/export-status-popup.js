@@ -16,6 +16,7 @@ export function createExportStatusPopup({ labels = {}, onDownload, onRetry, onCl
   overlay.innerHTML = `
     <section class="export-status" role="dialog" aria-modal="true" aria-labelledby="${titleId}">
       <button class="export-status-close" type="button" data-role="close"
+        data-analytics-name="exportCloseClick"
         aria-label="${labels.close || 'Close'}" hidden>${ICON_CLOSE}</button>
       <div class="export-status-mark" data-role="mark" aria-hidden="true"></div>
       <h2 class="export-status-title" id="${titleId}"></h2>
@@ -30,7 +31,8 @@ export function createExportStatusPopup({ labels = {}, onDownload, onRetry, onCl
         </div>
       </div>
       <div class="export-status-actions" data-role="actions" hidden>
-        <button class="export-status-btn primary" type="button" data-role="primary"></button>
+        <button class="export-status-btn primary" type="button" data-role="primary"
+          data-analytics-name="exportDownloadClick"></button>
       </div>
     </section>`;
 
@@ -74,6 +76,7 @@ export function createExportStatusPopup({ labels = {}, onDownload, onRetry, onCl
     actions.hidden = true;
     closeButton.hidden = false;
     closeButton.setAttribute('aria-label', labels.cancel || 'Cancel');
+    closeButton.dataset.analyticsName = 'exportCancelClick';
     updateProgress({ progress: 0, fileIndex: 0, fileCount });
   }
 
@@ -97,7 +100,9 @@ export function createExportStatusPopup({ labels = {}, onDownload, onRetry, onCl
     actions.hidden = false;
     closeButton.hidden = false;
     closeButton.setAttribute('aria-label', labels.close || 'Close');
+    closeButton.dataset.analyticsName = 'exportCloseClick';
     primaryButton.textContent = labels.download || 'Download';
+    primaryButton.dataset.analyticsName = 'exportDownloadClick';
     primaryButton.focus();
   }
 
@@ -113,7 +118,9 @@ export function createExportStatusPopup({ labels = {}, onDownload, onRetry, onCl
     actions.hidden = false;
     closeButton.hidden = false;
     closeButton.setAttribute('aria-label', labels.close || 'Close');
+    closeButton.dataset.analyticsName = 'exportCloseClick';
     primaryButton.textContent = labels.retry || 'Retry';
+    primaryButton.dataset.analyticsName = 'exportRetryClick';
     primaryButton.focus();
   }
 

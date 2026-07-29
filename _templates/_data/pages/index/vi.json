@@ -119,7 +119,7 @@
       },
       {
         "title": "Tối ưu cho iPad và tablet",
-        "description": "Nút bấm lớn (>44px), dễ dàng thao tác khi đặt máy trên chân đứng (tripod)."
+        "description": "Bố cục tự thích ứng theo màn hình dọc hoặc ngang, cân chỉnh vùng đọc, thanh điều hướng và các công cụ để mang lại trải nghiệm tập trung như một ứng dụng cài đặt."
       },
       {
         "title": "Không chèn watermark",
@@ -164,7 +164,7 @@
       "solutionTitle": "Giải pháp: Cuộn chữ theo giọng nói tự động AI",
       "solutionDesc": "SolPrompter lắng nghe và tự động cuộn chữ chạy theo tiếng nói của bạn trong thời gian thực, thích ứng ngay lập tức với tốc độ đọc tự nhiên."
     },
-    "description": "Nhờ Web Speech API, ứng dụng máy nhắc chữ chạy trên trình duyệt miễn phí này lắng nghe và tự động cuộn kịch bản khớp với tốc độ nói của bạn, đảm bảo bạn không bao giờ phải lo chữ chạy lệch nhịp.",
+    "description": "Tính năng nhận diện giọng nói tự động cuộn kịch bản theo lời đọc và thích ứng ngay khi tốc độ nói của bạn thay đổi.",
     "benefits": [
       {
         "title": "Đọc tự nhiên như đang trò chuyện",
@@ -273,9 +273,9 @@
     }
   },
   "workspace": {
-    "eyebrow": "Quản lý kịch bản local",
-    "title": "Bảo mật kịch bản của bạn tuyệt đối",
-    "description": "Toàn bộ dữ liệu kịch bản được lưu trữ cục bộ trong trình duyệt bằng IndexedDB. Không có bất kỳ dòng chữ nào gửi về máy chủ, bảo mật 100% cho các tài liệu nội bộ.",
+    "eyebrow": "Không gian làm việc riêng tư",
+    "title": "Kịch bản luôn thuộc quyền kiểm soát của bạn",
+    "description": "Kịch bản và bản ghi được giữ trên thiết bị của bạn, giúp bạn làm việc với nội dung nhạy cảm mà không phải gửi dữ liệu cho SolPrompter.",
     "items": [
       {
         "title": "Soạn thảo kịch bản trực tiếp",
@@ -302,7 +302,7 @@
   "mobile": {
     "eyebrow": "Tương thích tốt trên tablet & điện thoại",
     "title": "Giao diện tối ưu cho màn hình cảm ứng",
-    "description": "SolPrompter được thiết kế với giao diện ưu tiên cảm ứng (touch-first), mang đến trải nghiệm mượt mà trên iPad, máy tính bảng và điện thoại.",
+    "description": "SolPrompter tự điều chỉnh vùng đọc, bố cục và thanh điều khiển theo kích thước cũng như hướng màn hình, mang lại trải nghiệm liền mạch trên iPad, máy tính bảng và điện thoại.",
     "items": [
       {
         "title": "Thiết kế Responsive",
@@ -359,22 +359,6 @@
         "title": "Đội ngũ làm việc từ xa",
         "description": "Sử dụng chế độ notch để đọc báo cáo trong cuộc họp online, phỏng vấn hoặc thuyết trình trực tuyến."
       }
-    ],
-    "platformsTitle": "Sử dụng SolPrompter cho:",
-    "platforms": [
-      "Video YouTube",
-      "TikTok",
-      "Instagram Reels",
-      "Cuộc họp Zoom",
-      "Google Meet",
-      "Microsoft Teams",
-      "Webinar trực tuyến",
-      "Phỏng vấn Video",
-      "Podcasts",
-      "Bài thuyết trình Keynote",
-      "Giảng đường / Nhà thờ",
-      "Lễ tốt nghiệp",
-      "Phát trực tiếp (Live Streaming)"
     ]
   },
   "comparison": {
@@ -498,7 +482,7 @@
       {
         "anchor": "faq-script-privacy",
         "q": "Kịch bản bí mật hoặc tài liệu kinh doanh nội bộ của tôi có bị lộ không?",
-        "a": "<strong>Không, dữ liệu của bạn an toàn 100%. SolPrompter lưu trữ kịch bản ngay trong bộ nhớ trình duyệt của thiết bị (IndexedDB).</strong> Chúng tôi không truyền bất kỳ thông tin kịch bản hay video ghi hình nào về máy chủ, đảm bảo quyền riêng tư tuyệt đối cho nội dung bài thuyết trình của bạn."
+        "a": "<strong>Kịch bản và bản ghi vẫn nằm trên thiết bị trong suốt quá trình bạn làm việc.</strong> SolPrompter không tải nội dung này lên máy chủ, giúp bạn chủ động kiểm soát các tài liệu nhạy cảm."
       },
       {
         "anchor": "faq-ghosting-blur",
@@ -517,48 +501,25 @@
       }
     ]
   },
-  "topic": {
-    "eyebrow": "Kiến thức chủ đề",
-    "title": "Máy nhắc chữ Online là gì?",
-    "description": "Máy nhắc chữ online (hay teleprompter trên trình duyệt) là một ứng dụng phần mềm hiển thị văn bản cuộn trên màn hình để giúp người nói truyền tải các kịch bản video, kịch bản thuyết trình trôi chảy hơn mà vẫn giữ được giao tiếp mắt trực tiếp với camera.",
-    "sections": [
-      {
-        "title": "Máy nhắc chữ Online là gì?",
-        "description": "Máy nhắc chữ trực tuyến là một công cụ kỹ thuật số hiển thị văn bản cuộn trên màn hình, cho phép bạn đọc một cách tự nhiên trong khi thuyết trình hoặc ghi hình. Không giống như các hệ thống kính nhắc chữ vật lý, máy nhắc chữ trên trình duyệt không yêu cầu phần cứng đặc biệt và chạy trực tiếp trên máy tính, máy tính bảng hoặc điện thoại của bạn."
-      },
-      {
-        "title": "Ai nên sử dụng máy nhắc chữ?",
-        "description": "Bất kỳ nhà sáng tạo nội dung, diễn giả doanh nghiệp, giáo viên hoặc streamer nào cần trình bày rõ ràng đều có thể hưởng lợi từ ứng dụng nhắc chữ. YouTuber sử dụng nó cho kịch bản video, giáo viên sử dụng cho các bài giảng trực tuyến và các chuyên gia doanh nghiệp dựa vào nó trong các buổi gọi Zoom để đảm bảo truyền tải các ý chính trôi chảy."
-      },
-      {
-        "title": "Tại sao nên dùng máy nhắc chữ?",
-        "description": "Sử dụng máy nhắc chữ giúp loại bỏ việc phải học thuộc lòng các kịch bản video dài, tiết kiệm hàng giờ quay đi quay lại và hậu kỳ. Nó giữ cho tầm mắt của bạn tập trung gần ống kính camera, tránh việc bạn nhìn xuống tài liệu, và giúp bạn tự tin thuyết trình mà không bị vấp."
-      },
-      {
-        "title": "Khi nào bạn cần đến máy nhắc chữ?",
-        "description": "Bạn cần máy nhắc chữ trực tuyến khi quay video hướng dẫn, phát webinar trực tiếp, thực hiện các cuộc phỏng vấn từ xa hoặc trình bày các nội dung yêu cầu độ chính xác cao về mặt từ ngữ hoặc thời lượng nói."
-      }
-    ]
-  },
   "engineering": {
-    "eyebrow": "Chi tiết kỹ thuật & Đo lường hiệu năng",
-    "title": "Quyết định kỹ thuật & Đánh giá hiệu năng thực tế",
-    "description": "Tìm hiểu lý do tại sao chúng tôi xây dựng SolPrompter chạy trực tiếp trên trình duyệt, ưu tiên bảo mật dữ liệu và các số liệu hiệu năng thực tế của chúng tôi.",
-    "eeat": [
+    "eyebrow": "Được xây dựng cho sử dụng thực tế",
+    "title": "Nhanh, riêng tư và sẵn sàng khi bạn lên hình",
+    "description": "Tìm hiểu cách SolPrompter lưu kịch bản trên thiết bị, phản hồi theo thời gian thực và hoạt động ngay trong trình duyệt mà không cần tải xuống hay cài đặt phức tạp.",
+    "principles": [
       {
         "title": "Tại sao chúng tôi xây dựng SolPrompter",
         "description": "Các phần mềm nhắc chữ hiện nay thường khóa các tính năng thiết yếu (như cuộn bằng giọng nói hoặc quay video không có watermark) sau các gói đăng ký trả phí đắt đỏ. Chúng tôi xây dựng SolPrompter để cung cấp một máy nhắc chữ online hoàn toàn miễn phí, không cần đăng ký tài khoản, giúp tất cả các nhà sáng tạo nội dung dễ dàng tiếp cận công cụ chất lượng cao."
       },
       {
-        "title": "Quyết định kỹ thuật: Tại sao chạy trực tiếp trên trình duyệt?",
-        "description": "Bằng cách thiết kế SolPrompter chạy hoàn toàn trên trình duyệt, chúng tôi loại bỏ rủi ro cho người dùng khi phải tải xuống các ứng dụng máy tính không xác định. Các Web API hiện đại như Web Speech và WebRTC cho phép chúng tôi xây dựng tính năng nhận diện giọng nói tăng tốc phần cứng và ghi hình 4K trực tiếp mà không cần cài đặt thêm phần mềm."
+        "title": "Tại sao chạy trực tiếp trên trình duyệt?",
+        "description": "SolPrompter hoạt động ngay trong trình duyệt, cho phép bạn cuộn bằng giọng nói và ghi hình mà không cần tải thêm phần mềm."
       },
       {
-        "title": "Bảo mật tuyệt đối bằng kiến trúc Local-First",
-        "description": "SolPrompter sử dụng thiết kế local-first. Tất cả kịch bản được lưu trữ trong IndexedDB của trình duyệt và video ghi hình được xử lý trực tiếp trong bộ nhớ máy rồi lưu thẳng về thiết bị của bạn. Không có bất kỳ dữ liệu nào gửi về máy chủ của chúng tôi, đảm bảo kịch bản và bản ghi của bạn hoàn toàn riêng tư."
+        "title": "Riêng tư ngay từ đầu",
+        "description": "Kịch bản và bản ghi được giữ trên thiết bị thay vì tải lên SolPrompter, giúp bạn trực tiếp kiểm soát các nội dung nhạy cảm."
       }
     ],
-    "benchmarksTitle": "Đo lường hiệu năng thực tế",
+    "benchmarksTitle": "Hiệu năng đo được",
     "benchmarks": [
       {
         "metric": "Độ trễ cuộn giọng nói AI",

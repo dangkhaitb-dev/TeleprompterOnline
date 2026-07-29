@@ -119,7 +119,7 @@
       },
       {
         "title": "Optimized for Tablets",
-        "description": "Large touch targets (>44px) make it easy to control when mounted on a tripod."
+        "description": "A responsive layout adapts the reading area, navigation, and controls to portrait or landscape screens for a focused, app-like experience."
       },
       {
         "title": "No Watermarks",
@@ -164,7 +164,7 @@
       "solutionTitle": "Solution: AI Voice-Activated Scrolling",
       "solutionDesc": "SolPrompter listens and automatically advances the script as you read, adapting instantly to your natural speed in real-time."
     },
-    "description": "Powered by the Web Speech API, this free browser teleprompter listens and automatically advances the autocue as you read, adapting instantly to your natural speed.",
+    "description": "Voice recognition follows your delivery and advances the script as you speak, adapting instantly whenever your pace changes.",
     "benefits": [
       {
         "title": "Speak naturally",
@@ -273,9 +273,9 @@
     }
   },
   "workspace": {
-    "eyebrow": "Local Workspace",
-    "title": "100% private script management",
-    "description": "Scripts are saved locally in the browser's IndexedDB. No texts or videos are ever uploaded to external servers, protecting your sensitive content.",
+    "eyebrow": "Private Workspace",
+    "title": "Your scripts stay private",
+    "description": "Your scripts and recordings stay on your device, so you can work with sensitive content without sending it to SolPrompter.",
     "items": [
       {
         "title": "Write and edit scripts",
@@ -302,7 +302,7 @@
   "mobile": {
     "eyebrow": "Designed for Every Screen",
     "title": "A Mobile-Friendly Online Teleprompter",
-    "description": "SolPrompter features a touch-first UI with > 44px touch targets, delivering a premium app-like experience directly in your mobile or tablet browser.",
+    "description": "SolPrompter adapts its reading area, navigation, and controls to phones and tablets, providing a focused app-like experience in portrait or landscape.",
     "items": [
       {
         "title": "Responsive Interface",
@@ -359,22 +359,6 @@
         "title": "Remote Teams",
         "description": "Use notch mode to present slides, report status, and lead video calls."
       }
-    ],
-    "platformsTitle": "Use SolPrompter for:",
-    "platforms": [
-      "YouTube Videos",
-      "TikTok",
-      "Instagram Reels",
-      "Zoom Meetings",
-      "Google Meet",
-      "Microsoft Teams",
-      "Webinars",
-      "Video Interviews",
-      "Podcasts",
-      "Keynote Speeches",
-      "Church Sermons",
-      "Graduation Speeches",
-      "Live Streaming"
     ]
   },
   "comparison": {
@@ -498,7 +482,7 @@
       {
         "anchor": "faq-script-privacy",
         "q": "Are my scripts and corporate drafts secure?",
-        "a": "<strong>Yes, all scripts are saved directly inside your browser's local IndexedDB.</strong> No text or video content is transmitted to SolPrompter servers, keeping your documents 100% private on your own hardware."
+        "a": "<strong>Yes. Your scripts and recordings remain on your device while you work.</strong> SolPrompter does not upload this content to its servers, helping keep confidential drafts under your control."
       },
       {
         "anchor": "faq-ghosting-blur",
@@ -517,48 +501,25 @@
       }
     ]
   },
-  "topic": {
-    "eyebrow": "Topic Knowledge",
-    "title": "What is an Online Teleprompter?",
-    "description": "An online teleprompter (or browser teleprompter) is a software application that displays rolling text on a screen to help speakers deliver their video scripts, reading scripts, and speech scripts smoothly while maintaining direct eye contact with the camera.",
-    "sections": [
-      {
-        "title": "What is an Online Teleprompter?",
-        "description": "An online teleprompter is a digital tool that displays your script scrolling on a screen, allowing you to read it naturally while presenting or recording. Unlike physical glass rigs, a browser teleprompter requires no special hardware and runs directly on your computer, tablet, or phone."
-      },
-      {
-        "title": "Who Should Use a Teleprompter?",
-        "description": "Any content creator, corporate speaker, educator, or live streamer who needs to present clearly can benefit from a teleprompter app. YouTubers use it for scripts, educators use it for online lectures, and business professionals rely on it for sales demos and Zoom presentations to ensure key talking points are covered fluently."
-      },
-      {
-        "title": "Why Use a Teleprompter?",
-        "description": "Using a teleprompter eliminates the need to memorize long video scripts, saving hours in post-production. It keeps your eye level focused near the camera lens, preventing you from looking down at speaker notes, and helps you deliver structured presentations without stuttering."
-      },
-      {
-        "title": "When Do You Need One?",
-        "description": "You need an online autocue when recording tutorials, streaming live webinars, conducting remote interviews, or giving presentations where reading a script word-for-word is required for compliance, accuracy, or timing."
-      }
-    ]
-  },
   "engineering": {
-    "eyebrow": "EEAT & Performance Benchmarks",
-    "title": "Engineering Decisions & Real-World Benchmarks",
-    "description": "Discover why we built SolPrompter as a browser-first, privacy-by-design teleprompter, and check our performance metrics.",
-    "eeat": [
+    "eyebrow": "Built for the Real World",
+    "title": "Fast, Private, and Ready to Perform",
+    "description": "See how SolPrompter keeps scripts on your device, responds in real time, and runs directly in the browser without downloads or complicated setup.",
+    "principles": [
       {
         "title": "Why We Built SolPrompter",
         "description": "Existing teleprompter software often locks essential features (like voice scrolling or watermark-free recording) behind expensive monthly subscriptions. We built SolPrompter to provide a high-end, completely free online teleprompter with no signup required, making professional tools accessible to all creators."
       },
       {
-        "title": "Engineering Decisions: Why Browser-First?",
-        "description": "By designing SolPrompter to run entirely in the browser, we eliminate the need for creators to download unverified desktop apps. Modern web APIs like Web Speech and WebRTC allow us to build hardware-accelerated speech detection and 4K video recording with zero local installation."
+        "title": "Why It Runs in Your Browser",
+        "description": "SolPrompter works directly in your browser, so you can use voice scrolling and record video without downloading additional software."
       },
       {
-        "title": "Privacy by Design",
-        "description": "SolPrompter utilizes a local-first design. All scripts are stored in your browser's IndexedDB, and all video recordings are processed directly in memory and saved to your device. No data is ever sent to our servers, ensuring your sensitive scripts and client recordings remain 100% private."
+        "title": "Privacy by Default",
+        "description": "Your scripts and recordings remain on your device instead of being uploaded to SolPrompter, giving you direct control over sensitive content."
       }
     ],
-    "benchmarksTitle": "Performance Benchmarks",
+    "benchmarksTitle": "Measured Performance",
     "benchmarks": [
       {
         "metric": "AI Voice Scroll Latency",

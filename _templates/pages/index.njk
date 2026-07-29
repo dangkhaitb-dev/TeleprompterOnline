@@ -19,7 +19,7 @@ eleventyComputed:
         <div class="nav-left">
             <a href="/" class="brand" tabindex="0" style="height: 100%; opacity: 1; gap: 0.5rem;">
                 <div class="shared-brand-logo" aria-hidden="true" style="background-image: url('/logo.webp'); background-size: 100% 100%; width: 21px; height: 21px;"></div>
-                <p class="shared-brand-text" style="font-size: 14px !important; font-weight: 600 !important; margin: 0;">SolPrompter</p>
+                <p class="shared-brand-text">SolPrompter</p>
             </a>
             <nav class="nav-menu" aria-label="Primary">
                 {%- for item in pageData.nav.items %}
@@ -91,28 +91,6 @@ eleventyComputed:
             </div>
         </div>
     </section>
-
-    <!-- TOPIC COVERAGE -->
-    {%- set topic = pageData.topic %}
-    {%- if topic %}
-    <section class="section section-alt" id="what-is-teleprompter" style="background-color: var(--line-soft);">
-        <div class="section-inner section-narrow">
-            <div class="section-head" style="margin-bottom: 2.5rem;">
-                <p class="eyebrow">{{ topic.eyebrow }}</p>
-                <h2 class="section-title">{{ topic.title }}</h2>
-                <p class="section-desc">{{ topic.description }}</p>
-            </div>
-            <div class="prose-content">
-                {%- for part in topic.sections %}
-                <div class="topic-sub-section" style="margin-bottom: 2rem;">
-                    <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">{{ part.title }}</h3>
-                    <p class="prose-paragraph" style="font-size: 1.05rem; line-height: 1.7; color: var(--ink-soft); margin: 0;">{{ part.description | safe }}</p>
-                </div>
-                {%- endfor %}
-            </div>
-        </div>
-    </section>
-    {%- endif %}
 
     <!-- FEATURES OVERVIEW -->
     {%- set features = pageData.features %}
@@ -300,7 +278,7 @@ eleventyComputed:
                     {%- endif %}
                 </div>
 
-                <!-- Right: Local-First Workspace -->
+                <!-- Right: Private Workspace -->
                 <div class="spotlight-col" id="workspace">
                     <h3 class="spotlight-subtitle">{{ workspace.title }}</h3>
                     <p class="section-desc" style="margin-top: 0;">{{ workspace.description }}</p>
@@ -456,10 +434,10 @@ eleventyComputed:
         </div>
     </section>
 
-    <!-- ENGINEERING & EEAT BENCHMARKS -->
+    <!-- ENGINEERING & PERFORMANCE -->
     {%- set engineering = pageData.engineering %}
     {%- if engineering %}
-    <section class="section" id="engineering-eeat">
+    <section class="section" id="engineering">
         <div class="section-inner">
             <div class="section-head" style="margin-bottom: 3.5rem;">
                 <p class="eyebrow">{{ engineering.eyebrow }}</p>
@@ -468,10 +446,10 @@ eleventyComputed:
             </div>
             
             <div class="spotlight-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 4rem; align-items: flex-start; text-align: left;">
-                <!-- Left: EEAT Decisions -->
+                <!-- Left: Product Principles -->
                 <div class="spotlight-col">
-                    {%- for item in engineering.eeat %}
-                    <div class="eeat-block" style="margin-bottom: 2rem;">
+                    {%- for item in engineering.principles %}
+                    <div class="engineering-principle" style="margin-bottom: 2rem;">
                         <h3 style="font-size: 1.35rem; font-weight: 600; color: var(--ink); margin-bottom: 0.75rem;">{{ item.title }}</h3>
                         <p class="section-desc" style="font-size: 0.95rem; line-height: 1.6; color: var(--ink-soft); margin: 0;">{{ item.description | safe }}</p>
                     </div>

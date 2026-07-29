@@ -4,6 +4,7 @@ permalink: /404.html
 pageKey: '404'
 lang: en
 ---
+{%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
 <main class="stage" id="main" tabindex="-1">
     <p class="stage__eyebrow">{{ pageData.eyebrow }}</p>
     <h1 class="stage__title">{{ pageData.title }}</h1>

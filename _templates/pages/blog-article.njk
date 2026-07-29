@@ -41,10 +41,6 @@ lang: en
             </nav>
             <h1 class="article-title">{{ article.title }}</h1>
             <p class="article-review">
-                {{ pageData.review.by }} <strong>{{ article.author.name }}</strong>
-                <span aria-hidden="true">·</span>
-                {{ pageData.review.published }} <time datetime="{{ article.date }}">{{ article.dateDisplay }}</time>
-                <span aria-hidden="true">·</span>
                 {{ pageData.review.reviewedBy }} <strong>{{ article.review.by }}</strong>
                 <span aria-hidden="true">·</span>
                 {{ pageData.review.updated }} <time datetime="{{ article.modified }}">{{ article.review.updatedDisplay }}</time>

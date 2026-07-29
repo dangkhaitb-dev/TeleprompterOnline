@@ -578,23 +578,118 @@ body.home {
   color: var(--ink-faint);
 }
 
+/* ===== COMPARISON TABLE ===== */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  font-size: 0.95rem;
+}
+
+.comparison-table th, .comparison-table td {
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.comparison-table th:first-child, .comparison-table td:first-child {
+  text-align: left;
+}
+
+.comparison-table th {
+  background: var(--line-soft);
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.comparison-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== DEVICE SHOWCASE ===== */
+.device-showcase-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 2rem 0;
+}
+
+.ipad-landscape-frame {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+  border: 12px solid #1c1c1e;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.15);
+  background: #000;
+  aspect-ratio: 4 / 3;
+}
+
+.ipad-landscape-frame .device-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.mobile-qr-remote {
+  position: absolute;
+  bottom: -15%;
+  right: -10%;
+  width: 35%;
+  aspect-ratio: 9 / 19.5;
+  border: 8px solid #1c1c1e;
+  border-radius: 20px;
+  box-shadow: -8px 12px 30px rgba(0,0,0,0.25);
+  background: #000;
+  z-index: 10;
+}
+
+.mobile-qr-remote .device-img-overlay {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* ===== MINIMUM TOUCH TARGETS (APPLE HIG) ===== */
+@media (max-width: 1024px) {
+  .btn,
+  .nav-item,
+  .footer-link,
+  summary.faq-summary,
+  .upload-floating-btn,
+  .submit-btn,
+  .mobile-nav-link,
+  .nav-toggle,
+  .mobile-nav-close {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
 /* ===== RESPONSIVE ===== */
 @media (max-width: 767px) {
   .nav-menu { display: none; }
-  .hero { padding: 3rem 2rem; }
+  .hero { padding: 2rem 1.25rem; }
   .hero-inner { margin-top: 0; }
-  .hero-title { font-size: clamp(2rem, 1.6rem + 2vw, 2.5rem); }
-  .hero-desc { font-size: 1rem; }
+  .hero-title { font-size: clamp(2.25rem, 1.8rem + 2.5vw, 2.75rem); }
+  .hero-desc { font-size: 0.95rem; }
+  .editor-textarea { font-size: 16px; }
   .hero-preview { display: none; }
 }
 
 @media (max-width: 640px) {
   .editor-textarea {
-    padding: 1.75rem 1.75rem 5rem;
-    font-size: 1rem;
-    min-height: 20rem;
-    height: 20rem;
-    border-radius: 2rem;
+    padding: 1.5rem 1.5rem 4rem;
+    font-size: 16px;
+    min-height: 14rem;
+    height: 14rem;
+    border-radius: 1.5rem;
   }
 
   .composer-actions {
@@ -615,24 +710,27 @@ body.home {
   .upload-floating-btn {
     position: absolute;
     z-index: 2;
-    top: calc(20rem - 3.75rem);
+    top: calc(14rem - 3.25rem);
     left: 1.25rem;
-    width: 2.75rem;
-    min-width: 2.75rem;
-    height: 2.75rem;
-    min-height: 2.75rem;
-    padding: 0;
+    width: auto;
+    min-width: 0;
+    height: 2.5rem;
+    min-height: 2.5rem;
+    padding: 0 1rem;
     border: 0.125rem solid var(--composer-border);
-    border-radius: 50%;
+    border-radius: 1.25rem;
     background: var(--home-bg);
     color: var(--composer-action);
-    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 22%);
+    box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 12%);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
   }
 
   .upload-floating-btn svg {
     display: block;
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1rem;
+    height: 1rem;
   }
 
   .upload-floating-btn:focus-visible {
@@ -640,9 +738,14 @@ body.home {
     outline-offset: 0;
   }
 
-  .upload-floating-btn .btn-label-full,
-  .upload-floating-btn .btn-label-short {
+  .upload-floating-btn .btn-label-full {
     display: none;
+  }
+
+  .upload-floating-btn .btn-label-short {
+    display: inline;
+    font-size: 0.85rem;
+    font-weight: 600;
   }
 }
 
@@ -669,7 +772,6 @@ body.home {
 
 .section-alt {
   border-top: 1px solid var(--line-soft);
-  border-bottom: 1px solid var(--line-soft);
 }
 
 .section-inner {

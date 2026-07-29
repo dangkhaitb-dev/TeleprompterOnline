@@ -38,7 +38,7 @@
   },
   "cta": {
     "label": "Open SolPrompter",
-    "url": "/teleprompter"
+    "url": "/"
   },
   "content": [
     {
@@ -63,7 +63,7 @@
     },
     {
       "type": "paragraph",
-      "html": "<a href=\"/teleprompter\">Open SolPrompter</a>"
+      "html": "<a href=\"/\">Open SolPrompter</a>"
     },
     {
       "type": "heading",
@@ -997,7 +997,7 @@
     },
     {
       "type": "paragraph",
-      "html": "No download or installation is required. <a href=\"/teleprompter\">Open SolPrompter</a>."
+      "html": "No download or installation is required. <a href=\"/\">Open SolPrompter</a>."
     },
     {
       "type": "heading",

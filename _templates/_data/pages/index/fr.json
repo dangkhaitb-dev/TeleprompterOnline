@@ -13,7 +13,10 @@
     "brandDescription": "SolPrompter est un téléprompteur en ligne avec IA conçu pour des présentations naturelles et un enregistrement vidéo professionnel.",
     "websiteDescription": "Un téléprompteur en ligne gratuit avec défilement vocal par IA, mode notch, télécommande et enregistrement vidéo professionnel.",
     "webpageName": "Téléprompteur en ligne gratuit avec défilement vocal par IA | SolPrompter",
-    "alternateNames": ["SolPrompter", "solprompter.com"],
+    "alternateNames": [
+      "SolPrompter",
+      "solprompter.com"
+    ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
     "primaryImage": "/og-solprompter.jpg",
@@ -24,7 +27,12 @@
     "applicationSubCategory": "Téléprompteur en ligne",
     "operatingSystem": "Tout système d'exploitation doté d'un navigateur web moderne",
     "browserRequirements": "Nécessite JavaScript et un navigateur web moderne. L'accès à la caméra et au microphone est requis pour l'enregistrement et le défilement vocal par IA.",
-    "availableOnDevice": ["Ordinateur de bureau", "Ordinateur portable", "Tablette", "Smartphone"],
+    "availableOnDevice": [
+      "Ordinateur de bureau",
+      "Ordinateur portable",
+      "Tablette",
+      "Smartphone"
+    ],
     "featureList": [
       "Défilement activé par la voix avec IA",
       "Défilement manuel du téléprompteur",
@@ -49,12 +57,27 @@
   },
   "nav": {
     "items": [
-      { "label": "Fonctionnalités", "url": "#features" },
-      { "label": "Mode Notch", "url": "#notch" },
-      { "label": "Défilement vocal", "url": "#voice-scroll" },
-      { "label": "Télécommande", "url": "#remote" }
+      {
+        "label": "Fonctionnalités",
+        "url": "#features"
+      },
+      {
+        "label": "Mode Notch",
+        "url": "#notch"
+      },
+      {
+        "label": "Défilement vocal",
+        "url": "#voice-scroll"
+      },
+      {
+        "label": "Télécommande",
+        "url": "#remote"
+      }
     ],
-    "cta": { "label": "Espaces de travail", "url": "/workspaces" }
+    "cta": {
+      "label": "Espaces de travail",
+      "url": "/workspaces"
+    }
   },
   "hero": {
     "eyebrow": "SolPrompter — Téléprompteur IA",
@@ -78,14 +101,34 @@
     "title": "Un seul téléprompteur pour chaque enregistrement",
     "description": "SolPrompter réunit un téléprompteur en ligne, le défilement vocal par IA, le mode notch, la télécommande, la gestion des scripts et l'enregistrement vidéo professionnel dans un seul espace de travail simple.",
     "items": [
-      { "title": "Défilement vocal par IA", "description": "SolPrompter suit votre voix et fait défiler votre script automatiquement au rythme naturel de votre parole." },
-      { "title": "Téléprompteur Notch", "description": "Gardez votre script près de la caméra pour réduire les mouvements visibles des yeux et maintenir un contact visuel plus naturel." },
-      { "title": "Télécommande", "description": "Utilisez un autre téléphone, une tablette ou un ordinateur pour piloter le défilement, avancer dans votre script et gérer votre présentation à distance." },
-      { "title": "Enregistrement Full HD et 4K", "description": "Enregistrez des vidéos professionnelles tout en lisant votre script directement sur le téléprompteur." },
-      { "title": "Gestion des scripts", "description": "Créez, importez, modifiez, organisez et réutilisez tous vos scripts depuis un espace de travail pratique." },
-      { "title": "Bibliothèque d'enregistrements", "description": "Enregistrez, consultez et gérez vos vidéos aux côtés des scripts utilisés pour les créer." },
-      { "title": "Pensé pour le mobile", "description": "Utilisez SolPrompter confortablement sur téléphone, tablette, ordinateur portable et de bureau grâce à une interface responsive adaptée à chaque écran." },
-      { "title": "Ni publicité ni filigrane", "description": "Présentez et enregistrez sans publicités gênantes ni filigranes de marque sur vos vidéos." }
+      {
+        "title": "Défilement vocal par IA",
+        "description": "SolPrompter suit votre voix et fait défiler votre script automatiquement au rythme naturel de votre parole."
+      },
+      {
+        "title": "Téléprompteur Notch",
+        "description": "Gardez votre script près de la caméra pour réduire les mouvements visibles des yeux et maintenir un contact visuel plus naturel."
+      },
+      {
+        "title": "Télécommande",
+        "description": "Utilisez un autre téléphone, une tablette ou un ordinateur pour piloter le défilement, avancer dans votre script et gérer votre présentation à distance."
+      },
+      {
+        "title": "Enregistrement Full HD et 4K",
+        "description": "Enregistrez des vidéos professionnelles tout en lisant votre script directement sur le téléprompteur."
+      },
+      {
+        "title": "Bibliothèque d'enregistrements",
+        "description": "Enregistrez, consultez et gérez vos vidéos aux côtés des scripts utilisés pour les créer."
+      },
+      {
+        "title": "Pensé pour le mobile",
+        "description": "Utilisez SolPrompter confortablement sur téléphone, tablette, ordinateur portable et de bureau grâce à une interface responsive adaptée à chaque écran."
+      },
+      {
+        "title": "Ni publicité ni filigrane",
+        "description": "Présentez et enregistrez sans publicités gênantes ni filigranes de marque sur vos vidéos."
+      }
     ]
   },
   "howItWorks": {
@@ -93,10 +136,26 @@
     "title": "Comment fonctionne SolPrompter",
     "description": "Transformez n'importe quel script en présentation fluide ou en enregistrement professionnel en quelques étapes.",
     "steps": [
-      { "anchor": "step-add-script", "title": "Ajoutez votre script", "description": "Collez votre texte directement dans SolPrompter ou importez un script existant depuis votre appareil." },
-      { "anchor": "step-choose-scroll-mode", "title": "Choisissez votre mode de défilement", "description": "Définissez une vitesse de défilement fixe, contrôlez le script manuellement ou activez le défilement vocal par IA." },
-      { "anchor": "step-customize-view", "title": "Personnalisez votre affichage", "description": "Ajustez la police, la taille du texte, l'interligne, la zone de lecture et la position du téléprompteur pour une lecture confortable." },
-      { "anchor": "step-start-presenting", "title": "Commencez à présenter", "description": "Ouvrez le téléprompteur, connectez une télécommande si besoin et commencez à présenter ou à enregistrer." }
+      {
+        "anchor": "step-add-script",
+        "title": "Ajoutez votre script",
+        "description": "Collez votre texte directement dans SolPrompter ou importez un script existant depuis votre appareil."
+      },
+      {
+        "anchor": "step-choose-scroll-mode",
+        "title": "Choisissez votre mode de défilement",
+        "description": "Définissez une vitesse de défilement fixe, contrôlez le script manuellement ou activez le défilement vocal par IA."
+      },
+      {
+        "anchor": "step-customize-view",
+        "title": "Personnalisez votre affichage",
+        "description": "Ajustez la police, la taille du texte, l'interligne, la zone de lecture et la position du téléprompteur pour une lecture confortable."
+      },
+      {
+        "anchor": "step-start-presenting",
+        "title": "Commencez à présenter",
+        "description": "Ouvrez le téléprompteur, connectez une télécommande si besoin et commencez à présenter ou à enregistrer."
+      }
     ]
   },
   "voiceScroll": {
@@ -104,13 +163,28 @@
     "title": "Un défilement vocal par IA qui vous suit",
     "description": "Ne calez plus votre débit sur une vitesse de défilement fixe. SolPrompter suit votre voix pour que vous vous concentriez sur la transmission naturelle de votre message.",
     "benefits": [
-      { "title": "Parlez naturellement", "description": "Lisez à votre rythme, sans paraître pressé, lent ou robotique." },
-      { "title": "Faites une pause quand il le faut", "description": "Reprenez votre souffle, insistez sur une idée ou marquez une pause entre les sections sans perdre le fil aussitôt." },
-      { "title": "Restez concentré", "description": "Gardez visible la bonne partie de votre script tout en vous concentrant sur votre prise de parole." },
-      { "title": "Limitez les reprises", "description": "Évitez les erreurs dues à un script qui défile trop vite ou trop lentement pendant l'enregistrement." }
+      {
+        "title": "Parlez naturellement",
+        "description": "Lisez à votre rythme, sans paraître pressé, lent ou robotique."
+      },
+      {
+        "title": "Faites une pause quand il le faut",
+        "description": "Reprenez votre souffle, insistez sur une idée ou marquez une pause entre les sections sans perdre le fil aussitôt."
+      },
+      {
+        "title": "Restez concentré",
+        "description": "Gardez visible la bonne partie de votre script tout en vous concentrant sur votre prise de parole."
+      },
+      {
+        "title": "Limitez les reprises",
+        "description": "Évitez les erreurs dues à un script qui défile trop vite ou trop lentement pendant l'enregistrement."
+      }
     ],
     "supporting": "Vous préférez un prompteur en ligne classique ? Les commandes de défilement manuel et à vitesse fixe restent toujours disponibles.",
-    "cta": { "label": "Essayer le défilement vocal par IA", "url": "/workspaces" }
+    "cta": {
+      "label": "Essayer le défilement vocal par IA",
+      "url": "/workspaces"
+    }
   },
   "notch": {
     "eyebrow": "Contact visuel naturel",
@@ -124,44 +198,95 @@
       "Maintenez un contact visuel plus naturel pendant les enregistrements et les appels vidéo."
     ],
     "supporting": "Le mode notch est idéal pour les interviews, les présentations, les démos produit, les cours en ligne, les appels vidéo et les contenus face caméra.",
-    "cta": { "label": "Ouvrir le mode Notch", "url": "/workspaces" }
+    "cta": {
+      "label": "Ouvrir le mode Notch",
+      "url": "/workspaces"
+    }
   },
   "remote": {
     "eyebrow": "Pilotez depuis n'importe où",
     "title": "Utilisez n'importe quel appareil comme télécommande de téléprompteur",
     "description": "Connectez un autre téléphone, une tablette ou un ordinateur et pilotez votre téléprompteur sans toucher à l'appareil d'enregistrement principal.",
     "items": [
-      { "title": "Démarrer et mettre en pause", "description": "Pilotez le téléprompteur discrètement pendant votre présentation." },
-      { "title": "Régler la vitesse de défilement", "description": "Augmentez ou réduisez la vitesse depuis votre télécommande connectée." },
-      { "title": "Naviguer dans votre script", "description": "Avancez, revenez en arrière ou passez à une autre section de votre script." },
-      { "title": "Gérer l'enregistrement", "description": "Lancez ou arrêtez l'enregistrement à distance lorsque votre appareil et votre navigateur le permettent." }
+      {
+        "title": "Démarrer et mettre en pause",
+        "description": "Pilotez le téléprompteur discrètement pendant votre présentation."
+      },
+      {
+        "title": "Régler la vitesse de défilement",
+        "description": "Augmentez ou réduisez la vitesse depuis votre télécommande connectée."
+      },
+      {
+        "title": "Naviguer dans votre script",
+        "description": "Avancez, revenez en arrière ou passez à une autre section de votre script."
+      },
+      {
+        "title": "Gérer l'enregistrement",
+        "description": "Lancez ou arrêtez l'enregistrement à distance lorsque votre appareil et votre navigateur le permettent."
+      }
     ],
     "supporting": "Parfait pour les créateurs solo, les intervenants, les studios, les équipes de production et les présentations à distance.",
-    "cta": { "label": "Connecter une télécommande", "url": "/workspaces" }
+    "cta": {
+      "label": "Connecter une télécommande",
+      "url": "/workspaces"
+    }
   },
   "recording": {
     "eyebrow": "Enregistrez en lisant",
     "title": "Créez des vidéos professionnelles en Full HD ou 4K",
     "description": "Utilisez votre caméra et le téléprompteur dans un flux de travail unifié. Lisez avec naturel, surveillez votre cadrage et enregistrez sans jongler entre plusieurs applications.",
     "items": [
-      { "title": "Aperçu caméra en direct", "description": "Vérifiez votre position, votre cadrage et votre apparence avant et pendant l'enregistrement." },
-      { "title": "Enregistrement Full HD", "description": "Créez des vidéos nettes et de qualité pour les réseaux sociaux, les cours, les présentations et les contenus professionnels." },
-      { "title": "Enregistrement 4K", "description": "Capturez une vidéo professionnelle en haute résolution lorsque votre caméra, votre navigateur et votre appareil le permettent." },
-      { "title": "Sans filigrane", "description": "Exportez des enregistrements propres, sans logo SolPrompter ni surimpression de marque." },
-      { "title": "Bibliothèque d'enregistrements", "description": "Gardez vos prises organisées et retrouvez rapidement l'enregistrement associé à chaque script." }
+      {
+        "title": "Aperçu caméra en direct",
+        "description": "Vérifiez votre position, votre cadrage et votre apparence avant et pendant l'enregistrement."
+      },
+      {
+        "title": "Enregistrement Full HD",
+        "description": "Créez des vidéos nettes et de qualité pour les réseaux sociaux, les cours, les présentations et les contenus professionnels."
+      },
+      {
+        "title": "Enregistrement 4K",
+        "description": "Capturez une vidéo professionnelle en haute résolution lorsque votre caméra, votre navigateur et votre appareil le permettent."
+      },
+      {
+        "title": "Sans filigrane",
+        "description": "Exportez des enregistrements propres, sans logo SolPrompter ni surimpression de marque."
+      },
+      {
+        "title": "Bibliothèque d'enregistrements",
+        "description": "Gardez vos prises organisées et retrouvez rapidement l'enregistrement associé à chaque script."
+      }
     ],
-    "cta": { "label": "Commencer l'enregistrement", "url": "/workspaces" }
+    "cta": {
+      "label": "Commencer l'enregistrement",
+      "url": "/workspaces"
+    }
   },
   "workspace": {
     "eyebrow": "Votre espace de contenu",
     "title": "Gérez scripts et enregistrements au même endroit",
     "description": "Ne cherchez plus dans des dossiers, des documents et des applications distinctes. SolPrompter réunit vos scripts et vos enregistrements dans un espace de travail organisé.",
     "items": [
-      { "title": "Créez et modifiez des scripts", "description": "Rédigez de nouveaux scripts ou mettez à jour du contenu existant directement dans SolPrompter." },
-      { "title": "Importez du contenu existant", "description": "Importez des scripts depuis des documents compatibles au lieu de copier chaque section à la main." },
-      { "title": "Organisez votre bibliothèque", "description": "Gardez scripts et enregistrements organisés et prêts pour vos prochaines présentations." },
-      { "title": "Réutilisez vos scripts", "description": "Ouvrez d'anciens scripts, faites des modifications rapides et enregistrez de nouvelles versions sans repartir de zéro." },
-      { "title": "Accédez depuis n'importe quel écran", "description": "Poursuivez votre travail depuis votre téléphone, tablette, ordinateur portable ou de bureau." }
+      {
+        "title": "Créez et modifiez des scripts",
+        "description": "Rédigez de nouveaux scripts ou mettez à jour du contenu existant directement dans SolPrompter."
+      },
+      {
+        "title": "Importez du contenu existant",
+        "description": "Importez des scripts depuis des documents compatibles au lieu de copier chaque section à la main."
+      },
+      {
+        "title": "Organisez votre bibliothèque",
+        "description": "Gardez scripts et enregistrements organisés et prêts pour vos prochaines présentations."
+      },
+      {
+        "title": "Réutilisez vos scripts",
+        "description": "Ouvrez d'anciens scripts, faites des modifications rapides et enregistrez de nouvelles versions sans repartir de zéro."
+      },
+      {
+        "title": "Accédez depuis n'importe quel écran",
+        "description": "Poursuivez votre travail depuis votre téléphone, tablette, ordinateur portable ou de bureau."
+      }
     ]
   },
   "mobile": {
@@ -169,10 +294,22 @@
     "title": "Un téléprompteur en ligne adapté au mobile",
     "description": "SolPrompter est conçu pour être rapide, clair et facile à piloter aussi bien sur ordinateur que sur mobile.",
     "items": [
-      { "title": "Interface responsive", "description": "Les commandes essentielles restent faciles d'accès quelles que soient la taille et l'orientation de l'écran." },
-      { "title": "Portrait et paysage", "description": "Choisissez l'orientation d'écran qui correspond le mieux à votre configuration d'enregistrement." },
-      { "title": "Commandes tactiles", "description": "Ajustez le texte, le défilement et les réglages d'enregistrement confortablement depuis un écran tactile." },
-      { "title": "Aucune installation requise", "description": "Ouvrez SolPrompter dans un navigateur compatible et commencez à utiliser le téléprompteur en ligne." }
+      {
+        "title": "Interface responsive",
+        "description": "Les commandes essentielles restent faciles d'accès quelles que soient la taille et l'orientation de l'écran."
+      },
+      {
+        "title": "Portrait et paysage",
+        "description": "Choisissez l'orientation d'écran qui correspond le mieux à votre configuration d'enregistrement."
+      },
+      {
+        "title": "Commandes tactiles",
+        "description": "Ajustez le texte, le défilement et les réglages d'enregistrement confortablement depuis un écran tactile."
+      },
+      {
+        "title": "Aucune installation requise",
+        "description": "Ouvrez SolPrompter dans un navigateur compatible et commencez à utiliser le téléprompteur en ligne."
+      }
     ],
     "supporting": "Utilisez SolPrompter comme téléprompteur mobile, téléprompteur de bureau ou prompteur en ligne dans le navigateur."
   },
@@ -180,14 +317,38 @@
     "eyebrow": "Fait pour chaque présentateur",
     "title": "À qui s'adresse SolPrompter ?",
     "items": [
-      { "title": "Créateurs de contenu", "description": "Enregistrez des vidéos TikTok, YouTube, Shorts, Reels et autres contenus sociaux sans mémoriser chaque ligne." },
-      { "title": "YouTubeurs", "description": "Réalisez des tests, tutoriels, explications et vidéos face caméra avec une présentation plus fluide et assurée." },
-      { "title": "Podcasteurs", "description": "Suivez introductions, messages de sponsors, questions structurées et notes d'épisode pendant l'enregistrement." },
-      { "title": "Enseignants et formateurs", "description": "Présentez des cours en ligne, des vidéos de formation et du contenu pédagogique de façon claire et cohérente." },
-      { "title": "Professionnels", "description": "Préparez des démos produit, des annonces d'entreprise, des webinaires, des présentations commerciales et des vidéos de formation." },
-      { "title": "Orateurs", "description": "Entraînez-vous à vos discours, répétez vos présentations et délivrez vos messages préparés avec assurance." },
-      { "title": "Journalistes et intervieweurs", "description": "Suivez scripts, questions et points clés tout en gardant le regard sur la caméra." },
-      { "title": "Équipes à distance", "description": "Utilisez le mode notch pendant les appels vidéo, les présentations en ligne et les entretiens à distance." }
+      {
+        "title": "Créateurs de contenu",
+        "description": "Enregistrez des vidéos TikTok, YouTube, Shorts, Reels et autres contenus sociaux sans mémoriser chaque ligne."
+      },
+      {
+        "title": "YouTubeurs",
+        "description": "Réalisez des tests, tutoriels, explications et vidéos face caméra avec une présentation plus fluide et assurée."
+      },
+      {
+        "title": "Podcasteurs",
+        "description": "Suivez introductions, messages de sponsors, questions structurées et notes d'épisode pendant l'enregistrement."
+      },
+      {
+        "title": "Enseignants et formateurs",
+        "description": "Présentez des cours en ligne, des vidéos de formation et du contenu pédagogique de façon claire et cohérente."
+      },
+      {
+        "title": "Professionnels",
+        "description": "Préparez des démos produit, des annonces d'entreprise, des webinaires, des présentations commerciales et des vidéos de formation."
+      },
+      {
+        "title": "Orateurs",
+        "description": "Entraînez-vous à vos discours, répétez vos présentations et délivrez vos messages préparés avec assurance."
+      },
+      {
+        "title": "Journalistes et intervieweurs",
+        "description": "Suivez scripts, questions et points clés tout en gardant le regard sur la caméra."
+      },
+      {
+        "title": "Équipes à distance",
+        "description": "Utilisez le mode notch pendant les appels vidéo, les présentations en ligne et les entretiens à distance."
+      }
     ]
   },
   "comparison": {
@@ -221,23 +382,66 @@
     "eyebrow": "Prêt à présenter ?",
     "title": "Commencez à utiliser SolPrompter",
     "description": "Ajoutez votre script, choisissez votre mode de lecture préféré et commencez à présenter avec naturel.",
-    "cta": { "label": "Ouvrir le téléprompteur gratuit", "url": "/workspaces" },
+    "cta": {
+      "label": "Ouvrir le téléprompteur gratuit",
+      "url": "/workspaces"
+    },
     "supporting": "Sans publicité. Sans filigrane. Sans configuration compliquée."
   },
   "faq": {
     "eyebrow": "Questions et réponses",
     "title": "Foire aux questions",
     "items": [
-      { "anchor": "faq-is-solprompter-free", "q": "SolPrompter est-il gratuit ?", "a": "SolPrompter est gratuit pour le moment. Vous pouvez accéder à ses fonctionnalités essentielles de téléprompteur, de scripts et d'enregistrement sans publicité ni filigrane de marque sur la vidéo." },
-      { "anchor": "faq-what-is-ai-voice-scroll", "q": "Qu'est-ce que le défilement vocal par IA ?", "a": "Le défilement vocal par IA écoute votre parole et avance dans le script au rythme naturel de votre voix. Il vous aide à faire une pause, à reprendre et à présenter sans ajuster en permanence une vitesse de défilement fixe." },
-      { "anchor": "faq-what-is-notch-mode", "q": "Qu'est-ce que le mode Notch de SolPrompter ?", "a": "Le mode Notch place une zone de lecture compacte du téléprompteur près de votre caméra. Cela aide à réduire les mouvements visibles des yeux et rend votre contact visuel plus naturel pendant les enregistrements, les présentations et les appels vidéo." },
-      { "anchor": "faq-mobile-devices", "q": "Puis-je utiliser SolPrompter sur un téléphone ou une tablette ?", "a": "Oui. SolPrompter dispose d'une interface responsive conçue pour les smartphones, tablettes, ordinateurs portables et de bureau. Les fonctionnalités disponibles peuvent dépendre du navigateur, de la caméra et des capacités de l'appareil." },
-      { "anchor": "faq-installation", "q": "Dois-je installer SolPrompter ?", "a": "Aucune installation n'est nécessaire pour la version web. Vous pouvez ouvrir SolPrompter dans un navigateur moderne compatible, ajouter votre script et commencer à présenter en ligne." },
-      { "anchor": "faq-remote-control", "q": "Puis-je contrôler SolPrompter depuis un autre appareil ?", "a": "Oui. La télécommande SolPrompter vous permet d'utiliser un autre téléphone, une tablette ou un ordinateur pour démarrer ou mettre en pause le téléprompteur, ajuster le défilement et naviguer dans votre script." },
-      { "anchor": "faq-4k-recording", "q": "SolPrompter peut-il enregistrer des vidéos en 4K ?", "a": "SolPrompter prend en charge l'enregistrement en Full HD et 4K lorsque la caméra, le navigateur et l'appareil prennent en charge la résolution choisie. La qualité réelle de l'enregistrement dépend des capacités et des autorisations de votre appareil." },
-      { "anchor": "faq-watermark", "q": "SolPrompter ajoute-t-il un filigrane aux enregistrements ?", "a": "SolPrompter n'ajoute pas de filigrane de marque à vos vidéos enregistrées." },
-      { "anchor": "faq-supported-files", "q": "Quels formats de fichiers de script SolPrompter prend-il en charge ?", "a": "SolPrompter permet de coller du texte directement et d'importer des documents de script compatibles tels que les fichiers TXT, DOCX, PDF et Markdown." },
-      { "anchor": "faq-online-autocue", "q": "SolPrompter peut-il servir de prompteur en ligne ?", "a": "Oui. SolPrompter peut servir de prompteur en ligne dans le navigateur, avec défilement manuel, défilement automatique à vitesse fixe et défilement activé par la voix avec IA." }
+      {
+        "anchor": "faq-is-solprompter-free",
+        "q": "SolPrompter est-il gratuit ?",
+        "a": "SolPrompter est gratuit pour le moment. Vous pouvez accéder à ses fonctionnalités essentielles de téléprompteur, de scripts et d'enregistrement sans publicité ni filigrane de marque sur la vidéo."
+      },
+      {
+        "anchor": "faq-what-is-ai-voice-scroll",
+        "q": "Qu'est-ce que le défilement vocal par IA ?",
+        "a": "Le défilement vocal par IA écoute votre parole et avance dans le script au rythme naturel de votre voix. Il vous aide à faire une pause, à reprendre et à présenter sans ajuster en permanence une vitesse de défilement fixe."
+      },
+      {
+        "anchor": "faq-what-is-notch-mode",
+        "q": "Qu'est-ce que le mode Notch de SolPrompter ?",
+        "a": "Le mode Notch place une zone de lecture compacte du téléprompteur près de votre caméra. Cela aide à réduire les mouvements visibles des yeux et rend votre contact visuel plus naturel pendant les enregistrements, les présentations et les appels vidéo."
+      },
+      {
+        "anchor": "faq-mobile-devices",
+        "q": "Puis-je utiliser SolPrompter sur un téléphone ou une tablette ?",
+        "a": "Oui. SolPrompter dispose d'une interface responsive conçue pour les smartphones, tablettes, ordinateurs portables et de bureau. Les fonctionnalités disponibles peuvent dépendre du navigateur, de la caméra et des capacités de l'appareil."
+      },
+      {
+        "anchor": "faq-installation",
+        "q": "Dois-je installer SolPrompter ?",
+        "a": "Aucune installation n'est nécessaire pour la version web. Vous pouvez ouvrir SolPrompter dans un navigateur moderne compatible, ajouter votre script et commencer à présenter en ligne."
+      },
+      {
+        "anchor": "faq-remote-control",
+        "q": "Puis-je contrôler SolPrompter depuis un autre appareil ?",
+        "a": "Oui. La télécommande SolPrompter vous permet d'utiliser un autre téléphone, une tablette ou un ordinateur pour démarrer ou mettre en pause le téléprompteur, ajuster le défilement et naviguer dans votre script."
+      },
+      {
+        "anchor": "faq-4k-recording",
+        "q": "SolPrompter peut-il enregistrer des vidéos en 4K ?",
+        "a": "SolPrompter prend en charge l'enregistrement en Full HD et 4K lorsque la caméra, le navigateur et l'appareil prennent en charge la résolution choisie. La qualité réelle de l'enregistrement dépend des capacités et des autorisations de votre appareil."
+      },
+      {
+        "anchor": "faq-watermark",
+        "q": "SolPrompter ajoute-t-il un filigrane aux enregistrements ?",
+        "a": "SolPrompter n'ajoute pas de filigrane de marque à vos vidéos enregistrées."
+      },
+      {
+        "anchor": "faq-supported-files",
+        "q": "Quels formats de fichiers de script SolPrompter prend-il en charge ?",
+        "a": "SolPrompter permet de coller du texte directement et d'importer des documents de script compatibles tels que les fichiers TXT, DOCX, PDF et Markdown."
+      },
+      {
+        "anchor": "faq-online-autocue",
+        "q": "SolPrompter peut-il servir de prompteur en ligne ?",
+        "a": "Oui. SolPrompter peut servir de prompteur en ligne dans le navigateur, avec défilement manuel, défilement automatique à vitesse fixe et défilement activé par la voix avec IA."
+      }
     ]
   },
   "footer": {
@@ -247,30 +451,72 @@
       {
         "title": "Produit",
         "links": [
-          { "label": "Tarifs", "url": "/pricing" },
-          { "label": "Fonctionnalités", "url": "#features" },
-          { "label": "Comment ça marche", "url": "#how-it-works" },
-          { "label": "Défilement vocal par IA", "url": "#voice-scroll" },
-          { "label": "Mode Notch", "url": "#notch" },
-          { "label": "Télécommande", "url": "#remote" },
-          { "label": "Enregistrement 4K", "url": "#recording" }
+          {
+            "label": "Tarifs",
+            "url": "/pricing"
+          },
+          {
+            "label": "Fonctionnalités",
+            "url": "#features"
+          },
+          {
+            "label": "Comment ça marche",
+            "url": "#how-it-works"
+          },
+          {
+            "label": "Défilement vocal par IA",
+            "url": "#voice-scroll"
+          },
+          {
+            "label": "Mode Notch",
+            "url": "#notch"
+          },
+          {
+            "label": "Télécommande",
+            "url": "#remote"
+          },
+          {
+            "label": "Enregistrement 4K",
+            "url": "#recording"
+          }
         ]
       },
       {
         "title": "Ressources",
         "links": [
-          { "label": "Comment l'utiliser", "url": "#how-it-works" },
-          { "label": "Guide du téléprompteur", "url": "/teleprompter-guide" },
-          { "label": "Blog", "url": "/blog" },
-          { "label": "À propos", "url": "/about" }
+          {
+            "label": "Comment l'utiliser",
+            "url": "#how-it-works"
+          },
+          {
+            "label": "Guide du téléprompteur",
+            "url": "/teleprompter-guide"
+          },
+          {
+            "label": "Blog",
+            "url": "/blog"
+          },
+          {
+            "label": "À propos",
+            "url": "/about"
+          }
         ]
       },
       {
         "title": "Mentions légales",
         "links": [
-          { "label": "Politique de confidentialité", "url": "/policy" },
-          { "label": "Conditions d'utilisation", "url": "/term" },
-          { "label": "Facturation et remboursements", "url": "/billing" }
+          {
+            "label": "Politique de confidentialité",
+            "url": "/policy"
+          },
+          {
+            "label": "Conditions d'utilisation",
+            "url": "/term"
+          },
+          {
+            "label": "Facturation et remboursements",
+            "url": "/billing"
+          }
         ]
       }
     ],

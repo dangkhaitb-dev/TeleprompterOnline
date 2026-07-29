@@ -13,7 +13,10 @@
     "brandDescription": "SolPrompter 是一款专为自然演讲和专业视频录制而设计的在线 AI 提词器。",
     "websiteDescription": "一款免费在线提词器，支持 AI 语音滚动、刘海模式、远程遥控和专业视频录制。",
     "webpageName": "支持 AI 语音滚动的免费在线提词器 | SolPrompter",
-    "alternateNames": ["SolPrompter", "solprompter.com"],
+    "alternateNames": [
+      "SolPrompter",
+      "solprompter.com"
+    ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
     "primaryImage": "/og-solprompter.jpg",
@@ -24,7 +27,12 @@
     "applicationSubCategory": "在线提词器",
     "operatingSystem": "任何配备现代网页浏览器的操作系统",
     "browserRequirements": "需要 JavaScript 和现代网页浏览器。使用录制和 AI 语音滚动功能需要摄像头和麦克风访问权限。",
-    "availableOnDevice": ["台式机", "笔记本电脑", "平板电脑", "智能手机"],
+    "availableOnDevice": [
+      "台式机",
+      "笔记本电脑",
+      "平板电脑",
+      "智能手机"
+    ],
     "featureList": [
       "AI 语音激活滚动",
       "手动提词器滚动",
@@ -49,12 +57,27 @@
   },
   "nav": {
     "items": [
-      { "label": "功能", "url": "#features" },
-      { "label": "刘海模式", "url": "#notch" },
-      { "label": "语音滚动", "url": "#voice-scroll" },
-      { "label": "远程遥控", "url": "#remote" }
+      {
+        "label": "功能",
+        "url": "#features"
+      },
+      {
+        "label": "刘海模式",
+        "url": "#notch"
+      },
+      {
+        "label": "语音滚动",
+        "url": "#voice-scroll"
+      },
+      {
+        "label": "远程遥控",
+        "url": "#remote"
+      }
     ],
-    "cta": { "label": "工作区", "url": "/workspaces" }
+    "cta": {
+      "label": "工作区",
+      "url": "/workspaces"
+    }
   },
   "hero": {
     "eyebrow": "SolPrompter — AI 提词器",
@@ -78,14 +101,34 @@
     "title": "一款提词器，胜任每一次录制",
     "description": "SolPrompter 将在线提词器、AI 语音滚动、刘海模式、远程遥控、脚本管理和专业视频录制整合到一个简洁的工作区中。",
     "items": [
-      { "title": "AI 语音滚动", "description": "SolPrompter 跟随您的语音，以自然的语速自动滚动您的脚本。" },
-      { "title": "刘海提词器", "description": "让脚本靠近摄像头，减少明显的视线移动，保持更自然的眼神交流。" },
-      { "title": "远程遥控", "description": "使用另一部手机、平板或电脑控制滚动、翻阅脚本并远程管理您的演讲。" },
-      { "title": "全高清与 4K 录制", "description": "直接从提词器阅读脚本的同时录制专业视频。" },
-      { "title": "脚本管理", "description": "在一个便捷的工作区中创建、上传、编辑、整理并重复使用您的所有脚本。" },
-      { "title": "录制资料库", "description": "将录制内容与用于创作它们的脚本一同保存、查看和管理。" },
-      { "title": "为移动端而生", "description": "自适应界面专为各种屏幕设计，让您在手机、平板、笔记本和台式机上都能舒适使用 SolPrompter。" },
-      { "title": "无广告、无水印", "description": "演讲和录制时不会有分散注意力的广告或品牌水印出现在您的视频上。" }
+      {
+        "title": "AI 语音滚动",
+        "description": "SolPrompter 跟随您的语音，以自然的语速自动滚动您的脚本。"
+      },
+      {
+        "title": "刘海提词器",
+        "description": "让脚本靠近摄像头，减少明显的视线移动，保持更自然的眼神交流。"
+      },
+      {
+        "title": "远程遥控",
+        "description": "使用另一部手机、平板或电脑控制滚动、翻阅脚本并远程管理您的演讲。"
+      },
+      {
+        "title": "全高清与 4K 录制",
+        "description": "直接从提词器阅读脚本的同时录制专业视频。"
+      },
+      {
+        "title": "录制资料库",
+        "description": "将录制内容与用于创作它们的脚本一同保存、查看和管理。"
+      },
+      {
+        "title": "为移动端而生",
+        "description": "自适应界面专为各种屏幕设计，让您在手机、平板、笔记本和台式机上都能舒适使用 SolPrompter。"
+      },
+      {
+        "title": "无广告、无水印",
+        "description": "演讲和录制时不会有分散注意力的广告或品牌水印出现在您的视频上。"
+      }
     ]
   },
   "howItWorks": {
@@ -93,10 +136,26 @@
     "title": "SolPrompter 的工作原理",
     "description": "只需几个步骤，即可将任意脚本变成流畅的演讲或专业的录制作品。",
     "steps": [
-      { "anchor": "step-add-script", "title": "添加您的脚本", "description": "将文本直接粘贴到 SolPrompter，或从您的设备上传现有脚本。" },
-      { "anchor": "step-choose-scroll-mode", "title": "选择滚动模式", "description": "设置固定滚动速度、手动控制脚本，或启用 AI 语音滚动。" },
-      { "anchor": "step-customize-view", "title": "自定义视图", "description": "调整字体、字号、行距、阅读区域和提词器位置，让阅读更舒适。" },
-      { "anchor": "step-start-presenting", "title": "开始演讲", "description": "打开提词器，如有需要连接遥控设备，即可开始演讲或录制。" }
+      {
+        "anchor": "step-add-script",
+        "title": "添加您的脚本",
+        "description": "将文本直接粘贴到 SolPrompter，或从您的设备上传现有脚本。"
+      },
+      {
+        "anchor": "step-choose-scroll-mode",
+        "title": "选择滚动模式",
+        "description": "设置固定滚动速度、手动控制脚本，或启用 AI 语音滚动。"
+      },
+      {
+        "anchor": "step-customize-view",
+        "title": "自定义视图",
+        "description": "调整字体、字号、行距、阅读区域和提词器位置，让阅读更舒适。"
+      },
+      {
+        "anchor": "step-start-presenting",
+        "title": "开始演讲",
+        "description": "打开提词器，如有需要连接遥控设备，即可开始演讲或录制。"
+      }
     ]
   },
   "voiceScroll": {
@@ -104,13 +163,28 @@
     "title": "紧随您节奏的 AI 语音滚动",
     "description": "无需再为迁就固定滚动速度而调整语速。SolPrompter 跟随您的语音，让您专注于自然地传达信息。",
     "benefits": [
-      { "title": "自然地开口", "description": "以自己的节奏阅读，不显仓促、不拖沓，也不生硬机械。" },
-      { "title": "需要时随时停顿", "description": "换气、强调观点或在段落之间稍作停顿，都不会立刻找不到阅读位置。" },
-      { "title": "保持专注", "description": "在专注表达的同时，让脚本的正确部分始终可见。" },
-      { "title": "减少重拍", "description": "避免因录制时脚本滚动过快或过慢而造成的失误。" }
+      {
+        "title": "自然地开口",
+        "description": "以自己的节奏阅读，不显仓促、不拖沓，也不生硬机械。"
+      },
+      {
+        "title": "需要时随时停顿",
+        "description": "换气、强调观点或在段落之间稍作停顿，都不会立刻找不到阅读位置。"
+      },
+      {
+        "title": "保持专注",
+        "description": "在专注表达的同时，让脚本的正确部分始终可见。"
+      },
+      {
+        "title": "减少重拍",
+        "description": "避免因录制时脚本滚动过快或过慢而造成的失误。"
+      }
     ],
     "supporting": "偏爱传统的在线提词方式？手动和固定速度的滚动控制始终可用。",
-    "cta": { "label": "试用 AI 语音滚动", "url": "/workspaces" }
+    "cta": {
+      "label": "试用 AI 语音滚动",
+      "url": "/workspaces"
+    }
   },
   "notch": {
     "eyebrow": "自然的眼神交流",
@@ -124,44 +198,95 @@
       "在录制和视频通话中保持更自然的眼神交流。"
     ],
     "supporting": "刘海模式非常适合访谈、演讲、产品演示、在线课程、视频通话以及口播类内容。",
-    "cta": { "label": "打开刘海模式", "url": "/workspaces" }
+    "cta": {
+      "label": "打开刘海模式",
+      "url": "/workspaces"
+    }
   },
   "remote": {
     "eyebrow": "随时随地遥控",
     "title": "任意设备皆可作为提词器遥控器",
     "description": "连接另一部手机、平板或电脑，无需触碰主录制设备即可控制您的提词器。",
     "items": [
-      { "title": "开始与暂停", "description": "演讲时不动声色地控制提词器。" },
-      { "title": "调整滚动速度", "description": "从连接的遥控设备上加快或减慢速度。" },
-      { "title": "翻阅您的脚本", "description": "向前、向后或跳转到脚本的其他段落。" },
-      { "title": "管理录制", "description": "在您的设备和浏览器支持时，远程开始或停止录制。" }
+      {
+        "title": "开始与暂停",
+        "description": "演讲时不动声色地控制提词器。"
+      },
+      {
+        "title": "调整滚动速度",
+        "description": "从连接的遥控设备上加快或减慢速度。"
+      },
+      {
+        "title": "翻阅您的脚本",
+        "description": "向前、向后或跳转到脚本的其他段落。"
+      },
+      {
+        "title": "管理录制",
+        "description": "在您的设备和浏览器支持时，远程开始或停止录制。"
+      }
     ],
     "supporting": "非常适合个人创作者、演讲者、工作室、制作团队和远程演讲。",
-    "cta": { "label": "连接遥控设备", "url": "/workspaces" }
+    "cta": {
+      "label": "连接遥控设备",
+      "url": "/workspaces"
+    }
   },
   "recording": {
     "eyebrow": "边读边录",
     "title": "以全高清或 4K 创作专业视频",
     "description": "在一个流畅的工作流程中同时使用摄像头和提词器。自然地阅读、监看构图并进行录制，无需在不同应用间切换。",
     "items": [
-      { "title": "实时摄像头预览", "description": "在录制前和录制过程中检查您的位置、构图和外观。" },
-      { "title": "全高清录制", "description": "为社交媒体、课程、演讲和商务内容创作清晰、高质量的视频。" },
-      { "title": "4K 录制", "description": "在摄像头、浏览器和设备支持时，拍摄专业的高分辨率视频。" },
-      { "title": "无水印", "description": "导出无 SolPrompter 徽标或品牌叠加层的干净录制作品。" },
-      { "title": "录制资料库", "description": "让您的拍摄内容井井有条，快速找到与每个脚本关联的录制作品。" }
+      {
+        "title": "实时摄像头预览",
+        "description": "在录制前和录制过程中检查您的位置、构图和外观。"
+      },
+      {
+        "title": "全高清录制",
+        "description": "为社交媒体、课程、演讲和商务内容创作清晰、高质量的视频。"
+      },
+      {
+        "title": "4K 录制",
+        "description": "在摄像头、浏览器和设备支持时，拍摄专业的高分辨率视频。"
+      },
+      {
+        "title": "无水印",
+        "description": "导出无 SolPrompter 徽标或品牌叠加层的干净录制作品。"
+      },
+      {
+        "title": "录制资料库",
+        "description": "让您的拍摄内容井井有条，快速找到与每个脚本关联的录制作品。"
+      }
     ],
-    "cta": { "label": "开始录制", "url": "/workspaces" }
+    "cta": {
+      "label": "开始录制",
+      "url": "/workspaces"
+    }
   },
   "workspace": {
     "eyebrow": "您的内容工作区",
     "title": "一起管理脚本和录制内容",
     "description": "不必再在文件夹、文档和各种应用之间来回查找。SolPrompter 将您的脚本和录制内容集中在一个井然有序的工作区中。",
     "items": [
-      { "title": "创建和编辑脚本", "description": "直接在 SolPrompter 中撰写新脚本或更新已有内容。" },
-      { "title": "上传现有内容", "description": "从支持的文档导入脚本，无需逐段手动复制。" },
-      { "title": "整理您的资料库", "description": "让脚本和录制内容井然有序，随时可用于日后的演讲。" },
-      { "title": "重复使用您的脚本", "description": "打开以往的脚本，快速修改后录制新版本，无需从头开始。" },
-      { "title": "在任意屏幕上访问", "description": "在手机、平板、笔记本或台式机上继续工作。" }
+      {
+        "title": "创建和编辑脚本",
+        "description": "直接在 SolPrompter 中撰写新脚本或更新已有内容。"
+      },
+      {
+        "title": "上传现有内容",
+        "description": "从支持的文档导入脚本，无需逐段手动复制。"
+      },
+      {
+        "title": "整理您的资料库",
+        "description": "让脚本和录制内容井然有序，随时可用于日后的演讲。"
+      },
+      {
+        "title": "重复使用您的脚本",
+        "description": "打开以往的脚本，快速修改后录制新版本，无需从头开始。"
+      },
+      {
+        "title": "在任意屏幕上访问",
+        "description": "在手机、平板、笔记本或台式机上继续工作。"
+      }
     ]
   },
   "mobile": {
@@ -169,10 +294,22 @@
     "title": "适配移动端的在线提词器",
     "description": "SolPrompter 力求在桌面端和移动端都做到快速、清晰、易于操控。",
     "items": [
-      { "title": "自适应界面", "description": "在不同的屏幕尺寸和方向下，核心控件都触手可及。" },
-      { "title": "竖屏与横屏", "description": "选择最契合您录制设置的屏幕方向。" },
-      { "title": "适合触控的操作", "description": "在触摸屏上舒适地调整文字、滚动和录制设置。" },
-      { "title": "无需安装", "description": "在支持的浏览器中打开 SolPrompter，即可开始在线使用提词器。" }
+      {
+        "title": "自适应界面",
+        "description": "在不同的屏幕尺寸和方向下，核心控件都触手可及。"
+      },
+      {
+        "title": "竖屏与横屏",
+        "description": "选择最契合您录制设置的屏幕方向。"
+      },
+      {
+        "title": "适合触控的操作",
+        "description": "在触摸屏上舒适地调整文字、滚动和录制设置。"
+      },
+      {
+        "title": "无需安装",
+        "description": "在支持的浏览器中打开 SolPrompter，即可开始在线使用提词器。"
+      }
     ],
     "supporting": "将 SolPrompter 用作移动端提词器、桌面端提词器或基于浏览器的在线提词工具。"
   },
@@ -180,14 +317,38 @@
     "eyebrow": "为每一位演讲者打造",
     "title": "SolPrompter 适合谁使用？",
     "items": [
-      { "title": "内容创作者", "description": "无需逐字背诵，即可录制 TikTok 视频、YouTube 视频、Shorts、Reels 等社交内容。" },
-      { "title": "YouTube 博主", "description": "以更流畅、更自信的表现呈现测评、教程、讲解和口播视频。" },
-      { "title": "播客主", "description": "录制时跟随开场白、赞助口播、结构化提问和节目笔记。" },
-      { "title": "教师与教育工作者", "description": "清晰、稳定地呈现在线课程、课程视频和教育内容。" },
-      { "title": "商务人士", "description": "准备产品演示、公司动态、网络研讨会、销售演讲和培训视频。" },
-      { "title": "公众演讲者", "description": "练习演讲、排练发言，自信地传达事先准备的内容。" },
-      { "title": "记者与采访者", "description": "跟随脚本、问题和关键要点，同时始终专注于镜头。" },
-      { "title": "远程团队", "description": "在视频通话、在线演讲和远程访谈中使用刘海模式。" }
+      {
+        "title": "内容创作者",
+        "description": "无需逐字背诵，即可录制 TikTok 视频、YouTube 视频、Shorts、Reels 等社交内容。"
+      },
+      {
+        "title": "YouTube 博主",
+        "description": "以更流畅、更自信的表现呈现测评、教程、讲解和口播视频。"
+      },
+      {
+        "title": "播客主",
+        "description": "录制时跟随开场白、赞助口播、结构化提问和节目笔记。"
+      },
+      {
+        "title": "教师与教育工作者",
+        "description": "清晰、稳定地呈现在线课程、课程视频和教育内容。"
+      },
+      {
+        "title": "商务人士",
+        "description": "准备产品演示、公司动态、网络研讨会、销售演讲和培训视频。"
+      },
+      {
+        "title": "公众演讲者",
+        "description": "练习演讲、排练发言，自信地传达事先准备的内容。"
+      },
+      {
+        "title": "记者与采访者",
+        "description": "跟随脚本、问题和关键要点，同时始终专注于镜头。"
+      },
+      {
+        "title": "远程团队",
+        "description": "在视频通话、在线演讲和远程访谈中使用刘海模式。"
+      }
     ]
   },
   "comparison": {
@@ -221,23 +382,66 @@
     "eyebrow": "准备好演讲了吗？",
     "title": "开始使用 SolPrompter",
     "description": "添加您的脚本，选择您偏好的阅读模式，自然地开始演讲。",
-    "cta": { "label": "打开免费提词器", "url": "/workspaces" },
+    "cta": {
+      "label": "打开免费提词器",
+      "url": "/workspaces"
+    },
     "supporting": "无广告。无水印。无需繁琐设置。"
   },
   "faq": {
     "eyebrow": "问与答",
     "title": "常见问题",
     "items": [
-      { "anchor": "faq-is-solprompter-free", "q": "SolPrompter 是免费使用的吗？", "a": "SolPrompter 目前免费使用。您可以使用其核心的提词器、脚本和录制功能，没有广告，也没有品牌视频水印。" },
-      { "anchor": "faq-what-is-ai-voice-scroll", "q": "什么是 AI 语音滚动？", "a": "AI 语音滚动会聆听您的语音，并根据您自然的语速翻动脚本。它帮助您停顿、继续和演讲，无需不断调整固定的滚动速度。" },
-      { "anchor": "faq-what-is-notch-mode", "q": "什么是 SolPrompter 刘海模式？", "a": "刘海模式将紧凑的提词器阅读区域放置在摄像头附近。这有助于减少明显的视线移动，让您在录制、演讲和视频通话中的眼神交流看起来更自然。" },
-      { "anchor": "faq-mobile-devices", "q": "我可以在手机或平板上使用 SolPrompter 吗？", "a": "可以。SolPrompter 拥有专为智能手机、平板、笔记本和台式机设计的自适应界面。可用功能可能取决于浏览器、摄像头和设备性能。" },
-      { "anchor": "faq-installation", "q": "我需要安装 SolPrompter 吗？", "a": "网页版无需安装。您可以在支持的现代浏览器中打开 SolPrompter，添加脚本，即可在线开始演讲。" },
-      { "anchor": "faq-remote-control", "q": "我可以用另一台设备控制 SolPrompter 吗？", "a": "可以。SolPrompter 远程遥控功能让您使用另一部手机、平板或电脑来开始或暂停提词器、调整滚动并翻阅您的脚本。" },
-      { "anchor": "faq-4k-recording", "q": "SolPrompter 可以录制 4K 视频吗？", "a": "当摄像头、浏览器和设备支持所选分辨率时，SolPrompter 支持全高清和 4K 录制。实际录制质量取决于您设备的性能和权限。" },
-      { "anchor": "faq-watermark", "q": "SolPrompter 会给录制内容添加水印吗？", "a": "SolPrompter 不会在您录制的视频上添加品牌水印。" },
-      { "anchor": "faq-supported-files", "q": "SolPrompter 支持哪些脚本文件格式？", "a": "SolPrompter 支持直接粘贴文本，以及上传 TXT、DOCX、PDF 和 Markdown 等受支持的脚本文档。" },
-      { "anchor": "faq-online-autocue", "q": "SolPrompter 可以用作在线提词工具吗？", "a": "可以。SolPrompter 可用作基于浏览器的在线提词工具，支持手动滚动、固定速度自动滚动和 AI 语音激活滚动。" }
+      {
+        "anchor": "faq-is-solprompter-free",
+        "q": "SolPrompter 是免费使用的吗？",
+        "a": "SolPrompter 目前免费使用。您可以使用其核心的提词器、脚本和录制功能，没有广告，也没有品牌视频水印。"
+      },
+      {
+        "anchor": "faq-what-is-ai-voice-scroll",
+        "q": "什么是 AI 语音滚动？",
+        "a": "AI 语音滚动会聆听您的语音，并根据您自然的语速翻动脚本。它帮助您停顿、继续和演讲，无需不断调整固定的滚动速度。"
+      },
+      {
+        "anchor": "faq-what-is-notch-mode",
+        "q": "什么是 SolPrompter 刘海模式？",
+        "a": "刘海模式将紧凑的提词器阅读区域放置在摄像头附近。这有助于减少明显的视线移动，让您在录制、演讲和视频通话中的眼神交流看起来更自然。"
+      },
+      {
+        "anchor": "faq-mobile-devices",
+        "q": "我可以在手机或平板上使用 SolPrompter 吗？",
+        "a": "可以。SolPrompter 拥有专为智能手机、平板、笔记本和台式机设计的自适应界面。可用功能可能取决于浏览器、摄像头和设备性能。"
+      },
+      {
+        "anchor": "faq-installation",
+        "q": "我需要安装 SolPrompter 吗？",
+        "a": "网页版无需安装。您可以在支持的现代浏览器中打开 SolPrompter，添加脚本，即可在线开始演讲。"
+      },
+      {
+        "anchor": "faq-remote-control",
+        "q": "我可以用另一台设备控制 SolPrompter 吗？",
+        "a": "可以。SolPrompter 远程遥控功能让您使用另一部手机、平板或电脑来开始或暂停提词器、调整滚动并翻阅您的脚本。"
+      },
+      {
+        "anchor": "faq-4k-recording",
+        "q": "SolPrompter 可以录制 4K 视频吗？",
+        "a": "当摄像头、浏览器和设备支持所选分辨率时，SolPrompter 支持全高清和 4K 录制。实际录制质量取决于您设备的性能和权限。"
+      },
+      {
+        "anchor": "faq-watermark",
+        "q": "SolPrompter 会给录制内容添加水印吗？",
+        "a": "SolPrompter 不会在您录制的视频上添加品牌水印。"
+      },
+      {
+        "anchor": "faq-supported-files",
+        "q": "SolPrompter 支持哪些脚本文件格式？",
+        "a": "SolPrompter 支持直接粘贴文本，以及上传 TXT、DOCX、PDF 和 Markdown 等受支持的脚本文档。"
+      },
+      {
+        "anchor": "faq-online-autocue",
+        "q": "SolPrompter 可以用作在线提词工具吗？",
+        "a": "可以。SolPrompter 可用作基于浏览器的在线提词工具，支持手动滚动、固定速度自动滚动和 AI 语音激活滚动。"
+      }
     ]
   },
   "footer": {
@@ -247,30 +451,72 @@
       {
         "title": "产品",
         "links": [
-          { "label": "定价", "url": "/pricing" },
-          { "label": "功能", "url": "#features" },
-          { "label": "工作原理", "url": "#how-it-works" },
-          { "label": "AI 语音滚动", "url": "#voice-scroll" },
-          { "label": "刘海模式", "url": "#notch" },
-          { "label": "远程遥控", "url": "#remote" },
-          { "label": "4K 录制", "url": "#recording" }
+          {
+            "label": "定价",
+            "url": "/pricing"
+          },
+          {
+            "label": "功能",
+            "url": "#features"
+          },
+          {
+            "label": "工作原理",
+            "url": "#how-it-works"
+          },
+          {
+            "label": "AI 语音滚动",
+            "url": "#voice-scroll"
+          },
+          {
+            "label": "刘海模式",
+            "url": "#notch"
+          },
+          {
+            "label": "远程遥控",
+            "url": "#remote"
+          },
+          {
+            "label": "4K 录制",
+            "url": "#recording"
+          }
         ]
       },
       {
         "title": "资源",
         "links": [
-          { "label": "使用方法", "url": "#how-it-works" },
-          { "label": "提词器指南", "url": "/teleprompter-guide" },
-          { "label": "博客", "url": "/blog" },
-          { "label": "关于我们", "url": "/about" }
+          {
+            "label": "使用方法",
+            "url": "#how-it-works"
+          },
+          {
+            "label": "提词器指南",
+            "url": "/teleprompter-guide"
+          },
+          {
+            "label": "博客",
+            "url": "/blog"
+          },
+          {
+            "label": "关于我们",
+            "url": "/about"
+          }
         ]
       },
       {
         "title": "法律信息",
         "links": [
-          { "label": "隐私政策", "url": "/policy" },
-          { "label": "服务条款", "url": "/term" },
-          { "label": "账单与退款", "url": "/billing" }
+          {
+            "label": "隐私政策",
+            "url": "/policy"
+          },
+          {
+            "label": "服务条款",
+            "url": "/term"
+          },
+          {
+            "label": "账单与退款",
+            "url": "/billing"
+          }
         ]
       }
     ],

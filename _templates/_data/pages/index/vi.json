@@ -1,276 +1,565 @@
 {
   "seo": {
-    "title": "Teleprompter Online Miễn Phí với Cuộn Theo Giọng Nói AI | SolPrompter",
-    "description": "Dùng SolPrompter, teleprompter online miễn phí với cuộn theo giọng nói AI, chế độ notch, điều khiển từ xa và quay video 4K. Không quảng cáo, không watermark.",
-    "canonical": "/vi/",
-    "ogTitle": "Teleprompter AI Online Miễn Phí — SolPrompter",
-    "ogDescription": "Thuyết trình tự nhiên với cuộn theo giọng nói AI, chế độ notch, điều khiển từ xa và quay video chuyên nghiệp.",
+    "title": "Máy Nhắc Chữ Online Miễn Phí với Trí Tuệ Nhân Tạo (AI) | SolPrompter",
+    "description": "SolPrompter là ứng dụng máy nhắc chữ online miễn phí tích hợp AI tự động cuộn theo giọng nói, chế độ notch giúp mắt nhìn tự nhiên, điều khiển từ xa và quay video 4K. Không quảng cáo, không watermark.",
+    "canonical": "/",
+    "ogTitle": "Máy Nhắc Chữ Online Miễn Phí — SolPrompter",
+    "ogDescription": "Thuyết trình tự nhiên với máy nhắc chữ trên trình duyệt. Tích hợp AI cuộn chữ qua Web Speech API, chế độ notch và quay video 4K chuyên nghiệp.",
     "ogType": "website",
     "ogImage": "/og-solprompter.jpg"
   },
   "schema": {
-    "orgDescription": "SolPrompter cung cấp teleprompter AI online miễn phí cho các bài thuyết trình tự nhiên và quay video chuyên nghiệp.",
-    "brandDescription": "SolPrompter là teleprompter AI online được thiết kế cho các bài thuyết trình tự nhiên và quay video chuyên nghiệp.",
-    "websiteDescription": "Teleprompter online miễn phí với cuộn theo giọng nói AI, chế độ notch, điều khiển từ xa và quay video chuyên nghiệp.",
-    "webpageName": "Teleprompter Online Miễn Phí với Cuộn Theo Giọng Nói AI | SolPrompter",
-    "alternateNames": ["SolPrompter", "solprompter.com"],
+    "orgDescription": "SolPrompter cung cấp máy nhắc chữ online miễn phí để thuyết trình tự nhiên và quay video chuyên nghiệp.",
+    "brandDescription": "SolPrompter là máy nhắc chữ online miễn phí được thiết kế cho các bài thuyết trình tự nhiên và ghi hình video chuyên nghiệp.",
+    "websiteDescription": "Máy nhắc chữ online miễn phí tích hợp AI cuộn theo giọng nói, chế độ notch, điều khiển từ xa không dây và quay video 4K chuyên nghiệp.",
+    "webpageName": "Máy Nhắc Chữ Online Miễn Phí với Trí Tuệ Nhân Tạo (AI) | SolPrompter",
+    "alternateNames": [
+      "SolPrompter",
+      "solprompter.com"
+    ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
     "primaryImage": "/og-solprompter.jpg",
-    "primaryImageCaption": "SolPrompter teleprompter AI online miễn phí",
-    "appAlternateName": "SolPrompter Teleprompter Online",
-    "appDescription": "Teleprompter AI online miễn phí với cuộn kích hoạt bằng giọng nói, chế độ notch, điều khiển từ xa, quản lý kịch bản và quay video Full HD và 4K chuyên nghiệp.",
+    "primaryImageCaption": "Máy nhắc chữ online miễn phí SolPrompter",
+    "appAlternateName": "Máy Nhắc Chữ Online Miễn Phí SolPrompter",
+    "appDescription": "Máy nhắc chữ online miễn phí với tính năng tự động cuộn bằng giọng nói, chế độ notch giữ giao tiếp mắt, điều khiển từ xa, quản lý kịch bản và quay video Full HD, 4K chuyên nghiệp.",
     "applicationCategory": "MultimediaApplication",
-    "applicationSubCategory": "Teleprompter Online",
+    "applicationSubCategory": "Online Teleprompter",
     "operatingSystem": "Mọi hệ điều hành có trình duyệt web hiện đại",
-    "browserRequirements": "Yêu cầu JavaScript và trình duyệt web hiện đại. Cần quyền truy cập camera và micro cho tính năng quay video và cuộn theo giọng nói AI.",
-    "availableOnDevice": ["Máy tính để bàn", "Laptop", "Máy tính bảng", "Điện thoại"],
+    "browserRequirements": "Yêu cầu JavaScript và trình duyệt web hiện đại. Cần cấp quyền truy cập camera và micro cho tính năng quay phim và AI cuộn chữ.",
+    "availableOnDevice": [
+      "Desktop",
+      "Laptop",
+      "Tablet",
+      "Smartphone"
+    ],
     "featureList": [
-      "Cuộn kích hoạt bằng giọng nói AI",
-      "Cuộn teleprompter thủ công",
-      "Cuộn tự động với tốc độ cố định",
-      "Chế độ teleprompter notch",
-      "Điều khiển từ xa qua thiết bị khác",
+      "AI tự động cuộn chữ theo giọng nói",
+      "Cuộn máy nhắc chữ thủ công",
+      "Cuộn tự động tốc độ cố định",
+      "Chế độ nhắc chữ notch",
+      "Điều khiển từ xa từ thiết bị khác",
       "Quay video Full HD",
       "Quay video 4K",
       "Tạo và chỉnh sửa kịch bản",
       "Quản lý kịch bản",
-      "Quản lý bản ghi",
-      "Giao diện di động linh hoạt",
-      "Hỗ trợ trình duyệt máy tính và di động",
-      "Không quảng cáo",
-      "Không watermark video"
+      "Quản lý video đã quay",
+      "Giao diện thân thiện với thiết bị di động",
+      "Hỗ trợ trình duyệt trên máy tính và di động",
+      "Không có quảng cáo",
+      "Không đóng dấu bản quyền (watermark)"
     ],
-    "offerDescription": "Truy cập miễn phí các tính năng teleprompter online của SolPrompter.",
-    "howToName": "Cách Sử Dụng SolPrompter",
-    "howToDescription": "Tìm hiểu cách thêm kịch bản, chọn chế độ cuộn, tùy chỉnh teleprompter và bắt đầu thuyết trình hoặc quay video với SolPrompter.",
-    "faqName": "Câu Hỏi Thường Gặp về SolPrompter",
-    "faqDescription": "Câu hỏi thường gặp về SolPrompter, Cuộn Theo Giọng Nói AI, chế độ notch, điều khiển từ xa, thiết bị hỗ trợ và quay video."
+    "offerDescription": "Truy cập miễn phí các tính năng của máy nhắc chữ online SolPrompter.",
+    "howToName": "Cách sử dụng SolPrompter",
+    "howToDescription": "Tìm hiểu cách thêm kịch bản, chọn chế độ cuộn, tùy chỉnh giao diện và bắt đầu thuyết trình hoặc quay video với SolPrompter.",
+    "faqName": "Câu Hỏi Thường Gặp Về Máy Nhắc Chữ Online SolPrompter",
+    "faqDescription": "Các câu hỏi thường gặp về SolPrompter, tính năng AI cuộn chữ, chế độ notch, điều khiển từ xa, thiết bị hỗ trợ và quay video."
   },
   "nav": {
     "items": [
-      { "label": "Tính năng", "url": "#features" },
-      { "label": "Chế độ Notch", "url": "#notch" },
-      { "label": "Cuộn Giọng Nói", "url": "#voice-scroll" },
-      { "label": "Từ xa", "url": "#remote" }
+      {
+        "label": "Tính năng",
+        "url": "#features"
+      },
+      {
+        "label": "Chế độ Notch",
+        "url": "#notch"
+      },
+      {
+        "label": "Cuộn giọng nói (AI)",
+        "url": "#voice-scroll"
+      },
+      {
+        "label": "Điều khiển từ xa",
+        "url": "#remote"
+      }
     ],
-    "cta": { "label": "Không gian làm việc", "url": "/workspaces" }
+    "cta": {
+      "label": "Khu vực làm việc",
+      "url": "/teleprompter.html"
+    }
   },
   "hero": {
-    "eyebrow": "SolPrompter — Teleprompter AI",
-    "title": "Teleprompter Online Miễn Phí",
-    "subtitle": "Thuyết trình tự nhiên với cuộn theo giọng nói AI, chế độ notch, điều khiển từ xa và quay 4K chuyên nghiệp.",
-    "placeholder": "Dán kịch bản hoặc tải lên tệp để bắt đầu...",
-    "uploadLabel": "Tải tệp lên",
-    "uploadLabelShort": "Tải lên",
-    "startLabel": "Bắt đầu thuyết trình",
-    "startLabelShort": "Bắt đầu",
-    "supportedText": "Hỗ trợ TXT, DOCX và Markdown",
+    "eyebrow": "SolPrompter — Máy Nhắc Chữ Online Miễn Phí",
+    "title": "Máy Nhắc Chữ Online Miễn Phí",
+    "subtitle": "Thuyết trình tự nhiên với cuộn theo giọng nói AI không độ trễ, Chế độ Notch giữ giao tiếp mắt, và điều khiển từ xa WebSocket. Không cần đăng ký, không quảng cáo.",
+    "placeholder": "Dán kịch bản của bạn hoặc tải lên tệp để bắt đầu...",
+    "uploadLabel": "Tải Tệp Lên",
+    "uploadLabelShort": "Tải Lên",
+    "startLabel": "Bắt Đầu Thuyết Trình",
+    "startLabelShort": "Bắt Đầu",
+    "supportedText": "Hỗ trợ tệp TXT, DOCX và Markdown",
     "dropTitle": "Thả tệp vào đây để tải lên",
     "dropHint": "Hỗ trợ TXT, DOCX và Markdown"
   },
   "messages": {
-    "errorEmpty": "Vui lòng nhập nội dung kịch bản trước khi bắt đầu Teleprompter.",
-    "errorRead": "Định dạng không hỗ trợ. Vui lòng chọn tệp .txt hoặc .md."
+    "errorEmpty": "Vui lòng nhập nội dung kịch bản trước khi bắt đầu Máy nhắc chữ.",
+    "errorRead": "Định dạng không được hỗ trợ. Vui lòng chọn tệp .txt hoặc .md."
   },
   "features": {
-    "eyebrow": "Mọi Thứ Bạn Cần Để Thuyết Trình Tốt Hơn",
-    "title": "Một Teleprompter Cho Mọi Bản Ghi",
-    "description": "SolPrompter kết hợp teleprompter online, cuộn theo giọng nói AI, chế độ notch, điều khiển từ xa, quản lý kịch bản và quay video chuyên nghiệp trong một không gian làm việc đơn giản.",
+    "eyebrow": "Tính Năng Máy Nhắc Chữ Online Thế Hệ Mới",
+    "title": "Máy Nhắc Chữ Online Đa Năng & Miễn Phí",
+    "description": "SolPrompter kết hợp máy nhắc chữ online miễn phí, tính năng AI cuộn chữ, chế độ notch, điều khiển từ xa không dây, quản lý kịch bản và quay video chuyên nghiệp trong một không gian làm việc duy nhất.",
     "items": [
-      { "title": "Cuộn Theo Giọng Nói AI", "description": "SolPrompter theo dõi lời nói của bạn và tự động cuộn kịch bản theo tốc độ nói tự nhiên của bạn." },
-      { "title": "Teleprompter Notch", "description": "Giữ kịch bản gần camera để giảm chuyển động mắt lộ rõ và duy trì giao tiếp bằng mắt tự nhiên hơn." },
-      { "title": "Điều Khiển Từ Xa", "description": "Dùng điện thoại, máy tính bảng hoặc máy tính khác để điều khiển cuộn, di chuyển qua kịch bản và quản lý bài thuyết trình từ xa." },
-      { "title": "Quay Full HD và 4K", "description": "Quay video chuyên nghiệp trong khi đọc kịch bản trực tiếp từ teleprompter." },
-      { "title": "Quản Lý Kịch Bản", "description": "Tạo, tải lên, chỉnh sửa, sắp xếp và tái sử dụng mọi kịch bản từ một không gian làm việc tiện lợi." },
-      { "title": "Thư Viện Bản Ghi", "description": "Lưu, xem lại và quản lý bản ghi cùng với kịch bản đã dùng để tạo ra chúng." },
-      { "title": "Tối Ưu Cho Di Động", "description": "Sử dụng SolPrompter thoải mái trên điện thoại, máy tính bảng, laptop và máy tính để bàn với giao diện linh hoạt cho mọi màn hình." },
-      { "title": "Không Quảng Cáo hay Watermark", "description": "Thuyết trình và quay video không có quảng cáo gây phân tâm hay watermark thương hiệu trên video của bạn." }
+      {
+        "title": "AI Cuộn Chữ Theo Giọng Nói",
+        "description": "Tự động cuộn dựa trên Speech Recognition API với độ trễ cực thấp < 50ms, giúp theo sát tốc độ nói một cách hoàn hảo."
+      },
+      {
+        "title": "Chế Độ Notch",
+        "description": "Neo sát ống kính camera để giảm góc đảo mắt xuống dưới 3 độ, đảm bảo giao tiếp mắt tự nhiên nhất."
+      },
+      {
+        "title": "Điều Khiển Từ Xa WebSocket",
+        "description": "Đồng bộ thời gian thực (độ trễ < 10ms) qua mã QR. Điều khiển kịch bản từ bất kỳ điện thoại nào mà không cần cài đặt ứng dụng."
+      },
+      {
+        "title": "Quay Video 4K",
+        "description": "Ghi hình 4K chuyên nghiệp trực tiếp trên trình duyệt. Lưu ý: Safari trên iOS giới hạn ở 1080p do cơ chế bảo mật Webkit."
+      },
+      {
+        "title": "Giao Diện Tối Ưu Cho Touch/iPad",
+        "description": "Touch target được tối ưu (> 44px) và thao tác vuốt cuộn mượt mà, hoàn hảo cho luồng công việc trên iPadOS và thiết bị di động."
+      },
+      {
+        "title": "Không Watermark",
+        "description": "Xuất video chuyên nghiệp, sạch sẽ mà không có bất kỳ logo hay dấu chìm nào chèn lên."
+      }
     ]
   },
   "howItWorks": {
-    "eyebrow": "Đơn Giản Ngay Từ Lần Đầu",
-    "title": "SolPrompter Hoạt Động Như Thế Nào",
-    "description": "Biến bất kỳ kịch bản nào thành bài thuyết trình mượt mà hoặc bản ghi chuyên nghiệp chỉ trong vài bước.",
+    "eyebrow": "Đơn Giản Ngay Từ Cảnh Đầu Tiên",
+    "title": "Cách SolPrompter Hoạt Động",
+    "description": "Biến bất kỳ kịch bản nào thành một bài thuyết trình mượt mà hoặc video chuyên nghiệp chỉ với vài bước.",
     "steps": [
-      { "anchor": "step-add-script", "title": "Thêm Kịch Bản", "description": "Dán văn bản trực tiếp vào SolPrompter hoặc tải lên kịch bản có sẵn từ thiết bị của bạn." },
-      { "anchor": "step-choose-scroll-mode", "title": "Chọn Chế Độ Cuộn", "description": "Đặt tốc độ cuộn cố định, điều khiển kịch bản thủ công hoặc kích hoạt Cuộn Theo Giọng Nói AI." },
-      { "anchor": "step-customize-view", "title": "Tùy Chỉnh Hiển Thị", "description": "Điều chỉnh phông chữ, cỡ chữ, khoảng cách dòng, vùng đọc và vị trí teleprompter để đọc thoải mái." },
-      { "anchor": "step-start-presenting", "title": "Bắt Đầu Thuyết Trình", "description": "Mở teleprompter, kết nối điều khiển từ xa nếu cần và bắt đầu thuyết trình hoặc quay video." }
+      {
+        "anchor": "step-add-script",
+        "title": "Thêm Kịch Bản Của Bạn",
+        "description": "Dán văn bản trực tiếp vào SolPrompter hoặc tải lên kịch bản có sẵn từ thiết bị của bạn."
+      },
+      {
+        "anchor": "step-choose-scroll-mode",
+        "title": "Chọn Chế Độ Cuộn",
+        "description": "Thiết lập tốc độ cuộn cố định, điều khiển kịch bản thủ công hoặc kích hoạt AI Cuộn chữ theo giọng nói."
+      },
+      {
+        "anchor": "step-customize-view",
+        "title": "Tùy Chỉnh Giao Diện Đọc",
+        "description": "Điều chỉnh phông chữ, cỡ chữ, khoảng cách dòng, khu vực đọc và vị trí máy nhắc chữ để đọc thoải mái nhất."
+      },
+      {
+        "anchor": "step-start-presenting",
+        "title": "Bắt Đầu Thuyết Trình",
+        "description": "Mở máy nhắc chữ, kết nối bộ điều khiển từ xa nếu cần và bắt đầu trình bày hoặc quay video."
+      }
     ]
   },
   "voiceScroll": {
-    "eyebrow": "Cuộn Theo Tốc Độ Giọng Nói Của Bạn",
-    "title": "Cuộn Theo Giọng Nói AI Bám Sát Bạn",
-    "description": "Ngừng điều chỉnh tốc độ nói để khớp với tốc độ cuộn cố định. SolPrompter bám theo giọng nói của bạn để bạn tập trung truyền tải thông điệp một cách tự nhiên.",
+    "eyebrow": "Cuộn Theo Tốc Độ Lời Nói Của Bạn",
+    "title": "AI Voice Scroll Đồng Hành Cùng Bạn",
+    "description": "Sử dụng sức mạnh của Web Speech API, SolPrompter lắng nghe và tự động cuộn kịch bản với độ trễ dưới 50ms, thích ứng hoàn hảo với tốc độ nói tự nhiên của bạn.",
     "benefits": [
-      { "title": "Nói Tự Nhiên", "description": "Đọc theo nhịp riêng của bạn mà không nghe vội vàng, chậm rãi hay máy móc." },
-      { "title": "Dừng Khi Cần", "description": "Hít thở, nhấn mạnh một ý hoặc tạm dừng giữa các phần mà không lập tức mất vị trí." },
-      { "title": "Giữ Tập Trung", "description": "Giữ phần kịch bản chính xác luôn hiển thị trong khi tập trung vào cách truyền tải." },
-      { "title": "Giảm Quay Lại", "description": "Tránh lỗi do kịch bản chạy quá nhanh hoặc quá chậm khi đang quay." }
+      {
+        "title": "Nói Chuyện Tự Nhiên",
+        "description": "Đọc kịch bản theo tốc độ của riêng bạn mà không có cảm giác vội vã, chậm chạp hay giống như rô bốt."
+      },
+      {
+        "title": "Dừng Nghỉ Khi Bạn Cần",
+        "description": "Lấy hơi, nhấn mạnh một ý tưởng hoặc tạm dừng giữa các phần mà không bị mất dấu ngay lập tức."
+      },
+      {
+        "title": "Duy Trì Sự Tập Trung",
+        "description": "Giữ cho phần kịch bản chính xác luôn hiển thị trên màn hình trong khi bạn tập trung vào việc trình bày."
+      },
+      {
+        "title": "Giảm Thiểu Quay Lại",
+        "description": "Tránh các lỗi gây ra do kịch bản di chuyển quá nhanh hoặc quá chậm trong quá trình ghi hình."
+      }
     ],
-    "supporting": "Thích autocue online truyền thống? Điều khiển cuộn thủ công và tốc độ cố định luôn có sẵn.",
-    "cta": { "label": "Thử Cuộn Theo Giọng Nói AI", "url": "/workspaces" }
+    "supporting": "Bạn thích máy nhắc chữ truyền thống hơn? Các tùy chọn cuộn thủ công và cuộn tốc độ cố định luôn có sẵn.",
+    "cta": {
+      "label": "Thử Tính Năng AI Cuộn Chữ",
+      "url": "/teleprompter.html"
+    }
   },
   "notch": {
-    "eyebrow": "Giao Tiếp Bằng Mắt Tự Nhiên",
-    "title": "Giữ Kịch Bản Gần Camera",
-    "description": "Chế độ notch của SolPrompter đặt vùng đọc gọn gàng gần camera, giúp mắt bạn tập trung gần ống kính hơn.",
+    "eyebrow": "Giao Tiếp Mắt Tự Nhiên",
+    "title": "Giữ Kịch Bản Gần Với Camera",
+    "description": "Chế độ notch của SolPrompter đặt một vùng đọc nhỏ gọn ngay gần camera của bạn. Bằng cách giới hạn mỗi dòng từ 50-70 ký tự, nó giúp giảm thiểu khoảng cách di chuyển của mắt xuống dưới 3 độ.",
     "items": [
-      "Giảm chuyển động mắt sang hai bên rõ rệt.",
-      "Đặt kịch bản gần webcam hoặc camera điện thoại.",
+      "Giảm thiểu cử động liếc mắt sang hai bên rõ rệt.",
+      "Đặt kịch bản ngay cạnh webcam hoặc camera điện thoại.",
       "Thay đổi kích thước vùng đọc để chỉ hiển thị những dòng bạn cần.",
-      "Di chuyển teleprompter đến bất kỳ đâu trên màn hình.",
-      "Duy trì giao tiếp bằng mắt tự nhiên hơn khi quay và gọi video."
+      "Di chuyển máy nhắc chữ đến bất kỳ đâu trên màn hình.",
+      "Duy trì giao tiếp mắt tự nhiên hơn trong các bản ghi hình và cuộc gọi video."
     ],
-    "supporting": "Chế độ notch lý tưởng cho phỏng vấn, thuyết trình, demo sản phẩm, bài học online, gọi video và nội dung talking-head.",
-    "cta": { "label": "Mở Chế Độ Notch", "url": "/workspaces" }
+    "supporting": "Chế độ Notch đặc biệt lý tưởng cho các buổi phỏng vấn, thuyết trình, demo sản phẩm, học trực tuyến, video call và quay video dạng talking-head.",
+    "cta": {
+      "label": "Mở Chế Độ Notch",
+      "url": "/teleprompter.html"
+    }
   },
   "remote": {
-    "eyebrow": "Điều Khiển Từ Bất Cứ Đâu",
-    "title": "Dùng Mọi Thiết Bị Làm Điều Khiển Teleprompter",
-    "description": "Kết nối một điện thoại, máy tính bảng hoặc máy tính khác và điều khiển teleprompter mà không cần chạm vào thiết bị quay chính.",
+    "eyebrow": "Điều Khiển Từ Bất Kỳ Đâu",
+    "title": "Sử Dụng Mọi Thiết Bị Làm Điều Khiển Từ Xa",
+    "description": "Sử dụng công nghệ WebSockets liên tục, bạn có thể kết nối điện thoại hoặc máy tính bảng qua mã QR với độ trễ dưới 10ms—hoàn toàn không cần cài đặt ứng dụng.",
     "items": [
-      { "title": "Bắt Đầu và Tạm Dừng", "description": "Điều khiển teleprompter một cách kín đáo trong khi thuyết trình." },
-      { "title": "Điều Chỉnh Tốc Độ Cuộn", "description": "Tăng hoặc giảm tốc độ từ thiết bị điều khiển đã kết nối." },
-      { "title": "Điều Hướng Kịch Bản", "description": "Tiến tới, lùi lại hoặc nhảy đến phần khác trong kịch bản của bạn." },
-      { "title": "Quản Lý Quay Video", "description": "Bắt đầu hoặc dừng quay từ xa khi thiết bị và trình duyệt của bạn hỗ trợ." }
+      {
+        "title": "Bắt Đầu và Tạm Dừng",
+        "description": "Điều khiển máy nhắc chữ một cách tinh tế trong lúc đang thuyết trình."
+      },
+      {
+        "title": "Điều Chỉnh Tốc Độ Cuộn",
+        "description": "Tăng hoặc giảm tốc độ từ thiết bị điều khiển từ xa được kết nối."
+      },
+      {
+        "title": "Điều Hướng Kịch Bản",
+        "description": "Di chuyển tiến, lùi hoặc nhảy đến một phần khác trong kịch bản của bạn."
+      },
+      {
+        "title": "Quản Lý Việc Quay Video",
+        "description": "Bắt đầu hoặc dừng ghi hình từ xa nếu thiết bị và trình duyệt của bạn hỗ trợ."
+      }
     ],
-    "supporting": "Hoàn hảo cho nhà sáng tạo solo, diễn giả, studio, đội ngũ sản xuất và thuyết trình từ xa.",
-    "cta": { "label": "Kết Nối Điều Khiển", "url": "/workspaces" }
+    "supporting": "Hoàn hảo cho những người sáng tạo độc lập, diễn giả, studio, đội ngũ sản xuất và các bài thuyết trình từ xa.",
+    "cta": {
+      "label": "Kết Nối Điều Khiển Từ Xa",
+      "url": "/teleprompter.html"
+    }
   },
   "recording": {
-    "eyebrow": "Quay Trong Khi Đọc",
-    "title": "Tạo Video Chuyên Nghiệp ở Full HD hoặc 4K",
-    "description": "Dùng camera và teleprompter trong một quy trình liền mạch. Đọc tự nhiên, kiểm tra khung hình và quay mà không cần chuyển đổi giữa các ứng dụng.",
+    "eyebrow": "Ghi Hình Trong Lúc Đọc",
+    "title": "Tạo Video Chuyên Nghiệp Khung Hình Full HD Hoặc 4K",
+    "description": "Quay video chất lượng cao, rõ nét trực tiếp từ trình duyệt của bạn. Lưu ý: Quay 4K được hỗ trợ đầy đủ trên máy tính bàn (desktop), trong khi thiết bị iOS bị giới hạn ở độ phân giải 1080p.",
     "items": [
-      { "title": "Xem Trước Camera Trực Tiếp", "description": "Kiểm tra vị trí, khung hình và diện mạo trước và trong khi quay." },
-      { "title": "Quay Full HD", "description": "Tạo video rõ nét, chất lượng cao cho mạng xã hội, bài học, thuyết trình và nội dung doanh nghiệp." },
-      { "title": "Quay 4K", "description": "Ghi lại video độ phân giải cao chuyên nghiệp khi camera, trình duyệt và thiết bị của bạn hỗ trợ." },
-      { "title": "Không Watermark", "description": "Xuất bản ghi sạch, không có logo SolPrompter hay lớp phủ thương hiệu." },
-      { "title": "Thư Viện Bản Ghi", "description": "Sắp xếp các lần quay gọn gàng và nhanh chóng tìm bản ghi tương ứng với từng kịch bản." }
+      {
+        "title": "Xem Trước Camera Trực Tiếp",
+        "description": "Kiểm tra vị trí, khung hình và hình ảnh của bạn trước và trong khi quay video."
+      },
+      {
+        "title": "Quay Video Full HD",
+        "description": "Tạo video rõ nét, chất lượng cao cho mạng xã hội, bài giảng, thuyết trình và nội dung doanh nghiệp."
+      },
+      {
+        "title": "Quay Video 4K",
+        "description": "Ghi hình video độ phân giải cao chuyên nghiệp khi camera, trình duyệt và thiết bị của bạn hỗ trợ."
+      },
+      {
+        "title": "Không Đóng Dấu Bản Quyền (Watermark)",
+        "description": "Xuất các bản ghi sạch sẽ mà không có logo SolPrompter hay lớp phủ thương hiệu nào."
+      },
+      {
+        "title": "Thư Viện Ghi Hình",
+        "description": "Giữ các video đã quay có tổ chức và nhanh chóng tìm thấy bản ghi liên kết với từng kịch bản."
+      }
     ],
-    "cta": { "label": "Bắt Đầu Quay", "url": "/workspaces" }
+    "cta": {
+      "label": "Bắt Đầu Ghi Hình",
+      "url": "/teleprompter.html"
+    }
   },
   "workspace": {
-    "eyebrow": "Không Gian Nội Dung Của Bạn",
+    "eyebrow": "Không Gian Làm Việc Nội Dung Của Bạn",
     "title": "Quản Lý Kịch Bản và Bản Ghi Cùng Nhau",
-    "description": "Ngừng tìm kiếm khắp các thư mục, tài liệu và ứng dụng riêng lẻ. SolPrompter giữ kịch bản và bản ghi của bạn trong một không gian làm việc gọn gàng.",
+    "description": "Dữ liệu của bạn hoàn toàn nằm trên thiết bị. SolPrompter lưu trữ tất cả kịch bản an toàn trong bộ nhớ IndexedDB của trình duyệt, đảm bảo quyền riêng tư tuyệt đối, không phụ thuộc vào đám mây.",
     "items": [
-      { "title": "Tạo và Chỉnh Sửa Kịch Bản", "description": "Viết kịch bản mới hoặc cập nhật nội dung có sẵn trực tiếp trong SolPrompter." },
-      { "title": "Tải Nội Dung Có Sẵn", "description": "Nhập kịch bản từ các tài liệu được hỗ trợ thay vì sao chép từng phần thủ công." },
-      { "title": "Sắp Xếp Thư Viện", "description": "Giữ kịch bản và bản ghi gọn gàng để sẵn sàng cho các bài thuyết trình sau này." },
-      { "title": "Tái Sử Dụng Kịch Bản", "description": "Mở kịch bản cũ, thay đổi nhanh và quay phiên bản mới mà không cần bắt đầu lại." },
-      { "title": "Truy Cập Từ Mọi Màn Hình", "description": "Tiếp tục làm việc từ điện thoại, máy tính bảng, laptop hoặc máy tính để bàn." }
+      {
+        "title": "Tạo và Chỉnh Sửa Kịch Bản",
+        "description": "Viết kịch bản mới hoặc cập nhật nội dung hiện có trực tiếp trong SolPrompter."
+      },
+      {
+        "title": "Tải Lên Nội Dung Sẵn Có",
+        "description": "Nhập kịch bản từ các tài liệu được hỗ trợ thay vì phải sao chép từng phần một cách thủ công."
+      },
+      {
+        "title": "Tổ Chức Thư Viện Của Bạn",
+        "description": "Giữ các kịch bản và bản ghi được sắp xếp gọn gàng để luôn sẵn sàng cho những bài thuyết trình tương lai."
+      },
+      {
+        "title": "Tái Sử Dụng Kịch Bản",
+        "description": "Mở các kịch bản trước đó, thay đổi nhanh chóng và quay các phiên bản mới mà không cần bắt đầu lại từ đầu."
+      },
+      {
+        "title": "Truy Cập Từ Mọi Màn Hình",
+        "description": "Tiếp tục làm việc từ điện thoại, máy tính bảng, máy tính xách tay hoặc máy tính để bàn của bạn."
+      }
     ]
   },
   "mobile": {
-    "eyebrow": "Thiết Kế Cho Mọi Màn Hình",
-    "title": "Teleprompter Online Thân Thiện Với Di Động",
-    "description": "SolPrompter được thiết kế để nhanh, rõ ràng và dễ điều khiển trên cả thiết bị máy tính lẫn di động.",
+    "eyebrow": "Được Thiết Kế Cho Mọi Màn Hình",
+    "title": "Máy Nhắc Chữ Online Thân Thiện Với Di Động",
+    "description": "SolPrompter cung cấp giao diện ưu tiên cảm ứng (touch-first) với vùng chạm (touch targets) > 44px, mang đến trải nghiệm cao cấp như ứng dụng trực tiếp trên trình duyệt điện thoại hoặc máy tính bảng của bạn.",
     "items": [
-      { "title": "Giao Diện Linh Hoạt", "description": "Các nút điều khiển thiết yếu vẫn dễ chạm tới trên nhiều kích thước và hướng màn hình khác nhau." },
-      { "title": "Dọc và Ngang", "description": "Chọn hướng màn hình phù hợp nhất với thiết lập quay của bạn." },
-      { "title": "Điều Khiển Cảm Ứng Thân Thiện", "description": "Điều chỉnh văn bản, cuộn và cài đặt quay thoải mái từ màn hình cảm ứng." },
-      { "title": "Không Cần Cài Đặt", "description": "Mở SolPrompter trong trình duyệt được hỗ trợ và bắt đầu dùng teleprompter online." }
+      {
+        "title": "Giao Diện Tương Thích (Responsive)",
+        "description": "Các nút điều khiển quan trọng vẫn luôn dễ dàng chạm tới trên các kích thước màn hình và hướng hiển thị khác nhau."
+      },
+      {
+        "title": "Màn Hình Dọc và Ngang",
+        "description": "Chọn hướng màn hình phù hợp nhất với thiết lập quay phim của bạn."
+      },
+      {
+        "title": "Điều Khiển Thân Thiện Với Cảm Ứng",
+        "description": "Điều chỉnh văn bản, cuộn trang và thiết lập ghi hình một cách thoải mái từ màn hình cảm ứng."
+      },
+      {
+        "title": "Không Yêu Cầu Cài Đặt",
+        "description": "Mở SolPrompter trong một trình duyệt được hỗ trợ và bắt đầu sử dụng máy nhắc chữ trực tuyến."
+      }
     ],
-    "supporting": "Dùng SolPrompter như teleprompter di động, teleprompter máy tính hoặc autocue online trên trình duyệt."
+    "supporting": "Sử dụng SolPrompter như một máy nhắc chữ trên điện thoại, máy nhắc chữ trên máy tính, hoặc máy nhắc chữ trực tuyến qua trình duyệt."
   },
   "useCases": {
     "eyebrow": "Dành Cho Mọi Người Thuyết Trình",
-    "title": "SolPrompter Dành Cho Ai?",
+    "title": "Những Ai Sử Dụng Máy Nhắc Chữ Online SolPrompter?",
     "items": [
-      { "title": "Nhà Sáng Tạo Nội Dung", "description": "Quay video TikTok, YouTube, Shorts, Reels và nội dung mạng xã hội khác mà không cần học thuộc từng câu." },
-      { "title": "YouTuber", "description": "Thực hiện review, hướng dẫn, giải thích và video talking-head với phong cách mượt mà, tự tin hơn." },
-      { "title": "Podcaster", "description": "Bám theo phần giới thiệu, thông điệp tài trợ, câu hỏi có cấu trúc và ghi chú tập trong khi thu âm." },
-      { "title": "Giáo Viên và Nhà Giáo Dục", "description": "Trình bày bài học online, video khóa học và nội dung giáo dục một cách rõ ràng, nhất quán." },
-      { "title": "Chuyên Gia Doanh Nghiệp", "description": "Chuẩn bị demo sản phẩm, cập nhật công ty, webinar, thuyết trình bán hàng và video đào tạo." },
-      { "title": "Diễn Giả Trước Công Chúng", "description": "Luyện tập bài phát biểu, tập dượt thuyết trình và truyền tải thông điệp đã chuẩn bị một cách tự tin." },
-      { "title": "Nhà Báo và Người Phỏng Vấn", "description": "Bám theo kịch bản, câu hỏi và các ý chính trong khi vẫn tập trung vào camera." },
-      { "title": "Nhóm Làm Việc Từ Xa", "description": "Dùng chế độ notch trong các cuộc gọi video, thuyết trình online và phỏng vấn từ xa." }
+      {
+        "title": "Người Sáng Tạo Nội Dung",
+        "description": "Quay video TikTok, YouTube Shorts, Reels và các nội dung xã hội khác mà không cần phải nhớ từng lời."
+      },
+      {
+        "title": "YouTubers",
+        "description": "Thực hiện các video đánh giá, hướng dẫn, giải thích và video dạng nói chuyện trực tiếp (talking-head) với phong cách trình bày trôi chảy, tự tin hơn."
+      },
+      {
+        "title": "Podcasters",
+        "description": "Theo dõi phần giới thiệu, thông điệp nhà tài trợ, các câu hỏi có cấu trúc và ghi chú tập phim trong khi thu âm."
+      },
+      {
+        "title": "Giáo Viên và Chuyên Gia Giáo Dục",
+        "description": "Trình bày các bài giảng trực tuyến, video khóa học và nội dung giáo dục một cách rõ ràng và nhất quán."
+      },
+      {
+        "title": "Chuyên Gia Doanh Nghiệp",
+        "description": "Chuẩn bị bản giới thiệu sản phẩm, cập nhật thông tin công ty, webinar, thuyết trình bán hàng và video đào tạo."
+      },
+      {
+        "title": "Diễn Giả Trước Công Chúng",
+        "description": "Thực hành diễn văn, diễn tập thuyết trình và truyền tải các thông điệp đã chuẩn bị với sự tự tin."
+      },
+      {
+        "title": "Nhà Báo và Người Phỏng Vấn",
+        "description": "Theo sát kịch bản, câu hỏi và các điểm chính cần trao đổi trong khi vẫn giữ sự tập trung vào camera."
+      },
+      {
+        "title": "Các Đội Nhóm Làm Việc Từ Xa",
+        "description": "Sử dụng chế độ notch trong các cuộc gọi video, bài thuyết trình trực tuyến và các buổi phỏng vấn từ xa."
+      }
     ]
   },
   "comparison": {
-    "eyebrow": "Tại Sao Chọn SolPrompter?",
-    "title": "Teleprompter Miễn Phí Trọn Vẹn Hơn",
-    "description": "SolPrompter được xây dựng để mang lại trải nghiệm teleprompter trọn vẹn mà không buộc người dùng phải kết hợp nhiều ứng dụng hay trả phí cho các tính năng cơ bản.",
-    "items": [
-      "Cuộn kích hoạt bằng giọng nói AI",
-      "Chế độ teleprompter notch",
-      "Điều khiển từ xa qua thiết bị khác",
-      "Quay video Full HD và 4K",
-      "Quản lý kịch bản và bản ghi",
-      "Hỗ trợ máy tính và di động",
-      "Không quảng cáo",
-      "Không watermark video",
-      "Trải nghiệm người dùng đơn giản và hiện đại",
-      "Truy cập miễn phí các tính năng teleprompter thiết yếu"
-    ],
-    "supporting": "Từ khi viết kịch bản đến khi quay bản cuối, SolPrompter mang đến những công cụ bạn cần trong một nơi duy nhất."
+    "eyebrow": "Tại sao chọn SolPrompter?",
+    "title": "Máy Nhắc Chữ Online Miễn Phí Toàn Diện Hơn",
+    "description": "So sánh khách quan các tính năng của SolPrompter với các công cụ nhắc chữ khác.",
+    "table": {
+      "headers": [
+        "Tính năng",
+        "SolPrompter",
+        "PromptSmart",
+        "TeleprompterMirror"
+      ],
+      "rows": [
+        {
+          "feature": "AI Cuộn Chữ theo Giọng Nói",
+          "sol": "Miễn phí (Web Speech API)",
+          "smart": "Trả phí (VoiceTrack™)",
+          "mirror": "Không hỗ trợ"
+        },
+        {
+          "feature": "Chạy trên trình duyệt",
+          "sol": "Có",
+          "smart": "Không (Native App)",
+          "mirror": "Có"
+        },
+        {
+          "feature": "Bảo mật kịch bản",
+          "sol": "Không bao giờ rời thiết bị",
+          "smart": "Không bao giờ rời thiết bị",
+          "mirror": "Không bao giờ rời thiết bị"
+        },
+        {
+          "feature": "Remote qua mã QR",
+          "sol": "Có (WebSocket)",
+          "smart": "Yêu cầu tải app",
+          "mirror": "Không hỗ trợ"
+        },
+        {
+          "feature": "Quảng cáo",
+          "sol": "Không",
+          "smart": "Không",
+          "mirror": "Có (Banner quảng cáo)"
+        },
+        {
+          "feature": "Quay phim 4K",
+          "sol": "Desktop lên đến 4K / iPhone lên đến 1080p",
+          "smart": "Không hỗ trợ",
+          "mirror": "Không hỗ trợ"
+        },
+        {
+          "feature": "Giá cả",
+          "sol": "Miễn phí",
+          "smart": "Thuê bao tháng",
+          "mirror": "Miễn phí + Quảng cáo"
+        }
+      ]
+    },
+    "whyChoose": {
+      "title": "Tại Sao Creators Chọn SolPrompter Thay Vì PromptSmart",
+      "items": [
+        {
+          "title": "AI Cuộn Chữ Miễn Phí (Web Speech API)",
+          "description": "PromptSmart yêu cầu bạn phải đóng phí thuê bao tháng để sử dụng tính năng cuộn theo giọng nói. SolPrompter tích hợp sẵn tính năng này ngay trên trình duyệt hoàn toàn miễn phí, hoạt động dựa trên API Web Speech gốc của thiết bị."
+        },
+        {
+          "title": "Không Cần Tải Kịch Bản Lên Máy Chủ",
+          "description": "Kịch bản của bạn không bao giờ rời khỏi thiết bị. Mọi dữ liệu được xử lý cục bộ ngay trong bộ nhớ trình duyệt, đảm bảo sự riêng tư và bảo mật tuyệt đối cho các bản thảo nhạy cảm."
+        },
+        {
+          "title": "Không Cần Cài Đặt Ứng Dụng",
+          "description": "Không cần mất thời gian tải các phần mềm nặng nề từ kho ứng dụng hay cập nhật phiên bản. Chỉ cần mở website SolPrompter, dán kịch bản và bắt đầu quay video ngay lập tức."
+        }
+      ]
+    },
+    "supporting": "Từ việc soạn kịch bản cho đến ghi hình cảnh quay cuối cùng, SolPrompter mang đến tất cả các công cụ bạn cần ở cùng một nơi."
   },
   "about": {
     "eyebrow": "Về SolPrompter",
-    "title": "Được Tạo Ra Để Việc Thuyết Trình Trở Nên Tự Nhiên",
+    "title": "Được Xây Dựng Để Giúp Việc Sử Dụng Máy Nhắc Chữ Online Trở Nên Tự Nhiên Hơn",
     "paragraphs": [
-      "SolPrompter là teleprompter AI được tạo ra cho những người muốn nói một cách tự tin mà không cần học thuộc từng từ hay liên tục quản lý điều khiển cuộn.",
-      "Mục tiêu của chúng tôi là tạo ra trải nghiệm teleprompter online trọn vẹn và dễ tiếp cận nhất, kết hợp cuộn AI đáng tin cậy, thiết kế chỉn chu, công cụ giao tiếp bằng mắt tự nhiên và tính năng quay chuyên nghiệp.",
-      "Dù bạn đang quay từ điện thoại, thuyết trình từ laptop hay điều khiển thiết lập studio từ xa, SolPrompter giúp bạn tập trung vào khán giả thay vì phần mềm."
+      "SolPrompter là một máy nhắc chữ online miễn phí được tạo ra cho những người muốn nói chuyện một cách tự tin mà không cần phải nhớ thuộc lòng từng từ ngữ hay liên tục loay hoay với các nút điều khiển cuộn.",
+      "Mục tiêu của chúng tôi là tạo ra trải nghiệm sử dụng máy nhắc chữ online hoàn chỉnh và dễ tiếp cận nhất, kết hợp tính năng cuộn bằng AI đáng tin cậy, thiết kế tinh tế, các công cụ hỗ trợ giao tiếp mắt tự nhiên và khả năng quay video chuyên nghiệp.",
+      "Dù bạn đang quay từ điện thoại, thuyết trình qua laptop hay điều khiển thiết lập studio từ xa, SolPrompter luôn giúp bạn tập trung vào khán giả của mình thay vì phải bận tâm tới phần mềm."
     ]
   },
   "finalCta": {
-    "eyebrow": "Sẵn Sàng Thuyết Trình?",
-    "title": "Bắt Đầu Dùng SolPrompter",
-    "description": "Thêm kịch bản, chọn chế độ đọc ưa thích và bắt đầu thuyết trình một cách tự nhiên.",
-    "cta": { "label": "Mở Teleprompter Miễn Phí", "url": "/workspaces" },
-    "supporting": "Không quảng cáo. Không watermark. Không cài đặt phức tạp."
+    "eyebrow": "Sẵn Sàng Thuyết Trình Chưa?",
+    "title": "Bắt Đầu Sử Dụng SolPrompter",
+    "description": "Thêm kịch bản của bạn, chọn chế độ đọc ưa thích và bắt đầu trình bày một cách tự nhiên.",
+    "cta": {
+      "label": "Mở Máy Nhắc Chữ Miễn Phí",
+      "url": "/teleprompter.html"
+    },
+    "supporting": "Miễn phí, không quảng cáo, không watermark."
   },
   "faq": {
     "eyebrow": "Hỏi & Đáp",
-    "title": "Câu Hỏi Thường Gặp",
+    "title": "Các Câu Hỏi Thường Gặp",
     "items": [
-      { "anchor": "faq-is-solprompter-free", "q": "SolPrompter có miễn phí không?", "a": "SolPrompter hiện đang miễn phí. Bạn có thể truy cập các tính năng teleprompter, kịch bản và quay video thiết yếu mà không có quảng cáo hay watermark video thương hiệu." },
-      { "anchor": "faq-what-is-ai-voice-scroll", "q": "Cuộn Theo Giọng Nói AI là gì?", "a": "Cuộn Theo Giọng Nói AI lắng nghe lời nói của bạn và di chuyển qua kịch bản dựa trên tốc độ nói tự nhiên của bạn. Nó giúp bạn tạm dừng, tiếp tục và thuyết trình mà không cần liên tục điều chỉnh tốc độ cuộn cố định." },
-      { "anchor": "faq-what-is-notch-mode", "q": "Chế Độ Notch của SolPrompter là gì?", "a": "Chế Độ Notch đặt vùng đọc teleprompter gọn gàng gần camera của bạn. Điều này giúp giảm chuyển động mắt lộ rõ và làm giao tiếp bằng mắt của bạn trông tự nhiên hơn khi quay, thuyết trình và gọi video." },
-      { "anchor": "faq-mobile-devices", "q": "Tôi có thể dùng SolPrompter trên điện thoại hoặc máy tính bảng không?", "a": "Có. SolPrompter có giao diện linh hoạt được thiết kế cho điện thoại, máy tính bảng, laptop và máy tính để bàn. Các tính năng khả dụng có thể phụ thuộc vào trình duyệt, camera và khả năng của thiết bị." },
-      { "anchor": "faq-installation", "q": "Tôi có cần cài đặt SolPrompter không?", "a": "Không cần cài đặt cho phiên bản web. Bạn có thể mở SolPrompter trong trình duyệt hiện đại được hỗ trợ, thêm kịch bản và bắt đầu thuyết trình online." },
-      { "anchor": "faq-remote-control", "q": "Tôi có thể điều khiển SolPrompter từ thiết bị khác không?", "a": "Có. Điều khiển từ xa của SolPrompter cho phép bạn dùng điện thoại, máy tính bảng hoặc máy tính khác để bắt đầu hoặc tạm dừng teleprompter, điều chỉnh cuộn và điều hướng qua kịch bản." },
-      { "anchor": "faq-4k-recording", "q": "SolPrompter có quay video 4K được không?", "a": "SolPrompter hỗ trợ quay Full HD và 4K khi camera, trình duyệt và thiết bị hỗ trợ độ phân giải đã chọn. Chất lượng quay thực tế phụ thuộc vào khả năng và quyền của thiết bị." },
-      { "anchor": "faq-watermark", "q": "SolPrompter có thêm watermark vào bản ghi không?", "a": "SolPrompter không thêm watermark thương hiệu vào video bạn quay." },
-      { "anchor": "faq-supported-files", "q": "SolPrompter hỗ trợ những định dạng tệp kịch bản nào?", "a": "SolPrompter hỗ trợ dán văn bản trực tiếp và tải lên các tài liệu kịch bản được hỗ trợ như tệp TXT, DOCX, PDF và Markdown." },
-      { "anchor": "faq-online-autocue", "q": "SolPrompter có thể dùng làm autocue online không?", "a": "Có. SolPrompter có thể được dùng làm autocue online trên trình duyệt với cuộn thủ công, cuộn tự động tốc độ cố định và cuộn kích hoạt bằng giọng nói AI." }
+      {
+        "anchor": "faq-maintain-eye-contact",
+        "q": "Làm thế nào để tránh kiểu \"đọc bị gượng ép\" và duy trì giao tiếp mắt tự nhiên trong khi đọc?",
+        "a": "<strong>Bạn có thể duy trì ánh nhìn hoàn toàn tự nhiên bằng cách kích hoạt Chế độ Notch của SolPrompter để giữ kịch bản ngay phía dưới ống kính camera.</strong> Tính năng này thu hẹp chiều rộng vùng đọc (giữ các dòng ở mức 50-70 ký tự) và neo nó ở trung tâm trên cùng của màn hình. Điều này giảm thiểu sự di chuyển của mắt (độ lệch ngang và dọc) xuống dưới 3 độ, đảm bảo khán giả luôn thấy bạn nhìn thẳng vào ống kính chứ không phải đang quét trên màn hình."
+      },
+      {
+        "anchor": "faq-vs-app-store",
+        "q": "Tại sao tôi nên chọn SolPrompter thay vì một ứng dụng máy nhắc chữ chuyên biệt trên App Store?",
+        "a": "<strong>SolPrompter là một nền tảng làm việc hoàn toàn trên trình duyệt web, khởi chạy ngay lập tức mà không cần tải xuống, không cần đăng ký trả phí, không gắn watermark khi xuất video, hoặc bị gián đoạn bởi các quảng cáo banner gây phiền nhiễu.</strong> Hầu hết các ứng dụng trên iOS/Android khóa tính năng quản lý kịch bản, tùy chỉnh tốc độ cuộn và chế độ lật ngược kính sau các gói trả phí. SolPrompter cung cấp toàn bộ các tính năng cao cấp này trên một giao diện web hiện đại, sạch sẽ và hoàn toàn không yêu cầu đăng ký."
+      },
+      {
+        "anchor": "faq-remote-control-stability",
+        "q": "Điều khiển từ xa có bị ngắt kết nối nếu màn hình điện thoại của tôi khóa hoặc tắt không?",
+        "a": "<strong>Không, hệ thống điều khiển từ xa của SolPrompter sử dụng công nghệ WebSockets liên tục với giao thức tự động duy trì nhịp tim (heartbeat protocol) để đảm bảo kết nối ổn định ngay cả khi thiết bị rảnh rỗi.</strong> Miễn là tab trình duyệt còn đang mở, liên kết giữa máy tính bảng và điện thoại điều khiển (được ghép nối trong 3 giây qua mã QR) vẫn được kết nối với độ trễ dưới 10ms. Điều này giúp ngăn chặn tình trạng mất kết nối thường gặp ở các bộ clicker phần cứng."
+      },
+      {
+        "anchor": "faq-physical-beamsplitter",
+        "q": "Làm thế nào để thiết lập hệ thống máy nhắc chữ có kính quang học (beamsplitter) vật lý với ứng dụng web này?",
+        "a": "<strong>Bạn có thể bật \"Chế độ Gương\" (Mirror Mode) trong cài đặt hiển thị của SolPrompter để ngay lập tức lật ngược văn bản kịch bản theo chiều ngang.</strong> Các máy nhắc chữ vật lý phản chiếu hình ảnh màn hình của bạn lên một tấm kính phân quang đặt ở góc 45 độ, làm đảo ngược hình ảnh một cách tự nhiên. Để có độ rõ nét tối ưu, hãy chuyển giao diện sang Chế độ Tối (chữ trắng trên nền đen hoàn toàn) nhằm loại bỏ hiện tượng phản chiếu ảnh kép \"bóng ma\" (ghosting) trên mặt kính."
+      },
+      {
+        "anchor": "faq-script-privacy",
+        "q": "Có an toàn không khi tôi dán các kịch bản kinh doanh bảo mật hoặc các bản thảo sản phẩm chưa công bố?",
+        "a": "<strong>Có, SolPrompter hoàn toàn bảo mật vì tất cả kịch bản và bản ghi hình đều được lưu trữ cục bộ ngay trong bộ nhớ riêng tư trên trình duyệt của bạn (LocalStorage/IndexedDB).</strong> Do không có dữ liệu kịch bản nào được truyền tới máy chủ của SolPrompter, các đánh giá kinh doanh nội bộ, bản thảo video chưa phát hành hay ghi chú của bạn luôn giữ được sự riêng tư 100% và an toàn ngay trên chính thiết bị của bạn."
+      },
+      {
+        "anchor": "faq-ghosting-blur",
+        "q": "Tại sao văn bản của tôi trên mặt kính máy nhắc chữ lại trông bị mờ hoặc có hình ảnh kép?",
+        "a": "<strong>Hiện tượng hình ảnh kép (ghosting) này là do ánh sáng phản xạ từ cả mặt trước và mặt sau của kính thông thường; bạn có thể khắc phục điều này bằng cách sử dụng kính phân quang chuyên dụng cho máy nhắc chữ và giảm độ sáng màn hình.</strong> Kính cửa sổ tiêu chuẩn có hai bề mặt phản xạ. Một tấm kính phân quang 70/30 chuyên nghiệp cho máy nhắc chữ sẽ có lớp phủ chống chói ở một mặt để triệt tiêu các phản xạ kép này. Việc che phủ mặt sau của kính bằng một tấm vải tối màu cũng rất cần thiết để tránh chói sáng."
+      },
+      {
+        "anchor": "faq-offline-use",
+        "q": "Tôi có thể sử dụng máy nhắc chữ online này khi không có kết nối internet mạng không?",
+        "a": "<strong>Không gian làm việc nhắc chữ cơ bản có thể hoạt động ngoại tuyến sau khi trang web được tải đầy đủ, nhưng tính năng AI Cuộn Chữ theo Giọng Nói sẽ cần kết nối internet đang hoạt động.</strong> Tính năng kích hoạt bằng giọng nói của SolPrompter sử dụng API Web Speech gốc của trình duyệt, truyền các tín hiệu truy vấn giọng nói đến máy chủ đám mây của Google hoặc Apple để xử lý chuyển đổi giọng nói thành văn bản. Nếu buổi ghi hình của bạn không có mạng internet, bạn có thể dễ dàng chuyển về chế độ cuộn thủ công hoặc cuộn tự động có tùy chỉnh tốc độ của SolPrompter."
+      },
+      {
+        "anchor": "faq-font-size-distance",
+        "q": "Làm cách nào để xác định cỡ chữ và khoảng cách phù hợp cho việc đọc thoải mái?",
+        "a": "<strong>Quy tắc tiêu chuẩn được khuyến nghị là cài đặt chiều cao của phông chữ ở mức 1 inch (khoảng 2.54 cm) cho mỗi 10 feet (khoảng 3 mét) khoảng cách giữa bạn và màn hình máy nhắc chữ.</strong> Đối với việc ghi hình cận cảnh trên màn hình máy tính bàn (trong khoảng 3-4 feet), một vùng đọc thu gọn, nhỏ hơn sẽ tốt hơn vì bố cục quá rộng buộc mắt bạn phải quét rõ ràng từ trái sang phải, làm phá vỡ sự kết nối tự nhiên với ống kính camera."
+      }
     ]
   },
   "footer": {
     "brand": "SolPrompter",
-    "description": "Teleprompter AI online miễn phí cho các bài thuyết trình tự nhiên và quay video chuyên nghiệp.",
+    "description": "Một máy nhắc chữ online miễn phí giúp thuyết trình tự nhiên và ghi hình video chuyên nghiệp.",
     "columns": [
       {
-        "title": "Sản phẩm",
+        "title": "Sản Phẩm",
         "links": [
-          { "label": "Bảng giá", "url": "/pricing" },
-          { "label": "Tính năng", "url": "#features" },
-          { "label": "Cách hoạt động", "url": "#how-it-works" },
-          { "label": "Cuộn Theo Giọng Nói AI", "url": "#voice-scroll" },
-          { "label": "Chế độ Notch", "url": "#notch" },
-          { "label": "Điều khiển từ xa", "url": "#remote" },
-          { "label": "Quay 4K", "url": "#recording" }
+          {
+            "label": "Bảng Giá",
+            "url": "/pricing"
+          },
+          {
+            "label": "Tính Năng",
+            "url": "#features"
+          },
+          {
+            "label": "Cách Hoạt Động",
+            "url": "#how-it-works"
+          },
+          {
+            "label": "AI Cuộn Chữ",
+            "url": "#voice-scroll"
+          },
+          {
+            "label": "Chế Độ Notch",
+            "url": "#notch"
+          },
+          {
+            "label": "Điều Khiển Từ Xa",
+            "url": "#remote"
+          },
+          {
+            "label": "Quay Video 4K",
+            "url": "#recording"
+          }
         ]
       },
       {
-        "title": "Tài nguyên",
+        "title": "Tài Nguyên",
         "links": [
-          { "label": "Cách sử dụng", "url": "#how-it-works" },
-          { "label": "Hướng dẫn Teleprompter", "url": "/teleprompter-guide" },
-          { "label": "Blog", "url": "/blog" },
-          { "label": "Giới thiệu", "url": "/about" }
+          {
+            "label": "Cách Sử Dụng",
+            "url": "#how-it-works"
+          },
+          {
+            "label": "Hướng Dẫn Máy Nhắc Chữ",
+            "url": "/teleprompter-guide"
+          },
+          {
+            "label": "Blog",
+            "url": "/blog"
+          },
+          {
+            "label": "Giới Thiệu",
+            "url": "/about"
+          }
         ]
       },
       {
-        "title": "Pháp lý",
+        "title": "Pháp Lý",
         "links": [
-          { "label": "Chính sách bảo mật", "url": "/policy" },
-          { "label": "Điều khoản dịch vụ", "url": "/term" },
-          { "label": "Thanh toán & Hoàn tiền", "url": "/billing" }
+          {
+            "label": "Chính Sách Bảo Mật",
+            "url": "/policy"
+          },
+          {
+            "label": "Điều Khoản Dịch Vụ",
+            "url": "/term"
+          },
+          {
+            "label": "Thanh Toán & Hoàn Tiền",
+            "url": "/billing"
+          }
         ]
       }
     ],

@@ -13,7 +13,10 @@
     "brandDescription": "SolPrompter to teleprompter AI online zaprojektowany do naturalnych prezentacji i profesjonalnego nagrywania wideo.",
     "websiteDescription": "Darmowy teleprompter online z przewijaniem głosem AI, trybem notch, zdalnym sterowaniem i profesjonalnym nagrywaniem wideo.",
     "webpageName": "Darmowy Teleprompter Online z Przewijaniem Głosem AI | SolPrompter",
-    "alternateNames": ["SolPrompter", "solprompter.com"],
+    "alternateNames": [
+      "SolPrompter",
+      "solprompter.com"
+    ],
     "logoUrl": "/logo.webp",
     "logoCaption": "SolPrompter",
     "primaryImage": "/og-solprompter.jpg",
@@ -24,7 +27,12 @@
     "applicationSubCategory": "Teleprompter Online",
     "operatingSystem": "Dowolny system operacyjny z nowoczesną przeglądarką internetową",
     "browserRequirements": "Wymaga JavaScript i nowoczesnej przeglądarki internetowej. Dostęp do kamery i mikrofonu jest wymagany do nagrywania i przewijania głosem AI.",
-    "availableOnDevice": ["Komputer stacjonarny", "Laptop", "Tablet", "Smartfon"],
+    "availableOnDevice": [
+      "Komputer stacjonarny",
+      "Laptop",
+      "Tablet",
+      "Smartfon"
+    ],
     "featureList": [
       "Przewijanie sterowane głosem AI",
       "Ręczne przewijanie teleprompter",
@@ -49,12 +57,27 @@
   },
   "nav": {
     "items": [
-      { "label": "Funkcje", "url": "#features" },
-      { "label": "Tryb notch", "url": "#notch" },
-      { "label": "Przewijanie głosem", "url": "#voice-scroll" },
-      { "label": "Zdalne", "url": "#remote" }
+      {
+        "label": "Funkcje",
+        "url": "#features"
+      },
+      {
+        "label": "Tryb notch",
+        "url": "#notch"
+      },
+      {
+        "label": "Przewijanie głosem",
+        "url": "#voice-scroll"
+      },
+      {
+        "label": "Zdalne",
+        "url": "#remote"
+      }
     ],
-    "cta": { "label": "Przestrzenie robocze", "url": "/workspaces" }
+    "cta": {
+      "label": "Przestrzenie robocze",
+      "url": "/workspaces"
+    }
   },
   "hero": {
     "eyebrow": "SolPrompter — Teleprompter AI",
@@ -78,14 +101,34 @@
     "title": "Jeden teleprompter do każdego nagrania",
     "description": "SolPrompter łączy teleprompter online, przewijanie głosem AI, tryb notch, zdalne sterowanie, zarządzanie scenariuszami i profesjonalne nagrywanie wideo w jednej prostej przestrzeni roboczej.",
     "items": [
-      { "title": "Przewijanie głosem AI", "description": "SolPrompter podąża za Twoją mową i automatycznie przewija scenariusz w Twoim naturalnym tempie mówienia." },
-      { "title": "Teleprompter notch", "description": "Trzymaj scenariusz blisko kamery, aby ograniczyć widoczne ruchy oczu i zachować bardziej naturalny kontakt wzrokowy." },
-      { "title": "Zdalne sterowanie", "description": "Użyj innego telefonu, tabletu lub komputera, aby sterować przewijaniem, poruszać się po scenariuszu i zarządzać prezentacją zdalnie." },
-      { "title": "Nagrywanie w Full HD i 4K", "description": "Nagrywaj profesjonalne filmy, czytając scenariusz bezpośrednio z teleprompter." },
-      { "title": "Zarządzanie scenariuszami", "description": "Twórz, przesyłaj, edytuj, organizuj i wykorzystuj ponownie wszystkie scenariusze z jednej wygodnej przestrzeni roboczej." },
-      { "title": "Biblioteka nagrań", "description": "Zapisuj, przeglądaj i zarządzaj nagraniami obok scenariuszy użytych do ich utworzenia." },
-      { "title": "Stworzony dla urządzeń mobilnych", "description": "Korzystaj z SolPrompter wygodnie na telefonach, tabletach, laptopach i komputerach stacjonarnych dzięki responsywnemu interfejsowi dopasowanemu do każdego ekranu." },
-      { "title": "Bez reklam i znaku wodnego", "description": "Prezentuj i nagrywaj bez rozpraszających reklam i firmowych znaków wodnych na Twoich filmach." }
+      {
+        "title": "Przewijanie głosem AI",
+        "description": "SolPrompter podąża za Twoją mową i automatycznie przewija scenariusz w Twoim naturalnym tempie mówienia."
+      },
+      {
+        "title": "Teleprompter notch",
+        "description": "Trzymaj scenariusz blisko kamery, aby ograniczyć widoczne ruchy oczu i zachować bardziej naturalny kontakt wzrokowy."
+      },
+      {
+        "title": "Zdalne sterowanie",
+        "description": "Użyj innego telefonu, tabletu lub komputera, aby sterować przewijaniem, poruszać się po scenariuszu i zarządzać prezentacją zdalnie."
+      },
+      {
+        "title": "Nagrywanie w Full HD i 4K",
+        "description": "Nagrywaj profesjonalne filmy, czytając scenariusz bezpośrednio z teleprompter."
+      },
+      {
+        "title": "Biblioteka nagrań",
+        "description": "Zapisuj, przeglądaj i zarządzaj nagraniami obok scenariuszy użytych do ich utworzenia."
+      },
+      {
+        "title": "Stworzony dla urządzeń mobilnych",
+        "description": "Korzystaj z SolPrompter wygodnie na telefonach, tabletach, laptopach i komputerach stacjonarnych dzięki responsywnemu interfejsowi dopasowanemu do każdego ekranu."
+      },
+      {
+        "title": "Bez reklam i znaku wodnego",
+        "description": "Prezentuj i nagrywaj bez rozpraszających reklam i firmowych znaków wodnych na Twoich filmach."
+      }
     ]
   },
   "howItWorks": {
@@ -93,10 +136,26 @@
     "title": "Jak działa SolPrompter",
     "description": "Zamień dowolny scenariusz w płynną prezentację lub profesjonalne nagranie w kilku prostych krokach.",
     "steps": [
-      { "anchor": "step-add-script", "title": "Dodaj swój scenariusz", "description": "Wklej tekst bezpośrednio do SolPrompter lub prześlij istniejący scenariusz ze swojego urządzenia." },
-      { "anchor": "step-choose-scroll-mode", "title": "Wybierz tryb przewijania", "description": "Ustaw stałą prędkość przewijania, steruj scenariuszem ręcznie lub włącz przewijanie głosem AI." },
-      { "anchor": "step-customize-view", "title": "Dostosuj widok", "description": "Dostosuj czcionkę, rozmiar tekstu, odstępy między wierszami, obszar czytania i pozycję teleprompter dla wygodnego czytania." },
-      { "anchor": "step-start-presenting", "title": "Rozpocznij prezentację", "description": "Otwórz teleprompter, w razie potrzeby podłącz pilota i rozpocznij prezentację lub nagrywanie." }
+      {
+        "anchor": "step-add-script",
+        "title": "Dodaj swój scenariusz",
+        "description": "Wklej tekst bezpośrednio do SolPrompter lub prześlij istniejący scenariusz ze swojego urządzenia."
+      },
+      {
+        "anchor": "step-choose-scroll-mode",
+        "title": "Wybierz tryb przewijania",
+        "description": "Ustaw stałą prędkość przewijania, steruj scenariuszem ręcznie lub włącz przewijanie głosem AI."
+      },
+      {
+        "anchor": "step-customize-view",
+        "title": "Dostosuj widok",
+        "description": "Dostosuj czcionkę, rozmiar tekstu, odstępy między wierszami, obszar czytania i pozycję teleprompter dla wygodnego czytania."
+      },
+      {
+        "anchor": "step-start-presenting",
+        "title": "Rozpocznij prezentację",
+        "description": "Otwórz teleprompter, w razie potrzeby podłącz pilota i rozpocznij prezentację lub nagrywanie."
+      }
     ]
   },
   "voiceScroll": {
@@ -104,13 +163,28 @@
     "title": "Przewijanie głosem AI, które podąża za Tobą",
     "description": "Przestań dostosowywać tempo mówienia do stałej prędkości przewijania. SolPrompter podąża za Twoim głosem, dzięki czemu możesz skupić się na naturalnym przekazywaniu treści.",
     "benefits": [
-      { "title": "Mów naturalnie", "description": "Czytaj we własnym tempie, nie brzmiąc pospiesznie, wolno ani robotycznie." },
-      { "title": "Zatrzymaj się, gdy potrzebujesz", "description": "Weź oddech, podkreśl myśl lub zrób pauzę między sekcjami bez natychmiastowej utraty miejsca." },
-      { "title": "Zachowaj skupienie", "description": "Utrzymuj widoczność odpowiedniej części scenariusza, koncentrując się na swoim przekazie." },
-      { "title": "Mniej powtórek", "description": "Unikaj błędów spowodowanych zbyt szybkim lub zbyt wolnym przewijaniem scenariusza podczas nagrywania." }
+      {
+        "title": "Mów naturalnie",
+        "description": "Czytaj we własnym tempie, nie brzmiąc pospiesznie, wolno ani robotycznie."
+      },
+      {
+        "title": "Zatrzymaj się, gdy potrzebujesz",
+        "description": "Weź oddech, podkreśl myśl lub zrób pauzę między sekcjami bez natychmiastowej utraty miejsca."
+      },
+      {
+        "title": "Zachowaj skupienie",
+        "description": "Utrzymuj widoczność odpowiedniej części scenariusza, koncentrując się na swoim przekazie."
+      },
+      {
+        "title": "Mniej powtórek",
+        "description": "Unikaj błędów spowodowanych zbyt szybkim lub zbyt wolnym przewijaniem scenariusza podczas nagrywania."
+      }
     ],
     "supporting": "Wolisz tradycyjny autocue online? Ręczne sterowanie przewijaniem i przewijanie ze stałą prędkością są zawsze dostępne.",
-    "cta": { "label": "Wypróbuj przewijanie głosem AI", "url": "/workspaces" }
+    "cta": {
+      "label": "Wypróbuj przewijanie głosem AI",
+      "url": "/workspaces"
+    }
   },
   "notch": {
     "eyebrow": "Naturalny kontakt wzrokowy",
@@ -124,44 +198,95 @@
       "Zachowaj bardziej naturalny kontakt wzrokowy podczas nagrań i rozmów wideo."
     ],
     "supporting": "Tryb notch idealnie sprawdza się w wywiadach, prezentacjach, demonstracjach produktów, lekcjach online, rozmowach wideo i materiałach typu talking-head.",
-    "cta": { "label": "Otwórz tryb notch", "url": "/workspaces" }
+    "cta": {
+      "label": "Otwórz tryb notch",
+      "url": "/workspaces"
+    }
   },
   "remote": {
     "eyebrow": "Steruj z dowolnego miejsca",
     "title": "Użyj dowolnego urządzenia jako pilota teleprompter",
     "description": "Podłącz inny telefon, tablet lub komputer i steruj teleprompter bez dotykania głównego urządzenia nagrywającego.",
     "items": [
-      { "title": "Start i pauza", "description": "Steruj teleprompter dyskretnie podczas prezentacji." },
-      { "title": "Regulacja prędkości przewijania", "description": "Zwiększaj lub zmniejszaj prędkość z podłączonego urządzenia pilota." },
-      { "title": "Poruszaj się po scenariuszu", "description": "Przejdź do przodu, cofnij się lub przeskocz do innej sekcji scenariusza." },
-      { "title": "Zarządzaj nagrywaniem", "description": "Rozpocznij lub zatrzymaj nagrywanie zdalnie, jeśli obsługuje to Twoje urządzenie i przeglądarka." }
+      {
+        "title": "Start i pauza",
+        "description": "Steruj teleprompter dyskretnie podczas prezentacji."
+      },
+      {
+        "title": "Regulacja prędkości przewijania",
+        "description": "Zwiększaj lub zmniejszaj prędkość z podłączonego urządzenia pilota."
+      },
+      {
+        "title": "Poruszaj się po scenariuszu",
+        "description": "Przejdź do przodu, cofnij się lub przeskocz do innej sekcji scenariusza."
+      },
+      {
+        "title": "Zarządzaj nagrywaniem",
+        "description": "Rozpocznij lub zatrzymaj nagrywanie zdalnie, jeśli obsługuje to Twoje urządzenie i przeglądarka."
+      }
     ],
     "supporting": "Idealne dla samodzielnych twórców, prelegentów, studiów, zespołów produkcyjnych i prezentacji zdalnych.",
-    "cta": { "label": "Podłącz pilota", "url": "/workspaces" }
+    "cta": {
+      "label": "Podłącz pilota",
+      "url": "/workspaces"
+    }
   },
   "recording": {
     "eyebrow": "Nagrywaj podczas czytania",
     "title": "Twórz profesjonalne filmy w Full HD lub 4K",
     "description": "Korzystaj z kamery i teleprompter w jednym uproszczonym procesie. Czytaj naturalnie, kontroluj kadr i nagrywaj bez przełączania się między różnymi aplikacjami.",
     "items": [
-      { "title": "Podgląd kamery na żywo", "description": "Sprawdź swoją pozycję, kadr i wygląd przed nagraniem i w jego trakcie." },
-      { "title": "Nagrywanie w Full HD", "description": "Twórz wyraźne, wysokiej jakości filmy do mediów społecznościowych, lekcji, prezentacji i treści biznesowych." },
-      { "title": "Nagrywanie w 4K", "description": "Rejestruj profesjonalne wideo w wysokiej rozdzielczości, gdy Twoja kamera, przeglądarka i urządzenie je obsługują." },
-      { "title": "Bez znaku wodnego", "description": "Eksportuj czyste nagrania bez logo SolPrompter ani firmowej nakładki." },
-      { "title": "Biblioteka nagrań", "description": "Utrzymuj ujęcia w porządku i szybko znajduj nagranie powiązane z każdym scenariuszem." }
+      {
+        "title": "Podgląd kamery na żywo",
+        "description": "Sprawdź swoją pozycję, kadr i wygląd przed nagraniem i w jego trakcie."
+      },
+      {
+        "title": "Nagrywanie w Full HD",
+        "description": "Twórz wyraźne, wysokiej jakości filmy do mediów społecznościowych, lekcji, prezentacji i treści biznesowych."
+      },
+      {
+        "title": "Nagrywanie w 4K",
+        "description": "Rejestruj profesjonalne wideo w wysokiej rozdzielczości, gdy Twoja kamera, przeglądarka i urządzenie je obsługują."
+      },
+      {
+        "title": "Bez znaku wodnego",
+        "description": "Eksportuj czyste nagrania bez logo SolPrompter ani firmowej nakładki."
+      },
+      {
+        "title": "Biblioteka nagrań",
+        "description": "Utrzymuj ujęcia w porządku i szybko znajduj nagranie powiązane z każdym scenariuszem."
+      }
     ],
-    "cta": { "label": "Rozpocznij nagrywanie", "url": "/workspaces" }
+    "cta": {
+      "label": "Rozpocznij nagrywanie",
+      "url": "/workspaces"
+    }
   },
   "workspace": {
     "eyebrow": "Twoja przestrzeń robocza na treści",
     "title": "Zarządzaj scenariuszami i nagraniami w jednym miejscu",
     "description": "Przestań szukać w folderach, dokumentach i osobnych aplikacjach. SolPrompter trzyma Twoje scenariusze i nagrania w jednej uporządkowanej przestrzeni roboczej.",
     "items": [
-      { "title": "Twórz i edytuj scenariusze", "description": "Pisz nowe scenariusze lub aktualizuj istniejącą treść bezpośrednio w SolPrompter." },
-      { "title": "Prześlij istniejącą treść", "description": "Importuj scenariusze z obsługiwanych dokumentów zamiast ręcznie kopiować każdą sekcję." },
-      { "title": "Uporządkuj bibliotekę", "description": "Utrzymuj scenariusze i nagrania w porządku, aby były gotowe na przyszłe prezentacje." },
-      { "title": "Wykorzystuj scenariusze ponownie", "description": "Otwieraj poprzednie scenariusze, wprowadzaj szybkie zmiany i nagrywaj nowe wersje bez zaczynania od nowa." },
-      { "title": "Dostęp z dowolnego ekranu", "description": "Kontynuuj pracę z telefonu, tabletu, laptopa lub komputera stacjonarnego." }
+      {
+        "title": "Twórz i edytuj scenariusze",
+        "description": "Pisz nowe scenariusze lub aktualizuj istniejącą treść bezpośrednio w SolPrompter."
+      },
+      {
+        "title": "Prześlij istniejącą treść",
+        "description": "Importuj scenariusze z obsługiwanych dokumentów zamiast ręcznie kopiować każdą sekcję."
+      },
+      {
+        "title": "Uporządkuj bibliotekę",
+        "description": "Utrzymuj scenariusze i nagrania w porządku, aby były gotowe na przyszłe prezentacje."
+      },
+      {
+        "title": "Wykorzystuj scenariusze ponownie",
+        "description": "Otwieraj poprzednie scenariusze, wprowadzaj szybkie zmiany i nagrywaj nowe wersje bez zaczynania od nowa."
+      },
+      {
+        "title": "Dostęp z dowolnego ekranu",
+        "description": "Kontynuuj pracę z telefonu, tabletu, laptopa lub komputera stacjonarnego."
+      }
     ]
   },
   "mobile": {
@@ -169,10 +294,22 @@
     "title": "Teleprompter online przyjazny urządzeniom mobilnym",
     "description": "SolPrompter został zaprojektowany tak, aby był szybki, przejrzysty i łatwy w obsłudze zarówno na komputerach, jak i urządzeniach mobilnych.",
     "items": [
-      { "title": "Responsywny interfejs", "description": "Kluczowe elementy sterowania pozostają łatwo dostępne na różnych rozmiarach i orientacjach ekranu." },
-      { "title": "Pionowo i poziomo", "description": "Wybierz orientację ekranu, która najlepiej pasuje do Twojej konfiguracji nagrywania." },
-      { "title": "Sterowanie dotykiem", "description": "Wygodnie dostosowuj ustawienia tekstu, przewijania i nagrywania na ekranie dotykowym." },
-      { "title": "Bez instalacji", "description": "Otwórz SolPrompter w obsługiwanej przeglądarce i zacznij korzystać z teleprompter online." }
+      {
+        "title": "Responsywny interfejs",
+        "description": "Kluczowe elementy sterowania pozostają łatwo dostępne na różnych rozmiarach i orientacjach ekranu."
+      },
+      {
+        "title": "Pionowo i poziomo",
+        "description": "Wybierz orientację ekranu, która najlepiej pasuje do Twojej konfiguracji nagrywania."
+      },
+      {
+        "title": "Sterowanie dotykiem",
+        "description": "Wygodnie dostosowuj ustawienia tekstu, przewijania i nagrywania na ekranie dotykowym."
+      },
+      {
+        "title": "Bez instalacji",
+        "description": "Otwórz SolPrompter w obsługiwanej przeglądarce i zacznij korzystać z teleprompter online."
+      }
     ],
     "supporting": "Używaj SolPrompter jako mobilnego teleprompter, teleprompter na komputer lub autocue online w przeglądarce."
   },
@@ -180,14 +317,38 @@
     "eyebrow": "Stworzony dla każdego prezentera",
     "title": "Dla kogo jest SolPrompter?",
     "items": [
-      { "title": "Twórcy treści", "description": "Nagrywaj filmy na TikTok, YouTube, Shorts, Reels i inne treści społecznościowe bez zapamiętywania każdej kwestii." },
-      { "title": "YouTuberzy", "description": "Twórz recenzje, poradniki, materiały wyjaśniające i filmy typu talking-head z płynniejszą i pewniejszą prezentacją." },
-      { "title": "Podcasterzy", "description": "Śledź wstępy, wiadomości sponsorów, uporządkowane pytania i notatki do odcinków podczas nagrywania." },
-      { "title": "Nauczyciele i edukatorzy", "description": "Prezentuj lekcje online, filmy kursowe i treści edukacyjne jasno i spójnie." },
-      { "title": "Profesjonaliści biznesowi", "description": "Przygotowuj demonstracje produktów, aktualizacje firmowe, webinary, prezentacje sprzedażowe i filmy szkoleniowe." },
-      { "title": "Mówcy publiczni", "description": "Ćwicz przemówienia, próbuj prezentacje i przekazuj przygotowane treści z pewnością siebie." },
-      { "title": "Dziennikarze i osoby prowadzące wywiady", "description": "Śledź scenariusze, pytania i kluczowe punkty, pozostając skupionym na kamerze." },
-      { "title": "Zespoły zdalne", "description": "Używaj trybu notch podczas rozmów wideo, prezentacji online i wywiadów zdalnych." }
+      {
+        "title": "Twórcy treści",
+        "description": "Nagrywaj filmy na TikTok, YouTube, Shorts, Reels i inne treści społecznościowe bez zapamiętywania każdej kwestii."
+      },
+      {
+        "title": "YouTuberzy",
+        "description": "Twórz recenzje, poradniki, materiały wyjaśniające i filmy typu talking-head z płynniejszą i pewniejszą prezentacją."
+      },
+      {
+        "title": "Podcasterzy",
+        "description": "Śledź wstępy, wiadomości sponsorów, uporządkowane pytania i notatki do odcinków podczas nagrywania."
+      },
+      {
+        "title": "Nauczyciele i edukatorzy",
+        "description": "Prezentuj lekcje online, filmy kursowe i treści edukacyjne jasno i spójnie."
+      },
+      {
+        "title": "Profesjonaliści biznesowi",
+        "description": "Przygotowuj demonstracje produktów, aktualizacje firmowe, webinary, prezentacje sprzedażowe i filmy szkoleniowe."
+      },
+      {
+        "title": "Mówcy publiczni",
+        "description": "Ćwicz przemówienia, próbuj prezentacje i przekazuj przygotowane treści z pewnością siebie."
+      },
+      {
+        "title": "Dziennikarze i osoby prowadzące wywiady",
+        "description": "Śledź scenariusze, pytania i kluczowe punkty, pozostając skupionym na kamerze."
+      },
+      {
+        "title": "Zespoły zdalne",
+        "description": "Używaj trybu notch podczas rozmów wideo, prezentacji online i wywiadów zdalnych."
+      }
     ]
   },
   "comparison": {
@@ -221,23 +382,66 @@
     "eyebrow": "Gotowy do prezentacji?",
     "title": "Zacznij korzystać z SolPrompter",
     "description": "Dodaj scenariusz, wybierz preferowany tryb czytania i zacznij prezentować naturalnie.",
-    "cta": { "label": "Otwórz darmowy teleprompter", "url": "/workspaces" },
+    "cta": {
+      "label": "Otwórz darmowy teleprompter",
+      "url": "/workspaces"
+    },
     "supporting": "Bez reklam. Bez znaku wodnego. Bez skomplikowanej konfiguracji."
   },
   "faq": {
     "eyebrow": "Pytania i odpowiedzi",
     "title": "Najczęściej zadawane pytania",
     "items": [
-      { "anchor": "faq-is-solprompter-free", "q": "Czy SolPrompter jest darmowy?", "a": "SolPrompter jest obecnie darmowy. Możesz korzystać z podstawowych funkcji teleprompter, scenariuszy i nagrywania bez reklam i firmowego znaku wodnego na wideo." },
-      { "anchor": "faq-what-is-ai-voice-scroll", "q": "Czym jest przewijanie głosem AI?", "a": "Przewijanie głosem AI słucha Twojej mowy i przesuwa scenariusz na podstawie Twojego naturalnego tempa mówienia. Pomaga robić pauzy, kontynuować i prezentować bez ciągłego dostosowywania stałej prędkości przewijania." },
-      { "anchor": "faq-what-is-notch-mode", "q": "Czym jest tryb notch w SolPrompter?", "a": "Tryb notch umieszcza kompaktowy obszar czytania teleprompter blisko kamery. Pomaga to ograniczyć widoczne ruchy oczu i sprawia, że kontakt wzrokowy wygląda naturalniej podczas nagrań, prezentacji i rozmów wideo." },
-      { "anchor": "faq-mobile-devices", "q": "Czy mogę korzystać z SolPrompter na telefonie lub tablecie?", "a": "Tak. SolPrompter ma responsywny interfejs zaprojektowany dla smartfonów, tabletów, laptopów i komputerów stacjonarnych. Dostępne funkcje mogą zależeć od przeglądarki, kamery i możliwości urządzenia." },
-      { "anchor": "faq-installation", "q": "Czy muszę instalować SolPrompter?", "a": "Wersja internetowa nie wymaga instalacji. Możesz otworzyć SolPrompter w obsługiwanej nowoczesnej przeglądarce, dodać scenariusz i zacząć prezentować online." },
-      { "anchor": "faq-remote-control", "q": "Czy mogę sterować SolPrompter z innego urządzenia?", "a": "Tak. Zdalne sterowanie SolPrompter pozwala używać innego telefonu, tabletu lub komputera do uruchamiania i pauzowania teleprompter, regulacji przewijania i poruszania się po scenariuszu." },
-      { "anchor": "faq-4k-recording", "q": "Czy SolPrompter może nagrywać filmy w 4K?", "a": "SolPrompter obsługuje nagrywanie w Full HD i 4K, gdy kamera, przeglądarka i urządzenie obsługują wybraną rozdzielczość. Rzeczywista jakość nagrania zależy od możliwości i uprawnień Twojego urządzenia." },
-      { "anchor": "faq-watermark", "q": "Czy SolPrompter dodaje znak wodny do nagrań?", "a": "SolPrompter nie dodaje firmowego znaku wodnego do nagranych filmów." },
-      { "anchor": "faq-supported-files", "q": "Jakie formaty plików scenariuszy obsługuje SolPrompter?", "a": "SolPrompter obsługuje bezpośrednie wklejanie tekstu oraz przesyłanie obsługiwanych dokumentów scenariuszy, takich jak pliki TXT, DOCX, PDF i Markdown." },
-      { "anchor": "faq-online-autocue", "q": "Czy SolPrompter może być używany jako autocue online?", "a": "Tak. SolPrompter może być używany jako autocue online w przeglądarce z ręcznym przewijaniem, automatycznym przewijaniem ze stałą prędkością i przewijaniem sterowanym głosem AI." }
+      {
+        "anchor": "faq-is-solprompter-free",
+        "q": "Czy SolPrompter jest darmowy?",
+        "a": "SolPrompter jest obecnie darmowy. Możesz korzystać z podstawowych funkcji teleprompter, scenariuszy i nagrywania bez reklam i firmowego znaku wodnego na wideo."
+      },
+      {
+        "anchor": "faq-what-is-ai-voice-scroll",
+        "q": "Czym jest przewijanie głosem AI?",
+        "a": "Przewijanie głosem AI słucha Twojej mowy i przesuwa scenariusz na podstawie Twojego naturalnego tempa mówienia. Pomaga robić pauzy, kontynuować i prezentować bez ciągłego dostosowywania stałej prędkości przewijania."
+      },
+      {
+        "anchor": "faq-what-is-notch-mode",
+        "q": "Czym jest tryb notch w SolPrompter?",
+        "a": "Tryb notch umieszcza kompaktowy obszar czytania teleprompter blisko kamery. Pomaga to ograniczyć widoczne ruchy oczu i sprawia, że kontakt wzrokowy wygląda naturalniej podczas nagrań, prezentacji i rozmów wideo."
+      },
+      {
+        "anchor": "faq-mobile-devices",
+        "q": "Czy mogę korzystać z SolPrompter na telefonie lub tablecie?",
+        "a": "Tak. SolPrompter ma responsywny interfejs zaprojektowany dla smartfonów, tabletów, laptopów i komputerów stacjonarnych. Dostępne funkcje mogą zależeć od przeglądarki, kamery i możliwości urządzenia."
+      },
+      {
+        "anchor": "faq-installation",
+        "q": "Czy muszę instalować SolPrompter?",
+        "a": "Wersja internetowa nie wymaga instalacji. Możesz otworzyć SolPrompter w obsługiwanej nowoczesnej przeglądarce, dodać scenariusz i zacząć prezentować online."
+      },
+      {
+        "anchor": "faq-remote-control",
+        "q": "Czy mogę sterować SolPrompter z innego urządzenia?",
+        "a": "Tak. Zdalne sterowanie SolPrompter pozwala używać innego telefonu, tabletu lub komputera do uruchamiania i pauzowania teleprompter, regulacji przewijania i poruszania się po scenariuszu."
+      },
+      {
+        "anchor": "faq-4k-recording",
+        "q": "Czy SolPrompter może nagrywać filmy w 4K?",
+        "a": "SolPrompter obsługuje nagrywanie w Full HD i 4K, gdy kamera, przeglądarka i urządzenie obsługują wybraną rozdzielczość. Rzeczywista jakość nagrania zależy od możliwości i uprawnień Twojego urządzenia."
+      },
+      {
+        "anchor": "faq-watermark",
+        "q": "Czy SolPrompter dodaje znak wodny do nagrań?",
+        "a": "SolPrompter nie dodaje firmowego znaku wodnego do nagranych filmów."
+      },
+      {
+        "anchor": "faq-supported-files",
+        "q": "Jakie formaty plików scenariuszy obsługuje SolPrompter?",
+        "a": "SolPrompter obsługuje bezpośrednie wklejanie tekstu oraz przesyłanie obsługiwanych dokumentów scenariuszy, takich jak pliki TXT, DOCX, PDF i Markdown."
+      },
+      {
+        "anchor": "faq-online-autocue",
+        "q": "Czy SolPrompter może być używany jako autocue online?",
+        "a": "Tak. SolPrompter może być używany jako autocue online w przeglądarce z ręcznym przewijaniem, automatycznym przewijaniem ze stałą prędkością i przewijaniem sterowanym głosem AI."
+      }
     ]
   },
   "footer": {
@@ -247,30 +451,72 @@
       {
         "title": "Produkt",
         "links": [
-          { "label": "Cennik", "url": "/pricing" },
-          { "label": "Funkcje", "url": "#features" },
-          { "label": "Jak to działa", "url": "#how-it-works" },
-          { "label": "Przewijanie głosem AI", "url": "#voice-scroll" },
-          { "label": "Tryb notch", "url": "#notch" },
-          { "label": "Zdalne sterowanie", "url": "#remote" },
-          { "label": "Nagrywanie w 4K", "url": "#recording" }
+          {
+            "label": "Cennik",
+            "url": "/pricing"
+          },
+          {
+            "label": "Funkcje",
+            "url": "#features"
+          },
+          {
+            "label": "Jak to działa",
+            "url": "#how-it-works"
+          },
+          {
+            "label": "Przewijanie głosem AI",
+            "url": "#voice-scroll"
+          },
+          {
+            "label": "Tryb notch",
+            "url": "#notch"
+          },
+          {
+            "label": "Zdalne sterowanie",
+            "url": "#remote"
+          },
+          {
+            "label": "Nagrywanie w 4K",
+            "url": "#recording"
+          }
         ]
       },
       {
         "title": "Zasoby",
         "links": [
-          { "label": "Jak używać", "url": "#how-it-works" },
-          { "label": "Przewodnik po teleprompter", "url": "/teleprompter-guide" },
-          { "label": "Blog", "url": "/blog" },
-          { "label": "O nas", "url": "/about" }
+          {
+            "label": "Jak używać",
+            "url": "#how-it-works"
+          },
+          {
+            "label": "Przewodnik po teleprompter",
+            "url": "/teleprompter-guide"
+          },
+          {
+            "label": "Blog",
+            "url": "/blog"
+          },
+          {
+            "label": "O nas",
+            "url": "/about"
+          }
         ]
       },
       {
         "title": "Informacje prawne",
         "links": [
-          { "label": "Polityka prywatności", "url": "/policy" },
-          { "label": "Warunki korzystania", "url": "/term" },
-          { "label": "Płatności i zwroty", "url": "/billing" }
+          {
+            "label": "Polityka prywatności",
+            "url": "/policy"
+          },
+          {
+            "label": "Warunki korzystania",
+            "url": "/term"
+          },
+          {
+            "label": "Płatności i zwroty",
+            "url": "/billing"
+          }
         ]
       }
     ],

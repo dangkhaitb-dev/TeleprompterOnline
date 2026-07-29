@@ -99,7 +99,7 @@ eleventyComputed:
             </div>
             <ul class="bento-grid">
                 {%- for item in features.items %}
-                <li class="bento-card {% if loop.index == 1 %}bento-span-2 bento-card--voice{% elif loop.index == 6 %}bento-span-2 bento-card--recording{% elif loop.index == 7 %}bento-span-2 bento-card--mobile{% elif loop.index == 8 %}bento-span-2 bento-card--ads{% endif %}">
+                <li class="bento-card {% if loop.index == 1 %}bento-span-2 bento-card--voice{% elif loop.index == 4 %}bento-span-2 bento-card--recording{% elif loop.index == 5 %}bento-span-2 bento-card--mobile{% elif loop.index == 6 %}bento-span-2{% elif loop.index == 7 %}bento-span-2 bento-card--ads{% endif %}">
                     <div class="bento-card-inner">
                         <div class="card-icon-box">
                             {% if loop.index == 1 %}
@@ -111,12 +111,10 @@ eleventyComputed:
                             {% elif loop.index == 4 %}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M23 7a2 2 0 0 0-2.45-1.45L16 7V5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2l4.55 1.45A2 2 0 0 0 23 17V7z"/></svg>
                             {% elif loop.index == 5 %}
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" x2="8" y1="13" y2="13"/><line x1="16" x2="8" y1="17" y2="17"/><line x1="10" x2="8" y1="9" y2="9"/></svg>
-                            {% elif loop.index == 6 %}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2" ry="2"/><path d="M6 12h4"/></svg>
-                            {% elif loop.index == 7 %}
+                            {% elif loop.index == 6 %}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><rect width="16" height="12" x="2" y="4" rx="2"/><path d="M12 18H7.5a1.5 1.5 0 0 1 0-3H18a1 1 0 0 1 1 1v2"/><path d="M8 20h8"/></svg>
-                            {% elif loop.index == 8 %}
+                            {% elif loop.index == 7 %}
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="bento-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                             {% endif %}
                         </div>
@@ -134,14 +132,20 @@ eleventyComputed:
                             <span class="wave-line"></span>
                             <span class="wave-line"></span>
                         </div>
-                        {% elif loop.index == 6 %}
+                        {% elif loop.index == 4 %}
                         <div class="bento-visual recording-badge">
                             <span class="rec-dot"></span>
                             <span class="rec-time">00:02:45</span>
                         </div>
-                        {% elif loop.index == 7 %}
+                        {% elif loop.index == 5 %}
                         <div class="bento-visual phone-outline">
                             <div class="notch-indicator"></div>
+                        </div>
+                        {% elif loop.index == 7 %}
+                        <div class="bento-visual ads-visual">
+                            <div class="no-ads-shield">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                            </div>
                         </div>
                         {% endif %}
                     </div>
@@ -192,7 +196,6 @@ eleventyComputed:
                     {%- endfor %}
                 </ul>
                 <p class="section-support">{{ voiceScroll.supporting }}</p>
-                <div class="section-cta align-left"><a class="btn btn-primary" href="{{ voiceScroll.cta.url }}">{{ voiceScroll.cta.label }}</a></div>
             </div>
             <div class="split-visual-col">
                 <div class="browser-frame app-screenshot-wrapper">
@@ -225,7 +228,6 @@ eleventyComputed:
                     {%- endfor %}
                 </ul>
                 <p class="section-support">{{ notch.supporting }}</p>
-                <div class="section-cta align-left"><a class="btn btn-primary" href="{{ notch.cta.url }}">{{ notch.cta.label }}</a></div>
             </div>
             <div class="split-visual-col">
                 <div class="browser-frame app-screenshot-wrapper">
@@ -261,7 +263,6 @@ eleventyComputed:
                     {%- endfor %}
                 </ul>
                 <p class="section-support">{{ remote.supporting }}</p>
-                <div class="section-cta align-left"><a class="btn btn-primary" href="{{ remote.cta.url }}">{{ remote.cta.label }}</a></div>
             </div>
             <div class="split-visual-col">
                 <div class="app-screenshot-wrapper mobile-screenshot-wrapper">
@@ -288,7 +289,6 @@ eleventyComputed:
                 </li>
                 {%- endfor %}
             </ul>
-            <div class="section-cta"><a class="btn btn-primary" href="{{ recording.cta.url }}">{{ recording.cta.label }}</a></div>
         </div>
     </section>
  
@@ -328,21 +328,29 @@ eleventyComputed:
  
     {%- set mobile = pageData.mobile %}
     <section class="section section-alt" id="mobile">
-        <div class="section-inner">
-            <div class="section-head">
+        <div class="section-inner split-section">
+            <div class="split-text-col">
                 <p class="eyebrow">{{ mobile.eyebrow }}</p>
                 <h2 class="section-title">{{ mobile.title }}</h2>
                 <p class="section-desc">{{ mobile.description }}</p>
+                <ul class="cards-interactive-grid">
+                    {%- for item in mobile.items %}
+                    <li class="interactive-card">
+                        <h3 class="card-title">{{ item.title }}</h3>
+                        <p class="card-desc">{{ item.description }}</p>
+                    </li>
+                    {%- endfor %}
+                </ul>
+                <p class="section-support">{{ mobile.supporting }}</p>
             </div>
-            <ul class="cards-interactive-grid">
-                {%- for item in mobile.items %}
-                <li class="interactive-card">
-                    <h3 class="card-title">{{ item.title }}</h3>
-                    <p class="card-desc">{{ item.description }}</p>
-                </li>
-                {%- endfor %}
-            </ul>
-            <p class="section-support">{{ mobile.supporting }}</p>
+            <div class="split-visual-col device-showcase-visual">
+                <div class="ipad-landscape-frame">
+                    <img src="/media/ipad-landscape.jpg" alt="iPad Landscape View" class="device-img" />
+                    <div class="mobile-qr-remote">
+                        <img src="/media/mobile-remote.jpg" alt="Mobile Remote Control" class="device-img-overlay" />
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
  
@@ -372,15 +380,43 @@ eleventyComputed:
                 <h2 class="section-title">{{ comparison.title }}</h2>
                 <p class="section-desc">{{ comparison.description }}</p>
             </div>
-            <ul class="checklist-grid">
-                {%- for point in comparison.items %}
-                <li class="checklist-item">
-                    <span class="check-badge">✓</span>
-                    <span class="checklist-body">{{ point }}</span>
-                </li>
-                {%- endfor %}
-            </ul>
-            <p class="section-support">{{ comparison.supporting }}</p>
+            <div class="comparison-table-wrapper" style="overflow-x: auto; margin-top: 2rem;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            {%- for header in comparison.table.headers %}
+                            <th>{{ header }}</th>
+                            {%- endfor %}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%- for row in comparison.table.rows %}
+                        <tr>
+                            <td><strong>{{ row.feature }}</strong></td>
+                            <td><strong>{{ row.sol }}</strong></td>
+                            <td>{{ row.smart }}</td>
+                            <td>{{ row.mirror }}</td>
+                        </tr>
+                        {%- endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {%- if comparison.whyChoose %}
+            <div class="why-choose-details" style="margin-top: 4rem;">
+                <h3 class="section-subtitle" style="text-align: center; margin-bottom: 2rem; font-size: 1.75rem; color: var(--text-heading);">{{ comparison.whyChoose.title }}</h3>
+                <div class="why-choose-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem;">
+                    {%- for item in comparison.whyChoose.items %}
+                    <div class="why-choose-card" style="padding: 2rem; background: var(--bg-surface); border-radius: 8px; border: 1px solid var(--border); box-shadow: var(--shadow-sm);">
+                        <h4 style="font-size: 1.25rem; margin-bottom: 1rem; color: var(--text-heading);">{{ item.title }}</h4>
+                        <p style="font-size: 0.95rem; line-height: 1.6; color: var(--text-muted);">{{ item.description }}</p>
+                    </div>
+                    {%- endfor %}
+                </div>
+            </div>
+            {%- endif %}
+
+            <p class="section-support" style="margin-top: 3rem; text-align: center;">{{ comparison.supporting }}</p>
         </div>
     </section>
  
@@ -414,7 +450,7 @@ eleventyComputed:
                         <svg class="faq-chevron-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
                     </summary>
                     <div class="faq-content">
-                        <p class="faq-answer-text">{{ item.a }}</p>
+                        <p class="faq-answer-text">{{ item.a | safe }}</p>
                     </div>
                 </details>
                 {%- endfor %}

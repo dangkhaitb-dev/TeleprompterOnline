@@ -51,6 +51,8 @@ import {
   prepareRecordingMedia,
 } from './components/recording-media-preflight.js';
 import {
+  applyCameraLoadingState,
+  applyPendingCameraPreviewState,
   applyCameraPreviewState,
   createMobileStudioTabs,
   createStudioMediaSettingsHandler,
@@ -146,8 +148,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const teleprompterText = $('teleprompterText');
   const cameraCanvas = $('cameraCanvas');
   const cameraFeed = $('cameraFeed');
-  const cameraPlaceholder = $('cameraPlaceholder');
-  const cameraPlaceholderText = $('cameraPlaceholderText');
+  const cameraLoading = $('cameraLoading');
   const prompterPanel = $('prompterPanel');
   const panelDragHandle = $('dragHandle');
   const panelResizeHandle = $('panelResizeHandle');
@@ -245,9 +246,18 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         ]);
         return;
       }
-      requestCurrentRecordingMediaReady().catch(() => {
-        if (!tornDown) showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
-      });
+      showPendingRecordCameraUI();
+      const revision = studioModeRevision;
+      requestRecordingMediaReady(revision)
+        .catch(() => {
+          if (!tornDown) showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
+        })
+        .finally(() => {
+          const cameraReady = hasLiveMediaTrack(cameraStream, 'video');
+          if (!tornDown && revision === studioModeRevision && !cameraReady) {
+            applyCameraLoadingState({ cameraFeed, cameraLoading });
+          }
+        });
     },
   });
   mobileStudioTabs = createMobileStudioTabs({ root, studioMode });
@@ -515,7 +525,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   async function startCamera() {
     if (tornDown) return false;
     const requestId = ++cameraRequestId;
-    if (cameraPlaceholderText) cameraPlaceholderText.textContent = copy.cameraStarting || '';
+    let ready = false;
+    applyCameraLoadingState({ cameraFeed, cameraLoading, loading: true });
     try {
       const { popups } = await panelsReady;
       if (tornDown || requestId !== cameraRequestId) return false;
@@ -532,7 +543,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       }
 
       const stream = await getCaptureStream({ video, audio: false });
-      if (tornDown || requestId !== cameraRequestId || !app.classList.contains('cam-on')) {
+      if (tornDown || requestId !== cameraRequestId) {
         stopStream(stream);
         return false;
       }
@@ -550,8 +561,17 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         on(cameraFeed, 'loadedmetadata', () => {
           applyCameraAspect(cameraFeed.videoWidth, cameraFeed.videoHeight, requestId);
         }, { once: true });
+        // Keep the feed hidden behind the lightweight spinner until its first
+        // frame can play; the surrounding Record UI is already visible.
+        const playAttempt = cameraFeed.play?.();
+        await playAttempt?.catch(() => {});
+        if (tornDown || requestId !== cameraRequestId) {
+          stopStream(stream);
+          if (cameraStream === stream) cameraStream = null;
+          return false;
+        }
       }
-      if (cameraPlaceholder) cameraPlaceholder.classList.remove('show');
+      ready = true;
       return true;
     } catch (err) {
       if (requestId !== cameraRequestId) return false;
@@ -560,14 +580,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         await guideIfBlocked([{ perm: 'camera', label: 'camera' }]); // guide only if truly blocked
         return false;
       }
-      if (cameraPlaceholderText) {
-        cameraPlaceholderText.textContent = cameraErrorText(reason, err);
-      }
+      showToast(cameraErrorText(reason, err));
       return false;
+    } finally {
+      if (requestId === cameraRequestId) {
+        applyCameraLoadingState({ cameraFeed, cameraLoading, ready });
+      }
     }
   }
 
-  // Map a classified capture failure to the camera placeholder message.
+  // Map a classified capture failure to a user-facing camera error message.
   function cameraErrorText(reason, err) {
     if (reason === 'denied') return copy.micDenied || copy.cameraError || '';
     if (reason === 'not-found') return copy.cameraNoDevice || '';
@@ -581,6 +603,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     stopStream(cameraStream);
     cameraStream = null;
     if (cameraFeed) cameraFeed.srcObject = null;
+    applyCameraLoadingState({ cameraFeed, cameraLoading });
     // Lần bật sau bắt đầu lại từ fallback, tránh nháy tỷ lệ camera cũ.
     cameraAspect = DEFAULT_CAMERA_ASPECT;
   }
@@ -636,23 +659,25 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     layoutControlHome.insertBefore(layoutControl, anchor);
   }
 
+  function showPendingRecordCameraUI() {
+    syncSurface(teleprompterText);
+    applyPendingCameraPreviewState({ app, cameraFeed, cameraLoading });
+    setFormatToolbarInPanel(true);
+    setLayoutFrameInPanel(true);
+    setLayoutControlInPanel(true);
+    updateCameraCanvasSize();
+    if (readingSession) readingSession.switchSurface(teleprompterText);
+    requestAnimationFrame(() => layout.update());
+  }
+
   async function setCameraMode(nextOn, { preserveStudioLayout = false } = {}) {
     setFormatEditOpen(false);
     if (nextOn) {
-      syncSurface(teleprompterText);
-      applyCameraPreviewState({ app, cameraFeed, enabled: true });
-      setFormatToolbarInPanel(true);
-      setLayoutFrameInPanel(true);
-      setLayoutControlInPanel(true);
-      updateCameraCanvasSize();
-      if (cameraPlaceholderText) cameraPlaceholderText.textContent = copy.cameraStarting || '';
-      if (cameraPlaceholder) cameraPlaceholder.classList.add('show');
-      if (readingSession) readingSession.switchSurface(teleprompterText);
+      showPendingRecordCameraUI();
       const started = await startCamera();
       if (!started) return false;
     } else {
       stopCamera();
-      if (cameraPlaceholder) cameraPlaceholder.classList.remove('show');
       if (preserveStudioLayout) {
         // In Record mode, Hide Camera controls only the preview/capture input.
         // Keep the camera-style teleprompter surface and its controls in place.
@@ -1952,7 +1977,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     onDeviceChange: async (type) => {
       if (type !== 'camera' || !cameraEnabled()) return;
       stopCamera();
-      if (cameraPlaceholder) cameraPlaceholder.classList.add('show');
       const ready = await startCamera();
       if (!ready) await setCameraToggle(false);
     },

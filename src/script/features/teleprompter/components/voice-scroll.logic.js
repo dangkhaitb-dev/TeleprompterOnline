@@ -14,6 +14,7 @@ import { getItem, setItem } from '../../../utils/storage.js';
 import { LS_VOICE_SCROLL_ASR_LOCALES } from '../../../utils/storage-keys.js';
 
 const PRE_AUDIO_ABORT_LIMIT = 2;
+const BROWSER_SERVICE_FAILURE_LIMIT = 2;
 const USER_OVERRIDE_GUARD_MS = 650;
 const MAX_ASR_CURSOR_ADVANCE = 8;
 const LOCAL_PACK_CHECK_TIMEOUT_MS = 3000;
@@ -526,10 +527,12 @@ export async function prepareSpeechPackForText(text, { onStatus } = {}) {
  * @param {Object} options - Callbacks for ASR events.
  * @param {Function} options.onResult - Callback for recognition results.
  * @param {Function} options.onPhaseChange - Callback for phase changes.
- * @param {Function} options.onError - Callback for errors.
+ * @param {Function} options.onError - Callback for fatal errors.
+ * @param {Function} options.onDegraded - Callback when timed scrolling should
+ * temporarily cover a degraded browser recognition service.
  * @returns {Object} The ASR engine interface.
  */
-export function createASREngine({ onResult, onPhaseChange, onError }) {
+export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }) {
   let recognition = null;
   let wantsListening = false;
   let locale = 'vi-VN';
@@ -554,11 +557,28 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
   let sessionHadResult = false;
   let sessionErrorCode = '';
   let consecutivePreAudioAborts = 0;
+  let browserServiceFailures = 0;
+  let sessionFailureReported = false;
+  let degradationReported = false;
 
   const log = (message, details) => {
     if (details === undefined) console.info(`[VoiceScroll] ${message}`);
     else console.info(`[VoiceScroll] ${message}`, details);
   };
+
+  function reportBrowserServiceFailure(error) {
+    if (useLocal || sessionFailureReported) return;
+    sessionFailureReported = true;
+    browserServiceFailures += 1;
+    if (browserServiceFailures < BROWSER_SERVICE_FAILURE_LIMIT || degradationReported) return;
+    degradationReported = true;
+    onDegraded?.({
+      error,
+      locale,
+      mode: 'browser-service',
+      failures: browserServiceFailures,
+    });
+  }
 
   function clearRestartTimer() {
     if (restartTimer !== null) {
@@ -639,6 +659,10 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     const tailPartial = stableInterimToks.length > 0;
 
     const rawTranscript = `${rawFinalWords.slice(-16).join(' ')} ${interimText}`.trim();
+    if (rawTranscript) {
+      browserServiceFailures = 0;
+      degradationReported = false;
+    }
     log('speech result', {
       transcript: rawTranscript,
       finalTokens: finalTokens.length,
@@ -682,6 +706,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
       sessionHadSpeech = false;
       sessionHadResult = false;
       sessionErrorCode = '';
+      sessionFailureReported = false;
       previousInterimTokens = [];
       // Chrome result indexes start at zero again for each restarted session.
       // Preserve accumulated final tokens, but allow new indexes to be committed.
@@ -715,6 +740,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
 
     instance.onnomatch = () => {
       console.warn('[VoiceScroll] Chrome heard speech but returned no transcript match');
+      reportBrowserServiceFailure('no-match');
     };
 
     instance.onresult = handleResult;
@@ -758,6 +784,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
       // Network failures are usually transient. Let onend restart the service,
       // but keep a visible diagnostic in the console.
       if (code === 'network') {
+        reportBrowserServiceFailure(code);
         console.warn('[VoiceScroll] transient recognition error', code);
         return;
       }
@@ -790,6 +817,7 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
           console.warn('[VoiceScroll] sound was detected, but Chrome did not classify it as speech');
         } else {
           console.warn('[VoiceScroll] speech was detected, but Chrome returned no transcript');
+          reportBrowserServiceFailure('no-transcript');
         }
       }
       console.info('[VoiceScroll][ASR end]', {
@@ -876,6 +904,9 @@ export function createASREngine({ onResult, onPhaseChange, onError }) {
     biasSupported = true;
     hasLoggedListening = false;
     consecutivePreAudioAborts = 0;
+    browserServiceFailures = 0;
+    sessionFailureReported = false;
+    degradationReported = false;
     clearRestartTimer();
     
     // Try on-device first
@@ -1013,6 +1044,7 @@ export function createVoiceScrollController({
   onPhaseChange,
   onError,
   onTranscript,
+  onRecognitionDegraded,
 }) {
   // Matcher state (passed to model layer functions)
   let matcherState = null;
@@ -1028,6 +1060,17 @@ export function createVoiceScrollController({
   let userAnchor = -1;
   let userGuardUntil = 0;
   let awaitingUserAnchorSpeech = false;
+  let timedFallbackActive = false;
+  let timedFallbackIndex = -1;
+  let timedFallbackAnchorAt = 0;
+
+  function startTimedFallback(details) {
+    if (!matcherState || timedFallbackActive) return;
+    timedFallbackActive = true;
+    timedFallbackIndex = Math.max(0, matcherState.cursor, displayIndex, creepIndex);
+    timedFallbackAnchorAt = performance.now();
+    onRecognitionDegraded?.(details);
+  }
   
   function initMatcherState(wordParts) {
     const indices = buildIndices(wordParts);
@@ -1112,6 +1155,13 @@ export function createVoiceScrollController({
     });
     
     if (result.cursor !== undefined && cursorMoved) {
+      const transcriptBehindFallback = timedFallbackActive
+        && result.cursor < timedFallbackIndex;
+      if (timedFallbackActive && !transcriptBehindFallback) {
+        timedFallbackActive = false;
+        timedFallbackIndex = -1;
+        timedFallbackAnchorAt = 0;
+      }
       const prev = matcherState.cursor;
       
       // Update reading speed (EMA)
@@ -1126,19 +1176,23 @@ export function createVoiceScrollController({
         }
       }
       anchorAt = now;
-      displayIndex = result.cursor;
-      creepIndex = result.cursor;
-      
-      // Notify UI to scroll
-      onCursorMove?.({
-        cursor: result.cursor,
-        displayIndex,
-        words: result.words,
-      });
+      if (!transcriptBehindFallback) {
+        displayIndex = result.cursor;
+        creepIndex = result.cursor;
+
+        // Notify UI only after recovered speech catches the timed reading
+        // position. A delayed transcript must not pull the page backward.
+        onCursorMove?.({
+          cursor: result.cursor,
+          displayIndex,
+          words: result.words,
+        });
+      }
       console.info('[VoiceScroll] cursor matched', {
         previous: prev,
         cursor: result.cursor,
         sequentialRecovery: isSequentialRecovery,
+        behindTimedFallback: transcriptBehindFallback,
       });
       asr?.resetPending();
       
@@ -1167,6 +1221,9 @@ export function createVoiceScrollController({
     userAnchor = -1;
     userGuardUntil = 0;
     awaitingUserAnchorSpeech = false;
+    timedFallbackActive = false;
+    timedFallbackIndex = -1;
+    timedFallbackAnchorAt = 0;
     
     // Detect language
     const detected = detectedLanguage || await detectScriptLanguage(scriptText);
@@ -1186,13 +1243,22 @@ export function createVoiceScrollController({
         onPhaseChange?.(phase);
       },
       onError: (err) => {
-        phase = 'idle';
-        onPhaseChange?.('idle');
         const message = err === 'unsupported'
           ? 'Browser does not support Web Speech API'
           : err;
+        if (err === 'unsupported' || err === 'start-timeout') {
+          startTimedFallback({ error: message, fatal: true });
+        }
+        if (timedFallbackActive) {
+          phase = 'listening';
+          onPhaseChange?.('listening');
+          return;
+        }
+        phase = 'idle';
+        onPhaseChange?.('idle');
         onError?.(message);
       },
+      onDegraded: startTimedFallback,
     });
     
     // Recognition starts unbiased. Context is introduced only after the reader
@@ -1200,6 +1266,7 @@ export function createVoiceScrollController({
     biasAnchor = 0;
     const started = await asr.start(detected.locale);
     if (!started) {
+      if (timedFallbackActive) return true;
       phase = 'idle';
       onPhaseChange?.('idle');
       return false;
@@ -1215,6 +1282,9 @@ export function createVoiceScrollController({
     userAnchor = -1;
     userGuardUntil = 0;
     awaitingUserAnchorSpeech = false;
+    timedFallbackActive = false;
+    timedFallbackIndex = -1;
+    timedFallbackAnchorAt = 0;
     onPhaseChange?.('idle');
   }
   
@@ -1229,6 +1299,10 @@ export function createVoiceScrollController({
     displayIndex = index;
     creepIndex = index;
     anchorAt = performance.now();
+    if (timedFallbackActive) {
+      timedFallbackIndex = index;
+      timedFallbackAnchorAt = anchorAt;
+    }
     matcherState.missStreak = 0;
     matcherState.stallRuns = 0;
     matcherState.forcedRun = 0;
@@ -1251,25 +1325,32 @@ export function createVoiceScrollController({
   // Creep state getters for UI layer
   function getCreepInfo() {
     return {
-      cursor: matcherState?.cursor ?? -1,
-      creepIndex,
+      cursor: timedFallbackActive ? timedFallbackIndex : (matcherState?.cursor ?? -1),
+      creepIndex: timedFallbackActive ? timedFallbackIndex : creepIndex,
+      timedFallback: timedFallbackActive,
       displayIndex,
       wpm,
-      anchorAt,
+      anchorAt: timedFallbackActive ? timedFallbackAnchorAt : anchorAt,
       // Only a confirmed content match may keep optimistic creep alive. Raw
       // ASR noise must not extend scrolling merely by emitting transcripts.
-      lastResultAt: anchorAt,
+      lastResultAt: timedFallbackActive ? performance.now() : anchorAt,
       wordsLength: matcherState?.words.length ?? 0,
     };
   }
   
   function updateCreepIndex(newIndex) {
+    if (timedFallbackActive) {
+      timedFallbackIndex = newIndex;
+      timedFallbackAnchorAt = performance.now();
+      return;
+    }
     creepIndex = newIndex;
   }
 
   function isUserOverrideActive() {
-    return awaitingUserAnchorSpeech
-      || performance.now() < userGuardUntil;
+    return !timedFallbackActive && (
+      awaitingUserAnchorSpeech || performance.now() < userGuardUntil
+    );
   }
   
   return {

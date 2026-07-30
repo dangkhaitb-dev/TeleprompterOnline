@@ -130,7 +130,7 @@
 
   /* Fixed studio hues (theme-independent) used inline in the demo CSS. */
   --tp-camera-bg: #17181b;
-  --tp-camera-placeholder-bg: #202227;
+  --tp-z-camera-loading: 47;
   --tp-black: #000000;
   --tp-white: #ffffff;
   --tp-panel-scrim: rgba(111, 111, 111, 0.62);

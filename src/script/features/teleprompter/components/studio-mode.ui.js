@@ -1,6 +1,21 @@
 const NORMAL_MODE = 'normal';
 const RECORD_MODE = 'record';
 
+export function applyCameraLoadingState({
+  cameraFeed,
+  cameraLoading,
+  loading = false,
+  ready = false,
+} = {}) {
+  if (cameraLoading) cameraLoading.hidden = !loading;
+  cameraFeed?.classList.toggle('hidden', loading || !ready);
+}
+
+export function applyPendingCameraPreviewState({ app, cameraFeed, cameraLoading } = {}) {
+  applyCameraPreviewState({ app, cameraFeed, enabled: true });
+  applyCameraLoadingState({ cameraFeed, cameraLoading, loading: true });
+}
+
 export function applyCameraPreviewState({
   app,
   cameraFeed,

@@ -282,6 +282,15 @@ function scrollTarget(el, surface, getReadingLineOffset) {
   );
 }
 
+function scrollIndexAtPosition(words, surface, getReadingLineOffset) {
+  let index = 0;
+  while (index < words.length - 1
+    && scrollTarget(words[index].el, surface, getReadingLineOffset) < surface.scrollTop) {
+    index += 1;
+  }
+  return index;
+}
+
 function createCreepEngine(
   getSurface,
   getReadingLineOffset,
@@ -299,6 +308,22 @@ function createCreepEngine(
     if (controller.isUserOverrideActive?.()) return;
     const info = controller.getCreepInfo();
     if (info.cursor < 0) return;
+    if (info.creepIndex >= info.wordsLength - 1) return;
+    const words = controller.getWords();
+    const surface = getSurface();
+    if (info.timedFallback && surface) {
+      let visibleIndex = info.creepIndex;
+      while (visibleIndex < words.length - 1
+        && scrollTarget(words[visibleIndex].el, surface, getReadingLineOffset)
+          < surface.scrollTop) {
+        visibleIndex += 1;
+      }
+      if (visibleIndex > info.creepIndex) {
+        controller.updateCreepIndex(visibleIndex);
+        creepRaf = requestAnimationFrame(tick);
+        return;
+      }
+    }
     const now = performance.now();
     if (now - info.lastResultAt > CREEP.SILENCE_MS) return;  // silence -> stop
     
@@ -308,10 +333,8 @@ function createCreepEngine(
     const ahead = Math.min(cap, Math.floor(elapsed * (info.wpm / 60) * CREEP.RATE));
     const target = Math.min(info.wordsLength - 1, info.cursor + ahead);
     
-    const words = controller.getWords();
     if (target > info.creepIndex && words[target]) {
       controller.updateCreepIndex(target);
-      const surface = getSurface();
       if (surface) {
         // Update PID target without snap (smooth continuation)
         pid.setTarget(
@@ -393,6 +416,7 @@ export function initVoiceScrollUI({
     pid.syncTo(surface.scrollTop);
     displayIndex = index;
     controller.setCursorTo(index, { userInitiated: true });
+    const resumeTimedFallback = controller.getCreepInfo().timedFallback;
     // A direct word selection is an explicit reading-position change: dim
     // every complete visual row above the selected row. Manual scrolling uses
     // a separate path below and intentionally never paints spoken state.
@@ -412,6 +436,7 @@ export function initVoiceScrollUI({
       scrollTarget(words[index].el, surface, getReadingLineOffset),
       WORD_SCROLL_ANIMATION_MS,
     );
+    if (resumeTimedFallback && creep) creep.start();
   }
   
   async function start({ detectedLanguage = null } = {}) {
@@ -473,6 +498,10 @@ export function initVoiceScrollUI({
         stop();
         onError?.(err);
       },
+      onRecognitionDegraded: (details) => {
+        console.warn('[VoiceScroll] browser recognition degraded; using timed fallback', details);
+        if (creep) creep.start();
+      },
       onTranscript,
     });
     
@@ -492,7 +521,17 @@ export function initVoiceScrollUI({
       if (!surface) return;
       if (Math.abs(surface.scrollTop - Math.round(pid.current())) > MANUAL_SCROLL_THRESHOLD) {
         pid.syncTo(surface.scrollTop);
-        if (creep) creep.stop();
+        if (creep) {
+          if (controller.getCreepInfo().timedFallback) {
+            // Timed fallback has no speech cursor to re-anchor it. Adopt the
+            // user's viewport in either direction so Auto resumes from where
+            // they chose instead of pulling them back to its previous index.
+            controller.updateCreepIndex(
+              scrollIndexAtPosition(words, surface, getReadingLineOffset),
+            );
+            creep.start();
+          } else creep.stop();
+        }
         // Manual scrolling changes only the viewport. The speech matcher and
         // spoken-row state continue from the last confirmed ASR cursor; only an
         // explicit word click is allowed to re-anchor them.

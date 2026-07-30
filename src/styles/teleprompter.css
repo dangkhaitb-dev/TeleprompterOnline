@@ -504,33 +504,39 @@ html[data-theme="dark"] .app .prompt-box {
   visibility: hidden;
 }
 
-.camera-placeholder {
+.camera-loading {
   position: absolute;
-  inset: 0;
-  z-index: 1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: var(--tp-z-camera-loading);
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.camera-loading[hidden] {
   display: none;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 14px;
-  background:
-    radial-gradient(1000px 500px at 70% 20%, rgba(69, 152, 231, 0.16), transparent 60%),
-    radial-gradient(800px 460px at 25% 85%, rgba(239, 77, 98, 0.14), transparent 60%),
-    var(--tp-camera-placeholder-bg);
-  text-align: center;
-  padding: 0 30px;
 }
 
-.app.cam-on .camera-placeholder.show {
-  display: flex;
+.camera-loading-spinner {
+  width: var(--space-8);
+  height: var(--space-8);
+  border: 3px solid color-mix(in srgb, var(--tp-white) 28%, transparent);
+  border-top-color: var(--tp-white);
+  border-radius: var(--radius-pill);
+  animation: camera-loading-spin calc(var(--dur-normal) * 3) linear infinite;
 }
 
-.camera-placeholder svg {
-  width: 46px;
-  height: 46px;
-  opacity: 0.8;
+@keyframes camera-loading-spin {
+  to { transform: rotate(1turn); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .camera-loading-spinner {
+    animation: none;
+  }
 }
 
 /* ===== Teleprompter overlay panel (mặc định nằm sát top, căn giữa ngang) ===== */

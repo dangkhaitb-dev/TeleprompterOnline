@@ -2,6 +2,8 @@
 
 import { describe, expect, it, vi } from 'vitest';
 import {
+  applyCameraLoadingState,
+  applyPendingCameraPreviewState,
   applyCameraPreviewState,
   createMobileStudioTabs,
   createStudioMediaSettingsHandler,
@@ -31,6 +33,30 @@ function setup() {
 }
 
 describe('studio mode controller', () => {
+  it('shows a spinner until the camera feed is ready', () => {
+    document.body.innerHTML = `
+      <main id="app"></main>
+      <video id="camera"></video>
+      <div id="camera-loading" hidden></div>
+    `;
+    const app = document.querySelector('#app');
+    const cameraFeed = document.querySelector('#camera');
+    const cameraLoading = document.querySelector('#camera-loading');
+
+    applyPendingCameraPreviewState({ app, cameraFeed, cameraLoading });
+    expect(app.classList.contains('cam-on')).toBe(true);
+    expect(cameraLoading.hidden).toBe(false);
+    expect(cameraFeed.classList.contains('hidden')).toBe(true);
+
+    applyCameraLoadingState({ cameraFeed, cameraLoading, ready: true });
+    expect(cameraLoading.hidden).toBe(true);
+    expect(cameraFeed.classList.contains('hidden')).toBe(false);
+
+    applyCameraLoadingState({ cameraFeed, cameraLoading });
+    expect(cameraLoading.hidden).toBe(true);
+    expect(cameraFeed.classList.contains('hidden')).toBe(true);
+  });
+
   it('hides only the camera feed in Record mode and restores Normal layout on exit', () => {
     document.body.innerHTML = '<main id="app"><video id="camera"></video></main>';
     const app = document.querySelector('#app');

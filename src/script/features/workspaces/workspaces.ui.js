@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-properties */
 // workspaces.ui.js — DOM wiring for the Workspaces library (the only layer that
 // touches the DOM). Reads copy from the inert #wsCopy JSON block and talks to
 // the store only through workspaces.logic. Renders the folder tree + script
@@ -85,58 +84,6 @@ function readCopy() {
 }
 
 export function initWorkspacesUI() {
-  const params = new URLSearchParams(window.location.search);
-  if (params.has('seed')) {
-    localStorage.setItem('solprompter:folders', JSON.stringify([
-      { id: 'folder-1', name: 'Youtube Videos', parentId: null },
-      { id: 'folder-2', name: 'Sales Demos', parentId: null },
-      { id: 'folder-3', name: 'Online Courses', parentId: null },
-    ]));
-    localStorage.setItem('solprompter:workspaces', JSON.stringify([
-      {
-        id: 'ws-demo-1',
-        title: 'How to use AI Voice Scroll',
-        scriptText: 'Welcome to this tutorial on SolPrompter. Today, we will explore the AI Voice Scroll feature which automatically moves through your script at your natural speaking pace...',
-        scriptHtml: 'Welcome to this tutorial on SolPrompter. Today, we will explore the AI Voice Scroll feature which automatically moves through your script at your natural speaking pace...',
-        folderId: 'folder-1',
-        settings: { pageTheme: 'dark', fontSize: 24 },
-        createdAt: Date.now() - 3600000,
-        updatedAt: Date.now() - 600000
-      },
-      {
-        id: 'ws-demo-2',
-        title: 'Product Launch Keynote 2026',
-        scriptText: 'Hello everyone! I am thrilled to introduce our newest updates. We have spent months building a faster, cleaner teleprompter that works on any device...',
-        scriptHtml: 'Hello everyone! I am thrilled to introduce our newest updates. We have spent months building a faster, cleaner teleprompter that works on any device...',
-        folderId: 'folder-2',
-        settings: { pageTheme: 'dark' },
-        createdAt: Date.now() - 86400000,
-        updatedAt: Date.now() - 3600000
-      },
-      {
-        id: 'ws-demo-3',
-        title: 'Course Introduction: Coding 101',
-        scriptText: 'Welcome to Coding 101. In this series of lessons, you will learn the fundamentals of web development starting with simple HTML, CSS and Javascript...',
-        scriptHtml: 'Welcome to Coding 101. In this series of lessons, you will learn the fundamentals of web development starting with simple HTML, CSS and Javascript...',
-        folderId: 'folder-3',
-        settings: { pageTheme: 'dark' },
-        createdAt: Date.now() - 172800000,
-        updatedAt: Date.now() - 86400000
-      },
-      {
-        id: 'ws-demo-4',
-        title: 'Shorts: 3 Tips for Better Speeches',
-        scriptText: 'Here are 3 tips for presenting like a pro. First, keep your script close to the camera. Second, pause to highlight key details. Third, speak naturally...',
-        scriptHtml: 'Here are 3 tips for presenting like a pro. First, keep your script close to the camera. Second, pause to highlight key details. Third, speak naturally...',
-        folderId: null,
-        settings: { pageTheme: 'dark' },
-        createdAt: Date.now() - 259200000,
-        updatedAt: Date.now() - 172800000
-      }
-    ]));
-    localStorage.setItem('solprompter:ws-seeded', 'true');
-  }
-
   const copy = readCopy();
   const grid = document.getElementById('videoGrid');
   const emptyEl = document.getElementById('wsScriptsEmpty');

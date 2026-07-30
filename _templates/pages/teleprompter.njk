@@ -8,7 +8,6 @@ lang: en
 
 {# Flat copy map for the JS layer — inert JSON (not executable, CSP-safe). #}
 {%- set tpCopy = {
-  "cameraStarting": pageData.camera.starting,
   "cameraError": pageData.camera.error,
   "cameraErrorPrefix": pageData.camera.errorPrefix,
   "cameraErrorSuffix": pageData.camera.errorSuffix,
@@ -193,12 +192,9 @@ lang: en
     <!-- Cam ON: camera feed background (UI preview 2) -->
     <div class="camera-canvas" id="cameraCanvas">
       <video class="camera-feed" id="cameraFeed" autoplay playsinline muted></video>
-      <div class="camera-placeholder" id="cameraPlaceholder">
-        <svg width="46" height="46" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path fill="currentColor" fill-rule="evenodd" clip-rule="evenodd" d="M22.208 3.64h.992a4.8 4.8 0 014.8 4.8v9.76a4.8 4.8 0 01-4.8 4.8H8.8A4.8 4.8 0 014 18.2V8.44a4.8 4.8 0 014.8-4.8h.992A4.8 4.8 0 0114.08 1h3.84a4.8 4.8 0 014.288 2.64z"/>
-        </svg>
-        <span id="cameraPlaceholderText">{{ pageData.camera.starting }}</span>
-      </div>
+    </div>
+    <div class="camera-loading" id="cameraLoading" role="status" aria-label="{{ pageData.camera.starting }}" hidden>
+      <span class="camera-loading-spinner" aria-hidden="true"></span>
     </div>
 
     <p class="notch-mode-guide">

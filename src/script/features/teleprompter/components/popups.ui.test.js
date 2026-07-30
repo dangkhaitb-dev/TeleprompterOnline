@@ -139,48 +139,67 @@ describe('teleprompter media device menus', () => {
     });
   });
 
-  it('toggles settings groups and repositions the settings menu', () => {
+  it('switches to sub-views when group buttons are clicked and goes back via back buttons', () => {
+    const mainView = document.createElement('div');
+    mainView.id = 'settingsMainView';
+    mainView.hidden = false;
+
+    const displayView = document.createElement('div');
+    displayView.id = 'settingsDisplayView';
+    displayView.hidden = true;
+
     const displayBtn = document.createElement('button');
     displayBtn.id = 'settingsGroupDisplayBtn';
-    displayBtn.setAttribute('aria-expanded', 'false');
-    displayBtn.setAttribute('aria-controls', 'settingsGroupDisplayContent');
 
-    const displayContent = document.createElement('div');
-    displayContent.id = 'settingsGroupDisplayContent';
-    displayContent.hidden = true;
+    const backBtn = document.createElement('button');
+    backBtn.id = 'settingsDisplayBackBtn';
 
-    document.querySelector('#settingsMenu').append(displayBtn, displayContent);
+    mainView.append(displayBtn);
+    displayView.append(backBtn);
+    document.querySelector('#settingsMenu').append(mainView, displayView);
 
     controller = initPopups({ getMediaEnabled: (type) => mediaState[type] });
 
     controller.openSettingsForMedia([]);
 
+    // Click Display & Theme group button -> switches to display sub-view
     displayBtn.click();
-    expect(displayBtn.getAttribute('aria-expanded')).toBe('true');
-    expect(displayContent.hidden).toBe(false);
+    expect(mainView.hidden).toBe(true);
+    expect(displayView.hidden).toBe(false);
 
-    displayBtn.click();
-    expect(displayBtn.getAttribute('aria-expanded')).toBe('false');
-    expect(displayContent.hidden).toBe(true);
+    // Click back button -> switches back to main settings view
+    backBtn.click();
+    expect(mainView.hidden).toBe(false);
+    expect(displayView.hidden).toBe(true);
   });
 
-  it('automatically expands Devices group when openSettingsForMedia is called with required types', () => {
-    const devicesBtn = document.createElement('button');
-    devicesBtn.id = 'settingsGroupDevicesBtn';
-    devicesBtn.setAttribute('aria-expanded', 'false');
-    devicesBtn.setAttribute('aria-controls', 'settingsGroupDevicesContent');
+  it('resets back to main view when popup is closed', () => {
+    const mainView = document.createElement('div');
+    mainView.id = 'settingsMainView';
+    mainView.hidden = false;
 
-    const devicesContent = document.createElement('div');
-    devicesContent.id = 'settingsGroupDevicesContent';
-    devicesContent.hidden = true;
+    const displayView = document.createElement('div');
+    displayView.id = 'settingsDisplayView';
+    displayView.hidden = true;
 
-    document.querySelector('#settingsMenu').append(devicesBtn, devicesContent);
+    const displayBtn = document.createElement('button');
+    displayBtn.id = 'settingsGroupDisplayBtn';
+
+    mainView.append(displayBtn);
+    document.querySelector('#settingsMenu').append(mainView, displayView);
 
     controller = initPopups({ getMediaEnabled: (type) => mediaState[type] });
 
-    controller.openSettingsForMedia(['camera']);
+    controller.openSettingsForMedia([]);
 
-    expect(devicesBtn.getAttribute('aria-expanded')).toBe('true');
-    expect(devicesContent.hidden).toBe(false);
+    // Enter sub-view
+    displayBtn.click();
+    expect(mainView.hidden).toBe(true);
+    expect(displayView.hidden).toBe(false);
+
+    // Close all popups
+    controller.closeAll();
+    expect(mainView.hidden).toBe(false);
+    expect(displayView.hidden).toBe(true);
   });
 });

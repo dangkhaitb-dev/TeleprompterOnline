@@ -47,7 +47,7 @@ const CLICK_ACTIONS = [
   ['#speedMethodTime', 'scrollTimeClick'],
   ['#shortcutsControl', 'shortcutsClick'],
   ['#settingsGroupDisplayBtn', 'displayGroupClick'],
-  ['#settingsGroupDevicesBtn', 'devicesGroupClick'],
+  ['#settingsDisplayBackBtn', 'displayBackClick'],
   ['#cameraSettingsRow', 'cameraSettingsClick'],
   ['#micSettingsRow', 'micSettingsClick'],
   ['#themeLightBtn', 'lightThemeClick'],

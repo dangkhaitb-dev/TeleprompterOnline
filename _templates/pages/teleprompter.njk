@@ -462,21 +462,64 @@ lang: en
 
     <!-- Settings popup -->
     <div class="quick-menu settings-quick" id="settingsMenu" role="dialog" aria-label="{{ pageData.settingsMenu.title }}">
-      <div class="popup-title">{{ pageData.settingsMenu.title }}</div>
-      
-      <!-- Main Setting: Countdown (Always outside) -->
-      <label class="settings-row">
-        <span class="settings-row-title">{{ pageData.settingsMenu.countdown }}</span>
-        <span class="settings-switch"><input type="checkbox" id="toggleCountdown" checked><span class="settings-switch-track"></span></span>
-      </label>
+      <!-- Main View -->
+      <div class="settings-view" id="settingsMainView">
+        <div class="popup-title">{{ pageData.settingsMenu.title }}</div>
+        
+        <!-- Main Setting: Countdown (Always outside) -->
+        <label class="settings-row">
+          <span class="settings-row-title">{{ pageData.settingsMenu.countdown }}</span>
+          <span class="settings-switch"><input type="checkbox" id="toggleCountdown" checked><span class="settings-switch-track"></span></span>
+        </label>
 
-      <!-- Group 1: Display & Theme -->
-      <div class="settings-group" id="settingsGroupDisplay">
-        <button type="button" class="settings-row settings-row-nav settings-group-header" id="settingsGroupDisplayBtn" aria-expanded="false" aria-controls="settingsGroupDisplayContent">
+        <!-- Display Group Navigation Button -->
+        <button type="button" class="settings-row settings-row-nav" id="settingsGroupDisplayBtn">
           <span class="settings-row-title">{{ pageData.settingsMenu.displayGroup }}</span>
           <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </button>
-        <div class="settings-group-content" id="settingsGroupDisplayContent" hidden>
+
+        <!-- Group 2: Devices & Media (Only shown outside in Record Mode via CSS) -->
+        <div class="settings-group" id="settingsGroupDevices">
+          <div class="settings-group-content" id="settingsGroupDevicesContent">
+            <div class="settings-row settings-media-row" id="cameraSettingsGroup">
+              <button type="button" class="settings-media-device" id="cameraSettingsRow" aria-haspopup="menu" aria-expanded="false">
+                <span class="settings-row-title">{{ pageData.settingsMenu.camera }}</span>
+                <span class="settings-row-value" id="cameraSettingsValue">{{ pageData.settingsMenu.off }}</span>
+                <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+              <label class="settings-switch">
+                <input type="checkbox" id="toggleCamera" aria-label="{{ pageData.settingsMenu.cameraToggleAria }}"><span class="settings-switch-track"></span>
+              </label>
+            </div>
+            <div class="settings-row settings-media-row" id="micSettingsGroup">
+              <button type="button" class="settings-media-device" id="micSettingsRow" aria-haspopup="menu" aria-expanded="false">
+                <span class="settings-row-title">{{ pageData.settingsMenu.microphone }}</span>
+                <span class="settings-row-value" id="micSettingsValue">{{ pageData.settingsMenu.off }}</span>
+                <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+              </button>
+              <label class="settings-switch">
+                <input type="checkbox" id="toggleMic" aria-label="{{ pageData.settingsMenu.micToggleAria }}"><span class="settings-switch-track"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Shortcuts Link (Always outside) -->
+        <button type="button" class="settings-row settings-row-nav" id="shortcutsControl" aria-haspopup="dialog" aria-expanded="false">
+          <span class="settings-row-title">{{ pageData.settingsMenu.shortcuts }}</span>
+          <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+      </div>
+
+      <!-- Display & Theme Sub-view -->
+      <div class="settings-view" id="settingsDisplayView" hidden>
+        <!-- Header with Back Button -->
+        <button type="button" class="settings-row settings-row-nav settings-back-btn" id="settingsDisplayBackBtn">
+          <svg class="settings-back-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+          <span class="settings-row-title">{{ pageData.settingsMenu.displayGroup }}</span>
+        </button>
+
+        <div class="settings-view-body">
           <label class="settings-row">
             <span class="settings-row-title">{{ pageData.settingsMenu.fullscreen }}</span>
             <span class="settings-switch"><input type="checkbox" id="toggleFullscreen"><span class="settings-switch-track"></span></span>
@@ -510,42 +553,6 @@ lang: en
           </div>
         </div>
       </div>
-
-      <!-- Group 2: Devices & Media -->
-      <div class="settings-group" id="settingsGroupDevices">
-        <button type="button" class="settings-row settings-row-nav settings-group-header" id="settingsGroupDevicesBtn" aria-expanded="false" aria-controls="settingsGroupDevicesContent">
-          <span class="settings-row-title">{{ pageData.settingsMenu.devicesGroup }}</span>
-          <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-        <div class="settings-group-content" id="settingsGroupDevicesContent" hidden>
-          <div class="settings-row settings-media-row" id="cameraSettingsGroup">
-            <button type="button" class="settings-media-device" id="cameraSettingsRow" aria-haspopup="menu" aria-expanded="false">
-              <span class="settings-row-title">{{ pageData.settingsMenu.camera }}</span>
-              <span class="settings-row-value" id="cameraSettingsValue">{{ pageData.settingsMenu.off }}</span>
-              <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-            </button>
-            <label class="settings-switch">
-              <input type="checkbox" id="toggleCamera" aria-label="{{ pageData.settingsMenu.cameraToggleAria }}"><span class="settings-switch-track"></span>
-            </label>
-          </div>
-          <div class="settings-row settings-media-row" id="micSettingsGroup">
-            <button type="button" class="settings-media-device" id="micSettingsRow" aria-haspopup="menu" aria-expanded="false">
-              <span class="settings-row-title">{{ pageData.settingsMenu.microphone }}</span>
-              <span class="settings-row-value" id="micSettingsValue">{{ pageData.settingsMenu.off }}</span>
-              <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-            </button>
-            <label class="settings-switch">
-              <input type="checkbox" id="toggleMic" aria-label="{{ pageData.settingsMenu.micToggleAria }}"><span class="settings-switch-track"></span>
-            </label>
-          </div>
-        </div>
-      </div>
-
-      <!-- Shortcuts Link (Always outside) -->
-      <button type="button" class="settings-row settings-row-nav" id="shortcutsControl" aria-haspopup="dialog" aria-expanded="false">
-        <span class="settings-row-title">{{ pageData.settingsMenu.shortcuts }}</span>
-        <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
     </div>
 
     <!-- Shortcuts popup -->

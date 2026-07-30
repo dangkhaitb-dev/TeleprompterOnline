@@ -1923,6 +1923,48 @@ html[data-theme="dark"] .theme-btn.active {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
+/* ===== Settings Views & Sub-views ===== */
+.settings-view {
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-view[hidden] {
+  display: none !important;
+}
+
+.settings-back-btn {
+  border: 0;
+  background: none;
+  font: inherit;
+  text-align: left;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--tp-control-border);
+  margin-bottom: 6px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  cursor: pointer;
+  color: var(--tp-page-text);
+  user-select: none;
+}
+
+.settings-back-btn:hover {
+  background: var(--tp-surface-hover);
+}
+
+.settings-back-chevron {
+  color: var(--tp-gray-text);
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+.settings-back-btn:hover .settings-back-chevron {
+  transform: translateX(-2px);
+}
+
 /* ===== Collapsible Settings Groups ===== */
 .settings-group {
   display: flex;
@@ -1946,6 +1988,11 @@ html[data-theme="dark"] .theme-btn.active {
   border-left: 2px solid var(--tp-control-border);
   overflow: hidden;
 }
+
+.settings-group-content[hidden] {
+  display: none !important;
+}
+
 
 html[data-theme="dark"] .settings-group-content {
   background: rgba(255, 255, 255, 0.02);
@@ -1982,11 +2029,12 @@ html[data-theme="dark"] .settings-group-content {
   padding: 0 !important;
 }
 
-.app[data-studio-mode="record"] #settingsGroupDevicesContent .settings-row {
-  padding-left: 12px !important;
+.app[data-studio-mode="record"] #settingsGroupDevicesContent .settings-media-row {
+  padding: 0 12px 0 0 !important;
   margin: 0 !important;
   border-radius: 10px !important;
 }
+
 
 
 

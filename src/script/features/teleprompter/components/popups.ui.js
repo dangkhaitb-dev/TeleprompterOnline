@@ -50,10 +50,10 @@ export function initPopups({
   const shortcutsMenu = $('shortcutsMenu');
   const shortcutsControl = $('shortcutsControl');
 
-  const displayGroupBtn = $('settingsGroupDisplayBtn');
-  const displayGroupContent = $('settingsGroupDisplayContent');
-  const devicesGroupBtn = $('settingsGroupDevicesBtn');
-  const devicesGroupContent = $('settingsGroupDevicesContent');
+  const settingsMainView = $('settingsMainView');
+  const settingsDisplayView = $('settingsDisplayView');
+  const settingsGroupDisplayBtn = $('settingsGroupDisplayBtn');
+  const settingsDisplayBackBtn = $('settingsDisplayBackBtn');
 
   const deviceMenus = {
     camera: {
@@ -99,6 +99,11 @@ export function initPopups({
         ctrl.classList.remove('selected');
       }
     });
+
+    if (settingsMainView && settingsDisplayView) {
+      settingsMainView.hidden = false;
+      settingsDisplayView.hidden = true;
+    }
   }
 
   function closeDeviceMenus() {
@@ -132,11 +137,10 @@ export function initPopups({
     openQuickMenu(menu, button);
   }
 
-  function toggleGroup(btn, content) {
-    if (!btn || !content) return;
-    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-    btn.setAttribute('aria-expanded', String(!isExpanded));
-    content.hidden = isExpanded;
+  function showView(viewToShow) {
+    if (!settingsMainView || !settingsDisplayView || !viewToShow) return;
+    settingsMainView.hidden = (viewToShow !== settingsMainView);
+    settingsDisplayView.hidden = (viewToShow !== settingsDisplayView);
     if (settingsMenu && settingsMenu.classList.contains('open')) {
       positionAbove(root, settingsMenu, settingsControl);
     }
@@ -146,11 +150,11 @@ export function initPopups({
   on(settingsControl, 'click', () => toggleQuickMenu(settingsMenu, settingsControl));
   on(shortcutsControl, 'click', () => toggleQuickMenu(shortcutsMenu, settingsControl));
 
-  if (displayGroupBtn && displayGroupContent) {
-    on(displayGroupBtn, 'click', () => toggleGroup(displayGroupBtn, displayGroupContent));
+  if (settingsGroupDisplayBtn) {
+    on(settingsGroupDisplayBtn, 'click', () => showView(settingsDisplayView));
   }
-  if (devicesGroupBtn && devicesGroupContent) {
-    on(devicesGroupBtn, 'click', () => toggleGroup(devicesGroupBtn, devicesGroupContent));
+  if (settingsDisplayBackBtn) {
+    on(settingsDisplayBackBtn, 'click', () => showView(settingsMainView));
   }
 
   function mediaEnabled(type) {
@@ -171,11 +175,6 @@ export function initPopups({
       if (entry.group) entry.group.classList.toggle('is-required', requiredTypes.includes(type));
     });
     refreshMediaValues();
-    
-    if (requiredTypes.length > 0 && devicesGroupBtn && devicesGroupContent) {
-      devicesGroupBtn.setAttribute('aria-expanded', 'true');
-      devicesGroupContent.hidden = false;
-    }
 
     openQuickMenu(settingsMenu, settingsControl);
     const firstRequired = requiredTypes.map((type) => deviceMenus[type]?.input).find(Boolean);

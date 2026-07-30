@@ -144,6 +144,54 @@ describe('createFirstVisitTour', () => {
     expect(popup.style.getPropertyValue('--first-visit-tour-arrow-left')).toBe('160px');
   });
 
+  it('positions the popup at the top of the viewport on mobile when the target does not fit and is in the bottom half', () => {
+    const originalInnerWidth = window.innerWidth;
+    const originalInnerHeight = window.innerHeight;
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 375 });
+    Object.defineProperty(window, 'innerHeight', { writable: true, configurable: true, value: 600 });
+
+    targets[0].getBoundingClientRect = () => ({
+      left: 20, top: 150, right: 355, bottom: 550, width: 335, height: 400,
+    });
+
+    controller = createFirstVisitTour({
+      root: document,
+      steps: [{ target: targets[0], text: 'Step' }],
+    });
+    controller.start();
+
+    const popup = document.querySelector('.first-visit-tour-popup');
+    expect(popup.dataset.placement).toBe('above-clamped');
+    expect(popup.style.top).toBe('16px');
+
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: originalInnerWidth });
+    Object.defineProperty(window, 'innerHeight', { writable: true, configurable: true, value: originalInnerHeight });
+  });
+
+  it('positions the popup at the bottom of the viewport on mobile when the target does not fit and is in the top half', () => {
+    const originalInnerWidth = window.innerWidth;
+    const originalInnerHeight = window.innerHeight;
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: 375 });
+    Object.defineProperty(window, 'innerHeight', { writable: true, configurable: true, value: 600 });
+
+    targets[0].getBoundingClientRect = () => ({
+      left: 20, top: 50, right: 355, bottom: 450, width: 335, height: 400,
+    });
+
+    controller = createFirstVisitTour({
+      root: document,
+      steps: [{ target: targets[0], text: 'Step' }],
+    });
+    controller.start();
+
+    const popup = document.querySelector('.first-visit-tour-popup');
+    expect(popup.dataset.placement).toBe('below-clamped');
+    expect(popup.style.top).toBe('444px');
+
+    Object.defineProperty(window, 'innerWidth', { writable: true, configurable: true, value: originalInnerWidth });
+    Object.defineProperty(window, 'innerHeight', { writable: true, configurable: true, value: originalInnerHeight });
+  });
+
   it('stays non-modal so background controls remain keyboard-accessible', () => {
     controller = createFirstVisitTour({
       steps: targets.map((target, index) => ({ target, text: `Step ${index + 1}` })),

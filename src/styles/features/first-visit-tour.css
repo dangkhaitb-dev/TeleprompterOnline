@@ -47,7 +47,9 @@
   border-width: 0 1px 1px 0;
 }
 
-.first-visit-tour-popup[data-placement="center"] .first-visit-tour-arrow {
+.first-visit-tour-popup[data-placement="center"] .first-visit-tour-arrow,
+.first-visit-tour-popup[data-placement="above-clamped"] .first-visit-tour-arrow,
+.first-visit-tour-popup[data-placement="below-clamped"] .first-visit-tour-arrow {
   display: none;
 }
 
@@ -103,5 +105,11 @@
   .first-visit-tour-popup {
     animation: none;
   }
+}
 
+@media (max-width: 600px) {
+  .first-visit-tour-skip {
+    min-height: 32px;
+    height: 32px;
+  }
 }

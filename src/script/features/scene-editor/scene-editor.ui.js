@@ -54,19 +54,6 @@ function shellTemplate(copy) {
         </section>
       </div>
     </main>
-    <div class="se-drawer-scrim" data-role="drawer-scrim"></div>
-    <nav class="se-drawer" data-role="drawer" aria-label="Menu navigation">
-      <div class="se-drawer-header">
-        <span class="se-drawer-title">SolPrompter</span>
-        <button class="se-drawer-close" type="button" data-role="drawer-close" aria-label="Close menu">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-        </button>
-      </div>
-      <ul class="se-drawer-list">
-        <li><a href="/" class="se-drawer-link">Home</a></li>
-        <li><a href="/workspaces" class="se-drawer-link">Workspaces</a></li>
-      </ul>
-    </nav>
     <div class="se-toast" data-role="toast" role="status" aria-live="polite"></div>
   </div>`;
 }
@@ -328,24 +315,22 @@ export async function mountSceneEditor(container, opts = {}) {
 
   // --- mobile drawer ------------------------------------------------------
   const menuToggle = q('menu-toggle');
-  const drawer = q('drawer');
-  const drawerScrim = q('drawer-scrim');
-  const drawerClose = q('drawer-close');
 
-  if (menuToggle && drawer && drawerScrim) {
-    const openDrawer = () => {
-      drawer.classList.add('open');
-      drawerScrim.classList.add('visible');
-    };
-    const closeDrawer = () => {
-      drawer.classList.remove('open');
-      drawerScrim.classList.remove('visible');
-    };
-
-    menuToggle.addEventListener('click', openDrawer, { signal });
-    drawerScrim.addEventListener('click', closeDrawer, { signal });
-    if (drawerClose) {
-      drawerClose.addEventListener('click', closeDrawer, { signal });
+  if (menuToggle) {
+    const mobileSidebar = document.getElementById('mobileSidebar');
+    const mobileSidebarOverlay = document.getElementById('mobileSidebarOverlay');
+    if (mobileSidebar && mobileSidebarOverlay) {
+      const openDrawer = () => {
+        mobileSidebar.removeAttribute('hidden');
+        requestAnimationFrame(() => {
+          mobileSidebar.classList.add('is-open');
+        });
+        mobileSidebarOverlay.removeAttribute('hidden');
+        requestAnimationFrame(() => {
+          mobileSidebarOverlay.classList.add('is-open');
+        });
+      };
+      menuToggle.addEventListener('click', openDrawer, { signal });
     }
   }
 

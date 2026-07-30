@@ -66,6 +66,8 @@ const CLICK_ACTIONS = [
   ['#notchEditToolbar [data-align="left"]', 'notchAlignLeftClick'],
   ['#notchEditToolbar [data-align="center"]', 'notchAlignCenterClick'],
   ['#notchEditToolbar [data-align="right"]', 'notchAlignRightClick'],
+  ['#mobileMenuToggle', 'mobileMenuClick'],
+  ['#mobileSidebarClose', 'mobileMenuCloseClick'],
 ];
 
 const CHANGE_ACTIONS = [

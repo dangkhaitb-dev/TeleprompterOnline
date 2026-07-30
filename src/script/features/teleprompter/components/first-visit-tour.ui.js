@@ -120,12 +120,24 @@ export function createFirstVisitTour({
       top = targetRect.top - POPUP_GAP - popupHeight;
       placement = 'above';
     } else {
-      top = clamp(
-        (viewport.height - popupHeight) / 2,
-        VIEWPORT_MARGIN,
-        viewport.height - popupHeight - VIEWPORT_MARGIN,
-      );
-      placement = 'center';
+      const isMobile = viewport.width <= 600;
+      if (isMobile) {
+        const targetCenterY = targetRect.top + (targetRect.height / 2);
+        if (targetCenterY > viewport.height / 2) {
+          top = VIEWPORT_MARGIN;
+          placement = 'above-clamped';
+        } else {
+          top = viewport.height - popupHeight - VIEWPORT_MARGIN;
+          placement = 'below-clamped';
+        }
+      } else {
+        top = clamp(
+          (viewport.height - popupHeight) / 2,
+          VIEWPORT_MARGIN,
+          viewport.height - popupHeight - VIEWPORT_MARGIN,
+        );
+        placement = 'center';
+      }
     }
 
     popup.style.left = `${Math.round(left)}px`;

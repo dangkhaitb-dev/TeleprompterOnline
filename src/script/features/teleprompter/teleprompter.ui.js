@@ -2218,6 +2218,71 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   window.addEventListener('resize', onResize);
   cleanups.push(() => window.removeEventListener('resize', onResize));
 
+  // ---- Mobile menu sidebar --------------------------------------------------
+  const mobileMenuToggle = $('mobileMenuToggle');
+  const mobileSidebar = $('mobileSidebar');
+  const mobileSidebarOverlay = $('mobileSidebarOverlay');
+  const mobileSidebarClose = $('mobileSidebarClose');
+
+  const openMobileSidebar = () => {
+    if (mobileMenuToggle) mobileMenuToggle.setAttribute('aria-expanded', 'true');
+    if (mobileSidebar) {
+      mobileSidebar.removeAttribute('hidden');
+      requestAnimationFrame(() => {
+        mobileSidebar.classList.add('is-open');
+      });
+    }
+    if (mobileSidebarOverlay) {
+      mobileSidebarOverlay.removeAttribute('hidden');
+      requestAnimationFrame(() => {
+        mobileSidebarOverlay.classList.add('is-open');
+      });
+    }
+  };
+
+  const closeMobileSidebar = () => {
+    if (mobileMenuToggle) mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    if (mobileSidebar) {
+      mobileSidebar.classList.remove('is-open');
+      const onTransitionEnd = (e) => {
+        if (e.propertyName === 'transform') {
+          mobileSidebar.setAttribute('hidden', '');
+          mobileSidebar.removeEventListener('transitionend', onTransitionEnd);
+        }
+      };
+      mobileSidebar.addEventListener('transitionend', onTransitionEnd);
+    }
+    if (mobileSidebarOverlay) {
+      mobileSidebarOverlay.classList.remove('is-open');
+      const onTransitionEnd = (e) => {
+        if (e.propertyName === 'opacity') {
+          mobileSidebarOverlay.setAttribute('hidden', '');
+          mobileSidebarOverlay.removeEventListener('transitionend', onTransitionEnd);
+        }
+      };
+      mobileSidebarOverlay.addEventListener('transitionend', onTransitionEnd);
+    }
+  };
+
+  if (mobileMenuToggle) {
+    on(mobileMenuToggle, 'click', () => {
+      const expanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+      if (expanded) {
+        closeMobileSidebar();
+      } else {
+        openMobileSidebar();
+      }
+    });
+  }
+
+  if (mobileSidebarClose) {
+    on(mobileSidebarClose, 'click', closeMobileSidebar);
+  }
+
+  if (mobileSidebarOverlay) {
+    on(mobileSidebarOverlay, 'click', closeMobileSidebar);
+  }
+
   // ---- Scene editor (post-record edit, mounted in-place, no navigation) -----
   const sceneEditorRoot = $('sceneEditorView');
   let sceneEditorTeardown = null;

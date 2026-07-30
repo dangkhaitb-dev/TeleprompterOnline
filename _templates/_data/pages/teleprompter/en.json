@@ -7,7 +7,16 @@
   "header": {
     "logoAria": "Logo",
     "back": "Go Back",
-    "backAria": "Go back"
+    "backAria": "Go back",
+    "brandText": "SolPrompter",
+    "menuAria": "Open menu",
+    "menuCloseAria": "Close menu"
+  },
+  "sidebar": {
+    "navHome": "Home",
+    "navWorkspaces": "Workspaces",
+    "navPricing": "Pricing",
+    "navAbout": "About"
   },
   "format": {
     "toolbarAria": "Text formatting",

@@ -34,6 +34,7 @@
 
 <body class="home blog-article-page">
     {{ content | safe }}
+    {% include "partials/feedback-widget.njk" %}
     <script type="module" src="/src/script/blog-article-main.js"></script>
 </body>
 

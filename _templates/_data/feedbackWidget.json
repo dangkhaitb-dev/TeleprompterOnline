@@ -1,0 +1,46 @@
+{
+  "en": {
+    "openLabel": "Feedback",
+    "eyebrow": "Help us improve",
+    "title": "Send feedback",
+    "closeLabel": "Close feedback form",
+    "emailLabel": "Email",
+    "emailPlaceholder": "you@example.com",
+    "contentLabel": "Your feedback",
+    "contentPlaceholder": "What worked well, or what should we improve?",
+    "contentHint": "3–5000 characters",
+    "submitLabel": "Send feedback",
+    "pendingLabel": "Sending…",
+    "successMessage": "Thanks — your feedback has been sent.",
+    "errorMessage": "We couldn't send your feedback. Please try again.",
+    "validation": {
+      "emailRequired": "Enter your email address.",
+      "emailInvalid": "Enter a valid email address.",
+      "contentRequired": "Enter your feedback.",
+      "contentTooShort": "Feedback must be at least 3 characters.",
+      "contentTooLong": "Feedback must be no more than 5000 characters."
+    }
+  },
+  "vi": {
+    "openLabel": "Góp ý",
+    "eyebrow": "Giúp chúng tôi cải thiện",
+    "title": "Gửi góp ý",
+    "closeLabel": "Đóng biểu mẫu góp ý",
+    "emailLabel": "Email",
+    "emailPlaceholder": "ban@example.com",
+    "contentLabel": "Nội dung góp ý",
+    "contentPlaceholder": "Điều gì hữu ích hoặc cần được cải thiện?",
+    "contentHint": "Từ 3 đến 5000 ký tự",
+    "submitLabel": "Gửi góp ý",
+    "pendingLabel": "Đang gửi…",
+    "successMessage": "Cảm ơn bạn — góp ý đã được gửi.",
+    "errorMessage": "Không thể gửi góp ý. Vui lòng thử lại.",
+    "validation": {
+      "emailRequired": "Vui lòng nhập email.",
+      "emailInvalid": "Vui lòng nhập email hợp lệ.",
+      "contentRequired": "Vui lòng nhập nội dung góp ý.",
+      "contentTooShort": "Nội dung phải có ít nhất 3 ký tự.",
+      "contentTooLong": "Nội dung không được vượt quá 5000 ký tự."
+    }
+  }
+}

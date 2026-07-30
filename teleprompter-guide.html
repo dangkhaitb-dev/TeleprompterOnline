@@ -298,6 +298,115 @@
     </div>
 </footer>
 
+    <aside
+    class="feedback-widget"
+    data-feedback-widget
+    data-feedback-pending="Sending…"
+    data-feedback-success="Thanks — your feedback has been sent."
+    data-feedback-error="We couldn&#39;t send your feedback. Please try again."
+    data-feedback-email-required="Enter your email address."
+    data-feedback-email-invalid="Enter a valid email address."
+    data-feedback-content-required="Enter your feedback."
+    data-feedback-content-too-short="Feedback must be at least 3 characters."
+    data-feedback-content-too-long="Feedback must be no more than 5000 characters."
+>
+    <section
+        class="feedback-widget__dialog"
+        id="feedback-dialog"
+        data-feedback-dialog
+        role="dialog"
+        aria-labelledby="feedback-title"
+        hidden
+    >
+        <header class="feedback-widget__header">
+            <div>
+                <p class="feedback-widget__eyebrow">Help us improve</p>
+                <h2 class="feedback-widget__title" id="feedback-title">Send feedback</h2>
+            </div>
+            <button
+                class="feedback-widget__close"
+                type="button"
+                data-feedback-close
+                data-analytics-name="feedbackCloseClick"
+                aria-label="Close feedback form"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6 6 18" />
+                </svg>
+            </button>
+        </header>
+
+        <form class="feedback-widget__form" data-feedback-form novalidate>
+            <div class="feedback-widget__field">
+                <label for="feedback-email">Email</label>
+                <input
+                    id="feedback-email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    maxlength="254"
+                    placeholder="you@example.com"
+                    aria-describedby="feedback-email-error"
+                    required
+                >
+                <p
+                    class="feedback-widget__field-error"
+                    id="feedback-email-error"
+                    data-feedback-email-error
+                    hidden
+                ></p>
+            </div>
+
+            <div class="feedback-widget__field">
+                <div class="feedback-widget__label-row">
+                    <label for="feedback-content">Your feedback</label>
+                    <span>3–5000 characters</span>
+                </div>
+                <textarea
+                    id="feedback-content"
+                    name="content"
+                    rows="5"
+                    minlength="3"
+                    maxlength="5000"
+                    placeholder="What worked well, or what should we improve?"
+                    aria-describedby="feedback-content-error"
+                    required
+                ></textarea>
+                <p
+                    class="feedback-widget__field-error"
+                    id="feedback-content-error"
+                    data-feedback-content-error
+                    hidden
+                ></p>
+            </div>
+
+            <button
+                class="feedback-widget__submit"
+                type="submit"
+                data-feedback-submit
+                data-analytics-name="feedbackSubmitClick"
+            >Send feedback</button>
+            <p class="feedback-widget__status" data-feedback-status role="status" hidden></p>
+        </form>
+    </section>
+
+    <button
+        class="feedback-widget__trigger"
+        type="button"
+        data-feedback-open
+        data-analytics-name="feedbackOpenClick"
+        aria-expanded="false"
+        aria-controls="feedback-dialog"
+    >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 5.75h14v9.5H9.5L5 19V5.75Z" />
+            <path d="M8.5 9.25h7M8.5 12h4.5" />
+        </svg>
+        <span>Feedback</span>
+    </button>
+</aside>
+<script type="module" src="/src/script/feedback-main.js"></script>
+
     <script type="module" src="/src/script/simple-page-main.js"></script>
 </body>
 

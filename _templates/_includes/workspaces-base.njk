@@ -38,6 +38,7 @@
 
 <body class="ws-body">
     {{ content | safe }}
+    {% include "partials/feedback-widget.njk" %}
     <script type="module" src="/src/script/workspaces-main.js"></script>
 </body>
 

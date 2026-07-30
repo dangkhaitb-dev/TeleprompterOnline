@@ -6,9 +6,14 @@
 // services/<name>.service.js) when the teleprompter needs an API.
 
 export const API_BASES = {
-  // e.g. api: 'https://api.example.com'
+  feedback: 'https://feedback-api.solplatform.workers.dev',
 };
 
 export const ENDPOINTS = {
-  // e.g. THING_LIST: { path: '/api/things', method: 'GET', timeoutKey: 'default' },
+  FEEDBACK_SUBMIT: {
+    path: '/feedback',
+    baseUrl: API_BASES.feedback,
+    method: 'POST',
+    timeoutKey: 'default',
+  },
 };

@@ -103,10 +103,11 @@ export function saveWorkspaceSettings(id, patch = {}) {
 const TIMESLICE_MS = 250;
 
 // States: 'idle' → 'recording' ⇄ 'paused' → 'saving' → 'idle'
-export function createRecordingController({ onError } = {}) {
+export function createRecordingController({ onError, onExternalStreamReleased } = {}) {
   let state = 'idle';
   let mediaRecorder = null;
   let stream = null;
+  let ownsStream = true;
   // Fallback: keep chunks in RAM when OPFS is unavailable.
   let chunks = [];
   // OPFS streaming writer — used when isOPFSSupported() is true.
@@ -123,9 +124,18 @@ export function createRecordingController({ onError } = {}) {
     if (typeof onError === 'function') onError(err);
   };
 
+  const releaseExternalStream = (externalStream) => {
+    if (externalStream && typeof onExternalStreamReleased === 'function') {
+      onExternalStreamReleased(externalStream);
+    }
+  };
+
   const releaseStream = () => {
-    stopStream(stream);
+    const releasedStream = stream;
+    if (ownsStream) stopStream(releasedStream);
+    else releaseExternalStream(releasedStream);
     stream = null;
+    ownsStream = true;
   };
 
   // Begin capture + recording. `wantsVideo`/`wantsAudio` come from the toolbar
@@ -136,6 +146,7 @@ export function createRecordingController({ onError } = {}) {
     wantsAudio = true,
     videoDeviceId = '',
     audioDeviceId = '',
+    captureStream = null,
   } = {}) {
     if (state !== 'idle') return null;
     const generation = ++startGeneration;
@@ -152,12 +163,23 @@ export function createRecordingController({ onError } = {}) {
     const audio = audioEnabled && audioDeviceId
       ? { deviceId: { exact: audioDeviceId } }
       : audioEnabled;
-    const acquiredStream = await getCaptureStream({ video, audio });
+    const acquiredStream = captureStream || await getCaptureStream({ video, audio });
     if (generation !== startGeneration) {
-      stopStream(acquiredStream);
+      if (captureStream) releaseExternalStream(acquiredStream);
+      else stopStream(acquiredStream);
       return null;
     }
+    const hasLiveTrack = (kind) => (
+      (kind === 'video' ? acquiredStream.getVideoTracks?.() : acquiredStream.getAudioTracks?.())
+        ?.some((track) => track.readyState === 'live')
+    );
+    if (captureStream && ((wantsVideo && !hasLiveTrack('video'))
+      || (audioEnabled && !hasLiveTrack('audio')))) {
+      releaseExternalStream(acquiredStream);
+      throw new Error('Supplied capture stream is inactive');
+    }
     stream = acquiredStream;
+    ownsStream = !captureStream;
 
     hasVideo = stream.getVideoTracks().length > 0;
     mimeType = recordingMimeType(hasVideo);

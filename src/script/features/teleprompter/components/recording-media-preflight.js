@@ -22,6 +22,7 @@ export async function prepareRecordingMedia({
   disableMic = async () => {},
   isCameraReady,
   isCancelled = () => false,
+  retainProbe = false,
 } = {}) {
   const missing = getMissingRecordingMedia({ cameraEnabled, micEnabled });
   async function cancel({ cameraOn = cameraEnabled, micOn = micEnabled } = {}) {
@@ -33,31 +34,32 @@ export async function prepareRecordingMedia({
   }
 
   let probe = null;
+  let shouldReleaseProbe = true;
   try {
     probe = await acquireProbe();
     if (isCancelled()) return cancel();
     if (!hasLiveMediaTrack(probe, 'video') || !hasLiveMediaTrack(probe, 'audio')) {
       return { ready: false, missing, reason: 'inactive' };
     }
+    if (isCancelled()) return cancel();
+    let cameraOn = cameraEnabled;
+    let micOn = micEnabled;
+    try {
+      if (!cameraOn || !isCameraReady()) cameraOn = Boolean(await enableCamera(probe));
+      if (isCancelled()) return cancel({ cameraOn, micOn });
+      if (!micOn) micOn = Boolean(await enableMic());
+      if (isCancelled()) return cancel({ cameraOn, micOn });
+    } catch (error) {
+      if (isCancelled()) return cancel({ cameraOn, micOn });
+      throw error;
+    }
+
+    const ready = cameraOn && micOn && isCameraReady();
+    shouldReleaseProbe = !(ready && retainProbe);
+    return { ready, missing, reason: ready ? '' : 'inactive' };
   } finally {
-    if (probe) releaseProbe(probe);
+    if (probe && shouldReleaseProbe) releaseProbe(probe);
   }
-
-  if (isCancelled()) return cancel();
-  let cameraOn = cameraEnabled;
-  let micOn = micEnabled;
-  try {
-    if (!cameraOn || !isCameraReady()) cameraOn = Boolean(await enableCamera());
-    if (isCancelled()) return cancel({ cameraOn, micOn });
-    if (!micOn) micOn = Boolean(await enableMic());
-    if (isCancelled()) return cancel({ cameraOn, micOn });
-  } catch (error) {
-    if (isCancelled()) return cancel({ cameraOn, micOn });
-    throw error;
-  }
-
-  const ready = cameraOn && micOn && isCameraReady();
-  return { ready, missing, reason: ready ? '' : 'inactive' };
 }
 
 export function createRecordingMediaPreflightGate(action) {

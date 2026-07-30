@@ -3960,22 +3960,23 @@ html.theme-instant *::after {
     display: flex;
     position: fixed;
     top: 0;
-    right: 0;
+    left: 0;
     bottom: 0;
     width: 280px;
     max-width: 80vw;
     background: var(--tp-surface);
-    border-left: 1px solid var(--tp-divider);
-    box-shadow: -4px 0 24px rgba(16, 19, 24, 0.12);
+    border-right: 1px solid var(--tp-divider);
+    box-shadow: 4px 0 24px rgba(16, 19, 24, 0.12);
     z-index: 300; /* var(--z-menu) */
     flex-direction: column;
     padding: 16px 20px;
-    transform: translateX(100%);
+    transform: translateX(-100%);
     transition: transform var(--dur-normal) var(--ease-out);
   }
 
   .mobile-sidebar.is-open {
     transform: translateX(0);
+    background: var(--tp-white);
   }
 
   .mobile-sidebar-head {

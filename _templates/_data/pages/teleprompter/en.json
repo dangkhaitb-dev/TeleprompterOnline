@@ -16,7 +16,8 @@
     "navHome": "Home",
     "navWorkspaces": "Workspaces",
     "navPricing": "Pricing",
-    "navAbout": "About"
+    "navAbout": "About",
+    "navBlog": "Blog"
   },
   "format": {
     "toolbarAria": "Text formatting",

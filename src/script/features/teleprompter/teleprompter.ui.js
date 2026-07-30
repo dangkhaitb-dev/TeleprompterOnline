@@ -238,6 +238,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       studioModeRevision += 1;
       mobileStudioTabs?.syncFromMode(mode);
       if (mode !== 'record') {
+        cancelRecordCountdown();
+        controller?.cancel();
         // Record off / Prompter is the text-only studio. Media settings can be
         // configured again later, but leaving Record immediately releases the
         // preview stream and clears the enabled microphone state.
@@ -490,6 +492,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   // ---- Camera + mic ---------------------------------------------------------
   let cameraStream = null;
+  let controller = null;
   let cameraRequestId = 0;
   // Preview khung camera bám theo tỷ lệ THẬT camera xuất ra (đọc từ getSettings/
   // loadedmetadata khi bật cam) để preview == file quay. 16:9 chỉ là fallback tạm
@@ -531,7 +534,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     cameraStatus.style.top = `${Math.round(panelRect.bottom - stageRect.top)}px`;
   }
 
-  async function startCamera() {
+  async function startCamera({ captureStream = null } = {}) {
     if (tornDown) return false;
     const requestId = ++cameraRequestId;
     let ready = false;
@@ -544,14 +547,18 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // constraints) — same as logic.js records with — so preview and take match.
       const video = selectedDeviceId ? { deviceId: { exact: selectedDeviceId } } : true;
 
-      // Prime on a first-ever request; show guidance (and bail) if already blocked.
-      const allowed = await ensureCaptureAllowed({ video: true });
-      if (tornDown || requestId !== cameraRequestId) return false;
-      if (!allowed) {
-        return false;
+      // A recording preflight may already hold one verified camera + microphone
+      // stream. Use that for the preview so Android never sees two camera opens.
+      if (!captureStream) {
+        // Prime on a first-ever request; show guidance (and bail) if already blocked.
+        const allowed = await ensureCaptureAllowed({ video: true });
+        if (tornDown || requestId !== cameraRequestId) return false;
+        if (!allowed) {
+          return false;
+        }
       }
 
-      const stream = await getCaptureStream({ video, audio: false });
+      const stream = captureStream || await getCaptureStream({ video, audio: false });
       if (tornDown || requestId !== cameraRequestId) {
         stopStream(stream);
         return false;
@@ -615,6 +622,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     applyCameraStartupState({ cameraFeed, cameraStatus });
     // Lần bật sau bắt đầu lại từ fallback, tránh nháy tỷ lệ camera cũ.
     cameraAspect = DEFAULT_CAMERA_ASPECT;
+  }
+
+  // The Record-mode capture stream belongs to the UI because it is also the
+  // camera preview. Once MediaRecorder reaches its stopped boundary, release
+  // both tracks before any background save or Scene Editor transition.
+  function releaseSharedCapture(stream) {
+    if (!stream || cameraStream !== stream) return;
+    stopCamera();
+    applyToggleState(cameraToggle, 'camera', false);
+    applyToggleState(micToggle, 'mic', false);
   }
 
   function setFormatEditOpen(open) {
@@ -682,11 +699,14 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     });
   }
 
-  async function setCameraMode(nextOn, { preserveStudioLayout = false } = {}) {
+  async function setCameraMode(nextOn, {
+    preserveStudioLayout = false,
+    captureStream = null,
+  } = {}) {
     setFormatEditOpen(false);
     if (nextOn) {
       showPendingRecordCameraUI();
-      const started = await startCamera();
+      const started = await startCamera({ captureStream });
       if (!started) return false;
     } else {
       stopCamera();
@@ -1190,8 +1210,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   // Turn the camera on/off. The switch only remains on after the preview stream
   // is live, so Settings never advertises a blocked or failed device as active.
-  async function setCameraToggle(on, { permissionVerified = false } = {}) {
+  async function setCameraToggle(on, {
+    permissionVerified = false,
+    captureStream = null,
+  } = {}) {
     if (tornDown) return false;
+    if (!on && (controller?.isRecording() || controller?.isPaused())) return false;
     // Camera availability and studio layout are separate states. Hide Camera
     // keeps the Record surface; leaving Record mode still restores Normal UI.
     const preserveStudioLayout = !on && isRecordModeActive();
@@ -1207,7 +1231,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       }
     }
     applyToggleState(cameraToggle, 'camera', on);
-    const ready = await setCameraMode(on, { preserveStudioLayout });
+    const ready = await setCameraMode(on, { preserveStudioLayout, captureStream });
     if (tornDown || (on && !ready)) {
       applyToggleState(cameraToggle, 'camera', false);
       await setCameraMode(false, { preserveStudioLayout: isRecordModeActive() });
@@ -1220,6 +1244,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // prompts here, before any countdown) and only sticks if access is granted.
   async function setMicToggle(on, { permissionVerified = false } = {}) {
     if (tornDown) return false;
+    if (!on && (controller?.isRecording() || controller?.isPaused())) return false;
     if (on && !permissionVerified) {
       const allowed = await ensureCaptureAllowed({ audio: true });
       if (tornDown || !allowed) {
@@ -1424,7 +1449,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   // ---- Recording controller (logic layer) -----------------------------------
-  const controller = createRecordingController({
+  controller = createRecordingController({
+    onExternalStreamReleased: releaseSharedCapture,
     onError: (err) => {
       // Saving is no longer possible (e.g. disk full mid-write): end the doomed
       // session right away instead of silently discarding more footage later.
@@ -1621,6 +1647,20 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       return false;
     }
 
+    // Record mode owns a single combined stream: it drives both the visible
+    // preview and MediaRecorder. A second Record click should reuse it rather
+    // than reopen camera/mic hardware.
+    if (cameraEnabled()
+      && micEnabled()
+      && hasLiveMediaTrack(cameraStream, 'video')
+      && hasLiveMediaTrack(cameraStream, 'audio')) {
+      return true;
+    }
+
+    // A video-only preview cannot coexist with the combined capture on some
+    // Android camera HALs. Release it before requesting the shared stream.
+    if (cameraEnabled() && hasLiveMediaTrack(cameraStream, 'video')) stopCamera();
+
     const videoDeviceId = popups.getSelectedDeviceId('camera');
     const audioDeviceId = popups.getSelectedDeviceId('mic');
     const video = videoDeviceId ? { deviceId: { exact: videoDeviceId } } : true;
@@ -1632,9 +1672,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         micEnabled: micEnabled(),
         acquireProbe: () => getCaptureStream({ video, audio }),
         releaseProbe: stopStream,
-        enableCamera: async () => {
+        retainProbe: true,
+        enableCamera: async (captureStream) => {
           if (cameraEnabled()) stopCamera();
-          return setCameraToggle(true, { permissionVerified: true });
+          return setCameraToggle(true, { permissionVerified: true, captureStream });
         },
         enableMic: () => setMicToggle(true, { permissionVerified: true }),
         disableCamera: () => setCameraToggle(false, { permissionVerified: true }),
@@ -1687,6 +1728,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         wantsAudio: micEnabled(),
         videoDeviceId: popups.getSelectedDeviceId('camera'),
         audioDeviceId: popups.getSelectedDeviceId('mic'),
+        captureStream: cameraStream,
       });
     } catch (err) { startErr = err; }
     if (tornDown) {
@@ -2009,6 +2051,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     onMediaToggle: setMediaFromSettings,
     onDeviceChange: async (type) => {
       if (type !== 'camera' || !cameraEnabled()) return;
+      if (controller?.isRecording() || controller?.isPaused()) return;
       stopCamera();
       const ready = await startCamera();
       if (!ready) await setCameraToggle(false);

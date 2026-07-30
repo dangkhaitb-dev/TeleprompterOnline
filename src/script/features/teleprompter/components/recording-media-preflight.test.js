@@ -120,7 +120,37 @@ describe('recording media preflight', () => {
       missing: ['camera', 'mic'],
       reason: '',
     });
-    expect(calls).toEqual(['probe', 'release', 'camera', 'mic']);
+    expect(calls).toEqual(['probe', 'camera', 'mic', 'release']);
+  });
+
+  it('hands its verified probe to the camera and retains it when requested', async () => {
+    const releaseProbe = vi.fn();
+    const probe = {
+      getVideoTracks: () => [{ readyState: 'live' }],
+      getAudioTracks: () => [{ readyState: 'live' }],
+    };
+    let cameraReady = false;
+    const enableCamera = vi.fn(async (stream) => {
+      expect(stream).toBe(probe);
+      cameraReady = true;
+      return true;
+    });
+
+    await expect(prepareRecordingMedia({
+      acquireProbe: async () => probe,
+      releaseProbe,
+      enableCamera,
+      enableMic: async () => true,
+      isCameraReady: () => cameraReady,
+      retainProbe: true,
+    })).resolves.toEqual({
+      ready: true,
+      missing: ['camera', 'mic'],
+      reason: '',
+    });
+
+    expect(enableCamera).toHaveBeenCalledOnce();
+    expect(releaseProbe).not.toHaveBeenCalled();
   });
 
   it('releases an inactive probe and does not enable either device', async () => {

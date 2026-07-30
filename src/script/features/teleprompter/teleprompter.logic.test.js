@@ -254,6 +254,54 @@ describe('createRecordingController persistence tagging', () => {
     await controller.cancel();
   });
 
+  it('records the supplied preview stream without reopening it and releases ownership to the UI', async () => {
+    const previewStream = {
+      getVideoTracks: () => [{
+        kind: 'video',
+        readyState: 'live',
+        getSettings: () => ({ width: 1280, height: 720 }),
+      }],
+      getAudioTracks: () => [{ kind: 'audio', readyState: 'live' }],
+    };
+    const onExternalStreamReleased = vi.fn();
+    vi.stubGlobal('MediaRecorder', FakeMediaRecorder);
+    const controller = createRecordingController({ onExternalStreamReleased });
+
+    await controller.start({
+      wantsVideo: true,
+      wantsAudio: true,
+      captureStream: previewStream,
+    });
+
+    expect(media.getCaptureStream).not.toHaveBeenCalled();
+    await controller.cancel();
+    expect(media.stopStream).not.toHaveBeenCalledWith(previewStream);
+    expect(onExternalStreamReleased).toHaveBeenCalledWith(previewStream);
+  });
+
+  it('releases a supplied preview stream when MediaRecorder stops, before persistence finishes', async () => {
+    const previewStream = {
+      getVideoTracks: () => [{
+        kind: 'video',
+        readyState: 'live',
+        getSettings: () => ({ width: 1280, height: 720 }),
+      }],
+      getAudioTracks: () => [{ kind: 'audio', readyState: 'live' }],
+    };
+    const onExternalStreamReleased = vi.fn();
+    vi.stubGlobal('MediaRecorder', FakeMediaRecorder);
+    const controller = createRecordingController({ onExternalStreamReleased });
+
+    await controller.start({ wantsVideo: true, wantsAudio: true, captureStream: previewStream });
+    FakeMediaRecorder.instance.emit('dataavailable', {
+      data: new Blob(['recorded bytes'], { type: 'video/webm' }),
+    });
+    await controller.stop({ workspaceId: 'workspace-a' });
+
+    expect(onExternalStreamReleased).toHaveBeenCalledWith(previewStream);
+    expect(media.stopStream).not.toHaveBeenCalledWith(previewStream);
+  });
+
   it.each([
     { saveEnabled: false, expectedTemporary: true },
     { saveEnabled: true, expectedTemporary: false },

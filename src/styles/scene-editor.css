@@ -2,6 +2,36 @@
    Namespaced `.se`/`se-*` (mounts inside the teleprompter page). Tokens: --se-*.
    Core scope: header + viewer/player + scene list. Trim/export = later stage. */
 
+/* Force light mode variables for the scene editor & popups */
+/* stylelint-disable color-no-hex */
+.confirm-overlay,
+.export-status-overlay,
+.se,
+.tp-scene-editor {
+  --se-page-bg: #ffffff;
+  --se-text: #24272a;
+  --se-muted: #6d7074;
+  --se-icon: #35383b;
+  --se-hover: #f7f7f7;
+  --se-border: #f0f1f1;
+  --se-surface: #fbfbfb;
+  --se-surface-hover: #f5f5f5;
+  --se-card-bg: #ffffff;
+  --se-faint: #a5a8aa;
+  --se-scrollbar-thumb: #d9dadb;
+  --se-green: #5da42f;
+  --se-green-hover: #55992b;
+  --se-blue: #4598e7;
+  --se-blue-hover: #2e7fd4;
+  --se-brand: #8edb4d;
+  --se-brand-hover: #75dd28;
+  --se-brand-ink: #17181b;
+  --se-danger: #ef4d62;
+  --se-record-dot: #e5484d;
+  --se-viewer-bg: #161616;
+}
+/* stylelint-enable color-no-hex */
+
 /* The editor replaces the studio in-place, while the teleprompter page keeps
    html/body locked to the viewport. Give it its own scroll container so iOS
    Safari does not pin overflowing mobile content against the top of the page. */
@@ -79,16 +109,6 @@
   background: var(--se-border);
 }
 
-/* Nút back dùng class .back-btn dùng chung → src/styles/components/back-btn.css.
-   `.se button` (ở trên) đặt `color: inherit; font: inherit` với specificity cao
-   hơn .back-btn nên đè mất màu/size/weight của component. Khôi phục đúng giá trị
-   nguồn (teleprompter) để hai nút trông y hệt. */
-.se .back-btn {
-  color: var(--tp-gray-text);
-  font-size: 14px;
-  font-weight: 500;
-}
-
 .se-header-actions {
   height: 36px;
   display: flex;
@@ -96,28 +116,33 @@
   padding-right: 12px;
 }
 
+.se-export-wrap {
+  position: relative;
+}
+
 .se-export-button {
-  height: 34px;
-  min-width: 96px;
+  height: 36px;
+  width: fit-content;
   border: 0;
   margin: 1px 0 1px 4px;
-  padding: 0 15px;
+  padding: 0 16px;
   background: var(--se-brand);
   color: var(--se-brand-ink);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   cursor: pointer;
   border-radius: 8px;
-  box-shadow: 0 1px 1px rgb(0 0 0 / 4%);
-  transition: background 160ms ease, transform 120ms ease;
+  box-shadow: 0 1px 2px rgba(142, 219, 77, 0.15), 0 1px 1px rgba(0, 0, 0, 0.05);
+  transition: background 160ms ease, transform 120ms ease, box-shadow 160ms ease;
 }
 
 .se-export-button:hover {
   background: var(--se-brand-hover);
+  box-shadow: 0 2px 8px rgba(117, 221, 40, 0.25);
 }
 
 .se-export-button:active {
@@ -129,27 +154,28 @@
   height: 16px;
   fill: none;
   stroke: currentColor;
-  stroke-width: 1.6;
+  stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
 }
 
-/* ---------- Layout ---------- */
 .se-workspace {
-  display: grid;
-  grid-template-columns: var(--se-viewer-width) var(--se-sidebar-width);
-  gap: var(--se-column-gap);
-  align-items: start;
-  align-content: center;
-  width: calc(var(--se-viewer-width) + var(--se-sidebar-width) + var(--se-column-gap));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 960px;
   margin: 0 auto;
-  padding: 24px 0;
+  padding: 24px 16px;
   flex: 1 1 auto;
 }
 
 .se-preview-stage {
-  width: var(--se-viewer-width);
+  width: 100%;
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .se-viewer {
@@ -171,9 +197,6 @@
 }
 
 /* ---------- Export menu ---------- */
-.se-export-wrap {
-  position: relative;
-}
 
 .se-export-button:disabled {
   opacity: 0.6;
@@ -1037,20 +1060,12 @@
 @media (max-width: 1080px) {
   .se-workspace {
     width: calc(100% - 32px);
-    grid-template-columns: minmax(0, 1fr) 151px;
+    max-width: 960px;
   }
 
   .se-preview-stage,
   .se-viewer {
     width: 100%;
-  }
-
-  .se-sidebar {
-    width: 151px;
-  }
-
-  .se-scene-toolbar {
-    width: 151px;
   }
 
   .se-trim-toolbar {
@@ -1124,14 +1139,6 @@
     padding-left: 6px;
   }
 
-  .se-header-actions {
-    padding-right: 8px;
-  }
-
-  .se-export-button {
-    min-width: 70px;
-    padding: 0 11px;
-  }
 }
 
 /* Touch devices: no hover, so keep scene delete buttons visible AND give them a

@@ -285,6 +285,9 @@
   --toast-fg: #ffffff;
   --toast-error-bg: #b42318;
   --toast-error-fg: #ffffff;
+  --toast-warning-bg: #f3b33d;
+  --toast-warning-fg: #291c06;
+  --toast-warning-border: #c98514;
   --toast-shadow: 0 4px 20px rgb(0 0 0 / 30%);
   --confirm-scrim: rgb(15 20 28 / 38%);
   --confirm-surface: #ffffff;

@@ -13,7 +13,7 @@ import {
 import { getItem, setItem } from '../../../utils/storage.js';
 import { LS_VOICE_SCROLL_ASR_LOCALES } from '../../../utils/storage-keys.js';
 
-const PRE_AUDIO_ABORT_LIMIT = 2;
+const EMPTY_ABORT_LIMIT = 2;
 const BROWSER_SERVICE_FAILURE_LIMIT = 2;
 const USER_OVERRIDE_GUARD_MS = 650;
 const MAX_ASR_CURSOR_ADVANCE = 8;
@@ -556,7 +556,7 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
   let sessionHadSpeech = false;
   let sessionHadResult = false;
   let sessionErrorCode = '';
-  let consecutivePreAudioAborts = 0;
+  let consecutiveEmptyAborts = 0;
   let browserServiceFailures = 0;
   let sessionFailureReported = false;
   let degradationReported = false;
@@ -724,7 +724,6 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
 
     instance.onaudiostart = () => {
       sessionHadAudio = true;
-      consecutivePreAudioAborts = 0;
       log('audio capture started');
     };
 
@@ -802,11 +801,12 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
         return;
       }
 
-      if (sessionErrorCode === 'aborted' && !sessionHadAudio) {
-        consecutivePreAudioAborts += 1;
-      } else if (sessionHadAudio || sessionHadResult) {
-        consecutivePreAudioAborts = 0;
-      }
+      const isEmptyAbort = sessionErrorCode === 'aborted'
+        && !sessionHadSound
+        && !sessionHadSpeech
+        && !sessionHadResult;
+      if (isEmptyAbort) consecutiveEmptyAborts += 1;
+      else consecutiveEmptyAborts = 0;
 
       if (!sessionHadResult) {
         if (!sessionHadAudio) {
@@ -827,24 +827,24 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
         hadResult: sessionHadResult,
         locale,
         mode: useLocal ? 'on-device' : 'browser-service',
-        preAudioAbortCount: consecutivePreAudioAborts,
+        emptyAbortCount: consecutiveEmptyAborts,
       });
 
       // Chromium's speech service is shared at browser level. Another active
       // recognizer can repeatedly abort this session before it acquires audio.
       // Do not create an endless restart duel between tabs.
-      if (consecutivePreAudioAborts >= PRE_AUDIO_ABORT_LIMIT) {
+      if (consecutiveEmptyAborts >= EMPTY_ABORT_LIMIT) {
         fatalError = true;
         wantsListening = false;
         console.error(
-          '[VoiceScroll] recognition is busy or repeatedly aborted before audio capture'
+          '[VoiceScroll] recognition is busy or repeatedly aborted without a result'
         );
         onPhaseChange?.('idle');
         onError?.('recognizer-busy');
         return;
       }
 
-      const restartDelay = Math.max(250, consecutivePreAudioAborts * 500);
+      const restartDelay = Math.max(250, consecutiveEmptyAborts * 500);
       restartTimer = setTimeout(() => {
         restartTimer = null;
         if (!wantsListening) return;
@@ -903,7 +903,7 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
     fatalError = false;
     biasSupported = true;
     hasLoggedListening = false;
-    consecutivePreAudioAborts = 0;
+    consecutiveEmptyAborts = 0;
     browserServiceFailures = 0;
     sessionFailureReported = false;
     degradationReported = false;

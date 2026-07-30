@@ -72,6 +72,7 @@ import { initEditStaleBadge } from './collab/edit-stale-badge.ui.js';
 import { initVoiceScrollUI } from './components/voice-scroll.ui.js';
 import { initFirstVisitTours } from './components/first-visit-tours.ui.js';
 import { nameTeleprompterAnalyticsControls } from './teleprompter-analytics.ui.js';
+import { createVoiceScrollConflictChannel } from '../../utils/voice-scroll-conflict.js';
 import { getItem, setItem } from '../../utils/storage.js';
 import {
   LS_TP_FIRST_VISIT_TOUR,
@@ -921,7 +922,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (error === 'audio-capture') return copy.cameraNoDevice || 'No microphone is available';
     if (error === 'network') return 'Speech recognition network error';
     if (error === 'recognizer-busy') {
-      return 'Microphone conflict: another tab or browser voice feature is using speech recognition. Stop it, then try Auto again';
+      return 'Auto is active in multiple tabs. Keep it on in one tab only, then try again.';
     }
     if (error === 'start-timeout') return 'Speech recognition did not start';
     if (/does not support|unsupported/i.test(error || '')) {
@@ -929,6 +930,21 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     }
     return 'Voice scroll stopped because speech recognition failed';
   }
+
+  function showVoiceScrollConflictWarning() {
+    showToast(voiceScrollErrorMessage('recognizer-busy'), {
+      variant: 'warning',
+      duration: null,
+      dismissible: true,
+      title: 'Auto scroll conflict',
+    });
+  }
+
+  const voiceScrollConflictChannel = createVoiceScrollConflictChannel();
+  cleanups.push(
+    voiceScrollConflictChannel.subscribe(showVoiceScrollConflictWarning),
+    () => voiceScrollConflictChannel.close(),
+  );
 
   function stopVoiceScroll({ error = '' } = {}) {
     voiceScrollAttempt += 1;
@@ -940,9 +956,14 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     setVoiceScrollButton();
     setPlayIcon(false);
     if (error) {
+      const isRecognizerBusy = error === 'recognizer-busy';
+      if (isRecognizerBusy) {
+        showVoiceScrollConflictWarning();
+        voiceScrollConflictChannel.publish();
+        return;
+      }
       showToast(voiceScrollErrorMessage(error), {
         variant: 'error',
-        duration: error === 'recognizer-busy' ? 6000 : undefined,
       });
     }
   }

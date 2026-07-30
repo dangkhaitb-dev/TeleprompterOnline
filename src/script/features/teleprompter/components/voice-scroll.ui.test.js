@@ -687,8 +687,34 @@ describe('Voice Scroll browser integration', () => {
     expect(onError).toHaveBeenCalledWith('recognizer-busy');
     expect(voiceUI.isActive()).toBe(false);
     expect(errorSpy).toHaveBeenCalledWith(
-      '[VoiceScroll] recognition is busy or repeatedly aborted before audio capture'
+      '[VoiceScroll] recognition is busy or repeatedly aborted without a result'
     );
+
+    warnSpy.mockRestore();
+    errorSpy.mockRestore();
+    vi.useRealTimers();
+  });
+
+  it('reports a busy recognizer when repeated aborts happen after audio capture starts', async () => {
+    vi.useFakeTimers();
+    const onError = vi.fn();
+    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface, onError });
+    const startPromise = voiceUI.start();
+    await vi.runAllTicks();
+    await expect(startPromise).resolves.toBe(true);
+    const recognition = FakeSpeechRecognition.instances[0];
+
+    for (let attempt = 0; attempt < 2; attempt++) {
+      recognition.onaudiostart?.();
+      recognition.onerror?.({ error: 'aborted' });
+      recognition.onend?.();
+      await vi.advanceTimersByTimeAsync((attempt + 1) * 500);
+    }
+
+    expect(onError).toHaveBeenCalledWith('recognizer-busy');
+    expect(voiceUI.isActive()).toBe(false);
 
     warnSpy.mockRestore();
     errorSpy.mockRestore();

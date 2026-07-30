@@ -9,17 +9,15 @@ import '../../../styles/components/back-btn.css';
 import '../../../styles/components/confirm-popup.css';
 import '../../../styles/components/export-status-popup.css';
 import {
-  loadScenes, deleteScene, deleteAllScenes, exportableScenes, exportButtonIntent,
+  loadScenes, exportableScenes, exportButtonIntent,
 } from './scene-editor.logic.js';
 import { fileExtension, formatDuration } from './scene-editor.model.js';
 import { createTrackedUrl, revokeTrackedUrl, revokeAll, downloadBlob } from '../../utils/download.js';
 import { exitFullscreen } from '../../utils/fullscreen.js';
 import { TOAST_TIMEOUT_MS } from '../../constants/media.js';
-import { LOGO, ICON_BACK, waveformSvg } from './components/icons.js';
+import { waveformSvg } from './components/icons.js';
 import { createExportMenu } from './components/export-menu.ui.js';
 import { createExportStatusPopup } from '../../components/export-status-popup.js';
-import { createSceneList } from './components/scene-list.ui.js';
-import { showConfirm } from '../../components/confirm-popup.js';
 import {
   createRecordingsZipArtifact,
   garbageCollectRecordingsZipArtifacts,
@@ -33,9 +31,12 @@ function shellTemplate(copy) {
   <div class="se" data-analytics-page="scene-editor">
     <header class="se-header">
       <div class="se-header-left">
-        <button class="se-logo-btn" type="button" data-role="logo" aria-label="${copy.logoAria || 'Logo'}">${LOGO}</button>
-        <span class="se-header-divider"></span>
-        <button class="back-btn" type="button" data-role="back">${ICON_BACK}<span>${copy.back || 'Go Back'}</span></button>
+        <button class="se-logo-btn brand" type="button" data-role="logo" aria-label="${copy.logoAria || 'Logo'}" style="display: inline-flex; align-items: center; gap: 0.5rem; background: none; border: none; padding: 0; cursor: pointer; text-decoration: none;">
+          <span class="shared-brand-logo" style="width: 22px; height: 22px; display: block;">
+            <img src="/logo.webp" alt="SolPrompter logo" width="22" height="22">
+          </span>
+          <span class="shared-brand-text">SolPrompter</span>
+        </button>
       </div>
       <div class="se-header-actions" data-role="header-actions"></div>
     </header>
@@ -44,7 +45,6 @@ function shellTemplate(copy) {
         <section class="se-viewer" data-role="viewer" aria-label="${copy.preview || 'Media preview'}">
         </section>
       </div>
-      <div class="se-sidebar-slot" data-role="sidebar-slot"></div>
     </main>
     <div class="se-toast" data-role="toast" role="status" aria-live="polite"></div>
   </div>`;
@@ -52,14 +52,13 @@ function shellTemplate(copy) {
 
 export async function mountSceneEditor(container, opts = {}) {
   garbageCollectRecordingsZipArtifacts().catch(() => {});
-  const { workspaceId, onBack, onRecordScene, copy = {}, pendingSave } = opts;
+  const { workspaceId, onRecordScene, copy = {}, pendingSave } = opts;
   const ac = new AbortController();
   const { signal } = ac;
   const urls = new Set();
   let currentUrl = null;
   let toastTimer = null;
   let scenes = [];
-  let selectedIndex = -1;
   let activeMedia = null;
   let exporting = false;
   let archiveArtifact = null;
@@ -88,16 +87,6 @@ export async function mountSceneEditor(container, opts = {}) {
   };
 
   // --- components ---------------------------------------------------------
-  const sceneList = createSceneList({
-    signal,
-    labels: copy,
-    onSelect: selectScene,
-    onDelete: handleDeleteScene,
-    onAddScene: () => { if (typeof onRecordScene === 'function') onRecordScene(); },
-    onDeleteAll: handleDeleteAll,
-  });
-  q('sidebar-slot').replaceWith(sceneList.el);
-
   const exportMenu = createExportMenu({
     signal,
     labels: copy,
@@ -210,62 +199,17 @@ export async function mountSceneEditor(container, opts = {}) {
   // --- selection / mutation ----------------------------------------------
   function selectScene(index) {
     if (index < 0 || index >= scenes.length) return;
-    selectedIndex = index;
-    sceneList.render(scenes, selectedIndex);
     renderViewer(scenes[index]);
   }
 
   async function reload(preferIndex) {
     scenes = await loadScenes(workspaceId);
     if (!scenes.length) {
-      selectedIndex = -1;
-      sceneList.render(scenes, selectedIndex);
       renderViewer(null);
       return;
     }
     const next = Math.min(preferIndex ?? scenes.length - 1, scenes.length - 1);
     selectScene(Math.max(0, next));
-  }
-
-  async function handleDeleteScene(index) {
-    const scene = scenes[index];
-    if (!scene) return;
-    const ok = await showConfirm({
-      title: copy.deleteSceneTitle || 'Delete this scene?',
-      message: copy.deleteSceneMsg || 'The recording will be lost.',
-      confirmLabel: copy.delete || 'Delete',
-      cancelLabel: copy.cancel || 'Cancel',
-      danger: true,
-    });
-    if (!ok) return;
-    try {
-      await deleteScene(scene.id);
-      showToast(copy.deleted || 'Scene deleted');
-      await reload(index - 1);
-    } catch (error) {
-      console.error('Failed to delete scene', error);
-      showToast(copy.deleteError || 'Could not delete scene');
-    }
-  }
-
-  async function handleDeleteAll() {
-    if (!scenes.length) { showToast(copy.noScenes || 'No scenes to delete'); return; }
-    const ok = await showConfirm({
-      title: copy.deleteAllTitle || 'Delete all scenes?',
-      message: copy.deleteAllMsg || 'All recordings will be lost.',
-      confirmLabel: copy.deleteAll || 'Delete All Scenes',
-      cancelLabel: copy.cancel || 'Cancel',
-      danger: true,
-    });
-    if (!ok) return;
-    try {
-      await deleteAllScenes(workspaceId);
-      showToast(copy.allDeleted || 'All scenes deleted');
-      await reload();
-    } catch (error) {
-      console.error('Failed to delete all scenes', error);
-      showToast(copy.deleteError || 'Could not delete scenes');
-    }
   }
 
   // --- export -------------------------------------------------------------
@@ -333,21 +277,12 @@ export async function mountSceneEditor(container, opts = {}) {
     window.location.href = '/workspaces';
   }, { signal });
 
-  q('back').addEventListener('click', () => {
-    const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
-    if (fsEl && (fsEl === viewer || viewer.contains(fsEl))) {
-      exitFullscreen().catch(() => {});
-    }
-    if (typeof onBack === 'function') onBack();
-  }, { signal });
-
   if (pendingSave) {
     // The recording that just stopped is still being persisted. Open the editor
     // IMMEDIATELY — render the saving placeholder and an empty list now, without
     // awaiting anything, so the view swaps the instant the user stops. Reading
     // the whole workspace back from IndexedDB (slow on WebKit, which reloads
     // every prior take's bytes) happens in the background below.
-    sceneList.render(scenes, selectedIndex);
     renderSavingViewer();
     // `settled` hands ownership of `scenes` to reload() once the save resolves,
     // so a late prior-takes load can never clobber the final list (which
@@ -357,7 +292,6 @@ export async function mountSceneEditor(container, opts = {}) {
       .then((loaded) => {
         if (signal.aborted || settled) return;
         scenes = loaded;
-        sceneList.render(scenes, selectedIndex);
       })
       .catch(() => {});
     pendingSave

@@ -4,33 +4,20 @@
 
 import {
   listByWorkspace,
-  removeRecording,
-  removeByWorkspace,
   updateRecording,
   ensureRecordingBlob,
 } from '../../services/recordings.store.js';
 import { toScene } from './scene-editor.model.js';
 
 // Ordered scenes for a workspace (oldest → newest = record order).
-// The editor plays/exports every clip, so byte-backed records (WebKit
-// fallback) get their media loaded here — sequentially, to avoid piling all
-// byte copies into RAM at once.
+// The editor plays/exports only the latest recording take.
 export async function loadScenes(workspaceId) {
   const recordings = await listByWorkspace(workspaceId);
-  const scenes = [];
-  for (const recording of recordings) {
-    const blob = recording.blob || await ensureRecordingBlob(recording);
-    scenes.push(toScene(blob === recording.blob ? recording : { ...recording, blob }));
-  }
-  return scenes;
-}
+  if (!recordings.length) return [];
 
-export async function deleteScene(id) {
-  await removeRecording(id);
-}
-
-export async function deleteAllScenes(workspaceId) {
-  await removeByWorkspace(workspaceId);
+  const latest = recordings[recordings.length - 1];
+  const blob = latest.blob || await ensureRecordingBlob(latest);
+  return [toScene(blob === latest.blob ? latest : { ...latest, blob })];
 }
 
 // Persist a trim (seconds → ms metadata). Never mutates the blob. Returns the

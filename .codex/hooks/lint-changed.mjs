@@ -1,11 +1,9 @@
 import {
-  appendFileSync,
   existsSync,
   readFileSync,
   realpathSync,
 } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { isAbsolute, join, relative, resolve } from 'node:path';
+import { isAbsolute, relative, resolve } from 'node:path';
 import { execFileSync, spawnSync } from 'node:child_process';
 
 function readPayload() {
@@ -26,10 +24,6 @@ function findProjectDir(cwd) {
   } catch {
     return cwd;
   }
-}
-
-function sessionKey(sessionId) {
-  return String(sessionId || 'default').replace(/[^a-zA-Z0-9_.-]/g, '_');
 }
 
 function patchText(toolInput) {
@@ -127,16 +121,6 @@ const cssFiles = files
   .map(({ absolutePath }) => absolutePath);
 
 if (jsFiles.length > 0) {
-  const marker = join(
-    tmpdir(),
-    `codex-review-pending-${sessionKey(payload.session_id)}.txt`,
-  );
-  try {
-    appendFileSync(marker, `${jsFiles.join('\n')}\n`);
-  } catch {
-    // Review tracking is advisory and must not break linting.
-  }
-
   const result = runCheck(projectDir, [
     'eslint',
     '--quiet',

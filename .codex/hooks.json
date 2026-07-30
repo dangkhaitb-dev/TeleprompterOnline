@@ -1,5 +1,5 @@
 {
-  "description": "SolPrompter edit linting and completion review gates.",
+  "description": "SolPrompter commit policy and edit linting hooks.",
   "hooks": {
     "PreToolUse": [
       {
@@ -23,18 +23,6 @@
             "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/lint-changed.mjs\"",
             "timeout": 30,
             "statusMessage": "Linting edited SolPrompter files"
-          }
-        ]
-      }
-    ],
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "node \"$(git rev-parse --show-toplevel)/.codex/hooks/review-gate.mjs\"",
-            "timeout": 15,
-            "statusMessage": "Checking whether a focused code review is due"
           }
         ]
       }

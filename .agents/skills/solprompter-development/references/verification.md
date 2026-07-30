@@ -13,17 +13,3 @@ Select checks based on the files and behavior changed.
 
 Do not run broad checks merely for appearance. Run them when the change can
 affect shared wiring, generated output, or multiple modules.
-
-## Final diff review
-
-1. Read `git diff --check`.
-2. Read the complete diff for the files changed by the current task.
-3. Confirm generated root HTML was changed only by the build.
-4. Confirm import direction and DOM/storage/event rules.
-5. Check for secrets, unsafe HTML injection, missing validation, debug output,
-   and unhandled user-facing failure states.
-6. Check that tests assert behavior rather than implementation details.
-7. Confirm unrelated user changes remain untouched.
-
-Report findings in descending severity with file references. Do not report
-formatting that lint already enforces unless it causes a behavioral risk.

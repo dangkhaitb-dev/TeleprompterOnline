@@ -27,22 +27,13 @@ npx vitest run src/script/path/to/file.test.js
 Use `npx --no-install` for targeted lint commands so verification does not
 silently install packages.
 
-## Planning gate
+## Implementation autonomy
 
-Before editing, present an implementation plan and wait for explicit user
-approval when a task does any of the following:
-
-- changes three or more files;
-- changes architecture or layer boundaries;
-- adds a feature rather than a small fix;
-- refactors existing code;
-- changes an API contract or data model.
-
-Use Codex plan tracking for the approved plan. Small fixes limited to one or
-two files, typo corrections, and contained style changes may proceed directly.
-
-When the user has already approved a concrete plan or explicitly asks Codex to
-execute an already-defined migration, do not request duplicate approval.
+Proceed directly with requested implementation work without asking the user to
+approve an implementation plan first. For complex work, create and track a
+plan as an internal execution aid, but do not pause for confirmation unless a
+material product decision, missing authority, or destructive action genuinely
+requires user input.
 
 ## Core architecture
 
@@ -190,8 +181,6 @@ inputs are refreshed.
 6. Keep changes surgical. Do not improve unrelated code, and remove only
    orphaned code created by the current change.
 7. Run targeted checks while iterating and proportional final verification.
-8. Review the final diff for correctness, security, regressions, and project
-   convention compliance.
 
 ### Agent roles
 
@@ -200,7 +189,7 @@ Project-scoped Codex roles live in `.codex/agents/`.
 - Use `planner` for complex features and refactors.
 - Use `architect` for real layer or system-boundary decisions.
 - Use `tdd-guide` for new features and reproducible bug fixes.
-- Use `code-reviewer` after code changes are complete.
+- Use `code-reviewer` when the user explicitly requests a code review.
 - Use `security-reviewer` for auth, user input, storage, filesystem, external
   API, crypto, payment, or sensitive-data changes.
 - Use `build-error-resolver` when a build or lint failure is not immediately
@@ -227,18 +216,13 @@ custom agent type with a full-history fork.
 - Treat exposed secrets as an incident: stop, report the exposure, rotate the
   secret, and inspect for similar occurrences.
 
-## Verification and review
+## Verification
 
 - The repo-local Codex PreToolUse hook blocks any `git commit` command that
   contains `--no-verify` or `-n`.
 - The PostToolUse hook lints edited JS/CSS files and blocks on lint errors.
-- The Stop hook requests one focused self-review after JS changes.
 - Run broader checks yourself when the change scope warrants them; hooks are
   guardrails, not a substitute for verification.
-- Review findings must lead with concrete, actionable issues and file
-  references. Ignore style-only commentary already enforced by lint.
-- Before completion, inspect `git diff` and make sure unrelated user changes
-  remain untouched.
 
 ## Deployment safety
 

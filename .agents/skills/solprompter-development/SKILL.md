@@ -14,10 +14,9 @@ Before editing:
 
 1. Inspect `git status`, the affected entry points, nearby tests, and applicable
    generated/source-file boundaries.
-2. Decide whether the planning gate in `AGENTS.md` applies.
-3. If it applies and the user has not already approved a concrete plan, present
-   the plan and wait for approval.
-4. Choose the narrowest relevant agent roles from `.codex/agents/`. Use
+2. For complex work, create and track an implementation plan without pausing
+   for user approval.
+3. Choose the narrowest relevant agent roles from `.codex/agents/`. Use
    parallel roles only for independent work; never assign overlapping writes.
    Spawn a named custom role with no inherited context or a bounded recent-turn
    fork, never a full-history fork.
@@ -44,7 +43,7 @@ Before editing:
 - For authentication, untrusted input, storage, filesystem, external API,
   crypto, payment, or sensitive-data work, read
   [references/security-review.md](references/security-review.md).
-- For verification selection and the final review, read
+- For verification selection, read
   [references/verification.md](references/verification.md).
 
 ## Verify and hand off
@@ -52,12 +51,10 @@ Before editing:
 1. Run the smallest relevant test or lint command while iterating.
 2. Run the final verification matrix from `references/verification.md` in
    proportion to risk.
-3. Inspect the final diff and confirm generated files are intentional.
-4. Use `code-reviewer` after code changes. Add `security-reviewer` for the
-   security triggers above.
-5. Resolve verified regressions introduced by the current work. Report
+3. Add `security-reviewer` for the security triggers above.
+4. Resolve verified regressions introduced by the current work. Report
    unrelated pre-existing failures without changing them.
-6. Summarize the outcome, verification performed, and any remaining limitation.
+5. Summarize the outcome, verification performed, and any remaining limitation.
 
 ## Handle failures
 

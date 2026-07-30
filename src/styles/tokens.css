@@ -51,6 +51,7 @@
   --z-menu: 300;
   --z-toast: 400;
   --z-modal: 500;
+  --z-tour: 5000;
 
   /* Motion */
   --dur-fast: 140ms;

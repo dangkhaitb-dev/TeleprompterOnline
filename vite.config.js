@@ -7,6 +7,7 @@ import modulePreload from './vite-plugin-modulepreload.js'
 import cssPreload from './vite-plugin-css-preload.js'
 import criticalCss from './vite-plugin-critical.js'
 import compressAssets from './vite-plugin-compress.js'
+import { createTestPreviewOptions, testNoindexPlugin } from './vite-plugin-test-noindex.js'
 import { existsSync, readdirSync, readFileSync, writeFileSync, renameSync, rmdirSync } from 'fs'
 import { join } from 'path'
 import { minify } from 'terser'
@@ -142,7 +143,7 @@ const deduplicateExternalScripts = {
   },
 };
 
-export default defineConfig({
+const createViteConfig = (isTestBuild) => ({
   // Inject build-time constants
   define: {
     '__SW_VERSION__': JSON.stringify(Date.now()), // Build timestamp for cache busting
@@ -151,6 +152,7 @@ export default defineConfig({
     hmr: false, // Disable WebSocket HMR - prevents ERR_SOCKET_NOT_CONNECTED errors
     open: true, // Auto-open in system default browser
   },
+  preview: createTestPreviewOptions({ enabled: isTestBuild }),
   plugins: [
     deduplicateExternalScripts,
     // Custom URL rewriting plugin for dev and preview servers
@@ -239,7 +241,7 @@ export default defineConfig({
           const code = readFileSync(filePath, 'utf-8')
           const result = await minify(code, {
             compress: {
-              drop_console: process.env.NODE_ENV !== 'test',
+              drop_console: !isTestBuild,
               drop_debugger: true,
             },
             format: { comments: false },
@@ -302,6 +304,8 @@ export default defineConfig({
     // Emit .br + .gz siblings for text assets (runs last, after critical CSS
     // rewrote the HTML). nginx serves them via brotli_static/gzip_static.
     compressAssets(),
+    // Validate the final test artifact after every HTML-rewriting build hook.
+    testNoindexPlugin({ enabled: isTestBuild }),
   ],
   // JASSUB worker uses ES module syntax — must use 'es' format for worker bundles.
   worker: {
@@ -314,11 +318,11 @@ export default defineConfig({
     minify: 'terser',
     terserOptions: {
       compress: {
-        // Keep console.log in test builds, remove in production
-        drop_console: process.env.NODE_ENV !== 'test',
+        // Keep console output in explicit test builds, remove in production.
+        drop_console: !isTestBuild,
         drop_debugger: true,    // Remove debugger statements
         // Only remove console functions in production
-        pure_funcs: process.env.NODE_ENV === 'test' ? [] : ['console.log', 'console.info', 'console.debug', 'console.warn']
+        pure_funcs: isTestBuild ? [] : ['console.log', 'console.info', 'console.debug', 'console.warn']
       },
       format: {
         comments: false         // Remove all comments
@@ -361,3 +365,5 @@ export default defineConfig({
     }
   }
 })
+
+export default defineConfig(({ mode }) => createViteConfig(mode === 'test'))

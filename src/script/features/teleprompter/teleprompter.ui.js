@@ -28,6 +28,7 @@ import {
 import '../../../styles/components/permission-popup.css';
 import '../../../styles/components/toast.css';
 import '../../../styles/features/voice-scroll.css';
+import '../../../styles/features/first-visit-tour.css';
 import {
   getCaptureStream,
   stopStream,
@@ -43,11 +44,17 @@ import { isFullscreen, onFullscreenChange } from '../../utils/fullscreen.js';
 import { createScrollController } from './components/scroll-controller.js';
 import { createReadingSessionController } from './components/reading-session-controller.js';
 import {
+  createRecordingMediaPreflightGate,
   createRecordingStartGate,
   getMissingRecordingMedia,
   hasLiveMediaTrack,
   prepareRecordingMedia,
 } from './components/recording-media-preflight.js';
+import {
+  createMobileStudioTabs,
+  createStudioMediaSettingsHandler,
+  createStudioModeController,
+} from './components/studio-mode.ui.js';
 import { createVoiceLanguagePreflight } from './components/voice-language-preflight.js';
 import { createColorPicker } from './components/color-picker.ui.js';
 import { initFormatToolbar } from './components/format-toolbar.ui.js';
@@ -60,7 +67,14 @@ import { requestPersistentStorage } from '../../utils/storage-quota.js';
 import { scopedId } from '../../utils/scoped-query.js';
 import { initEditStaleBadge } from './collab/edit-stale-badge.ui.js';
 import { initVoiceScrollUI } from './components/voice-scroll.ui.js';
+import { initFirstVisitTours } from './components/first-visit-tours.ui.js';
 import { nameTeleprompterAnalyticsControls } from './teleprompter-analytics.ui.js';
+import { getItem, setItem } from '../../utils/storage.js';
+import {
+  LS_TP_FIRST_VISIT_TOUR,
+  LS_TP_RECORD_BUTTON_TOUR,
+  LS_TP_SCROLL_MODES_TOUR,
+} from '../../utils/storage-keys.js';
 import {
   preloadLanguageDetector,
   prepareSpeechPackForText,
@@ -96,6 +110,9 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // Floating layers (color popup, scroll mirror) portal into the overlay root
   // when embedded; the standalone page keeps them on document.body.
   const portal = root === document ? document.body : root;
+  // Copy strings from 11ty JSON, embedded as a JSON <script> tag on the page
+  // (not executable — safe under CSP, and no window.__ channel).
+  const copy = readCopy(root);
 
   let resolvePanelsReady;
   let rejectPanelsReady;
@@ -138,6 +155,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const recordButton = $('recordButton');
   const recordLabel = recordButton && recordButton.querySelector('.record-label');
   const speedControl = $('speedControl');
+  const speedMenu = $('speedMenu');
   const speedValue = $('speedValue');
   const speedRange = $('speedRange');
   const speedInput = $('speedInput');
@@ -175,10 +193,9 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const stageEl = root.querySelector('.stage');
 
   // ---- Phone control relayout (≤600px) -------------------------------------
-  // On phones the studio controls are re-composed into a tabbed bar by MOVING
-  // the real nodes into the two tab panels (Record / Prompter) — they keep
-  // their listeners, same idea as the panel hops below. Homes are captured now,
-  // before any relocation, so desktop can restore the exact original order.
+  // The desktop Record on/off switch stays in toolbar-shell. Phones move the
+  // real Play and Record controls into separate tab panels while sharing the
+  // same studio-mode controller and media preflight.
   const mPanelMain = $('mPanelMain');
   const mPanelTools = $('mPanelTools');
   const mSharedTools = $('mSharedTools');
@@ -187,29 +204,66 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const recordControls = root.querySelector('.record-controls');
   const cameraToggle = $('toggleCamera');
   const micToggle = $('toggleMic');
-  const prompterToggle = root.querySelector('[data-action="Prompter"]');
+  const studioModeControl = $('studioModeControl');
   const mirrorControlEl = $('mirrorControl');
   const speedControlEl = speedControl;
   const settingsControlEl = $('settingsControl');
+  const mobileRecordModeTab = root.querySelector('.m-tab[data-tab="main"]');
+  const tourCopy = copy.firstVisitTour;
   // Document order — restore walks this reversed so each node's original next
   // sibling is already back in place before we re-insert it.
   const phoneMovable = [
-    recordControls, headerPlayButton, prompterToggle,
-    mirrorControlEl, layoutControl, speedControlEl, settingsControlEl,
+    recordControls, headerPlayButton, mirrorControlEl,
+    layoutControl, speedControlEl, settingsControlEl,
   ].filter(Boolean).map((el) => ({ el, parent: el.parentNode, next: el.nextSibling }));
+
+  // A desktop switch, mobile Record tab, and an immediate Record click share
+  // the same permission/hardware check instead of opening duplicate streams.
+  let studioModeRevision = 0;
+  const requestRecordingMediaReady = createRecordingMediaPreflightGate(
+    (revision) => ensureRecordingMediaReady(revision),
+  );
+  const requestCurrentRecordingMediaReady = () => (
+    requestRecordingMediaReady(studioModeRevision)
+  );
+  let mobileStudioTabs = null;
+  const studioMode = createStudioModeController({
+    app,
+    toggleButton: studioModeControl,
+    playButton: headerPlayButton,
+    recordButton,
+    onModeChange: (mode) => {
+      studioModeRevision += 1;
+      mobileStudioTabs?.syncFromMode(mode);
+      if (mode !== 'record') {
+        // Record off / Prompter is the text-only studio. Media settings can be
+        // configured again later, but leaving Record immediately releases the
+        // preview stream and clears the enabled microphone state.
+        Promise.allSettled([
+          setCameraToggle(false, { permissionVerified: true }),
+          setMicToggle(false, { permissionVerified: true }),
+        ]);
+        return;
+      }
+      requestCurrentRecordingMediaReady().catch(() => {
+        if (!tornDown) showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
+      });
+    },
+  });
+  mobileStudioTabs = createMobileStudioTabs({ root, studioMode });
+  mobileStudioTabs.syncFromMode(studioMode.getMode());
+  cleanups.push(() => mobileStudioTabs.destroy());
+  cleanups.push(() => studioMode.destroy());
 
   function applyPhoneLayout() {
     if (!mPanelMain || !mPanelTools || !mSharedTools) return;
     if (phoneViewport.matches) {
       if (mStudioBar) mStudioBar.setAttribute('aria-hidden', 'false');
-      // Each tab owns only its centered primary action.
-      [recordControls]
-        .forEach((el) => { if (el) mPanelMain.appendChild(el); });
-      [headerPlayButton]
-        .forEach((el) => { if (el) mPanelTools.appendChild(el); });
-      // Reading/settings tools stay visible below either primary action.
-      [layoutControl, speedControlEl, mirrorControlEl, settingsControlEl, prompterToggle]
+      if (recordControls) mPanelMain.appendChild(recordControls);
+      if (headerPlayButton) mPanelTools.appendChild(headerPlayButton);
+      [layoutControl, speedControlEl, mirrorControlEl, settingsControlEl]
         .forEach((el) => { if (el) mSharedTools.appendChild(el); });
+      mobileStudioTabs.syncFromMode(studioMode.getMode());
     } else {
       if (mStudioBar) mStudioBar.setAttribute('aria-hidden', 'true');
       phoneMovable.slice().reverse().forEach(({ el, parent, next }) => {
@@ -217,41 +271,17 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         const anchor = next && next.parentNode === parent ? next : null;
         parent.insertBefore(el, anchor);
       });
+      // Camera mode owns Layout inside the panel control bar. A phone/desktop
+      // round trip must restore that placement instead of its initial toolbar home.
+      setLayoutControlInPanel(app.classList.contains('cam-on'));
     }
   }
   applyPhoneLayout();
   phoneViewport.addEventListener('change', applyPhoneLayout);
   cleanups.push(() => phoneViewport.removeEventListener('change', applyPhoneLayout));
-
-  // Phone bar tabs: switch between the Record group and the Prompter tools.
-  let recordTabMediaPending = false;
-  root.querySelectorAll('.m-tab').forEach((tab) => {
-    on(tab, 'click', async () => {
-      const target = tab.dataset.tab;
-      root.querySelectorAll('.m-tab').forEach((t) => {
-        const active = t.dataset.tab === target;
-        t.classList.toggle('active', active);
-        t.setAttribute('aria-selected', String(active));
-      });
-      root.querySelectorAll('.m-tab-panel').forEach((p) => {
-        p.classList.toggle('active', p.dataset.panel === target);
-      });
-      if (target === 'main' && !recordTabMediaPending) {
-        recordTabMediaPending = true;
-        try {
-          await ensureRecordingMediaReady();
-        } catch {
-          if (!tornDown) showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
-        } finally {
-          recordTabMediaPending = false;
-        }
-      }
-    });
-  });
-
-  // Copy strings from 11ty JSON, embedded as a JSON <script> tag on the page
-  // (not executable — safe under CSP, and no window.__ channel).
-  const copy = readCopy(root);
+  const isRecordModeActive = () => (
+    !tornDown && studioMode.getMode() === 'record'
+  );
 
   // ---- Camera / mic permission gate -----------------------------------------
   // We let the browser show its own native prompt (no pre-prompt dialog). A
@@ -606,11 +636,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     layoutControlHome.insertBefore(layoutControl, anchor);
   }
 
-  async function setCameraMode(nextOn) {
+  async function setCameraMode(nextOn, { preserveStudioLayout = false } = {}) {
     setFormatEditOpen(false);
     if (nextOn) {
       syncSurface(teleprompterText);
       app.classList.add('cam-on');
+      if (cameraFeed) cameraFeed.classList.remove('hidden');
       setFormatToolbarInPanel(true);
       setLayoutFrameInPanel(true);
       setLayoutControlInPanel(true);
@@ -621,17 +652,22 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       const started = await startCamera();
       if (!started) return false;
     } else {
-      syncSurface(promptBox);
-      setFormatToolbarInPanel(false);
-      setLayoutFrameInPanel(false);
-      setLayoutControlInPanel(false);
-      app.classList.remove('cam-on');
-      if (readingSession) readingSession.switchSurface(promptBox);
       stopCamera();
       if (cameraPlaceholder) cameraPlaceholder.classList.remove('show');
+      if (preserveStudioLayout) {
+        // In Record mode, Hide Camera controls only the preview/capture input.
+        // Keep the camera-style teleprompter surface and its controls in place.
+        if (cameraFeed) cameraFeed.classList.add('hidden');
+      } else {
+        syncSurface(promptBox);
+        setFormatToolbarInPanel(false);
+        setLayoutFrameInPanel(false);
+        setLayoutControlInPanel(false);
+        app.classList.remove('cam-on');
+        if (cameraFeed) cameraFeed.classList.remove('hidden');
+        if (readingSession) readingSession.switchSurface(promptBox);
+      }
     }
-    // Layout vừa đổi → đồng bộ nút Prompter + editing theo cờ ẩn của layout mới.
-    applyPrompterVisibility();
     requestAnimationFrame(() => layout.update());
     return nextOn ? hasLiveMediaTrack(cameraStream, 'video') : true;
   }
@@ -1093,7 +1129,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   // Turn the camera on/off. The switch only remains on after the preview stream
   // is live, so Settings never advertises a blocked or failed device as active.
-  async function setCameraToggle(on, { permissionVerified = false } = {}) {
+  async function setCameraToggle(on, {
+    permissionVerified = false,
+    preserveStudioLayout = false,
+  } = {}) {
     if (tornDown) return false;
     const permissionState = on && !permissionVerified
       ? await queryPermissionState('camera')
@@ -1107,10 +1146,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       }
     }
     applyToggleState(cameraToggle, 'camera', on);
-    const ready = await setCameraMode(on);
+    const ready = await setCameraMode(on, { preserveStudioLayout });
     if (tornDown || (on && !ready)) {
       applyToggleState(cameraToggle, 'camera', false);
-      await setCameraMode(false);
+      await setCameraMode(false, { preserveStudioLayout });
       return false;
     }
     return true;
@@ -1143,11 +1182,20 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     return true;
   }
 
+  // Normal/Prompter is intentionally text-only. Opting into either media
+  // device enters Record mode, whose shared preflight verifies both inputs.
+  const setMediaFromSettings = createStudioMediaSettingsHandler({
+    studioMode,
+    requestRecordingMediaReady: requestCurrentRecordingMediaReady,
+    setCameraEnabled: setCameraToggle,
+    setMicEnabled: setMicToggle,
+  });
+
   on(cameraToggle, 'change', async () => {
     const nextEnabled = cameraToggle.checked;
     cameraToggle.disabled = true;
     try {
-      await setCameraToggle(nextEnabled);
+      await setMediaFromSettings('camera', nextEnabled);
     } finally {
       cameraToggle.disabled = false;
     }
@@ -1156,44 +1204,14 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     const nextEnabled = micToggle.checked;
     micToggle.disabled = true;
     try {
-      await setMicToggle(nextEnabled);
+      await setMediaFromSettings('mic', nextEnabled);
     } finally {
       micToggle.disabled = false;
     }
   });
 
   const micEnabled = () => Boolean(micToggle?.checked);
-  const cameraEnabled = () => app.classList.contains('cam-on');
-
-  // ---- Prompter show/hide ---------------------------------------------------
-  const prompterButton = root.querySelector('[data-action="Prompter"]');
-  // Cam ON (.panel) và cam OFF (.prompt-box) là hai layout của cùng một script;
-  // mỗi layout giữ cờ ẩn/hiện riêng để "cắt" teleprompter ở layout này không kéo
-  // theo ẩn layout kia khi chuyển cam.
-  let camOnPrompterHidden = false; // .panel — cam ON
-  let camOffPrompterHidden = false; // .prompt-box — cam OFF
-  const isPrompterHidden = () => (cameraEnabled() ? camOnPrompterHidden : camOffPrompterHidden);
-  function applyPrompterVisibility() {
-    const hidden = isPrompterHidden();
-    if (prompterPanel) prompterPanel.classList.toggle('closed', camOnPrompterHidden);
-    if (promptBox) promptBox.classList.toggle('hidden', camOffPrompterHidden);
-    if (prompterButton) prompterButton.classList.toggle('selected', !hidden);
-    if (hidden && readingSession) readingSession.stopScroll();
-    layout.setEditing(!hidden);
-  }
-  function setPrompterHidden(hidden) {
-    if (cameraEnabled()) camOnPrompterHidden = hidden;
-    else camOffPrompterHidden = hidden;
-    applyPrompterVisibility();
-  }
-  root.querySelectorAll('[data-action]').forEach((button) => {
-    on(button, 'click', () => {
-      if (button.dataset.action === 'Prompter') {
-        setPrompterHidden(!isPrompterHidden());
-        return;
-      }
-    });
-  });
+  const cameraEnabled = () => Boolean(cameraToggle?.checked);
 
   // ---- Mirror ---------------------------------------------------------------
   const mirrorControl = $('mirrorControl');
@@ -1476,6 +1494,15 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     }
   }
 
+  function abortRecordingStart() {
+    cancelRecordCountdown();
+    controller.cancel();
+    readingSession.stop();
+    resetRecordUI();
+    layout.restore(activeSurface());
+    requestAnimationFrame(() => layout.update());
+  }
+
   function setEditingEnabled(enabled) {
     if (promptBox) promptBox.contentEditable = enabled ? 'true' : 'false';
     if (teleprompterText) teleprompterText.contentEditable = enabled ? 'true' : 'false';
@@ -1507,7 +1534,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // Auto-enable and verify both capture inputs before storage checks/countdown.
   // The combined probe proves that the selected devices and permissions work
   // together; it is released immediately, before the recorder opens its stream.
-  async function ensureRecordingMediaReady() {
+  async function ensureRecordingMediaReady(revision = studioModeRevision) {
+    const isCancelled = () => (
+      tornDown
+      || studioMode.getMode() !== 'record'
+      || revision !== studioModeRevision
+    );
+    if (isCancelled()) return false;
     let popups;
     try {
       ({ popups } = await panelsReady);
@@ -1515,13 +1548,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       if (!tornDown) showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
       return false;
     }
-    if (tornDown) return false;
+    if (isCancelled()) return false;
     const missing = getMissingRecordingMedia({
       cameraEnabled: cameraEnabled(),
       micEnabled: micEnabled(),
     });
     const allowed = await ensureCaptureAllowed({ video: true, audio: true });
-    if (tornDown) return false;
+    if (isCancelled()) return false;
     if (!allowed) {
       popups.openSettingsForMedia(missing.length ? missing : ['camera', 'mic']);
       return false;
@@ -1543,18 +1576,21 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
           return setCameraToggle(true, { permissionVerified: true });
         },
         enableMic: () => setMicToggle(true, { permissionVerified: true }),
+        disableCamera: () => setCameraToggle(false, { permissionVerified: true }),
+        disableMic: () => setMicToggle(false, { permissionVerified: true }),
         isCameraReady: () => (
           cameraEnabled() && hasLiveMediaTrack(cameraStream, 'video')
         ),
-        isCancelled: () => tornDown,
+        isCancelled,
       });
     } catch (err) {
-      if (tornDown) return false;
+      if (isCancelled()) return false;
       await handleRecordCaptureError(err);
-      if (tornDown) return false;
+      if (isCancelled()) return false;
       popups.openSettingsForMedia(missing.length ? missing : ['camera', 'mic']);
       return false;
     }
+    if (result.reason === 'cancelled') return false;
     if (!result.ready) {
       if (!tornDown) {
         showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
@@ -1567,6 +1603,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   async function beginRecording() {
+    if (!isRecordModeActive()) {
+      abortRecordingStart();
+      return;
+    }
     let started = null;
     let startErr = null;
     try {
@@ -1575,7 +1615,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // (buttons restored) rather than leaking an unhandled rejection —
       // beginRecording is called un-awaited from the countdown/interval.
       const { popups } = await panelsReady;
-      if (tornDown) return;
+      if (!isRecordModeActive()) {
+        abortRecordingStart();
+        return;
+      }
       // Permission was already acquired in onRecordClick (before the countdown),
       // so this getUserMedia call won't pop a prompt mid 3-2-1.
       started = await controller.start({
@@ -1587,6 +1630,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     } catch (err) { startErr = err; }
     if (tornDown) {
       controller.cancel();
+      return;
+    }
+    if (!isRecordModeActive()) {
+      abortRecordingStart();
       return;
     }
     // start() returns null (without throwing) when capture cannot begin —
@@ -1633,7 +1680,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
           armVoiceLanguageCheck('record');
           // Record always uses camera + microphone. Auto-enable them and verify
           // permissions/hardware before any storage dialog or 3-2-1 countdown.
-          const mediaReady = await ensureRecordingMediaReady();
+          const mediaReady = await requestCurrentRecordingMediaReady();
           if (!mediaReady || tornDown) {
             app.classList.remove('record-dim');
             return;
@@ -1642,12 +1689,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
           // storage-warning preference; the blocked tier always stops — with that
           // little space left the recording is doomed regardless of preference.
           const storageCheck = await checkBeforeRecord();
-          if (tornDown) return;
+          if (!isRecordModeActive()) return;
           if (!storageCheck.ok && (storageCheck.blocked || settings.wantsStorageWarning())) {
             // Both blocked (< 30MB) and warn (< 200MB) show the modal.
             // When blocked, Continue is visually disabled inside the modal.
             const choice = await showStorageWarnModal(storageCheck.message, { blocked: !!storageCheck.blocked });
-            if (tornDown) return;
+            if (!isRecordModeActive()) return;
             if (choice === 'cancel' || storageCheck.blocked) {
               // Restore UI state that was set before this check.
               app.classList.remove('record-dim');
@@ -1655,9 +1702,11 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
             }
             // choice === 'continue' && !blocked → proceed with recording.
           }
+          if (!isRecordModeActive()) return;
           // Request persistent storage so recordings survive browser eviction.
           requestPersistentStorage().catch(() => {});
           // ── Begin countdown / recording ───────────────────────────────────
+          if (!isRecordModeActive()) return;
           if (headerPlayButton) headerPlayButton.classList.add('hidden');
           // Slide the first line down onto the eye-line (runs through the countdown).
           readingSession.begin('record', { waitFor: ['layout', 'capture'] });
@@ -1896,9 +1945,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const popupsArgs = {
     root,
     getMediaEnabled: (type) => (type === 'camera' ? cameraEnabled() : micEnabled()),
-    onMediaToggle: (type, enabled) => (
-      type === 'camera' ? setCameraToggle(enabled) : setMicToggle(enabled)
-    ),
+    onMediaToggle: setMediaFromSettings,
     onDeviceChange: async (type) => {
       if (type !== 'camera' || !cameraEnabled()) return;
       stopCamera();
@@ -2110,9 +2157,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   window.addEventListener('resize', onResize);
   cleanups.push(() => window.removeEventListener('resize', onResize));
 
-  // ---- Panel close button ---------------------------------------------------
-  on($('closePanel'), 'click', () => setPrompterHidden(true));
-
   // ---- Scene editor (post-record edit, mounted in-place, no navigation) -----
   const sceneEditorRoot = $('sceneEditorView');
   let sceneEditorTeardown = null;
@@ -2155,6 +2199,29 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     copy,
   });
   cleanups.push(() => editStaleBadge.destroy());
+
+  // Tour clicks bubble after the selected control performs its normal action.
+  // Scroll mode and the real Record button each receive a separate one-time
+  // contextual hint; all completion flags stay browser-local.
+  const firstVisitTours = initFirstVisitTours({
+    documentRoot: document,
+    copy: tourCopy,
+    playButton: headerPlayButton,
+    speedButton: speedControl,
+    scrollMenu: speedMenu,
+    desktopRecordModeButton: studioModeControl,
+    mobileRecordModeButton: mobileRecordModeTab,
+    recordButton,
+    isRecordModeActive: () => !tornDown && studioMode.getMode() === 'record',
+    beforeRecordButtonTour: requestCurrentRecordingMediaReady,
+    hasSeenMain: () => getItem(LS_TP_FIRST_VISIT_TOUR) === true,
+    hasSeenScrollModes: () => getItem(LS_TP_SCROLL_MODES_TOUR) === true,
+    hasSeenRecordButton: () => getItem(LS_TP_RECORD_BUTTON_TOUR) === true,
+    markMainSeen: () => setItem(LS_TP_FIRST_VISIT_TOUR, true),
+    markScrollModesSeen: () => setItem(LS_TP_SCROLL_MODES_TOUR, true),
+    markRecordButtonSeen: () => setItem(LS_TP_RECORD_BUTTON_TOUR, true),
+  });
+  cleanups.push(() => firstVisitTours.destroy());
 
   // ---- Teardown -------------------------------------------------------------
   const teardown = () => {

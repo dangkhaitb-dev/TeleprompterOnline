@@ -1,0 +1,101 @@
+/* First-visit Teleprompter tour. The overlay is visual-only: controls beneath
+   it keep their normal behavior while document clicks advance the hint. */
+.first-visit-tour-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-tour);
+  background: transparent;
+  pointer-events: none;
+  animation: first-visit-tour-fade var(--dur-fast) ease;
+}
+
+.first-visit-tour-popup {
+  position: fixed;
+  z-index: 2;
+  width: min(280px, calc(100vw - var(--space-8)));
+  padding: var(--space-4);
+  background: var(--tp-white);
+  background: color-mix(in srgb, var(--tp-white) 94%, transparent);
+  border: 1px solid var(--confirm-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--confirm-shadow);
+  color: var(--tp-panel-light-text);
+  cursor: pointer;
+  pointer-events: auto;
+  animation: first-visit-tour-pop var(--dur-fast) var(--ease-out);
+}
+
+.first-visit-tour-arrow {
+  position: absolute;
+  left: var(--first-visit-tour-arrow-left, 50%);
+  width: 14px;
+  height: 14px;
+  background: var(--tp-white);
+  background: color-mix(in srgb, var(--tp-white) 94%, transparent);
+  border: solid var(--confirm-border);
+  pointer-events: none;
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.first-visit-tour-popup[data-placement="below"] .first-visit-tour-arrow {
+  top: -8px;
+  border-width: 1px 0 0 1px;
+}
+
+.first-visit-tour-popup[data-placement="above"] .first-visit-tour-arrow {
+  bottom: -8px;
+  border-width: 0 1px 1px 0;
+}
+
+.first-visit-tour-popup[data-placement="center"] .first-visit-tour-arrow {
+  display: none;
+}
+
+.first-visit-tour-text {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+.first-visit-tour-skip {
+  min-width: 44px;
+  min-height: 44px;
+  margin: var(--space-3) 0 0 auto;
+  padding: 0 var(--space-3);
+  border: 1px solid var(--confirm-border);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--tp-black) 6%, var(--tp-white));
+  color: var(--tp-panel-light-text);
+  font: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.first-visit-tour-skip:hover {
+  background: color-mix(in srgb, var(--tp-black) 10%, var(--tp-white));
+}
+
+.first-visit-tour-skip:focus-visible {
+  outline: 2px solid var(--tp-green-dark);
+  outline-offset: 2px;
+}
+
+@keyframes first-visit-tour-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes first-visit-tour-pop {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .first-visit-tour-overlay,
+  .first-visit-tour-popup {
+    animation: none;
+  }
+
+}

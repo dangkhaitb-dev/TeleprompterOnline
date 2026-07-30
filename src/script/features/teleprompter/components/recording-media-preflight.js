@@ -18,14 +18,24 @@ export async function prepareRecordingMedia({
   releaseProbe,
   enableCamera,
   enableMic,
+  disableCamera = async () => {},
+  disableMic = async () => {},
   isCameraReady,
   isCancelled = () => false,
 } = {}) {
   const missing = getMissingRecordingMedia({ cameraEnabled, micEnabled });
+  async function cancel({ cameraOn = cameraEnabled, micOn = micEnabled } = {}) {
+    const rollbacks = [];
+    if (cameraOn && !cameraEnabled) rollbacks.push(Promise.resolve().then(disableCamera));
+    if (micOn && !micEnabled) rollbacks.push(Promise.resolve().then(disableMic));
+    await Promise.allSettled(rollbacks);
+    return { ready: false, missing, reason: 'cancelled' };
+  }
+
   let probe = null;
   try {
     probe = await acquireProbe();
-    if (isCancelled()) return { ready: false, missing, reason: 'cancelled' };
+    if (isCancelled()) return cancel();
     if (!hasLiveMediaTrack(probe, 'video') || !hasLiveMediaTrack(probe, 'audio')) {
       return { ready: false, missing, reason: 'inactive' };
     }
@@ -33,15 +43,56 @@ export async function prepareRecordingMedia({
     if (probe) releaseProbe(probe);
   }
 
-  if (isCancelled()) return { ready: false, missing, reason: 'cancelled' };
+  if (isCancelled()) return cancel();
   let cameraOn = cameraEnabled;
-  if (!cameraOn || !isCameraReady()) cameraOn = Boolean(await enableCamera());
-  if (isCancelled()) return { ready: false, missing, reason: 'cancelled' };
   let micOn = micEnabled;
-  if (!micOn) micOn = Boolean(await enableMic());
+  try {
+    if (!cameraOn || !isCameraReady()) cameraOn = Boolean(await enableCamera());
+    if (isCancelled()) return cancel({ cameraOn, micOn });
+    if (!micOn) micOn = Boolean(await enableMic());
+    if (isCancelled()) return cancel({ cameraOn, micOn });
+  } catch (error) {
+    if (isCancelled()) return cancel({ cameraOn, micOn });
+    throw error;
+  }
 
-  const ready = !isCancelled() && cameraOn && micOn && isCameraReady();
+  const ready = cameraOn && micOn && isCameraReady();
   return { ready, missing, reason: ready ? '' : 'inactive' };
+}
+
+export function createRecordingMediaPreflightGate(action) {
+  let pending = null;
+  let pendingKey = null;
+
+  function start(key) {
+    let current;
+    try {
+      current = Promise.resolve(action(key));
+    } catch (error) {
+      current = Promise.reject(error);
+    }
+    const tracked = current.finally(() => {
+      if (pending === tracked) {
+        pendingKey = null;
+        pending = null;
+      }
+    });
+    pendingKey = key;
+    pending = tracked;
+    return tracked;
+  }
+
+  return function requestRecordingMediaPreflight(key = 'default') {
+    if (!pending) return start(key);
+    if (pendingKey === key) return pending;
+
+    // A different studio-mode generation must wait for the stale request to
+    // finish its rollback, then perform a fresh device check for the new mode.
+    return pending.then(
+      () => requestRecordingMediaPreflight(key),
+      () => requestRecordingMediaPreflight(key),
+    );
+  };
 }
 
 export function createRecordingStartGate() {

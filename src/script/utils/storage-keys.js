@@ -37,6 +37,9 @@ export const LS_GLOBAL_SETTING_PROMPTER = 'global_setting_promter';
 export const LS_TP_COLOR_HISTORY = 'solprompter:tp-color-history'; // recent picker colors
 export const LS_TP_NOTCH_SIZE = 'solprompter:tp-notch-size'; // { w, h } notch prompter block
 export const LS_TP_NOTCH_EDIT_SIZE = 'solprompter:tp-notch-edit-size'; // { w, h } notch edit panel
+export const LS_TP_FIRST_VISIT_TOUR = 'solprompter:tp-first-visit-tour-v1';
+export const LS_TP_SCROLL_MODES_TOUR = 'solprompter:tp-scroll-modes-tour-v1';
+export const LS_TP_RECORD_BUTTON_TOUR = 'solprompter:tp-record-button-tour-v1';
 
 // Up to 12 most-recent BCP-47 locales whose on-device speech packs were
 // requested by Voice Scroll. The browser owns the packs; this registry only

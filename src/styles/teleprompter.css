@@ -578,10 +578,6 @@ html[data-theme="dark"] .app .prompt-box {
   z-index: 47;
 }
 
-.panel.closed {
-  display: none;
-}
-
 /* Resize handles */
 .resize-handle {
   position: absolute;
@@ -634,46 +630,6 @@ html[data-theme="dark"] .app .prompt-box {
 /* Mobile-only synchronized resize control (see @media max-width: 600px). */
 .control-bar-resize {
   display: none;
-}
-
-.close-btn {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: rgba(26, 26, 26, 0.55);
-  border: none;
-  color: var(--tp-white);
-  font-size: 0;
-  padding: 0;
-  cursor: pointer;
-  z-index: 20;
-}
-
-.close-btn::before,
-.close-btn::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 8px;
-  height: 1.4px;
-  background: currentColor;
-  border-radius: 1px;
-}
-
-.close-btn::before {
-  transform: translate(-50%, -50%) rotate(45deg);
-}
-
-.close-btn::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
-}
-
-.close-btn:hover {
-  background: rgba(0, 0, 0, 0.75);
 }
 
 .control-bar .panel-edit-btn {
@@ -981,6 +937,25 @@ html[data-theme="dark"] .app .prompt-box {
 .toolbar-shell .item .action-btn svg {
   width: 38px;
   height: 38px;
+}
+
+.toolbar-shell .studio-mode-control {
+  min-width: 64px;
+}
+
+.toolbar-shell .item.studio-mode-control .icon-wrap,
+.toolbar-shell .item.studio-mode-control .action-btn {
+  width: 56px;
+  height: 34px;
+}
+
+.toolbar-shell .item.studio-mode-control .action-btn svg.studio-record-glyph {
+  width: 56px;
+  height: 34px;
+}
+
+.toolbar-shell .item.studio-mode-control.selected .action-btn svg.studio-record-glyph {
+  color: var(--tp-top-border);
 }
 
 .toolbar-shell .item .scroll-action-icon {
@@ -1294,13 +1269,9 @@ html[data-theme="dark"] .app .prompt-box {
   transform: scaleX(-1);
 }
 
-/* Ẩn button Prompter khi camera tắt — chỉ hiển thị ở chế độ camera */
-.app:not(.cam-on) .toolbar [data-action="Prompter"] {
-  display: none;
-}
-
-.app:not(.cam-on) .toolbar [data-action="Prompter"] + .divider {
-  display: none;
+.record-button[hidden],
+.header-play-button[hidden] {
+  display: none !important;
 }
 
 /* Layout: chỉ hiện trên mobile (nút bật/tắt thanh margin + eye line), xem @media 768px */
@@ -1510,6 +1481,28 @@ html[data-theme="dark"] .quick-menu {
 .scroll-mode-choice.selected {
   background: transparent;
   color: var(--tp-green-dark);
+}
+
+.scroll-choice-label-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.badge-new {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--tp-record);
+  color: var(--tp-white);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 5px 8px;
+  border-radius: var(--radius-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .scroll-choice-radio {
@@ -2282,12 +2275,6 @@ html[data-theme="dark"] .theme-btn.active {
     --tp-panel-stage-offset: 0px;
   }
 
-  /* No manual close on mobile — panel is always pinned, closing happens via
-     the Show Cam toggle in the studio toolbar instead. */
-  .close-btn {
-    display: none;
-  }
-
   .teleprompter {
     padding: 64px 30px 64px;
     font-size: 20px;
@@ -2401,15 +2388,6 @@ html[data-theme="dark"] .theme-btn.active {
     padding: 8px 14px;
   }
 
-  .close-btn {
-    width: 24px;
-    height: 24px;
-  }
-
-  .close-btn::before,
-  .close-btn::after {
-    width: 10px;
-  }
 }
 /* ===== Format toolbar trên app-header (chế độ edit, chưa record) ===== */
 .format-toolbar {
@@ -2651,21 +2629,7 @@ html[data-theme="dark"] .mff-more-left {
   .header-divider,
   .bar-speed,
   .app-header .back-btn,
-  #notchControl,
-  .toolbar [data-action="Prompter"],
-  .toolbar [data-action="Prompter"] + .divider {
-    display: none;
-  }
-
-  /* Hiển thị lại nút Prompter khi bật camera trên mobile (để chuyển chế độ). */
-  .app.cam-on:not(.notch-on) .toolbar [data-action="Prompter"] {
-    display: flex;
-  }
-
-  /* Cam bật trên màn hẹp: giữ Settings để camera/mic luôn truy cập được; ẩn các
-     công cụ phụ Mirror/Speed (Layout đã dời vào control-bar). */
-  .app.cam-on #mirrorControl,
-  .app.cam-on #speedControl {
+  #notchControl {
     display: none;
   }
 
@@ -3170,15 +3134,6 @@ html[data-theme="dark"] .mff-more-left {
   color: var(--tp-page-text);
 }
 
-.panel.theme-light .close-btn {
-  background: rgba(0, 0, 0, 0.12);
-  color: var(--tp-page-text);
-}
-
-.panel.theme-light .close-btn:hover {
-  background: rgba(0, 0, 0, 0.2);
-}
-
 /*.panel.theme-light .teleprompter,*/
 .panel.theme-light .teleprompter {
   color: #000000;
@@ -3288,9 +3243,8 @@ html.theme-instant *::after {
   display: none !important;
 }
 
-/* Notch bật: Mirror/Prompter chỉ tác động prompt-box/panel — vốn đã bị ẩn khi notch-on nên 2 nút này vô tác dụng, bỏ khỏi toolbar-shell */
-.app.notch-on #mirrorControl,
-.app.notch-on [data-action="Prompter"] {
+/* Notch bật: Mirror chỉ tác động prompt-box/panel — vốn đã bị ẩn khi notch-on. */
+.app.notch-on #mirrorControl {
   display: none;
 }
 
@@ -3756,14 +3710,9 @@ html.theme-instant *::after {
   }
 }
 
-/* ===== Phone (≤600px): tabbed studio bar =====
-   The real studio controls are MOVED into the two tab panels of #mStudioBar at
-   runtime (applyPhoneLayout in teleprompter.ui.js). .record-controls stays a
-   single intact element so the existing record-dim behavior is untouched: the
-   record restyle here is scoped to idle (.app:not(.record-dim)); during
-   recording the record button reverts to its default pill and floats
-   bottom-right as before. The teleprompter page header is dropped on phones
-   (desktop + the post-record scene-editor keep their own headers). */
+/* ===== Phone (≤600px): tabbed Prompter / Record studio bar =====
+   Desktop owns the Record on/off switch. Phone tabs drive the same mode state,
+   with one centered primary action and shared tools visible below both tabs. */
 
 /* Empty + hidden on desktop/tablet — nodes live in their original toolbars. */
 .m-studio-bar,
@@ -3777,10 +3726,9 @@ html.theme-instant *::after {
   .app:not(.cam-on):not(.record-dim):not(.notch-on) .stage { top: var(--mobile-toolbar-h, 44px); }
   .app.cam-on .stage { top: 0; }
 
-  /* The old floating toolbar is replaced by the tabbed bar. */
+  /* The desktop floating toolbar is replaced by the tabbed mobile bar. */
   .toolbar-shell { display: none; }
 
-  /* ---- Tabbed bar: [Record | Prompter] tabs over the active button row -- */
   .m-studio-bar {
     position: fixed;
     left: 0;
@@ -3807,16 +3755,14 @@ html.theme-instant *::after {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 2px;
+    margin-bottom: 8px;
   }
-  /* Scoped under .m-studio-bar so font-size/weight beat the global
-     `body.tp button, .tp-overlay button { font: inherit }` reset (which would
-     otherwise pull the tab text back to the inherited ~16px). */
+
   .m-studio-bar .m-tab {
     position: relative;
     border: 0;
     background: transparent;
-    padding: 2px 2px 4px;
+    padding: 0 2px 4px;
     font-size: 10px;
     font-weight: 600;
     letter-spacing: 0.09em;
@@ -3824,10 +3770,11 @@ html.theme-instant *::after {
     color: var(--tp-gray-text);
     cursor: pointer;
     transition: color 0.15s ease;
-    min-height: 44px;
+    min-height: 22px;
   }
+
   .m-studio-bar .m-tab.active { color: var(--tp-page-text); }
-  /* Active-tab underline indicator. */
+
   .m-studio-bar .m-tab.active::after {
     content: "";
     position: absolute;
@@ -3840,9 +3787,8 @@ html.theme-instant *::after {
     transform: translateX(-50%);
   }
 
-  /* Both panels are stacked in one grid cell so the bar keeps the width of the
-     widest tab — switching tabs no longer shifts the bar width. */
   .m-tab-panels { display: grid; }
+
   .m-tab-panel {
     grid-area: 1 / 1;
     display: flex;
@@ -3851,6 +3797,7 @@ html.theme-instant *::after {
     gap: 18px;
     visibility: hidden;
   }
+
   .m-tab-panel.active { visibility: visible; }
 
   .m-shared-tools {
@@ -3860,10 +3807,15 @@ html.theme-instant *::after {
     gap: 8px;
   }
 
+  .m-shared-tools > #layoutControl { order: 1; }
+  .m-shared-tools > #mirrorControl { order: 2; }
+  .m-shared-tools > .m-tab-panels { order: 3; }
+  .m-shared-tools > #speedControl { order: 4; }
+  .m-shared-tools > #settingsControl { order: 5; }
+
   .m-studio-bar .item { min-width: 0; }
   .m-studio-bar .item .label { display: none; }
 
-  /* Shared tools remain available in both Prompter and Record tabs. */
   #mSharedTools .item .icon-wrap,
   #mSharedTools .item .action-btn { width: 44px; height: 44px; }
   #mSharedTools .item .action-btn svg { width: 44px; height: 44px; }
@@ -3874,17 +3826,12 @@ html.theme-instant *::after {
     height: 44px;
   }
 
-  /* Prompter toggle only makes sense once the camera is on. */
-  #mSharedTools [data-action="Prompter"] { display: none; }
-  .app.cam-on #mSharedTools [data-action="Prompter"] { display: flex; }
-
   /* Keep these visible when cam-on (overrides the ≤768px rule that hid them
      for the old crowded toolbar). */
   .app.cam-on #mSharedTools #speedControl,
   .app.cam-on #mSharedTools #mirrorControl,
   .app.cam-on #mSharedTools #settingsControl { display: flex; }
 
-  /* Record-controls flows as a flex item while idle. */
   .app:not(.record-dim) #mPanelMain .record-controls {
     position: static;
     inset: auto;
@@ -3898,7 +3845,7 @@ html.theme-instant *::after {
     width: 44px;
     height: 44px;
     padding: 0;
-    border: 2px solid var(--tp-white, #fff);
+    border: 2px solid var(--tp-page-text);
     border-radius: 50%;
     background: transparent;
   }
@@ -3916,18 +3863,18 @@ html.theme-instant *::after {
     width: 44px;
     height: 44px;
     padding: 0;
-    border: 2px solid var(--tp-white, #fff);
+    border: 2px solid var(--tp-page-text);
     border-radius: 50%;
     background: transparent;
-    color: var(--tp-white);
+    color: var(--tp-page-text);
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
   .app:not(.record-dim) #mPanelTools .header-play-button svg {
-    width: 24px;
-    height: 24px;
-    color: var(--tp-white, #fff);
+    width: 28px;
+    height: 28px;
+    color: var(--tp-page-text);
   }
   .app:not(.record-dim) #mPanelTools .header-play-button .header-play-label { display: none; }
 
@@ -3938,13 +3885,10 @@ html.theme-instant *::after {
 
   .app:not(.record-dim) #mPanelTools .header-play-button:focus-visible,
   .app:not(.record-dim) #mPanelMain #recordButton:focus-visible {
-    outline-color: var(--tp-white);
+    outline-color: var(--tp-page-text);
   }
 
-  /* During record-dim / notch: collapse the pill, hide the tabs + every button
-     except the floated .record-controls (recording UI unchanged from today).
-     Force #mPanelMain visible so record-controls renders even if the Prompter
-     tab was active when recording/playback started. */
+  /* During reading/recording, keep only the existing floating reading controls. */
   .app.record-dim .m-studio-bar,
   .app.notch-on .m-studio-bar {
     background: transparent;
@@ -3954,11 +3898,10 @@ html.theme-instant *::after {
   }
   .app.record-dim #mPanelMain,
   .app.notch-on #mPanelMain { visibility: visible; }
-  /* !important beats the #layoutControl / other ID-based mobile show rules. */
   .app.record-dim .m-tabs,
   .app.notch-on .m-tabs,
-  .app.record-dim .m-shared-tools,
-  .app.notch-on .m-shared-tools,
+  .app.record-dim .m-shared-tools > :not(.m-tab-panels),
+  .app.notch-on .m-shared-tools > :not(.m-tab-panels),
   .app.record-dim .m-tab-panel > :not(.record-controls),
   .app.notch-on .m-tab-panel > :not(.record-controls) { display: none !important; }
 

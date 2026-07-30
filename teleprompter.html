@@ -114,6 +114,14 @@
   "record": "Record",
   "pause": "Pause",
   "resume": "Play",
+  "firstVisitTour": {
+    "label": "Teleprompter quick tour",
+    "skip": "Skip",
+    "play": "Press Play to start or pause scrolling.",
+    "scrollMode": "Open Scroll mode to choose how your script moves.",
+    "scrollModes": "Choose Auto Scroll, words per minute, or a total scroll time.",
+    "recordButton": "Press Record here to start recording."
+  },
   "notchOn": "Notch prompter on",
   "notchOff": "Notch prompter off"
 }</script>
@@ -209,7 +217,7 @@
         <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2zM16 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2z"></path></svg>
         <span class="header-play-label">Play</span>
       </button>
-      <button class="record-button" id="recordButton" type="button">
+      <button class="record-button" id="recordButton" type="button" hidden>
         <span class="record-dot"></span>
         <span class="record-label">Record</span>
       </button>
@@ -312,9 +320,6 @@
         <span></span><span></span><span></span><span></span>
       </div>
 
-      
-      <button class="close-btn" id="closePanel" aria-label="Close"></button>
-
       <div class="teleprompter" id="teleprompterText" contenteditable="true" role="textbox" aria-multiline="true" spellcheck="false" data-placeholder="Start typing or paste text here..."></div>
 
       <div class="countdown" id="countdown">3</div>
@@ -360,20 +365,27 @@
     <!-- Shared floating studio toolbar -->
     <div class="toolbar-shell">
       <div class="toolbar" role="toolbar" aria-label="Studio controls">
-        <button class="item selected" type="button" data-action="Prompter">
+        <button
+          class="item studio-mode-control"
+          id="studioModeControl"
+          type="button"
+          aria-pressed="false"
+          aria-label="Turn recording on"
+          data-normal-label="Record off"
+          data-record-label="Record on"
+          data-switch-to-normal="Turn recording off"
+          data-switch-to-record="Turn recording on"
+        >
           <div class="icon-wrap">
             <div class="action-btn">
-              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill="currentColor" d="M8 17.6c0-3.36 0-5.04.654-6.324a6 6 0 0 1 2.622-2.622C12.56 8 14.24 8 17.6 8h4.8c3.36 0 5.04 0 6.324.654a6 6 0 0 1 2.622 2.622C32 12.56 32 14.24 32 17.6v1.16c0 1.713 0 2.569-.193 3.375a7 7 0 0 1-.838 2.023c-.433.706-1.039 1.312-2.25 2.522l-2.039 2.04c-1.21 1.21-1.816 1.816-2.522 2.249a7 7 0 0 1-2.023.838C21.329 32 20.473 32 18.76 32H17.6c-3.36 0-5.04 0-6.324-.654a6 6 0 0 1-2.622-2.622C8 27.44 8 25.76 8 22.4z"/>
-                <rect width="6" height="4" x="12" y="18" fill="var(--tp-icon-fg)" rx="2"/>
-                <rect width="8" height="4" x="20" y="18" fill="var(--tp-icon-fg)" rx="2"/>
-                <rect width="10" height="4" x="12" y="24" fill="var(--tp-icon-fg)" rx="2"/>
-                <rect width="10" height="4" x="12" y="12" fill="var(--tp-icon-fg)" rx="2"/>
-                <rect width="4" height="4" x="24" y="12" fill="var(--tp-icon-fg)" rx="2"/>
+              <svg class="studio-record-glyph" width="56" height="34" viewBox="0 0 56 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <rect x="2" y="3" width="52" height="28" rx="7" fill="currentColor"/>
+                <circle cx="15" cy="17" r="6" fill="var(--tp-record-btn)"/>
+                <text x="25" y="21" fill="var(--tp-icon-fg)" font-family="inherit" font-size="12" font-weight="800" letter-spacing="-.4">REC</text>
               </svg>
             </div>
           </div>
-          <span class="label">Prompter</span>
+          <span class="label">Record off</span>
         </button>
 
         <div class="divider" aria-hidden="true"></div>
@@ -487,7 +499,10 @@
         <div class="scroll-mode-option">
           <button class="scroll-mode-choice" id="speedModeAuto" type="button" role="radio" aria-checked="false">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
-            <span>Auto scroll</span>
+            <span class="scroll-choice-label-container">
+              <span>Auto scroll</span>
+              <span class="badge-new">NEW</span>
+            </span>
           </button>
         </div>
 
@@ -655,19 +670,17 @@
 
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
-    <!-- Phone (≤600px): tabbed studio bar. Panels are filled at runtime by
-         moving the real controls in (applyPhoneLayout in teleprompter.ui.js).
-         Empty + hidden on desktop. -->
     <div class="m-studio-bar" id="mStudioBar" aria-hidden="true">
       <div class="m-tabs" role="tablist">
-        <button type="button" class="m-tab active" data-tab="tools" role="tab" aria-selected="true">Prompter</button>
-        <button type="button" class="m-tab" data-tab="main" role="tab" aria-selected="false">Record</button>
+        <button type="button" class="m-tab active" id="mTabPrompter" data-tab="tools" role="tab" aria-controls="mPanelTools" aria-selected="true" tabindex="0">Prompter</button>
+        <button type="button" class="m-tab" id="mTabRecord" data-tab="main" role="tab" aria-controls="mPanelMain" aria-selected="false" tabindex="-1">Record</button>
       </div>
-      <div class="m-tab-panels">
-        <div class="m-tab-panel active" id="mPanelTools" data-panel="tools"></div>
-        <div class="m-tab-panel" id="mPanelMain" data-panel="main"></div>
+      <div class="m-shared-tools" id="mSharedTools">
+        <div class="m-tab-panels">
+          <div class="m-tab-panel active" id="mPanelTools" data-panel="tools" role="tabpanel" aria-labelledby="mTabPrompter"></div>
+          <div class="m-tab-panel" id="mPanelMain" data-panel="main" role="tabpanel" aria-labelledby="mTabRecord"></div>
+        </div>
       </div>
-      <div class="m-shared-tools" id="mSharedTools"></div>
     </div>
   </section>
 </main>

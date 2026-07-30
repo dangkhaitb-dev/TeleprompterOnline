@@ -116,12 +116,15 @@
   },
   "prompter": {
     "placeholder": "Start typing or paste text here...",
-    "closeAria": "Close",
     "speedUnit": "WPM",
     "themeAria": "Change Background Color"
   },
   "toolbar": {
     "studioAria": "Studio controls",
+    "normalMode": "Record off",
+    "recordMode": "Record on",
+    "switchToNormalAria": "Turn recording off",
+    "switchToRecordAria": "Turn recording on",
     "prompter": "Prompter",
     "mirror": "Mirror",
     "mirrorAria": "Mirror prompter text",
@@ -135,6 +138,14 @@
     "speedTitle": "Change scroll mode",
     "settings": "Settings"
   },
+  "firstVisitTour": {
+    "label": "Teleprompter quick tour",
+    "skip": "Skip",
+    "play": "Press Play to start or pause scrolling.",
+    "scrollMode": "Open Scroll mode to choose how your script moves.",
+    "scrollModes": "Choose Auto Scroll, words per minute, or a total scroll time.",
+    "recordButton": "Press Record here to start recording."
+  },
   "layout": {
     "marginLeftAria": "Move left text boundary",
     "marginRightAria": "Move right text boundary",
@@ -147,6 +158,7 @@
     "title": "Scroll mode",
     "modeLabel": "Choose scroll mode",
     "autoScroll": "Auto scroll",
+    "badgeNew": "NEW",
     "wordsPerMinute": "Word per minute",
     "scrollTime": "Scroll time",
     "scrollSpeed": "Scroll speed",

@@ -17,8 +17,10 @@
     "clean:11ty": "node -e \"require('fs').rmSync('_11ty-output',{recursive:true,force:true})\"",
     "gen:sitemap": "node scripts/generate-sitemap.js",
     "build": "npm run build:11ty && npm run gen:sitemap && vite build",
+    "build:test": "npm run build:11ty && npm run gen:sitemap && vite build --mode test",
     "build:no-critical": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "preview:test": "vite preview --mode test --host 127.0.0.1"
   },
   "repository": {
     "type": "git",

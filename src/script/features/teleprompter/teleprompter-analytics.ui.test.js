@@ -75,12 +75,17 @@ describe('Teleprompter analytics taxonomy', () => {
       .toBe('scrollTimeClick');
   });
 
-  it('keeps recording media in Settings and makes Prompter the default mobile tab', () => {
+  it('keeps recording media in Settings and exposes one Normal/Record switch', () => {
     expect(document.querySelector('.toolbar-shell [data-toggle="camera"]')).toBeNull();
     expect(document.querySelector('.toolbar-shell [data-toggle="mic"]')).toBeNull();
     expect(document.querySelector('#settingsMenu #cameraSettingsGroup')).not.toBeNull();
     expect(document.querySelector('#settingsMenu #micSettingsGroup')).not.toBeNull();
 
+    expect(document.querySelector('[data-action="Prompter"]')).toBeNull();
+    expect(document.querySelector('#closePanel')).toBeNull();
+    expect(document.querySelector('#studioModeControl')).not.toBeNull();
+    expect(document.querySelector('#studioModeControl .studio-record-glyph')?.textContent)
+      .toContain('REC');
     const tabs = [...document.querySelectorAll('.m-tab')];
     expect(tabs.map((tab) => tab.dataset.tab)).toEqual(['tools', 'main']);
     expect(tabs[0].classList.contains('active')).toBe(true);

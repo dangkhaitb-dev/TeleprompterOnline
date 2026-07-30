@@ -50,6 +50,11 @@ export function initPopups({
   const shortcutsMenu = $('shortcutsMenu');
   const shortcutsControl = $('shortcutsControl');
 
+  const displayGroupBtn = $('settingsGroupDisplayBtn');
+  const displayGroupContent = $('settingsGroupDisplayContent');
+  const devicesGroupBtn = $('settingsGroupDevicesBtn');
+  const devicesGroupContent = $('settingsGroupDevicesContent');
+
   const deviceMenus = {
     camera: {
       menu: $('cameraMenu'),
@@ -127,9 +132,26 @@ export function initPopups({
     openQuickMenu(menu, button);
   }
 
+  function toggleGroup(btn, content) {
+    if (!btn || !content) return;
+    const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+    btn.setAttribute('aria-expanded', String(!isExpanded));
+    content.hidden = isExpanded;
+    if (settingsMenu && settingsMenu.classList.contains('open')) {
+      positionAbove(root, settingsMenu, settingsControl);
+    }
+  }
+
   on(speedControl, 'click', () => toggleQuickMenu(speedMenu, speedControl));
   on(settingsControl, 'click', () => toggleQuickMenu(settingsMenu, settingsControl));
   on(shortcutsControl, 'click', () => toggleQuickMenu(shortcutsMenu, settingsControl));
+
+  if (displayGroupBtn && displayGroupContent) {
+    on(displayGroupBtn, 'click', () => toggleGroup(displayGroupBtn, displayGroupContent));
+  }
+  if (devicesGroupBtn && devicesGroupContent) {
+    on(devicesGroupBtn, 'click', () => toggleGroup(devicesGroupBtn, devicesGroupContent));
+  }
 
   function mediaEnabled(type) {
     return Boolean(getMediaEnabled && getMediaEnabled(type));
@@ -149,6 +171,12 @@ export function initPopups({
       if (entry.group) entry.group.classList.toggle('is-required', requiredTypes.includes(type));
     });
     refreshMediaValues();
+    
+    if (requiredTypes.length > 0 && devicesGroupBtn && devicesGroupContent) {
+      devicesGroupBtn.setAttribute('aria-expanded', 'true');
+      devicesGroupContent.hidden = false;
+    }
+
     openQuickMenu(settingsMenu, settingsControl);
     const firstRequired = requiredTypes.map((type) => deviceMenus[type]?.input).find(Boolean);
     firstRequired?.focus();

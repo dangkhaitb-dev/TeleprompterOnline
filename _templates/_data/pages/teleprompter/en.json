@@ -170,6 +170,8 @@
   },
   "settingsMenu": {
     "title": "Settings",
+    "displayGroup": "Display & Theme",
+    "devicesGroup": "Devices & Media",
     "shortcuts": "Shortcuts",
     "countdown": "Countdown",
     "fullscreen": "Fullscreen",

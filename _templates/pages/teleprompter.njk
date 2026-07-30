@@ -463,65 +463,89 @@ lang: en
     <!-- Settings popup -->
     <div class="quick-menu settings-quick" id="settingsMenu" role="dialog" aria-label="{{ pageData.settingsMenu.title }}">
       <div class="popup-title">{{ pageData.settingsMenu.title }}</div>
-      <button type="button" class="settings-row settings-row-nav" id="shortcutsControl" aria-haspopup="dialog" aria-expanded="false">
-        <span class="settings-row-title">{{ pageData.settingsMenu.shortcuts }}</span>
-        <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
+      
+      <!-- Main Setting: Countdown (Always outside) -->
       <label class="settings-row">
         <span class="settings-row-title">{{ pageData.settingsMenu.countdown }}</span>
         <span class="settings-switch"><input type="checkbox" id="toggleCountdown" checked><span class="settings-switch-track"></span></span>
       </label>
-      <label class="settings-row">
-        <span class="settings-row-title">{{ pageData.settingsMenu.fullscreen }}</span>
-        <span class="settings-switch"><input type="checkbox" id="toggleFullscreen"><span class="settings-switch-track"></span></span>
-      </label>
-      <label class="settings-row">
-        <span class="settings-row-title">{{ pageData.settingsMenu.notchFullscreen }}</span>
-        <span class="settings-switch"><input type="checkbox" id="toggleNotchFullscreen" checked><span class="settings-switch-track"></span></span>
-      </label>
-      <div class="settings-row settings-media-row" id="cameraSettingsGroup">
-        <button type="button" class="settings-media-device" id="cameraSettingsRow" aria-haspopup="menu" aria-expanded="false">
-          <span class="settings-row-title">{{ pageData.settingsMenu.camera }}</span>
-          <span class="settings-row-value" id="cameraSettingsValue">{{ pageData.settingsMenu.off }}</span>
+
+      <!-- Group 1: Display & Theme -->
+      <div class="settings-group" id="settingsGroupDisplay">
+        <button type="button" class="settings-row settings-row-nav settings-group-header" id="settingsGroupDisplayBtn" aria-expanded="false" aria-controls="settingsGroupDisplayContent">
+          <span class="settings-row-title">{{ pageData.settingsMenu.displayGroup }}</span>
           <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </button>
-        <label class="settings-switch">
-          <input type="checkbox" id="toggleCamera" aria-label="{{ pageData.settingsMenu.cameraToggleAria }}"><span class="settings-switch-track"></span>
-        </label>
-      </div>
-      <div class="settings-row settings-media-row" id="micSettingsGroup">
-        <button type="button" class="settings-media-device" id="micSettingsRow" aria-haspopup="menu" aria-expanded="false">
-          <span class="settings-row-title">{{ pageData.settingsMenu.microphone }}</span>
-          <span class="settings-row-value" id="micSettingsValue">{{ pageData.settingsMenu.off }}</span>
-          <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-        <label class="settings-switch">
-          <input type="checkbox" id="toggleMic" aria-label="{{ pageData.settingsMenu.micToggleAria }}"><span class="settings-switch-track"></span>
-        </label>
-      </div>
-      <div class="settings-row theme-row">
-        <span class="settings-row-title">{{ pageData.settingsMenu.darkTheme }}</span>
-        <div class="theme-toggle-group" role="radiogroup" aria-label="{{ pageData.settingsMenu.themeGroupAria }}">
-          <button type="button" class="theme-btn" id="themeLightBtn" role="radio" aria-checked="false" aria-label="{{ pageData.settingsMenu.lightThemeAria }}" title="{{ pageData.settingsMenu.lightThemeAria }}">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-          </button>
-          <button type="button" class="theme-btn" id="themeDarkBtn" role="radio" aria-checked="true" aria-label="{{ pageData.settingsMenu.darkThemeAria }}" title="{{ pageData.settingsMenu.darkThemeAria }}">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </button>
+        <div class="settings-group-content" id="settingsGroupDisplayContent" hidden>
+          <label class="settings-row">
+            <span class="settings-row-title">{{ pageData.settingsMenu.fullscreen }}</span>
+            <span class="settings-switch"><input type="checkbox" id="toggleFullscreen"><span class="settings-switch-track"></span></span>
+          </label>
+          <label class="settings-row">
+            <span class="settings-row-title">{{ pageData.settingsMenu.notchFullscreen }}</span>
+            <span class="settings-switch"><input type="checkbox" id="toggleNotchFullscreen" checked><span class="settings-switch-track"></span></span>
+          </label>
+          <div class="settings-row theme-row">
+            <span class="settings-row-title">{{ pageData.settingsMenu.darkTheme }}</span>
+            <div class="theme-toggle-group" role="radiogroup" aria-label="{{ pageData.settingsMenu.themeGroupAria }}">
+              <button type="button" class="theme-btn" id="themeLightBtn" role="radio" aria-checked="false" aria-label="{{ pageData.settingsMenu.lightThemeAria }}" title="{{ pageData.settingsMenu.lightThemeAria }}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              </button>
+              <button type="button" class="theme-btn" id="themeDarkBtn" role="radio" aria-checked="true" aria-label="{{ pageData.settingsMenu.darkThemeAria }}" title="{{ pageData.settingsMenu.darkThemeAria }}">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Group 2: Devices & Media -->
+      <div class="settings-group" id="settingsGroupDevices">
+        <button type="button" class="settings-row settings-row-nav settings-group-header" id="settingsGroupDevicesBtn" aria-expanded="false" aria-controls="settingsGroupDevicesContent">
+          <span class="settings-row-title">{{ pageData.settingsMenu.devicesGroup }}</span>
+          <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="settings-group-content" id="settingsGroupDevicesContent" hidden>
+          <div class="settings-row settings-media-row" id="cameraSettingsGroup">
+            <button type="button" class="settings-media-device" id="cameraSettingsRow" aria-haspopup="menu" aria-expanded="false">
+              <span class="settings-row-title">{{ pageData.settingsMenu.camera }}</span>
+              <span class="settings-row-value" id="cameraSettingsValue">{{ pageData.settingsMenu.off }}</span>
+              <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+            <label class="settings-switch">
+              <input type="checkbox" id="toggleCamera" aria-label="{{ pageData.settingsMenu.cameraToggleAria }}"><span class="settings-switch-track"></span>
+            </label>
+          </div>
+          <div class="settings-row settings-media-row" id="micSettingsGroup">
+            <button type="button" class="settings-media-device" id="micSettingsRow" aria-haspopup="menu" aria-expanded="false">
+              <span class="settings-row-title">{{ pageData.settingsMenu.microphone }}</span>
+              <span class="settings-row-value" id="micSettingsValue">{{ pageData.settingsMenu.off }}</span>
+              <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+            <label class="settings-switch">
+              <input type="checkbox" id="toggleMic" aria-label="{{ pageData.settingsMenu.micToggleAria }}"><span class="settings-switch-track"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shortcuts Link (Always outside) -->
+      <button type="button" class="settings-row settings-row-nav" id="shortcutsControl" aria-haspopup="dialog" aria-expanded="false">
+        <span class="settings-row-title">{{ pageData.settingsMenu.shortcuts }}</span>
+        <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
     </div>
 
     <!-- Shortcuts popup -->

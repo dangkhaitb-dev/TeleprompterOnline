@@ -138,4 +138,49 @@ describe('teleprompter media device menus', () => {
       expect(document.querySelector('#cameraSettingsValue').textContent).toBe('On');
     });
   });
+
+  it('toggles settings groups and repositions the settings menu', () => {
+    const displayBtn = document.createElement('button');
+    displayBtn.id = 'settingsGroupDisplayBtn';
+    displayBtn.setAttribute('aria-expanded', 'false');
+    displayBtn.setAttribute('aria-controls', 'settingsGroupDisplayContent');
+
+    const displayContent = document.createElement('div');
+    displayContent.id = 'settingsGroupDisplayContent';
+    displayContent.hidden = true;
+
+    document.querySelector('#settingsMenu').append(displayBtn, displayContent);
+
+    controller = initPopups({ getMediaEnabled: (type) => mediaState[type] });
+
+    controller.openSettingsForMedia([]);
+
+    displayBtn.click();
+    expect(displayBtn.getAttribute('aria-expanded')).toBe('true');
+    expect(displayContent.hidden).toBe(false);
+
+    displayBtn.click();
+    expect(displayBtn.getAttribute('aria-expanded')).toBe('false');
+    expect(displayContent.hidden).toBe(true);
+  });
+
+  it('automatically expands Devices group when openSettingsForMedia is called with required types', () => {
+    const devicesBtn = document.createElement('button');
+    devicesBtn.id = 'settingsGroupDevicesBtn';
+    devicesBtn.setAttribute('aria-expanded', 'false');
+    devicesBtn.setAttribute('aria-controls', 'settingsGroupDevicesContent');
+
+    const devicesContent = document.createElement('div');
+    devicesContent.id = 'settingsGroupDevicesContent';
+    devicesContent.hidden = true;
+
+    document.querySelector('#settingsMenu').append(devicesBtn, devicesContent);
+
+    controller = initPopups({ getMediaEnabled: (type) => mediaState[type] });
+
+    controller.openSettingsForMedia(['camera']);
+
+    expect(devicesBtn.getAttribute('aria-expanded')).toBe('true');
+    expect(devicesContent.hidden).toBe(false);
+  });
 });

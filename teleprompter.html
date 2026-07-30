@@ -564,65 +564,89 @@
     <!-- Settings popup -->
     <div class="quick-menu settings-quick" id="settingsMenu" role="dialog" aria-label="Settings">
       <div class="popup-title">Settings</div>
-      <button type="button" class="settings-row settings-row-nav" id="shortcutsControl" aria-haspopup="dialog" aria-expanded="false">
-        <span class="settings-row-title">Shortcuts</span>
-        <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
+      
+      <!-- Main Setting: Countdown (Always outside) -->
       <label class="settings-row">
         <span class="settings-row-title">Countdown</span>
         <span class="settings-switch"><input type="checkbox" id="toggleCountdown" checked><span class="settings-switch-track"></span></span>
       </label>
-      <label class="settings-row">
-        <span class="settings-row-title">Fullscreen</span>
-        <span class="settings-switch"><input type="checkbox" id="toggleFullscreen"><span class="settings-switch-track"></span></span>
-      </label>
-      <label class="settings-row">
-        <span class="settings-row-title">Fullscreen when enabling Notch</span>
-        <span class="settings-switch"><input type="checkbox" id="toggleNotchFullscreen" checked><span class="settings-switch-track"></span></span>
-      </label>
-      <div class="settings-row settings-media-row" id="cameraSettingsGroup">
-        <button type="button" class="settings-media-device" id="cameraSettingsRow" aria-haspopup="menu" aria-expanded="false">
-          <span class="settings-row-title">Camera</span>
-          <span class="settings-row-value" id="cameraSettingsValue">Off</span>
+
+      <!-- Group 1: Display & Theme -->
+      <div class="settings-group" id="settingsGroupDisplay">
+        <button type="button" class="settings-row settings-row-nav settings-group-header" id="settingsGroupDisplayBtn" aria-expanded="false" aria-controls="settingsGroupDisplayContent">
+          <span class="settings-row-title">Display &amp; Theme</span>
           <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </button>
-        <label class="settings-switch">
-          <input type="checkbox" id="toggleCamera" aria-label="Turn camera on or off"><span class="settings-switch-track"></span>
-        </label>
-      </div>
-      <div class="settings-row settings-media-row" id="micSettingsGroup">
-        <button type="button" class="settings-media-device" id="micSettingsRow" aria-haspopup="menu" aria-expanded="false">
-          <span class="settings-row-title">Microphone</span>
-          <span class="settings-row-value" id="micSettingsValue">Off</span>
-          <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-        </button>
-        <label class="settings-switch">
-          <input type="checkbox" id="toggleMic" aria-label="Turn microphone on or off"><span class="settings-switch-track"></span>
-        </label>
-      </div>
-      <div class="settings-row theme-row">
-        <span class="settings-row-title">Dark theme</span>
-        <div class="theme-toggle-group" role="radiogroup" aria-label="Theme selection">
-          <button type="button" class="theme-btn" id="themeLightBtn" role="radio" aria-checked="false" aria-label="Light Theme" title="Light Theme">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="5"></circle>
-              <line x1="12" y1="1" x2="12" y2="3"></line>
-              <line x1="12" y1="21" x2="12" y2="23"></line>
-              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-              <line x1="1" y1="12" x2="3" y2="12"></line>
-              <line x1="21" y1="12" x2="23" y2="12"></line>
-              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-          </button>
-          <button type="button" class="theme-btn" id="themeDarkBtn" role="radio" aria-checked="true" aria-label="Dark Theme" title="Dark Theme">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-          </button>
+        <div class="settings-group-content" id="settingsGroupDisplayContent" hidden>
+          <label class="settings-row">
+            <span class="settings-row-title">Fullscreen</span>
+            <span class="settings-switch"><input type="checkbox" id="toggleFullscreen"><span class="settings-switch-track"></span></span>
+          </label>
+          <label class="settings-row">
+            <span class="settings-row-title">Fullscreen when enabling Notch</span>
+            <span class="settings-switch"><input type="checkbox" id="toggleNotchFullscreen" checked><span class="settings-switch-track"></span></span>
+          </label>
+          <div class="settings-row theme-row">
+            <span class="settings-row-title">Dark theme</span>
+            <div class="theme-toggle-group" role="radiogroup" aria-label="Theme selection">
+              <button type="button" class="theme-btn" id="themeLightBtn" role="radio" aria-checked="false" aria-label="Light Theme" title="Light Theme">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+              </button>
+              <button type="button" class="theme-btn" id="themeDarkBtn" role="radio" aria-checked="true" aria-label="Dark Theme" title="Dark Theme">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Group 2: Devices & Media -->
+      <div class="settings-group" id="settingsGroupDevices">
+        <button type="button" class="settings-row settings-row-nav settings-group-header" id="settingsGroupDevicesBtn" aria-expanded="false" aria-controls="settingsGroupDevicesContent">
+          <span class="settings-row-title">Devices &amp; Media</span>
+          <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <div class="settings-group-content" id="settingsGroupDevicesContent" hidden>
+          <div class="settings-row settings-media-row" id="cameraSettingsGroup">
+            <button type="button" class="settings-media-device" id="cameraSettingsRow" aria-haspopup="menu" aria-expanded="false">
+              <span class="settings-row-title">Camera</span>
+              <span class="settings-row-value" id="cameraSettingsValue">Off</span>
+              <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+            <label class="settings-switch">
+              <input type="checkbox" id="toggleCamera" aria-label="Turn camera on or off"><span class="settings-switch-track"></span>
+            </label>
+          </div>
+          <div class="settings-row settings-media-row" id="micSettingsGroup">
+            <button type="button" class="settings-media-device" id="micSettingsRow" aria-haspopup="menu" aria-expanded="false">
+              <span class="settings-row-title">Microphone</span>
+              <span class="settings-row-value" id="micSettingsValue">Off</span>
+              <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+            </button>
+            <label class="settings-switch">
+              <input type="checkbox" id="toggleMic" aria-label="Turn microphone on or off"><span class="settings-switch-track"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shortcuts Link (Always outside) -->
+      <button type="button" class="settings-row settings-row-nav" id="shortcutsControl" aria-haspopup="dialog" aria-expanded="false">
+        <span class="settings-row-title">Shortcuts</span>
+        <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
     </div>
 
     <!-- Shortcuts popup -->

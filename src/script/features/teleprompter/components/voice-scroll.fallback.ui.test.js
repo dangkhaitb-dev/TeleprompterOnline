@@ -120,12 +120,14 @@ describe('Voice Scroll timed fallback', () => {
     const frames = installFrameQueue();
     const onError = vi.fn();
     const onTranscript = vi.fn();
+    const onDiagnostic = vi.fn();
     surface.scrollTop = 400;
 
     const voiceUI = initVoiceScrollUI({
       getSurface: () => surface,
       onError,
       onTranscript,
+      onDiagnostic,
     });
     const startPromise = voiceUI.start();
     await vi.runAllTicks();
@@ -143,6 +145,11 @@ describe('Voice Scroll timed fallback', () => {
     expect(voiceUI.isActive()).toBe(true);
     expect(recognition.processLocally).toBe(false);
     expect(frames.size).toBeGreaterThan(0);
+    expect(onDiagnostic).toHaveBeenCalledWith('asr-timed-fallback-active', {
+      reason: 'network',
+      asrMode: 'browser-service',
+      asrFailureCount: 2,
+    });
 
     await vi.advanceTimersByTimeAsync(600);
     let frameTime = await runFramesUntil(frames, () => surface.scrollTop > 400, 90, 1000);
@@ -243,6 +250,26 @@ describe('Voice Scroll timed fallback', () => {
     const requestFrame = vi.fn(() => 1);
     vi.stubGlobal('requestAnimationFrame', requestFrame);
     vi.stubGlobal('self', {});
+    const onError = vi.fn();
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface, onError });
+
+    await expect(voiceUI.start()).resolves.toBe(true);
+
+    expect(voiceUI.isActive()).toBe(true);
+    expect(onError).not.toHaveBeenCalled();
+    expect(requestFrame).toHaveBeenCalled();
+    voiceUI.stop();
+  });
+
+  it('falls back to timed scrolling when another recorder owns the microphone', async () => {
+    class BusyMicrophoneRecognition extends FakeSpeechRecognition {
+      start() {
+        queueMicrotask(() => this.onerror?.({ error: 'audio-capture' }));
+      }
+    }
+    const requestFrame = vi.fn(() => 1);
+    vi.stubGlobal('requestAnimationFrame', requestFrame);
+    vi.stubGlobal('self', { webkitSpeechRecognition: BusyMicrophoneRecognition });
     const onError = vi.fn();
     const voiceUI = initVoiceScrollUI({ getSurface: () => surface, onError });
 

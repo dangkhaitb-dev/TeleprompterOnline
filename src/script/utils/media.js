@@ -1,5 +1,7 @@
 // media.js — small helpers for MediaRecorder / getUserMedia capture.
 
+import { CAPTURE_REQUEST_TIMEOUT_MS } from '../constants/media.js';
+
 // Pick the best MediaRecorder mimeType the browser actually supports.
 export function pickRecorderMimeType({ video = true } = {}) {
   const candidates = video
@@ -34,7 +36,35 @@ export function getCaptureStream({ video = true, audio = true } = {}) {
   if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
     return Promise.reject(new Error('Media capture unsupported'));
   }
-  return navigator.mediaDevices.getUserMedia({ video, audio });
+  const request = navigator.mediaDevices.getUserMedia({ video, audio });
+  let timedOut = false;
+  let timeoutId = null;
+
+  return new Promise((resolve, reject) => {
+    timeoutId = setTimeout(() => {
+      timedOut = true;
+      const error = new Error('Media capture request timed out');
+      error.name = 'TimeoutError';
+      reject(error);
+    }, CAPTURE_REQUEST_TIMEOUT_MS);
+
+    request.then(
+      (stream) => {
+        clearTimeout(timeoutId);
+        // A browser permission/camera service can settle after our UI has
+        // recovered. Never leave that late stream holding hardware open.
+        if (timedOut) {
+          stopStream(stream);
+          return;
+        }
+        resolve(stream);
+      },
+      (error) => {
+        clearTimeout(timeoutId);
+        if (!timedOut) reject(error);
+      },
+    );
+  });
 }
 
 // Stop every track on a stream so the camera/mic indicator turns off.
@@ -69,6 +99,7 @@ export function classifyMediaError(err) {
   if (name === 'OverconstrainedError' || name === 'ConstraintNotSatisfiedError') {
     return 'overconstrained';
   }
+  if (name === 'TimeoutError') return 'timeout';
   if (/unsupported/i.test(err.message || '')) return 'unsupported';
   return 'unknown';
 }

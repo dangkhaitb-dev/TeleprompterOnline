@@ -91,4 +91,63 @@ describe('Scene Editor First Visit Tour', () => {
 
     expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
   });
+
+  it('shows video loading feedback until a frame is ready', async () => {
+    setItem(LS_SE_FIRST_VISIT_TOUR, true);
+    const mockScene = {
+      id: 'take-loading',
+      kind: 'video',
+      blob: new Blob(['video'], { type: 'video/mp4' }),
+      duration: 5000,
+    };
+    vi.mocked(logic.loadScenes).mockResolvedValue([mockScene]);
+    vi.mocked(logic.exportableScenes).mockReturnValue([mockScene]);
+    vi.mocked(logic.exportButtonIntent).mockReturnValue('direct');
+
+    teardown = await mountSceneEditor(container, {
+      workspaceId: 'ws-loading',
+      copy: {},
+    });
+
+    const video = container.querySelector('video');
+    expect(container.querySelector('.se-media-status.is-loading')).not.toBeNull();
+
+    video.dispatchEvent(new Event('loadeddata'));
+
+    expect(container.querySelector('.se-media-status')).toBeNull();
+  });
+
+  it('replaces a failed video preview with retry and download actions', async () => {
+    setItem(LS_SE_FIRST_VISIT_TOUR, true);
+    const mockScene = {
+      id: 'take-error',
+      kind: 'video',
+      blob: new Blob(['video'], { type: 'video/mp4' }),
+      duration: 5000,
+    };
+    vi.mocked(logic.loadScenes).mockResolvedValue([mockScene]);
+    vi.mocked(logic.exportableScenes).mockReturnValue([mockScene]);
+    vi.mocked(logic.exportButtonIntent).mockReturnValue('direct');
+
+    teardown = await mountSceneEditor(container, {
+      workspaceId: 'ws-error',
+      copy: {},
+    });
+
+    const failedVideo = container.querySelector('video');
+    failedVideo.dispatchEvent(new Event('error'));
+
+    const errorState = container.querySelector('.se-media-status.is-error');
+    expect(errorState).not.toBeNull();
+    expect(errorState.querySelector('.se-media-status-code').textContent)
+      .toBe('PLAYBACK_UNKNOWN');
+    expect(errorState.querySelector('[data-role="preview-retry"]')).not.toBeNull();
+    expect(errorState.querySelector('[data-role="preview-download"]')).not.toBeNull();
+    expect(errorState.querySelector('[data-role="preview-copy"]')).not.toBeNull();
+
+    errorState.querySelector('[data-role="preview-retry"]').click();
+
+    expect(container.querySelector('video')).not.toBe(failedVideo);
+    expect(container.querySelector('.se-media-status.is-loading')).not.toBeNull();
+  });
 });

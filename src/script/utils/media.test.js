@@ -1,10 +1,12 @@
 import { describe, expect, it, vi, afterEach } from 'vitest';
 import {
   classifyMediaError,
+  getCaptureStream,
   mediaFileExtension,
   pickRecorderMimeType,
   queryPermissionState,
 } from './media.js';
+import { CAPTURE_REQUEST_TIMEOUT_MS } from '../constants/media.js';
 
 const err = (name, message = '') => Object.assign(new Error(message), { name });
 
@@ -107,9 +109,42 @@ describe('classifyMediaError', () => {
     expect(classifyMediaError(new Error('Media capture unsupported'))).toBe('unsupported');
   });
 
+  it('maps a capture timeout to "timeout"', () => {
+    expect(classifyMediaError(err('TimeoutError'))).toBe('timeout');
+  });
+
   it('falls back to "unknown" for anything else', () => {
     expect(classifyMediaError(err('WeirdError'))).toBe('unknown');
     expect(classifyMediaError(null)).toBe('unknown');
+  });
+});
+
+describe('getCaptureStream', () => {
+  afterEach(() => {
+    vi.useRealTimers();
+    vi.unstubAllGlobals();
+  });
+
+  it('times out a stalled request and stops a stream that resolves late', async () => {
+    vi.useFakeTimers();
+    let resolveNativeRequest;
+    vi.stubGlobal('navigator', {
+      mediaDevices: {
+        getUserMedia: vi.fn(() => new Promise((resolve) => { resolveNativeRequest = resolve; })),
+      },
+    });
+    const stop = vi.fn();
+    const lateStream = { getTracks: () => [{ stop }] };
+
+    const pending = getCaptureStream({ video: true, audio: true });
+    const timedOut = expect(pending).rejects.toMatchObject({ name: 'TimeoutError' });
+    await vi.advanceTimersByTimeAsync(CAPTURE_REQUEST_TIMEOUT_MS);
+
+    await timedOut;
+    resolveNativeRequest(lateStream);
+    await Promise.resolve();
+
+    expect(stop).toHaveBeenCalledOnce();
   });
 });
 

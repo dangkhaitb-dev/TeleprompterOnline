@@ -10,6 +10,11 @@ export const EMPTY_TIMELINE_DURATION = 60;
 // Toast auto-dismiss (ms).
 export const TOAST_TIMEOUT_MS = 1300;
 
+// getUserMedia is permitted to stay pending indefinitely when a browser or
+// Android camera service wedges. Release the Record gate so the user can retry
+// instead of leaving the capture UI stuck forever.
+export const CAPTURE_REQUEST_TIMEOUT_MS = 15_000;
+
 // Thumbnail extraction: seek offset past the (often black) first frame, a
 // hard timeout so a stuck offscreen <video> resolves to null instead of
 // hanging, and the JPEG encode quality for captured frames.
@@ -24,6 +29,12 @@ export const THUMB_MAX_WIDTH = 480;
 // extraction. Browsers cap hardware decoder instances; a burst of them stalls
 // the page and times out the extras.
 export const THUMB_MAX_CONCURRENT = 3;
+
+// Scene Editor preview: stop showing an indefinite black frame when WebKit
+// never reaches a decodable frame, and seek just past MediaRecorder's commonly
+// black opening frame once metadata is available.
+export const PREVIEW_LOAD_TIMEOUT_MS = 10_000;
+export const PREVIEW_FRAME_OFFSET_SECONDS = 0.05;
 
 // seekMedia() safety timeout (ms) — resolve even if "seeked" never fires.
 export const SEEK_TIMEOUT_MS = 1200;

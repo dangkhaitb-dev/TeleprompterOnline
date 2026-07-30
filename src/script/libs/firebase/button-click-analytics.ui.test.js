@@ -287,6 +287,23 @@ describe('initButtonClickTracking', () => {
     expect(logEvent).toHaveBeenCalledTimes(1);
   });
 
+  it('does not send analytics for controls explicitly opted out', async () => {
+    const logEvent = vi.fn();
+    const stop = initButtonClickTracking({
+      loadClient: async () => ({ analytics: {}, logEvent }),
+      pageName: 'teleprompter',
+    });
+    const button = document.createElement('button');
+    button.setAttribute('data-analytics-ignore', '');
+    document.body.appendChild(button);
+
+    button.click();
+    await Promise.resolve();
+
+    expect(logEvent).not.toHaveBeenCalled();
+    stop();
+  });
+
   it('fails silently when Firebase Analytics is unavailable', async () => {
     const stop = initButtonClickTracking({
       loadClient: async () => null,

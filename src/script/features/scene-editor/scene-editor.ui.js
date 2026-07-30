@@ -14,7 +14,11 @@ import {
 import { fileExtension, formatDuration } from './scene-editor.model.js';
 import { createTrackedUrl, revokeTrackedUrl, revokeAll, downloadBlob } from '../../utils/download.js';
 import { exitFullscreen } from '../../utils/fullscreen.js';
-import { TOAST_TIMEOUT_MS } from '../../constants/media.js';
+import {
+  PREVIEW_FRAME_OFFSET_SECONDS,
+  PREVIEW_LOAD_TIMEOUT_MS,
+  TOAST_TIMEOUT_MS,
+} from '../../constants/media.js';
 import { waveformSvg } from './components/icons.js';
 import { createExportMenu } from './components/export-menu.ui.js';
 import { createExportStatusPopup } from '../../components/export-status-popup.js';
@@ -24,6 +28,10 @@ import {
 } from './media/zip-export.js';
 import { waitForMinimumZipProcessing } from '../../utils/export-timing.js';
 import { createMediaPlayer } from './components/media-player.ui.js';
+import {
+  diagnoseMediaPreview,
+  formatMediaPreviewDiagnostics,
+} from './components/media-preview-diagnostics.js';
 import { ensureWebmDuration } from '../../utils/webm-duration.js';
 import { createFirstVisitTour } from '../teleprompter/components/first-visit-tour.ui.js';
 import { getItem, setItem } from '../../utils/storage.js';
@@ -72,6 +80,8 @@ export async function mountSceneEditor(container, opts = {}) {
   let archiveArtifact = null;
   let exportCancel = null;
   let tour = null;
+  let activeScene = null;
+  let previewLoadTimer = null;
 
   function startTour() {
     if (getItem(LS_SE_FIRST_VISIT_TOUR) === true) return;
@@ -146,12 +156,21 @@ export async function mountSceneEditor(container, opts = {}) {
   });
   root.append(exportStatus.el);
 
-  const mediaPlayer = createMediaPlayer({ signal });
+  const mediaPlayer = createMediaPlayer({
+    signal,
+    onPlaybackError: (error, media, stage) => {
+      if (media === activeMedia && activeScene) {
+        renderPreviewError(activeScene, { error, media, stage });
+      }
+    },
+  });
   viewer.append(mediaPlayer.el);
 
 
   // --- viewer render ------------------------------------------------------
   function clearViewer() {
+    clearTimeout(previewLoadTimer);
+    previewLoadTimer = null;
     if (activeMedia) {
       try {
         mediaPlayer.detachMedia();
@@ -159,9 +178,128 @@ export async function mountSceneEditor(container, opts = {}) {
       } catch { /* detached */ }
     }
     activeMedia = null;
+    activeScene = null;
+    viewer.classList.remove('has-media-error');
     revokeTrackedUrl(currentUrl, urls);
     currentUrl = null;
-    viewer.querySelectorAll('.se-viewer-media, .se-audio-preview, .se-empty-preview').forEach((n) => n.remove());
+    viewer
+      .querySelectorAll(
+        '.se-viewer-media, .se-audio-preview, .se-empty-preview, .se-media-status',
+      )
+      .forEach((node) => node.remove());
+  }
+
+  function removePreviewStatus() {
+    clearTimeout(previewLoadTimer);
+    previewLoadTimer = null;
+    viewer.classList.remove('has-media-error');
+    viewer.querySelector('.se-media-status')?.remove();
+  }
+
+  function renderPreviewLoading() {
+    removePreviewStatus();
+    const status = document.createElement('div');
+    status.className = 'se-media-status is-loading';
+    status.setAttribute('role', 'status');
+    status.innerHTML = `
+      <span class="se-saving-spinner" aria-hidden="true"></span>
+      <strong>${copy.loadingPreview || 'Preparing preview…'}</strong>`;
+    viewer.append(status);
+  }
+
+  function renderPreviewError(
+    scene,
+    { error = null, media = activeMedia, stage = 'unknown' } = {},
+  ) {
+    if (!scene || scene !== activeScene) return;
+    removePreviewStatus();
+    try {
+      activeMedia?.pause();
+    } catch { /* media may not have reached a playable state */ }
+    const diagnostics = diagnoseMediaPreview({
+      error,
+      media,
+      blob: scene.blob,
+      userAgent: typeof navigator === 'undefined' ? '' : navigator.userAgent,
+      stage,
+    });
+    console.warn('[SceneEditorPreview] playback-failed', diagnostics);
+    const status = document.createElement('div');
+    status.className = 'se-media-status is-error';
+    status.setAttribute('role', 'alert');
+    viewer.classList.add('has-media-error');
+    status.innerHTML = `
+      <strong>${copy.previewErrorTitle || 'Preview could not start'}</strong>
+      <p class="se-media-status-message"></p>
+      <code class="se-media-status-code"></code>
+      <div class="se-media-status-actions">
+        <button type="button" class="se-media-status-primary" data-role="preview-retry">
+          ${copy.previewRetry || 'Try again'}
+        </button>
+        <button type="button" class="se-media-status-secondary" data-role="preview-download">
+          ${copy.downloadOriginal || 'Download original'}
+        </button>
+        <button type="button" class="se-media-status-secondary" data-role="preview-copy">
+          ${copy.copyDiagnostics || 'Copy diagnostics'}
+        </button>
+      </div>`;
+    status.querySelector('.se-media-status-message').textContent =
+      diagnostics.message
+      || copy.previewErrorBody
+      || 'Try loading it again, or download the original recording.';
+    status.querySelector('.se-media-status-code').textContent = diagnostics.code;
+    status.querySelector('[data-role="preview-retry"]').addEventListener('click', () => {
+      renderViewer(scene);
+    }, { signal });
+    status.querySelector('[data-role="preview-download"]').addEventListener('click', () => {
+      downloadBlob(scene.blob, `solprompter-recording.${fileExtension(scene)}`);
+    }, { signal });
+    status.querySelector('[data-role="preview-copy"]').addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(formatMediaPreviewDiagnostics(diagnostics));
+        showToast(copy.diagnosticsCopied || 'Preview diagnostics copied');
+      } catch {
+        showToast(copy.diagnosticsCopyFailed || `Preview error: ${diagnostics.code}`);
+      }
+    }, { signal });
+    viewer.append(status);
+  }
+
+  function prepareVideoPreview(video, scene) {
+    renderPreviewLoading();
+    let primed = false;
+
+    const markReady = () => {
+      if (video !== activeMedia) return;
+      removePreviewStatus();
+    };
+    const markFailed = () => {
+      if (video !== activeMedia) return;
+      const error = new Error('Video preview timed out');
+      error.name = 'TimeoutError';
+      renderPreviewError(scene, { error, media: video, stage: 'load-timeout' });
+    };
+    video.addEventListener('loadedmetadata', () => {
+      if (video !== activeMedia || primed) return;
+      primed = true;
+      const duration = Number(video.duration);
+      const target = Number.isFinite(duration) && duration > 0
+        ? Math.min(PREVIEW_FRAME_OFFSET_SECONDS, duration / 2)
+        : PREVIEW_FRAME_OFFSET_SECONDS;
+      try {
+        video.currentTime = target;
+      } catch {
+        // loadeddata/canplay may still provide a frame without the small seek.
+      }
+    }, { once: true, signal });
+    video.addEventListener('loadeddata', markReady, { once: true, signal });
+    video.addEventListener('canplay', markReady, { once: true, signal });
+    previewLoadTimer = setTimeout(markFailed, PREVIEW_LOAD_TIMEOUT_MS);
+    try {
+      video.load();
+    } catch (error) {
+      renderPreviewError(scene, { error, media: video, stage: 'load-call' });
+    }
   }
 
   function renderViewer(scene) {
@@ -184,17 +322,21 @@ export async function mountSceneEditor(container, opts = {}) {
     }
 
     mediaPlayer.el.style.display = 'flex';
+    activeScene = scene;
     currentUrl = createTrackedUrl(scene.blob, urls);
     if (scene.kind === 'video') {
       const video = document.createElement('video');
       video.className = 'se-viewer-media';
-      video.src = currentUrl;
       video.playsInline = true;
-      video.preload = 'metadata';
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', '');
+      video.preload = 'auto';
       video.controls = false;
+      video.src = currentUrl;
       viewer.prepend(video);
       activeMedia = video;
       mediaPlayer.attachMedia(video, scene.duration / 1000);
+      prepareVideoPreview(video, scene);
     } else {
       const wrap = document.createElement('div');
       wrap.className = 'se-audio-preview';
@@ -382,6 +524,7 @@ export async function mountSceneEditor(container, opts = {}) {
     }
     discardArchive();
     clearTimeout(toastTimer);
+    clearTimeout(previewLoadTimer);
     if (activeMedia) {
       try {
         mediaPlayer.detachMedia();

@@ -33,12 +33,15 @@ export function safeFileName(name, fallback = 'recording') {
   return cleaned || fallback;
 }
 
-// Chrome on iOS has historically handled blob downloads less consistently
-// than Safari. Detect its stable CriOS product token so Safari keeps its
-// existing direct-download behavior.
-function isChromeIOS() {
+// iOS browsers all use WebKit and Safari may try to navigate to a Blob URL
+// instead of downloading it. That navigation can fail with WebKitBlobResource
+// for MediaRecorder output. Share the File directly when the native sheet is
+// available; Safari and other iOS browsers can then save it to Files.
+function isIOS() {
   if (typeof navigator === 'undefined') return false;
-  return /CriOS\//.test(navigator.userAgent);
+  const ua = navigator.userAgent || '';
+  return /iPhone|iPad|iPod/.test(ua)
+    || (/Macintosh/.test(ua) && (navigator.maxTouchPoints || 0) > 1);
 }
 
 function errorDetails(error) {
@@ -57,8 +60,8 @@ export function downloadBlob(blob, filename, { onDebug } = {}) {
   const report = (event, details = {}) => onDebug?.(event, details);
   report('download:start', { name, type: blob.type || '', size: blob.size });
 
-  // Chrome iOS path — prefer navigator.share with a File.
-  if (isChromeIOS()) {
+  // iOS path — prefer navigator.share with a File over Blob URL navigation.
+  if (isIOS()) {
     if (navigator.share && navigator.canShare) {
       try {
         const file = new File([blob], name, { type: blob.type || 'application/octet-stream' });

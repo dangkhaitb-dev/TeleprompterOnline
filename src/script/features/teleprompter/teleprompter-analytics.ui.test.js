@@ -36,7 +36,7 @@ describe('Teleprompter analytics taxonomy', () => {
   it('gives every static Teleprompter button a clear explicit action name', () => {
     nameTeleprompterAnalyticsControls(document);
     const unnamed = [...document.querySelectorAll('button')]
-      .filter((button) => !button.dataset.analyticsName);
+      .filter((button) => !button.dataset.analyticsName && !button.hasAttribute('data-analytics-ignore'));
 
     expect(unnamed.map((button) => button.id || button.className)).toEqual([]);
   });

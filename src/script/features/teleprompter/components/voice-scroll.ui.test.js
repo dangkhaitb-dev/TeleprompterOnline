@@ -95,18 +95,9 @@ describe('Voice Scroll browser integration', () => {
     expect(words[4].classList.contains('vs-spoken')).toBe(false);
     expect(surface.querySelector('.vs-active')).toBeNull();
     expect(infoSpy).toHaveBeenCalledWith(
-      '[VoiceScroll][ASR raw] interim #0',
-      expect.objectContaining({
-        transcript: 'Hôm nay tôi sẽ',
-        confidence: 0,
-        resultIndex: 0,
-        resultCount: 1,
-      })
-    );
-    expect(infoSpy).toHaveBeenCalledWith(
       '[VoiceScroll] speech result',
       expect.objectContaining({
-        transcript: 'Hôm nay tôi sẽ',
+        hasTranscript: true,
         interimTokens: 4,
         stableInterimTokens: 4,
       })
@@ -173,11 +164,8 @@ describe('Voice Scroll browser integration', () => {
     const words = [...surface.querySelectorAll('.vs-w')];
     expect(words.every((word) => !word.classList.contains('vs-spoken'))).toBe(true);
     expect(infoSpy).toHaveBeenCalledWith(
-      '[VoiceScroll][ASR raw] interim #0',
-      expect.objectContaining({
-        transcript: 'In the mid 20th century the first scuba',
-        confidence: 1,
-      })
+      '[VoiceScroll] speech result',
+      expect.objectContaining({ hasTranscript: true, interimTokens: 8 })
     );
 
     voiceUI.stop();

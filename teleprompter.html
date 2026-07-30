@@ -111,6 +111,14 @@
     }
   },
   "record": "Record",
+  "debug": {
+    "copy": "Copy debug log",
+    "copyAria": "Copy recording and auto-scroll debug log",
+    "copied": "Debug log copied",
+    "copyFailed": "Couldn't copy the debug log. Please try again.",
+    "autoFallbackTitle": "Voice matching unavailable",
+    "autoFallback": "Auto Scroll is using timed scrolling until speech recognition recovers."
+  },
   "pause": "Pause",
   "resume": "Play",
   "firstVisitTour": {
@@ -722,6 +730,14 @@
         </div>
       </div>
     </div>
+
+    <button
+      class="debug-log-button"
+      id="copyDebugLog"
+      type="button"
+      data-analytics-ignore
+      aria-label="Copy recording and auto-scroll debug log"
+    >Copy debug log</button>
   </section>
 </main>
 

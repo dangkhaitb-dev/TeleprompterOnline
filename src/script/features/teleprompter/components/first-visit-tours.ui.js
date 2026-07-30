@@ -21,6 +21,7 @@ export function initFirstVisitTours({
   requestFrame = (callback) => window.requestAnimationFrame(callback),
   cancelFrame = (frame) => window.cancelAnimationFrame(frame),
   createTour = createFirstVisitTour,
+  isMobile = () => typeof window !== 'undefined' && typeof window.matchMedia === 'function' && window.matchMedia('(max-width: 768px)').matches,
 } = {}) {
   let destroyed = false;
   let mainFrame = 0;
@@ -73,7 +74,7 @@ export function initFirstVisitTours({
   }
 
   function scheduleRecordButtonTour() {
-    if (destroyed || !copy || hasSeenRecordButton() || recordTour) return;
+    if (destroyed || !copy || hasSeenRecordButton() || recordTour || isMobile()) return;
     recordAttempt += 1;
     const attempt = recordAttempt;
     Promise.resolve(beforeRecordButtonTour()).then((ready) => {

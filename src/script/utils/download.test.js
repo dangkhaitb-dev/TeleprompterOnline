@@ -51,11 +51,11 @@ describe('downloadBlob', () => {
     });
   });
 
-  it('uses the native file share path on iOS when the MIME type is shareable', () => {
+  it('uses the native file share path on iOS Safari when the MIME type is shareable', () => {
     const share = vi.fn(() => Promise.resolve());
     const canShare = vi.fn(() => true);
     vi.stubGlobal('navigator', {
-      userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) CriOS/140',
+      userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) Version/18.0 Mobile/15E148 Safari/604.1',
       canShare,
       share,
     });

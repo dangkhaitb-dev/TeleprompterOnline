@@ -369,7 +369,9 @@ function createCreepEngine(
  *   getReadingLineOffset?: (surface: HTMLElement) => number | null,
  *   onPhaseChange?: (phase: string) => void,
  *   onError?: (error: string) => void,
+ *   onRecognitionDegraded?: (details: Object) => void,
  *   onTranscript?: (details: Object) => void,
+ *   onDiagnostic?: (event: string, details?: Object) => void,
  * }} opts
  * @returns {{ start: Function, stop: Function, isActive: Function, destroy: Function }}
  */
@@ -378,7 +380,9 @@ export function initVoiceScrollUI({
   getReadingLineOffset,
   onPhaseChange,
   onError,
+  onRecognitionDegraded,
   onTranscript,
+  onDiagnostic,
 } = {}) {
   const pid = createPIDController(TPCOM_PID);
   const scrollEng = createScrollEngine(getSurface, pid);
@@ -500,9 +504,11 @@ export function initVoiceScrollUI({
       },
       onRecognitionDegraded: (details) => {
         console.warn('[VoiceScroll] browser recognition degraded; using timed fallback', details);
+        onRecognitionDegraded?.(details);
         if (creep) creep.start();
       },
       onTranscript,
+      onDiagnostic,
     });
     
     // 4. Create creep engine

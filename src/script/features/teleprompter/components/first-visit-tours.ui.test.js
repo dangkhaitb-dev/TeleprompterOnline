@@ -93,14 +93,11 @@ describe('initFirstVisitTours', () => {
     expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
   });
 
-  it.each([
-    ['desktop Record mode', 'desktopRecordModeButton'],
-    ['mobile Record tab', 'mobileRecordModeButton'],
-  ])('shows and persists the Record button tour after the first %s click', async (_label, key) => {
+  it('shows and persists the Record button tour after the first desktop Record mode click', async () => {
     const frames = createFrameQueue();
     let recordModeActive = false;
     let recordTourSeen = false;
-    controls[key].addEventListener('click', () => {
+    controls.desktopRecordModeButton.addEventListener('click', () => {
       recordModeActive = true;
       controls.recordButton.hidden = false;
     });
@@ -114,9 +111,10 @@ describe('initFirstVisitTours', () => {
       markRecordButtonSeen: () => { recordTourSeen = true; },
       requestFrame: frames.requestFrame,
       cancelFrame: frames.cancelFrame,
+      isMobile: () => false,
     });
 
-    controls[key].click();
+    controls.desktopRecordModeButton.click();
     await Promise.resolve();
     frames.flush();
     expect(document.querySelector('.first-visit-tour-popup').textContent)
@@ -124,7 +122,34 @@ describe('initFirstVisitTours', () => {
     document.querySelector('.first-visit-tour-skip').click();
     expect(recordTourSeen).toBe(true);
 
-    controls[key].click();
+    controls.desktopRecordModeButton.click();
+    await Promise.resolve();
+    frames.flush();
+    expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
+  });
+
+  it('does not show the Record button tour on mobile after the mobile Record tab click', async () => {
+    const frames = createFrameQueue();
+    let recordModeActive = false;
+    let recordTourSeen = false;
+    controls.mobileRecordModeButton.addEventListener('click', () => {
+      recordModeActive = true;
+      controls.recordButton.hidden = false;
+    });
+    coordinator = initFirstVisitTours({
+      ...controls,
+      copy,
+      hasSeenMain: () => true,
+      hasSeenRecordButton: () => recordTourSeen,
+      isRecordModeActive: () => recordModeActive,
+      beforeRecordButtonTour: async () => true,
+      markRecordButtonSeen: () => { recordTourSeen = true; },
+      requestFrame: frames.requestFrame,
+      cancelFrame: frames.cancelFrame,
+      isMobile: () => true,
+    });
+
+    controls.mobileRecordModeButton.click();
     await Promise.resolve();
     frames.flush();
     expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();

@@ -530,9 +530,17 @@ export async function prepareSpeechPackForText(text, { onStatus } = {}) {
  * @param {Function} options.onError - Callback for fatal errors.
  * @param {Function} options.onDegraded - Callback when timed scrolling should
  * temporarily cover a degraded browser recognition service.
+ * @param {Function} options.onDiagnostic - Receives allowlisted recognition
+ * lifecycle signals without transcript text or browser error messages.
  * @returns {Object} The ASR engine interface.
  */
-export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }) {
+export function createASREngine({
+  onResult,
+  onPhaseChange,
+  onError,
+  onDegraded,
+  onDiagnostic,
+}) {
   let recognition = null;
   let wantsListening = false;
   let locale = 'vi-VN';
@@ -570,6 +578,11 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
     if (useLocal || sessionFailureReported) return;
     sessionFailureReported = true;
     browserServiceFailures += 1;
+    onDiagnostic?.('asr-browser-service-failure', {
+      reason: error,
+      asrMode: 'browser-service',
+      asrFailureCount: browserServiceFailures,
+    });
     if (browserServiceFailures < BROWSER_SERVICE_FAILURE_LIMIT || degradationReported) return;
     degradationReported = true;
     onDegraded?.({
@@ -603,23 +616,8 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
   function handleResult(event) {
     sessionHadResult = true;
     lastResultAt = performance.now();
+    onDiagnostic?.('asr-result', { asrMode: useLocal ? 'on-device' : 'browser-service' });
     let interimText = '';
-    // Raw ASR trace, ported from the reference app. Log the browser payload
-    // before tokenization/matching so recognition failures cannot be mistaken
-    // for matcher failures.
-    for (let i = event.resultIndex || 0; i < event.results.length; i++) {
-      const result = event.results[i];
-      if (!result || !result[0]) continue;
-      console.info(
-        `[VoiceScroll][ASR raw] ${result.isFinal ? 'final' : 'interim'} #${i}`,
-        {
-          transcript: result[0].transcript || '',
-          confidence: Number(result[0].confidence) || 0,
-          resultIndex: event.resultIndex || 0,
-          resultCount: event.results.length,
-        }
-      );
-    }
     // Build from ALL event.results, not just resultIndex
     for (let i = 0; i < event.results.length; i++) {
       const res = event.results[i];
@@ -664,7 +662,7 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
       degradationReported = false;
     }
     log('speech result', {
-      transcript: rawTranscript,
+      hasTranscript: Boolean(rawTranscript),
       finalTokens: finalTokens.length,
       interimTokens: interimToks.length,
       stableInterimTokens: stableInterimToks.length,
@@ -720,21 +718,25 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
         console.debug('[VoiceScroll] listening resumed', details);
       }
       onPhaseChange?.('listening');
+      onDiagnostic?.('asr-started', { asrMode: useLocal ? 'on-device' : 'browser-service' });
     };
 
     instance.onaudiostart = () => {
       sessionHadAudio = true;
       log('audio capture started');
+      onDiagnostic?.('asr-audio-started', { asrMode: useLocal ? 'on-device' : 'browser-service' });
     };
 
     instance.onsoundstart = () => {
       sessionHadSound = true;
       log('sound detected');
+      onDiagnostic?.('asr-sound-started', { asrMode: useLocal ? 'on-device' : 'browser-service' });
     };
 
     instance.onspeechstart = () => {
       sessionHadSpeech = true;
       log('speech detected');
+      onDiagnostic?.('asr-speech-started', { asrMode: useLocal ? 'on-device' : 'browser-service' });
     };
 
     instance.onnomatch = () => {
@@ -747,10 +749,12 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
     instance.onerror = (event) => {
       const code = event?.error || 'unknown';
       sessionErrorCode = code;
+      onDiagnostic?.('asr-error', {
+        reason: code,
+        asrMode: useLocal ? 'on-device' : 'browser-service',
+      });
       console.warn('[VoiceScroll][ASR error]', {
         error: code,
-        message: event?.message || '',
-        locale,
         mode: useLocal ? 'on-device' : 'browser-service',
       });
       const isPermissionError = code === 'not-allowed' || code === 'service-not-allowed';
@@ -792,7 +796,7 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
       wantsListening = false;
       resolveStart(false);
       console.error('[VoiceScroll] recognition stopped', code);
-      onError?.(code);
+      onError?.(code, { asrMode: useLocal ? 'on-device' : 'browser-service' });
     };
 
     instance.onend = () => {
@@ -829,6 +833,15 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
         mode: useLocal ? 'on-device' : 'browser-service',
         emptyAbortCount: consecutiveEmptyAborts,
       });
+      onDiagnostic?.('asr-session-ended', {
+        reason: sessionErrorCode || 'unknown',
+        asrHadAudio: sessionHadAudio,
+        asrHadSound: sessionHadSound,
+        asrHadSpeech: sessionHadSpeech,
+        asrHadResult: sessionHadResult,
+        asrMode: useLocal ? 'on-device' : 'browser-service',
+        asrEmptyAbortCount: consecutiveEmptyAborts,
+      });
 
       // Chromium's speech service is shared at browser level. Another active
       // recognizer can repeatedly abort this session before it acquires audio.
@@ -840,7 +853,7 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
           '[VoiceScroll] recognition is busy or repeatedly aborted without a result'
         );
         onPhaseChange?.('idle');
-        onError?.('recognizer-busy');
+        onError?.('recognizer-busy', { asrMode: useLocal ? 'on-device' : 'browser-service' });
         return;
       }
 
@@ -872,7 +885,7 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
           wantsListening = false;
           const code = err?.message || 'restart-failed';
           console.error('[VoiceScroll] restart failed', err);
-          onError?.(code);
+          onError?.(code, { asrMode: useLocal ? 'on-device' : 'browser-service' });
           onPhaseChange?.('idle');
         }
       }, restartDelay);
@@ -885,7 +898,7 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
     const SR = speechRecognitionConstructor();
     if (!SR) {
       console.error('[VoiceScroll] Web Speech API is unavailable');
-      onError?.('unsupported');
+      onError?.('unsupported', { asrMode: 'browser-service' });
       return false;
     }
     
@@ -922,6 +935,7 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
     log('starting recognition', { locale, mode: useLocal ? 'on-device' : 'browser-service' });
     
     try {
+      onDiagnostic?.('asr-start-requested', { asrMode: useLocal ? 'on-device' : 'browser-service' });
       const started = new Promise((resolve) => {
         let timeoutId = null;
         settleStart = (value) => {
@@ -935,14 +949,14 @@ export function createASREngine({ onResult, onPhaseChange, onError, onDegraded }
           fatalError = true;
           resolveStart(false);
           try { recognition?.abort(); } catch {}
-          onError?.('start-timeout');
+          onError?.('start-timeout', { asrMode: useLocal ? 'on-device' : 'browser-service' });
         }, 10000);
       });
       recognition.start();
       return await started;
     } catch (e) {
       resolveStart(false);
-      onError?.(e.message);
+      onError?.(e.message, { asrMode: useLocal ? 'on-device' : 'browser-service' });
       return false;
     }
   }
@@ -1045,6 +1059,7 @@ export function createVoiceScrollController({
   onError,
   onTranscript,
   onRecognitionDegraded,
+  onDiagnostic,
 }) {
   // Matcher state (passed to model layer functions)
   let matcherState = null;
@@ -1069,6 +1084,15 @@ export function createVoiceScrollController({
     timedFallbackActive = true;
     timedFallbackIndex = Math.max(0, matcherState.cursor, displayIndex, creepIndex);
     timedFallbackAnchorAt = performance.now();
+    const reason = typeof details?.error === 'string' ? details.error : 'unknown';
+    // Timed motion keeps reading usable, but it is not voice-follow Auto
+    // Scroll. Emit an explicit diagnostic so a hardware/browser failure is
+    // never mistaken for a healthy ASR session.
+    onDiagnostic?.('asr-timed-fallback-active', {
+      reason,
+      asrMode: details?.mode || 'browser-service',
+      asrFailureCount: details?.failures || 0,
+    });
     onRecognitionDegraded?.(details);
   }
   
@@ -1242,12 +1266,21 @@ export function createVoiceScrollController({
         phase = p === 'listening' ? 'listening' : phase;
         onPhaseChange?.(phase);
       },
-      onError: (err) => {
+      onError: (err, asrDetails = {}) => {
         const message = err === 'unsupported'
           ? 'Browser does not support Web Speech API'
           : err;
-        if (err === 'unsupported' || err === 'start-timeout') {
-          startTimedFallback({ error: message, fatal: true });
+        // Android browsers can reject SpeechRecognition with `audio-capture`
+        // while MediaRecorder owns the microphone. Keep Auto Scroll useful by
+        // falling back to its local timed engine instead of stopping reading.
+        if (err === 'unsupported' || err === 'start-timeout' || err === 'audio-capture') {
+          onDiagnostic?.('asr-timed-fallback', { reason: err });
+          startTimedFallback({
+            error: err,
+            message,
+            fatal: true,
+            mode: asrDetails.asrMode || 'browser-service',
+          });
         }
         if (timedFallbackActive) {
           phase = 'listening';
@@ -1258,7 +1291,11 @@ export function createVoiceScrollController({
         onPhaseChange?.('idle');
         onError?.(message);
       },
-      onDegraded: startTimedFallback,
+      onDegraded: (details) => {
+        onDiagnostic?.('asr-timed-fallback', { reason: details?.error || 'unknown' });
+        startTimedFallback(details);
+      },
+      onDiagnostic,
     });
     
     // Recognition starts unbiased. Context is introduced only after the reader

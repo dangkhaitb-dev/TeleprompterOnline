@@ -34,7 +34,7 @@ function fmtTime(sec) {
   return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
 
-export function createMediaPlayer({ signal }) {
+export function createMediaPlayer({ signal, onPlaybackError } = {}) {
   const el = document.createElement('div');
   el.className = 'se-media-controls';
   el.innerHTML = `
@@ -149,7 +149,12 @@ export function createMediaPlayer({ signal }) {
   function togglePlay() {
     if (!activeMedia) return;
     if (activeMedia.paused) {
-      activeMedia.play().catch(err => console.log('Playback failed:', err));
+      const media = activeMedia;
+      media.play().catch((error) => {
+        if (media === activeMedia && typeof onPlaybackError === 'function') {
+          onPlaybackError(error, media, 'play-promise');
+        }
+      });
     } else {
       activeMedia.pause();
     }
@@ -231,6 +236,15 @@ export function createMediaPlayer({ signal }) {
       }
       timeTotal.textContent = fmtTime(getDuration());
       updateProgress();
+    },
+    error: () => {
+      if (activeMedia && typeof onPlaybackError === 'function') {
+        onPlaybackError(
+          activeMedia.error || new Error('Media preview could not be decoded'),
+          activeMedia,
+          'media-element',
+        );
+      }
     },
     volumechange: () => {
       updateVolumeState();

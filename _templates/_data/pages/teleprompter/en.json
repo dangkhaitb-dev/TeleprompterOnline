@@ -64,6 +64,14 @@
     "record": "Record",
     "stop": "Record"
   },
+  "debug": {
+    "copy": "Copy debug log",
+    "copyAria": "Copy recording and auto-scroll debug log",
+    "copied": "Debug log copied",
+    "copyFailed": "Couldn't copy the debug log. Please try again.",
+    "autoFallbackTitle": "Voice unavailable",
+    "autoFallback": "Auto Scroll: timer mode active."
+  },
   "camera": {
     "starting": "Starting camera",
     "unsupported": "Your browser does not support the camera. Open this page over https or localhost.",

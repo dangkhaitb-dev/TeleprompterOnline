@@ -259,6 +259,7 @@ export function initButtonClickTracking({
     const target = event.target instanceof Element ? event.target : null;
     const button = target?.closest(BUTTON_SELECTOR);
     if (!button || (root !== doc && !root.contains(button))) return;
+    if (button.hasAttribute('data-analytics-ignore')) return;
 
     send(buildButtonClickEvent(button, {
       doc,

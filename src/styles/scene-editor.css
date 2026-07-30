@@ -234,8 +234,110 @@
   animation: se-spin 0.8s linear infinite;
 }
 
+.se-media-status {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  background: var(--se-viewer-bg);
+  color: var(--se-time-fg);
+  text-align: center;
+}
+
+.se-media-status.is-loading {
+  gap: 12px;
+  pointer-events: none;
+}
+
+.se-media-status.is-loading strong {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.se-media-status.is-error {
+  gap: 8px;
+}
+
+.se-media-status.is-error strong {
+  font-size: clamp(18px, 2.4vw, 26px);
+  letter-spacing: -0.02em;
+}
+
+.se-media-status.is-error p {
+  max-width: 440px;
+  margin: 0;
+  color: var(--se-faint);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.se-media-status-code {
+  padding: 4px 8px;
+  border: 1px solid var(--se-faint);
+  border-radius: 4px;
+  color: var(--se-time-fg);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.se-media-status-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.se-media-status-actions button {
+  min-height: 44px;
+  padding: 0 18px;
+  border-radius: var(--radius-pill);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.se-media-status-primary {
+  border: 1px solid var(--se-play-bg);
+  background: var(--se-play-bg);
+  color: var(--se-play-fg);
+}
+
+.se-media-status-secondary {
+  border: 1px solid var(--se-faint);
+  background: transparent;
+  color: var(--se-time-fg);
+}
+
+.se-media-status-actions button:focus-visible {
+  outline: 2px solid var(--se-brand);
+  outline-offset: 3px;
+}
+
+.se-viewer.has-media-error {
+  min-height: 320px;
+  aspect-ratio: auto;
+}
+
 @keyframes se-spin {
   to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .se-saving-spinner {
+    animation-duration: 1.8s;
+  }
+}
+
+@media (min-width: 768px) {
+  .se-viewer.has-media-error {
+    min-height: 0;
+    aspect-ratio: 16 / 9;
+  }
 }
 
 .se-audio-art {
@@ -1225,5 +1327,3 @@
     display: flex;
   }
 }
-
-

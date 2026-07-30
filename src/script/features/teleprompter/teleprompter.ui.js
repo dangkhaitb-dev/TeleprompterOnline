@@ -73,6 +73,7 @@ import { initVoiceScrollUI } from './components/voice-scroll.ui.js';
 import { initFirstVisitTours } from './components/first-visit-tours.ui.js';
 import { nameTeleprompterAnalyticsControls } from './teleprompter-analytics.ui.js';
 import { createVoiceScrollConflictChannel } from '../../utils/voice-scroll-conflict.js';
+import { createRecordingDebugLog } from './components/recording-debug-log.js';
 import { getItem, setItem } from '../../utils/storage.js';
 import {
   LS_TP_FIRST_VISIT_TOUR,
@@ -98,6 +99,11 @@ function readCopy(root) {
   } catch {
     return {};
   }
+}
+
+function diagnosticErrorName(error) {
+  const name = typeof error?.name === 'string' ? error.name : '';
+  return /^[A-Za-z]+(?:Error)?$/.test(name) ? name : 'Error';
 }
 
 export function initTeleprompterUI(workspace, { root = document, onExit } = {}) {
@@ -154,6 +160,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const panelDragHandle = $('dragHandle');
   const panelResizeHandle = $('panelResizeHandle');
   const toastEl = $('toast');
+  const copyDebugLogButton = $('copyDebugLog');
+  const recordingDebugLog = createRecordingDebugLog();
   const recordButton = $('recordButton');
   const recordLabel = recordButton && recordButton.querySelector('.record-label');
   const speedControl = $('speedControl');
@@ -501,6 +509,59 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   let cameraAspect = DEFAULT_CAMERA_ASPECT;
   const mobileViewport = window.matchMedia('(max-width: 768px)');
 
+  function captureTrackState(stream, kind) {
+    const tracks = kind === 'video' ? stream?.getVideoTracks?.() : stream?.getAudioTracks?.();
+    if (!tracks?.length) return 'none';
+    if (tracks.some((track) => track.readyState === 'live')) return 'live';
+    if (tracks.some((track) => track.readyState === 'ended')) return 'ended';
+    return 'inactive';
+  }
+
+  // Keep diagnostics useful on real Android hardware without exposing device
+  // IDs, media constraints, stream objects, script content, or error messages.
+  function logRecordCapture(event, { reason = '', error = null } = {}) {
+    const details = {
+      cameraEnabled: Boolean(cameraToggle?.checked),
+      micEnabled: Boolean(micToggle?.checked),
+      previewVideo: captureTrackState(cameraStream, 'video'),
+      previewAudio: captureTrackState(cameraStream, 'audio'),
+    };
+    if (reason) details.reason = reason;
+    if (error) details.errorName = diagnosticErrorName(error);
+    details.recording = Boolean(controller?.isRecording());
+    details.paused = Boolean(controller?.isPaused());
+    recordingDebugLog.add(event, details);
+    console.info(`[RecordCapture] ${event}`, details);
+  }
+
+  async function copyRecordingDebugLog() {
+    recordingDebugLog.add('debug-log-copy-requested');
+    const text = recordingDebugLog.toText();
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const fallback = document.createElement('textarea');
+        fallback.value = text;
+        fallback.setAttribute('readonly', '');
+        fallback.style.position = 'fixed';
+        fallback.style.opacity = '0';
+        portal.appendChild(fallback);
+        fallback.select();
+        const copied = document.execCommand('copy');
+        fallback.remove();
+        if (!copied) throw new Error('Clipboard copy failed');
+      }
+      showToast(copy.debug?.copied || 'Debug log copied');
+    } catch {
+      recordingDebugLog.add('debug-log-copy-failed');
+      showToast(copy.debug?.copyFailed || "Couldn't copy the debug log. Please try again.", {
+        variant: 'error',
+      });
+    }
+  }
+  on(copyDebugLogButton, 'click', () => { void copyRecordingDebugLog(); });
+
   function updateCameraCanvasSize() {
     if (!stageEl || !cameraCanvas) return;
     if (mobileViewport.matches) {
@@ -564,6 +625,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         return false;
       }
       cameraStream = stream;
+      if (captureStream) logRecordCapture('preview-uses-shared-stream');
       // "Check resolution" ngay khi bật cam: lấy tỷ lệ thật để dựng khung preview
       // khớp với file quay (raw stream, native ratio) — hết cảnh preview 16:9 cắt/zoom.
       const [videoTrack] = stream.getVideoTracks();
@@ -629,6 +691,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // both tracks before any background save or Scene Editor transition.
   function releaseSharedCapture(stream) {
     if (!stream || cameraStream !== stream) return;
+    logRecordCapture('shared-stream-release');
     stopCamera();
     applyToggleState(cameraToggle, 'camera', false);
     applyToggleState(micToggle, 'mic', false);
@@ -763,6 +826,22 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   let lastBackgroundVoiceResult = null;
   const rememberedSpeechPackRecoveryController = new AbortController();
 
+  function logVoiceScroll(event, fields = {}) {
+    recordingDebugLog.add(event, {
+      cameraEnabled: Boolean(cameraToggle?.checked),
+      micEnabled: Boolean(micToggle?.checked),
+      previewVideo: captureTrackState(cameraStream, 'video'),
+      previewAudio: captureTrackState(cameraStream, 'audio'),
+      recording: Boolean(controller?.isRecording()),
+      paused: Boolean(controller?.isPaused()),
+      voiceStarting: Boolean(voiceScrollStarting),
+      voiceActive: Boolean(voiceScrollUI),
+      mode: studioMode.getMode(),
+      scrollMode: selectedScrollMode,
+      ...fields,
+    });
+  }
+
   function warmLanguageDetector(reason) {
     return preloadLanguageDetector({ allowDownload: true }).then((result) => {
       console.info('[VoiceScroll] LanguageDetector preload', {
@@ -779,19 +858,23 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   void restoreRememberedSpeechPacks({
     signal: rememberedSpeechPackRecoveryController.signal,
     onStatus: (details) => {
-      console.info('[VoiceScroll] remembered language-pack recovery', details);
+      console.info('[VoiceScroll] remembered language-pack recovery', {
+        status: details?.status || 'unknown',
+        hasLocale: Boolean(details?.locale),
+        hasError: Boolean(details?.error),
+      });
     },
   }).then((result) => {
     if (rememberedSpeechPackRecoveryController.signal.aborted) return;
     console.info('[VoiceScroll] remembered language-pack recovery complete', {
       status: result.status,
-      locales: result.locales,
+      localeCount: result.locales?.length || 0,
     });
-  }).catch((error) => {
-    if (rememberedSpeechPackRecoveryController.signal.aborted) return;
-    console.warn('[VoiceScroll] remembered language-pack recovery failed', {
-      error: error?.message || String(error),
-    });
+    }).catch((error) => {
+      if (rememberedSpeechPackRecoveryController.signal.aborted) return;
+      console.warn('[VoiceScroll] remembered language-pack recovery failed', {
+        errorName: diagnosticErrorName(error),
+      });
   });
   let detectorActivationRetryInFlight = false;
   const detectorActivationOptions = { capture: true };
@@ -847,7 +930,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (!force) lastBackgroundVoiceSample = sample;
     const check = prepareSpeechPackForText(sample, {
       onStatus: (details) => {
-        console.info('[VoiceScroll] language-pack preflight', { reason, ...details });
+        console.info('[VoiceScroll] language-pack preflight', {
+          reason,
+          status: details?.status || 'unknown',
+          hasLocale: Boolean(details?.locale),
+          cached: Boolean(details?.cached),
+          hasError: Boolean(details?.error),
+        });
       },
     }).then((result) => {
       if (!force && sample === lastBackgroundVoiceSample) {
@@ -857,7 +946,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     }).catch((error) => {
       console.warn('[VoiceScroll] language-pack preflight failed', {
         reason,
-        error: error?.message || String(error),
+        errorName: diagnosticErrorName(error),
       });
       return null;
     });
@@ -967,6 +1056,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   );
 
   function stopVoiceScroll({ error = '' } = {}) {
+    if (error) logVoiceScroll('voice-scroll-stopped', { reason: error });
     voiceScrollAttempt += 1;
     voiceScrollStarting = false;
     const current = voiceScrollUI;
@@ -1005,6 +1095,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     const attempt = ++voiceScrollAttempt;
     voiceScrollStarting = true;
     setVoiceScrollButton({ busy: true, phase: 'requesting-microphone' });
+    logVoiceScroll('voice-scroll-start-requested');
     console.info('[VoiceScroll] checking script language');
 
     try {
@@ -1017,13 +1108,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         || (languageResult?.locale ? languageResult : null);
 
       console.info('[VoiceScroll] requesting microphone');
+      logVoiceScroll('voice-scroll-mic-requested');
       const micReady = await requestVoiceScrollMicrophone();
       if (attempt !== voiceScrollAttempt) return;
       if (!micReady) {
+        logVoiceScroll('voice-scroll-mic-not-ready');
         voiceScrollStarting = false;
         setVoiceScrollButton();
         return;
       }
+      logVoiceScroll('voice-scroll-mic-ready');
 
       // ON → start voice scroll
       scroller.stop();  // Stop WPM auto-scroll if running
@@ -1037,6 +1131,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         ),
         onPhaseChange: (phase) => {
           if (candidate !== voiceScrollUI) return;
+          logVoiceScroll('voice-scroll-phase', { voicePhase: phase });
           setVoiceScrollButton({
             active: phase === 'listening',
             busy: phase === 'detecting',
@@ -1047,6 +1142,24 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
           if (candidate !== voiceScrollUI) return;
           stopVoiceScroll({ error });
         },
+        onRecognitionDegraded: (details) => {
+          if (candidate !== voiceScrollUI) return;
+          const reason = typeof details?.error === 'string' ? details.error : 'unknown';
+          logVoiceScroll('voice-scroll-timed-fallback', { reason });
+          showToast(
+            copy.debug?.autoFallback
+              || 'Auto Scroll is using timed scrolling until speech recognition recovers.',
+            {
+              variant: 'warning',
+              duration: null,
+              dismissible: true,
+              title: copy.debug?.autoFallbackTitle || 'Voice matching unavailable',
+            },
+          );
+        },
+        onDiagnostic: (event, details) => {
+          logVoiceScroll(event, details);
+        },
       });
       voiceScrollUI = candidate;
       const started = await candidate.start({ detectedLanguage });
@@ -1056,16 +1169,18 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         return;
       }
       if (!started) {
+        logVoiceScroll('voice-scroll-not-started', { reason: 'start-timeout' });
         stopVoiceScroll({ error: 'start-timeout' });
         return;
       }
 
       voiceScrollStarting = false;
+      logVoiceScroll('voice-scroll-started', { voicePhase: 'listening' });
       app.classList.add('voice-scroll-active');
       setVoiceScrollButton({ active: true, phase: 'listening' });
       setPlayIcon(true);
     } catch (err) {
-      console.error('[VoiceScroll] failed to start', err);
+      console.error('[VoiceScroll] failed to start', { errorName: diagnosticErrorName(err) });
       if (attempt === voiceScrollAttempt) {
         stopVoiceScroll({ error: err?.message || 'unknown' });
       }
@@ -1604,6 +1719,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   async function handleRecordCaptureError(err) {
     if (tornDown) return;
     const reason = classifyMediaError(err);
+    logRecordCapture('capture-error', { reason, error: err });
     if (reason === 'denied') {
       // Guide only on a real block; a merely dismissed prompt stays quiet.
       await guideIfBlocked([
@@ -1615,12 +1731,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (reason === 'not-found') showToast(copy.cameraNoDevice || '');
     else if (reason === 'in-use') showToast(copy.cameraInUse || '');
     else if (reason === 'overconstrained') showToast(copy.cameraOverconstrained || '');
+    else if (reason === 'timeout') showToast(copy.recordingMediaUnavailable || copy.cameraError || '');
     // 'unknown' (e.g. a lagging previous stop()) keeps the prior silent restore.
   }
 
   // Auto-enable and verify both capture inputs before storage checks/countdown.
-  // The combined probe proves that the selected devices and permissions work
-  // together; it is released immediately, before the recorder opens its stream.
+  // The verified combined stream becomes the shared preview + recorder stream.
   async function ensureRecordingMediaReady(revision = studioModeRevision) {
     const isCancelled = () => (
       tornDown
@@ -1628,10 +1744,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       || revision !== studioModeRevision
     );
     if (isCancelled()) return false;
+    logRecordCapture('preflight-start');
     let popups;
     try {
       ({ popups } = await panelsReady);
+      logRecordCapture('preflight-panels-ready');
     } catch {
+      logRecordCapture('preflight-panels-failed');
       if (!tornDown) showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
       return false;
     }
@@ -1640,7 +1759,9 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       cameraEnabled: cameraEnabled(),
       micEnabled: micEnabled(),
     });
+    logRecordCapture('preflight-permission-requested');
     const allowed = await ensureCaptureAllowed({ video: true, audio: true });
+    logRecordCapture('preflight-permission-ready');
     if (isCancelled()) return false;
     if (!allowed) {
       popups.openSettingsForMedia(missing.length ? missing : ['camera', 'mic']);
@@ -1654,6 +1775,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       && micEnabled()
       && hasLiveMediaTrack(cameraStream, 'video')
       && hasLiveMediaTrack(cameraStream, 'audio')) {
+      logRecordCapture('preflight-reused-shared-stream');
       return true;
     }
 
@@ -1667,6 +1789,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     const audio = audioDeviceId ? { deviceId: { exact: audioDeviceId } } : true;
     let result;
     try {
+      logRecordCapture('preflight-capture-requested');
       result = await prepareRecordingMedia({
         cameraEnabled: cameraEnabled(),
         micEnabled: micEnabled(),
@@ -1686,6 +1809,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         isCancelled,
       });
     } catch (err) {
+      logRecordCapture('preflight-failed', { reason: classifyMediaError(err), error: err });
       if (isCancelled()) return false;
       await handleRecordCaptureError(err);
       if (isCancelled()) return false;
@@ -1694,12 +1818,14 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     }
     if (result.reason === 'cancelled') return false;
     if (!result.ready) {
+      logRecordCapture('preflight-not-ready', { reason: result.reason });
       if (!tornDown) {
         showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
         popups.openSettingsForMedia(result.missing.length ? result.missing : ['camera', 'mic']);
       }
       return false;
     }
+    logRecordCapture('preflight-ready');
     popups.refreshMediaValues();
     return true;
   }
@@ -1723,6 +1849,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       }
       // Permission was already acquired in onRecordClick (before the countdown),
       // so this getUserMedia call won't pop a prompt mid 3-2-1.
+      logRecordCapture('recorder-starting');
       started = await controller.start({
         wantsVideo: cameraEnabled(),
         wantsAudio: micEnabled(),
@@ -1742,6 +1869,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     // start() returns null (without throwing) when capture cannot begin —
     // e.g. the previous stop() is still persisting its recording.
     if (!started) {
+      logRecordCapture('recorder-not-started', { error: startErr });
       if (startErr) handleRecordCaptureError(startErr);
       readingSession.stop();
       app.classList.remove('record-dim');
@@ -1757,6 +1885,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (pauseButton) pauseButton.classList.remove('show', 'paused');
     if (pauseLabel) pauseLabel.textContent = copy.pause || 'Pause';
     startRecordTimer();
+    logRecordCapture('recorder-started');
     // Start monitoring storage — will fire warn/critical callbacks as needed.
     storageMonitor.start();
     readingSession.release('capture');

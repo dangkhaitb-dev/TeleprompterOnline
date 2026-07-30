@@ -122,4 +122,26 @@ describe('scene editor media player', () => {
     controller.abort();
     player.destroy();
   });
+
+  it('reports a rejected media play request to the host UI', async () => {
+    const onPlaybackError = vi.fn();
+    const audio = createAudio();
+    const error = new DOMException('unsupported source', 'NotSupportedError');
+    audio.play = vi.fn().mockRejectedValue(error);
+    const controller = new AbortController();
+    const viewer = document.createElement('div');
+    viewer.className = 'se-viewer';
+    viewer.append(audio);
+    const player = createMediaPlayer({ signal: controller.signal, onPlaybackError });
+    viewer.append(player.el);
+    document.body.append(viewer);
+    player.attachMedia(audio, 20);
+
+    player.el.querySelector('.se-media-play-btn').click();
+    await Promise.resolve();
+
+    expect(onPlaybackError).toHaveBeenCalledWith(error, audio, 'play-promise');
+    controller.abort();
+    player.destroy();
+  });
 });

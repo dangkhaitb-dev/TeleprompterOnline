@@ -195,4 +195,33 @@ describe('initFeedbackUI', () => {
     expect(status.textContent).not.toContain('Network details');
     expect(dialog.dataset.state).toBe('error');
   });
+
+  it('hides the widget when tp-page class is added to html or tp to body', async () => {
+    const { widget } = renderWidget();
+    cleanup = initFeedbackUI({ root: document });
+
+    // Initial state
+    expect(widget.style.display).toBe('');
+
+    // Add tp-page to documentElement
+    document.documentElement.classList.add('tp-page');
+    // MutationObservers are asynchronous, wait a tick
+    await flushPromises();
+    expect(widget.style.display).toBe('none');
+
+    // Remove tp-page from documentElement
+    document.documentElement.classList.remove('tp-page');
+    await flushPromises();
+    expect(widget.style.display).toBe('');
+
+    // Add tp to body
+    document.body.classList.add('tp');
+    await flushPromises();
+    expect(widget.style.display).toBe('none');
+
+    // Clean up classes
+    document.body.classList.remove('tp');
+    await flushPromises();
+  });
 });
+

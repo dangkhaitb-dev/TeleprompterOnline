@@ -9,6 +9,13 @@
   color: var(--ink);
 }
 
+/* Hide the feedback widget when the teleprompter page or overlay is active */
+html.tp-page .feedback-widget,
+body.tp .feedback-widget {
+  display: none !important;
+}
+
+
 .feedback-widget__trigger {
   min-width: 2.75rem;
   min-height: 2.75rem;

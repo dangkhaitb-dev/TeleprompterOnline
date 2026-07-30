@@ -232,6 +232,13 @@
     "recordAgain": "Record again",
     "backHome": "Back to home"
   },
+  "sceneEditor": {
+    "tour": {
+      "label": "Editor quick tour",
+      "skip": "Skip",
+      "exportButton": "Click Export here to download your recorded video."
+    }
+  },
   "empty": {
     "title": "No script to prompt",
     "body": "We couldn't find that workspace. Start a new script from the home page.",

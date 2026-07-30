@@ -219,7 +219,7 @@ const createViteConfig = (isTestBuild) => ({
           /^modal/, /^overlay/,
           /^hero/, /^section/, /^card/,
           'active', 'open', 'loading', 'error', 'visible', 'hidden',
-          'no-scroll',
+          'no-scroll', 'tp-page', 'tp',
           /^md-sys/,
           /^text/, /^grid/, /^rounded/, /^surface/,
           /--hover/, /--focus/, /--active/, /--visible/, /--hidden/,

@@ -11,7 +11,7 @@ const TOAST_DURATION_MS = 2400;
 let toastEl = null;
 let hideTimer = null;
 
-function hideToast() {
+export function hideToast() {
   clearTimeout(hideTimer);
   hideTimer = null;
   if (!toastEl) return;

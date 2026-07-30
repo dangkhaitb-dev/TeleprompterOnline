@@ -40,6 +40,28 @@ export function initFeedbackUI({
   const widget = root.querySelector('[data-feedback-widget]');
   if (!widget) return () => {};
 
+  const updateVisibility = () => {
+    const isTpPage = document.documentElement.classList.contains('tp-page') ||
+                     document.body.classList.contains('tp');
+    if (isTpPage) {
+      widget.style.setProperty('display', 'none', 'important');
+    } else {
+      widget.style.removeProperty('display');
+    }
+  };
+
+  updateVisibility();
+
+  const observer = new MutationObserver(updateVisibility);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+  observer.observe(document.body, {
+    attributes: true,
+    attributeFilter: ['class'],
+  });
+
   const parts = selectWidgetParts(widget);
   if (!hasRequiredParts(parts)) return () => {};
 
@@ -178,6 +200,7 @@ export function initFeedbackUI({
   doc.addEventListener('pointerdown', onPointerDown);
 
   return () => {
+    observer.disconnect();
     opener.removeEventListener('click', onOpen);
     closeButton.removeEventListener('click', onClose);
     form.removeEventListener('submit', onSubmit);

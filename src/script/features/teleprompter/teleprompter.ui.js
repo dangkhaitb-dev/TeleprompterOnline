@@ -37,7 +37,7 @@ import {
 } from '../../utils/media.js';
 import { detectPlatform } from '../../utils/platform.js';
 import { showPermissionPopup } from '../../components/permission-popup.js';
-import { showToast } from '../../components/toast.js';
+import { showToast, hideToast } from '../../components/toast.js';
 import { debounce } from '../../utils/debounce.js';
 import { handlePlainTextPaste } from '../../utils/plain-paste.js';
 import { isFullscreen, onFullscreenChange } from '../../utils/fullscreen.js';
@@ -1141,6 +1141,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (pauseButton) pauseButton.classList.remove('show', 'paused');
     if (headerPlayButton) headerPlayButton.classList.remove('hidden');
     requestAnimationFrame(() => layout.update());
+    hideToast();
   }
 
   function togglePlayback() {

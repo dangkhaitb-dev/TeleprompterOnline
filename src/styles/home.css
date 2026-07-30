@@ -1899,7 +1899,7 @@ body.home {
 .mobile-nav {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   bottom: 0;
   z-index: var(--z-menu);
   width: min(20rem, 82vw);
@@ -1909,8 +1909,8 @@ body.home {
   padding: 1.1rem 1.25rem 1.75rem;
   overflow-y: auto;
   background: var(--home-bg);
-  box-shadow: -10px 0 32px rgb(28 25 23 / 12%);
-  transform: translateX(100%);
+  box-shadow: 10px 0 32px rgb(28 25 23 / 12%);
+  transform: translateX(-100%);
   visibility: hidden;
   transition:
     transform var(--dur-normal) var(--ease-out),

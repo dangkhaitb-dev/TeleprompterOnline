@@ -25,6 +25,9 @@ import {
 import { waitForMinimumZipProcessing } from '../../utils/export-timing.js';
 import { createMediaPlayer } from './components/media-player.ui.js';
 import { ensureWebmDuration } from '../../utils/webm-duration.js';
+import { createFirstVisitTour } from '../teleprompter/components/first-visit-tour.ui.js';
+import { getItem, setItem } from '../../utils/storage.js';
+import { LS_SE_FIRST_VISIT_TOUR } from '../../utils/storage-keys.js';
 
 function shellTemplate(copy) {
   return `
@@ -39,6 +42,11 @@ function shellTemplate(copy) {
         </button>
       </div>
       <div class="se-header-actions" data-role="header-actions"></div>
+      <button class="se-menu-btn" type="button" data-role="menu-toggle" aria-label="Open menu">
+        <span class="se-menu-btn-bar"></span>
+        <span class="se-menu-btn-bar"></span>
+        <span class="se-menu-btn-bar"></span>
+      </button>
     </header>
     <main class="se-workspace">
       <div class="se-preview-stage">
@@ -46,6 +54,19 @@ function shellTemplate(copy) {
         </section>
       </div>
     </main>
+    <div class="se-drawer-scrim" data-role="drawer-scrim"></div>
+    <nav class="se-drawer" data-role="drawer" aria-label="Menu navigation">
+      <div class="se-drawer-header">
+        <span class="se-drawer-title">SolPrompter</span>
+        <button class="se-drawer-close" type="button" data-role="drawer-close" aria-label="Close menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        </button>
+      </div>
+      <ul class="se-drawer-list">
+        <li><a href="/" class="se-drawer-link">Home</a></li>
+        <li><a href="/workspaces" class="se-drawer-link">Workspaces</a></li>
+      </ul>
+    </nav>
     <div class="se-toast" data-role="toast" role="status" aria-live="polite"></div>
   </div>`;
 }
@@ -63,6 +84,34 @@ export async function mountSceneEditor(container, opts = {}) {
   let exporting = false;
   let archiveArtifact = null;
   let exportCancel = null;
+  let tour = null;
+
+  function startTour() {
+    if (getItem(LS_SE_FIRST_VISIT_TOUR) === true) return;
+    const tourCopy = copy.tour || {
+      label: 'Editor quick tour',
+      skip: 'Skip',
+      exportButton: 'Click Export here to download your recorded video.',
+    };
+    const exportBtn = exportMenu.el.querySelector('[data-role="export"]');
+    if (!exportBtn) return;
+
+    tour = createFirstVisitTour({
+      root: root.ownerDocument || document,
+      ariaLabel: tourCopy.label,
+      skipLabel: tourCopy.skip,
+      steps: [
+        {
+          target: exportBtn,
+          text: tourCopy.exportButton,
+        },
+      ],
+      onComplete: () => {
+        setItem(LS_SE_FIRST_VISIT_TOUR, true);
+      },
+    });
+    tour.start();
+  }
 
   const discardArchive = () => {
     const artifact = archiveArtifact;
@@ -277,6 +326,29 @@ export async function mountSceneEditor(container, opts = {}) {
     window.location.href = '/workspaces';
   }, { signal });
 
+  // --- mobile drawer ------------------------------------------------------
+  const menuToggle = q('menu-toggle');
+  const drawer = q('drawer');
+  const drawerScrim = q('drawer-scrim');
+  const drawerClose = q('drawer-close');
+
+  if (menuToggle && drawer && drawerScrim) {
+    const openDrawer = () => {
+      drawer.classList.add('open');
+      drawerScrim.classList.add('visible');
+    };
+    const closeDrawer = () => {
+      drawer.classList.remove('open');
+      drawerScrim.classList.remove('visible');
+    };
+
+    menuToggle.addEventListener('click', openDrawer, { signal });
+    drawerScrim.addEventListener('click', closeDrawer, { signal });
+    if (drawerClose) {
+      drawerClose.addEventListener('click', closeDrawer, { signal });
+    }
+  }
+
   if (pendingSave) {
     // The recording that just stopped is still being persisted. Open the editor
     // IMMEDIATELY — render the saving placeholder and an empty list now, without
@@ -303,14 +375,26 @@ export async function mountSceneEditor(container, opts = {}) {
         // reload() selects the newest scene — the clip that just saved.
         return reload();
       })
+      .then(() => {
+        if (!signal.aborted && scenes.length > 0) {
+          startTour();
+        }
+      })
       .catch(() => {});
   } else {
     await reload();
+    if (scenes.length > 0) {
+      startTour();
+    }
   }
 
   // --- teardown -----------------------------------------------------------
   return function teardown() {
     ac.abort();
+    if (tour) {
+      tour.destroy();
+      tour = null;
+    }
     discardArchive();
     clearTimeout(toastTimer);
     if (activeMedia) {

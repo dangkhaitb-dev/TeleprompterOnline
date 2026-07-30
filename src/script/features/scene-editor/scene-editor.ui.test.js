@@ -1,0 +1,94 @@
+// @vitest-environment jsdom
+
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { mountSceneEditor } from './scene-editor.ui.js';
+import * as logic from './scene-editor.logic.js';
+import { getItem, setItem, removeItem } from '../../utils/storage.js';
+import { LS_SE_FIRST_VISIT_TOUR } from '../../utils/storage-keys.js';
+
+vi.mock('./scene-editor.logic.js', () => ({
+  loadScenes: vi.fn(),
+  exportableScenes: vi.fn(),
+  exportButtonIntent: vi.fn(),
+}));
+
+describe('Scene Editor First Visit Tour', () => {
+  let container;
+  let teardown;
+  let values;
+
+  function stubLocalStorage() {
+    values = new Map();
+    vi.stubGlobal('localStorage', {
+      getItem: (key) => values.has(key) ? values.get(key) : null,
+      setItem: (key, value) => values.set(key, String(value)),
+      removeItem: (key) => values.delete(key),
+      clear: () => values.clear(),
+    });
+  }
+
+  beforeEach(() => {
+    stubLocalStorage();
+    container = document.createElement('div');
+    document.body.appendChild(container);
+    removeItem(LS_SE_FIRST_VISIT_TOUR);
+  });
+
+  afterEach(() => {
+    if (typeof teardown === 'function') teardown();
+    teardown = null;
+    container?.remove();
+    document.body.innerHTML = '';
+    removeItem(LS_SE_FIRST_VISIT_TOUR);
+    vi.unstubAllGlobals();
+  });
+
+  it('shows first visit tour when scenes are loaded for the first time', async () => {
+    // Mock loadScenes to return at least one scene with a blob
+    const mockScene = { id: 'take-1', kind: 'video', blob: new Blob([''], { type: 'video/webm' }), duration: 5000 };
+    vi.mocked(logic.loadScenes).mockResolvedValue([mockScene]);
+    vi.mocked(logic.exportableScenes).mockReturnValue([mockScene]);
+    vi.mocked(logic.exportButtonIntent).mockReturnValue('direct');
+
+    teardown = await mountSceneEditor(container, {
+      workspaceId: 'ws-1',
+      copy: {
+        tour: {
+          label: 'Test Editor Tour',
+          skip: 'Skip Test',
+          exportButton: 'Click here to export',
+        },
+      },
+    });
+
+    // Check if the tour popup and overlay are rendered
+    const overlay = document.querySelector('.first-visit-tour-overlay');
+    const popup = document.querySelector('.first-visit-tour-popup');
+    expect(overlay).not.toBeNull();
+    expect(popup).not.toBeNull();
+    expect(popup.textContent).toContain('Click here to export');
+
+    // Click skip to close
+    const skipBtn = popup.querySelector('.first-visit-tour-skip');
+    skipBtn.click();
+
+    // Verify tour is removed and storage key is set to true
+    expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
+    expect(getItem(LS_SE_FIRST_VISIT_TOUR)).toBe(true);
+  });
+
+  it('does not show tour if already seen', async () => {
+    setItem(LS_SE_FIRST_VISIT_TOUR, true);
+    const mockScene = { id: 'take-1', kind: 'video', blob: new Blob([''], { type: 'video/webm' }), duration: 5000 };
+    vi.mocked(logic.loadScenes).mockResolvedValue([mockScene]);
+    vi.mocked(logic.exportableScenes).mockReturnValue([mockScene]);
+    vi.mocked(logic.exportButtonIntent).mockReturnValue('direct');
+
+    teardown = await mountSceneEditor(container, {
+      workspaceId: 'ws-1',
+      copy: {},
+    });
+
+    expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
+  });
+});

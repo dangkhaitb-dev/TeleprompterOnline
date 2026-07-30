@@ -73,7 +73,6 @@ import { initVoiceScrollUI } from './components/voice-scroll.ui.js';
 import { initFirstVisitTours } from './components/first-visit-tours.ui.js';
 import { nameTeleprompterAnalyticsControls } from './teleprompter-analytics.ui.js';
 import { createVoiceScrollConflictChannel } from '../../utils/voice-scroll-conflict.js';
-import { createRecordingDebugLog } from './components/recording-debug-log.js';
 import { getItem, setItem } from '../../utils/storage.js';
 import {
   LS_TP_FIRST_VISIT_TOUR,
@@ -160,8 +159,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const panelDragHandle = $('dragHandle');
   const panelResizeHandle = $('panelResizeHandle');
   const toastEl = $('toast');
-  const copyDebugLogButton = $('copyDebugLog');
-  const recordingDebugLog = createRecordingDebugLog();
   const recordButton = $('recordButton');
   const recordLabel = recordButton && recordButton.querySelector('.record-label');
   const speedControl = $('speedControl');
@@ -530,37 +527,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (error) details.errorName = diagnosticErrorName(error);
     details.recording = Boolean(controller?.isRecording());
     details.paused = Boolean(controller?.isPaused());
-    recordingDebugLog.add(event, details);
     console.info(`[RecordCapture] ${event}`, details);
   }
-
-  async function copyRecordingDebugLog() {
-    recordingDebugLog.add('debug-log-copy-requested');
-    const text = recordingDebugLog.toText();
-    try {
-      if (navigator.clipboard?.writeText) {
-        await navigator.clipboard.writeText(text);
-      } else {
-        const fallback = document.createElement('textarea');
-        fallback.value = text;
-        fallback.setAttribute('readonly', '');
-        fallback.style.position = 'fixed';
-        fallback.style.opacity = '0';
-        portal.appendChild(fallback);
-        fallback.select();
-        const copied = document.execCommand('copy');
-        fallback.remove();
-        if (!copied) throw new Error('Clipboard copy failed');
-      }
-      showToast(copy.debug?.copied || 'Debug log copied');
-    } catch {
-      recordingDebugLog.add('debug-log-copy-failed');
-      showToast(copy.debug?.copyFailed || "Couldn't copy the debug log. Please try again.", {
-        variant: 'error',
-      });
-    }
-  }
-  on(copyDebugLogButton, 'click', () => { void copyRecordingDebugLog(); });
 
   function updateCameraCanvasSize() {
     if (!stageEl || !cameraCanvas) return;
@@ -827,19 +795,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const rememberedSpeechPackRecoveryController = new AbortController();
 
   function logVoiceScroll(event, fields = {}) {
-    recordingDebugLog.add(event, {
-      cameraEnabled: Boolean(cameraToggle?.checked),
-      micEnabled: Boolean(micToggle?.checked),
-      previewVideo: captureTrackState(cameraStream, 'video'),
-      previewAudio: captureTrackState(cameraStream, 'audio'),
-      recording: Boolean(controller?.isRecording()),
-      paused: Boolean(controller?.isPaused()),
-      voiceStarting: Boolean(voiceScrollStarting),
-      voiceActive: Boolean(voiceScrollUI),
-      mode: studioMode.getMode(),
-      scrollMode: selectedScrollMode,
-      ...fields,
-    });
+    console.info(`[VoiceScroll] ${event}`, fields);
   }
 
   function warmLanguageDetector(reason) {
@@ -930,6 +886,9 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (!force) lastBackgroundVoiceSample = sample;
     const check = prepareSpeechPackForText(sample, {
       onStatus: (details) => {
+        logVoiceScroll('voice-scroll-language-pack-status', {
+          languagePackStatus: details?.status || 'unknown',
+        });
         console.info('[VoiceScroll] language-pack preflight', {
           reason,
           status: details?.status || 'unknown',
@@ -1082,6 +1041,21 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (voiceScrollUI || voiceScrollStarting) stopVoiceScroll();
   }
 
+  function fallBackVoiceScrollToWpm(details) {
+    const reason = typeof details?.error === 'string' ? details.error : 'unknown';
+    logVoiceScroll('voice-scroll-wpm-fallback', { reason });
+    // This goes through the reading-session controller so Auto's word markup
+    // and scroll engine are torn down before WPM takes ownership of the same
+    // surface. It also preserves the user's current reading position.
+    setSpeedModePanel('wpm');
+    saveWorkspaceSettings(workspace.id, { scrollMode: 'wpm' });
+    readingSession?.refreshMode();
+    showToast(
+      copy.debug?.autoWpmFallback || 'Auto Scroll unavailable. WPM mode active.',
+      { duration: 2800 },
+    );
+  }
+
   async function requestVoiceScrollMicrophone() {
     const allowed = await ensureCaptureAllowed({ audio: true });
     // Match the proven reference implementation: SpeechRecognition owns the
@@ -1096,6 +1070,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     voiceScrollStarting = true;
     setVoiceScrollButton({ busy: true, phase: 'requesting-microphone' });
     logVoiceScroll('voice-scroll-start-requested');
+    logVoiceScroll('voice-scroll-language-check-requested');
     console.info('[VoiceScroll] checking script language');
 
     try {
@@ -1104,6 +1079,9 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       if (pendingVoiceLanguageCheck === languageCheck) pendingVoiceLanguageCheck = null;
       const languageResult = await languageCheck;
       if (attempt !== voiceScrollAttempt) return;
+      logVoiceScroll('voice-scroll-language-check-ready', {
+        languagePackStatus: languageResult?.status || 'unknown',
+      });
       const detectedLanguage = languageResult?.detected
         || (languageResult?.locale ? languageResult : null);
 
@@ -1124,6 +1102,9 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       syncDirtySurfaces();
       const candidate = initVoiceScrollUI({
         getSurface: activeSurface,
+        audioTrack: hasLiveMediaTrack(cameraStream, 'audio')
+          ? cameraStream.getAudioTracks().find((track) => track.readyState === 'live') || null
+          : null,
         getReadingLineOffset: (surface) => (
           surface === promptBox || surface === teleprompterText
             ? layout.eyeLineStartPadding(surface, true)
@@ -1146,16 +1127,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
           if (candidate !== voiceScrollUI) return;
           const reason = typeof details?.error === 'string' ? details.error : 'unknown';
           logVoiceScroll('voice-scroll-timed-fallback', { reason });
-          showToast(
-            copy.debug?.autoFallback
-              || 'Auto Scroll is using timed scrolling until speech recognition recovers.',
-            {
-              variant: 'warning',
-              duration: null,
-              dismissible: true,
-              title: copy.debug?.autoFallbackTitle || 'Voice matching unavailable',
-            },
-          );
+          fallBackVoiceScrollToWpm(details);
         },
         onDiagnostic: (event, details) => {
           logVoiceScroll(event, details);

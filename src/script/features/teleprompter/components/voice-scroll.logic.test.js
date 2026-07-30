@@ -145,6 +145,26 @@ describe('Voice Scroll on-device language packs', () => {
     });
   });
 
+  it('falls back to heuristic detection when LanguageDetector availability hangs', async () => {
+    vi.useFakeTimers();
+    const LanguageDetector = {
+      availability: vi.fn(() => new Promise(() => {})),
+      create: vi.fn(),
+    };
+    vi.stubGlobal('self', { LanguageDetector });
+
+    const detection = detectScriptLanguage(
+      'Hôm nay tôi sẽ hướng dẫn các bạn sử dụng ứng dụng này',
+    );
+    await vi.advanceTimersByTimeAsync(1500);
+
+    await expect(detection).resolves.toMatchObject({
+      iso: 'vi',
+      source: 'offline-heuristic',
+    });
+    vi.useRealTimers();
+  });
+
   it('does not try to download when the browser lacks the on-device APIs', async () => {
     class BrowserServiceOnly {}
     vi.stubGlobal('self', { webkitSpeechRecognition: BrowserServiceOnly });

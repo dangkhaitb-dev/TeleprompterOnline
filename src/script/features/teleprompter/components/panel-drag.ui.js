@@ -227,8 +227,18 @@ export function initPanelDrag({ stage, panel, handle, resizeHandle, onMove } = {
       let left = centerX - width / 2;
       left = Math.max(0, Math.min(left, symResize.stageWidth - width));
 
-      let height = Math.max(minHeight, symResize.height + dy);
-      height = Math.min(height, symResize.stageHeight - symResize.top);
+      const studioBar = stage.ownerDocument.querySelector('.m-studio-bar');
+      let maxMobileHeight;
+      if (studioBar) {
+        const studioBarRect = studioBar.getBoundingClientRect();
+        const stageRect = stage.getBoundingClientRect();
+        const studioBarTopRel = studioBarRect.top - stageRect.top;
+        maxMobileHeight = studioBarTopRel - symResize.top - 10;
+      } else {
+        const isShortScreen = (symResize.stageHeight + 56) <= 560;
+        maxMobileHeight = symResize.stageHeight - symResize.top - (isShortScreen ? 150 : 200);
+      }
+      let height = Math.max(minHeight, Math.min(symResize.height + dy, maxMobileHeight));
 
       applyGeometry({ left, top: symResize.top, width, height }, symResize.offset);
     });

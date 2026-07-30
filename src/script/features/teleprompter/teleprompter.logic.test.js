@@ -12,6 +12,7 @@ const prefs = vi.hoisted(() => ({
 const media = vi.hoisted(() => ({
   getCaptureStream: vi.fn(),
   stopStream: vi.fn(),
+  validateRecordedMediaBlob: vi.fn(async () => ({ valid: true })),
 }));
 
 vi.mock('../../services/recordings.store.js', () => ({
@@ -26,6 +27,8 @@ vi.mock('../../utils/media.js', () => ({
   getCaptureStream: media.getCaptureStream,
   stopStream: media.stopStream,
   pickRecorderMimeType: ({ video }) => video ? 'video/webm' : 'audio/webm',
+  recorderTimesliceForMimeType: (mimeType) => mimeType.includes('mp4') ? 1000 : 250,
+  validateRecordedMediaBlob: media.validateRecordedMediaBlob,
 }));
 vi.mock('../../utils/opfs-writer.js', () => ({
   isOPFSSupported: () => false,
@@ -66,7 +69,8 @@ class FakeMediaRecorder {
     for (const callback of this.listeners.get(type) || []) callback(event);
   }
 
-  start() {
+  start(timeslice) {
+    this.timeslice = timeslice;
     this.state = 'recording';
   }
 
@@ -80,6 +84,7 @@ afterEach(() => {
   vi.unstubAllGlobals();
   vi.clearAllMocks();
   prefs.enabled = true;
+  media.validateRecordedMediaBlob.mockResolvedValue({ valid: true });
 });
 
 function stubLocalStorage() {
@@ -251,6 +256,7 @@ describe('createRecordingController persistence tagging', () => {
     });
     // Bitrate is derived from the resolution the camera actually produced.
     expect(FakeMediaRecorder.instance.videoBitsPerSecond).toBe(8_000_000);
+    expect(FakeMediaRecorder.instance.timeslice).toBe(250);
     await controller.cancel();
   });
 
@@ -353,6 +359,67 @@ describe('createRecordingController persistence tagging', () => {
     const blob = recordings.putRecording.mock.calls[0][0].blob;
     expect(blob.type).toBe('audio/webm');
     await expect(blob.text()).resolves.toBe('recorded bytes');
+  });
+
+  it('uses the chunk MIME type as the saved MIME type when it is more specific', async () => {
+    media.getCaptureStream.mockResolvedValue({ getVideoTracks: () => [] });
+    recordings.putRecording.mockImplementation(async (record) => ({ ...record, id: 'stored' }));
+    vi.stubGlobal('MediaRecorder', FakeMediaRecorder);
+    const controller = createRecordingController();
+
+    await controller.start();
+    FakeMediaRecorder.instance.emit('dataavailable', {
+      data: new Blob(['recorded bytes'], { type: 'audio/webm;codecs=opus' }),
+    });
+    await controller.stop({ workspaceId: 'workspace-a' });
+
+    expect(recordings.putRecording).toHaveBeenCalledWith(expect.objectContaining({
+      mimeType: 'audio/webm;codecs=opus',
+      blob: expect.objectContaining({ type: 'audio/webm;codecs=opus' }),
+    }));
+  });
+
+  it('discards MediaRecorder output after an encoder error', async () => {
+    media.getCaptureStream.mockResolvedValue({ getVideoTracks: () => [] });
+    vi.stubGlobal('MediaRecorder', FakeMediaRecorder);
+    const onError = vi.fn();
+    const controller = createRecordingController({ onError });
+
+    await controller.start();
+    const recorderError = Object.assign(new Error('encoder failed'), {
+      name: 'EncodingError',
+    });
+    FakeMediaRecorder.instance.emit('error', { error: recorderError });
+    const saved = await controller.stop({ workspaceId: 'workspace-a' });
+
+    expect(saved).toBeNull();
+    expect(onError).toHaveBeenCalledWith(recorderError);
+    expect(recordings.putRecording).not.toHaveBeenCalled();
+    expect(controller.getState()).toBe('idle');
+  });
+
+  it('does not persist a recording that fails final container validation', async () => {
+    media.getCaptureStream.mockResolvedValue({ getVideoTracks: () => [] });
+    vi.stubGlobal('MediaRecorder', FakeMediaRecorder);
+    media.validateRecordedMediaBlob.mockResolvedValue({
+      valid: false,
+      reason: 'MP4_MISSING_REQUIRED_BOX',
+    });
+    const onError = vi.fn();
+    const controller = createRecordingController({ onError });
+
+    await controller.start();
+    FakeMediaRecorder.instance.emit('dataavailable', {
+      data: new Blob(['broken output'], { type: 'audio/webm' }),
+    });
+    const saved = await controller.stop({ workspaceId: 'workspace-a' });
+
+    expect(saved).toBeNull();
+    expect(recordings.putRecording).not.toHaveBeenCalled();
+    expect(onError).toHaveBeenCalledWith(expect.objectContaining({
+      name: 'InvalidRecordingError',
+      code: 'MP4_MISSING_REQUIRED_BOX',
+    }));
   });
 
   it('returns null and reports an IndexedDB persistence failure', async () => {

@@ -14,6 +14,7 @@ const prefs = vi.hoisted(() => ({
 const media = vi.hoisted(() => ({
   getCaptureStream: vi.fn(),
   stopStream: vi.fn(),
+  validateRecordedMediaBlob: vi.fn(async () => ({ valid: true })),
 }));
 const opfs = vi.hoisted(() => ({
   writer: null,
@@ -32,6 +33,8 @@ vi.mock('../../utils/media.js', () => ({
   getCaptureStream: media.getCaptureStream,
   stopStream: media.stopStream,
   pickRecorderMimeType: ({ video }) => (video ? 'video/webm' : 'audio/webm'),
+  recorderTimesliceForMimeType: () => 250,
+  validateRecordedMediaBlob: media.validateRecordedMediaBlob,
 }));
 vi.mock('../../utils/opfs-writer.js', () => ({
   isOPFSSupported: () => true,
@@ -87,6 +90,7 @@ afterEach(() => {
   vi.clearAllMocks();
   opfs.writer = null;
   opfs.createError = null;
+  media.validateRecordedMediaBlob.mockResolvedValue({ valid: true });
 });
 
 async function startRecording(onError) {

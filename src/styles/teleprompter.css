@@ -2406,7 +2406,7 @@ html[data-theme="dark"] .settings-group-content {
     width: 100%;
     max-width: 100%;
     height: min(400px, 52vh);
-    max-height: calc(100% - 140px);
+    max-height: calc(100% - 170px - env(safe-area-inset-bottom));
     border-radius: 0 0 16px 16px;
   }
 
@@ -2501,7 +2501,7 @@ html[data-theme="dark"] .settings-group-content {
   .panel {
     top: 8px;
     height: min(400px, 62vh);
-    max-height: calc(100% - 100px);
+    max-height: calc(100% - 135px - env(safe-area-inset-bottom));
   }
 }
 
@@ -3880,41 +3880,6 @@ html.theme-instant *::after {
 .m-studio-bar,
 .m-shared-tools { display: none; }
 
-.debug-log-button {
-  position: fixed;
-  right: var(--space-4);
-  bottom: var(--space-4);
-  z-index: var(--z-overlay);
-  min-height: 44px;
-  padding: 0 var(--space-3);
-  border: 1px solid var(--tp-divider);
-  border-radius: var(--radius-md);
-  background: var(--tp-surface);
-  color: var(--tp-page-text);
-  font: 600 13px/1 var(--font-sans);
-  cursor: pointer;
-  box-shadow: 0 4px 14px rgba(16, 19, 24, 0.14);
-}
-
-.debug-log-button:hover { background: var(--tp-surface-hover); }
-
-.debug-log-button:focus-visible {
-  outline: 2px solid var(--tp-green);
-  outline-offset: 2px;
-}
-
-@media (max-width: 600px) {
-  .debug-log-button {
-    top: calc(56px + var(--space-2));
-    right: var(--space-2);
-    bottom: auto;
-  }
-
-  .app.record-dim .debug-log-button {
-    top: max(var(--space-2), env(safe-area-inset-top));
-  }
-}
-
 @media (max-width: 600px) {
   /* Phone teleprompter header & sidebar */
   .logo-text {
@@ -4330,6 +4295,9 @@ html.theme-instant *::after {
 @media (max-width: 768px) {
   .tp-stale-badge {
     display: none;
+  }
+  .camera-loading-status {
+    display: none !important;
   }
 }
 

@@ -18,7 +18,12 @@ export {
   isStorageWarningEnabled,
   setStorageWarningEnabled,
 } from '../../services/storage-warning-prefs.store.js';
-import { getCaptureStream, stopStream } from '../../utils/media.js';
+import {
+  getCaptureStream,
+  recorderTimesliceForMimeType,
+  stopStream,
+  validateRecordedMediaBlob,
+} from '../../utils/media.js';
 import { bitrateForDimensions } from '../../utils/camera-resolution.js';
 import { getItem, setItem } from '../../utils/storage.js';
 import { LS_GLOBAL_SETTING_PROMPTER } from '../../utils/storage-keys.js';
@@ -100,8 +105,6 @@ export function saveWorkspaceSettings(id, patch = {}) {
   return next;
 }
 
-const TIMESLICE_MS = 250;
-
 // States: 'idle' → 'recording' ⇄ 'paused' → 'saving' → 'idle'
 export function createRecordingController({ onError, onExternalStreamReleased } = {}) {
   let state = 'idle';
@@ -115,6 +118,8 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
   let opfsWriteFailed = false;
   let hasVideo = false;
   let mimeType = '';
+  let actualMimeType = '';
+  let recorderFailure = null;
   let startGeneration = 0;
 
   let accumulatedMs = 0;
@@ -183,6 +188,8 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
 
     hasVideo = stream.getVideoTracks().length > 0;
     mimeType = recordingMimeType(hasVideo);
+    actualMimeType = '';
+    recorderFailure = null;
     chunks = [];
     opfsWriter = null;
     opfsWriteFailed = false;
@@ -218,6 +225,7 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
 
     mediaRecorder.addEventListener('dataavailable', (event) => {
       if (!event.data || !event.data.size) return;
+      if (event.data.type) actualMimeType = event.data.type;
       if (opfsWriter && !opfsWriteFailed) {
         // Stream chunk to disk — fire-and-forget (errors also surface at finish()).
         opfsWriter.write(event.data).catch((err) => {
@@ -233,7 +241,18 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
       }
     });
 
-    mediaRecorder.start(TIMESLICE_MS);
+    mediaRecorder.addEventListener('error', (event) => {
+      if (recorderFailure) return;
+      recorderFailure = event.error || Object.assign(
+        new Error('MediaRecorder encoder failed'),
+        { name: 'EncodingError' },
+      );
+      notifyError(recorderFailure);
+    });
+
+    mediaRecorder.start(
+      recorderTimesliceForMimeType(mediaRecorder.mimeType || mimeType),
+    );
     state = 'recording';
     accumulatedMs = 0;
     startedAt = Date.now();
@@ -270,7 +289,14 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
           now: Date.now(),
           paused: wasPaused,
         });
-        const type = (mediaRecorder && mediaRecorder.mimeType) || mimeType || '';
+        const reportedTypes = [
+          actualMimeType,
+          mediaRecorder && mediaRecorder.mimeType,
+          mimeType,
+        ].filter(Boolean);
+        const type = reportedTypes.find((value) => /;\s*codecs=/i.test(value))
+          || reportedTypes[0]
+          || '';
 
         // Build the final Blob — from OPFS file (zero RAM) or from the in-RAM
         // chunks[] fallback, depending on what was available when recording started.
@@ -278,6 +304,14 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
         // Hand the writer off to this finalize pass before any await.
         const writer = opfsWriter;
         opfsWriter = null;
+        if (recorderFailure) {
+          if (writer) await writer.abort().catch(() => {});
+          chunks = [];
+          releaseStream();
+          state = 'idle';
+          resolve(null);
+          return;
+        }
         if (writer) {
           try {
             // keepLock: the returned File is backed by the OPFS temp file until
@@ -310,6 +344,30 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
         // seekable artifact.
         const recordedBlob = blob;
         blob = await ensureWebmDuration(blob, duration);
+        let validation;
+        try {
+          validation = await validateRecordedMediaBlob(blob, blob.type || type);
+        } catch (error) {
+          if (writer) await writer.abort().catch(() => {});
+          state = 'idle';
+          notifyError(error);
+          resolve(null);
+          return;
+        }
+        if (!validation.valid) {
+          const error = Object.assign(
+            new Error('Recorded media is incomplete or was not finalized'),
+            {
+              name: 'InvalidRecordingError',
+              code: validation.reason,
+            },
+          );
+          if (writer) await writer.abort().catch(() => {});
+          state = 'idle';
+          notifyError(error);
+          resolve(null);
+          return;
+        }
         const recordFields = {
           workspaceId: workspaceId || null,
           kind: recordingKind(hasVideo),

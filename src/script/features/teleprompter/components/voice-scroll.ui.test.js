@@ -22,7 +22,8 @@ class FakeSpeechRecognition {
     this.lang = '';
   }
 
-  start() {
+  start(audioTrack) {
+    this.audioTrack = audioTrack;
     this.phrasesAtStart = this.phrases;
     queueMicrotask(() => this.onstart?.());
   }
@@ -106,6 +107,30 @@ describe('Voice Scroll browser integration', () => {
     voiceUI.stop();
     expect(surface.querySelector('.vs-w')).toBeNull();
     expect(surface.textContent).toBe('Hôm nay tôi sẽ hướng dẫn các bạn');
+  });
+
+  it('uses a supplied live track instead of opening another microphone capture', async () => {
+    const audioTrack = { kind: 'audio', readyState: 'live' };
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface, audioTrack });
+
+    await expect(voiceUI.start()).resolves.toBe(true);
+
+    expect(FakeSpeechRecognition.instances[0].audioTrack).toBe(audioTrack);
+    voiceUI.stop();
+  });
+
+  it('emits one diagnostic for a recognition session instead of every ASR result', async () => {
+    const onDiagnostic = vi.fn();
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface, onDiagnostic });
+
+    await voiceUI.start();
+    const recognition = FakeSpeechRecognition.instances[0];
+    recognition.emitTranscript('Hôm nay tôi');
+    recognition.emitTranscript('Hôm nay tôi sẽ');
+
+    expect(onDiagnostic.mock.calls.filter(([event]) => event === 'asr-first-result')).toHaveLength(1);
+    expect(onDiagnostic.mock.calls.some(([event]) => event === 'asr-result')).toBe(false);
+    voiceUI.stop();
   });
 
   it('uses the host eye-line instead of replacing it with the Auto fallback', async () => {
@@ -288,18 +313,33 @@ describe('Voice Scroll browser integration', () => {
     voiceUI.stop();
   });
 
-  it('propagates a fatal recognition error and restores the original surface', async () => {
+  it('keeps reading when speech recognition is denied for the current session', async () => {
     const onError = vi.fn();
-    const voiceUI = initVoiceScrollUI({ getSurface: () => surface, onError });
+    const onRecognitionDegraded = vi.fn();
+    const onDiagnostic = vi.fn();
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      onError,
+      onRecognitionDegraded,
+      onDiagnostic,
+    });
     await voiceUI.start();
 
     FakeSpeechRecognition.instances[0].onerror?.({ error: 'not-allowed' });
     FakeSpeechRecognition.instances[0].onend?.();
 
-    expect(onError).toHaveBeenCalledWith('not-allowed');
-    expect(voiceUI.isActive()).toBe(false);
-    expect(surface.querySelector('.vs-w')).toBeNull();
-    expect(surface.textContent).toBe('Hôm nay tôi sẽ hướng dẫn các bạn');
+    expect(onError).not.toHaveBeenCalled();
+    expect(onRecognitionDegraded).toHaveBeenCalledWith(expect.objectContaining({
+      error: 'not-allowed',
+      mode: 'browser-service',
+    }));
+    expect(onDiagnostic).toHaveBeenCalledWith('asr-unavailable-for-session', {
+      reason: 'not-allowed',
+      asrMode: 'browser-service',
+    });
+    expect(voiceUI.isActive()).toBe(true);
+    expect(surface.querySelectorAll('.vs-w')).toHaveLength(8);
+    voiceUI.stop();
   });
 
   it('keeps listening when Chrome exposes phrases but rejects contextual biasing', async () => {
@@ -655,12 +695,17 @@ describe('Voice Scroll browser integration', () => {
     voiceUI.stop();
   });
 
-  it('stops an endless pre-audio abort loop and reports a busy recognizer', async () => {
+  it('keeps reading when repeated pre-audio aborts make ASR unavailable', async () => {
     vi.useFakeTimers();
     const onError = vi.fn();
+    const onRecognitionDegraded = vi.fn();
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    const voiceUI = initVoiceScrollUI({ getSurface: () => surface, onError });
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      onError,
+      onRecognitionDegraded,
+    });
     const startPromise = voiceUI.start();
     await vi.runAllTicks();
     await expect(startPromise).resolves.toBe(true);
@@ -672,8 +717,11 @@ describe('Voice Scroll browser integration', () => {
       await vi.advanceTimersByTimeAsync((attempt + 1) * 500);
     }
 
-    expect(onError).toHaveBeenCalledWith('recognizer-busy');
-    expect(voiceUI.isActive()).toBe(false);
+    expect(onError).not.toHaveBeenCalled();
+    expect(onRecognitionDegraded).toHaveBeenCalledWith(expect.objectContaining({
+      error: 'recognizer-busy',
+    }));
+    expect(voiceUI.isActive()).toBe(true);
     expect(errorSpy).toHaveBeenCalledWith(
       '[VoiceScroll] recognition is busy or repeatedly aborted without a result'
     );
@@ -683,12 +731,17 @@ describe('Voice Scroll browser integration', () => {
     vi.useRealTimers();
   });
 
-  it('reports a busy recognizer when repeated aborts happen after audio capture starts', async () => {
+  it('keeps reading when repeated post-audio aborts make ASR unavailable', async () => {
     vi.useFakeTimers();
     const onError = vi.fn();
+    const onRecognitionDegraded = vi.fn();
     const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
     const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    const voiceUI = initVoiceScrollUI({ getSurface: () => surface, onError });
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      onError,
+      onRecognitionDegraded,
+    });
     const startPromise = voiceUI.start();
     await vi.runAllTicks();
     await expect(startPromise).resolves.toBe(true);
@@ -701,8 +754,11 @@ describe('Voice Scroll browser integration', () => {
       await vi.advanceTimersByTimeAsync((attempt + 1) * 500);
     }
 
-    expect(onError).toHaveBeenCalledWith('recognizer-busy');
-    expect(voiceUI.isActive()).toBe(false);
+    expect(onError).not.toHaveBeenCalled();
+    expect(onRecognitionDegraded).toHaveBeenCalledWith(expect.objectContaining({
+      error: 'recognizer-busy',
+    }));
+    expect(voiceUI.isActive()).toBe(true);
 
     warnSpy.mockRestore();
     errorSpy.mockRestore();

@@ -1,22 +1,122 @@
 // media.js — small helpers for MediaRecorder / getUserMedia capture.
 
-import { CAPTURE_REQUEST_TIMEOUT_MS } from '../constants/media.js';
+import {
+  CAPTURE_MP4_RECORDER_TIMESLICE_MS,
+  CAPTURE_RECORDER_TIMESLICE_MS,
+  CAPTURE_REQUEST_TIMEOUT_MS,
+} from '../constants/media.js';
 
 // Pick the best MediaRecorder mimeType the browser actually supports.
 export function pickRecorderMimeType({ video = true } = {}) {
   const candidates = video
     ? [
-        'video/mp4',
-        'video/webm;codecs=vp9,opus',
+        // Prefer an explicit, broadly playable MP4 combination. Some WebKit
+        // releases support H.264 with Opus but not AAC through MediaRecorder,
+        // so probe that documented combination before falling back to WebM.
+        'video/mp4;codecs=avc1.42E01E,mp4a.40.2',
+        'video/mp4;codecs=avc1.42000a,opus',
         'video/webm;codecs=vp8,opus',
+        'video/webm;codecs=vp9,opus',
         'video/webm',
+        // Generic MP4 is deliberately late: it preserves support for older
+        // Safari without making an ambiguous codec configuration the default.
+        'video/mp4',
       ]
-    : ['audio/mpeg', 'audio/mp4', 'audio/webm;codecs=opus', 'audio/webm'];
+    : [
+        'audio/mp4;codecs=mp4a.40.2',
+        'audio/mp4',
+        'audio/webm;codecs=opus',
+        'audio/webm',
+        'audio/mpeg',
+      ];
   if (typeof MediaRecorder === 'undefined') return '';
   for (const type of candidates) {
-    if (MediaRecorder.isTypeSupported(type)) return type;
+    try {
+      if (MediaRecorder.isTypeSupported(type)) return type;
+    } catch {
+      // A malformed/unknown codec string should reject only that candidate,
+      // not the entire browser-default fallback.
+    }
   }
   return '';
+}
+
+export function recorderTimesliceForMimeType(mimeType) {
+  const container = String(mimeType || '').toLowerCase().split(';')[0].trim();
+  return container.endsWith('/mp4')
+    ? CAPTURE_MP4_RECORDER_TIMESLICE_MS
+    : CAPTURE_RECORDER_TIMESLICE_MS;
+}
+
+function readBoxType(bytes) {
+  return String.fromCharCode(bytes[4], bytes[5], bytes[6], bytes[7]);
+}
+
+// This is a cheap container-integrity gate, not a decoder. It catches empty
+// output and the common broken WebKit MP4 artifact that was never finalized
+// with its `moov` metadata. Preview still performs the final decoder check.
+export async function validateRecordedMediaBlob(blob, mimeType = blob?.type) {
+  if (!blob || blob.size === 0) return { valid: false, reason: 'EMPTY_BLOB' };
+  const container = String(mimeType || blob.type || '').toLowerCase().split(';')[0].trim();
+  if (container !== 'video/mp4' && container !== 'audio/mp4') return { valid: true };
+
+  let offset = 0;
+  let boxCount = 0;
+  let hasFileType = false;
+  let hasMovieMetadata = false;
+  let hasMediaData = false;
+
+  while (offset + 8 <= blob.size && boxCount < 100_000) {
+    const headerBytes = new Uint8Array(
+      await blob.slice(offset, Math.min(offset + 16, blob.size)).arrayBuffer(),
+    );
+    if (headerBytes.length < 8) return { valid: false, reason: 'MP4_INVALID_BOX' };
+
+    const view = new DataView(
+      headerBytes.buffer,
+      headerBytes.byteOffset,
+      headerBytes.byteLength,
+    );
+    const size32 = view.getUint32(0);
+    const type = readBoxType(headerBytes);
+    let headerSize = 8;
+    let boxSize = size32;
+
+    if (size32 === 1) {
+      if (headerBytes.length < 16) return { valid: false, reason: 'MP4_INVALID_BOX' };
+      const high = view.getUint32(8);
+      const low = view.getUint32(12);
+      boxSize = high * 2 ** 32 + low;
+      headerSize = 16;
+    } else if (size32 === 0) {
+      boxSize = blob.size - offset;
+    }
+
+    if (!Number.isSafeInteger(boxSize)
+      || boxSize < headerSize
+      || offset + boxSize > blob.size) {
+      return { valid: false, reason: 'MP4_INVALID_BOX' };
+    }
+
+    if (type === 'ftyp') hasFileType = true;
+    if (type === 'moov') hasMovieMetadata = true;
+    if (type === 'mdat') hasMediaData = true;
+    offset += boxSize;
+    boxCount += 1;
+    // A fragmented MediaRecorder MP4 can contain thousands of moof/mdat pairs.
+    // The initialization metadata plus the first media payload is enough for
+    // this cheap gate; the preview decoder remains responsible for full media
+    // validation.
+    if (hasFileType && hasMovieMetadata && hasMediaData) return { valid: true };
+  }
+
+  if (offset !== blob.size || boxCount >= 100_000) {
+    return { valid: false, reason: 'MP4_INVALID_BOX' };
+  }
+  if (!hasFileType || !hasMovieMetadata || !hasMediaData) {
+    return { valid: false, reason: 'MP4_MISSING_REQUIRED_BOX' };
+  }
+  return { valid: true };
 }
 
 // Map a recorded Blob MIME type to the correct download extension. In

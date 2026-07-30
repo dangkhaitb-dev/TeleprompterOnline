@@ -5,22 +5,27 @@ import {
   mediaFileExtension,
   pickRecorderMimeType,
   queryPermissionState,
+  recorderTimesliceForMimeType,
+  validateRecordedMediaBlob,
 } from './media.js';
 import { CAPTURE_REQUEST_TIMEOUT_MS } from '../constants/media.js';
 
 const err = (name, message = '') => Object.assign(new Error(message), { name });
 
 const VIDEO_MIME_TYPES = [
-  'video/mp4',
-  'video/webm;codecs=vp9,opus',
+  'video/mp4;codecs=avc1.42E01E,mp4a.40.2',
+  'video/mp4;codecs=avc1.42000a,opus',
   'video/webm;codecs=vp8,opus',
+  'video/webm;codecs=vp9,opus',
   'video/webm',
+  'video/mp4',
 ];
 const AUDIO_MIME_TYPES = [
-  'audio/mpeg',
+  'audio/mp4;codecs=mp4a.40.2',
   'audio/mp4',
   'audio/webm;codecs=opus',
   'audio/webm',
+  'audio/mpeg',
 ];
 
 describe('pickRecorderMimeType', () => {
@@ -66,6 +71,59 @@ describe('pickRecorderMimeType', () => {
 
     supportTypes();
     expect(pickRecorderMimeType({ video: false })).toBe('');
+  });
+});
+
+describe('recorderTimesliceForMimeType', () => {
+  it('uses one-second chunks for MP4 to avoid WebKit MP4 writer races', () => {
+    expect(recorderTimesliceForMimeType('video/mp4;codecs=avc1.42E01E,mp4a.40.2'))
+      .toBe(1000);
+    expect(recorderTimesliceForMimeType('audio/mp4')).toBe(1000);
+  });
+
+  it('keeps shorter chunks for WebM and the browser-default recorder', () => {
+    expect(recorderTimesliceForMimeType('video/webm;codecs=vp8,opus')).toBe(250);
+    expect(recorderTimesliceForMimeType('')).toBe(250);
+  });
+});
+
+describe('validateRecordedMediaBlob', () => {
+  const mp4Box = (type, payload = []) => {
+    const bytes = new Uint8Array(8 + payload.length);
+    new DataView(bytes.buffer).setUint32(0, bytes.length);
+    bytes.set([...type].map((char) => char.charCodeAt(0)), 4);
+    bytes.set(payload, 8);
+    return bytes;
+  };
+
+  it('accepts a finalized MP4 containing ftyp, moov and media data boxes', async () => {
+    const blob = new Blob([
+      mp4Box('ftyp'),
+      mp4Box('moov'),
+      mp4Box('mdat', [1, 2, 3]),
+    ], { type: 'video/mp4' });
+
+    await expect(validateRecordedMediaBlob(blob)).resolves.toEqual({ valid: true });
+  });
+
+  it('rejects an MP4 whose final moov metadata is missing', async () => {
+    const blob = new Blob([
+      mp4Box('ftyp'),
+      mp4Box('mdat', [1, 2, 3]),
+    ], { type: 'video/mp4' });
+
+    await expect(validateRecordedMediaBlob(blob)).resolves.toEqual({
+      valid: false,
+      reason: 'MP4_MISSING_REQUIRED_BOX',
+    });
+  });
+
+  it('rejects empty output and accepts non-empty non-MP4 for decoder validation later', async () => {
+    await expect(validateRecordedMediaBlob(new Blob([], { type: 'video/webm' })))
+      .resolves.toEqual({ valid: false, reason: 'EMPTY_BLOB' });
+    await expect(validateRecordedMediaBlob(
+      new Blob(['webm bytes'], { type: 'video/webm' }),
+    )).resolves.toEqual({ valid: true });
   });
 });
 

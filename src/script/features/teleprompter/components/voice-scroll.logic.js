@@ -15,9 +15,18 @@ import { LS_VOICE_SCROLL_ASR_LOCALES } from '../../../utils/storage-keys.js';
 
 const EMPTY_ABORT_LIMIT = 2;
 const BROWSER_SERVICE_FAILURE_LIMIT = 2;
+const ASR_UNAVAILABLE_FALLBACK_ERRORS = new Set([
+  'unsupported',
+  'start-timeout',
+  'audio-capture',
+  'not-allowed',
+  'service-not-allowed',
+  'recognizer-busy',
+]);
 const USER_OVERRIDE_GUARD_MS = 650;
 const MAX_ASR_CURSOR_ADVANCE = 8;
 const LOCAL_PACK_CHECK_TIMEOUT_MS = 3000;
+const LANGUAGE_DETECTOR_AVAILABILITY_TIMEOUT_MS = 1500;
 const MIN_PACK_LANGUAGE_CONFIDENCE = 0.35;
 const LANGUAGE_DETECTION_SAMPLE_WORDS = 200;
 const LANGUAGE_DETECTOR_IDLE_RELEASE_MS = 5 * 60 * 1000;
@@ -162,8 +171,16 @@ function checkLanguageDetectorAvailability(API) {
   }
   if (languageDetectorAvailabilityPromise) return languageDetectorAvailabilityPromise;
 
-  const pending = Promise.resolve()
-    .then(() => API.availability())
+  let timeoutId = null;
+  const availability = Promise.resolve()
+    .then(() => API.availability());
+  const timedOut = new Promise((resolve) => {
+    timeoutId = setTimeout(
+      () => resolve('unavailable'),
+      LANGUAGE_DETECTOR_AVAILABILITY_TIMEOUT_MS,
+    );
+  });
+  const pending = Promise.race([availability, timedOut])
     .then((status) => {
       languageDetectorAvailability = status;
       return status;
@@ -171,7 +188,8 @@ function checkLanguageDetectorAvailability(API) {
     .catch(() => {
       languageDetectorAvailability = 'unavailable';
       return 'unavailable';
-    });
+    })
+    .finally(() => clearTimeout(timeoutId));
   languageDetectorAvailabilityPromise = pending;
   return pending;
 }
@@ -540,6 +558,7 @@ export function createASREngine({
   onError,
   onDegraded,
   onDiagnostic,
+  audioTrack = null,
 }) {
   let recognition = null;
   let wantsListening = false;
@@ -568,6 +587,7 @@ export function createASREngine({
   let browserServiceFailures = 0;
   let sessionFailureReported = false;
   let degradationReported = false;
+  let asrInput = 'microphone';
 
   const log = (message, details) => {
     if (details === undefined) console.info(`[VoiceScroll] ${message}`);
@@ -600,6 +620,25 @@ export function createASREngine({
     }
   }
 
+  function startRecognition() {
+    if (audioTrack?.kind === 'audio' && audioTrack.readyState === 'live') {
+      try {
+        asrInput = 'shared-track';
+        onDiagnostic?.('asr-shared-track-requested', { asrInput });
+        recognition.start(audioTrack);
+      } catch {
+        // Older browser implementations can reject the track overload. Keep
+        // the legacy path and expose the compatibility gap in the debug trace.
+        asrInput = 'microphone';
+        onDiagnostic?.('asr-shared-track-rejected', { reason: 'unsupported' });
+        recognition.start();
+      }
+      return;
+    }
+    asrInput = 'microphone';
+    recognition.start();
+  }
+
   function resolveStart(started) {
     if (!settleStart) return;
     const resolve = settleStart;
@@ -614,9 +653,16 @@ export function createASREngine({
   
   // Handle Chrome two-slot interim quirk
   function handleResult(event) {
+    const isFirstResult = !sessionHadResult;
     sessionHadResult = true;
     lastResultAt = performance.now();
-    onDiagnostic?.('asr-result', { asrMode: useLocal ? 'on-device' : 'browser-service' });
+    // Results can arrive many times per second. Retaining every one makes the
+    // bounded diagnostic trace discard the setup/failure events we need most.
+    if (isFirstResult) {
+      onDiagnostic?.('asr-first-result', {
+        asrMode: useLocal ? 'on-device' : 'browser-service',
+      });
+    }
     let interimText = '';
     // Build from ALL event.results, not just resultIndex
     for (let i = 0; i < event.results.length; i++) {
@@ -718,7 +764,10 @@ export function createASREngine({
         console.debug('[VoiceScroll] listening resumed', details);
       }
       onPhaseChange?.('listening');
-      onDiagnostic?.('asr-started', { asrMode: useLocal ? 'on-device' : 'browser-service' });
+      onDiagnostic?.('asr-started', {
+        asrMode: useLocal ? 'on-device' : 'browser-service',
+        asrInput,
+      });
     };
 
     instance.onaudiostart = () => {
@@ -752,6 +801,7 @@ export function createASREngine({
       onDiagnostic?.('asr-error', {
         reason: code,
         asrMode: useLocal ? 'on-device' : 'browser-service',
+        asrInput,
       });
       console.warn('[VoiceScroll][ASR error]', {
         error: code,
@@ -840,6 +890,7 @@ export function createASREngine({
         asrHadSpeech: sessionHadSpeech,
         asrHadResult: sessionHadResult,
         asrMode: useLocal ? 'on-device' : 'browser-service',
+        asrInput,
         asrEmptyAbortCount: consecutiveEmptyAborts,
       });
 
@@ -876,7 +927,7 @@ export function createASREngine({
           log('on-device language pack ready; upgrading recognition', { locale });
         }
         try {
-          recognition.start();
+          startRecognition();
           console.debug('[VoiceScroll] recognition restarted', {
             mode: useLocal ? 'on-device' : 'browser-service',
           });
@@ -935,7 +986,12 @@ export function createASREngine({
     log('starting recognition', { locale, mode: useLocal ? 'on-device' : 'browser-service' });
     
     try {
-      onDiagnostic?.('asr-start-requested', { asrMode: useLocal ? 'on-device' : 'browser-service' });
+      onDiagnostic?.('asr-start-requested', {
+        asrMode: useLocal ? 'on-device' : 'browser-service',
+        asrInput: audioTrack?.kind === 'audio' && audioTrack.readyState === 'live'
+          ? 'shared-track'
+          : 'microphone',
+      });
       const started = new Promise((resolve) => {
         let timeoutId = null;
         settleStart = (value) => {
@@ -952,7 +1008,7 @@ export function createASREngine({
           onError?.('start-timeout', { asrMode: useLocal ? 'on-device' : 'browser-service' });
         }, 10000);
       });
-      recognition.start();
+      startRecognition();
       return await started;
     } catch (e) {
       resolveStart(false);
@@ -1060,6 +1116,7 @@ export function createVoiceScrollController({
   onTranscript,
   onRecognitionDegraded,
   onDiagnostic,
+  audioTrack,
 }) {
   // Matcher state (passed to model layer functions)
   let matcherState = null;
@@ -1270,10 +1327,14 @@ export function createVoiceScrollController({
         const message = err === 'unsupported'
           ? 'Browser does not support Web Speech API'
           : err;
-        // Android browsers can reject SpeechRecognition with `audio-capture`
-        // while MediaRecorder owns the microphone. Keep Auto Scroll useful by
-        // falling back to its local timed engine instead of stopping reading.
-        if (err === 'unsupported' || err === 'start-timeout' || err === 'audio-capture') {
+        // The underlying cause can be a browser policy, service, device state,
+        // or an unavailable capture path. Regardless of cause, Auto cannot
+        // follow speech in this session without a transcript.
+        if (ASR_UNAVAILABLE_FALLBACK_ERRORS.has(err)) {
+          onDiagnostic?.('asr-unavailable-for-session', {
+            reason: err,
+            asrMode: asrDetails.asrMode || 'browser-service',
+          });
           onDiagnostic?.('asr-timed-fallback', { reason: err });
           startTimedFallback({
             error: err,
@@ -1296,6 +1357,7 @@ export function createVoiceScrollController({
         startTimedFallback(details);
       },
       onDiagnostic,
+      audioTrack,
     });
     
     // Recognition starts unbiased. Context is introduced only after the reader

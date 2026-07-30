@@ -15,6 +15,12 @@ export const TOAST_TIMEOUT_MS = 1300;
 // instead of leaving the capture UI stuck forever.
 export const CAPTURE_REQUEST_TIMEOUT_MS = 15_000;
 
+// Teleprompter capture chunks. WebKit's MP4 writer has had race conditions
+// under very frequent dataavailable flushes, so MP4 uses the one-second cadence
+// from WebKit's MediaRecorder examples while WebM keeps the shorter cadence.
+export const CAPTURE_RECORDER_TIMESLICE_MS = 250;
+export const CAPTURE_MP4_RECORDER_TIMESLICE_MS = 1000;
+
 // Thumbnail extraction: seek offset past the (often black) first frame, a
 // hard timeout so a stuck offscreen <video> resolves to null instead of
 // hanging, and the JPEG encode quality for captured frames.

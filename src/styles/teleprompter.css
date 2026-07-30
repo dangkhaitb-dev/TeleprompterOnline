@@ -3766,7 +3766,8 @@ html.theme-instant *::after {
    (desktop + the post-record scene-editor keep their own headers). */
 
 /* Empty + hidden on desktop/tablet — nodes live in their original toolbars. */
-.m-studio-bar { display: none; }
+.m-studio-bar,
+.m-shared-tools { display: none; }
 
 @media (max-width: 600px) {
   /* Phone teleprompter: drop the top chrome entirely. Only .app-header — the
@@ -3852,38 +3853,36 @@ html.theme-instant *::after {
   }
   .m-tab-panel.active { visibility: visible; }
 
-  #mPanelTools { gap: 8px; }
+  .m-shared-tools {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
 
   .m-studio-bar .item { min-width: 0; }
   .m-studio-bar .item .label { display: none; }
-  #mPanelTools .item .label {
-    display: block;
-    font-size: 11px;
-    font-weight: 550;
-    line-height: 1.2;
-    margin-top: 4px;
-  }
 
-  /* Prompter-tools icons (layout · speed · mirror) are the larger touch targets. */
-  #mPanelTools .item .icon-wrap,
-  #mPanelTools .item .action-btn { width: 44px; height: 44px; }
-  #mPanelTools .item .action-btn svg { width: 44px; height: 44px; }
+  /* Shared tools remain available in both Prompter and Record tabs. */
+  #mSharedTools .item .icon-wrap,
+  #mSharedTools .item .action-btn { width: 44px; height: 44px; }
+  #mSharedTools .item .action-btn svg { width: 44px; height: 44px; }
 
-  #mPanelMain #settingsControl .icon-wrap,
-  #mPanelMain #settingsControl .action-btn {
+  #mSharedTools #settingsControl .icon-wrap,
+  #mSharedTools #settingsControl .action-btn {
     width: 44px;
     height: 44px;
   }
 
   /* Prompter toggle only makes sense once the camera is on. */
-  #mPanelTools [data-action="Prompter"] { display: none; }
-  .app.cam-on #mPanelTools [data-action="Prompter"] { display: flex; }
+  #mSharedTools [data-action="Prompter"] { display: none; }
+  .app.cam-on #mSharedTools [data-action="Prompter"] { display: flex; }
 
   /* Keep these visible when cam-on (overrides the ≤768px rule that hid them
      for the old crowded toolbar). */
-  .app.cam-on #mPanelTools #speedControl,
-  .app.cam-on #mPanelTools #mirrorControl,
-  .app.cam-on #mPanelMain #settingsControl { display: flex; }
+  .app.cam-on #mSharedTools #speedControl,
+  .app.cam-on #mSharedTools #mirrorControl,
+  .app.cam-on #mSharedTools #settingsControl { display: flex; }
 
   /* Record-controls flows as a flex item while idle. */
   .app:not(.record-dim) #mPanelMain .record-controls {
@@ -3958,6 +3957,8 @@ html.theme-instant *::after {
   /* !important beats the #layoutControl / other ID-based mobile show rules. */
   .app.record-dim .m-tabs,
   .app.notch-on .m-tabs,
+  .app.record-dim .m-shared-tools,
+  .app.notch-on .m-shared-tools,
   .app.record-dim .m-tab-panel > :not(.record-controls),
   .app.notch-on .m-tab-panel > :not(.record-controls) { display: none !important; }
 

@@ -46,6 +46,7 @@ import {
   createRecordingStartGate,
   getMissingRecordingMedia,
   hasLiveMediaTrack,
+  prepareRecordingMedia,
 } from './components/recording-media-preflight.js';
 import { createVoiceLanguagePreflight } from './components/voice-language-preflight.js';
 import { createColorPicker } from './components/color-picker.ui.js';
@@ -180,6 +181,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // before any relocation, so desktop can restore the exact original order.
   const mPanelMain = $('mPanelMain');
   const mPanelTools = $('mPanelTools');
+  const mSharedTools = $('mSharedTools');
   const mStudioBar = $('mStudioBar');
   const phoneViewport = window.matchMedia('(max-width: 600px)');
   const recordControls = root.querySelector('.record-controls');
@@ -197,15 +199,17 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   ].filter(Boolean).map((el) => ({ el, parent: el.parentNode, next: el.nextSibling }));
 
   function applyPhoneLayout() {
-    if (!mPanelMain || !mPanelTools) return;
+    if (!mPanelMain || !mPanelTools || !mSharedTools) return;
     if (phoneViewport.matches) {
       if (mStudioBar) mStudioBar.setAttribute('aria-hidden', 'false');
-      // Record: RECORD + Settings. Camera and mic live inside Settings.
-      [recordControls, settingsControlEl]
+      // Each tab owns only its centered primary action.
+      [recordControls]
         .forEach((el) => { if (el) mPanelMain.appendChild(el); });
-      // Prompter: Play + reading tools.
-      [headerPlayButton, layoutControl, speedControlEl, mirrorControlEl, prompterToggle]
+      [headerPlayButton]
         .forEach((el) => { if (el) mPanelTools.appendChild(el); });
+      // Reading/settings tools stay visible below either primary action.
+      [layoutControl, speedControlEl, mirrorControlEl, settingsControlEl, prompterToggle]
+        .forEach((el) => { if (el) mSharedTools.appendChild(el); });
     } else {
       if (mStudioBar) mStudioBar.setAttribute('aria-hidden', 'true');
       phoneMovable.slice().reverse().forEach(({ el, parent, next }) => {
@@ -220,8 +224,9 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   cleanups.push(() => phoneViewport.removeEventListener('change', applyPhoneLayout));
 
   // Phone bar tabs: switch between the Record group and the Prompter tools.
+  let recordTabMediaPending = false;
   root.querySelectorAll('.m-tab').forEach((tab) => {
-    on(tab, 'click', () => {
+    on(tab, 'click', async () => {
       const target = tab.dataset.tab;
       root.querySelectorAll('.m-tab').forEach((t) => {
         const active = t.dataset.tab === target;
@@ -231,6 +236,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       root.querySelectorAll('.m-tab-panel').forEach((p) => {
         p.classList.toggle('active', p.dataset.panel === target);
       });
+      if (target === 'main' && !recordTabMediaPending) {
+        recordTabMediaPending = true;
+        try {
+          await ensureRecordingMediaReady();
+        } catch {
+          if (!tornDown) showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
+        } finally {
+          recordTabMediaPending = false;
+        }
+      }
     });
   });
 
@@ -248,10 +263,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // red box on the control to tap, plus short steps. No retry button — the user
   // changes the setting and reloads (the steps say so).
   function openPermissionGuidance(blocked) {
+    if (tornDown) return Promise.resolve('dismissed');
     return showPermissionPopup({
       blocked,
       platform,
       copy: copy.permission || {},
+      container: portal,
     });
   }
 
@@ -262,6 +279,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // confirmed 'denied'. `kinds` is [{ perm, label }]. Returns true if guided.
   async function guideIfBlocked(kinds) {
     const states = await Promise.all(kinds.map((k) => queryPermissionState(k.perm)));
+    if (tornDown) return false;
     const blocked = kinds.filter((_, i) => states[i] === 'denied').map((k) => k.label);
     if (blocked.length) openPermissionGuidance(blocked);
     return blocked.length > 0;
@@ -277,6 +295,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (!kinds.length) return true;
 
     const states = await Promise.all(kinds.map((k) => queryPermissionState(k.perm)));
+    if (tornDown) return false;
     const blocked = kinds.filter((_, i) => states[i] === 'denied').map((k) => k.label);
     if (blocked.length) {
       const result = await openPermissionGuidance(blocked);
@@ -1076,7 +1095,11 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // is live, so Settings never advertises a blocked or failed device as active.
   async function setCameraToggle(on, { permissionVerified = false } = {}) {
     if (tornDown) return false;
-    if (on && !permissionVerified && (await queryPermissionState('camera')) === 'denied') {
+    const permissionState = on && !permissionVerified
+      ? await queryPermissionState('camera')
+      : null;
+    if (tornDown) return false;
+    if (permissionState === 'denied') {
       const res = await openPermissionGuidance(['camera']);
       if (tornDown || res !== 'granted') {
         applyToggleState(cameraToggle, 'camera', false);
@@ -1108,6 +1131,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         stopStream(probe);
         if (tornDown) return false;
       } catch (err) {
+        if (tornDown) return false;
         const reason = classifyMediaError(err);
         applyToggleState(micToggle, 'mic', false);
         if (reason === 'denied') await guideIfBlocked([{ perm: 'microphone', label: 'mic' }]);
@@ -1464,6 +1488,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   // Surface why a recording couldn't start instead of failing silently.
   async function handleRecordCaptureError(err) {
+    if (tornDown) return;
     const reason = classifyMediaError(err);
     if (reason === 'denied') {
       // Guide only on a real block; a merely dismissed prompt stays quiet.
@@ -1506,39 +1531,39 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     const audioDeviceId = popups.getSelectedDeviceId('mic');
     const video = videoDeviceId ? { deviceId: { exact: videoDeviceId } } : true;
     const audio = audioDeviceId ? { deviceId: { exact: audioDeviceId } } : true;
-    let probe = null;
+    let result;
     try {
-      probe = await getCaptureStream({ video, audio });
-      if (tornDown) return false;
-      if (!hasLiveMediaTrack(probe, 'video') || !hasLiveMediaTrack(probe, 'audio')) {
-        showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
-        popups.openSettingsForMedia(['camera', 'mic']);
-        return false;
-      }
+      result = await prepareRecordingMedia({
+        cameraEnabled: cameraEnabled(),
+        micEnabled: micEnabled(),
+        acquireProbe: () => getCaptureStream({ video, audio }),
+        releaseProbe: stopStream,
+        enableCamera: async () => {
+          if (cameraEnabled()) stopCamera();
+          return setCameraToggle(true, { permissionVerified: true });
+        },
+        enableMic: () => setMicToggle(true, { permissionVerified: true }),
+        isCameraReady: () => (
+          cameraEnabled() && hasLiveMediaTrack(cameraStream, 'video')
+        ),
+        isCancelled: () => tornDown,
+      });
     } catch (err) {
+      if (tornDown) return false;
       await handleRecordCaptureError(err);
+      if (tornDown) return false;
       popups.openSettingsForMedia(missing.length ? missing : ['camera', 'mic']);
       return false;
-    } finally {
-      stopStream(probe);
     }
-
-    if (!cameraEnabled() || !hasLiveMediaTrack(cameraStream, 'video')) {
-      if (cameraEnabled()) stopCamera();
-      const cameraReady = await setCameraToggle(true, { permissionVerified: true });
-      if (tornDown) return false;
-      if (!cameraReady) {
+    if (!result.ready) {
+      if (!tornDown) {
         showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
-        popups.openSettingsForMedia(['camera']);
-        return false;
+        popups.openSettingsForMedia(result.missing.length ? result.missing : ['camera', 'mic']);
       }
-    }
-    if (!micEnabled()) {
-      const micReady = await setMicToggle(true, { permissionVerified: true });
-      if (!micReady || tornDown) return false;
+      return false;
     }
     popups.refreshMediaValues();
-    return cameraEnabled() && micEnabled() && hasLiveMediaTrack(cameraStream, 'video');
+    return true;
   }
 
   async function beginRecording() {

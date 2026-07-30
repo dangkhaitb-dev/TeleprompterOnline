@@ -85,5 +85,6 @@ describe('Teleprompter analytics taxonomy', () => {
     expect(tabs.map((tab) => tab.dataset.tab)).toEqual(['tools', 'main']);
     expect(tabs[0].classList.contains('active')).toBe(true);
     expect(tabs[0].getAttribute('aria-selected')).toBe('true');
+    expect(document.querySelector('#mSharedTools')).not.toBeNull();
   });
 });

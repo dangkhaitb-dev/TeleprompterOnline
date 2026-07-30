@@ -55,7 +55,7 @@
     "stop": "Record"
   },
   "camera": {
-    "starting": "Starting camera…",
+    "starting": "Starting camera",
     "unsupported": "Your browser does not support the camera. Open this page over https or localhost.",
     "errorPrefix": "Couldn't access the camera (",
     "errorSuffix": "). Grant camera permission and reload the page.",

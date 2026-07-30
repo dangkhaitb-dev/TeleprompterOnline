@@ -504,37 +504,54 @@ html[data-theme="dark"] .app .prompt-box {
   visibility: hidden;
 }
 
-.camera-loading {
+.camera-loading-status {
   position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: var(--tp-z-camera-loading);
-  display: grid;
-  place-items: center;
+  z-index: var(--tp-z-camera-status);
+  margin: 0;
+  color: color-mix(in srgb, var(--tp-white) 72%, transparent);
+  font-family: var(--font-sans);
+  font-size: var(--text-xs);
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.02em;
   pointer-events: none;
+  transform: translate(-50%, var(--space-3));
+  white-space: nowrap;
 }
 
-.camera-loading[hidden] {
+.camera-loading-status[hidden] {
   display: none;
 }
 
-.camera-loading-spinner {
-  width: var(--space-8);
-  height: var(--space-8);
-  border: 3px solid color-mix(in srgb, var(--tp-white) 28%, transparent);
-  border-top-color: var(--tp-white);
-  border-radius: var(--radius-pill);
-  animation: camera-loading-spin calc(var(--dur-normal) * 3) linear infinite;
+.camera-loading-dots span {
+  display: inline-block;
+  opacity: 0.25;
+  animation: camera-loading-dot calc(var(--dur-normal) * 4) ease-in-out infinite;
 }
 
-@keyframes camera-loading-spin {
-  to { transform: rotate(1turn); }
+.camera-loading-dots span:nth-child(2) {
+  animation-delay: var(--dur-fast);
+}
+
+.camera-loading-dots span:nth-child(3) {
+  animation-delay: calc(var(--dur-fast) * 2);
+}
+
+@keyframes camera-loading-dot {
+  0%, 60%, 100% {
+    opacity: 0.25;
+    transform: translateY(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateY(-2px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .camera-loading-spinner {
+  .camera-loading-dots span {
+    opacity: 1;
     animation: none;
   }
 }

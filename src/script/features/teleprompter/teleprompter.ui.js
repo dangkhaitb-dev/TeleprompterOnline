@@ -51,7 +51,7 @@ import {
   prepareRecordingMedia,
 } from './components/recording-media-preflight.js';
 import {
-  applyCameraLoadingState,
+  applyCameraStartupState,
   applyPendingCameraPreviewState,
   applyCameraPreviewState,
   createMobileStudioTabs,
@@ -148,7 +148,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const teleprompterText = $('teleprompterText');
   const cameraCanvas = $('cameraCanvas');
   const cameraFeed = $('cameraFeed');
-  const cameraLoading = $('cameraLoading');
+  const cameraStatus = $('cameraStatus');
   const prompterPanel = $('prompterPanel');
   const panelDragHandle = $('dragHandle');
   const panelResizeHandle = $('panelResizeHandle');
@@ -255,7 +255,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         .finally(() => {
           const cameraReady = hasLiveMediaTrack(cameraStream, 'video');
           if (!tornDown && revision === studioModeRevision && !cameraReady) {
-            applyCameraLoadingState({ cameraFeed, cameraLoading });
+            applyCameraStartupState({ cameraFeed, cameraStatus });
           }
         });
     },
@@ -522,11 +522,19 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     updateCameraCanvasSize();
   }
 
+  function updateCameraStatusPosition() {
+    if (!cameraStatus || cameraStatus.hidden || !stageEl || !prompterPanel) return;
+    const stageRect = stageEl.getBoundingClientRect();
+    const panelRect = prompterPanel.getBoundingClientRect();
+    cameraStatus.style.left = `${Math.round(panelRect.left - stageRect.left + panelRect.width / 2)}px`;
+    cameraStatus.style.top = `${Math.round(panelRect.bottom - stageRect.top)}px`;
+  }
+
   async function startCamera() {
     if (tornDown) return false;
     const requestId = ++cameraRequestId;
     let ready = false;
-    applyCameraLoadingState({ cameraFeed, cameraLoading, loading: true });
+    applyCameraStartupState({ cameraFeed, cameraStatus, loading: true });
     try {
       const { popups } = await panelsReady;
       if (tornDown || requestId !== cameraRequestId) return false;
@@ -584,7 +592,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       return false;
     } finally {
       if (requestId === cameraRequestId) {
-        applyCameraLoadingState({ cameraFeed, cameraLoading, ready });
+        applyCameraStartupState({ cameraFeed, cameraStatus, ready });
       }
     }
   }
@@ -603,7 +611,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     stopStream(cameraStream);
     cameraStream = null;
     if (cameraFeed) cameraFeed.srcObject = null;
-    applyCameraLoadingState({ cameraFeed, cameraLoading });
+    applyCameraStartupState({ cameraFeed, cameraStatus });
     // Lần bật sau bắt đầu lại từ fallback, tránh nháy tỷ lệ camera cũ.
     cameraAspect = DEFAULT_CAMERA_ASPECT;
   }
@@ -661,13 +669,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   function showPendingRecordCameraUI() {
     syncSurface(teleprompterText);
-    applyPendingCameraPreviewState({ app, cameraFeed, cameraLoading });
+    applyPendingCameraPreviewState({ app, cameraFeed, cameraStatus });
     setFormatToolbarInPanel(true);
     setLayoutFrameInPanel(true);
     setLayoutControlInPanel(true);
     updateCameraCanvasSize();
     if (readingSession) readingSession.switchSurface(teleprompterText);
-    requestAnimationFrame(() => layout.update());
+    requestAnimationFrame(() => {
+      layout.update();
+      updateCameraStatusPosition();
+    });
   }
 
   async function setCameraMode(nextOn, { preserveStudioLayout = false } = {}) {
@@ -2107,6 +2118,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     requestAnimationFrame(() => {
       layoutUpdateQueued = false;
       layout.update();
+      updateCameraStatusPosition();
     });
   }
   const panelDragArgs = {

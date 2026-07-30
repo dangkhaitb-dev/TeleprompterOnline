@@ -226,7 +226,7 @@ const createViteConfig = (isTestBuild) => ({
           /ThemeIconSun$/, /ThemeIconMoon$/,
         ],
         greedy: [
-          /\[data-/, // preserve all [data-*] attribute selectors (JS sets these dynamically)
+          /data-/, // preserve all [data-*] attribute selectors (JS sets these dynamically)
         ],
       }
     }),

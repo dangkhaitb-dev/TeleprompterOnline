@@ -193,9 +193,6 @@ lang: en
     <div class="camera-canvas" id="cameraCanvas">
       <video class="camera-feed" id="cameraFeed" autoplay playsinline muted></video>
     </div>
-    <div class="camera-loading" id="cameraLoading" role="status" aria-label="{{ pageData.camera.starting }}" hidden>
-      <span class="camera-loading-spinner" aria-hidden="true"></span>
-    </div>
 
     <p class="notch-mode-guide">
       <span>{{ pageData.notch.guideBenefit }}</span>
@@ -262,6 +259,9 @@ lang: en
         </div>
       </div>
     </div>
+    <p class="camera-loading-status" id="cameraStatus" role="status" hidden>
+      <span>{{ pageData.camera.starting }}</span><span class="camera-loading-dots" aria-hidden="true"><span>.</span><span>.</span><span>.</span></span>
+    </p>
 
     <!-- Shared floating studio toolbar -->
     <div class="toolbar-shell">

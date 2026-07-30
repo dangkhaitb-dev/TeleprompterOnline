@@ -2,7 +2,7 @@
 
 import { describe, expect, it, vi } from 'vitest';
 import {
-  applyCameraLoadingState,
+  applyCameraStartupState,
   applyPendingCameraPreviewState,
   applyCameraPreviewState,
   createMobileStudioTabs,
@@ -33,27 +33,27 @@ function setup() {
 }
 
 describe('studio mode controller', () => {
-  it('shows a spinner until the camera feed is ready', () => {
+  it('shows an animated-text camera status until the feed is ready', () => {
     document.body.innerHTML = `
       <main id="app"></main>
       <video id="camera"></video>
-      <div id="camera-loading" hidden></div>
+      <p id="camera-status" hidden>Starting camera</p>
     `;
     const app = document.querySelector('#app');
     const cameraFeed = document.querySelector('#camera');
-    const cameraLoading = document.querySelector('#camera-loading');
+    const cameraStatus = document.querySelector('#camera-status');
 
-    applyPendingCameraPreviewState({ app, cameraFeed, cameraLoading });
+    applyPendingCameraPreviewState({ app, cameraFeed, cameraStatus });
     expect(app.classList.contains('cam-on')).toBe(true);
-    expect(cameraLoading.hidden).toBe(false);
+    expect(cameraStatus.hidden).toBe(false);
     expect(cameraFeed.classList.contains('hidden')).toBe(true);
 
-    applyCameraLoadingState({ cameraFeed, cameraLoading, ready: true });
-    expect(cameraLoading.hidden).toBe(true);
+    applyCameraStartupState({ cameraFeed, cameraStatus, ready: true });
+    expect(cameraStatus.hidden).toBe(true);
     expect(cameraFeed.classList.contains('hidden')).toBe(false);
 
-    applyCameraLoadingState({ cameraFeed, cameraLoading });
-    expect(cameraLoading.hidden).toBe(true);
+    applyCameraStartupState({ cameraFeed, cameraStatus });
+    expect(cameraStatus.hidden).toBe(true);
     expect(cameraFeed.classList.contains('hidden')).toBe(true);
   });
 

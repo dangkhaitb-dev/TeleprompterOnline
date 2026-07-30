@@ -8,15 +8,29 @@ describe('teleprompter media device menus', () => {
   let cameraPermissionGranted;
   let stopTrack;
   let mediaDevices;
+  let mediaState;
 
   beforeEach(() => {
     document.body.innerHTML = `
-      <div class="stage"><div class="toolbar-shell"></div></div>
-      <button data-toggle="camera" aria-pressed="false"><span class="caret"></span></button>
-      <button data-toggle="mic" aria-pressed="true"><span class="caret"></span></button>
+      <div class="stage">
+        <div class="toolbar-shell"><button id="settingsControl" aria-expanded="false"></button></div>
+        <div id="settingsMenu">
+          <div id="cameraSettingsGroup">
+            <button id="cameraSettingsRow" aria-expanded="false"></button>
+            <input id="toggleCamera" type="checkbox">
+            <span id="cameraSettingsValue"></span>
+          </div>
+          <div id="micSettingsGroup">
+            <button id="micSettingsRow" aria-expanded="false"></button>
+            <input id="toggleMic" type="checkbox">
+            <span id="micSettingsValue"></span>
+          </div>
+        </div>
+      </div>
       <div id="cameraMenu"><div data-device-type="camera"></div><button id="cameraMenuAction"></button></div>
       <div id="micMenu"><div data-device-type="mic"></div><button id="micMenuAction"></button></div>
     `;
+    mediaState = { camera: false, mic: true };
     cameraPermissionGranted = false;
     stopTrack = vi.fn();
     mediaDevices = new EventTarget();
@@ -51,9 +65,12 @@ describe('teleprompter media device menus', () => {
 
   it('requests permission and replaces placeholder values with connected cameras', async () => {
     const onDeviceChange = vi.fn();
-    controller = initPopups({ onDeviceChange });
+    controller = initPopups({
+      getMediaEnabled: (type) => mediaState[type],
+      onDeviceChange,
+    });
 
-    document.querySelector('[data-toggle="camera"] .caret').click();
+    document.querySelector('#cameraSettingsRow').click();
 
     await vi.waitFor(() => {
       expect(document.querySelectorAll('[data-device-type="camera"] .device-option')).toHaveLength(2);
@@ -72,7 +89,7 @@ describe('teleprompter media device menus', () => {
   });
 
   it('refreshes the list when the browser reports a device change', async () => {
-    controller = initPopups();
+    controller = initPopups({ getMediaEnabled: (type) => mediaState[type] });
     await vi.waitFor(() => {
       expect(document.querySelector('[data-device-type="mic"]').textContent)
         .toContain('MacBook Microphone');
@@ -86,6 +103,39 @@ describe('teleprompter media device menus', () => {
     await vi.waitFor(() => {
       expect(document.querySelector('[data-device-type="mic"]').textContent)
         .toContain('USB Podcast Microphone');
+    });
+  });
+
+  it('opens Settings for missing media and keeps both On/Off values in sync', () => {
+    controller = initPopups({ getMediaEnabled: (type) => mediaState[type] });
+
+    controller.openSettingsForMedia(['camera']);
+
+    expect(document.querySelector('#settingsMenu').classList.contains('open')).toBe(true);
+    expect(document.querySelector('#cameraSettingsGroup').classList.contains('is-required')).toBe(true);
+    expect(document.querySelector('#micSettingsGroup').classList.contains('is-required')).toBe(false);
+    expect(document.querySelector('#cameraSettingsValue').textContent).toBe('Off');
+    expect(document.querySelector('#micSettingsValue').textContent).toBe('On');
+    expect(document.querySelector('#toggleCamera').checked).toBe(false);
+    expect(document.querySelector('#toggleMic').checked).toBe(true);
+  });
+
+  it('uses the device-menu action to enable media without a toolbar toggle', async () => {
+    const onMediaToggle = vi.fn(async (type, enabled) => {
+      mediaState[type] = enabled;
+      return enabled;
+    });
+    controller = initPopups({
+      getMediaEnabled: (type) => mediaState[type],
+      onMediaToggle,
+    });
+
+    document.querySelector('#cameraSettingsRow').click();
+    document.querySelector('#cameraMenuAction').click();
+
+    await vi.waitFor(() => {
+      expect(onMediaToggle).toHaveBeenCalledWith('camera', true);
+      expect(document.querySelector('#cameraSettingsValue').textContent).toBe('On');
     });
   });
 });

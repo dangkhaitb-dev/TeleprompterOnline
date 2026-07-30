@@ -34,8 +34,6 @@ const CLICK_ACTIONS = [
   ['#playBtn', 'panelPlayClick'],
   ['#panelEditButton', 'panelEditClick'],
   ['#barThemeBtn', 'panelThemeClick'],
-  ['[data-toggle="camera"]', 'cameraToggleClick'],
-  ['[data-toggle="mic"]', 'micToggleClick'],
   ['[data-action="Prompter"]', 'prompterToggleClick'],
   ['#mirrorControl', 'mirrorTextClick'],
   ['#notchControl', 'notchModeClick'],
@@ -49,7 +47,8 @@ const CLICK_ACTIONS = [
   ['#speedMethodWpm', 'fixedSpeedClick'],
   ['#speedMethodTime', 'scrollTimeClick'],
   ['#shortcutsControl', 'shortcutsClick'],
-  ['#mobileMicSettingsRow', 'micSettingsClick'],
+  ['#cameraSettingsRow', 'cameraSettingsClick'],
+  ['#micSettingsRow', 'micSettingsClick'],
   ['#themeLightBtn', 'lightThemeClick'],
   ['#themeDarkBtn', 'darkThemeClick'],
   ['#cameraMenuAction', 'cameraActionClick'],
@@ -81,6 +80,8 @@ const CHANGE_ACTIONS = [
   ['#toggleCountdown', 'countdownChange'],
   ['#toggleFullscreen', 'fullscreenChange'],
   ['#toggleNotchFullscreen', 'notchFullscreenChange'],
+  ['#toggleCamera', 'cameraToggleChange'],
+  ['#toggleMic', 'micToggleChange'],
   ['#notchEditFontSize', 'notchFontSizeChange'],
   ['#notchEditLineHeight', 'notchLineHeightChange'],
 ];
@@ -96,11 +97,6 @@ function applyNames(root, rules) {
 export function nameTeleprompterAnalyticsControls(root = document) {
   applyNames(root, CLICK_ACTIONS);
   applyNames(root, CHANGE_ACTIONS);
-
-  const cameraCaret = root.querySelector('[data-toggle="camera"] .caret');
-  const micCaret = root.querySelector('[data-toggle="mic"] .caret');
-  if (cameraCaret) cameraCaret.dataset.analyticsName = 'cameraMenuClick';
-  if (micCaret) micCaret.dataset.analyticsName = 'micMenuClick';
 }
 
 export const TELEPROMPTER_CLICK_ACTIONS = CLICK_ACTIONS;

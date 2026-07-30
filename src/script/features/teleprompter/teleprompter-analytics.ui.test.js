@@ -45,8 +45,6 @@ describe('Teleprompter analytics taxonomy', () => {
     const actionNames = [
       ...TELEPROMPTER_CLICK_ACTIONS,
       ...TELEPROMPTER_CHANGE_ACTIONS,
-      ['camera caret', 'cameraMenuClick'],
-      ['mic caret', 'micMenuClick'],
       ['camera option', 'cameraDeviceClick'],
       ['mic option', 'micDeviceClick'],
       ['color swatch', 'colorSwatchClick'],
@@ -75,5 +73,17 @@ describe('Teleprompter analytics taxonomy', () => {
       .toBe('fixedSpeedClick');
     expect(document.querySelector('#speedMethodTime').dataset.analyticsName)
       .toBe('scrollTimeClick');
+  });
+
+  it('keeps recording media in Settings and makes Prompter the default mobile tab', () => {
+    expect(document.querySelector('.toolbar-shell [data-toggle="camera"]')).toBeNull();
+    expect(document.querySelector('.toolbar-shell [data-toggle="mic"]')).toBeNull();
+    expect(document.querySelector('#settingsMenu #cameraSettingsGroup')).not.toBeNull();
+    expect(document.querySelector('#settingsMenu #micSettingsGroup')).not.toBeNull();
+
+    const tabs = [...document.querySelectorAll('.m-tab')];
+    expect(tabs.map((tab) => tab.dataset.tab)).toEqual(['tools', 'main']);
+    expect(tabs[0].classList.contains('active')).toBe(true);
+    expect(tabs[0].getAttribute('aria-selected')).toBe('true');
   });
 });

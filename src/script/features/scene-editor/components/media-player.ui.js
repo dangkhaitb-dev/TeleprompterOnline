@@ -335,6 +335,11 @@ export function createMediaPlayer({ signal }) {
       // to sit underneath/inside the preview and made play/pause untappable.
       activeMedia.controls = false;
       activeMedia.playsInline = true;
+      // Older iOS WebKit (including some Chrome iOS / CriOS builds) checks the
+      // attribute name rather than the property.
+      activeMedia.setAttribute('playsinline', '');
+      activeMedia.setAttribute('webkit-playsinline', '');
+
       currentDuration = fallbackDurationSec || 0;
       desiredVolume = activeMedia.muted ? 0 : activeMedia.volume;
       canSetMediaVolume = mediaAcceptsVolume(activeMedia);
@@ -349,7 +354,7 @@ export function createMediaPlayer({ signal }) {
         activeMedia.addEventListener(evt, listener);
       });
 
-      // Bind play/pause to clicking the media display itself
+      // Bind play/pause to clicking the media display itself.
       if (activeMedia.tagName === 'VIDEO') {
         activeMedia.style.cursor = 'pointer';
         activeMedia.addEventListener('click', handleMediaClick);
@@ -373,6 +378,7 @@ export function createMediaPlayer({ signal }) {
       parentEl = activeMedia.closest('.se-viewer');
       if (parentEl) {
         parentEl.addEventListener('mousemove', showControls);
+        parentEl.addEventListener('touchstart', showControls, { passive: true });
         parentEl.addEventListener('mouseleave', () => {
           if (activeMedia && !activeMedia.paused) {
             clearTimeout(hideTimer);
@@ -401,6 +407,7 @@ export function createMediaPlayer({ signal }) {
 
       if (parentEl) {
         parentEl.removeEventListener('mousemove', showControls);
+        parentEl.removeEventListener('touchstart', showControls);
         parentEl.removeEventListener('mouseleave', showControls);
         parentEl.removeEventListener('keydown', handleKeyDown);
       }

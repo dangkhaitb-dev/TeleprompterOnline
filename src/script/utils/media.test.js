@@ -1,7 +1,89 @@
 import { describe, expect, it, vi, afterEach } from 'vitest';
-import { queryPermissionState, classifyMediaError } from './media.js';
+import {
+  classifyMediaError,
+  mediaFileExtension,
+  pickRecorderMimeType,
+  queryPermissionState,
+} from './media.js';
 
 const err = (name, message = '') => Object.assign(new Error(message), { name });
+
+const VIDEO_MIME_TYPES = [
+  'video/mp4',
+  'video/webm;codecs=vp9,opus',
+  'video/webm;codecs=vp8,opus',
+  'video/webm',
+];
+const AUDIO_MIME_TYPES = [
+  'audio/mpeg',
+  'audio/mp4',
+  'audio/webm;codecs=opus',
+  'audio/webm',
+];
+
+describe('pickRecorderMimeType', () => {
+  afterEach(() => {
+    vi.unstubAllGlobals();
+  });
+
+  const supportTypes = (...supportedTypes) => {
+    const isTypeSupported = vi.fn((type) => supportedTypes.includes(type));
+    vi.stubGlobal('MediaRecorder', { isTypeSupported });
+    return isTypeSupported;
+  };
+
+  it.each(VIDEO_MIME_TYPES)(
+    'selects %s after rejecting higher-priority video formats',
+    (supportedType) => {
+      const isTypeSupported = supportTypes(supportedType);
+      const selectedIndex = VIDEO_MIME_TYPES.indexOf(supportedType);
+
+      expect(pickRecorderMimeType()).toBe(supportedType);
+      expect(isTypeSupported.mock.calls.map(([type]) => type)).toEqual(
+        VIDEO_MIME_TYPES.slice(0, selectedIndex + 1),
+      );
+    },
+  );
+
+  it.each(AUDIO_MIME_TYPES)(
+    'selects %s after rejecting higher-priority audio formats',
+    (supportedType) => {
+      const isTypeSupported = supportTypes(supportedType);
+      const selectedIndex = AUDIO_MIME_TYPES.indexOf(supportedType);
+
+      expect(pickRecorderMimeType({ video: false })).toBe(supportedType);
+      expect(isTypeSupported.mock.calls.map(([type]) => type)).toEqual(
+        AUDIO_MIME_TYPES.slice(0, selectedIndex + 1),
+      );
+    },
+  );
+
+  it('returns an empty MIME type when MediaRecorder or all candidates are unsupported', () => {
+    vi.stubGlobal('MediaRecorder', undefined);
+    expect(pickRecorderMimeType()).toBe('');
+
+    supportTypes();
+    expect(pickRecorderMimeType({ video: false })).toBe('');
+  });
+});
+
+describe('mediaFileExtension', () => {
+  it.each([
+    ['audio/mpeg', 'mp3'],
+    ['audio/mp3', 'mp3'],
+    ['audio/mp4;codecs=mp4a.40.2', 'mp4'],
+    ['video/mp4', 'mp4'],
+    ['audio/webm;codecs=opus', 'webm'],
+    ['video/webm', 'webm'],
+    ['audio/ogg;codecs=opus', 'ogg'],
+    ['video/ogg', 'ogg'],
+    [undefined, 'webm'],
+    ['', 'webm'],
+    ['application/octet-stream', 'webm'],
+  ])('maps %s to .%s', (mimeType, extension) => {
+    expect(mediaFileExtension(mimeType)).toBe(extension);
+  });
+});
 
 describe('classifyMediaError', () => {
   it('maps permission denials to "denied"', () => {

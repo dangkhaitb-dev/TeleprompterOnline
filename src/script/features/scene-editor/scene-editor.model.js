@@ -9,6 +9,7 @@ import {
   RULER_NARROW_WIDTH,
   TRIM_END_TOLERANCE_MS,
 } from '../../constants/media.js';
+import { mediaFileExtension } from '../../utils/media.js';
 
 // Map a stored recording → the scene shape the editor renders. This is the
 // single place stored field names are mapped to the app shape (trim in ms).
@@ -97,9 +98,7 @@ export function clampTrimEnd(end, start, duration) {
 
 // Download file extension derived (loosely) from the recording's mime type.
 export function fileExtension(recording) {
-  if (recording.mimeType?.includes('mp4')) return 'mp4';
-  if (recording.mimeType?.includes('ogg')) return 'ogg';
-  return 'webm';
+  return mediaFileExtension(recording.blob?.type || recording.mimeType);
 }
 
 // ---- Ruler math (pure) ----

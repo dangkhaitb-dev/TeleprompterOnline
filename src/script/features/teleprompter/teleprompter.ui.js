@@ -42,6 +42,11 @@ import { handlePlainTextPaste } from '../../utils/plain-paste.js';
 import { isFullscreen, onFullscreenChange } from '../../utils/fullscreen.js';
 import { createScrollController } from './components/scroll-controller.js';
 import { createReadingSessionController } from './components/reading-session-controller.js';
+import {
+  createRecordingStartGate,
+  getMissingRecordingMedia,
+  hasLiveMediaTrack,
+} from './components/recording-media-preflight.js';
 import { createVoiceLanguagePreflight } from './components/voice-language-preflight.js';
 import { createColorPicker } from './components/color-picker.ui.js';
 import { initFormatToolbar } from './components/format-toolbar.ui.js';
@@ -102,6 +107,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   panelsReady.catch(() => {});
 
   const cleanups = [];
+  let tornDown = false;
   const on = (el, type, fn, opts) => {
     if (!el) return;
     el.addEventListener(type, fn, opts);
@@ -174,10 +180,11 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // before any relocation, so desktop can restore the exact original order.
   const mPanelMain = $('mPanelMain');
   const mPanelTools = $('mPanelTools');
+  const mStudioBar = $('mStudioBar');
   const phoneViewport = window.matchMedia('(max-width: 600px)');
   const recordControls = root.querySelector('.record-controls');
-  const cameraToggle = root.querySelector('[data-toggle="camera"]');
-  const micToggle = root.querySelector('[data-toggle="mic"]');
+  const cameraToggle = $('toggleCamera');
+  const micToggle = $('toggleMic');
   const prompterToggle = root.querySelector('[data-action="Prompter"]');
   const mirrorControlEl = $('mirrorControl');
   const speedControlEl = speedControl;
@@ -185,20 +192,22 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // Document order — restore walks this reversed so each node's original next
   // sibling is already back in place before we re-insert it.
   const phoneMovable = [
-    recordControls, headerPlayButton, cameraToggle, micToggle, prompterToggle,
+    recordControls, headerPlayButton, prompterToggle,
     mirrorControlEl, layoutControl, speedControlEl, settingsControlEl,
   ].filter(Boolean).map((el) => ({ el, parent: el.parentNode, next: el.nextSibling }));
 
   function applyPhoneLayout() {
     if (!mPanelMain || !mPanelTools) return;
     if (phoneViewport.matches) {
-      // Tab 1 (Record): camera · mic · RECORD · play · settings.
-      [cameraToggle, micToggle, recordControls, headerPlayButton, settingsControlEl]
+      if (mStudioBar) mStudioBar.setAttribute('aria-hidden', 'false');
+      // Record: RECORD + Settings. Camera and mic live inside Settings.
+      [recordControls, settingsControlEl]
         .forEach((el) => { if (el) mPanelMain.appendChild(el); });
-      // Tab 2 (Prompter): layout · speed · mirror · (prompter, cam-on only).
-      [layoutControl, speedControlEl, mirrorControlEl, prompterToggle]
+      // Prompter: Play + reading tools.
+      [headerPlayButton, layoutControl, speedControlEl, mirrorControlEl, prompterToggle]
         .forEach((el) => { if (el) mPanelTools.appendChild(el); });
     } else {
+      if (mStudioBar) mStudioBar.setAttribute('aria-hidden', 'true');
       phoneMovable.slice().reverse().forEach(({ el, parent, next }) => {
         if (!parent) return;
         const anchor = next && next.parentNode === parent ? next : null;
@@ -455,10 +464,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   async function startCamera() {
+    if (tornDown) return false;
     const requestId = ++cameraRequestId;
     if (cameraPlaceholderText) cameraPlaceholderText.textContent = copy.cameraStarting || '';
     try {
       const { popups } = await panelsReady;
+      if (tornDown || requestId !== cameraRequestId) return false;
       const selectedDeviceId = popups.getSelectedDeviceId('camera');
       // Preview opens the camera at its own default mode (no resolution/aspect
       // constraints) — same as logic.js records with — so preview and take match.
@@ -466,16 +477,15 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
       // Prime on a first-ever request; show guidance (and bail) if already blocked.
       const allowed = await ensureCaptureAllowed({ video: true });
-      if (requestId !== cameraRequestId) return;
+      if (tornDown || requestId !== cameraRequestId) return false;
       if (!allowed) {
-        setCameraToggle(false); // declined/blocked → don't leave the cam button on
-        return;
+        return false;
       }
 
       const stream = await getCaptureStream({ video, audio: false });
-      if (requestId !== cameraRequestId || !app.classList.contains('cam-on')) {
+      if (tornDown || requestId !== cameraRequestId || !app.classList.contains('cam-on')) {
         stopStream(stream);
-        return;
+        return false;
       }
       cameraStream = stream;
       // "Check resolution" ngay khi bật cam: lấy tỷ lệ thật để dựng khung preview
@@ -493,17 +503,18 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         }, { once: true });
       }
       if (cameraPlaceholder) cameraPlaceholder.classList.remove('show');
+      return true;
     } catch (err) {
-      if (requestId !== cameraRequestId) return;
+      if (requestId !== cameraRequestId) return false;
       const reason = classifyMediaError(err);
       if (reason === 'denied') {
-        setCameraToggle(false); // declined/dismissed → turn the cam button off
         await guideIfBlocked([{ perm: 'camera', label: 'camera' }]); // guide only if truly blocked
-        return;
+        return false;
       }
       if (cameraPlaceholderText) {
         cameraPlaceholderText.textContent = cameraErrorText(reason, err);
       }
+      return false;
     }
   }
 
@@ -576,7 +587,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     layoutControlHome.insertBefore(layoutControl, anchor);
   }
 
-  function setCameraMode(nextOn) {
+  async function setCameraMode(nextOn) {
     setFormatEditOpen(false);
     if (nextOn) {
       syncSurface(teleprompterText);
@@ -588,7 +599,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       if (cameraPlaceholderText) cameraPlaceholderText.textContent = copy.cameraStarting || '';
       if (cameraPlaceholder) cameraPlaceholder.classList.add('show');
       if (readingSession) readingSession.switchSurface(teleprompterText);
-      startCamera();
+      const started = await startCamera();
+      if (!started) return false;
     } else {
       syncSurface(promptBox);
       setFormatToolbarInPanel(false);
@@ -602,6 +614,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     // Layout vừa đổi → đồng bộ nút Prompter + editing theo cờ ẩn của layout mới.
     applyPrompterVisibility();
     requestAnimationFrame(() => layout.update());
+    return nextOn ? hasLiveMediaTrack(cameraStream, 'video') : true;
   }
 
   on(panelEditButton, 'mousedown', (event) => event.preventDefault());
@@ -1047,80 +1060,85 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   });
   on(exitPlaybackButton, 'click', stopPlaybackOnly);
 
-  // ---- Toolbar toggles: camera / mic ---------------------------------------
-  // Reflect a toggle's on/off visual + label. No capture side effects.
-  function applyToggleState(button, type, enabled) {
-    if (!button) return;
-    button.setAttribute('aria-pressed', String(enabled));
-    button.classList.toggle('active', enabled);
-    button.classList.toggle('is-off', !enabled);
-    const label = button.querySelector('.label');
-    if (!label) return;
-    label.textContent =
-      type === 'camera'
-        ? enabled ? (copy.hideCam || 'Hide Cam') : (copy.showCam || 'Show Cam')
-        : enabled ? (copy.muteMic || 'Mute Mic') : (copy.unmuteMic || 'Unmute Mic');
+  // ---- Settings toggles: camera / mic --------------------------------------
+  function refreshMediaSettings() {
+    panelsReady.then((p) => p.popups.refreshMediaValues()).catch(() => {});
   }
 
-  // Turn the camera on/off. startCamera() acquires permission + preview and
-  // reverts this toggle (setCameraToggle(false)) if access is refused, so the
-  // button never stays active while the device is blocked.
-  async function setCameraToggle(on) {
-    if (on && (await queryPermissionState('camera')) === 'denied') {
+  function applyToggleState(input, type, enabled) {
+    if (input) input.checked = enabled;
+    const value = type === 'camera' ? $('cameraSettingsValue') : $('micSettingsValue');
+    if (value) value.textContent = enabled ? 'On' : 'Off';
+    refreshMediaSettings();
+  }
+
+  // Turn the camera on/off. The switch only remains on after the preview stream
+  // is live, so Settings never advertises a blocked or failed device as active.
+  async function setCameraToggle(on, { permissionVerified = false } = {}) {
+    if (tornDown) return false;
+    if (on && !permissionVerified && (await queryPermissionState('camera')) === 'denied') {
       const res = await openPermissionGuidance(['camera']);
-      if (res !== 'granted') {
+      if (tornDown || res !== 'granted') {
         applyToggleState(cameraToggle, 'camera', false);
-        return;
+        return false;
       }
     }
     applyToggleState(cameraToggle, 'camera', on);
-    setCameraMode(on);
+    const ready = await setCameraMode(on);
+    if (tornDown || (on && !ready)) {
+      applyToggleState(cameraToggle, 'camera', false);
+      await setCameraMode(false);
+      return false;
+    }
+    return true;
   }
 
   // Turn the mic on/off. Turning on acquires permission NOW (so the browser
   // prompts here, before any countdown) and only sticks if access is granted.
-  async function setMicToggle(on) {
-    if (on) {
+  async function setMicToggle(on, { permissionVerified = false } = {}) {
+    if (tornDown) return false;
+    if (on && !permissionVerified) {
       const allowed = await ensureCaptureAllowed({ audio: true });
-      if (!allowed) {
+      if (tornDown || !allowed) {
         applyToggleState(micToggle, 'mic', false);
-        return;
+        return false;
       }
       try {
         const probe = await getCaptureStream({ audio: true, video: false });
         stopStream(probe);
+        if (tornDown) return false;
       } catch (err) {
         const reason = classifyMediaError(err);
         applyToggleState(micToggle, 'mic', false);
         if (reason === 'denied') await guideIfBlocked([{ perm: 'microphone', label: 'mic' }]);
         else showToast(cameraErrorText(reason, err));
-        return;
+        return false;
       }
     }
     applyToggleState(micToggle, 'mic', on);
-    panelsReady.then((p) => p.popups.refreshMobileMicValue()).catch(() => {});
+    return true;
   }
 
-  root.querySelectorAll('[data-toggle]').forEach((button) => {
-    on(button, 'click', () => {
-      const turningOn = button.getAttribute('aria-pressed') !== 'true';
-      if (button.dataset.toggle === 'camera') setCameraToggle(turningOn);
-      else setMicToggle(turningOn);
-    });
+  on(cameraToggle, 'change', async () => {
+    const nextEnabled = cameraToggle.checked;
+    cameraToggle.disabled = true;
+    try {
+      await setCameraToggle(nextEnabled);
+    } finally {
+      cameraToggle.disabled = false;
+    }
+  });
+  on(micToggle, 'change', async () => {
+    const nextEnabled = micToggle.checked;
+    micToggle.disabled = true;
+    try {
+      await setMicToggle(nextEnabled);
+    } finally {
+      micToggle.disabled = false;
+    }
   });
 
-  // On load, don't show a device as active if the browser hasn't granted it
-  // (the mic toggle defaults to on). Reconcile against the real permission.
-  (async () => {
-    if (micToggle && micToggle.getAttribute('aria-pressed') === 'true') {
-      if ((await queryPermissionState('microphone')) !== 'granted') {
-        applyToggleState(micToggle, 'mic', false);
-        panelsReady.then((p) => p.popups.refreshMobileMicValue()).catch(() => {});
-      }
-    }
-  })();
-  const micButton = root.querySelector('[data-toggle="mic"]');
-  const micEnabled = () => micButton && micButton.getAttribute('aria-pressed') === 'true';
+  const micEnabled = () => Boolean(micToggle?.checked);
   const cameraEnabled = () => app.classList.contains('cam-on');
 
   // ---- Prompter show/hide ---------------------------------------------------
@@ -1324,6 +1342,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     },
   });
   let recordTimer = null;
+  const recordingStartGate = createRecordingStartGate();
 
   // ---- Storage monitor (warn + auto-stop tiers during recording) -------------
   const storageMonitor = createStorageMonitor({
@@ -1460,25 +1479,66 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     // 'unknown' (e.g. a lagging previous stop()) keeps the prior silent restore.
   }
 
-  // Acquire whatever the recording needs (audio, and video when the cam is on)
-  // up-front, so the browser prompts before the countdown. Returns false when
-  // access is blocked/declined so the caller can abort cleanly.
-  async function ensureRecordingPermissions() {
-    // Mirror logic.js: audio is forced on only when the camera is off.
-    const wantsAudio = cameraEnabled() ? micEnabled() : true;
-    if (!wantsAudio) return true; // video-only, camera already granted + preview
-    if ((await queryPermissionState('microphone')) === 'granted') return true;
-
-    const allowed = await ensureCaptureAllowed({ audio: true, prime: true });
-    if (!allowed) return false;
+  // Auto-enable and verify both capture inputs before storage checks/countdown.
+  // The combined probe proves that the selected devices and permissions work
+  // together; it is released immediately, before the recorder opens its stream.
+  async function ensureRecordingMediaReady() {
+    let popups;
     try {
-      const probe = await getCaptureStream({ audio: true, video: false });
-      stopStream(probe);
-      return true;
-    } catch (err) {
-      handleRecordCaptureError(err);
+      ({ popups } = await panelsReady);
+    } catch {
+      if (!tornDown) showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
       return false;
     }
+    if (tornDown) return false;
+    const missing = getMissingRecordingMedia({
+      cameraEnabled: cameraEnabled(),
+      micEnabled: micEnabled(),
+    });
+    const allowed = await ensureCaptureAllowed({ video: true, audio: true });
+    if (tornDown) return false;
+    if (!allowed) {
+      popups.openSettingsForMedia(missing.length ? missing : ['camera', 'mic']);
+      return false;
+    }
+
+    const videoDeviceId = popups.getSelectedDeviceId('camera');
+    const audioDeviceId = popups.getSelectedDeviceId('mic');
+    const video = videoDeviceId ? { deviceId: { exact: videoDeviceId } } : true;
+    const audio = audioDeviceId ? { deviceId: { exact: audioDeviceId } } : true;
+    let probe = null;
+    try {
+      probe = await getCaptureStream({ video, audio });
+      if (tornDown) return false;
+      if (!hasLiveMediaTrack(probe, 'video') || !hasLiveMediaTrack(probe, 'audio')) {
+        showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
+        popups.openSettingsForMedia(['camera', 'mic']);
+        return false;
+      }
+    } catch (err) {
+      await handleRecordCaptureError(err);
+      popups.openSettingsForMedia(missing.length ? missing : ['camera', 'mic']);
+      return false;
+    } finally {
+      stopStream(probe);
+    }
+
+    if (!cameraEnabled() || !hasLiveMediaTrack(cameraStream, 'video')) {
+      if (cameraEnabled()) stopCamera();
+      const cameraReady = await setCameraToggle(true, { permissionVerified: true });
+      if (tornDown) return false;
+      if (!cameraReady) {
+        showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
+        popups.openSettingsForMedia(['camera']);
+        return false;
+      }
+    }
+    if (!micEnabled()) {
+      const micReady = await setMicToggle(true, { permissionVerified: true });
+      if (!micReady || tornDown) return false;
+    }
+    popups.refreshMediaValues();
+    return cameraEnabled() && micEnabled() && hasLiveMediaTrack(cameraStream, 'video');
   }
 
   async function beginRecording() {
@@ -1490,6 +1550,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // (buttons restored) rather than leaking an unhandled rejection —
       // beginRecording is called un-awaited from the countdown/interval.
       const { popups } = await panelsReady;
+      if (tornDown) return;
       // Permission was already acquired in onRecordClick (before the countdown),
       // so this getUserMedia call won't pop a prompt mid 3-2-1.
       started = await controller.start({
@@ -1499,6 +1560,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         audioDeviceId: popups.getSelectedDeviceId('mic'),
       });
     } catch (err) { startErr = err; }
+    if (tornDown) {
+      controller.cancel();
+      return;
+    }
     // start() returns null (without throwing) when capture cannot begin —
     // e.g. the previous stop() is still persisting its recording.
     if (!started) {
@@ -1533,41 +1598,56 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       return;
     }
     if (!controller.isRecording() && !controller.isPaused()) {
-      // Switching from Play to Record starts a fresh recording session while
-      // preserving the same reading layout.
-      stopPlaybackOnly();
-      armVoiceLanguageCheck('record');
-      // ── Pre-flight storage check. The warn tier respects the user's
-      // storage-warning preference; the blocked tier always stops — with that
-      // little space left the recording is doomed regardless of preference.
-      const storageCheck = await checkBeforeRecord();
-      if (!storageCheck.ok && (storageCheck.blocked || settings.wantsStorageWarning())) {
-        // Both blocked (< 30MB) and warn (< 200MB) show the modal.
-        // When blocked, Continue is visually disabled inside the modal.
-        const choice = await showStorageWarnModal(storageCheck.message, { blocked: !!storageCheck.blocked });
-        if (choice === 'cancel' || storageCheck.blocked) {
-          // Restore UI state that was set before this check.
-          app.classList.remove('record-dim');
-          return;
+      if (recordingStartGate.isPending()) return;
+      if (recordButton) recordButton.disabled = true;
+      await recordingStartGate.run(async () => {
+        try {
+          // Switching from Play to Record starts a fresh recording session while
+          // preserving the same reading layout.
+          stopPlaybackOnly();
+          armVoiceLanguageCheck('record');
+          // Record always uses camera + microphone. Auto-enable them and verify
+          // permissions/hardware before any storage dialog or 3-2-1 countdown.
+          const mediaReady = await ensureRecordingMediaReady();
+          if (!mediaReady || tornDown) {
+            app.classList.remove('record-dim');
+            return;
+          }
+          // ── Pre-flight storage check. The warn tier respects the user's
+          // storage-warning preference; the blocked tier always stops — with that
+          // little space left the recording is doomed regardless of preference.
+          const storageCheck = await checkBeforeRecord();
+          if (tornDown) return;
+          if (!storageCheck.ok && (storageCheck.blocked || settings.wantsStorageWarning())) {
+            // Both blocked (< 30MB) and warn (< 200MB) show the modal.
+            // When blocked, Continue is visually disabled inside the modal.
+            const choice = await showStorageWarnModal(storageCheck.message, { blocked: !!storageCheck.blocked });
+            if (tornDown) return;
+            if (choice === 'cancel' || storageCheck.blocked) {
+              // Restore UI state that was set before this check.
+              app.classList.remove('record-dim');
+              return;
+            }
+            // choice === 'continue' && !blocked → proceed with recording.
+          }
+          // Request persistent storage so recordings survive browser eviction.
+          requestPersistentStorage().catch(() => {});
+          // ── Begin countdown / recording ───────────────────────────────────
+          if (headerPlayButton) headerPlayButton.classList.add('hidden');
+          // Slide the first line down onto the eye-line (runs through the countdown).
+          readingSession.begin('record', { waitFor: ['layout', 'capture'] });
+          enterReadingUI(() => readingSession.release('layout'));
+          if (settings.wantsCountdown()) startRecordCountdown();
+          else await beginRecording();
+        } catch {
+          if (!tornDown) {
+            app.classList.remove('record-dim');
+            showToast(copy.recordingMediaUnavailable || copy.cameraNoDevice || '');
+          }
+        } finally {
+          if (recordButton) recordButton.disabled = false;
         }
-        // choice === 'continue' && !blocked → proceed with recording.
-      }
-      // Acquire the mic permission BEFORE the countdown so the browser prompts
-      // now, not after 3-2-1. The camera (when on) is already granted + preview.
-      const permitted = await ensureRecordingPermissions();
-      if (!permitted) {
-        app.classList.remove('record-dim');
-        return;
-      }
-      // Request persistent storage so recordings survive browser eviction.
-      requestPersistentStorage().catch(() => {});
-      // ── Begin countdown / recording ───────────────────────────────────────
-      if (headerPlayButton) headerPlayButton.classList.add('hidden');
-      // Slide the first line down onto the eye-line (runs through the countdown).
-      readingSession.begin('record', { waitFor: ['layout', 'capture'] });
-      enterReadingUI(() => readingSession.release('layout'));
-      if (settings.wantsCountdown()) startRecordCountdown();
-      else beginRecording();
+      });
     } else {
       // Manual stop → reset UI → stop scroller → jump straight to the scene
       // editor; the save keeps running in the background and the editor shows
@@ -1790,12 +1870,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   const popupsArgs = {
     root,
-    getMicEnabled: micEnabled,
-    onDeviceChange: (type) => {
+    getMediaEnabled: (type) => (type === 'camera' ? cameraEnabled() : micEnabled()),
+    onMediaToggle: (type, enabled) => (
+      type === 'camera' ? setCameraToggle(enabled) : setMicToggle(enabled)
+    ),
+    onDeviceChange: async (type) => {
       if (type !== 'camera' || !cameraEnabled()) return;
       stopCamera();
       if (cameraPlaceholder) cameraPlaceholder.classList.add('show');
-      void startCamera();
+      const ready = await startCamera();
+      if (!ready) await setCameraToggle(false);
     },
   };
   const settings = initSettingsTheme({
@@ -2048,7 +2132,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   cleanups.push(() => editStaleBadge.destroy());
 
   // ---- Teardown -------------------------------------------------------------
-  let tornDown = false;
   const teardown = () => {
     if (tornDown) return;
     tornDown = true;

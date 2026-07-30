@@ -14,6 +14,10 @@ describe('createRecordingsZip', () => {
         blob: new Blob(['audio-two'], { type: 'audio/ogg' }),
         mimeType: 'audio/ogg;codecs=opus',
       },
+      {
+        blob: new Blob(['audio-three'], { type: 'audio/mpeg' }),
+        mimeType: 'audio/webm',
+      },
     ];
 
     const archive = await createRecordingsZip(scenes, { onProgress });
@@ -22,7 +26,8 @@ describe('createRecordingsZip', () => {
     expect(archive.type).toBe('application/zip');
     expect(strFromU8(files['solprompter-clip-01.webm'])).toBe('video-one');
     expect(strFromU8(files['solprompter-clip-02.ogg'])).toBe('audio-two');
-    expect(onProgress).toHaveBeenLastCalledWith({ progress: 1, fileIndex: 2, fileCount: 2 });
+    expect(strFromU8(files['solprompter-clip-03.mp3'])).toBe('audio-three');
+    expect(onProgress).toHaveBeenLastCalledWith({ progress: 1, fileIndex: 3, fileCount: 3 });
   });
 
   it('rejects archives with fewer than two recordings', async () => {

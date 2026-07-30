@@ -105,6 +105,8 @@ describe('scene editor media player', () => {
     const play = player.el.querySelector('.se-media-play-btn');
 
     expect(audio.controls).toBe(false);
+    expect(audio.hasAttribute('playsinline')).toBe(true);
+    expect(audio.hasAttribute('webkit-playsinline')).toBe(true);
     expect(player.el.hidden).toBe(false);
 
     play.click();

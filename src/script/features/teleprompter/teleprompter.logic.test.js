@@ -208,6 +208,26 @@ describe('workspace setting inheritance', () => {
 });
 
 describe('createRecordingController persistence tagging', () => {
+  it('stops a capture stream that resolves after the controller was cancelled', async () => {
+    let resolveCapture;
+    const stream = { getVideoTracks: () => [] };
+    media.getCaptureStream.mockReturnValue(new Promise((resolve) => {
+      resolveCapture = resolve;
+    }));
+    vi.stubGlobal('MediaRecorder', FakeMediaRecorder);
+    FakeMediaRecorder.instance = null;
+    const controller = createRecordingController();
+
+    const pendingStart = controller.start({ wantsVideo: false, wantsAudio: true });
+    controller.cancel();
+    resolveCapture(stream);
+
+    await expect(pendingStart).resolves.toBeNull();
+    expect(media.stopStream).toHaveBeenCalledWith(stream);
+    expect(FakeMediaRecorder.instance).toBeNull();
+    expect(controller.getState()).toBe('idle');
+  });
+
   it('uses the selected camera and microphone for capture', async () => {
     const stream = {
       getVideoTracks: () => [{ kind: 'video', getSettings: () => ({ width: 1920, height: 1080 }) }],

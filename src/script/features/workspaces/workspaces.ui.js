@@ -48,6 +48,7 @@ import {
 } from '../../utils/streaming-zip.js';
 import { waitForMinimumZipProcessing } from '../../utils/export-timing.js';
 import { ensureWebmDuration } from '../../utils/webm-duration.js';
+import { mediaFileExtension } from '../../utils/media.js';
 
 const MORE_ICON =
   '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="5" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="12" cy="19" r="2"/></svg>';
@@ -1358,9 +1359,8 @@ export function initWorkspacesUI() {
     const blob = card.durationMetadataFixed
       ? sourceBlob
       : await ensureWebmDuration(sourceBlob, card.duration);
-    const subtype = ((blob.type || card.mimeType || '').split('/')[1] || 'webm').split(';')[0].trim();
     const base = safeFileName(card.workspaceTitle || t('recUnknownScript', 'Untitled script'));
-    downloadBlob(blob, `${base}.${subtype || 'webm'}`);
+    downloadBlob(blob, `${base}.${mediaFileExtension(blob.type || card.mimeType)}`);
   }
 
   const recordingMenuItems = (card) => [
@@ -1377,11 +1377,10 @@ export function initWorkspacesUI() {
       const blob = card.durationMetadataFixed
         ? sourceBlob
         : await ensureWebmDuration(sourceBlob, card.duration);
-      const subtype = ((blob.type || card.mimeType || '').split('/')[1] || 'webm').split(';')[0].trim();
       const base = safeFileName(card.workspaceTitle || t('recUnknownScript', 'Untitled script'));
       entries.push({
         blob,
-        name: `${String(index + 1).padStart(2, '0')}-${base}.${subtype || 'webm'}`,
+        name: `${String(index + 1).padStart(2, '0')}-${base}.${mediaFileExtension(blob.type || card.mimeType)}`,
       });
     }
     return entries;

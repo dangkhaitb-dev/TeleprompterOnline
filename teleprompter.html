@@ -63,6 +63,7 @@
   "cameraNoDevice": "No camera or microphone available to record.",
   "cameraInUse": "Your camera or microphone is being used by another app. Close it and try again.",
   "cameraOverconstrained": "The selected camera settings aren't supported. Try a lower resolution.",
+  "recordingMediaUnavailable": "Camera and microphone must both be working before recording.",
   "permission": {
     "cameraTitle": "Camera access is blocked",
     "micTitle": "Microphone access is blocked",
@@ -110,10 +111,6 @@
       ]
     }
   },
-  "showCam": "Show Cam",
-  "hideCam": "Hide Cam",
-  "muteMic": "Mute Mic",
-  "unmuteMic": "Unmute Mic",
   "record": "Record",
   "pause": "Pause",
   "resume": "Play",
@@ -363,38 +360,6 @@
     <!-- Shared floating studio toolbar -->
     <div class="toolbar-shell">
       <div class="toolbar" role="toolbar" aria-label="Studio controls">
-        <button class="item is-off" type="button" data-toggle="camera" aria-pressed="false">
-          <div class="icon-wrap">
-            <div class="toggle-btn">
-              <svg width="32" height="26" viewBox="0 0 32 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill="var(--tp-green-dark)" fill-rule="evenodd" clip-rule="evenodd" d="M22.208 3.64h.992a4.8 4.8 0 014.8 4.8v9.76a4.8 4.8 0 01-4.8 4.8H8.8A4.8 4.8 0 014 18.2V8.44a4.8 4.8 0 014.8-4.8h.992A4.8 4.8 0 0114.08 1h3.84a4.8 4.8 0 014.288 2.64z"/>
-                <path fill="var(--tp-white)" d="M16 19a6 6 0 100-12 6 6 0 000 12z"/>
-              </svg>
-            </div>
-            <div class="caret">
-              <svg width="8" height="8" viewBox="0 0 16 16" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="m4 6 4 4 4-4"/></svg>
-            </div>
-          </div>
-          <span class="label">Show Cam</span>
-        </button>
-
-        <button class="item active" type="button" data-toggle="mic" aria-pressed="true">
-          <div class="icon-wrap">
-            <div class="toggle-btn">
-              <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path fill="var(--tp-green-dark)" d="M5.04 9C4.464 9 4 9.465 4 10.04v4.89a5.5 5.5 0 005.5 5.5v1.07a3.5 3.5 0 107 0v-1.07a5.5 5.5 0 005.5-5.5v-4.89A1.04 1.04 0 0020.961 9H5.04z"/>
-                <path fill="var(--tp-white)" d="M9 5a4 4 0 018 0v8a4 4 0 01-8 0V5z"/>
-              </svg>
-            </div>
-            <div class="caret">
-              <svg width="8" height="8" viewBox="0 0 16 16" fill="none"><path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" d="m4 6 4 4 4-4"/></svg>
-            </div>
-          </div>
-          <span class="label">Mute Mic</span>
-        </button>
-
-        <div class="divider" aria-hidden="true"></div>
-
         <button class="item selected" type="button" data-action="Prompter">
           <div class="icon-wrap">
             <div class="action-btn">
@@ -597,11 +562,26 @@
         <span class="settings-row-title">Fullscreen when enabling Notch</span>
         <span class="settings-switch"><input type="checkbox" id="toggleNotchFullscreen" checked><span class="settings-switch-track"></span></span>
       </label>
-      <button type="button" class="settings-row settings-row-nav" id="mobileMicSettingsRow" aria-haspopup="menu" aria-expanded="false">
-        <span class="settings-row-title">Microphone</span>
-        <span class="settings-row-value" id="mobileMicSettingsValue">On</span>
-        <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
+      <div class="settings-row settings-media-row" id="cameraSettingsGroup">
+        <button type="button" class="settings-media-device" id="cameraSettingsRow" aria-haspopup="menu" aria-expanded="false">
+          <span class="settings-row-title">Camera</span>
+          <span class="settings-row-value" id="cameraSettingsValue">Off</span>
+          <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <label class="settings-switch">
+          <input type="checkbox" id="toggleCamera" aria-label="Turn camera on or off"><span class="settings-switch-track"></span>
+        </label>
+      </div>
+      <div class="settings-row settings-media-row" id="micSettingsGroup">
+        <button type="button" class="settings-media-device" id="micSettingsRow" aria-haspopup="menu" aria-expanded="false">
+          <span class="settings-row-title">Microphone</span>
+          <span class="settings-row-value" id="micSettingsValue">Off</span>
+          <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
+        <label class="settings-switch">
+          <input type="checkbox" id="toggleMic" aria-label="Turn microphone on or off"><span class="settings-switch-track"></span>
+        </label>
+      </div>
       <div class="settings-row theme-row">
         <span class="settings-row-title">Dark theme</span>
         <div class="theme-toggle-group" role="radiogroup" aria-label="Theme selection">
@@ -680,12 +660,12 @@
          Empty + hidden on desktop. -->
     <div class="m-studio-bar" id="mStudioBar" aria-hidden="true">
       <div class="m-tabs" role="tablist">
-        <button type="button" class="m-tab active" data-tab="main" role="tab" aria-selected="true">Record</button>
-        <button type="button" class="m-tab" data-tab="tools" role="tab" aria-selected="false">Prompter</button>
+        <button type="button" class="m-tab active" data-tab="tools" role="tab" aria-selected="true">Prompter</button>
+        <button type="button" class="m-tab" data-tab="main" role="tab" aria-selected="false">Record</button>
       </div>
       <div class="m-tab-panels">
-        <div class="m-tab-panel active" id="mPanelMain" data-panel="main"></div>
-        <div class="m-tab-panel" id="mPanelTools" data-panel="tools"></div>
+        <div class="m-tab-panel active" id="mPanelTools" data-panel="tools"></div>
+        <div class="m-tab-panel" id="mPanelMain" data-panel="main"></div>
       </div>
     </div>
   </section>

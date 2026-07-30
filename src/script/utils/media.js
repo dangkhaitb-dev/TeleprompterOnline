@@ -4,17 +4,29 @@
 export function pickRecorderMimeType({ video = true } = {}) {
   const candidates = video
     ? [
+        'video/mp4',
         'video/webm;codecs=vp9,opus',
         'video/webm;codecs=vp8,opus',
         'video/webm',
-        'video/mp4',
       ]
-    : ['audio/webm;codecs=opus', 'audio/webm', 'audio/mp4'];
+    : ['audio/mpeg', 'audio/mp4', 'audio/webm;codecs=opus', 'audio/webm'];
   if (typeof MediaRecorder === 'undefined') return '';
   for (const type of candidates) {
     if (MediaRecorder.isTypeSupported(type)) return type;
   }
   return '';
+}
+
+// Map a recorded Blob MIME type to the correct download extension. In
+// particular, the standards-based MP3 MIME is audio/mpeg rather than
+// audio/mp3, so deriving the extension from the raw subtype would produce the
+// misleading filename "recording.mpeg".
+export function mediaFileExtension(mimeType) {
+  const type = String(mimeType || '').toLowerCase().split(';')[0].trim();
+  if (type === 'audio/mpeg' || type === 'audio/mp3') return 'mp3';
+  if (type === 'audio/ogg' || type === 'video/ogg') return 'ogg';
+  if (type === 'audio/mp4' || type === 'video/mp4') return 'mp4';
+  return 'webm';
 }
 
 // Request camera + mic (or mic only). Rejects if permission is denied.

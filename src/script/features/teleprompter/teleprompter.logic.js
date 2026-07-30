@@ -114,6 +114,7 @@ export function createRecordingController({ onError } = {}) {
   let opfsWriteFailed = false;
   let hasVideo = false;
   let mimeType = '';
+  let startGeneration = 0;
 
   let accumulatedMs = 0;
   let startedAt = 0;
@@ -137,6 +138,7 @@ export function createRecordingController({ onError } = {}) {
     audioDeviceId = '',
   } = {}) {
     if (state !== 'idle') return null;
+    const generation = ++startGeneration;
 
     // Cam-off with mic-off would capture nothing — force audio on in that case.
     const audioEnabled = wantsVideo ? wantsAudio : true;
@@ -150,7 +152,12 @@ export function createRecordingController({ onError } = {}) {
     const audio = audioEnabled && audioDeviceId
       ? { deviceId: { exact: audioDeviceId } }
       : audioEnabled;
-    stream = await getCaptureStream({ video, audio });
+    const acquiredStream = await getCaptureStream({ video, audio });
+    if (generation !== startGeneration) {
+      stopStream(acquiredStream);
+      return null;
+    }
+    stream = acquiredStream;
 
     hasVideo = stream.getVideoTracks().length > 0;
     mimeType = recordingMimeType(hasVideo);
@@ -320,6 +327,7 @@ export function createRecordingController({ onError } = {}) {
   // Abort without saving (used when capture never started, e.g. permission
   // denied mid-countdown, or on teardown).
   function cancel() {
+    startGeneration += 1;
     if (mediaRecorder && mediaRecorder.state !== 'inactive') {
       try {
         mediaRecorder.stop();

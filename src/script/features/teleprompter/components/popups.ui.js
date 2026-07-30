@@ -31,7 +31,8 @@ function positionAbove(root, menu, button) {
 
 export function initPopups({
   root = document,
-  getMicEnabled,
+  getMediaEnabled,
+  onMediaToggle,
   onDeviceChange,
 } = {}) {
   const $ = scopedId(root);
@@ -52,7 +53,10 @@ export function initPopups({
   const deviceMenus = {
     camera: {
       menu: $('cameraMenu'),
-      button: root.querySelector('[data-toggle="camera"]'),
+      button: $('cameraSettingsRow'),
+      group: $('cameraSettingsGroup'),
+      input: $('toggleCamera'),
+      value: $('cameraSettingsValue'),
       action: $('cameraMenuAction'),
       options: root.querySelector('[data-device-type="camera"]'),
       kind: 'videoinput',
@@ -62,7 +66,10 @@ export function initPopups({
     },
     mic: {
       menu: $('micMenu'),
-      button: root.querySelector('[data-toggle="mic"]'),
+      button: $('micSettingsRow'),
+      group: $('micSettingsGroup'),
+      input: $('toggleMic'),
+      value: $('micSettingsValue'),
       action: $('micMenuAction'),
       options: root.querySelector('[data-device-type="mic"]'),
       kind: 'audioinput',
@@ -90,7 +97,10 @@ export function initPopups({
   }
 
   function closeDeviceMenus() {
-    Object.values(deviceMenus).forEach((entry) => entry.menu && entry.menu.classList.remove('open'));
+    Object.values(deviceMenus).forEach((entry) => {
+      if (entry.menu) entry.menu.classList.remove('open');
+      if (entry.button) entry.button.setAttribute('aria-expanded', 'false');
+    });
   }
 
   function closeAll() {
@@ -98,26 +108,57 @@ export function initPopups({
     closeDeviceMenus();
   }
 
-  function toggleQuickMenu(menu, button) {
+  function openQuickMenu(menu, button) {
     if (!menu || !button) return;
-    const shouldOpen = !menu.classList.contains('open');
     closeAll();
-    if (!shouldOpen) return;
     menu.classList.add('open');
     button.setAttribute('aria-expanded', 'true');
     button.classList.add('selected');
     positionAbove(root, menu, button);
   }
 
+  function toggleQuickMenu(menu, button) {
+    if (!menu || !button) return;
+    const shouldOpen = !menu.classList.contains('open');
+    if (!shouldOpen) {
+      closeAll();
+      return;
+    }
+    openQuickMenu(menu, button);
+  }
+
   on(speedControl, 'click', () => toggleQuickMenu(speedMenu, speedControl));
   on(settingsControl, 'click', () => toggleQuickMenu(settingsMenu, settingsControl));
   on(shortcutsControl, 'click', () => toggleQuickMenu(shortcutsMenu, settingsControl));
 
-  // ---- Device menus (open from camera/mic caret) ---------------------------
+  function mediaEnabled(type) {
+    return Boolean(getMediaEnabled && getMediaEnabled(type));
+  }
+
+  function refreshMediaValues() {
+    Object.entries(deviceMenus).forEach(([type, entry]) => {
+      const enabled = mediaEnabled(type);
+      if (entry.input) entry.input.checked = enabled;
+      if (entry.value) entry.value.textContent = enabled ? 'On' : 'Off';
+      if (enabled && entry.group) entry.group.classList.remove('is-required');
+    });
+  }
+
+  function openSettingsForMedia(requiredTypes = []) {
+    Object.entries(deviceMenus).forEach(([type, entry]) => {
+      if (entry.group) entry.group.classList.toggle('is-required', requiredTypes.includes(type));
+    });
+    refreshMediaValues();
+    openQuickMenu(settingsMenu, settingsControl);
+    const firstRequired = requiredTypes.map((type) => deviceMenus[type]?.input).find(Boolean);
+    firstRequired?.focus();
+  }
+
+  // ---- Device menus (open from the Camera/Microphone Settings rows) --------
   function updateDeviceActionLabel(type) {
     const entry = deviceMenus[type];
     if (!entry || !entry.action) return;
-    const enabled = entry.button && entry.button.getAttribute('aria-pressed') === 'true';
+    const enabled = mediaEnabled(type);
     entry.action.textContent = type === 'camera'
       ? (enabled ? 'Hide Camera' : 'Show Camera')
       : (enabled ? 'Mute Microphone' : 'Unmute Microphone');
@@ -244,15 +285,15 @@ export function initPopups({
 
   Object.entries(deviceMenus).forEach(([type, entry]) => {
     if (!entry.button || !entry.menu) return;
-    const caret = entry.button.querySelector('.caret');
-    on(caret, 'click', (e) => {
+    on(entry.button, 'click', (e) => {
       e.stopPropagation();
       const isOpen = entry.menu.classList.contains('open');
       closeAll();
       if (!isOpen) {
         updateDeviceActionLabel(type);
         entry.menu.classList.add('open');
-        positionAbove(root, entry.menu, entry.button);
+        entry.button.setAttribute('aria-expanded', 'true');
+        positionAbove(root, entry.menu, settingsControl);
         void refreshDevices(type, { requestPermission: true });
       }
     });
@@ -273,23 +314,21 @@ export function initPopups({
       closeDeviceMenus();
     });
 
-    on(entry.action, 'click', () => {
+    on(entry.action, 'click', async () => {
+      const nextEnabled = !mediaEnabled(type);
       closeDeviceMenus();
-      if (entry.button) entry.button.click();
+      if (typeof onMediaToggle === 'function') {
+        entry.action.disabled = true;
+        try {
+          await onMediaToggle(type, nextEnabled);
+        } finally {
+          entry.action.disabled = false;
+          refreshMediaValues();
+        }
+      }
     });
   });
-
-  // Mobile mic settings row opens the mic device menu anchored to Settings.
-  const mobileMicRow = $('mobileMicSettingsRow');
-  const mobileMicValue = $('mobileMicSettingsValue');
-  const refreshMobileMicValue = () => {
-    if (mobileMicValue) mobileMicValue.textContent = (getMicEnabled && getMicEnabled()) ? 'On' : 'Off';
-  };
-  on(mobileMicRow, 'click', () => {
-    updateDeviceActionLabel('mic');
-    toggleQuickMenu(deviceMenus.mic.menu, settingsControl);
-  });
-  refreshMobileMicValue();
+  refreshMediaValues();
 
   const mediaDevices = navigator.mediaDevices;
   const onDeviceListChange = () => {
@@ -333,7 +372,8 @@ export function initPopups({
 
   return {
     closeAll,
-    refreshMobileMicValue,
+    openSettingsForMedia,
+    refreshMediaValues,
     getSelectedDeviceId(type) { return selectedDeviceIds[type] || ''; },
     refreshDevices,
     destroy() { cleanups.forEach((fn) => fn()); },

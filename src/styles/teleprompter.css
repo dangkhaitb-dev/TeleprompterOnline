@@ -928,55 +928,8 @@ html[data-theme="dark"] .app .prompt-box {
   justify-content: center;
 }
 
-.toggle-btn {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--tp-green-light);
-  transition: transform 0.1s ease, background 0.15s ease, opacity 0.15s ease;
-}
-
-.toggle-btn svg {
-  transform: scale(0.82);
-}
-
-.item:hover .toggle-btn,
 .item:hover .action-btn {
   transform: translateY(-1px);
-}
-
-.item.is-off .toggle-btn {
-  background: var(--tp-toggle-off-bg);
-  filter: grayscale(1);
-  opacity: 0.72;
-}
-
-.caret {
-  position: absolute;
-  top: -3px;
-  right: -5px;
-  width: 18px;
-  height: 18px;
-  border-radius: 50%;
-  background: var(--tp-caret-bg);
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--tp-caret-arrow);
-  cursor: pointer;
-}
-
-.caret:hover {
-  color: var(--tp-page-text);
-}
-
-.caret svg {
-  width: 10px;
-  height: 10px;
 }
 
 .action-btn {
@@ -2028,6 +1981,41 @@ html[data-theme="dark"] .theme-btn.active {
   flex: 0 0 auto;
 }
 
+.settings-media-row {
+  gap: 4px;
+  padding: 0 12px 0 0;
+}
+
+.settings-media-row.is-required {
+  background: var(--tp-surface-hover);
+  box-shadow: inset 0 0 0 1px var(--tp-record-btn);
+}
+
+.settings-media-device {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 0;
+  background: transparent;
+  padding: 10px 0 10px 12px;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.settings-media-device .settings-row-title {
+  margin-right: auto;
+}
+
+.settings-media-device:focus-visible,
+.settings-switch:has(input:focus-visible) {
+  outline: 2px solid var(--tp-green-dark);
+  outline-offset: 2px;
+}
+
 /* ===== Shortcuts popup (mở từ item Shortcuts trong Settings) ===== */
 .shortcuts-quick {
   width: 248px;
@@ -2674,12 +2662,10 @@ html[data-theme="dark"] .mff-more-left {
     display: flex;
   }
 
-  /* Cam bật trên mobile: toolbar nổi chỉ cần Mic + Prompter. Ẩn các nút action-btn
-     phụ — Mirror/Speed/Settings (Layout đã dời vào control-bar).
-     Divider sau Prompter không re-show nữa vì nhóm phía sau đã bị ẩn. */
+  /* Cam bật trên màn hẹp: giữ Settings để camera/mic luôn truy cập được; ẩn các
+     công cụ phụ Mirror/Speed (Layout đã dời vào control-bar). */
   .app.cam-on #mirrorControl,
-  .app.cam-on #speedControl,
-  .app.cam-on #settingsControl {
+  .app.cam-on #speedControl {
     display: none;
   }
 
@@ -2738,23 +2724,6 @@ html[data-theme="dark"] .mff-more-left {
   #shortcutsControl {
     display: none !important;
   }
-
-
-
-  /* Hide the microphone toolbar button on mobile/tablet */
-  .toolbar [data-toggle="mic"] {
-    display: none !important;
-  }
-
-  /* Show the microphone row inside the settings popup on mobile/tablet */
-  #mobileMicSettingsRow {
-    display: flex !important;
-  }
-}
-
-/* Hide the mobile mic row by default on desktop */
-#mobileMicSettingsRow {
-  display: none;
 }
 
 .format-toolbar button {
@@ -3854,6 +3823,7 @@ html.theme-instant *::after {
     color: var(--tp-gray-text);
     cursor: pointer;
     transition: color 0.15s ease;
+    min-height: 44px;
   }
   .m-studio-bar .m-tab.active { color: var(--tp-page-text); }
   /* Active-tab underline indicator. */
@@ -3882,6 +3852,8 @@ html.theme-instant *::after {
   }
   .m-tab-panel.active { visibility: visible; }
 
+  #mPanelTools { gap: 8px; }
+
   .m-studio-bar .item { min-width: 0; }
   .m-studio-bar .item .label { display: none; }
   #mPanelTools .item .label {
@@ -3894,8 +3866,14 @@ html.theme-instant *::after {
 
   /* Prompter-tools icons (layout · speed · mirror) are the larger touch targets. */
   #mPanelTools .item .icon-wrap,
-  #mPanelTools .item .action-btn { width: 46px; height: 46px; }
-  #mPanelTools .item .action-btn svg { width: 46px; height: 46px; }
+  #mPanelTools .item .action-btn { width: 44px; height: 44px; }
+  #mPanelTools .item .action-btn svg { width: 44px; height: 44px; }
+
+  #mPanelMain #settingsControl .icon-wrap,
+  #mPanelMain #settingsControl .action-btn {
+    width: 44px;
+    height: 44px;
+  }
 
   /* Prompter toggle only makes sense once the camera is on. */
   #mPanelTools [data-action="Prompter"] { display: none; }
@@ -3935,23 +3913,34 @@ html.theme-instant *::after {
   .app:not(.record-dim) #mPanelMain #recordButton .record-label { display: none; }
 
   /* Play → circular border container like the record button. */
-  .app:not(.record-dim) #mPanelMain .header-play-button {
-    width: 32px;
-    height: 32px;
+  .app:not(.record-dim) #mPanelTools .header-play-button {
+    width: 44px;
+    height: 44px;
     padding: 0;
     border: 2px solid var(--tp-white, #fff);
     border-radius: 50%;
     background: transparent;
+    color: var(--tp-white);
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
-  .app:not(.record-dim) #mPanelMain .header-play-button svg {
+  .app:not(.record-dim) #mPanelTools .header-play-button svg {
     width: 24px;
     height: 24px;
     color: var(--tp-white, #fff);
   }
-  .app:not(.record-dim) #mPanelMain .header-play-button .header-play-label { display: none; }
+  .app:not(.record-dim) #mPanelTools .header-play-button .header-play-label { display: none; }
+
+  .m-studio-bar button:focus-visible {
+    outline: 2px solid var(--tp-green);
+    outline-offset: 2px;
+  }
+
+  .app:not(.record-dim) #mPanelTools .header-play-button:focus-visible,
+  .app:not(.record-dim) #mPanelMain #recordButton:focus-visible {
+    outline-color: var(--tp-white);
+  }
 
   /* During record-dim / notch: collapse the pill, hide the tabs + every button
      except the floated .record-controls (recording UI unchanged from today).

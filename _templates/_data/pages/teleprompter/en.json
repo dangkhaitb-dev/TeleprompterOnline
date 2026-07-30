@@ -64,7 +64,8 @@
     "unsupportedRecording": "Your browser does not support audio or video recording.",
     "micDenied": "Microphone permission is needed to record.",
     "inUse": "Your camera or microphone is being used by another app. Close it and try again.",
-    "overconstrained": "The selected camera settings aren't supported. Try a lower resolution."
+    "overconstrained": "The selected camera settings aren't supported. Try a lower resolution.",
+    "recordingMediaUnavailable": "Camera and microphone must both be working before recording."
   },
   "permission": {
     "cameraTitle": "Camera access is blocked",
@@ -121,10 +122,6 @@
   },
   "toolbar": {
     "studioAria": "Studio controls",
-    "showCam": "Show Cam",
-    "hideCam": "Hide Cam",
-    "muteMic": "Mute Mic",
-    "unmuteMic": "Unmute Mic",
     "prompter": "Prompter",
     "mirror": "Mirror",
     "mirrorAria": "Mirror prompter text",
@@ -165,9 +162,12 @@
     "countdown": "Countdown",
     "fullscreen": "Fullscreen",
     "notchFullscreen": "Fullscreen when enabling Notch",
+    "camera": "Camera",
     "microphone": "Microphone",
-    "micOn": "On",
-    "micOff": "Off",
+    "cameraToggleAria": "Turn camera on or off",
+    "micToggleAria": "Turn microphone on or off",
+    "on": "On",
+    "off": "Off",
     "darkTheme": "Dark theme",
     "lightThemeAria": "Light Theme",
     "darkThemeAria": "Dark Theme",

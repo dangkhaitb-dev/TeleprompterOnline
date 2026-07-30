@@ -168,11 +168,10 @@ export function createFirstVisitTour({
     if (typeof onComplete === 'function') onComplete();
   }
 
-  function advance(event) {
-    event.preventDefault();
+  function advance() {
     if (completed) return;
     if (currentStep >= tourSteps.length - 1) {
-      complete(event);
+      complete();
       return;
     }
     currentStep += 1;
@@ -182,7 +181,7 @@ export function createFirstVisitTour({
   function skipTour(event) {
     event.stopPropagation();
     event.preventDefault();
-    complete(event);
+    complete();
   }
 
   function handleKeydown(event) {

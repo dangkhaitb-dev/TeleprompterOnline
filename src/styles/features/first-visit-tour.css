@@ -74,11 +74,17 @@
 }
 
 .first-visit-tour-skip:hover {
-  background: color-mix(in srgb, var(--tp-black) 10%, var(--tp-white));
+  background: var(--tp-black);
+  color: var(--tp-white);
+}
+
+.first-visit-tour-skip:active {
+  background: var(--tp-black);
+  color: var(--tp-white);
 }
 
 .first-visit-tour-skip:focus-visible {
-  outline: 2px solid var(--tp-green-dark);
+  outline: 2px solid var(--tp-black);
   outline-offset: 2px;
 }
 

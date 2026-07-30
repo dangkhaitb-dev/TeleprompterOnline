@@ -15,10 +15,8 @@ export function initFirstVisitTours({
   isRecordModeActive = () => false,
   beforeRecordButtonTour = () => true,
   hasSeenMain = () => false,
-  hasSeenScrollModes = () => false,
   hasSeenRecordButton = () => false,
   markMainSeen = () => {},
-  markScrollModesSeen = () => {},
   markRecordButtonSeen = () => {},
   requestFrame = (callback) => window.requestAnimationFrame(callback),
   cancelFrame = (frame) => window.cancelAnimationFrame(frame),
@@ -26,10 +24,8 @@ export function initFirstVisitTours({
 } = {}) {
   let destroyed = false;
   let mainFrame = 0;
-  let scrollModesFrame = 0;
   let recordFrame = 0;
   let mainTour = null;
-  let scrollModesTour = null;
   let recordTour = null;
   let recordAttempt = 0;
 
@@ -41,32 +37,16 @@ export function initFirstVisitTours({
       ariaLabel: copy.label,
       skipLabel: copy.skip,
       steps: [
-        { target: playButton, text: copy.play },
         { target: speedButton, text: copy.scrollMode },
+        {
+          target: () => (scrollMenu?.classList.contains('open') ? scrollMenu : speedButton),
+          text: copy.scrollModes,
+        },
+        { target: playButton, text: copy.play },
       ],
-      onComplete: () => {
-        markMainSeen();
-        if (scrollMenu?.classList.contains('open')) scheduleScrollModesTour();
-      },
+      onComplete: markMainSeen,
     });
     mainTour.start();
-  }
-
-  function scheduleScrollModesTour() {
-    if (destroyed || !copy || hasSeenScrollModes() || scrollModesTour) return;
-    if (scrollModesFrame) cancelFrame(scrollModesFrame);
-    scrollModesFrame = requestFrame(() => {
-      scrollModesFrame = 0;
-      if (destroyed || !hasSeenMain() || !scrollMenu?.classList.contains('open')) return;
-      scrollModesTour = createTour({
-        root: documentRoot,
-        ariaLabel: copy.label,
-        skipLabel: copy.skip,
-        steps: [{ target: scrollMenu, text: copy.scrollModes }],
-        onComplete: markScrollModesSeen,
-      });
-      scrollModesTour.start();
-    });
   }
 
   function startRecordButtonTour() {
@@ -102,7 +82,6 @@ export function initFirstVisitTours({
     }).catch(() => {});
   }
 
-  speedButton?.addEventListener('click', scheduleScrollModesTour);
   desktopRecordModeButton?.addEventListener('click', scheduleRecordButtonTour);
   mobileRecordModeButton?.addEventListener('click', scheduleRecordButtonTour);
   if (copy && !hasSeenMain()) mainFrame = requestFrame(startMainTour);
@@ -112,14 +91,11 @@ export function initFirstVisitTours({
       if (destroyed) return;
       destroyed = true;
       recordAttempt += 1;
-      speedButton?.removeEventListener('click', scheduleScrollModesTour);
       desktopRecordModeButton?.removeEventListener('click', scheduleRecordButtonTour);
       mobileRecordModeButton?.removeEventListener('click', scheduleRecordButtonTour);
       if (mainFrame) cancelFrame(mainFrame);
-      if (scrollModesFrame) cancelFrame(scrollModesFrame);
       if (recordFrame) cancelFrame(recordFrame);
       mainTour?.destroy();
-      scrollModesTour?.destroy();
       recordTour?.destroy();
     },
   };

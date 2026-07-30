@@ -2,6 +2,7 @@
 
 import { describe, expect, it, vi } from 'vitest';
 import {
+  applyCameraPreviewState,
   createMobileStudioTabs,
   createStudioMediaSettingsHandler,
   createStudioModeController,
@@ -30,6 +31,29 @@ function setup() {
 }
 
 describe('studio mode controller', () => {
+  it('hides only the camera feed in Record mode and restores Normal layout on exit', () => {
+    document.body.innerHTML = '<main id="app"><video id="camera"></video></main>';
+    const app = document.querySelector('#app');
+    const cameraFeed = document.querySelector('#camera');
+
+    applyCameraPreviewState({ app, cameraFeed, enabled: true });
+    expect(app.classList.contains('cam-on')).toBe(true);
+    expect(cameraFeed.classList.contains('hidden')).toBe(false);
+
+    applyCameraPreviewState({
+      app,
+      cameraFeed,
+      enabled: false,
+      preserveStudioLayout: true,
+    });
+    expect(app.classList.contains('cam-on')).toBe(true);
+    expect(cameraFeed.classList.contains('hidden')).toBe(true);
+
+    applyCameraPreviewState({ app, cameraFeed, enabled: false });
+    expect(app.classList.contains('cam-on')).toBe(false);
+    expect(cameraFeed.classList.contains('hidden')).toBe(false);
+  });
+
   it('starts in Normal with Play visible and Record hidden', () => {
     const elements = setup();
     const controller = createStudioModeController(elements);
@@ -86,22 +110,6 @@ describe('studio mode controller', () => {
     expect(requestRecordingMediaReady).toHaveBeenCalledOnce();
     expect(setCameraEnabled).not.toHaveBeenCalled();
     expect(setMicEnabled).not.toHaveBeenCalled();
-  });
-
-  it('keeps the Record layout when hiding the camera', async () => {
-    const studioMode = { getMode: vi.fn(() => 'record'), setMode: vi.fn() };
-    const setCameraEnabled = vi.fn(async () => false);
-    const setMediaFromSettings = createStudioMediaSettingsHandler({
-      studioMode,
-      requestRecordingMediaReady: vi.fn(),
-      setCameraEnabled,
-      setMicEnabled: vi.fn(),
-    });
-
-    await expect(setMediaFromSettings('camera', false)).resolves.toBe(false);
-
-    expect(setCameraEnabled).toHaveBeenCalledWith(false, { preserveStudioLayout: true });
-    expect(studioMode.setMode).not.toHaveBeenCalled();
   });
 
   it('maps the mobile Prompter and Record tabs to the shared studio mode', () => {

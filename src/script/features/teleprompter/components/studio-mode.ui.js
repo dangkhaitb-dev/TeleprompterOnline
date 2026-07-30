@@ -1,6 +1,25 @@
 const NORMAL_MODE = 'normal';
 const RECORD_MODE = 'record';
 
+export function applyCameraPreviewState({
+  app,
+  cameraFeed,
+  enabled,
+  preserveStudioLayout = false,
+} = {}) {
+  if (enabled) {
+    app?.classList.add('cam-on');
+    cameraFeed?.classList.remove('hidden');
+    return;
+  }
+  if (preserveStudioLayout) {
+    cameraFeed?.classList.add('hidden');
+    return;
+  }
+  app?.classList.remove('cam-on');
+  cameraFeed?.classList.remove('hidden');
+}
+
 export function createStudioModeController({
   app,
   toggleButton,
@@ -71,9 +90,7 @@ export function createStudioMediaSettingsHandler({
       return requestRecordingMediaReady();
     }
     return type === 'camera'
-      ? setCameraEnabled(enabled, {
-        preserveStudioLayout: !enabled && studioMode?.getMode() === RECORD_MODE,
-      })
+      ? setCameraEnabled(enabled)
       : setMicEnabled(enabled);
   };
 }

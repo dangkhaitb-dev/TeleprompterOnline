@@ -3755,7 +3755,7 @@ html.theme-instant *::after {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin-bottom: 8px;
+    margin-bottom: 14px;
   }
 
   .m-studio-bar .m-tab {

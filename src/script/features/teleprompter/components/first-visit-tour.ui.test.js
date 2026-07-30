@@ -150,6 +150,7 @@ describe('createFirstVisitTour', () => {
     });
     controller.start();
 
+    expect(document.querySelector('.first-visit-tour-popup').hasAttribute('aria-modal')).toBe(false);
     expect(targets.every((target) => !target.hasAttribute('inert'))).toBe(true);
     targets[0].focus();
     const tab = new KeyboardEvent('keydown', {
@@ -192,6 +193,21 @@ describe('createFirstVisitTour', () => {
     targets[0].dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, detail: 1 }));
     expect(targetAction).toHaveBeenCalledOnce();
     expect(onComplete).toHaveBeenCalledOnce();
+    expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
+  });
+
+  it('does not cancel native control behavior while advancing', () => {
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    document.body.append(checkbox);
+    checkbox.getBoundingClientRect = targets[0].getBoundingClientRect;
+    controller = createFirstVisitTour({
+      steps: [{ target: checkbox, text: 'Toggle normally' }],
+    });
+    controller.start();
+
+    checkbox.click();
+    expect(checkbox.checked).toBe(true);
     expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
   });
 

@@ -51,6 +51,7 @@ import {
   prepareRecordingMedia,
 } from './components/recording-media-preflight.js';
 import {
+  applyCameraPreviewState,
   createMobileStudioTabs,
   createStudioMediaSettingsHandler,
   createStudioModeController,
@@ -73,7 +74,6 @@ import { getItem, setItem } from '../../utils/storage.js';
 import {
   LS_TP_FIRST_VISIT_TOUR,
   LS_TP_RECORD_BUTTON_TOUR,
-  LS_TP_SCROLL_MODES_TOUR,
 } from '../../utils/storage-keys.js';
 import {
   preloadLanguageDetector,
@@ -640,8 +640,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     setFormatEditOpen(false);
     if (nextOn) {
       syncSurface(teleprompterText);
-      app.classList.add('cam-on');
-      if (cameraFeed) cameraFeed.classList.remove('hidden');
+      applyCameraPreviewState({ app, cameraFeed, enabled: true });
       setFormatToolbarInPanel(true);
       setLayoutFrameInPanel(true);
       setLayoutControlInPanel(true);
@@ -657,14 +656,18 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       if (preserveStudioLayout) {
         // In Record mode, Hide Camera controls only the preview/capture input.
         // Keep the camera-style teleprompter surface and its controls in place.
-        if (cameraFeed) cameraFeed.classList.add('hidden');
+        applyCameraPreviewState({
+          app,
+          cameraFeed,
+          enabled: false,
+          preserveStudioLayout: true,
+        });
       } else {
         syncSurface(promptBox);
         setFormatToolbarInPanel(false);
         setLayoutFrameInPanel(false);
         setLayoutControlInPanel(false);
-        app.classList.remove('cam-on');
-        if (cameraFeed) cameraFeed.classList.remove('hidden');
+        applyCameraPreviewState({ app, cameraFeed, enabled: false });
         if (readingSession) readingSession.switchSurface(promptBox);
       }
     }
@@ -1129,11 +1132,11 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   // Turn the camera on/off. The switch only remains on after the preview stream
   // is live, so Settings never advertises a blocked or failed device as active.
-  async function setCameraToggle(on, {
-    permissionVerified = false,
-    preserveStudioLayout = false,
-  } = {}) {
+  async function setCameraToggle(on, { permissionVerified = false } = {}) {
     if (tornDown) return false;
+    // Camera availability and studio layout are separate states. Hide Camera
+    // keeps the Record surface; leaving Record mode still restores Normal UI.
+    const preserveStudioLayout = !on && isRecordModeActive();
     const permissionState = on && !permissionVerified
       ? await queryPermissionState('camera')
       : null;
@@ -1149,7 +1152,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     const ready = await setCameraMode(on, { preserveStudioLayout });
     if (tornDown || (on && !ready)) {
       applyToggleState(cameraToggle, 'camera', false);
-      await setCameraMode(false, { preserveStudioLayout });
+      await setCameraMode(false, { preserveStudioLayout: isRecordModeActive() });
       return false;
     }
     return true;
@@ -2201,8 +2204,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   cleanups.push(() => editStaleBadge.destroy());
 
   // Tour clicks bubble after the selected control performs its normal action.
-  // Scroll mode and the real Record button each receive a separate one-time
-  // contextual hint; all completion flags stay browser-local.
+  // Scroll is taught before Play so starting playback cannot hide its toolbar;
+  // the real Record button receives a separate one-time contextual hint.
   const firstVisitTours = initFirstVisitTours({
     documentRoot: document,
     copy: tourCopy,
@@ -2215,10 +2218,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     isRecordModeActive: () => !tornDown && studioMode.getMode() === 'record',
     beforeRecordButtonTour: requestCurrentRecordingMediaReady,
     hasSeenMain: () => getItem(LS_TP_FIRST_VISIT_TOUR) === true,
-    hasSeenScrollModes: () => getItem(LS_TP_SCROLL_MODES_TOUR) === true,
     hasSeenRecordButton: () => getItem(LS_TP_RECORD_BUTTON_TOUR) === true,
     markMainSeen: () => setItem(LS_TP_FIRST_VISIT_TOUR, true),
-    markScrollModesSeen: () => setItem(LS_TP_SCROLL_MODES_TOUR, true),
     markRecordButtonSeen: () => setItem(LS_TP_RECORD_BUTTON_TOUR, true),
   });
   cleanups.push(() => firstVisitTours.destroy());

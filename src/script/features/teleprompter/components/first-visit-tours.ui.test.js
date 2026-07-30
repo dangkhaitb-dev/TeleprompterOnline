@@ -83,7 +83,7 @@ describe('initFirstVisitTours', () => {
     };
     coordinator = initFirstVisitTours(options);
     frames.flush();
-    expect(document.querySelector('.first-visit-tour-popup').textContent).toContain('Play help');
+    expect(document.querySelector('.first-visit-tour-popup').textContent).toContain('Scroll help');
 
     document.querySelector('.first-visit-tour-skip').click();
     expect(mainSeen).toBe(true);
@@ -130,41 +130,37 @@ describe('initFirstVisitTours', () => {
     expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
   });
 
-  it('runs Play and Scroll actions, then introduces the opened Scroll modes menu once', () => {
+  it('runs Scroll, mode, and Play actions in an order that keeps every target visible', () => {
     const frames = createFrameQueue();
     const playAction = vi.fn();
     const scrollAction = vi.fn(() => controls.scrollMenu.classList.add('open'));
+    const modeAction = vi.fn();
     let mainSeen = false;
-    let scrollModesSeen = false;
     controls.playButton.addEventListener('click', playAction);
     controls.speedButton.addEventListener('click', scrollAction);
+    controls.scrollMenu.addEventListener('click', modeAction);
     coordinator = initFirstVisitTours({
       ...controls,
       copy,
       hasSeenMain: () => mainSeen,
-      hasSeenScrollModes: () => scrollModesSeen,
       markMainSeen: () => { mainSeen = true; },
-      markScrollModesSeen: () => { scrollModesSeen = true; },
       requestFrame: frames.requestFrame,
       cancelFrame: frames.cancelFrame,
     });
     frames.flush();
 
-    controls.playButton.click();
-    expect(playAction).toHaveBeenCalledOnce();
-    expect(document.querySelector('.first-visit-tour-popup').textContent).toContain('Scroll help');
-
     controls.speedButton.click();
     expect(scrollAction).toHaveBeenCalledOnce();
-    expect(mainSeen).toBe(true);
-    frames.flush();
     expect(document.querySelector('.first-visit-tour-popup').textContent)
       .toContain('Scroll modes help');
 
-    document.querySelector('.first-visit-tour-skip').click();
-    expect(scrollModesSeen).toBe(true);
-    controls.speedButton.click();
-    frames.flush();
+    controls.scrollMenu.click();
+    expect(modeAction).toHaveBeenCalledOnce();
+    expect(document.querySelector('.first-visit-tour-popup').textContent).toContain('Play help');
+
+    controls.playButton.click();
+    expect(playAction).toHaveBeenCalledOnce();
+    expect(mainSeen).toBe(true);
     expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
   });
 

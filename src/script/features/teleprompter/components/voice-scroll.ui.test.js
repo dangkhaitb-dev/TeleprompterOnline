@@ -605,6 +605,56 @@ describe('Voice Scroll browser integration', () => {
     }));
   });
 
+  it('accumulates short final chunks while confirming a clicked backward anchor', async () => {
+    const onTranscript = vi.fn();
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      onTranscript,
+    });
+    await voiceUI.start();
+    const recognition = FakeSpeechRecognition.instances[0];
+    const words = [...surface.querySelectorAll('.vs-w')];
+    const finalResult = (transcript) => ({
+      0: { transcript, confidence: 1 },
+      isFinal: true,
+      length: 1,
+    });
+    const oldFinal = finalResult('Hôm nay tôi sẽ hướng dẫn các bạn');
+
+    recognition.onresult?.({ resultIndex: 0, results: [oldFinal] });
+    expect(onTranscript).toHaveBeenLastCalledWith(expect.objectContaining({
+      cursor: 7,
+      matched: true,
+    }));
+
+    vi.useFakeTimers();
+    words[0].dispatchEvent(new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }));
+    await vi.advanceTimersByTimeAsync(700);
+
+    // On-device recognition may finalize a restarted utterance in short
+    // chunks. Neither word is enough alone; together they confirm the clicked
+    // beginning. Earlier final slots remain present in Chromium's result list.
+    const firstWord = finalResult('Hôm');
+    recognition.onresult?.({
+      resultIndex: 1,
+      results: [oldFinal, firstWord],
+    });
+    recognition.onresult?.({
+      resultIndex: 2,
+      results: [oldFinal, firstWord, finalResult('nay')],
+    });
+
+    vi.useRealTimers();
+    voiceUI.stop();
+    expect(onTranscript).toHaveBeenLastCalledWith(expect.objectContaining({
+      cursor: 1,
+      matched: true,
+    }));
+  });
+
   it('keeps consecutive word selections owned by one scroll loop in Record', async () => {
     const recordStage = document.createElement('div');
     const onRecordStageClick = vi.fn();

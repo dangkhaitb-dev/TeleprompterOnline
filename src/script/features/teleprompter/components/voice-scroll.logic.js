@@ -1175,7 +1175,7 @@ export function createVoiceScrollController({
       feedTailPartial: false,
     };
   }
-  
+
   function handleASRResult({ allTokens, reach, tailPartial }) {
     if (!matcherState) return;
 
@@ -1221,7 +1221,12 @@ export function createVoiceScrollController({
     // anchor may resume ASR control. A stale result behind the selected word
     // is never allowed to pull the prompter away from the user.
     if (movedBehindUser || (awaitingUserAnchorSpeech && !confirmedUserAnchor)) {
-      asr?.resetStream();
+      // Preserve fresh post-click chunks while the new anchor is still being
+      // confirmed. On-device recognition may finalize one or two words at a
+      // time; clearing the stream after every short non-match would prevent
+      // those chunks from ever forming a match. Only a result that actually
+      // moved behind the user's anchor is stale enough to discard.
+      if (movedBehindUser) asr?.resetStream();
       onTranscript?.({
         tokenCount: allTokens.length,
         cursor: matcherState.cursor,
@@ -1423,7 +1428,7 @@ export function createVoiceScrollController({
       biasAnchor = index;
     }
   }
-  
+
   // Creep state getters for UI layer
   function getCreepInfo() {
     return {

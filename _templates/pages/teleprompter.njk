@@ -421,10 +421,7 @@ lang: en
           </button>
           <section class="speed-mode-panel" id="speedWpmPanel" aria-labelledby="speedMethodWpm">
             <div class="speed-editor">
-              <label class="speed-editor-header" for="speedRange">
-                <span>{{ pageData.speedMenu.scrollSpeed }}</span>
-                <output id="speedOutput" for="speedRange speedInput">110 {{ pageData.speedMenu.unit }}</output>
-              </label>
+              <output id="speedOutput" for="speedRange speedInput" hidden>110 {{ pageData.speedMenu.unit }}</output>
               <input class="speed-range" id="speedRange" type="range" min="1" max="400" step="1" value="110" aria-label="{{ pageData.toolbar.speedTitle }}">
               <div class="speed-input-row">
                 <label for="speedInput">{{ pageData.speedMenu.customValue }}</label>
@@ -444,10 +441,7 @@ lang: en
           </button>
           <section class="speed-mode-panel" id="speedTimePanel" aria-labelledby="speedMethodTime" hidden>
             <div class="speed-time-editor">
-              <div class="speed-editor-header">
-                <span>{{ pageData.speedMenu.totalTime }}</span>
-                <output id="scrollTimeOutput" for="scrollMinutes scrollSeconds">01:00</output>
-              </div>
+              <output id="scrollTimeOutput" for="scrollMinutes scrollSeconds" hidden>01:00</output>
               <input class="speed-range" id="scrollTimeRange" type="range" min="0" max="3600" step="5" value="60" aria-label="{{ pageData.speedMenu.totalTime }}">
               <div class="scroll-time-inputs">
                 <label>

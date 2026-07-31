@@ -6,10 +6,11 @@ import { initFirstVisitTours } from './first-visit-tours.ui.js';
 const copy = {
   label: 'Teleprompter quick tour',
   skip: 'Skip',
-  play: 'Play help',
+  play: 'Press Play to start presenting. Tap again to pause.',
   scrollMode: 'Scroll help',
   scrollModes: 'Scroll modes help',
   recordButton: 'Record button help',
+  editButton: 'Edit button help',
 };
 
 function createFrameQueue() {
@@ -43,6 +44,7 @@ describe('initFirstVisitTours', () => {
       <button id="desktop-mode">Record mode</button>
       <button id="mobile-mode">Record tab</button>
       <button id="record" hidden>Record</button>
+      <button id="panel-edit">Edit</button>
     `;
     controls = {
       playButton: document.querySelector('#play'),
@@ -51,6 +53,7 @@ describe('initFirstVisitTours', () => {
       desktopRecordModeButton: document.querySelector('#desktop-mode'),
       mobileRecordModeButton: document.querySelector('#mobile-mode'),
       recordButton: document.querySelector('#record'),
+      panelEditButton: document.querySelector('#panel-edit'),
     };
     Object.values(controls).forEach((element, index) => {
       element.getBoundingClientRect = () => ({
@@ -117,8 +120,15 @@ describe('initFirstVisitTours', () => {
     controls.desktopRecordModeButton.click();
     await Promise.resolve();
     frames.flush();
+    // Step 1: Edit script button
+    expect(document.querySelector('.first-visit-tour-popup').textContent)
+      .toContain('Edit button help');
+
+    document.body.click();
+    // Step 2: Record button
     expect(document.querySelector('.first-visit-tour-popup').textContent)
       .toContain('Record button help');
+
     document.querySelector('.first-visit-tour-skip').click();
     expect(recordTourSeen).toBe(true);
 
@@ -181,7 +191,7 @@ describe('initFirstVisitTours', () => {
 
     controls.scrollMenu.click();
     expect(modeAction).toHaveBeenCalledOnce();
-    expect(document.querySelector('.first-visit-tour-popup').textContent).toContain('Play help');
+    expect(document.querySelector('.first-visit-tour-popup').textContent).toContain('Press Play to start presenting.');
 
     controls.playButton.click();
     expect(playAction).toHaveBeenCalledOnce();
@@ -214,8 +224,9 @@ describe('initFirstVisitTours', () => {
     controls.desktopRecordModeButton.click();
     await Promise.resolve();
     frames.flush();
+    // First step of the record tour is the Edit script button
     expect(document.querySelector('.first-visit-tour-popup').textContent)
-      .toContain('Record button help');
+      .toContain('Edit button help');
   });
 
   it('cancels pending frames during teardown', () => {

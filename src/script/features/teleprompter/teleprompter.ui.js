@@ -2526,6 +2526,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     desktopRecordModeButton: studioModeControl,
     mobileRecordModeButton: mobileRecordModeTab,
     recordButton,
+    panelEditButton,
     isRecordModeActive: () => !tornDown && studioMode.getMode() === 'record',
     beforeRecordButtonTour: requestCurrentRecordingMediaReady,
     hasSeenMain: () => getItem(LS_TP_FIRST_VISIT_TOUR) === true,

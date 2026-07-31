@@ -7,7 +7,7 @@
   padding: var(--space-2) var(--space-4);
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-1);
   border: 1px solid var(--support-accent);
   border-radius: var(--radius-pill);
   color: white;
@@ -38,7 +38,23 @@ body.tp .support-widget {
   display: none !important;
 }
 
+@media (max-width: 399.98px) {
+  .support-widget {
+    display: none !important;
+  }
+}
+
+
 .support-widget__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.1rem;
   line-height: 1;
+}
+
+.support-widget__icon svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  display: block;
 }

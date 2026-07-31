@@ -12,6 +12,7 @@ export function initFirstVisitTours({
   desktopRecordModeButton,
   mobileRecordModeButton,
   recordButton,
+  panelEditButton,
   isRecordModeActive = () => false,
   beforeRecordButtonTour = () => true,
   hasSeenMain = () => false,
@@ -60,11 +61,18 @@ export function initFirstVisitTours({
         || !isRecordModeActive()
         || recordButton?.hidden
       ) return;
+      
+      const steps = [];
+      if (panelEditButton) {
+        steps.push({ target: panelEditButton, text: copy.editButton });
+      }
+      steps.push({ target: recordButton, text: copy.recordButton });
+
       recordTour = createTour({
         root: documentRoot,
         ariaLabel: copy.label,
         skipLabel: copy.skip,
-        steps: [{ target: recordButton, text: copy.recordButton }],
+        steps,
         onComplete: () => {
           markRecordButtonSeen();
         },

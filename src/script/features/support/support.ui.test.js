@@ -19,9 +19,10 @@ describe('initSupportUI', () => {
     expect(widget.href).toBe('https://buy.polar.sh/polar_cl_K1QVdsH7dN9NkF6SEf9yIkviBh1lrUE4grYJf2p9rYn');
     expect(widget.target).toBe('_blank');
     expect(widget.getAttribute('rel')).toBe('nofollow noopener noreferrer');
-    expect(widget.textContent).toBe('♥Support Me');
+    expect(widget.textContent).toBe('Support Me');
     expect(widget.getAttribute('aria-label')).toBe('Support SolPrompter');
-    expect(widget.querySelector('.support-widget__icon')?.textContent).toBe('♥');
+    expect(widget.querySelector('.support-widget__icon')?.textContent).toBe('');
+    expect(widget.querySelector('.support-widget__icon svg')).not.toBeNull();
   });
 
   it('does not add the widget more than once', () => {
@@ -49,5 +50,28 @@ describe('initSupportUI', () => {
     initSupportUI({ incrementVisit: () => 2 });
 
     expect(document.querySelector('[data-support-widget]')).toBeNull();
+  });
+
+  it('hides the widget when the viewport width is less than 400px', () => {
+    const originalMatchMedia = window.matchMedia;
+    window.matchMedia = (query) => ({
+      matches: query === '(max-width: 399.98px)',
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => {},
+    });
+
+    try {
+      const dispose = initSupportUI({ incrementVisit: () => 3 });
+      const widget = document.querySelector('[data-support-widget]');
+      expect(widget.style.display).toBe('none');
+      dispose();
+    } finally {
+      window.matchMedia = originalMatchMedia;
+    }
   });
 });

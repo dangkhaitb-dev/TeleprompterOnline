@@ -121,9 +121,10 @@
   "firstVisitTour": {
     "label": "Teleprompter quick tour",
     "skip": "Skip",
-    "play": "Press Play to start or pause scrolling.",
+    "play": "Press Play to start presenting. Tap again to pause.",
     "scrollMode": "Open Scroll mode to choose how your script moves.",
     "scrollModes": "Choose Auto Scroll, words per minute, or a total scroll time.",
+    "editButton": "Press Edit script to change your text.",
     "recordButton": "Press Record here to start recording."
   },
   "notchOn": "Notch prompter on",
@@ -522,10 +523,7 @@
           </button>
           <section class="speed-mode-panel" id="speedWpmPanel" aria-labelledby="speedMethodWpm">
             <div class="speed-editor">
-              <label class="speed-editor-header" for="speedRange">
-                <span>Scroll speed</span>
-                <output id="speedOutput" for="speedRange speedInput">110 WPM</output>
-              </label>
+              <output id="speedOutput" for="speedRange speedInput" hidden>110 WPM</output>
               <input class="speed-range" id="speedRange" type="range" min="1" max="400" step="1" value="110" aria-label="Change scroll mode">
               <div class="speed-input-row">
                 <label for="speedInput">Custom value</label>
@@ -545,10 +543,7 @@
           </button>
           <section class="speed-mode-panel" id="speedTimePanel" aria-labelledby="speedMethodTime" hidden>
             <div class="speed-time-editor">
-              <div class="speed-editor-header">
-                <span>Total scroll time</span>
-                <output id="scrollTimeOutput" for="scrollMinutes scrollSeconds">01:00</output>
-              </div>
+              <output id="scrollTimeOutput" for="scrollMinutes scrollSeconds" hidden>01:00</output>
               <input class="speed-range" id="scrollTimeRange" type="range" min="0" max="3600" step="5" value="60" aria-label="Total scroll time">
               <div class="scroll-time-inputs">
                 <label>

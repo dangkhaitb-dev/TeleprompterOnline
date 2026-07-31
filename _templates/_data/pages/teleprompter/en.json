@@ -158,9 +158,10 @@
   "firstVisitTour": {
     "label": "Teleprompter quick tour",
     "skip": "Skip",
-    "play": "Press Play to start or pause scrolling.",
+    "play": "Press Play to start presenting. Tap again to pause.",
     "scrollMode": "Open Scroll mode to choose how your script moves.",
     "scrollModes": "Choose Auto Scroll, words per minute, or a total scroll time.",
+    "editButton": "Press Edit script to change your text.",
     "recordButton": "Press Record here to start recording."
   },
   "layout": {

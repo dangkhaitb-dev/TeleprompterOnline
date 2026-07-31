@@ -1508,7 +1508,6 @@ html[data-theme="dark"] .quick-menu {
 }
 
 .scroll-mode-option:has(.scroll-mode-choice.selected) {
-  border-color: var(--tp-green-dark);
   background: var(--tp-surface);
 }
 
@@ -1618,7 +1617,6 @@ html[data-theme="dark"] .quick-menu {
   gap: 12px;
 }
 
-.speed-editor-header,
 .speed-input-row {
   display: flex;
   align-items: center;
@@ -1629,7 +1627,6 @@ html[data-theme="dark"] .quick-menu {
   font-weight: 500;
 }
 
-.speed-editor-header span,
 .speed-input-row label {
   color: var(--tp-gray-text);
 }

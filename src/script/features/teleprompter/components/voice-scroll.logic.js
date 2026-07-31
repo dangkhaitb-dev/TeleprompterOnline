@@ -558,7 +558,6 @@ export function createASREngine({
   onError,
   onDegraded,
   onDiagnostic,
-  audioTrack = null,
 }) {
   let recognition = null;
   let wantsListening = false;
@@ -587,7 +586,7 @@ export function createASREngine({
   let browserServiceFailures = 0;
   let sessionFailureReported = false;
   let degradationReported = false;
-  let asrInput = 'microphone';
+  const asrInput = 'microphone';
 
   const log = (message, details) => {
     if (details === undefined) console.info(`[VoiceScroll] ${message}`);
@@ -621,21 +620,9 @@ export function createASREngine({
   }
 
   function startRecognition() {
-    if (audioTrack?.kind === 'audio' && audioTrack.readyState === 'live') {
-      try {
-        asrInput = 'shared-track';
-        onDiagnostic?.('asr-shared-track-requested', { asrInput });
-        recognition.start(audioTrack);
-      } catch {
-        // Older browser implementations can reject the track overload. Keep
-        // the legacy path and expose the compatibility gap in the debug trace.
-        asrInput = 'microphone';
-        onDiagnostic?.('asr-shared-track-rejected', { reason: 'unsupported' });
-        recognition.start();
-      }
-      return;
-    }
-    asrInput = 'microphone';
+    // Use the broadly supported microphone-owned path. Browsers that only
+    // implement start() may silently ignore extra arguments instead of
+    // throwing, so try/catch cannot safely detect start(audioTrack).
     recognition.start();
   }
 
@@ -988,9 +975,7 @@ export function createASREngine({
     try {
       onDiagnostic?.('asr-start-requested', {
         asrMode: useLocal ? 'on-device' : 'browser-service',
-        asrInput: audioTrack?.kind === 'audio' && audioTrack.readyState === 'live'
-          ? 'shared-track'
-          : 'microphone',
+        asrInput,
       });
       const started = new Promise((resolve) => {
         let timeoutId = null;
@@ -1119,7 +1104,6 @@ export function createVoiceScrollController({
   onTranscript,
   onRecognitionDegraded,
   onDiagnostic,
-  audioTrack,
 }) {
   // Matcher state (passed to model layer functions)
   let matcherState = null;
@@ -1365,7 +1349,6 @@ export function createVoiceScrollController({
         startTimedFallback(details);
       },
       onDiagnostic,
-      audioTrack,
     });
     
     // Recognition starts unbiased. Context is introduced only after the reader

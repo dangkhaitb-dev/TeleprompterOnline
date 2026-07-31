@@ -1057,21 +1057,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (voiceScrollUI || voiceScrollStarting) stopVoiceScroll();
   }
 
-  function fallBackVoiceScrollToWpm(details) {
-    const reason = typeof details?.error === 'string' ? details.error : 'unknown';
-    logVoiceScroll('voice-scroll-wpm-fallback', { reason });
-    // This goes through the reading-session controller so Auto's word markup
-    // and scroll engine are torn down before WPM takes ownership of the same
-    // surface. It also preserves the user's current reading position.
-    setSpeedModePanel('wpm');
-    saveWorkspaceSettings(workspace.id, { scrollMode: 'wpm' });
-    readingSession?.refreshMode();
-    showToast(
-      copy.debug?.autoWpmFallback || 'Auto Scroll unavailable. WPM mode active.',
-      { duration: 2800 },
-    );
-  }
-
   async function requestVoiceScrollMicrophone() {
     const allowed = await ensureCaptureAllowed({ audio: true });
     // Match the proven reference implementation: SpeechRecognition owns the
@@ -1119,9 +1104,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       syncDirtySurfaces();
       const candidate = initVoiceScrollUI({
         getSurface: activeSurface,
-        audioTrack: hasLiveMediaTrack(cameraStream, 'audio')
-          ? cameraStream.getAudioTracks().find((track) => track.readyState === 'live') || null
-          : null,
         getReadingLineOffset: (surface) => (
           surface === promptBox || surface === teleprompterText
             ? layout.eyeLineStartPadding(surface, true)
@@ -1144,7 +1126,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
           if (candidate !== voiceScrollUI) return;
           const reason = typeof details?.error === 'string' ? details.error : 'unknown';
           logVoiceScroll('voice-scroll-timed-fallback', { reason });
-          fallBackVoiceScrollToWpm(details);
+          showToast(
+            copy.debug?.autoFallback
+              || 'Auto Scroll is temporarily using timer mode while voice matching retries. The microphone remains active; pause Auto Scroll to stop listening.',
+            {
+              variant: 'warning',
+              duration: null,
+              dismissible: true,
+              title: copy.debug?.autoFallbackTitle || 'Voice matching retrying',
+            },
+          );
         },
         onDiagnostic: (event, details) => {
           logVoiceScroll(event, details);

@@ -69,7 +69,8 @@
     "stopAria": "Stop recording"
   },
   "debug": {
-    "autoWpmFallback": "Auto Scroll unavailable. WPM mode active."
+    "autoFallbackTitle": "Voice matching retrying",
+    "autoFallback": "Auto Scroll is temporarily using timer mode while voice matching retries. The microphone remains active; pause Auto Scroll to stop listening."
   },
   "camera": {
     "starting": "Starting camera",

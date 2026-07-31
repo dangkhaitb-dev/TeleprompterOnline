@@ -22,8 +22,8 @@ class FakeSpeechRecognition {
     this.lang = '';
   }
 
-  start(audioTrack) {
-    this.audioTrack = audioTrack;
+  start(...args) {
+    this.startArgs = args;
     this.phrasesAtStart = this.phrases;
     queueMicrotask(() => this.onstart?.());
   }
@@ -109,13 +109,13 @@ describe('Voice Scroll browser integration', () => {
     expect(surface.textContent).toBe('Hôm nay tôi sẽ hướng dẫn các bạn');
   });
 
-  it('uses a supplied live track instead of opening another microphone capture', async () => {
+  it('does not pass the Record capture track to SpeechRecognition.start', async () => {
     const audioTrack = { kind: 'audio', readyState: 'live' };
     const voiceUI = initVoiceScrollUI({ getSurface: () => surface, audioTrack });
 
     await expect(voiceUI.start()).resolves.toBe(true);
 
-    expect(FakeSpeechRecognition.instances[0].audioTrack).toBe(audioTrack);
+    expect(FakeSpeechRecognition.instances[0].startArgs).toEqual([]);
     voiceUI.stop();
   });
 

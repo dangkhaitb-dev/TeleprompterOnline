@@ -113,6 +113,11 @@
   "record": "Record",
   "pause": "Pause",
   "resume": "Play",
+  "playAria": "Start scrolling",
+  "pauseAria": "Pause scrolling",
+  "resumeAria": "Resume scrolling",
+  "recordAria": "Start recording",
+  "stopAria": "Stop recording",
   "firstVisitTour": {
     "label": "Teleprompter quick tour",
     "skip": "Skip",
@@ -214,17 +219,17 @@
         </svg>
         <span>To start</span>
       </button>
-      <button data-testid="pause-btn" class="pause-button" id="pauseButton" type="button" title="Pause">
+      <button data-testid="pause-btn" class="pause-button" id="pauseButton" type="button" title="Pause scrolling" aria-label="Pause scrolling">
         <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><rect width="4.7" height="18.9" x="5" y="2.5" fill="currentColor" rx="2.4"></rect><rect width="4.7" height="18.9" x="13.3" y="2.5" fill="currentColor" rx="2.4"></rect></svg>
         <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 4.03c0-1.9 2.07-3.07 3.7-2.1l12.13 7.26a2.45 2.45 0 010 4.2L11.2 20.65c-1.63.98-3.7-.2-3.7-2.1V4.03z" transform="scale(0.82) translate(1.5 1.8)"></path></svg>
         <span class="pause-label">Pause</span>
       </button>
-      <button class="header-play-button" id="headerPlayButton" type="button" aria-label="Play" title="Play">
+      <button class="header-play-button" id="headerPlayButton" type="button" aria-label="Start scrolling" title="Start scrolling">
         <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z"></path></svg>
         <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2zM16 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2z"></path></svg>
         <span class="header-play-label">Play</span>
       </button>
-      <button class="record-button" id="recordButton" type="button" title="Record" hidden>
+      <button class="record-button" id="recordButton" type="button" aria-label="Start recording" title="Start recording" hidden>
         <span class="record-dot"></span>
         <span class="record-label">Record</span>
       </button>
@@ -341,7 +346,7 @@
           </div>
         </div>
         <div class="center">
-          <button class="play-btn" id="playBtn" aria-label="Play" title="Play">
+          <button class="play-btn" id="playBtn" aria-label="Start scrolling" title="Start scrolling">
             <svg width="20" height="20" viewBox="0 0 24 24" id="playIcon"><path d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z"/></svg>
           </button>
         </div>
@@ -379,11 +384,11 @@
           id="studioModeControl"
           type="button"
           aria-pressed="false"
-          aria-label="Turn recording on"
+          aria-label="Turn record mode on"
           data-normal-label="REC Mode"
           data-record-label="REC Mode"
-          data-switch-to-normal="Turn recording off"
-          data-switch-to-record="Turn recording on"
+          data-switch-to-normal="Turn record mode off"
+          data-switch-to-record="Turn record mode on"
         >
           <svg class="studio-record-glyph" width="90" height="34" viewBox="0 0 90 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
             <rect x="0" y="0" width="90" height="34" rx="10" fill="currentColor"/>
@@ -407,7 +412,7 @@
           <span class="label">Mirror</span>
         </button>
 
-        <button class="item" id="notchControl" type="button" aria-pressed="false" aria-label="Show prompter at the MacBook notch" title="Read the script right next to the camera">
+        <button class="item" id="notchControl" type="button" aria-pressed="false" aria-label="Position prompter near the camera to keep eye contact natural" title="Keep eye contact natural">
           <div class="icon-wrap">
             <div class="action-btn">
               <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">

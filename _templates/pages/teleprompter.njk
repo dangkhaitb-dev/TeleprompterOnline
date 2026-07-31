@@ -20,6 +20,11 @@ lang: en
   "record": pageData.record.record,
   "pause": pageData.record.pause,
   "resume": pageData.record.resume,
+  "playAria": pageData.record.playAria,
+  "pauseAria": pageData.record.pauseAria,
+  "resumeAria": pageData.record.resumeAria,
+  "recordAria": pageData.record.recordAria,
+  "stopAria": pageData.record.stopAria,
   "firstVisitTour": pageData.firstVisitTour,
   "notchOn": pageData.toast.notchOn,
   "notchOff": pageData.toast.notchOff,
@@ -111,7 +116,7 @@ lang: en
         </svg>
         <span>{{ pageData.record.restart }}</span>
       </button>
-      <button data-testid="pause-btn" class="pause-button" id="pauseButton" type="button" title="{{ pageData.record.pause }}">
+      <button data-testid="pause-btn" class="pause-button" id="pauseButton" type="button" title="{{ pageData.record.pauseAria }}" aria-label="{{ pageData.record.pauseAria }}">
         <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><rect width="4.7" height="18.9" x="5" y="2.5" fill="currentColor" rx="2.4"></rect><rect width="4.7" height="18.9" x="13.3" y="2.5" fill="currentColor" rx="2.4"></rect></svg>
         <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 4.03c0-1.9 2.07-3.07 3.7-2.1l12.13 7.26a2.45 2.45 0 010 4.2L11.2 20.65c-1.63.98-3.7-.2-3.7-2.1V4.03z" transform="scale(0.82) translate(1.5 1.8)"></path></svg>
         <span class="pause-label">{{ pageData.record.pause }}</span>
@@ -121,7 +126,7 @@ lang: en
         <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2zM16 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2z"></path></svg>
         <span class="header-play-label">{{ pageData.record.play }}</span>
       </button>
-      <button class="record-button" id="recordButton" type="button" title="{{ pageData.record.record }}" hidden>
+      <button class="record-button" id="recordButton" type="button" aria-label="{{ pageData.record.recordAria }}" title="{{ pageData.record.recordAria }}" hidden>
         <span class="record-dot"></span>
         <span class="record-label">{{ pageData.record.record }}</span>
       </button>

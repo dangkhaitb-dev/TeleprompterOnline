@@ -1186,13 +1186,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       playIcon.replaceChildren(path);
     }
     if (playBtn) {
-      const labelText = playing ? 'Pause' : 'Play';
+      const labelText = playing ? (copy.pauseAria || 'Pause scrolling') : (copy.playAria || 'Start scrolling');
       playBtn.setAttribute('aria-label', labelText);
       playBtn.setAttribute('title', labelText);
     }
     if (headerPlayButton) {
       headerPlayButton.classList.toggle('playing', playing);
-      const labelText = playing ? 'Pause' : 'Play';
+      const labelText = playing ? (copy.pauseAria || 'Pause scrolling') : (copy.playAria || 'Start scrolling');
       headerPlayButton.setAttribute('aria-label', labelText);
       headerPlayButton.setAttribute('title', labelText);
     }
@@ -1544,6 +1544,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
   function startRecordCountdown() {
     countingDown = true;
+    if (recordButton) {
+      recordButton.setAttribute('aria-label', 'Cancel countdown');
+      recordButton.setAttribute('title', 'Cancel countdown');
+    }
     let count = 3;
     countdownDelay = setTimeout(() => {
       showCountNumber(count);
@@ -1673,6 +1677,11 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (pauseButton) pauseButton.classList.remove('show', 'paused');
     if (pauseLabel) pauseLabel.textContent = copy.pause || 'Pause';
     if (recordLabel) recordLabel.textContent = copy.record || 'Record';
+    if (recordButton) {
+      const tooltip = copy.recordAria || 'Start recording';
+      recordButton.setAttribute('aria-label', tooltip);
+      recordButton.setAttribute('title', tooltip);
+    }
     app.classList.remove('record-paused');
     app.classList.toggle('playback-only', keepReading);
     app.classList.toggle('record-dim', keepReading);
@@ -1872,6 +1881,11 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     }
     app.classList.remove('record-paused');
     recordButton.classList.add('recording');
+    if (recordButton) {
+      const tooltip = copy.stopAria || 'Stop recording';
+      recordButton.setAttribute('aria-label', tooltip);
+      recordButton.setAttribute('title', tooltip);
+    }
     setEditingEnabled(false);
     if (recordLabel) recordLabel.textContent = '00:00';
     if (pauseButton) pauseButton.classList.remove('show', 'paused');
@@ -1964,7 +1978,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       app.classList.add('record-paused');
       if (pauseButton) {
         pauseButton.classList.add('paused');
-        const tooltip = copy.resume || 'Play';
+        const tooltip = copy.resumeAria || 'Resume scrolling';
         pauseButton.setAttribute('aria-label', tooltip);
         pauseButton.setAttribute('title', tooltip);
       }
@@ -1980,7 +1994,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       app.classList.remove('record-paused');
       if (pauseButton) {
         pauseButton.classList.remove('paused');
-        const tooltip = copy.pause || 'Pause';
+        const tooltip = copy.pauseAria || 'Pause scrolling';
         pauseButton.setAttribute('aria-label', tooltip);
         pauseButton.setAttribute('title', tooltip);
       }

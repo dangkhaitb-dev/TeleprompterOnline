@@ -23,6 +23,7 @@ body {
   width: fit-content;
   display: inline-flex;
   align-items: center;
+  gap: var(--space-3);
   color: var(--ink);
   text-decoration: none;
 }
@@ -31,6 +32,20 @@ body {
   width: 2.25rem;
   height: 2.25rem;
   display: block;
+}
+
+.stage__brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+
+.stage--thank-you {
+  gap: clamp(5rem, 12vw, 10rem);
+}
+
+.stage--thank-you .stage__title {
+  font-size: clamp(2.35rem, 5vw, 4.5rem);
 }
 
 .stage__content {

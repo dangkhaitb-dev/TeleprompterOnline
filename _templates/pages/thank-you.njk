@@ -1,0 +1,25 @@
+---
+layout: error-base.njk
+permalink: /thank-you.html
+pageKey: thank-you
+lang: en
+---
+{%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
+<main class="stage stage--thank-you" id="main" tabindex="-1">
+    <a class="stage__brand" href="/" aria-label="SolPrompter home">
+        <img src="/logo.webp" alt="" width="36" height="36">
+        <span class="stage__brand-name">SolPrompter</span>
+    </a>
+
+    <div class="stage__content">
+        <div class="stage__heading">
+            <p class="stage__eyebrow">{{ pageData.eyebrow }}</p>
+            <h1 class="stage__title">{{ pageData.title }}</h1>
+        </div>
+
+        <div class="stage__support">
+            <p class="stage__lead">{{ pageData.description }}</p>
+            <a class="stage__action" href="/">{{ pageData.homeLink }}</a>
+        </div>
+    </div>
+</main>

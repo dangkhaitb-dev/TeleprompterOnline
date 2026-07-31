@@ -85,6 +85,8 @@
   --composer-action-muted: #17181b;
   --upload-text: #475569;
   --brand-vivid: #000000;
+  --support-accent: #eb6532;
+  --support-accent-hover: color-mix(in srgb, var(--support-accent) 86%, var(--ink));
   --upload-border: #cbd5e1;
   --placeholder: #94a3b8;
   --dot-red: #ff5f57;

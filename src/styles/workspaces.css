@@ -311,6 +311,10 @@
   background: var(--ws-credits-bg);
 }
 
+.ws-credits-card--free {
+  margin-bottom: 60px;
+}
+
 .ws-credits-header {
   display: flex;
   align-items: center;

@@ -40,6 +40,7 @@ export const LS_TP_NOTCH_EDIT_SIZE = 'solprompter:tp-notch-edit-size'; // { w, h
 export const LS_TP_FIRST_VISIT_TOUR = 'solprompter:tp-first-visit-tour-v1';
 export const LS_TP_RECORD_BUTTON_TOUR = 'solprompter:tp-record-button-tour-v1';
 export const LS_SE_FIRST_VISIT_TOUR = 'solprompter:se-first-visit-tour-v1';
+export const LS_SUPPORT_VISIT_COUNT = 'solprompter:support-visit-count';
 
 // Up to 12 most-recent BCP-47 locales whose on-device speech packs were
 // requested by Voice Scroll. The browser owns the packs; this registry only

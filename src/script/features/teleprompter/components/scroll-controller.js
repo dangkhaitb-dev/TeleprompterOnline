@@ -177,6 +177,23 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
     notify();
   }
 
+  // A different scroll engine is about to take ownership (Voice Auto). A
+  // pending manual easing frame must not outlive the fixed-speed controller
+  // and write the same surface after that hand-off.
+  function cancelManualScroll() {
+    const surface = target || resolveSurface();
+    if (animId !== null) {
+      cancelAnimationFrame(animId);
+      animId = null;
+    }
+    manualScrollActive = false;
+    lastFrame = 0;
+    if (surface) {
+      scrollPosition = surface.scrollTop;
+      scrollTarget = surface.scrollTop;
+    }
+  }
+
   function toggle() {
     if (scrolling) stop();
     else start(resolveSurface());
@@ -277,6 +294,7 @@ export function createScrollController({ getSurface, onStateChange, portal = doc
     bindSurface,
     start,
     stop,
+    cancelManualScroll,
     toggle,
     setWpm,
     setDuration,

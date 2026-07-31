@@ -43,6 +43,7 @@ import { handlePlainTextPaste } from '../../utils/plain-paste.js';
 import { isFullscreen, onFullscreenChange } from '../../utils/fullscreen.js';
 import { createScrollController } from './components/scroll-controller.js';
 import { createReadingSessionController } from './components/reading-session-controller.js';
+import { createReadingScrollInput } from './components/reading-scroll-input.ui.js';
 import {
   createRecordingMediaPreflightGate,
   createRecordingStartGate,
@@ -1113,6 +1114,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
       // ON → start voice scroll
       scroller.stop();  // Stop WPM auto-scroll if running
+      scroller.cancelManualScroll(); // Do not leave a fixed-speed rAF behind.
       syncDirtySurfaces();
       const candidate = initVoiceScrollUI({
         getSurface: activeSurface,
@@ -2034,8 +2036,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         break;
       case 'ArrowRight': e.preventDefault(); applySpeed(wpm + (e.shiftKey ? BAR_SPEED_STEP * 2 : BAR_SPEED_STEP)); break;
       case 'ArrowLeft': e.preventDefault(); applySpeed(wpm - (e.shiftKey ? BAR_SPEED_STEP * 2 : BAR_SPEED_STEP)); break;
-      case 'ArrowUp': e.preventDefault(); scroller.manualScroll(-SCROLL_STEP); break;
-      case 'ArrowDown': e.preventDefault(); scroller.manualScroll(SCROLL_STEP); break;
+      case 'ArrowUp': e.preventDefault(); manualScrollByUser(-SCROLL_STEP); break;
+      case 'ArrowDown': e.preventDefault(); manualScrollByUser(SCROLL_STEP); break;
       case 'Enter': e.preventDefault(); scroller.scrollToNextSection(); break;
       default: break;
     }
@@ -2054,38 +2056,24 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (isInteractiveTarget(e.target)) return;
     toggleRecordingPause();
   });
-  // Non-passive wheel/touch handlers make the browser wait on the main thread
-  // for every scroll over the stage — attach them only while a reading session
-  // (record/play dim) is active; normal editor scrolling stays native.
-  let readingScrollCaptureOn = false;
-  let swipeLastY = null;
-  const onStageWheel = (e) => { if (!isReadingActive()) return; e.preventDefault(); scroller.manualScroll(e.deltaY); };
-  const onStageTouchStart = (e) => { swipeLastY = isReadingActive() ? e.touches[0].clientY : null; };
-  const onStageTouchMove = (e) => {
-    if (swipeLastY == null) return;
-    const y = e.touches[0].clientY;
-    scroller.manualScroll(swipeLastY - y);
-    swipeLastY = y;
-    e.preventDefault();
+  // One input path owns gestures for the standard, camera, and Notch surfaces.
+  // Auto's voice engine receives direct manual deltas; fixed-speed modes keep
+  // their existing smooth manual transition before resuming from its endpoint.
+  const manualScrollByUser = (delta) => {
+    if (selectedScrollMode === 'auto' && voiceScrollUI?.manualScroll?.(delta)) return;
+    scroller.manualScroll(delta);
   };
-  const onStageTouchEnd = () => { swipeLastY = null; };
+  const readingScrollInput = createReadingScrollInput({
+    getSurface: activeSurface,
+    getStage: () => stageEl,
+    isReadingActive,
+    onManualScroll: manualScrollByUser,
+    onManualScrollEnd: () => voiceScrollUI?.endManualScroll?.(),
+  });
   function setReadingScrollCapture(active) {
-    if (!stageEl || active === readingScrollCaptureOn) return;
-    readingScrollCaptureOn = active;
-    if (active) {
-      stageEl.addEventListener('wheel', onStageWheel, { passive: false });
-      stageEl.addEventListener('touchstart', onStageTouchStart, { passive: true });
-      stageEl.addEventListener('touchmove', onStageTouchMove, { passive: false });
-      stageEl.addEventListener('touchend', onStageTouchEnd);
-    } else {
-      swipeLastY = null;
-      stageEl.removeEventListener('wheel', onStageWheel);
-      stageEl.removeEventListener('touchstart', onStageTouchStart);
-      stageEl.removeEventListener('touchmove', onStageTouchMove);
-      stageEl.removeEventListener('touchend', onStageTouchEnd);
-    }
+    readingScrollInput.setActive(active);
   }
-  cleanups.push(() => setReadingScrollCapture(false));
+  cleanups.push(() => readingScrollInput.destroy());
 
   // ---- Fullscreen sync on the notch/settings toggles ------------------------
   cleanups.push(onFullscreenChange(() => {

@@ -190,12 +190,11 @@ describe('Voice Scroll timed fallback', () => {
       .toBe(true);
 
     // Once ASR catches the timed cursor it owns scrolling again. A manual
-    // viewport change now pauses optimistic creep as normal instead of being
-    // adopted by a still-running timed fallback.
+    // viewport change keeps the user's position until a later ASR result
+    // explicitly requests another reading target.
     surface.scrollTop = 100;
     surface.dispatchEvent(new Event('scroll'));
     await vi.advanceTimersByTimeAsync(1000);
-    await runFramesUntil(frames, () => frames.size === 0, 80, frameTime);
     expect(frames.size).toBe(0);
     expect(surface.scrollTop).toBe(100);
 
@@ -303,6 +302,47 @@ describe('Voice Scroll timed fallback', () => {
     voiceUI.stop();
   });
 
+  it('re-anchors timed fallback after a manual scroll delta', async () => {
+    vi.useFakeTimers();
+    surface.textContent = Array.from({ length: 24 }, (_, index) => `word${index}`).join(' ');
+    Object.defineProperty(surface, 'scrollHeight', { configurable: true, value: 4000 });
+    vi.stubGlobal('self', {});
+    const frames = installFrameQueue();
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface });
+    await expect(voiceUI.start()).resolves.toBe(true);
+    const words = [...surface.querySelectorAll('.vs-w')];
+    setWordGeometry(words, 120);
+
+    // Establish a fallback position far into the script, then let its anchor
+    // age so an unchanged old cursor would immediately issue another target.
+    surface.scrollTop = 960;
+    surface.dispatchEvent(new Event('scroll'));
+    await vi.advanceTimersByTimeAsync(140);
+    let frameTime = await runFramesUntil(frames, () => surface.scrollTop > 960);
+    await vi.advanceTimersByTimeAsync(1000);
+    frameTime = await runFramesUntil(frames, () => surface.scrollTop > 1080, 80, frameTime);
+
+    voiceUI.beginManualScroll();
+    voiceUI.manualScroll(180 - surface.scrollTop);
+    voiceUI.endManualScroll();
+    expect(surface.scrollTop).toBe(180);
+
+    // A new manual position is the fallback base. It must not jump back to
+    // the aged, previously high creep cursor during the first few frames.
+    for (let frame = 0; frame < 20; frame++) {
+      const next = frames.entries().next().value;
+      expect(next).toBeDefined();
+      const [id, callback] = next;
+      frames.delete(id);
+      callback(frameTime);
+      frameTime += 16;
+      await vi.advanceTimersByTimeAsync(16);
+    }
+    expect(surface.scrollTop).toBe(180);
+
+    voiceUI.stop();
+  });
+
   it('continues from a manual position and retires at the final word', async () => {
     vi.useFakeTimers();
     surface.textContent = Array.from({ length: 20 }, (_, index) => `word${index}`).join(' ');
@@ -315,17 +355,20 @@ describe('Voice Scroll timed fallback', () => {
 
     surface.scrollTop = 900;
     surface.dispatchEvent(new Event('scroll'));
+    await vi.advanceTimersByTimeAsync(140);
     let frameTime = await runFramesUntil(frames, () => surface.scrollTop > 900);
     expect(surface.scrollTop).toBeGreaterThan(900);
 
     surface.scrollTop = 150;
     surface.dispatchEvent(new Event('scroll'));
+    await vi.advanceTimersByTimeAsync(140);
     frameTime = await runFramesUntil(frames, () => surface.scrollTop > 150, 220, frameTime);
     expect(surface.scrollTop).toBeGreaterThan(150);
     expect(surface.scrollTop).toBeLessThan(900);
 
     surface.scrollTop = 5000;
     surface.dispatchEvent(new Event('scroll'));
+    await vi.advanceTimersByTimeAsync(140);
     frameTime = await runFramesUntil(frames, () => frames.size === 0, 20, frameTime);
     expect(frameTime).toBeGreaterThan(0);
     expect(frames.size).toBe(0);

@@ -794,6 +794,93 @@ describe('Voice Scroll browser integration', () => {
     voiceUI.stop();
   });
 
+  it('defers an ASR viewport retarget until the active manual gesture ends', async () => {
+    const frames = [];
+    requestAnimationFrame.mockImplementation((callback) => {
+      frames.push(callback);
+      return frames.length;
+    });
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface });
+    await voiceUI.start();
+    const recognition = FakeSpeechRecognition.instances[0];
+    Object.defineProperty(surface, 'scrollHeight', {
+      configurable: true,
+      value: 2000,
+    });
+    const words = [...surface.querySelectorAll('.vs-w')];
+    words.forEach((word, index) => {
+      Object.defineProperty(word, 'offsetTop', {
+        configurable: true,
+        value: index * 120,
+      });
+      Object.defineProperty(word, 'offsetHeight', {
+        configurable: true,
+        value: 20,
+      });
+    });
+
+    voiceUI.beginManualScroll();
+    voiceUI.manualScroll(480);
+    expect(surface.scrollTop).toBe(480);
+
+    // Stable speech continues to update the matcher while the user's gesture
+    // owns the viewport, but it cannot start a competing scroll loop.
+    recognition.emitTranscript('Hôm nay tôi sẽ');
+    recognition.emitTranscript('Hôm nay tôi sẽ');
+    expect(surface.scrollTop).toBe(480);
+    expect(frames).toHaveLength(0);
+
+    // The latest valid ASR match is retained and resumes exactly one scroll
+    // loop after manual ownership ends; a new recognition result is not
+    // required to re-target the reading line.
+    voiceUI.endManualScroll();
+    expect(frames).toHaveLength(1);
+    frames.shift()(0);
+    frames.shift()(16);
+    expect(surface.scrollTop).toBeLessThan(480);
+
+    voiceUI.stop();
+  });
+
+  it('keeps the manual viewport until a new ASR result requests another target', async () => {
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface });
+    await voiceUI.start();
+    const recognition = FakeSpeechRecognition.instances[0];
+    Object.defineProperty(surface, 'scrollHeight', {
+      configurable: true,
+      value: 2000,
+    });
+    const words = [...surface.querySelectorAll('.vs-w')];
+    words.forEach((word, index) => {
+      Object.defineProperty(word, 'offsetTop', {
+        configurable: true,
+        value: index * 120,
+      });
+      Object.defineProperty(word, 'offsetHeight', {
+        configurable: true,
+        value: 20,
+      });
+    });
+
+    // Establish an old ASR target, then manually look elsewhere.
+    recognition.emitTranscript('Hôm nay tôi');
+    recognition.emitTranscript('Hôm nay tôi');
+    voiceUI.beginManualScroll();
+    requestAnimationFrame.mockClear();
+    voiceUI.manualScroll(420);
+    voiceUI.endManualScroll();
+
+    expect(surface.scrollTop).toBe(420);
+    expect(requestAnimationFrame).not.toHaveBeenCalled();
+
+    // A later valid ASR result is the only event that may take ownership back.
+    recognition.emitTranscript('Hôm nay tôi sẽ');
+    recognition.emitTranscript('Hôm nay tôi sẽ');
+    expect(requestAnimationFrame).toHaveBeenCalled();
+
+    voiceUI.stop();
+  });
+
   it('keeps reading when repeated pre-audio aborts make ASR unavailable', async () => {
     vi.useFakeTimers();
     const onError = vi.fn();

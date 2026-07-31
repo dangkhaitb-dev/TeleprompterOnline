@@ -265,6 +265,7 @@ export function paintWords(words, displayIndex, prevDisplayIndex) {
 const READING_RATIO = 1 / 3;
 const WORD_ACTIVE_FEEDBACK_MS = 700;
 const WORD_SCROLL_ANIMATION_MS = 360;
+const MANUAL_SCROLL_RESUME_DELAY_MS = 140;
 
 function readingLineOffset(surface, getReadingLineOffset) {
   const fallback = surface.clientHeight * READING_RATIO;
@@ -400,6 +401,11 @@ export function initVoiceScrollUI({
   let wordActiveTimer = null;
   let active = false;
   let mountedSurface = null;
+  let manualScrollActive = false;
+  let manualScrollResumeTimer = null;
+  let pendingAutoTarget = null;
+  let asrTargetQueuedDuringManual = false;
+  let resumeTimedFallbackAfterManual = false;
 
   function wordIndexFromEvent(event) {
     const surface = mountedSurface;
@@ -438,11 +444,79 @@ export function initVoiceScrollUI({
       wordActiveTimer = null;
     }, WORD_ACTIVE_FEEDBACK_MS);
 
-    scrollEng.animateTo(
-      scrollTarget(words[index].el, surface, getReadingLineOffset),
-      WORD_SCROLL_ANIMATION_MS,
-    );
+    const target = scrollTarget(words[index].el, surface, getReadingLineOffset);
+    scrollEng.animateTo(target, WORD_SCROLL_ANIMATION_MS);
     if (resumeTimedFallback && creep) creep.start();
+  }
+
+  function clearManualScrollResumeTimer() {
+    if (manualScrollResumeTimer === null) return;
+    clearTimeout(manualScrollResumeTimer);
+    manualScrollResumeTimer = null;
+  }
+
+  // A manual gesture owns the viewport while it is active. Previous ASR
+  // targets are intentionally discarded: after release, only a newly matched
+  // ASR result may move the viewport away from the user's final position.
+  function beginManualScroll() {
+    if (!active || !controller || manualScrollActive) return Boolean(manualScrollActive);
+    manualScrollActive = true;
+    pendingAutoTarget = null;
+    asrTargetQueuedDuringManual = false;
+    resumeTimedFallbackAfterManual = controller.getCreepInfo().timedFallback;
+    clearManualScrollResumeTimer();
+    scrollEng.stop();
+    if (creep) creep.stop();
+    return true;
+  }
+
+  function resumeAutomaticScroll() {
+    clearManualScrollResumeTimer();
+    if (!manualScrollActive) return;
+    manualScrollActive = false;
+
+    const surface = getSurface();
+    if (!surface) return;
+    const target = asrTargetQueuedDuringManual ? pendingAutoTarget : null;
+    pendingAutoTarget = null;
+    asrTargetQueuedDuringManual = false;
+    pid.syncTo(surface.scrollTop);
+
+    // Resume from the user's final viewport, then let the current ASR target
+    // correct the reading position. This is deliberately not a snap.
+    if (Number.isFinite(target) && Math.abs(target - surface.scrollTop) >= 0.5) {
+      pid.setTarget(target, false);
+      scrollEng.ensureRunning();
+    }
+    if (resumeTimedFallbackAfterManual && creep) creep.start();
+    resumeTimedFallbackAfterManual = false;
+  }
+
+  function scheduleAutomaticResume() {
+    clearManualScrollResumeTimer();
+    manualScrollResumeTimer = setTimeout(
+      resumeAutomaticScroll,
+      MANUAL_SCROLL_RESUME_DELAY_MS,
+    );
+  }
+
+  function manualScroll(delta) {
+    if (!Number.isFinite(delta) || delta === 0 || !beginManualScroll()) return false;
+    const surface = getSurface();
+    if (!surface) return false;
+    const maxScroll = Math.max(0, surface.scrollHeight - surface.clientHeight);
+    surface.scrollTop = Math.max(0, Math.min(maxScroll, surface.scrollTop + delta));
+    if (controller.getCreepInfo().timedFallback) {
+      controller.updateCreepIndex(
+        scrollIndexAtPosition(words, surface, getReadingLineOffset),
+      );
+    }
+    scheduleAutomaticResume();
+    return true;
+  }
+
+  function endManualScroll() {
+    resumeAutomaticScroll();
   }
   
   async function start({ detectedLanguage = null } = {}) {
@@ -486,13 +560,16 @@ export function initVoiceScrollUI({
         if (!surface) return;
         const target = scrollTarget(words[newCursor].el, surface, getReadingLineOffset);
         
-        // Recognition moves sequentially forward only. If the user manually
-        // placed the viewport below this word, do not pull it backward.
-        if (surface.scrollTop > target) return;
-        
+        // ASR remains the source of truth for the reading position. A manual
+        // gesture can temporarily move the viewport anywhere, but a confirmed
+        // recognition result may correct it in either direction afterward.
+        if (manualScrollActive) {
+          pendingAutoTarget = target;
+          asrTargetQueuedDuringManual = true;
+          return;
+        }
         pid.setTarget(target, false);
         scrollEng.ensureRunning();
-        
         // Start creep
         if (creep) creep.start();
       },
@@ -507,7 +584,7 @@ export function initVoiceScrollUI({
       onRecognitionDegraded: (details) => {
         console.warn('[VoiceScroll] browser recognition degraded; using timed fallback', details);
         onRecognitionDegraded?.(details);
-        if (creep) creep.start();
+        if (!manualScrollActive && creep) creep.start();
       },
       onTranscript,
       onDiagnostic,
@@ -528,19 +605,18 @@ export function initVoiceScrollUI({
       if (!controller || !controller.isActive()) return;
       const surface = getSurface();
       if (!surface) return;
+      if (manualScrollActive) return;
       if (Math.abs(surface.scrollTop - Math.round(pid.current())) > MANUAL_SCROLL_THRESHOLD) {
+        beginManualScroll();
         pid.syncTo(surface.scrollTop);
-        if (creep) {
-          if (controller.getCreepInfo().timedFallback) {
-            // Timed fallback has no speech cursor to re-anchor it. Adopt the
-            // user's viewport in either direction so Auto resumes from where
-            // they chose instead of pulling them back to its previous index.
-            controller.updateCreepIndex(
-              scrollIndexAtPosition(words, surface, getReadingLineOffset),
-            );
-            creep.start();
-          } else creep.stop();
+        if (controller.getCreepInfo().timedFallback) {
+          // Timed fallback has no speech cursor to re-anchor it. Adopt the
+          // user's viewport in either direction so it continues from there.
+          controller.updateCreepIndex(
+            scrollIndexAtPosition(words, surface, getReadingLineOffset),
+          );
         }
+        scheduleAutomaticResume();
         // Manual scrolling changes only the viewport. The speech matcher and
         // spoken-row state continue from the last confirmed ASR cursor; only an
         // explicit word click is allowed to re-anchor them.
@@ -591,6 +667,11 @@ export function initVoiceScrollUI({
   
   function stop() {
     active = false;
+    clearManualScrollResumeTimer();
+    manualScrollActive = false;
+    pendingAutoTarget = null;
+    asrTargetQueuedDuringManual = false;
+    resumeTimedFallbackAfterManual = false;
     
     // Stop controller
     if (controller) { controller.stop(); controller = null; }
@@ -643,6 +724,9 @@ export function initVoiceScrollUI({
   return {
     start,
     stop,
+    beginManualScroll,
+    manualScroll,
+    endManualScroll,
     isActive: () => active,
     destroy,
   };

@@ -48,7 +48,6 @@
                     maxlength="254"
                     placeholder="{{ feedbackCopy.emailPlaceholder }}"
                     aria-describedby="feedback-email-error"
-                    required
                 >
                 <p
                     class="feedback-widget__field-error"
@@ -60,8 +59,9 @@
 
             <div class="feedback-widget__field">
                 <div class="feedback-widget__label-row">
-                    <label for="feedback-content">{{ feedbackCopy.contentLabel }}</label>
-                    <span>{{ feedbackCopy.contentHint }}</span>
+                    <label for="feedback-content">
+                        {{ feedbackCopy.contentLabel }}<span class="feedback-widget__required" aria-hidden="true">*</span>
+                    </label>
                 </div>
                 <textarea
                     id="feedback-content"

@@ -134,8 +134,8 @@
   },
   "toolbar": {
     "studioAria": "Studio controls",
-    "normalMode": "Record off",
-    "recordMode": "Record on",
+    "normalMode": "REC Mode",
+    "recordMode": "REC Mode",
     "switchToNormalAria": "Turn recording off",
     "switchToRecordAria": "Turn recording on",
     "prompter": "Prompter",

@@ -270,9 +270,9 @@ body.tp button,
 /* Play button: bật/tắt tự cuộn ngay lập tức, không record.
    Đơn sắc đen/trắng đảo theo theme (light: nền tối chữ sáng; dark: ngược lại). */
 .header-play-button {
-  height: 32px;
+  height: 34px;
   border: 0;
-  border-radius: 8px;
+  border-radius: 10px;
   padding: 0 14px;
   display: inline-flex;
   align-items: center;
@@ -280,8 +280,8 @@ body.tp button,
   gap: 8px;
   background: var(--tp-page-text);
   color: var(--tp-page-bg);
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 700;
   line-height: 1;
   cursor: pointer;
   transition: transform 0.15s ease, opacity 0.15s ease;
@@ -965,23 +965,55 @@ html[data-theme="dark"] .app .prompt-box {
   height: 38px;
 }
 
-.toolbar-shell .studio-mode-control {
-  min-width: 64px;
-}
-
-.toolbar-shell .item.studio-mode-control .icon-wrap,
-.toolbar-shell .item.studio-mode-control .action-btn {
-  width: 56px;
+#studioModeControl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  width: 90px;
   height: 34px;
 }
 
-.toolbar-shell .item.studio-mode-control .action-btn svg.studio-record-glyph {
-  width: 56px;
-  height: 34px;
+#studioModeControl:hover {
+  transform: translateY(-1px);
+  opacity: 0.95;
 }
 
-.toolbar-shell .item.studio-mode-control.selected .action-btn svg.studio-record-glyph {
+#studioModeControl:active {
+  transform: translateY(0);
+}
+
+#studioModeControl svg.studio-record-glyph {
+  width: 90px;
+  height: 34px;
+  color: var(--tp-square-bg);
+  transition: color 0.15s ease;
+}
+
+#studioModeControl circle {
+  fill: var(--tp-white);
+  transition: fill 0.15s ease;
+}
+
+#studioModeControl.selected circle {
+  fill: var(--tp-record-btn);
+}
+
+#studioModeControl.selected svg.studio-record-glyph {
   color: var(--tp-top-border);
+}
+
+.app.record-dim #studioModeControl {
+  display: none !important;
+}
+
+.toolbar > .divider:first-child {
+  display: none;
 }
 
 .toolbar-shell .item .scroll-action-icon {
@@ -4323,4 +4355,30 @@ html.theme-instant *::after {
   .tp-stale-badge {
     animation: none;
   }
+}
+
+/* Custom Tooltip styling */
+.custom-tooltip {
+  position: fixed;
+  z-index: 10000;
+  background: var(--tp-top-border);
+  color: var(--tp-icon-fg);
+  border: 1px solid var(--tp-control-border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: nowrap;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  opacity: 0;
+  transform: translateY(4px) scale(0.95);
+  transition: opacity 0.12s cubic-bezier(0.4, 0, 0.2, 1), transform 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.custom-tooltip.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }

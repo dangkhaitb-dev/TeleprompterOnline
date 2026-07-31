@@ -26,12 +26,33 @@ describe('toFeedback', () => {
   });
 
   it.each([
-    ['', 'required'],
     ['not-an-email', 'invalid'],
     ['person@', 'invalid'],
     [`${'a'.repeat(244)}@example.com`, 'invalid'],
   ])('rejects an invalid email (%j)', (email, code) => {
     expectValidationError({ email, content: 'Useful', domain: 'solprompter.com' }, 'email', code);
+  });
+
+  it('accepts an empty or whitespace-only email', () => {
+    expect(toFeedback({
+      email: '',
+      content: 'Useful feedback',
+      domain: 'solprompter.com',
+    })).toEqual({
+      email: '',
+      content: 'Useful feedback',
+      domain: 'solprompter.com',
+    });
+
+    expect(toFeedback({
+      email: '   ',
+      content: 'Useful feedback',
+      domain: 'solprompter.com',
+    })).toEqual({
+      email: '',
+      content: 'Useful feedback',
+      domain: 'solprompter.com',
+    });
   });
 
   it('rejects feedback shorter than 3 characters after trimming', () => {

@@ -964,7 +964,7 @@
 
         <form class="feedback-widget__form" data-feedback-form novalidate>
             <div class="feedback-widget__field">
-                <label for="feedback-email">Email</label>
+                <label for="feedback-email">Email (optional)</label>
                 <input
                     id="feedback-email"
                     name="email"
@@ -973,7 +973,6 @@
                     maxlength="254"
                     placeholder="you@example.com"
                     aria-describedby="feedback-email-error"
-                    required
                 >
                 <p
                     class="feedback-widget__field-error"
@@ -985,8 +984,9 @@
 
             <div class="feedback-widget__field">
                 <div class="feedback-widget__label-row">
-                    <label for="feedback-content">Your feedback</label>
-                    <span>3–5000 characters</span>
+                    <label for="feedback-content">
+                        Feedback<span class="feedback-widget__required" aria-hidden="true">*</span>
+                    </label>
                 </div>
                 <textarea
                     id="feedback-content"

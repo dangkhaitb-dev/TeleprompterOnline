@@ -53,12 +53,11 @@ export function createStudioModeController({
     if (toggleButton) {
       toggleButton.dataset.mode = mode;
       toggleButton.setAttribute('aria-pressed', String(isRecordMode));
-      toggleButton.setAttribute(
-        'aria-label',
-        isRecordMode
-          ? toggleButton.dataset.switchToNormal || 'Switch to Normal mode'
-          : toggleButton.dataset.switchToRecord || 'Switch to Record mode',
-      );
+      const titleText = isRecordMode
+        ? toggleButton.dataset.switchToNormal || 'Switch to Normal mode'
+        : toggleButton.dataset.switchToRecord || 'Switch to Record mode';
+      toggleButton.setAttribute('aria-label', titleText);
+      toggleButton.setAttribute('title', titleText);
       toggleButton.classList.toggle('selected', isRecordMode);
     }
     if (label) {

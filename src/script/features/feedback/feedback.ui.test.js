@@ -41,7 +41,7 @@ function renderWidget() {
             name="email"
             type="email"
             autocomplete="email"
-            required
+            placeholder="you@example.com"
             aria-describedby="feedback-email-error"
           >
           <p id="feedback-email-error" data-feedback-email-error hidden></p>

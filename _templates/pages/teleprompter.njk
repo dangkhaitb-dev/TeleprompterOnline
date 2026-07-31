@@ -39,12 +39,12 @@ lang: en
 <main class="app" id="app">
   <header class="app-header" aria-label="Header">
     <div class="header-left">
-      <button class="logo-btn" type="button" aria-label="{{ pageData.header.logoAria }}">
+      <button class="logo-btn" type="button" aria-label="{{ pageData.header.logoAria }}" title="{{ pageData.header.logoAria }}">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" fill="none"><image href="/logo.webp" width="500" height="500"/></svg>
         <span class="logo-text">{{ pageData.header.brandText }}</span>
       </button>
       <span class="header-divider" aria-hidden="true"></span>
-      <button class="back-btn" data-testid="back-btn" type="button" aria-label="{{ pageData.header.backAria }}">
+      <button class="back-btn" data-testid="back-btn" type="button" aria-label="{{ pageData.header.backAria }}" title="{{ pageData.header.backAria }}">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 16 16" style="stroke-width:1.5px"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" d="M10 4 6 8l4 4"></path></svg>
         {{ pageData.header.back }}
       </button>
@@ -98,7 +98,7 @@ lang: en
     </div>
 
     <div class="record-controls">
-      <button class="reading-action-button exit-playback-button" id="exitPlaybackButton" type="button" aria-label="{{ pageData.record.backAria }}">
+      <button class="reading-action-button exit-playback-button" id="exitPlaybackButton" type="button" aria-label="{{ pageData.record.backAria }}" title="{{ pageData.record.backAria }}">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="m15 18-6-6 6-6"/>
         </svg>
@@ -111,23 +111,23 @@ lang: en
         </svg>
         <span>{{ pageData.record.restart }}</span>
       </button>
-      <button data-testid="pause-btn" class="pause-button" id="pauseButton" type="button">
+      <button data-testid="pause-btn" class="pause-button" id="pauseButton" type="button" title="{{ pageData.record.pause }}">
         <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><rect width="4.7" height="18.9" x="5" y="2.5" fill="currentColor" rx="2.4"></rect><rect width="4.7" height="18.9" x="13.3" y="2.5" fill="currentColor" rx="2.4"></rect></svg>
         <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="16px" height="16px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M7.5 4.03c0-1.9 2.07-3.07 3.7-2.1l12.13 7.26a2.45 2.45 0 010 4.2L11.2 20.65c-1.63.98-3.7-.2-3.7-2.1V4.03z" transform="scale(0.82) translate(1.5 1.8)"></path></svg>
         <span class="pause-label">{{ pageData.record.pause }}</span>
       </button>
-      <button class="header-play-button" id="headerPlayButton" type="button" aria-label="{{ pageData.record.playAria }}">
+      <button class="header-play-button" id="headerPlayButton" type="button" aria-label="{{ pageData.record.playAria }}" title="{{ pageData.record.playAria }}">
         <svg class="icon-play" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z"></path></svg>
         <svg class="icon-pause" xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M8 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2zM16 5c1.1 0 2 .9 2 2v10c0 1.1-.9 2-2 2s-2-.9-2-2V7c0-1.1.9-2 2-2z"></path></svg>
         <span class="header-play-label">{{ pageData.record.play }}</span>
       </button>
-      <button class="record-button" id="recordButton" type="button" hidden>
+      <button class="record-button" id="recordButton" type="button" title="{{ pageData.record.record }}" hidden>
         <span class="record-dot"></span>
         <span class="record-label">{{ pageData.record.record }}</span>
       </button>
     </div>
 
-    <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="{{ pageData.header.menuAria }}" aria-expanded="false" aria-controls="mobileSidebar">
+    <button type="button" class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="{{ pageData.header.menuAria }}" title="{{ pageData.header.menuAria }}" aria-expanded="false" aria-controls="mobileSidebar">
       <span class="menu-toggle-bar"></span>
       <span class="menu-toggle-bar"></span>
       <span class="menu-toggle-bar"></span>
@@ -184,12 +184,12 @@ lang: en
   <!-- Scroll affordances: show at the left/right of the mobile format toolbar
        when its content overflows horizontally (toggled by updateMffMore in
        teleprompter.ui.js). Decorative — the real buttons stay keyboard-reachable. -->
-  <button type="button" class="mff-more mff-more-left" id="mffMoreLeft" aria-hidden="true" tabindex="-1">
+  <button type="button" class="mff-more mff-more-left" id="mffMoreLeft" aria-hidden="true" tabindex="-1" title="Scroll left">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="m17 6-6 6 6 6M11 6l-6 6 6 6"/>
     </svg>
   </button>
-  <button type="button" class="mff-more" id="mffMore" aria-hidden="true" tabindex="-1">
+  <button type="button" class="mff-more" id="mffMore" aria-hidden="true" tabindex="-1" title="Scroll right">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
       <path d="m7 6 6 6-6 6M13 6l6 6-6 6"/>
     </svg>
@@ -240,7 +240,7 @@ lang: en
           </div>
         </div>
         <div class="center">
-          <button class="play-btn" id="playBtn" aria-label="{{ pageData.record.playAria }}">
+          <button class="play-btn" id="playBtn" aria-label="{{ pageData.record.playAria }}" title="{{ pageData.record.playAria }}">
             <svg width="20" height="20" viewBox="0 0 24 24" id="playIcon"><path d="M8 6.82v10.36c0 .79.87 1.27 1.54.84l8.14-5.18c.62-.39.62-1.29 0-1.69L9.54 5.98C8.87 5.55 8 6.03 8 6.82z"/></svg>
           </button>
         </div>
@@ -279,32 +279,27 @@ lang: en
           type="button"
           aria-pressed="false"
           aria-label="{{ pageData.toolbar.switchToRecordAria }}"
-          data-normal-label="{{ pageData.toolbar.normalMode }}"
-          data-record-label="{{ pageData.toolbar.recordMode }}"
+          data-normal-label="REC Mode"
+          data-record-label="REC Mode"
           data-switch-to-normal="{{ pageData.toolbar.switchToNormalAria }}"
           data-switch-to-record="{{ pageData.toolbar.switchToRecordAria }}"
         >
-          <div class="icon-wrap">
-            <div class="action-btn">
-              <svg class="studio-record-glyph" width="56" height="34" viewBox="0 0 56 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="2" y="3" width="52" height="28" rx="7" fill="currentColor"/>
-                <circle cx="15" cy="17" r="6" fill="var(--tp-record-btn)"/>
-                <text x="25" y="21" fill="var(--tp-icon-fg)" font-family="inherit" font-size="12" font-weight="800" letter-spacing="-.4">REC</text>
-              </svg>
-            </div>
-          </div>
-          <span class="label">{{ pageData.toolbar.normalMode }}</span>
+          <svg class="studio-record-glyph" width="90" height="34" viewBox="0 0 90 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect x="0" y="0" width="90" height="34" rx="10" fill="currentColor"/>
+            <circle cx="15" cy="17" r="6" fill="var(--tp-record-btn)"/>
+            <text x="28" y="21" fill="var(--tp-icon-fg)" font-family="inherit" font-size="11" font-weight="800" letter-spacing="-.2">REC Mode</text>
+          </svg>
         </button>
 
         <div class="divider" aria-hidden="true"></div>
 
-        <button class="item" id="mirrorControl" type="button" aria-pressed="false" aria-label="{{ pageData.toolbar.mirrorAria }}">
+        <button class="item" id="mirrorControl" type="button" aria-pressed="false" aria-label="{{ pageData.toolbar.mirrorAria }}" title="{{ pageData.toolbar.mirrorAria }}">
           <div class="icon-wrap">
             <div class="action-btn">
               <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
                 <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
-                <path d="M18.5 13V28.5H12L18.5 13Z" fill="none" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M21.5 13V28.5H28L21.5 13Z" fill="var(--tp-icon-fg)" fill-opacity="0.5" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M18.5 13V28.5H12 L18.5 13Z" fill="none" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M21.5 13V28.5H28 L21.5 13Z" fill="var(--tp-icon-fg)" fill-opacity="0.5" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
               </svg>
             </div>
           </div>
@@ -324,7 +319,7 @@ lang: en
           <span class="label">{{ pageData.toolbar.notch }}</span>
         </button>
 
-        <button class="item" id="layoutControl" type="button" aria-pressed="false" aria-label="{{ pageData.toolbar.layoutAria }}">
+        <button class="item" id="layoutControl" type="button" aria-pressed="false" aria-label="{{ pageData.toolbar.layoutAria }}" title="{{ pageData.toolbar.layoutAria }}">
           <div class="icon-wrap">
             <div class="action-btn">
               <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
@@ -376,7 +371,7 @@ lang: en
     </div>
 
     <div class="layout-frame" id="layoutFrame" aria-hidden="true">
-      <button class="layout-handle left" type="button" data-layout-edge="left" aria-label="{{ pageData.layout.marginLeftAria }}">
+      <button class="layout-handle left" type="button" data-layout-edge="left" aria-label="{{ pageData.layout.marginLeftAria }}" title="{{ pageData.layout.marginLeftAria }}">
         <span class="layout-grip">
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M4 5L1 8L4 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -385,7 +380,7 @@ lang: en
           </svg>
         </span>
       </button>
-      <button class="layout-handle right" type="button" data-layout-edge="right" aria-label="{{ pageData.layout.marginRightAria }}">
+      <button class="layout-handle right" type="button" data-layout-edge="right" aria-label="{{ pageData.layout.marginRightAria }}" title="{{ pageData.layout.marginRightAria }}">
         <span class="layout-grip">
           <svg width="18" height="18" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M4 5L1 8L4 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -405,7 +400,7 @@ lang: en
       <div class="popup-title">{{ pageData.speedMenu.title }}</div>
       <div class="scroll-mode-options" role="radiogroup" aria-label="{{ pageData.speedMenu.modeLabel }}">
         <div class="scroll-mode-option">
-          <button class="scroll-mode-choice" id="speedModeAuto" type="button" role="radio" aria-checked="false">
+          <button class="scroll-mode-choice" id="speedModeAuto" type="button" role="radio" aria-checked="false" title="{{ pageData.speedMenu.autoScroll }}">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
             <span class="scroll-choice-label-container">
               <span>{{ pageData.speedMenu.autoScroll }}</span>
@@ -415,7 +410,7 @@ lang: en
         </div>
 
         <div class="scroll-mode-option">
-          <button class="scroll-mode-choice selected" id="speedMethodWpm" type="button" role="radio" aria-checked="true" aria-controls="speedWpmPanel">
+          <button class="scroll-mode-choice selected" id="speedMethodWpm" type="button" role="radio" aria-checked="true" aria-controls="speedWpmPanel" title="{{ pageData.speedMenu.wordsPerMinute }}">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
             <span>{{ pageData.speedMenu.wordsPerMinute }}</span>
           </button>
@@ -438,7 +433,7 @@ lang: en
         </div>
 
         <div class="scroll-mode-option">
-          <button class="scroll-mode-choice" id="speedMethodTime" type="button" role="radio" aria-checked="false" aria-controls="speedTimePanel">
+          <button class="scroll-mode-choice" id="speedMethodTime" type="button" role="radio" aria-checked="false" aria-controls="speedTimePanel" title="{{ pageData.speedMenu.scrollTime }}">
             <span class="scroll-choice-radio" aria-hidden="true"></span>
             <span>{{ pageData.speedMenu.scrollTime }}</span>
           </button>
@@ -479,7 +474,7 @@ lang: en
         </label>
 
         <!-- Display Group Navigation Button -->
-        <button type="button" class="settings-row settings-row-nav" id="settingsGroupDisplayBtn">
+        <button type="button" class="settings-row settings-row-nav" id="settingsGroupDisplayBtn" title="{{ pageData.settingsMenu.displayGroup }}">
           <span class="settings-row-title">{{ pageData.settingsMenu.displayGroup }}</span>
           <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </button>
@@ -488,7 +483,7 @@ lang: en
         <div class="settings-group" id="settingsGroupDevices">
           <div class="settings-group-content" id="settingsGroupDevicesContent">
             <div class="settings-row settings-media-row" id="cameraSettingsGroup">
-              <button type="button" class="settings-media-device" id="cameraSettingsRow" aria-haspopup="menu" aria-expanded="false">
+              <button type="button" class="settings-media-device" id="cameraSettingsRow" aria-haspopup="menu" aria-expanded="false" title="{{ pageData.settingsMenu.camera }}">
                 <span class="settings-row-title">{{ pageData.settingsMenu.camera }}</span>
                 <span class="settings-row-value" id="cameraSettingsValue">{{ pageData.settingsMenu.off }}</span>
                 <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
@@ -498,7 +493,7 @@ lang: en
               </label>
             </div>
             <div class="settings-row settings-media-row" id="micSettingsGroup">
-              <button type="button" class="settings-media-device" id="micSettingsRow" aria-haspopup="menu" aria-expanded="false">
+              <button type="button" class="settings-media-device" id="micSettingsRow" aria-haspopup="menu" aria-expanded="false" title="{{ pageData.settingsMenu.microphone }}">
                 <span class="settings-row-title">{{ pageData.settingsMenu.microphone }}</span>
                 <span class="settings-row-value" id="micSettingsValue">{{ pageData.settingsMenu.off }}</span>
                 <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
@@ -511,7 +506,7 @@ lang: en
         </div>
 
         <!-- Shortcuts Link (Always outside) -->
-        <button type="button" class="settings-row settings-row-nav" id="shortcutsControl" aria-haspopup="dialog" aria-expanded="false">
+        <button type="button" class="settings-row settings-row-nav" id="shortcutsControl" aria-haspopup="dialog" aria-expanded="false" title="{{ pageData.settingsMenu.shortcuts }}">
           <span class="settings-row-title">{{ pageData.settingsMenu.shortcuts }}</span>
           <svg class="settings-row-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
         </button>
@@ -520,7 +515,7 @@ lang: en
       <!-- Display & Theme Sub-view -->
       <div class="settings-view" id="settingsDisplayView" hidden>
         <!-- Header with Back Button -->
-        <button type="button" class="settings-row settings-row-nav settings-back-btn" id="settingsDisplayBackBtn">
+        <button type="button" class="settings-row settings-row-nav settings-back-btn" id="settingsDisplayBackBtn" title="{{ pageData.record.back }}">
           <svg class="settings-back-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
           <span class="settings-row-title">{{ pageData.settingsMenu.displayGroup }}</span>
         </button>
@@ -579,7 +574,7 @@ lang: en
         <div class="device-status" role="status">Loading cameras…</div>
       </div>
       <div class="device-menu-divider"></div>
-      <button class="device-action" type="button" role="menuitem" id="cameraMenuAction">{{ pageData.cameraMenu.action }}</button>
+      <button class="device-action" type="button" role="menuitem" id="cameraMenuAction" title="{{ pageData.cameraMenu.action }}">{{ pageData.cameraMenu.action }}</button>
     </div>
 
     <!-- Microphone device popup -->
@@ -589,7 +584,7 @@ lang: en
         <div class="device-status" role="status">Loading microphones…</div>
       </div>
       <div class="device-menu-divider"></div>
-      <button class="device-action" type="button" role="menuitem" id="micMenuAction">{{ pageData.micMenu.action }}</button>
+      <button class="device-action" type="button" role="menuitem" id="micMenuAction" title="{{ pageData.micMenu.action }}">{{ pageData.micMenu.action }}</button>
     </div>
 
     <!-- Full-screen 3-2-1 countdown before recording -->
@@ -601,8 +596,8 @@ lang: en
 
     <div class="m-studio-bar" id="mStudioBar" aria-hidden="true">
       <div class="m-tabs" role="tablist">
-        <button type="button" class="m-tab active" id="mTabPrompter" data-tab="tools" role="tab" aria-controls="mPanelTools" aria-selected="true" tabindex="0">{{ pageData.toolbar.prompter }}</button>
-        <button type="button" class="m-tab" id="mTabRecord" data-tab="main" role="tab" aria-controls="mPanelMain" aria-selected="false" tabindex="-1">{{ pageData.record.record }}</button>
+        <button type="button" class="m-tab active" id="mTabPrompter" data-tab="tools" role="tab" aria-controls="mPanelTools" aria-selected="true" tabindex="0" title="{{ pageData.toolbar.prompter }}">{{ pageData.toolbar.prompter }}</button>
+        <button type="button" class="m-tab" id="mTabRecord" data-tab="main" role="tab" aria-controls="mPanelMain" aria-selected="false" tabindex="-1" title="{{ pageData.record.record }}">{{ pageData.record.record }}</button>
       </div>
       <div class="m-shared-tools" id="mSharedTools">
         <div class="m-tab-panels">
@@ -694,7 +689,7 @@ lang: en
       <img src="/logo.webp" alt="SolPrompter logo" class="shared-brand-logo" width="24" height="24" loading="lazy" decoding="async">
       <span class="mobile-sidebar-title">{{ pageData.header.brandText }}</span>
     </div>
-    <button type="button" class="mobile-sidebar-close" id="mobileSidebarClose" aria-label="{{ pageData.header.menuCloseAria }}">
+    <button type="button" class="mobile-sidebar-close" id="mobileSidebarClose" aria-label="{{ pageData.header.menuCloseAria }}" title="{{ pageData.header.menuCloseAria }}">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
     </button>
   </div>

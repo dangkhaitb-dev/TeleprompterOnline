@@ -84,6 +84,7 @@ import {
   releaseLanguageDetector,
   restoreRememberedSpeechPacks,
 } from './components/voice-scroll.logic.js';
+import { initCustomTooltips } from '../../utils/tooltip.js';
 
 const TIMESLICE_LABEL_MS = 250;
 const VOICE_LANGUAGE_EDIT_DEBOUNCE_MS = 1800;
@@ -133,6 +134,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   panelsReady.catch(() => {});
 
   const cleanups = [];
+  cleanups.push(initCustomTooltips(root));
   let tornDown = false;
   const on = (el, type, fn, opts) => {
     if (!el) return;
@@ -212,6 +214,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const cameraToggle = $('toggleCamera');
   const micToggle = $('toggleMic');
   const studioModeControl = $('studioModeControl');
+  const studioModeControlHome = studioModeControl && studioModeControl.parentNode;
+  const studioModeControlHomeNext = studioModeControl && studioModeControl.nextSibling;
   const mirrorControlEl = $('mirrorControl');
   const speedControlEl = speedControl;
   const settingsControlEl = $('settingsControl');
@@ -277,6 +281,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (!mPanelMain || !mPanelTools || !mSharedTools) return;
     if (phoneViewport.matches) {
       if (mStudioBar) mStudioBar.setAttribute('aria-hidden', 'false');
+      if (studioModeControl && studioModeControlHome) {
+        const anchor = studioModeControlHomeNext && studioModeControlHomeNext.parentNode === studioModeControlHome
+          ? studioModeControlHomeNext
+          : null;
+        studioModeControlHome.insertBefore(studioModeControl, anchor);
+      }
       if (recordControls) mPanelMain.appendChild(recordControls);
       if (headerPlayButton) mPanelTools.appendChild(headerPlayButton);
       [layoutControl, speedControlEl, mirrorControlEl, settingsControlEl]
@@ -292,6 +302,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // Camera mode owns Layout inside the panel control bar. A phone/desktop
       // round trip must restore that placement instead of its initial toolbar home.
       setLayoutControlInPanel(app.classList.contains('cam-on'));
+
+      if (studioModeControl && headerPlayButton) {
+        headerPlayButton.parentNode.insertBefore(studioModeControl, headerPlayButton);
+      }
     }
   }
   applyPhoneLayout();
@@ -1171,10 +1185,16 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       path.setAttribute('d', playing ? PAUSE_PATH : PLAY_PATH);
       playIcon.replaceChildren(path);
     }
-    if (playBtn) playBtn.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+    if (playBtn) {
+      const labelText = playing ? 'Pause' : 'Play';
+      playBtn.setAttribute('aria-label', labelText);
+      playBtn.setAttribute('title', labelText);
+    }
     if (headerPlayButton) {
       headerPlayButton.classList.toggle('playing', playing);
-      headerPlayButton.setAttribute('aria-label', playing ? 'Pause' : 'Play');
+      const labelText = playing ? 'Pause' : 'Play';
+      headerPlayButton.setAttribute('aria-label', labelText);
+      headerPlayButton.setAttribute('title', labelText);
     }
   }
 
@@ -1942,7 +1962,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (controller.isRecording()) {
       controller.pause();
       app.classList.add('record-paused');
-      if (pauseButton) pauseButton.classList.add('paused');
+      if (pauseButton) {
+        pauseButton.classList.add('paused');
+        const tooltip = copy.resume || 'Play';
+        pauseButton.setAttribute('aria-label', tooltip);
+        pauseButton.setAttribute('title', tooltip);
+      }
       if (recordButton) recordButton.classList.add('paused');
       if (pauseLabel) pauseLabel.textContent = copy.resume || 'Play';
       clearInterval(recordTimer);
@@ -1953,7 +1978,12 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     } else if (controller.isPaused()) {
       controller.resume();
       app.classList.remove('record-paused');
-      if (pauseButton) pauseButton.classList.remove('paused');
+      if (pauseButton) {
+        pauseButton.classList.remove('paused');
+        const tooltip = copy.pause || 'Pause';
+        pauseButton.setAttribute('aria-label', tooltip);
+        pauseButton.setAttribute('title', tooltip);
+      }
       if (recordButton) recordButton.classList.remove('paused');
       if (pauseLabel) pauseLabel.textContent = copy.pause || 'Pause';
       setEditingEnabled(false);

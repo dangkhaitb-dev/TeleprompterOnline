@@ -34,9 +34,10 @@ export function toFeedback(raw = {}) {
   const content = trimmedString(raw.content);
   const domain = trimmedString(raw.domain);
 
-  if (!email) throw new FeedbackValidationError('email', 'required');
-  if (email.length > MAX_EMAIL_LENGTH || !EMAIL_PATTERN.test(email)) {
-    throw new FeedbackValidationError('email', 'invalid');
+  if (email) {
+    if (email.length > MAX_EMAIL_LENGTH || !EMAIL_PATTERN.test(email)) {
+      throw new FeedbackValidationError('email', 'invalid');
+    }
   }
   if (!content) throw new FeedbackValidationError('content', 'required');
   if (content.length < MIN_CONTENT_LENGTH) {

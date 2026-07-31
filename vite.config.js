@@ -224,6 +224,25 @@ const createViteConfig = (isTestBuild) => ({
           /^text/, /^grid/, /^rounded/, /^surface/,
           /--hover/, /--focus/, /--active/, /--visible/, /--hidden/,
           /ThemeIconSun$/, /ThemeIconMoon$/,
+          // Teleprompter classes set dynamically by JS (classList.add/toggle) —
+          // PurgeCSS cannot detect these from static analysis.
+          /^panel-theme-/,   // panel-theme-dark-60, panel-theme-light-60, etc.
+          'theme-light',     // .panel.theme-light (light panel variant)
+          'theme-instant',   // html.theme-instant (suppress transitions on theme swap)
+          'record-dim',      // .app.record-dim (reading/recording mode)
+          'cam-on',          // .app.cam-on (camera preview active)
+          'notch-on',        // .app.notch-on (notch fullscreen mode)
+          'mirror-on',       // .app.mirror-on (mirror text mode)
+          'layout-guides-on',// .app.layout-guides-on (layout guide overlay)
+          'is-dragging',     // .panel.is-dragging (drag in progress)
+          'playing',         // .header-play-button.playing
+          'paused',          // .pause-button.paused
+          'selected',        // various toggle buttons
+          /^tp-/,            // all tp-* utility classes (tp-page, tp-overlay, etc.)
+          /^ws-/,            // all ws-* workspace classes set dynamically
+          /^se-/,            // all se-* scene-editor classes set dynamically
+          /^m-tab/,          // m-tab, m-tab-panel, m-tabs (mobile tab system)
+          /^record-/,        // record-controls, record-dot, record-dim, etc.
         ],
         greedy: [
           /data-/, // preserve all [data-*] attribute selectors (JS sets these dynamically)

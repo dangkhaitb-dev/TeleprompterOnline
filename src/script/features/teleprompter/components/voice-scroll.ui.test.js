@@ -556,6 +556,55 @@ describe('Voice Scroll browser integration', () => {
     voiceUI.stop();
   });
 
+  it('resumes from a clicked word when Chrome keeps earlier final result slots', async () => {
+    const onTranscript = vi.fn();
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      onTranscript,
+    });
+    await voiceUI.start();
+    const recognition = FakeSpeechRecognition.instances[0];
+    const words = [...surface.querySelectorAll('.vs-w')];
+    const result = (transcript, isFinal) => ({
+      0: { transcript, confidence: 1 },
+      isFinal,
+      length: 1,
+    });
+
+    // Establish a successfully tracking final result before the user jumps.
+    recognition.onresult?.({
+      resultIndex: 0,
+      results: [result('Hôm nay tôi sẽ', true)],
+    });
+    expect(onTranscript).toHaveBeenLastCalledWith(expect.objectContaining({
+      cursor: 3,
+      matched: true,
+    }));
+
+    vi.useFakeTimers();
+    words[4].dispatchEvent(new MouseEvent('click', {
+      bubbles: true,
+      cancelable: true,
+    }));
+    await vi.advanceTimersByTimeAsync(700);
+
+    // Chromium retains prior final slots in each event. The new interim still
+    // needs two identical events before it is stable enough for matching.
+    const cumulativeResults = [
+      result('Hôm nay tôi sẽ', true),
+      result('hướng dẫn', false),
+    ];
+    recognition.onresult?.({ resultIndex: 1, results: cumulativeResults });
+    recognition.onresult?.({ resultIndex: 1, results: cumulativeResults });
+
+    vi.useRealTimers();
+    voiceUI.stop();
+    expect(onTranscript).toHaveBeenLastCalledWith(expect.objectContaining({
+      cursor: 5,
+      matched: true,
+    }));
+  });
+
   it('keeps consecutive word selections owned by one scroll loop in Record', async () => {
     const recordStage = document.createElement('div');
     const onRecordStageClick = vi.fn();

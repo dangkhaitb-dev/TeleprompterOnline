@@ -1088,7 +1088,10 @@ export function createASREngine({
   
   function resetStream() {
     finalTokens = [];
-    finalizedIds = new Set();
+    // Chromium keeps earlier final result slots in later events from the same
+    // recognition session. Preserve their ids so a direct word re-anchor does
+    // not ingest pre-click speech again. A genuinely restarted session clears
+    // this set in createRecognition().onstart.
     pendingTokens = 0;
     rawFinalWords = [];
     previousInterimTokens = [];

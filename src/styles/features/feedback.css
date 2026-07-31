@@ -100,10 +100,10 @@ body.tp .feedback-widget {
   flex: 0 0 2.75rem;
   display: inline-grid;
   place-items: center;
-  border: 1px solid var(--line);
+  border: none;
   border-radius: var(--radius-pill);
   color: var(--ink);
-  background: var(--home-bg);
+  background: transparent;
   transition: background-color var(--dur-fast) var(--ease-out);
 }
 

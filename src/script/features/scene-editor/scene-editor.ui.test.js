@@ -28,6 +28,7 @@ describe('Scene Editor First Visit Tour', () => {
   }
 
   beforeEach(() => {
+    vi.clearAllMocks();
     stubLocalStorage();
     container = document.createElement('div');
     document.body.appendChild(container);
@@ -90,6 +91,40 @@ describe('Scene Editor First Visit Tour', () => {
     });
 
     expect(document.querySelector('.first-visit-tour-overlay')).toBeNull();
+  });
+
+  it('opens immediately while the stopped recording is still being saved', async () => {
+    setItem(LS_SE_FIRST_VISIT_TOUR, true);
+    const savedScene = {
+      id: 'take-saving',
+      kind: 'video',
+      blob: new Blob(['video'], { type: 'video/mp4' }),
+      duration: 5000,
+    };
+    let resolveSave;
+    const pendingSave = new Promise((resolve) => { resolveSave = resolve; });
+    vi.mocked(logic.loadScenes)
+      .mockResolvedValueOnce([])
+      .mockResolvedValueOnce([savedScene]);
+    vi.mocked(logic.exportableScenes).mockReturnValue([savedScene]);
+    vi.mocked(logic.exportButtonIntent).mockReturnValue('direct');
+
+    teardown = await mountSceneEditor(container, {
+      workspaceId: 'ws-saving',
+      copy: { saving: 'Finalizing test recording…' },
+      pendingSave,
+    });
+
+    expect(container.querySelector('.se-saving-preview')?.textContent)
+      .toContain('Finalizing test recording…');
+
+    resolveSave(savedScene);
+
+    await vi.waitFor(() => {
+      expect(container.querySelector('.se-saving-preview')).toBeNull();
+      expect(container.querySelector('video')).not.toBeNull();
+    });
+    expect(logic.loadScenes).toHaveBeenCalledTimes(2);
   });
 
   it('shows video loading feedback until a frame is ready', async () => {

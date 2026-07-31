@@ -1476,7 +1476,7 @@
   position: fixed;
   bottom: max(32px, calc(env(safe-area-inset-bottom) + 16px));
   left: 50%;
-  z-index: var(--z-menu);
+  z-index: calc(var(--z-toast) + 10);
   display: flex;
   align-items: stretch;
   gap: 4px;

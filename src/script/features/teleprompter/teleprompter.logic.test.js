@@ -308,6 +308,31 @@ describe('createRecordingController persistence tagging', () => {
     expect(media.stopStream).not.toHaveBeenCalledWith(previewStream);
   });
 
+  it('returns the in-flight save when stop is called again while saving', async () => {
+    const stream = { getVideoTracks: () => [] };
+    media.getCaptureStream.mockResolvedValue(stream);
+    recordings.putRecording.mockImplementation(async (record) => ({ ...record, id: 'stored' }));
+    vi.stubGlobal('MediaRecorder', FakeMediaRecorder);
+    const controller = createRecordingController();
+
+    await controller.start({ wantsVideo: false, wantsAudio: true });
+    FakeMediaRecorder.instance.emit('dataavailable', {
+      data: new Blob(['recorded bytes'], { type: 'audio/webm' }),
+    });
+
+    const firstStop = controller.stop({ workspaceId: 'workspace-a' });
+    expect(controller.getState()).toBe('saving');
+    const repeatedStop = controller.stop({ workspaceId: 'workspace-a' });
+
+    expect(repeatedStop).toBe(firstStop);
+    await expect(Promise.all([firstStop, repeatedStop])).resolves.toEqual([
+      expect.objectContaining({ id: 'stored' }),
+      expect.objectContaining({ id: 'stored' }),
+    ]);
+    expect(recordings.putRecording).toHaveBeenCalledOnce();
+    expect(media.stopStream).toHaveBeenCalledOnce();
+  });
+
   it.each([
     { saveEnabled: false, expectedTemporary: true },
     { saveEnabled: true, expectedTemporary: false },

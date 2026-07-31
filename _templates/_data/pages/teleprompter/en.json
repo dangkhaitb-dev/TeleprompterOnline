@@ -253,6 +253,9 @@
     "backHome": "Back to home"
   },
   "sceneEditor": {
+    "loading": "Finalizing recording…",
+    "loadError": "The editor could not be opened.",
+    "retry": "Try again",
     "tour": {
       "label": "Editor quick tour",
       "skip": "Skip",

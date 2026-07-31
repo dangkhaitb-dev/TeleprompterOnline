@@ -120,6 +120,7 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
   let mimeType = '';
   let actualMimeType = '';
   let recorderFailure = null;
+  let stopPromise = null;
   let startGeneration = 0;
 
   let accumulatedMs = 0;
@@ -190,6 +191,7 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
     mimeType = recordingMimeType(hasVideo);
     actualMimeType = '';
     recorderFailure = null;
+    stopPromise = null;
     chunks = [];
     opfsWriter = null;
     opfsWriteFailed = false;
@@ -277,11 +279,15 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
   // Stop + persist. Resolves with the saved record (or null on failure). The UI
   // then swaps to the review panel using record.blob.
   function stop({ workspaceId } = {}) {
+    // Several stop sources can converge on iOS: the user's tap, a storage
+    // auto-stop, and a late MediaRecorder error. They must all observe the same
+    // finalization instead of treating `saving` like an idle recorder.
+    if (state === 'saving') return stopPromise || Promise.resolve(null);
     if (state !== 'recording' && state !== 'paused') return Promise.resolve(null);
     const wasPaused = state === 'paused';
     state = 'saving';
 
-    return new Promise((resolve) => {
+    stopPromise = new Promise((resolve) => {
       const finalize = async () => {
         const duration = computeDuration({
           accumulatedMs,
@@ -402,6 +408,7 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
         finalize();
       }
     });
+    return stopPromise;
   }
 
   // Abort without saving (used when capture never started, e.g. permission

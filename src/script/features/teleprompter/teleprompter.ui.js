@@ -86,6 +86,7 @@ import {
   restoreRememberedSpeechPacks,
 } from './components/voice-scroll.logic.js';
 import { initCustomTooltips } from '../../utils/tooltip.js';
+import { mountSceneEditor } from '../scene-editor/scene-editor.ui.js';
 
 const TIMESLICE_LABEL_MS = 250;
 const VOICE_LANGUAGE_EDIT_DEBOUNCE_MS = 1800;
@@ -1562,6 +1563,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   }
 
   // ---- Recording controller (logic layer) -----------------------------------
+  let recordingFinalizePromise = null;
   controller = createRecordingController({
     onExternalStreamReleased: releaseSharedCapture,
     onError: (err) => {
@@ -1697,6 +1699,26 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       if (promptBox) promptBox.style.paddingTop = '';
       if (teleprompterText) teleprompterText.style.paddingTop = '';
     }
+  }
+
+  function finishRecording(reason = 'manual') {
+    if (recordingFinalizePromise) return recordingFinalizePromise;
+    const recorderState = controller.getState();
+    if (!['recording', 'paused', 'saving'].includes(recorderState)) {
+      return Promise.resolve(null);
+    }
+
+    logRecordCapture('recorder-finalizing', { reason });
+    if (recordButton) recordButton.disabled = true;
+    readingSession.stop();
+    resetRecordUI();
+    const pendingSave = controller.stop({ workspaceId: workspace.id });
+    const tracked = Promise.resolve(openSceneEditor({ pendingSave })).finally(() => {
+      if (recordingFinalizePromise === tracked) recordingFinalizePromise = null;
+      if (recordButton) recordButton.disabled = false;
+    });
+    recordingFinalizePromise = tracked;
+    return tracked;
   }
 
   function abortRecordingStart() {
@@ -1909,7 +1931,10 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       if (headerPlayButton) headerPlayButton.classList.remove('hidden');
       return;
     }
-    if (!controller.isRecording() && !controller.isPaused()) {
+    const recorderState = controller.getState();
+    if (recorderState === 'saving') {
+      await finishRecording('repeated-stop');
+    } else if (!controller.isRecording() && !controller.isPaused()) {
       if (recordingStartGate.isPending()) return;
       if (recordButton) recordButton.disabled = true;
       await recordingStartGate.run(async () => {
@@ -1963,13 +1988,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         }
       });
     } else {
-      // Manual stop → reset UI → stop scroller → jump straight to the scene
-      // editor; the save keeps running in the background and the editor shows
-      // a saving placeholder until it settles.
-      readingSession.stop();
-      resetRecordUI();
-      const pendingSave = controller.stop({ workspaceId: workspace.id });
-      await openSceneEditor({ pendingSave });
+      await finishRecording('manual');
     }
   }
   on(recordButton, 'click', onRecordClick);
@@ -2462,13 +2481,50 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   // ---- Scene editor (post-record edit, mounted in-place, no navigation) -----
   const sceneEditorRoot = $('sceneEditorView');
   let sceneEditorTeardown = null;
+  let sceneEditorOpenRevision = 0;
+
+  function renderSceneEditorTransition({ failed = false, pendingSave } = {}) {
+    if (!sceneEditorRoot) return;
+    const editorCopy = copy.sceneEditor || {};
+    const status = document.createElement('section');
+    status.className = `tp-editor-transition${failed ? ' is-error' : ''}`;
+    status.setAttribute('role', failed ? 'alert' : 'status');
+
+    if (!failed) {
+      const spinner = document.createElement('span');
+      spinner.className = 'tp-editor-transition__spinner';
+      spinner.setAttribute('aria-hidden', 'true');
+      status.append(spinner);
+    }
+
+    const title = document.createElement('strong');
+    title.textContent = failed
+      ? (editorCopy.loadError || 'The editor could not be opened.')
+      : (editorCopy.loading || editorCopy.saving || 'Finalizing recording…');
+    status.append(title);
+
+    if (failed) {
+      const retry = document.createElement('button');
+      retry.type = 'button';
+      retry.className = 'tp-btn tp-btn--primary';
+      retry.textContent = editorCopy.retry || 'Try again';
+      retry.addEventListener('click', () => {
+        void openSceneEditor({ pendingSave });
+      }, { once: true });
+      status.append(retry);
+    }
+    sceneEditorRoot.replaceChildren(status);
+  }
+
   function closeSceneEditor() {
+    sceneEditorOpenRevision += 1;
     if (sceneEditorTeardown) { sceneEditorTeardown(); sceneEditorTeardown = null; }
     if (sceneEditorRoot) sceneEditorRoot.hidden = true;
     if (app) app.hidden = false;
   }
   async function openSceneEditor({ pendingSave } = {}) {
     if (!sceneEditorRoot) return;
+    const revision = ++sceneEditorOpenRevision;
     // The scene editor reads workspace state from the store — commit any
     // trailing debounced edit before handing over.
     persistSharedState.flush();
@@ -2476,16 +2532,30 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     // The editor is mounted beside (not inside) the teleprompter app, so the
     // fixed notch overlay must be explicitly turned off before swapping views.
     notch.deactivate();
-    const { mountSceneEditor } = await import('../scene-editor/scene-editor.ui.js');
-    sceneEditorTeardown = await mountSceneEditor(sceneEditorRoot, {
-      workspaceId: workspace.id,
-      copy: copy.sceneEditor || {},
-      pendingSave,
-      onBack: closeSceneEditor,
-      onRecordScene: closeSceneEditor,
-    });
+    // Swap views before mounting. The saving state appears in the same event
+    // turn as the Stop tap, so WebKit cannot expose the reset Record view.
     if (app) app.hidden = true;
     sceneEditorRoot.hidden = false;
+    renderSceneEditorTransition({ pendingSave });
+
+    try {
+      const teardownEditor = await mountSceneEditor(sceneEditorRoot, {
+        workspaceId: workspace.id,
+        copy: copy.sceneEditor || {},
+        pendingSave,
+        onBack: closeSceneEditor,
+        onRecordScene: closeSceneEditor,
+      });
+      if (tornDown || revision !== sceneEditorOpenRevision) {
+        teardownEditor?.();
+        return;
+      }
+      sceneEditorTeardown = teardownEditor;
+    } catch (error) {
+      if (tornDown || revision !== sceneEditorOpenRevision) return;
+      console.error('[SceneEditor] Failed to open after recording', error);
+      renderSceneEditorTransition({ failed: true, pendingSave });
+    }
   }
 
   // ---- Cross-tab stale-version badge (edit view only) -----------------------

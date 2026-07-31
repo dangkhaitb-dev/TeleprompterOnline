@@ -136,13 +136,13 @@ function createScrollEngine(getSurface, pid) {
       const progress = Math.min(1, (timestamp - transition.startedAt) / transition.duration);
       const eased = 1 - Math.pow(1 - progress, 3);
       const position = transition.from + (transition.to - transition.from) * eased;
-      surface.scrollTop = Math.round(position);
+      surface.scrollTop = position;
       pid.syncTo(position);
 
       if (progress < 1) {
         animId = requestAnimationFrame(tick);
       } else {
-        surface.scrollTop = Math.round(transition.to);
+        surface.scrollTop = transition.to;
         pid.syncTo(transition.to);
         transition = null;
         animId = null;
@@ -151,7 +151,7 @@ function createScrollEngine(getSurface, pid) {
     }
 
     const { position, settled } = pid.tick(timestamp);
-    surface.scrollTop = Math.round(position);
+    surface.scrollTop = position;
 
     if (!settled) {
       animId = requestAnimationFrame(tick);
@@ -175,7 +175,7 @@ function createScrollEngine(getSurface, pid) {
 
     const from = surface.scrollTop;
     if (Math.abs(target - from) < 1) {
-      surface.scrollTop = Math.round(target);
+      surface.scrollTop = target;
       pid.syncTo(target);
       animId = null;
       transition = null;

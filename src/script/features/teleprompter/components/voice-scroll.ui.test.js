@@ -794,6 +794,45 @@ describe('Voice Scroll browser integration', () => {
     voiceUI.stop();
   });
 
+  it('preserves fractional PID positions while advancing toward an ASR target', async () => {
+    const frames = [];
+    requestAnimationFrame.mockImplementation((callback) => {
+      frames.push(callback);
+      return frames.length;
+    });
+    Object.defineProperty(surface, 'scrollHeight', {
+      configurable: true,
+      value: 2000,
+    });
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface });
+    await voiceUI.start();
+    const recognition = FakeSpeechRecognition.instances[0];
+    const words = [...surface.querySelectorAll('.vs-w')];
+    words.forEach((word, index) => {
+      Object.defineProperty(word, 'offsetTop', {
+        configurable: true,
+        value: index * 120,
+      });
+      Object.defineProperty(word, 'offsetHeight', {
+        configurable: true,
+        value: 20,
+      });
+    });
+
+    recognition.emitTranscript('Hôm nay tôi sẽ');
+    recognition.emitTranscript('Hôm nay tôi sẽ');
+
+    // The first queued frame seeds the PID clock. Creep may run between PID
+    // frames but does not render the surface; the following frame advances the
+    // PID by a subpixel amount toward the ASR reading target.
+    frames.shift()(0);
+    frames.shift()(16);
+    frames.shift()(16);
+
+    expect(surface.scrollTop % 1).not.toBe(0);
+    voiceUI.stop();
+  });
+
   it('defers an ASR viewport retarget until the active manual gesture ends', async () => {
     const frames = [];
     requestAnimationFrame.mockImplementation((callback) => {

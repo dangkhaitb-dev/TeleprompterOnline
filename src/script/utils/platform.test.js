@@ -85,6 +85,17 @@ describe('detectPlatform', () => {
     expect(p.isMobile).toBe(true);
   });
 
+  it('detects Android from userAgentData when the UA is reduced', () => {
+    expect(detectPlatform({
+      userAgent: 'Mozilla/5.0 Chrome/140.0.0.0 Mobile',
+      userAgentData: { platform: 'Android', mobile: true },
+    })).toEqual({
+      os: 'android',
+      browser: 'chrome',
+      isMobile: true,
+    });
+  });
+
   it('falls back to sane defaults on an empty navigator', () => {
     expect(detectPlatform({})).toEqual({
       os: 'other',

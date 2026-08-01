@@ -201,6 +201,30 @@ describe('Voice Scroll timed fallback', () => {
     voiceUI.stop();
   });
 
+  it('does not opt Android into the local recognizer path', async () => {
+    vi.useFakeTimers();
+    class AndroidSpeechRecognition extends FakeSpeechRecognition {}
+    Object.defineProperty(AndroidSpeechRecognition.prototype, 'processLocally', {
+      configurable: true,
+      writable: true,
+      value: false,
+    });
+    AndroidSpeechRecognition.available = vi.fn().mockResolvedValue('available');
+    vi.stubGlobal('navigator', {
+      userAgent: 'Mozilla/5.0 (Linux; Android 14; Pixel 8) Chrome/140 Mobile',
+    });
+    vi.stubGlobal('self', { SpeechRecognition: AndroidSpeechRecognition });
+
+    const voiceUI = initVoiceScrollUI({ getSurface: () => surface });
+    const startPromise = voiceUI.start();
+    await vi.runAllTicks();
+    await expect(startPromise).resolves.toBe(true);
+
+    expect(AndroidSpeechRecognition.available).not.toHaveBeenCalled();
+    expect(AndroidSpeechRecognition.instances[0].processLocally).toBe(false);
+    voiceUI.stop();
+  });
+
   it('does not start while the reader is simply silent', async () => {
     vi.useFakeTimers();
     const requestFrame = vi.fn(() => 1);

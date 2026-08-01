@@ -175,6 +175,23 @@ describe('Voice Scroll on-device language packs', () => {
     });
   });
 
+  it('keeps Android on browser-service ASR even when local APIs report support', async () => {
+    const available = vi.fn().mockResolvedValue('available');
+    const install = vi.fn();
+    const SR = recognitionWith({ available, install });
+    vi.stubGlobal('navigator', {
+      userAgent: 'Mozilla/5.0 (Linux; Android 14; Pixel 8) Chrome/140 Mobile',
+    });
+    vi.stubGlobal('self', { SpeechRecognition: SR });
+
+    await expect(ensureOnDeviceSpeechPack('vi-VN')).resolves.toEqual({
+      locale: 'vi-VN',
+      status: 'unsupported',
+    });
+    expect(available).not.toHaveBeenCalled();
+    expect(install).not.toHaveBeenCalled();
+  });
+
   it('downloads and verifies a downloadable language pack', async () => {
     const available = vi.fn()
       .mockResolvedValueOnce('downloadable')

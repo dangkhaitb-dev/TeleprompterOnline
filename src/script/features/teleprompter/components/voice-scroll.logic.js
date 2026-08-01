@@ -12,6 +12,7 @@ import {
 } from './voice-scroll.model.js';
 import { getItem, setItem } from '../../../utils/storage.js';
 import { LS_VOICE_SCROLL_ASR_LOCALES } from '../../../utils/storage-keys.js';
+import { detectPlatform } from '../../../utils/platform.js';
 
 const EMPTY_ABORT_LIMIT = 2;
 const BROWSER_SERVICE_FAILURE_LIMIT = 2;
@@ -49,12 +50,21 @@ let languageDetectorAvailabilityPromise = null;
 let languageDetectorAvailability = null;
 let languageDetectorReleaseTimer = null;
 
+// Android browsers may expose the experimental on-device SpeechRecognition
+// APIs as available while the local recognizer still tries to acquire a
+// second microphone stream. That conflicts with an active capture stream on
+// Android, so keep this platform on the established browser-service path.
+function isAndroidSpeechRecognitionRestricted() {
+  return detectPlatform().os === 'android';
+}
+
 function speechRecognitionConstructor() {
   const globalScope = typeof self !== 'undefined' ? self : {};
   return globalScope.SpeechRecognition || globalScope.webkitSpeechRecognition || null;
 }
 
 function supportsOnDeviceSpeechInstall(SR) {
+  if (isAndroidSpeechRecognitionRestricted()) return false;
   if (!SR?.available || !SR?.install) return false;
   if (SR.prototype && 'processLocally' in SR.prototype) return true;
   try {
@@ -127,6 +137,7 @@ function rememberSpeechPackResult(result) {
 }
 
 async function localSpeechAvailability(SR, locale, timeoutMs = LOCAL_PACK_CHECK_TIMEOUT_MS) {
+  if (isAndroidSpeechRecognitionRestricted()) return 'unsupported';
   if (!SR?.available) return 'unsupported';
   try {
     return await Promise.race([

@@ -9,18 +9,19 @@
 //   isMobile: boolean
 export function detectPlatform(nav = typeof navigator !== 'undefined' ? navigator : {}) {
   const ua = nav.userAgent || '';
+  const uaPlatform = nav.userAgentData?.platform || '';
   const touchPoints = nav.maxTouchPoints || 0;
 
   // iPadOS ≥13 reports a desktop "Macintosh" UA, so sniff touch to catch it.
-  const isIPhone = /iPhone|iPod/.test(ua);
-  const isIPad = /iPad/.test(ua) || (/Macintosh/.test(ua) && touchPoints > 1);
+  const isIPhone = /iPhone|iPod|iOS/i.test(ua) || /iPhone|iPod|iOS/i.test(uaPlatform);
+  const isIPad = /iPad/i.test(ua) || (/Macintosh/i.test(ua) && touchPoints > 1);
 
   let os = 'other';
   if (isIPhone || isIPad) os = 'ios';
-  else if (/Android/.test(ua)) os = 'android';
-  else if (/Macintosh|Mac OS X/.test(ua)) os = 'macos';
-  else if (/Windows/.test(ua)) os = 'windows';
-  else if (/Linux/.test(ua)) os = 'linux';
+  else if (/Android/i.test(ua) || /Android/i.test(uaPlatform)) os = 'android';
+  else if (/Macintosh|Mac OS X/i.test(ua) || /macOS/i.test(uaPlatform)) os = 'macos';
+  else if (/Windows/i.test(ua) || /Windows/i.test(uaPlatform)) os = 'windows';
+  else if (/Linux/i.test(ua) || /Linux/i.test(uaPlatform)) os = 'linux';
 
   // Order matters: Edge and Chrome UAs both contain "Safari"; iOS variants
   // (CriOS/FxiOS/EdgiOS) must win over the plain Safari fallback.

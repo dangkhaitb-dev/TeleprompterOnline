@@ -371,6 +371,7 @@ function createCreepEngine(
  *   onPhaseChange?: (phase: string) => void,
  *   onError?: (error: string) => void,
  *   onRecognitionDegraded?: (details: Object) => void,
+ *   audioTrack?: MediaStreamTrack|null,
  *   onTranscript?: (details: Object) => void,
  *   onDiagnostic?: (event: string, details?: Object) => void,
  * }} opts
@@ -384,6 +385,7 @@ export function initVoiceScrollUI({
   onRecognitionDegraded,
   onTranscript,
   onDiagnostic,
+  audioTrack = null,
 } = {}) {
   const pid = createPIDController(TPCOM_PID);
   const scrollEng = createScrollEngine(getSurface, pid);
@@ -586,6 +588,7 @@ export function initVoiceScrollUI({
       },
       onTranscript,
       onDiagnostic,
+      audioTrack,
     });
     
     // 4. Create creep engine

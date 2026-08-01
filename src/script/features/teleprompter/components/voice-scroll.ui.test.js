@@ -109,13 +109,38 @@ describe('Voice Scroll browser integration', () => {
     expect(surface.textContent).toBe('Hôm nay tôi sẽ hướng dẫn các bạn');
   });
 
-  it('does not pass the Record capture track to SpeechRecognition.start', async () => {
+  it('uses a supplied live track instead of opening another microphone capture', async () => {
     const audioTrack = { kind: 'audio', readyState: 'live' };
     const voiceUI = initVoiceScrollUI({ getSurface: () => surface, audioTrack });
 
     await expect(voiceUI.start()).resolves.toBe(true);
 
-    expect(FakeSpeechRecognition.instances[0].startArgs).toEqual([]);
+    expect(FakeSpeechRecognition.instances[0].startArgs).toEqual([audioTrack]);
+    voiceUI.stop();
+  });
+
+  it('falls back without opening a second mic when shared-track start is rejected', async () => {
+    class RejectingSharedTrackRecognition extends FakeSpeechRecognition {
+      start(...args) {
+        this.startArgs = args;
+        throw new TypeError('Audio track input is unsupported');
+      }
+    }
+    vi.stubGlobal('self', { webkitSpeechRecognition: RejectingSharedTrackRecognition });
+    const audioTrack = { kind: 'audio', readyState: 'live' };
+    const onRecognitionDegraded = vi.fn();
+    const voiceUI = initVoiceScrollUI({
+      getSurface: () => surface,
+      audioTrack,
+      onRecognitionDegraded,
+    });
+
+    await expect(voiceUI.start()).resolves.toBe(true);
+
+    expect(FakeSpeechRecognition.instances[0].startArgs).toEqual([audioTrack]);
+    expect(onRecognitionDegraded).toHaveBeenCalledWith(expect.objectContaining({
+      error: 'shared-track-unsupported',
+    }));
     voiceUI.stop();
   });
 

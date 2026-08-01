@@ -517,6 +517,7 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
     stop,
     cancel,
     getState: () => state,
+    getActiveCaptureStream: () => stream,
     getElapsed: () =>
       computeDuration({ accumulatedMs, startedAt, now: Date.now(), paused: state === 'paused' }),
     isRecording: () => state === 'recording',

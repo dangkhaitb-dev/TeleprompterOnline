@@ -282,7 +282,9 @@ describe('createRecordingController persistence tagging', () => {
     });
 
     expect(media.getCaptureStream).not.toHaveBeenCalled();
+    expect(controller.getActiveCaptureStream()).toBe(previewStream);
     await controller.cancel();
+    expect(controller.getActiveCaptureStream()).toBeNull();
     expect(media.stopStream).not.toHaveBeenCalledWith(previewStream);
     expect(onExternalStreamReleased).toHaveBeenCalledWith(previewStream);
   });

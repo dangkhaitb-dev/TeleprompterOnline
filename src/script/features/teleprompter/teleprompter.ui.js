@@ -60,6 +60,7 @@ import {
   createStudioModeController,
 } from './components/studio-mode.ui.js';
 import { createVoiceLanguagePreflight } from './components/voice-language-preflight.js';
+import { shouldShareAndroidCaptureAudio } from './components/voice-scroll-input-policy.js';
 import { createColorPicker } from './components/color-picker.ui.js';
 import { initFormatToolbar } from './components/format-toolbar.ui.js';
 import { initSettingsTheme } from './components/settings-theme.ui.js';
@@ -1098,12 +1099,28 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       }
       logVoiceScroll('voice-scroll-mic-ready');
 
+      // Android generally cannot arbitrate two independent microphone
+      // consumers. During Record, MediaRecorder already owns the live audio
+      // track, so share that track with ASR instead of opening another input.
+      // Other platforms never receive this option and keep their established
+      // SpeechRecognition-owned microphone path.
+      const activeCaptureStream = hasLiveMediaTrack(cameraStream, 'audio')
+        ? cameraStream
+        : controller?.getActiveCaptureStream?.();
+      const captureAudioTrack = activeCaptureStream?.getAudioTracks?.()
+        .find((track) => track.readyState === 'live') || null;
+      const shareCaptureAudio = shouldShareAndroidCaptureAudio({
+        platform,
+        hasLiveCaptureAudio: Boolean(captureAudioTrack),
+      });
+
       // ON → start voice scroll
       scroller.stop();  // Stop WPM auto-scroll if running
       scroller.cancelManualScroll(); // Do not leave a fixed-speed rAF behind.
       syncDirtySurfaces();
       const candidate = initVoiceScrollUI({
         getSurface: activeSurface,
+        audioTrack: shareCaptureAudio ? captureAudioTrack : null,
         getReadingLineOffset: (surface) => (
           surface === promptBox || surface === teleprompterText
             ? layout.eyeLineStartPadding(surface, true)

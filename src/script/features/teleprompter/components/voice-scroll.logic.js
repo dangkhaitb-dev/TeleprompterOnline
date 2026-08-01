@@ -569,6 +569,7 @@ export function createASREngine({
   onError,
   onDegraded,
   onDiagnostic,
+  audioTrack = null,
 }) {
   let recognition = null;
   let wantsListening = false;
@@ -597,7 +598,7 @@ export function createASREngine({
   let browserServiceFailures = 0;
   let sessionFailureReported = false;
   let degradationReported = false;
-  const asrInput = 'microphone';
+  let asrInput = 'microphone';
 
   const log = (message, details) => {
     if (details === undefined) console.info(`[VoiceScroll] ${message}`);
@@ -631,9 +632,17 @@ export function createASREngine({
   }
 
   function startRecognition() {
+    if (audioTrack?.kind === 'audio' && audioTrack.readyState === 'live') {
+      asrInput = 'shared-track';
+      onDiagnostic?.('asr-shared-track-requested', { asrInput });
+      recognition.start(audioTrack);
+      return;
+    }
+    asrInput = 'microphone';
     // Use the broadly supported microphone-owned path. Browsers that only
     // implement start() may silently ignore extra arguments instead of
-    // throwing, so try/catch cannot safely detect start(audioTrack).
+    // throwing. The host therefore supplies a track only for Android Record,
+    // where opening an independent microphone stream is known to conflict.
     recognition.start();
   }
 
@@ -984,6 +993,9 @@ export function createASREngine({
     log('starting recognition', { locale, mode: useLocal ? 'on-device' : 'browser-service' });
     
     try {
+      asrInput = audioTrack?.kind === 'audio' && audioTrack.readyState === 'live'
+        ? 'shared-track'
+        : 'microphone';
       onDiagnostic?.('asr-start-requested', {
         asrMode: useLocal ? 'on-device' : 'browser-service',
         asrInput,
@@ -1008,6 +1020,17 @@ export function createASREngine({
       return await started;
     } catch (e) {
       resolveStart(false);
+      if (asrInput === 'shared-track') {
+        wantsListening = false;
+        fatalError = true;
+        onDiagnostic?.('asr-shared-track-rejected', { reason: 'unsupported' });
+        onDegraded?.({
+          error: 'shared-track-unsupported',
+          locale,
+          mode: useLocal ? 'on-device' : 'browser-service',
+        });
+        return false;
+      }
       onError?.(e.message, { asrMode: useLocal ? 'on-device' : 'browser-service' });
       return false;
     }
@@ -1115,6 +1138,7 @@ export function createVoiceScrollController({
   onTranscript,
   onRecognitionDegraded,
   onDiagnostic,
+  audioTrack,
 }) {
   // Matcher state (passed to model layer functions)
   let matcherState = null;
@@ -1360,6 +1384,7 @@ export function createVoiceScrollController({
         startTimedFallback(details);
       },
       onDiagnostic,
+      audioTrack,
     });
     
     // Recognition starts unbiased. Context is introduced only after the reader

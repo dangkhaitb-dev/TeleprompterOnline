@@ -31,8 +31,11 @@ import { createOPFSWriter, isOPFSSupported } from '../../utils/opfs-writer.js';
 import { makeId } from '../../utils/id.js';
 import { ensureWebmDuration, isWebmMedia } from '../../utils/webm-duration.js';
 import {
+  OPFS_RECOVERY_RETENTION_MS,
+  RECORDER_STOP_TIMEOUT_MS,
+} from '../../constants/media.js';
+import {
   recordingKind,
-  recordingMimeType,
   computeDuration,
   normalizeSettings,
 } from './teleprompter.model.js';
@@ -188,7 +191,10 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
     ownsStream = !captureStream;
 
     hasVideo = stream.getVideoTracks().length > 0;
-    mimeType = recordingMimeType(hasVideo);
+    // Let each browser choose its native recording container and codec. A
+    // capability probe only says that encoding may work; it does not guarantee
+    // that the resulting bytes are playable on this device.
+    mimeType = '';
     actualMimeType = '';
     recorderFailure = null;
     stopPromise = null;
@@ -199,7 +205,7 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
     // Try to open an OPFS writer for zero-RAM streaming. Fall back silently.
     if (isOPFSSupported()) {
       try {
-        const filename = `${makeId('rec')}.webm`;
+        const filename = `${makeId('rec')}.part`;
         opfsWriter = await createOPFSWriter(filename);
       } catch {
         opfsWriter = null; // OPFS failed — use RAM fallback
@@ -227,7 +233,7 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
 
     mediaRecorder.addEventListener('dataavailable', (event) => {
       if (!event.data || !event.data.size) return;
-      if (event.data.type) actualMimeType = event.data.type;
+      if (event.data.type && !actualMimeType) actualMimeType = event.data.type;
       if (opfsWriter && !opfsWriteFailed) {
         // Stream chunk to disk — fire-and-forget (errors also surface at finish()).
         opfsWriter.write(event.data).catch((err) => {
@@ -252,9 +258,19 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
       notifyError(recorderFailure);
     });
 
-    mediaRecorder.start(
-      recorderTimesliceForMimeType(mediaRecorder.mimeType || mimeType),
-    );
+    try {
+      mediaRecorder.start(
+        recorderTimesliceForMimeType(mediaRecorder.mimeType || mimeType),
+      );
+    } catch (error) {
+      releaseStream();
+      if (opfsWriter) {
+        opfsWriter.abort().catch(() => {});
+        opfsWriter = null;
+      }
+      mediaRecorder = null;
+      throw error;
+    }
     state = 'recording';
     accumulatedMs = 0;
     startedAt = Date.now();
@@ -288,6 +304,10 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
     state = 'saving';
 
     stopPromise = new Promise((resolve) => {
+      let timerId = null;
+      let settled = false;
+      let finalizing = false;
+      let activeWriter = null;
       const finalize = async () => {
         const duration = computeDuration({
           accumulatedMs,
@@ -295,20 +315,17 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
           now: Date.now(),
           paused: wasPaused,
         });
-        const reportedTypes = [
-          actualMimeType,
-          mediaRecorder && mediaRecorder.mimeType,
-          mimeType,
-        ].filter(Boolean);
-        const type = reportedTypes.find((value) => /;\s*codecs=/i.test(value))
-          || reportedTypes[0]
-          || '';
+        // The chunk type describes the bytes that were actually emitted. Use
+        // the recorder-reported type only when the chunk omitted its type; do
+        // not substitute the originally requested candidate.
+        const type = actualMimeType || mediaRecorder?.mimeType || '';
 
         // Build the final Blob — from OPFS file (zero RAM) or from the in-RAM
         // chunks[] fallback, depending on what was available when recording started.
         let blob;
         // Hand the writer off to this finalize pass before any await.
         const writer = opfsWriter;
+        activeWriter = writer;
         opfsWriter = null;
         if (recorderFailure) {
           if (writer) await writer.abort().catch(() => {});
@@ -383,6 +400,7 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
           temporary: !isRecordingSaveEnabled(),
         };
         let record = null;
+        let persistenceUnknown = false;
         try {
           // WebKit can fail to structured-clone a file-backed File (the OPFS
           // path on iOS 26+) into IndexedDB; putRecording handles that with a
@@ -390,22 +408,77 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
           // writer.abort() below deletes the OPFS backing file.
           record = await putRecording({ ...recordFields, blob });
         } catch (err) {
+          persistenceUnknown = true;
           notifyError(err);
         }
         // IndexedDB now owns all the bytes (or the save failed and nothing
         // references them). abort() deletes the OPFS temp file AND releases its
         // lock, so any rec-* file that survives without a lock is always a
         // crash orphan for startup GC.
-        if (writer) await writer.abort().catch(() => {});
+        if (writer) {
+          if (persistenceUnknown) writer.release?.();
+          else await writer.abort().catch(() => {});
+        }
         state = 'idle';
         resolve(record);
       };
 
+      const runFinalize = () => {
+        if (settled || finalizing) return;
+        finalizing = true;
+        clearTimeout(timerId);
+        Promise.resolve(finalize())
+          .then(() => { settled = true; })
+          .catch(async (error) => {
+            if (settled) return;
+            settled = true;
+            await activeWriter?.abort?.().catch(() => {});
+            chunks = [];
+            releaseStream();
+            state = 'idle';
+            notifyError(error);
+            resolve(null);
+          });
+      };
+
+      const failTimedOut = () => {
+        if (settled || finalizing) return;
+        settled = true;
+        const error = Object.assign(
+          new Error('MediaRecorder finalization timed out'),
+          { name: 'TimeoutError' },
+        );
+        // No final bytes are known to be complete. Discard only the in-flight
+        // session and settle the UI; a completed stop event arriving later is
+        // ignored by the single-settlement guard above.
+        activeWriter?.abort?.().catch(() => {});
+        opfsWriter?.abort?.().catch(() => {});
+        opfsWriter = null;
+        chunks = [];
+        releaseStream();
+        state = 'idle';
+        notifyError(error);
+        resolve(null);
+      };
+
       if (mediaRecorder && mediaRecorder.state !== 'inactive') {
-        mediaRecorder.addEventListener('stop', finalize, { once: true });
-        mediaRecorder.stop();
+        mediaRecorder.addEventListener('stop', runFinalize, { once: true });
+        timerId = setTimeout(() => {
+          if (mediaRecorder?.state === 'inactive') runFinalize();
+          else failTimedOut();
+        }, RECORDER_STOP_TIMEOUT_MS);
+        try {
+          mediaRecorder.stop();
+        } catch (error) {
+          clearTimeout(timerId);
+          settled = true;
+          releaseStream();
+          state = 'idle';
+          notifyError(error);
+          resolve(null);
+        }
       } else {
-        finalize();
+        runFinalize();
       }
     });
     return stopPromise;
@@ -449,12 +522,12 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
 
 // ── OPFS Garbage Collector ────────────────────────────────────────────────────
 //
-// OPFS temp files (rec-*.webm) are created when recording starts.
+// OPFS temp files (rec-*.part) are created when recording starts.
 // Under the normal flow, each file is deleted immediately after its bytes are
 // successfully written to IndexedDB (or immediately if save is disabled).
 //
-// Therefore, any rec-* file found in OPFS at startup time is by definition an
-// orphan from a crashed / force-killed session and is safe to delete.
+// A .part file may also be a completed artifact whose IndexedDB hand-off timed
+// out. Keep those files for recovery instead of silently deleting user data.
 //
 // Multi-Tab Safety (Critical Concurrency Control):
 // To prevent Tab B from deleting an active recording from Tab A (since Tab A
@@ -468,8 +541,13 @@ export async function opfsGarbageCollect() {
   try {
     const root = await navigator.storage.getDirectory();
     let deleted = 0;
-    for await (const [name] of root.entries()) {
+    for await (const [name, entry] of root.entries()) {
       if (typeof name === 'string' && name.startsWith('rec-')) {
+        if (name.endsWith('.part')) {
+          let lastModified = 0;
+          try { lastModified = (await entry.getFile()).lastModified || 0; } catch { continue; }
+          if (!lastModified || Date.now() - lastModified < OPFS_RECOVERY_RETENTION_MS) continue;
+        }
         // Try to acquire the lock for this specific file.
         // If it's already locked by another tab that is actively recording,
         // request will immediately return null and we skip deletion.

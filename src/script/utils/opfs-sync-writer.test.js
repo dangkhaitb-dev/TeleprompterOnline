@@ -23,8 +23,9 @@ class FakeWorker {
     this.posted.push(message);
     queueMicrotask(() => {
       if (this.terminated) return;
-      const reply = FakeWorker.respond?.(message)
-        || { id: message.id, ok: true, bytes: message.chunk?.size ?? 0 };
+      const scripted = FakeWorker.respond?.(message);
+      if (scripted === false) return;
+      const reply = scripted || { id: message.id, ok: true, bytes: message.chunk?.size ?? 0 };
       this.emit('message', reply);
     });
   }
@@ -161,5 +162,22 @@ describe('SyncOPFSWriter worker protocol', () => {
 
     await expect(writer.write(new Blob(['x'])))
       .rejects.toMatchObject({ name: 'QuotaExceededError', message: 'disk full' });
+  });
+
+  it('rejects instead of hanging when the iOS worker stays silent', async () => {
+    vi.useFakeTimers();
+    try {
+      installEnv();
+      const writer = await SyncOPFSWriter.create('rec-silent.webm');
+      FakeWorker.respond = (message) => message.type === 'write' ? false : null;
+
+      const write = writer.write(new Blob(['x']));
+      const rejection = expect(write).rejects.toMatchObject({ name: 'TimeoutError' });
+      await vi.advanceTimersByTimeAsync(60_000);
+
+      await rejection;
+    } finally {
+      vi.useRealTimers();
+    }
   });
 });

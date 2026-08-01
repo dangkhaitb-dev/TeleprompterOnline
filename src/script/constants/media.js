@@ -21,6 +21,17 @@ export const CAPTURE_REQUEST_TIMEOUT_MS = 15_000;
 export const CAPTURE_RECORDER_TIMESLICE_MS = 250;
 export const CAPTURE_MP4_RECORDER_TIMESLICE_MS = 1000;
 
+// Boundaries for browser APIs that can remain pending on mobile WebKit when a
+// tab is backgrounded or the media/storage service wedges. These fail-safe
+// limits end the UI wait; they do not claim that a late operation succeeded.
+export const RECORDER_STOP_TIMEOUT_MS = 15_000;
+export const OPFS_OPERATION_TIMEOUT_MS = 15_000;
+export const IDB_OPERATION_TIMEOUT_MS = 30_000;
+export const SAVE_STATUS_TIMEOUT_MS = 30_000;
+// Keep a timed-out recording artifact available for a day before startup GC
+// removes it, preventing both immediate data loss and unbounded quota growth.
+export const OPFS_RECOVERY_RETENTION_MS = 24 * 60 * 60 * 1000;
+
 // Thumbnail extraction: seek offset past the (often black) first frame, a
 // hard timeout so a stuck offscreen <video> resolves to null instead of
 // hanging, and the JPEG encode quality for captured frames.

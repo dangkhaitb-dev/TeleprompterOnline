@@ -45,6 +45,7 @@ vi.mock('../../utils/opfs-writer.js', () => ({
       write: vi.fn().mockResolvedValue(undefined),
       finish: vi.fn().mockResolvedValue(new Blob(['opfs bytes'], { type: 'audio/webm' })),
       abort: vi.fn().mockResolvedValue(undefined),
+      release: vi.fn(),
     };
     return opfs.writer;
   }),
@@ -125,7 +126,7 @@ describe('createRecordingController OPFS streaming path', () => {
     expect(controller.getState()).toBe('idle');
   });
 
-  it('still deletes the OPFS temp file when IndexedDB persistence fails', async () => {
+  it('keeps the finalized OPFS artifact when IndexedDB persistence fails', async () => {
     const onError = vi.fn();
     const controller = await startRecording(onError);
     recordings.putRecording.mockRejectedValue(new Error('quota exceeded'));
@@ -134,7 +135,8 @@ describe('createRecordingController OPFS streaming path', () => {
 
     expect(saved).toBeNull();
     expect(onError).toHaveBeenCalledWith(expect.objectContaining({ message: 'quota exceeded' }));
-    expect(opfs.writer.abort).toHaveBeenCalledTimes(1);
+    expect(opfs.writer.abort).not.toHaveBeenCalled();
+    expect(opfs.writer.release).toHaveBeenCalledTimes(1);
     expect(controller.getState()).toBe('idle');
   });
 

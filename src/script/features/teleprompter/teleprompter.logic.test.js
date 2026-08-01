@@ -54,6 +54,7 @@ class FakeMediaRecorder {
 
   constructor(_stream, options = {}) {
     this.state = 'inactive';
+    this.options = options;
     this.mimeType = options.mimeType || 'audio/webm';
     this.videoBitsPerSecond = options.videoBitsPerSecond;
     this.listeners = new Map();
@@ -256,6 +257,7 @@ describe('createRecordingController persistence tagging', () => {
     });
     // Bitrate is derived from the resolution the camera actually produced.
     expect(FakeMediaRecorder.instance.videoBitsPerSecond).toBe(8_000_000);
+    expect(FakeMediaRecorder.instance.options).not.toHaveProperty('mimeType');
     expect(FakeMediaRecorder.instance.timeslice).toBe(250);
     await controller.cancel();
   });
@@ -402,6 +404,62 @@ describe('createRecordingController persistence tagging', () => {
       mimeType: 'audio/webm;codecs=opus',
       blob: expect.objectContaining({ type: 'audio/webm;codecs=opus' }),
     }));
+  });
+
+  it('never relabels emitted bytes with a different requested container', async () => {
+    class MismatchedMimeRecorder extends FakeMediaRecorder {
+      constructor(stream, options = {}) {
+        super(stream, options);
+        this.mimeType = 'video/mp4;codecs=avc1.42E01E,mp4a.40.2';
+      }
+    }
+    const stream = {
+      getVideoTracks: () => [{ getSettings: () => ({ width: 1280, height: 720 }) }],
+    };
+    media.getCaptureStream.mockResolvedValue(stream);
+    recordings.putRecording.mockImplementation(async (record) => ({ ...record, id: 'stored' }));
+    vi.stubGlobal('MediaRecorder', MismatchedMimeRecorder);
+    const controller = createRecordingController();
+
+    await controller.start({ wantsVideo: true, wantsAudio: true });
+    MismatchedMimeRecorder.instance.emit('dataavailable', {
+      data: new Blob(['webm bytes'], { type: 'video/webm' }),
+    });
+    await controller.stop({ workspaceId: 'workspace-a' });
+
+    expect(recordings.putRecording).toHaveBeenCalledWith(expect.objectContaining({
+      mimeType: 'video/webm',
+      blob: expect.objectContaining({ type: 'video/webm' }),
+    }));
+  });
+
+  it('settles safely when the browser never dispatches the recorder stop event', async () => {
+    class MissingStopEventRecorder extends FakeMediaRecorder {
+      stop() {
+        // Simulate a WebKit recorder that never reaches its terminal state.
+      }
+    }
+    vi.useFakeTimers();
+    try {
+      media.getCaptureStream.mockResolvedValue({ getVideoTracks: () => [] });
+      vi.stubGlobal('MediaRecorder', MissingStopEventRecorder);
+      const onError = vi.fn();
+      const controller = createRecordingController({ onError });
+
+      await controller.start({ wantsVideo: false, wantsAudio: true });
+      MissingStopEventRecorder.instance.emit('dataavailable', {
+        data: new Blob(['recorded bytes'], { type: 'audio/webm' }),
+      });
+      const saved = controller.stop({ workspaceId: 'workspace-a' });
+
+      await vi.advanceTimersByTimeAsync(60_000);
+
+      await expect(saved).resolves.toBeNull();
+      expect(controller.getState()).toBe('idle');
+      expect(onError).toHaveBeenCalledWith(expect.objectContaining({ name: 'TimeoutError' }));
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('discards MediaRecorder output after an encoder error', async () => {

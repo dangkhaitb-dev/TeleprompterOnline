@@ -25,4 +25,6 @@ SolPrompter is currently free to use, without advertisements or a branded video 
 
 ## Optional
 
+- [Expanded SolPrompter context](https://solprompter.com/llms-full.txt): A longer product and workflow reference for agents that need more detail than this compact index.
+- [AI usage guidance](https://solprompter.com/ai.txt): Advisory permissions, restrictions, and citation preferences for AI systems.
 - [XML sitemap](https://solprompter.com/sitemap.xml): Complete list of indexable pages and localized homepages.

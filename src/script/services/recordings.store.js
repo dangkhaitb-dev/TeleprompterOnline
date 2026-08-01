@@ -12,11 +12,29 @@
 // ensureRecordingBlob() loads the bytes on demand.
 
 import { makeId } from '../utils/id.js';
+import { IDB_OPERATION_TIMEOUT_MS } from '../constants/media.js';
 
 const DB_NAME = 'solprompter-media';
 const DB_VERSION = 2;
 const STORE = 'recordings';
 const BYTES_STORE = 'recording-bytes';
+
+function timeoutError(label) {
+  return Object.assign(
+    new Error(`IndexedDB operation timed out: ${label}`),
+    { name: 'TimeoutError' },
+  );
+}
+
+function withTimeout(promise, label) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(timeoutError(label)), IDB_OPERATION_TIMEOUT_MS);
+    Promise.resolve(promise).then(
+      (value) => { clearTimeout(timer); resolve(value); },
+      (error) => { clearTimeout(timer); reject(error); },
+    );
+  });
+}
 
 // v1 stored WebKit-fallback bytes inline on the record (`blobBytes`), which
 // forced every listing to materialize the whole library into RAM. Move them
@@ -44,6 +62,11 @@ function migrateToV2(db, tx) {
 function openDB() {
   return new Promise((resolve, reject) => {
     const request = indexedDB.open(DB_NAME, DB_VERSION);
+    let settled = false;
+    const timer = setTimeout(() => {
+      settled = true;
+      reject(timeoutError('open database'));
+    }, IDB_OPERATION_TIMEOUT_MS);
     request.onupgradeneeded = () => {
       const db = request.result;
       if (!db.objectStoreNames.contains(STORE)) {
@@ -52,8 +75,22 @@ function openDB() {
       }
       migrateToV2(db, request.transaction);
     };
-    request.onsuccess = () => resolve(request.result);
-    request.onerror = () => reject(request.error);
+    request.onsuccess = () => {
+      if (settled) {
+        request.result.close();
+        return;
+      }
+      settled = true;
+      clearTimeout(timer);
+      resolve(request.result);
+    };
+    request.onerror = () => {
+      if (settled) return;
+      settled = true;
+      clearTimeout(timer);
+      reject(request.error);
+    };
+    request.onblocked = () => {};
   });
 }
 
@@ -93,28 +130,32 @@ export async function closeRecordingsDb() {
 }
 
 function promisify(request) {
-  return new Promise((resolve, reject) => {
+  return withTimeout(new Promise((resolve, reject) => {
     request.onsuccess = () => resolve(request.result);
     request.onerror = () => reject(request.error);
-  });
+  }), 'request');
 }
 
 async function runTransaction(db, names, mode, run) {
   const tx = db.transaction(names, mode);
-  const result = await run(...names.map((name) => tx.objectStore(name)));
-  // For write operations, wait until the transaction fully commits so that
-  // a subsequent read is guaranteed to see the data. Resolving on
-  // request.onsuccess alone can race with the read.
-  if (mode === 'readwrite') {
-    await new Promise((resolve, reject) => {
-      tx.oncomplete = () => resolve();
-      tx.onerror = () => reject(tx.error);
-      tx.onabort = () => reject(
-        tx.error || new DOMException('Transaction aborted', 'AbortError'),
-      );
-    });
+  try {
+    const result = await run(...names.map((name) => tx.objectStore(name)));
+    // For write operations, wait until the transaction fully commits so that
+    // a subsequent read is guaranteed to see the data.
+    if (mode === 'readwrite') {
+      await withTimeout(new Promise((resolve, reject) => {
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => reject(tx.error);
+        tx.onabort = () => reject(
+          tx.error || new DOMException('Transaction aborted', 'AbortError'),
+        );
+      }), 'transaction commit');
+    }
+    return result;
+  } catch (error) {
+    try { tx.abort(); } catch {}
+    throw error;
   }
-  return result;
 }
 
 async function withStores(names, mode, run) {
@@ -174,7 +215,9 @@ export async function putRecording(recording = {}) {
     workspaceId: recording.workspaceId || null,
     blob: recording.blob,
     kind: recording.kind || 'video',
-    mimeType: recording.mimeType || (recording.blob && recording.blob.type) || '',
+    // The Blob type is tied to the emitted bytes. Caller metadata can be stale
+    // after a browser chooses its own native recorder format.
+    mimeType: (recording.blob && recording.blob.type) || recording.mimeType || '',
     duration: recording.duration || 0,
     durationMetadataFixed: !!recording.durationMetadataFixed,
     order: typeof recording.order === 'number' ? recording.order : Date.now(),
@@ -196,7 +239,7 @@ export async function putRecording(recording = {}) {
     // control returns to the event loop.
     let bytes;
     try {
-      bytes = await record.blob.arrayBuffer();
+      bytes = await withTimeout(record.blob.arrayBuffer(), 'read recording bytes');
     } catch {
       throw err;
     }

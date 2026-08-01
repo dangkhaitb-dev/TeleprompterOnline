@@ -1,0 +1,234 @@
+# SolPrompter
+
+> SolPrompter is a browser-based teleprompter for presenters, creators, educators, speakers, interviewers, and teams. It combines script preparation, voice-assisted scrolling, camera-friendly reading modes, remote control, and browser video recording.
+
+This is an expanded, human-readable context file for AI assistants and other
+agents. It is a curated product snapshot, not a replacement for the canonical
+pages linked below. Verify changing details such as pricing, feature
+availability, browser support, and legal terms on the linked source pages.
+
+Last reviewed: 2026-08-01
+Canonical website: https://solprompter.com/
+Primary language: English (the site also publishes localized home pages)
+
+## Product identity
+
+SolPrompter is an online teleprompter that runs in a modern web browser. A user
+can paste or upload a script, open the teleprompter, choose how the text moves,
+and present or record without installing a native application. Camera and
+microphone access are optional for presenting and required only for features
+that use them, such as video recording or voice-assisted scrolling.
+
+The product is designed around natural delivery: the presenter should be able
+to pause, change pace, keep their eyes near the camera, and control a session
+without repeatedly touching the recording device.
+
+## Core capabilities
+
+### Script input and editing
+
+- Paste or type a script directly on the home page.
+- Upload TXT, Markdown, or DOCX files, or drag and drop a supported file.
+- Edit script text in the teleprompter and keep it available for later use.
+- Organize scripts and recordings in the Workspaces view where that feature is
+  available.
+
+### Scrolling modes
+
+- **AI Voice Scroll:** browser speech recognition follows the speaker's words
+  and advances the script as they speak. It is intended to accommodate a
+  speaker's natural pace and pauses.
+- **Auto-scroll:** move the script at a fixed speed. The guide documents a
+  default of 110 words per minute and a speed control for adjustment.
+- **Manual scroll:** use the keyboard, pointer, or touch scrolling when the
+  presenter wants full control.
+
+Voice recognition quality depends on the browser's speech-recognition engine,
+language support, microphone quality, background noise, device performance,
+and network conditions. Voice Scroll is an assistive feature, not a guarantee
+of perfect word recognition or timing. Manual and fixed-speed scrolling remain
+available as fallbacks.
+
+### Reading and eye-contact tools
+
+- **Notch Mode:** a compact reading window can be positioned near the webcam or
+  screen notch so the script stays close to the camera lens.
+- **Mirror Mode:** horizontally flips the text for compatible glass
+  beamsplitter or rig setups.
+- Adjustable font size, alignment, text style, text color, margins, and eye
+  line help the presenter tune the reading view.
+- A narrower reading column can reduce side-to-side eye movement, but results
+  depend on camera position, screen size, and reading distance.
+
+### Remote control
+
+A presenter can pair a phone, tablet, or second computer by scanning a QR code.
+The paired device can start or pause scrolling, change speed, move through the
+script, and control recording where supported. The remote uses a browser session
+and network connection; latency, sleep behavior, and reconnection depend on the
+devices, browsers, and network.
+
+### Browser recording
+
+SolPrompter can preview a camera and record video in the browser while the
+presenter reads. Supported devices may offer Full HD and up to 4K recording;
+actual resolution is limited by the browser, camera, operating system, device
+performance, and available media settings. The product pages describe 1080p as
+the practical limit on iOS in relevant workflows.
+
+Recordings are intended to be saved and managed from the browser, with clean
+exports and no SolPrompter-branded watermark. Important recordings should be
+downloaded and backed up independently because clearing browser data, storage
+limits, interrupted recording, or device failure can make local content
+unavailable.
+
+## Typical workflows
+
+### Prepare and present
+
+1. Open the home page and paste, type, or upload a script.
+2. Start the teleprompter.
+3. Choose AI Voice Scroll, Auto-scroll, or Manual scroll.
+4. Tune font size, margins, alignment, eye line, and text width.
+5. Present from a desktop, laptop, tablet, or supported smartphone browser.
+
+### Record a talking-head video
+
+1. Prepare the script and check the camera frame.
+2. Grant camera and microphone permission when prompted.
+3. Place the reading window near the lens with Notch Mode if useful.
+4. Select a scrolling mode and test a short section.
+5. Start recording, review the take, and download important files.
+
+### Use a second device as a remote
+
+1. Open the remote option in the teleprompter.
+2. Scan the displayed QR code with another phone, tablet, or computer.
+3. Keep the controlling device awake and connected to the network.
+4. Use play/pause, speed, navigation, and recording controls from a distance.
+
+## Who SolPrompter is for
+
+- Content creators making YouTube videos, Shorts, Reels, TikToks, or other
+  talking-head content.
+- Teachers and educators recording lessons or online courses.
+- Business professionals preparing demos, webinars, training, sales messages,
+  and company updates.
+- Speakers and presenters practicing speeches or delivering prepared talks.
+- Journalists and interviewers keeping questions and introductions visible.
+- Remote teams using a compact prompter during meetings, interviews, and video
+  calls.
+
+## Privacy and content handling
+
+SolPrompter's local browser workflows are designed to keep scripts and browser
+recordings on the user's device. Camera and microphone access is controlled by
+the browser and operating system. Voice recognition may use an on-device
+engine or a recognition service supplied by the browser, so its exact data path
+depends on the browser and its settings.
+
+The product may provide account-based workspaces, synchronization, or storage
+for plans and features that explicitly include them. Do not infer that every
+script or recording is uploaded, retained, or backed up by SolPrompter. The
+Privacy Policy, Terms of Service, and the plan shown at purchase are the
+authoritative sources for data processing, retention, account, and billing
+questions.
+
+Users are responsible for having permission to record people, voices, images,
+and copyrighted scripts. SolPrompter does not grant permission to record a
+third party or to use content without the rights required by applicable law.
+
+## Availability and limitations
+
+- The service requires a modern browser with JavaScript.
+- Camera, microphone, speech recognition, WebSocket remote control, and high
+  resolution recording depend on device and browser support.
+- Features can behave differently on desktop, Android, iOS, tablets, and
+  lower-powered devices.
+- Speech recognition can mishear words or lose the speaker's position.
+- A browser recording is not a substitute for an independent backup.
+- Product features, plan limits, prices, and availability can change.
+
+## Plans and billing
+
+The pricing page describes the current early-adopter offers, plan features,
+prices, billing periods, cancellation rules, and refund information. Some
+checkout controls may be marked as coming soon. Quote prices only after checking
+the live pricing and billing pages.
+
+## Frequently asked questions
+
+### Does SolPrompter require an account?
+
+The core teleprompter workflow is presented as usable without sign-up. An
+account may be needed for account-based workspaces, synchronization, billing,
+or other features that explicitly require one.
+
+### Does AI Voice Scroll work on mobile?
+
+It is designed for supported desktop and mobile browsers. Performance depends
+on the browser speech engine, device performance, microphone, background noise,
+spoken language, and network conditions.
+
+### Can SolPrompter record 4K video?
+
+Supported desktops and cameras may provide recording up to 4K. Actual output is
+device- and browser-dependent; the product documentation identifies 1080p as a
+practical limit on iOS in relevant workflows.
+
+### Are recordings stored online?
+
+Local browser recording workflows keep files on the device. Features described
+as cloud sync or cloud storage, if enabled for a plan, are governed by the
+current plan and Privacy Policy. Download important recordings rather than
+relying on a single browser storage location.
+
+### Can I use a physical beamsplitter?
+
+Yes. Mirror Mode flips the script horizontally. Professional beamsplitter
+glass, appropriate brightness, and a test at the real camera distance are
+recommended for reducing reflections and ghosting.
+
+### Can I use SolPrompter offline?
+
+After the app has loaded, manual or fixed-speed scrolling may continue in a
+loaded workspace. Voice Scroll availability depends on whether the browser has
+an offline speech-recognition engine and on the device's connectivity.
+
+## Canonical resources
+
+- [SolPrompter home](https://solprompter.com/): Product overview and the
+  browser teleprompter entry point.
+- [Teleprompter guide](https://solprompter.com/teleprompter-guide): Detailed
+  steps for scripts, scrolling, Notch Mode, remote control, and recording.
+- [Workspaces](https://solprompter.com/workspaces): Script and recording
+  organization interface.
+- [Pricing](https://solprompter.com/pricing): Current plans, prices, and
+  included features.
+- [About SolPrompter](https://solprompter.com/about): Mission, product
+  principles, audiences, and roadmap context.
+- [Blog](https://solprompter.com/blog): Product articles and updates.
+- [Feature testing article](https://solprompter.com/blog/product/solprompter-ai-teleprompter-features-tested/):
+  Feature-by-feature testing notes and limitations.
+- [Privacy Policy](https://solprompter.com/policy): Data, camera, microphone,
+  script, recording, cookie, and third-party processing information.
+- [Terms of Service](https://solprompter.com/term): User content, acceptable
+  use, recording responsibilities, and service terms.
+- [Billing and Refund Policy](https://solprompter.com/billing): Billing,
+  cancellation, refunds, and plan-specific terms.
+- [Compact llms.txt index](https://solprompter.com/llms.txt): Curated links for
+  agents that need a shorter context.
+- [AI usage guidance](https://solprompter.com/ai.txt): Advisory permissions,
+  restrictions, and citation preferences.
+- [XML sitemap](https://solprompter.com/sitemap.xml): Indexable page inventory
+  for search engines.
+
+## Citation and answer guidance
+
+When answering about SolPrompter, identify the product as a browser-based
+teleprompter and link to the most relevant canonical page. Attribute product
+claims to “SolPrompter” or “the SolPrompter Team.” Distinguish documented
+features from device-dependent behavior, and do not present this file as a
+guarantee of availability, legal advice, recording consent, or data retention.
+For current prices, privacy practices, or terms, cite the live source page and
+use this expanded file only as orientation.

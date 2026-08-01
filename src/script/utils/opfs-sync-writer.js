@@ -9,6 +9,20 @@
 //            semantics stay identical to OPFSWriter.
 
 import { acquireFileLock } from './opfs-writer.js';
+import { OPFS_OPERATION_TIMEOUT_MS } from '../constants/media.js';
+
+function withTimeout(promise, label) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(Object.assign(
+      new Error(`OPFS operation timed out: ${label}`),
+      { name: 'TimeoutError' },
+    )), OPFS_OPERATION_TIMEOUT_MS);
+    Promise.resolve(promise).then(
+      (value) => { clearTimeout(timer); resolve(value); },
+      (error) => { clearTimeout(timer); reject(error); },
+    );
+  });
+}
 
 export class SyncOPFSWriter {
   /** @type {Worker} */
@@ -78,6 +92,7 @@ export class SyncOPFSWriter {
     const pending = this.#pending.get(id);
     if (!pending) return;
     this.#pending.delete(id);
+    clearTimeout(pending.timer);
     if (ok) {
       pending.resolve({ bytes });
       return;
@@ -89,7 +104,10 @@ export class SyncOPFSWriter {
   }
 
   #failPending(err) {
-    for (const { reject } of this.#pending.values()) reject(err);
+    for (const { reject, timer } of this.#pending.values()) {
+      clearTimeout(timer);
+      reject(err);
+    }
     this.#pending.clear();
   }
 
@@ -97,7 +115,18 @@ export class SyncOPFSWriter {
     if (!this.#worker) return Promise.reject(new Error('OPFS worker terminated'));
     return new Promise((resolve, reject) => {
       const id = ++this.#requestId;
-      this.#pending.set(id, { resolve, reject });
+      const timer = setTimeout(() => {
+        const pending = this.#pending.get(id);
+        if (!pending) return;
+        this.#pending.delete(id);
+        const error = Object.assign(
+          new Error(`OPFS worker request timed out: ${message.type}`),
+          { name: 'TimeoutError' },
+        );
+        reject(error);
+        this.#terminateWorker();
+      }, OPFS_OPERATION_TIMEOUT_MS);
+      this.#pending.set(id, { resolve, reject, timer });
       this.#worker.postMessage({ id, ...message });
     });
   }
@@ -138,9 +167,9 @@ export class SyncOPFSWriter {
       await this.#writeChain;
       // The sync handle's exclusive lock must be released before getFile().
       await this.#request({ type: 'close' });
-      const root = await navigator.storage.getDirectory();
-      const fileHandle = await root.getFileHandle(this.#filename);
-      const file = await fileHandle.getFile();
+      const root = await withTimeout(navigator.storage.getDirectory(), 'get finished directory');
+      const fileHandle = await withTimeout(root.getFileHandle(this.#filename), 'open finished file');
+      const file = await withTimeout(fileHandle.getFile(), 'read finished file');
       // Return a File with the correct MIME type (OPFS files have no inherent type).
       if (mimeType && file.type !== mimeType) {
         succeeded = true;
@@ -162,16 +191,26 @@ export class SyncOPFSWriter {
    * Safe to call multiple times.
    */
   async abort() {
-    await this.#writeChain.catch(() => {});
+    await withTimeout(this.#writeChain.catch(() => {}), 'abort write queue').catch(() => {});
     this.#finished = true;
     if (this.#worker) {
       await this.#request({ type: 'close' }).catch(() => {});
       this.#terminateWorker();
     }
     try {
-      const root = await navigator.storage.getDirectory();
-      await root.removeEntry(this.#filename);
+      const root = await withTimeout(navigator.storage.getDirectory(), 'abort get directory');
+      await withTimeout(root.removeEntry(this.#filename), 'remove temporary file');
     } catch { /* file may not exist yet */ }
+    if (this.#releaseLock) {
+      this.#releaseLock();
+      this.#releaseLock = null;
+    }
+  }
+
+  // Release the lock without deleting a completed artifact whose persistence
+  // result is unknown.
+  release() {
+    this.#terminateWorker();
     if (this.#releaseLock) {
       this.#releaseLock();
       this.#releaseLock = null;

@@ -1,7 +1,6 @@
 // teleprompter.model.js — pure helpers for the teleprompter record view.
 // No DOM, no IO. Everything here is deterministic given its inputs.
 
-import { pickRecorderMimeType } from '../../utils/media.js';
 
 // --- Speed / scroll math -----------------------------------------------------
 
@@ -256,11 +255,6 @@ export function paragraphStartIndices(text) {
 // 'video' when the camera is on, otherwise a mic-only 'audio' clip.
 export function recordingKind(hasVideo) {
   return hasVideo ? 'video' : 'audio';
-}
-
-// Best supported mimeType for the current capture mode.
-export function recordingMimeType(hasVideo) {
-  return pickRecorderMimeType({ video: !!hasVideo });
 }
 
 // Total recorded duration given the accumulated (paused) time plus the current

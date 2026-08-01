@@ -127,6 +127,55 @@ describe('Scene Editor First Visit Tour', () => {
     expect(logic.loadScenes).toHaveBeenCalledTimes(2);
   });
 
+  it('replaces the saving placeholder when the post-save reload fails', async () => {
+    setItem(LS_SE_FIRST_VISIT_TOUR, true);
+    const savedRecord = {
+      id: 'take-saved',
+      blob: new Blob(['video'], { type: 'video/mp4' }),
+    };
+    vi.mocked(logic.loadScenes)
+      .mockResolvedValueOnce([])
+      .mockRejectedValueOnce(new DOMException('database unavailable', 'UnknownError'));
+
+    teardown = await mountSceneEditor(container, {
+      workspaceId: 'ws-reload-error',
+      copy: { loadError: 'Could not load the saved recording.', retry: 'Retry load' },
+      pendingSave: Promise.resolve(savedRecord),
+    });
+
+    await vi.waitFor(() => {
+      expect(container.querySelector('.se-saving-preview')).toBeNull();
+      expect(container.querySelector('[role="alert"]')?.textContent)
+        .toContain('Could not load the saved recording.');
+    });
+  });
+
+  it('replaces an indefinitely pending save with a recoverable delayed state', async () => {
+    vi.useFakeTimers();
+    try {
+      setItem(LS_SE_FIRST_VISIT_TOUR, true);
+      vi.mocked(logic.loadScenes).mockResolvedValue([]);
+
+      teardown = await mountSceneEditor(container, {
+        workspaceId: 'ws-save-stalled',
+        copy: {
+          saving: 'Saving recording…',
+          savingDelayed: 'Saving is taking longer than expected.',
+          retry: 'Keep waiting',
+        },
+        pendingSave: new Promise(() => {}),
+      });
+
+      await vi.advanceTimersByTimeAsync(60_000);
+
+      expect(container.querySelector('.se-saving-preview')).toBeNull();
+      expect(container.querySelector('[role="alert"]')?.textContent)
+        .toContain('Saving is taking longer than expected.');
+    } finally {
+      vi.useRealTimers();
+    }
+  });
+
   it('shows video loading feedback until a frame is ready', async () => {
     setItem(LS_SE_FIRST_VISIT_TOUR, true);
     const mockScene = {

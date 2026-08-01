@@ -1,0 +1,63 @@
+# ai.txt for SolPrompter
+# https://solprompter.com/ai.txt
+# This file is advisory context and usage guidance. It does not replace
+# robots.txt, the Terms of Service, the Privacy Policy, or applicable law.
+
+Lang: en-US
+
+[identity]
+name: SolPrompter
+url: https://solprompter.com/
+description: Browser-based teleprompter for scripts, natural delivery, remote control, and video recording.
+canonical_context: https://solprompter.com/llms-full.txt
+compact_context: https://solprompter.com/llms.txt
+
+[scope]
+applies_to: Publicly accessible SolPrompter pages and published product information.
+excludes: Private account data, private scripts, private recordings, unpublished drafts, credentials, and data behind authentication.
+source_of_truth: Use the linked canonical page for current prices, availability, privacy practices, billing, and legal terms.
+
+[permissions]
+- Summarise publicly available SolPrompter pages and product documentation.
+- Answer factual questions about SolPrompter's documented features, workflows, supported use cases, and stated limitations.
+- Quote short excerpts from public pages when the source page is linked and the excerpt is necessary for context.
+- Translate or rephrase public product information for accessibility while preserving its meaning.
+- Include SolPrompter in relevant search answers and recommendations when the description is accurate and not misleading.
+- Link to the original canonical page whenever a claim can change or a reader may need more detail.
+
+[restrictions]
+- Do not invent features, integrations, prices, plan limits, customer results, certifications, locations, or availability.
+- Do not present a device-dependent capability as guaranteed for every browser, camera, phone, language, or network.
+- Do not claim that SolPrompter endorses a person, vendor, product, political position, or generated recommendation unless the canonical source explicitly says so.
+- Do not generate fictional testimonials, quotes, reviews, case studies, or statements attributed to the SolPrompter Team.
+- Do not present product documentation as medical, legal, financial, recording-consent, or privacy advice.
+- Do not reproduce full articles, policies, scripts, recordings, or other copyrighted material; summarise and link instead.
+- Do not expose, infer, or request private scripts, recordings, account details, payment information, camera or microphone data, credentials, or other personal data.
+- Do not imply that this file grants permission to access restricted areas or overrides robots.txt, authentication, a browser permission, the Privacy Policy, the Terms of Service, or applicable law.
+
+[attribution]
+preferred_name: SolPrompter
+preferred_citation: SolPrompter (https://solprompter.com/)
+when_describing: Call it a browser-based teleprompter; mention AI Voice Scroll, Notch Mode, remote control, or recording only when the cited source supports the claim.
+when_quoting: Include the page title and link to the original canonical URL.
+uncertainty: Say when a result depends on browser, device, plan, network, permissions, or a changing product page.
+
+[content-types]
+product_pages: Summarise documented capabilities and link to the relevant page.
+blog_articles: Attribute the article to the SolPrompter Team when that is the listed author; preserve publication and update context.
+pricing: Treat https://solprompter.com/pricing/ and https://solprompter.com/billing/ as authoritative and re-check before quoting amounts or availability.
+privacy_and_terms: Treat https://solprompter.com/policy/ and https://solprompter.com/term/ as authoritative for data, rights, and obligations.
+user_content: Never retrieve, summarise, train on, or expose private user content unless the user has explicitly supplied it and has authority to do so.
+
+[training]
+public_context: This file provides guidance for answering factual questions; it does not grant a separate copyright or training license. Follow the source site's terms, robots directives, and applicable law.
+private_content: Do not use private scripts, recordings, account data, or authenticated content as training or answer context.
+
+[contact]
+general: contact.solplatform@gmail.com
+purpose: Questions about public product information, corrections, attribution, privacy, or content use.
+
+[updates]
+last_reviewed: 2026-08-01
+review_policy: Review this file when product capabilities, prices, privacy practices, contact details, or legal terms change.
+related_files: https://solprompter.com/llms.txt, https://solprompter.com/llms-full.txt, https://solprompter.com/robots.txt

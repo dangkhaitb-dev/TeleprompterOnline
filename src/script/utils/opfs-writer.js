@@ -9,8 +9,23 @@
 //   WebKit 15.2–25 exposes OPFS without createWritable — createOPFSWriter()
 //   routes those to the worker-backed SyncOPFSWriter (same interface).
 //
+import { OPFS_OPERATION_TIMEOUT_MS } from '../constants/media.js';
+
+function withTimeout(promise, label) {
+  return new Promise((resolve, reject) => {
+    const timer = setTimeout(() => reject(Object.assign(
+      new Error(`OPFS operation timed out: ${label}`),
+      { name: 'TimeoutError' },
+    )), OPFS_OPERATION_TIMEOUT_MS);
+    Promise.resolve(promise).then(
+      (value) => { clearTimeout(timer); resolve(value); },
+      (error) => { clearTimeout(timer); reject(error); },
+    );
+  });
+}
+
 // Usage:
-//   const writer = await createOPFSWriter('rec-abc123.webm');
+//   const writer = await createOPFSWriter('rec-abc123.part');
 //   // writer.write(blob) for each dataavailable chunk
 //   const file = await writer.finish();   // returns a File object
 //   await writer.abort();                 // discard without saving
@@ -32,12 +47,25 @@ export function isOPFSSupported() {
 export async function acquireFileLock(filename) {
   if (typeof navigator === 'undefined' || !navigator.locks) return null;
   let release = null;
-  await new Promise((resolve, reject) => {
+  let timedOut = false;
+  let releaseHeldLock = null;
+  const pending = new Promise((resolve, reject) => {
     navigator.locks.request(`vp:rec:${filename}`, async (_lock) => {
+      if (timedOut) return;
       resolve();
-      return new Promise((resolveRelease) => { release = resolveRelease; });
+      return new Promise((resolveRelease) => {
+        release = resolveRelease;
+        releaseHeldLock = resolveRelease;
+      });
     }).catch(reject);
   });
+  try {
+    await withTimeout(pending, 'acquire file lock');
+  } catch (error) {
+    timedOut = true;
+    releaseHeldLock?.();
+    throw error;
+  }
   return release;
 }
 
@@ -83,9 +111,12 @@ export class OPFSWriter {
     instance.#releaseLock = await acquireFileLock(filename);
 
     try {
-      const root = await navigator.storage.getDirectory();
-      instance.#fileHandle = await root.getFileHandle(filename, { create: true });
-      instance.#writable = await instance.#fileHandle.createWritable();
+      const root = await withTimeout(navigator.storage.getDirectory(), 'get directory');
+      instance.#fileHandle = await withTimeout(
+        root.getFileHandle(filename, { create: true }),
+        'open file',
+      );
+      instance.#writable = await withTimeout(instance.#fileHandle.createWritable(), 'create writable');
     } catch (err) {
       if (instance.#releaseLock) instance.#releaseLock();
       throw err;
@@ -101,7 +132,7 @@ export class OPFSWriter {
   async write(chunk) {
     if (this.#finished || !this.#writable) return;
     const write = this.#writeChain.then(async () => {
-      await this.#writable.write(chunk);
+      await withTimeout(this.#writable.write(chunk), 'write chunk');
       this.#bytesWritten += chunk instanceof Blob ? chunk.size : chunk.byteLength;
     });
     this.#writeChain = write;
@@ -120,12 +151,12 @@ export class OPFSWriter {
     this.#finished = true;
     let succeeded = false;
     try {
-      await this.#writeChain;
+      await withTimeout(this.#writeChain, 'write queue');
       if (this.#writable) {
-        await this.#writable.close();
+        await withTimeout(this.#writable.close(), 'close writable');
         this.#writable = null;
       }
-      const file = await this.#fileHandle.getFile();
+      const file = await withTimeout(this.#fileHandle.getFile(), 'read finished file');
       // Return a File with the correct MIME type (OPFS files have no inherent type).
       if (mimeType && file.type !== mimeType) {
         succeeded = true;
@@ -148,16 +179,26 @@ export class OPFSWriter {
    * Safe to call multiple times.
    */
   async abort() {
-    await this.#writeChain.catch(() => {});
+    await withTimeout(this.#writeChain.catch(() => {}), 'abort write queue').catch(() => {});
     if (this.#writable) {
-      try { await this.#writable.close(); } catch { /* ignore */ }
+      try { await withTimeout(this.#writable.close(), 'abort close writable'); } catch { /* ignore */ }
       this.#writable = null;
     }
     this.#finished = true;
     try {
-      const root = await navigator.storage.getDirectory();
-      await root.removeEntry(this.#filename);
+      const root = await withTimeout(navigator.storage.getDirectory(), 'abort get directory');
+      await withTimeout(root.removeEntry(this.#filename), 'remove temporary file');
     } catch { /* file may not exist yet */ }
+    if (this.#releaseLock) {
+      this.#releaseLock();
+      this.#releaseLock = null;
+    }
+  }
+
+  // Release the cross-tab lock without deleting the file. Used when a storage
+  // operation times out after the OPFS file has already been finalized; the
+  // bytes remain available for a future recovery flow.
+  release() {
     if (this.#releaseLock) {
       this.#releaseLock();
       this.#releaseLock = null;

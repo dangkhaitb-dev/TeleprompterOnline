@@ -17,6 +17,7 @@ import { exitFullscreen } from '../../utils/fullscreen.js';
 import {
   PREVIEW_FRAME_OFFSET_SECONDS,
   PREVIEW_LOAD_TIMEOUT_MS,
+  SAVE_STATUS_TIMEOUT_MS,
   TOAST_TIMEOUT_MS,
 } from '../../constants/media.js';
 import { waveformSvg } from './components/icons.js';
@@ -82,6 +83,7 @@ export async function mountSceneEditor(container, opts = {}) {
   let tour = null;
   let activeScene = null;
   let previewLoadTimer = null;
+  let pendingSaveTimer = null;
 
   function startTour() {
     if (getItem(LS_SE_FIRST_VISIT_TOUR) === true) return;
@@ -374,6 +376,25 @@ export async function mountSceneEditor(container, opts = {}) {
     mediaPlayer.el.style.display = 'none';
   }
 
+  function renderSaveFailure(message, onRetry) {
+    clearViewer();
+    mediaPlayer.el.style.display = 'none';
+    const status = document.createElement('div');
+    status.className = 'se-media-status is-error';
+    status.setAttribute('role', 'alert');
+    const title = document.createElement('strong');
+    title.textContent = copy.loadError || 'The recording could not be loaded.';
+    const body = document.createElement('p');
+    body.textContent = message || copy.saveError || 'The recording may still be saving. Try again.';
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.className = 'se-media-status-primary';
+    retry.textContent = copy.retry || 'Try again';
+    retry.addEventListener('click', () => onRetry?.(), { signal });
+    status.append(title, body, retry);
+    viewer.append(status);
+  }
+
   // --- selection / mutation ----------------------------------------------
   function selectScene(index) {
     if (index < 0 || index >= scenes.length) return;
@@ -487,6 +508,13 @@ export async function mountSceneEditor(container, opts = {}) {
     // so a late prior-takes load can never clobber the final list (which
     // includes the new clip).
     let settled = false;
+    pendingSaveTimer = setTimeout(() => {
+      if (signal.aborted || settled) return;
+      renderSaveFailure(
+        copy.savingDelayed || 'Saving is taking longer than expected. Your recording is still being finalized.',
+        () => renderSavingViewer(),
+      );
+    }, SAVE_STATUS_TIMEOUT_MS);
     loadScenes(workspaceId)
       .then((loaded) => {
         if (signal.aborted || settled) return;
@@ -497,6 +525,8 @@ export async function mountSceneEditor(container, opts = {}) {
       .then((record) => !!(record && record.blob), () => false)
       .then((saved) => {
         settled = true;
+        clearTimeout(pendingSaveTimer);
+        pendingSaveTimer = null;
         if (signal.aborted) return undefined;
         if (!saved) showToast(copy.saveError || 'Recording could not be saved');
         // reload() selects the newest scene — the clip that just saved.
@@ -507,7 +537,27 @@ export async function mountSceneEditor(container, opts = {}) {
           startTour();
         }
       })
-      .catch(() => {});
+      .catch((error) => {
+        clearTimeout(pendingSaveTimer);
+        pendingSaveTimer = null;
+        if (signal.aborted) return;
+        renderSaveFailure(
+          error?.message || copy.saveError || 'The recording may have been saved, but it could not be loaded yet.',
+          function retryLoad() {
+            renderSavingViewer();
+            loadScenes(workspaceId)
+              .then((loaded) => {
+                if (signal.aborted) return;
+                scenes = loaded;
+                if (scenes.length) selectScene(scenes.length - 1);
+                else renderViewer(null);
+              })
+              .catch((retryError) => {
+                if (!signal.aborted) renderSaveFailure(retryError?.message, retryLoad);
+              });
+          },
+        );
+      });
   } else {
     await reload();
     if (scenes.length > 0) {
@@ -518,6 +568,8 @@ export async function mountSceneEditor(container, opts = {}) {
   // --- teardown -----------------------------------------------------------
   return function teardown() {
     ac.abort();
+    clearTimeout(pendingSaveTimer);
+    pendingSaveTimer = null;
     if (tour) {
       tour.destroy();
       tour = null;

@@ -9,4 +9,8 @@
 export const EVENTS = Object.freeze({
   // Dispatched on window by http-client when the API returns 402.
   QUOTA_LIMIT_REACHED: 'quota-limit-reached',
+
+  // Dispatched on window when the user makes a consent decision in the cookie
+  // banner. detail: { consent: 'granted' | 'denied' }
+  ANALYTICS_CONSENT_CHANGED: 'analytics-consent-changed',
 });

@@ -471,6 +471,10 @@ export function createRecordingController({ onError, onExternalStreamReleased } 
           mediaRecorder.stop();
         } catch (error) {
           clearTimeout(timerId);
+          const writer = opfsWriter;
+          opfsWriter = null;
+          writer?.abort?.().catch(() => {});
+          chunks = [];
           settled = true;
           releaseStream();
           state = 'idle';

@@ -6,6 +6,7 @@ import '../styles/reset.css';
 import '../styles/tokens.css';
 import '../styles/components/back-btn.css';
 import '../styles/teleprompter.css';
+import '../styles/components/cookie-banner.css';
 
 import { bootTeleprompter } from './features/teleprompter/teleprompter-boot.ui.js';
 import {
@@ -14,9 +15,13 @@ import {
 } from './features/teleprompter/teleprompter.logic.js';
 import { initButtonClickTracking } from './libs/firebase/button-click-analytics.ui.js';
 import { releasePointerButtonFocus } from './utils/release-pointer-button-focus.js';
+import { initCookieBannerUI } from './features/cookie-banner/cookie-banner.ui.js';
+import { listenForConsentAndInitAnalytics } from './libs/firebase/firebase-init.js';
 
 initButtonClickTracking();
 releasePointerButtonFocus();
+listenForConsentAndInitAnalytics();
+initCookieBannerUI();
 
 const params = new URLSearchParams(window.location.search);
 

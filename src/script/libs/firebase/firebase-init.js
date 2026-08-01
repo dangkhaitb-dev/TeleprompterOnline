@@ -3,12 +3,15 @@
  *
  * Handles Firebase app initialization for analytics and auth.
  * Uses modular SDK for minimal bundle size.
+ * Analytics is only activated after the user grants consent via the cookie banner.
  */
 
 import { initializeApp, getApps } from 'firebase/app';
 import { getAnalytics, isSupported } from 'firebase/analytics';
 import { getAuth, GoogleAuthProvider, signInWithPopup, signInAnonymously, onAuthStateChanged } from 'firebase/auth';
 import { saveAuthState, clearCachedAuthState, getCachedAuthState } from './auth-cache.js';
+import { isAnalyticsGranted } from '../../utils/cookie-consent.js';
+import { EVENTS } from '../../constants/events.js';
 
 // Re-export for backward compatibility
 export { getCachedAuthState, clearCachedAuthState };
@@ -25,13 +28,17 @@ const firebaseConfig = {
 };
 
 /**
- * Initialize Firebase app and analytics
+ * Initialize Firebase app and analytics.
+ * Only proceeds if the user has granted analytics consent.
  *
  * @returns {Promise<{app: FirebaseApp, analytics: Analytics}|null>}
- *          Returns Firebase instances or null if initialization fails
+ *          Returns Firebase instances or null if consent denied or init fails
  */
 export async function initializeFirebase() {
   try {
+    // Respect user consent — do not load analytics without permission.
+    if (!isAnalyticsGranted()) return null;
+
     // Check if analytics is supported (Safari private mode returns false)
     const analyticsSupported = await isSupported();
 
@@ -49,10 +56,23 @@ export async function initializeFirebase() {
 
     return { app, analytics };
 
-  } catch (error) {
+  } catch {
     // Silent fail - app continues to work without analytics
     return null;
   }
+}
+
+/**
+ * Listen for the consent-granted event and activate analytics on the spot,
+ * without requiring a page reload. Call once per page from a main entry script.
+ */
+export function listenForConsentAndInitAnalytics() {
+  window.addEventListener(EVENTS.ANALYTICS_CONSENT_CHANGED, (event) => {
+    if (event.detail?.consent === 'granted') {
+      // Trigger lazy analytics init now that consent is on record.
+      initializeFirebase().catch(() => {});
+    }
+  }, { once: true });
 }
 
 /**

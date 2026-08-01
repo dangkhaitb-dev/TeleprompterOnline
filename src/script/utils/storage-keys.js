@@ -46,3 +46,8 @@ export const LS_SUPPORT_VISIT_COUNT = 'solprompter:support-visit-count';
 // requested by Voice Scroll. The browser owns the packs; this registry only
 // lets the Studio verify/recover them on a later visit.
 export const LS_VOICE_SCROLL_ASR_LOCALES = 'solprompter:voice-scroll-asr-locales';
+
+// Cookie / analytics consent decision ('granted' | 'denied').
+// Written by utils/cookie-consent.js; read by firebase-init.js.
+// KEY must match CONSENT_KEY in utils/cookie-consent.js.
+export const LS_ANALYTICS_CONSENT = 'solprompter:analytics-consent';

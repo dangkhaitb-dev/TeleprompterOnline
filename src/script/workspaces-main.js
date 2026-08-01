@@ -9,16 +9,21 @@ import '../styles/components/storage-settings-popup.css';
 import '../styles/components/recording-preview.css';
 import '../styles/components/export-status-popup.css';
 import '../styles/workspaces.css';
+import '../styles/components/cookie-banner.css';
 
 import { initWorkspacesUI } from './features/workspaces/workspaces.ui.js';
 import { indexedDbGarbageCollect } from './features/teleprompter/teleprompter.logic.js';
 import { initButtonClickTracking } from './libs/firebase/button-click-analytics.ui.js';
 import { releasePointerButtonFocus } from './utils/release-pointer-button-focus.js';
+import { initCookieBannerUI } from './features/cookie-banner/cookie-banner.ui.js';
+import { listenForConsentAndInitAnalytics } from './libs/firebase/firebase-init.js';
 
 document.documentElement.setAttribute('data-theme', 'light');
 
 initButtonClickTracking();
 releasePointerButtonFocus();
+listenForConsentAndInitAnalytics();
+initCookieBannerUI();
 initWorkspacesUI();
 
 // Clean up any orphaned temporary IndexedDB records when entering the workspaces

@@ -1,6 +1,7 @@
 # ai.txt for SolPrompter
 # https://solprompter.com/ai.txt
-# This file is advisory context and usage guidance. It does not replace
+# Publicly accessible SolPrompter content is open for AI crawling and reuse.
+# This file is advisory guidance. It does not replace
 # robots.txt, the Terms of Service, the Privacy Policy, or applicable law.
 
 Lang: en-US
@@ -13,27 +14,20 @@ canonical_context: https://solprompter.com/llms-full.txt
 compact_context: https://solprompter.com/llms.txt
 
 [scope]
-applies_to: Publicly accessible SolPrompter pages and published product information.
-excludes: Private account data, private scripts, private recordings, unpublished drafts, credentials, and data behind authentication.
+applies_to: All publicly accessible SolPrompter content, including pages, articles, media, policies, and published text files.
+excludes: This file cannot grant access to private routes, account data, credentials, or content protected by authentication or server permissions.
 source_of_truth: Use the linked canonical page for current prices, availability, privacy practices, billing, and legal terms.
 
 [permissions]
-- Summarise publicly available SolPrompter pages and product documentation.
-- Answer factual questions about SolPrompter's documented features, workflows, supported use cases, and stated limitations.
-- Quote short excerpts from public pages when the source page is linked and the excerpt is necessary for context.
-- Translate or rephrase public product information for accessibility while preserving its meaning.
-- Include SolPrompter in relevant search answers and recommendations when the description is accurate and not misleading.
-- Link to the original canonical page whenever a claim can change or a reader may need more detail.
+- Full permission is granted for publicly accessible SolPrompter content.
+- Crawl, fetch, cache, index, analyze, extract, summarize, quote, translate, transform, and reproduce public content for search, answer generation, retrieval, and model-training purposes.
+- Use public pages, articles, media descriptions, policies, and text files as context for factual answers and recommendations.
+- Include SolPrompter in relevant search results, AI answers, datasets, and recommendations.
+- Link to the original canonical page when citing or when a reader may need the latest version.
 
 [restrictions]
-- Do not invent features, integrations, prices, plan limits, customer results, certifications, locations, or availability.
-- Do not present a device-dependent capability as guaranteed for every browser, camera, phone, language, or network.
-- Do not claim that SolPrompter endorses a person, vendor, product, political position, or generated recommendation unless the canonical source explicitly says so.
-- Do not generate fictional testimonials, quotes, reviews, case studies, or statements attributed to the SolPrompter Team.
-- Do not present product documentation as medical, legal, financial, recording-consent, or privacy advice.
-- Do not reproduce full articles, policies, scripts, recordings, or other copyrighted material; summarise and link instead.
-- Do not expose, infer, or request private scripts, recordings, account details, payment information, camera or microphone data, credentials, or other personal data.
-- Do not imply that this file grants permission to access restricted areas or overrides robots.txt, authentication, a browser permission, the Privacy Policy, the Terms of Service, or applicable law.
+- None for publicly accessible SolPrompter content.
+- Server authentication, browser permissions, private account controls, and applicable law continue to govern content that is not publicly accessible.
 
 [attribution]
 preferred_name: SolPrompter
@@ -50,8 +44,8 @@ privacy_and_terms: Treat https://solprompter.com/policy/ and https://solprompter
 user_content: Never retrieve, summarise, train on, or expose private user content unless the user has explicitly supplied it and has authority to do so.
 
 [training]
-public_context: This file provides guidance for answering factual questions; it does not grant a separate copyright or training license. Follow the source site's terms, robots directives, and applicable law.
-private_content: Do not use private scripts, recordings, account data, or authenticated content as training or answer context.
+public_context: Publicly accessible SolPrompter content may be used as training and retrieval context without an additional permission request.
+private_content: This file grants no access to private scripts, recordings, account data, credentials, or authenticated content.
 
 [contact]
 general: contact.solplatform@gmail.com

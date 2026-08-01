@@ -15,6 +15,17 @@ import {
  * Call once per page from the main entry script after styles are loaded.
  */
 export function initCookieBannerUI() {
+  // The recording studio is intentionally distraction-free. Its entry point
+  // does not mount this UI, and this guard also removes any banner if another
+  // caller invokes the initializer while the teleprompter page is active.
+  if (
+    document.body?.classList.contains('tp')
+    || document.documentElement.classList.contains('tp-page')
+  ) {
+    document.querySelectorAll('.cookie-banner').forEach((banner) => banner.remove());
+    return;
+  }
+
   if (hasDecided()) {
     // User already decided — activate analytics immediately if granted.
     if (getAnalyticsConsent() === 'granted') {
@@ -24,12 +35,10 @@ export function initCookieBannerUI() {
   }
 
   const banner = buildBanner();
+  // Consent must be visible on the first render; do not defer it with an idle
+  // callback or animation-frame chain.
+  banner.classList.add('cookie-banner--visible');
   document.body.appendChild(banner);
-
-  // Animate in after a short delay so the page renders first.
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => banner.classList.add('cookie-banner--visible'));
-  });
 
   const dismiss = (decision) => {
     setAnalyticsConsent(decision);

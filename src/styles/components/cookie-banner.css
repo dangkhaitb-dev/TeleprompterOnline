@@ -25,6 +25,13 @@
   opacity: 1;
 }
 
+/* The in-page teleprompter overlay adds .tp-page to <html>. Keep consent UI
+   out of the recording studio even when it was already mounted on the host
+   page before the overlay opened. */
+html.tp-page .cookie-banner {
+  display: none;
+}
+
 .cookie-banner__inner {
   width: min(100%, var(--maxw-content));
   margin-inline: auto;

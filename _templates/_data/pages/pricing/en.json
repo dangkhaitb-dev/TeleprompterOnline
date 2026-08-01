@@ -3,6 +3,7 @@
     "title": "Pricing — Day Pass, Pro and Lifetime | SolPrompter",
     "description": "SolPrompter early adopter pricing: a $3.99 one-day pass, Pro at $6.99 per month or $49 a year, and a $169 lifetime plan. AI Scroll, cloud sync and remote control included.",
     "canonical": "/pricing",
+    "robots": "noindex, nofollow",
     "ogTitle": "SolPrompter Pricing — Lock In Your Price Forever",
     "ogDescription": "Early adopter pricing: One-Day Pass $3.99, Pro $6.99/month, Lifetime $169. Prices go up as we add more premium features.",
     "ogType": "website",
@@ -13,10 +14,7 @@
     "url": "/"
   },
   "hero": {
-    "eyebrow": "Early Adopter Pricing",
-    "title": "Lock In Your Price Forever",
-    "description": "Prices will increase as we add more premium features. Whatever you pay today is the price you keep.",
-    "note": "Limited-time launch pricing"
+    "title": "Pricing"
   },
   "plans": {
     "items": [

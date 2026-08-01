@@ -54,9 +54,13 @@ lang: en
 <main id="main" tabindex="-1">
     <section class="hero hero--pricing">
         <div class="hero-inner">
+            {%- if pageData.hero.eyebrow %}
             <p class="eyebrow">{{ pageData.hero.eyebrow }}</p>
+            {%- endif %}
             <h1 class="hero-title">{{ pageData.hero.title }}</h1>
+            {%- if pageData.hero.description %}
             <p class="hero-desc">{{ pageData.hero.description }}</p>
+            {%- endif %}
             {%- if pageData.hero.note %}
             <p class="hero-note">{{ pageData.hero.note }}</p>
             {%- endif %}

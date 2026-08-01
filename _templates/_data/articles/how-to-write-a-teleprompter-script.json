@@ -1,0 +1,1058 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "how-to-write-a-teleprompter-script",
+  "published": true,
+  "flatUrl": true,
+  "title": "How to Write a Teleprompter Script That Sounds Natural",
+  "date": "2026-08-01",
+  "dateDisplay": "August 1, 2026",
+  "modified": "2026-08-01",
+  "author": {
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
+  },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "August 1, 2026"
+  },
+  "category": "Teleprompter Guides",
+  "shortName": "How to Write a Teleprompter Script That Sounds Natural",
+  "keywords": [
+    "teleprompter",
+    "speaking on camera",
+    "teleprompter setup",
+    "teleprompter script"
+  ],
+  "mentions": [],
+  "seo": {
+    "title": "How to Write a Teleprompter Script That Sounds Natural",
+    "description": "Write a teleprompter script that sounds natural: use conversational wording, short sentences, line breaks, pauses, and a read-aloud editing process.",
+    "image": "https://solprompter.com/media/blog/how-to-write-a-teleprompter-script/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/how-to-write-a-teleprompter-script/hero.webp",
+    "alt": "Creator refining a video script on a laptop beside a camera",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": {
+    "label": "Open SolPrompter",
+    "url": "/"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "Write a teleprompter script for the ear, not the page. Use conversational wording, short sentences, one main idea at a time, and line breaks that show the intended rhythm."
+    },
+    {
+      "type": "paragraph",
+      "html": "Then read the script aloud and rewrite every sentence that feels difficult to say."
+    },
+    {
+      "type": "toc",
+      "title": "Table of contents"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Start with the spoken message"
+    },
+    {
+      "type": "paragraph",
+      "html": "Before writing, answer three questions:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "What should the viewer understand?"
+        },
+        {
+          "text": "What should the viewer do next?"
+        },
+        {
+          "text": "Which wording must remain exact?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Do not begin by expanding the topic into a long article. Begin with the explanation you would give to one person."
+    },
+    {
+      "type": "paragraph",
+      "html": "A useful first draft can come from speaking:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Record yourself explaining the topic."
+        },
+        {
+          "text": "Transcribe the explanation."
+        },
+        {
+          "text": "Remove repetition."
+        },
+        {
+          "text": "Restore missing details."
+        },
+        {
+          "text": "Check factual claims."
+        },
+        {
+          "text": "Organize the result into a clear sequence."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "This produces a spoken foundation rather than formal prose that must later be converted."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Use conversational language"
+    },
+    {
+      "type": "paragraph",
+      "html": "Broadcast-writing guidance emphasizes writing for an audience that hears the content once. It recommends an informal, conversational style and clear sentences. <a href=\"https://uark.pressbooks.pub/journalismgsp/chapter/broadcast/\">University of Arkansas</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use words you would actually say."
+    },
+    {
+      "type": "paragraph",
+      "html": "Instead of:"
+    },
+    {
+      "type": "quote",
+      "text": "It is important to take into consideration the position of the camera in relation to the display."
+    },
+    {
+      "type": "paragraph",
+      "html": "Write:"
+    },
+    {
+      "type": "quote",
+      "text": "Check where the camera sits relative to the text."
+    },
+    {
+      "type": "paragraph",
+      "html": "Instead of:"
+    },
+    {
+      "type": "quote",
+      "text": "The utilization of a narrower text column may facilitate reduced horizontal gaze movement."
+    },
+    {
+      "type": "paragraph",
+      "html": "Write:"
+    },
+    {
+      "type": "quote",
+      "text": "A narrower text column can reduce side-to-side scanning."
+    },
+    {
+      "type": "paragraph",
+      "html": "Instead of:"
+    },
+    {
+      "type": "quote",
+      "text": "You will be able to commence the recording process after granting the applicable permissions."
+    },
+    {
+      "type": "paragraph",
+      "html": "Write:"
+    },
+    {
+      "type": "quote",
+      "text": "Allow camera and microphone access, then start recording."
+    },
+    {
+      "type": "paragraph",
+      "html": "Contractions can help when they match your normal voice:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "“You do not” → “You don’t”"
+        },
+        {
+          "text": "“It is” → “It’s”"
+        },
+        {
+          "text": "“You will” → “You’ll”"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Do not force contractions into formal or regulated wording."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Keep one main idea per sentence"
+    },
+    {
+      "type": "paragraph",
+      "html": "Long sentences are difficult because the speaker must preserve the grammar, meaning, breath, and emphasis at the same time."
+    },
+    {
+      "type": "paragraph",
+      "html": "Break a sentence when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "The main idea changes."
+        },
+        {
+          "text": "An example begins."
+        },
+        {
+          "text": "A qualification requires explanation."
+        },
+        {
+          "text": "You would naturally pause."
+        },
+        {
+          "text": "The sentence needs more than one breath."
+        },
+        {
+          "text": "The listener needs time to process the point."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Instead of:"
+    },
+    {
+      "type": "quote",
+      "text": "Voice-assisted scrolling may be useful for presenters whose pace changes, although its performance depends on factors such as browser recognition, microphone quality, background noise, language, and pronunciation."
+    },
+    {
+      "type": "paragraph",
+      "html": "Write:"
+    },
+    {
+      "type": "quote",
+      "text": "Voice-assisted scrolling can help when your pace changes."
+    },
+    {
+      "type": "quote",
+      "text": "Its performance still depends on the browser, microphone, language, pronunciation, and background noise."
+    },
+    {
+      "type": "paragraph",
+      "html": "The shorter version preserves the qualification without making the presenter carry the entire structure in one breath."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Format the script for delivery"
+    },
+    {
+      "type": "paragraph",
+      "html": "A teleprompter script is a performance document."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use line breaks to show:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "A new thought."
+        },
+        {
+          "text": "A pause."
+        },
+        {
+          "text": "A contrast."
+        },
+        {
+          "text": "A transition."
+        },
+        {
+          "text": "A question."
+        },
+        {
+          "text": "An important conclusion."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Example:"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "A teleprompter should support your pace."
+    },
+    {
+      "type": "paragraph",
+      "html": "It should not force you"
+    },
+    {
+      "type": "paragraph",
+      "html": "to chase the screen."
+    },
+    {
+      "type": "paragraph",
+      "html": "If the text moves too quickly,"
+    },
+    {
+      "type": "paragraph",
+      "html": "slow it down."
+    },
+    {
+      "type": "paragraph",
+      "html": "If your pace changes often,"
+    },
+    {
+      "type": "paragraph",
+      "html": "test voice-assisted scrolling."
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "paragraph",
+      "html": "This format helps the eyes absorb phrases instead of isolated words."
+    },
+    {
+      "type": "paragraph",
+      "html": "Do not break a natural phrase in the middle:"
+    },
+    {
+      "type": "paragraph",
+      "html": "Poor:"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "Move the reading area"
+    },
+    {
+      "type": "paragraph",
+      "html": "close to the"
+    },
+    {
+      "type": "paragraph",
+      "html": "camera."
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "paragraph",
+      "html": "Better:"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "Move the reading area"
+    },
+    {
+      "type": "paragraph",
+      "html": "close to the camera."
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mark pauses and emphasis"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use visual cues sparingly."
+    },
+    {
+      "type": "paragraph",
+      "html": "Useful cues include:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "`[PAUSE]`"
+        },
+        {
+          "text": "`[SLOW]`"
+        },
+        {
+          "text": "`[SMILE]`"
+        },
+        {
+          "text": "`[SHOW SCREEN]`"
+        },
+        {
+          "text": "`[CHANGE SLIDE]`"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Bold can mark a word that carries the contrast:"
+    },
+    {
+      "type": "quote",
+      "text": "The teleprompter should <strong>follow you</strong>."
+    },
+    {
+      "type": "paragraph",
+      "html": "Do not bold entire paragraphs. When everything is emphasized, nothing is emphasized."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use blank lines for major pauses:"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "Most people try to fix the scrolling speed."
+    },
+    {
+      "type": "paragraph",
+      "html": "[PAUSE]"
+    },
+    {
+      "type": "paragraph",
+      "html": "But the script itself"
+    },
+    {
+      "type": "paragraph",
+      "html": "may be the real problem."
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Handle names, numbers, and technical terms"
+    },
+    {
+      "type": "paragraph",
+      "html": "Prepare anything that can interrupt the take."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Names"
+    },
+    {
+      "type": "paragraph",
+      "html": "Add a pronunciation note:"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "Anaïs Mitchell"
+    },
+    {
+      "type": "paragraph",
+      "html": "[ah-nah-EES MITCH-ell]"
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Numbers"
+    },
+    {
+      "type": "paragraph",
+      "html": "Write numbers in the form you intend to say:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "`2.4 million` → `two point four million`"
+        },
+        {
+          "text": "`2026` → `twenty twenty-six` or `two thousand twenty-six`"
+        },
+        {
+          "text": "`18–24` → `eighteen to twenty-four`"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Use the form that is accurate for the context."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Abbreviations"
+    },
+    {
+      "type": "paragraph",
+      "html": "Decide whether to pronounce each letter or the full term:"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "CTR"
+    },
+    {
+      "type": "paragraph",
+      "html": "[see-tee-ar]"
+    },
+    {
+      "type": "paragraph",
+      "html": "Search Console"
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "URLs"
+    },
+    {
+      "type": "paragraph",
+      "html": "Avoid reading a long raw URL unless necessary. Use a clear verbal destination such as:"
+    },
+    {
+      "type": "quote",
+      "text": "Open the complete guide from the Resources section."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Write for exactness without sounding legalistic"
+    },
+    {
+      "type": "paragraph",
+      "html": "Some sections require precise language:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Safety instructions."
+        },
+        {
+          "text": "Financial disclosures."
+        },
+        {
+          "text": "Medical information."
+        },
+        {
+          "text": "Legal terms."
+        },
+        {
+          "text": "Approved corporate claims."
+        },
+        {
+          "text": "Research findings."
+        },
+        {
+          "text": "Quotations."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Keep those sections accurate, but separate dense qualifications into manageable sentences."
+    },
+    {
+      "type": "paragraph",
+      "html": "Example:"
+    },
+    {
+      "type": "quote",
+      "text": "SolPrompter provides voice-assisted scrolling."
+    },
+    {
+      "type": "quote",
+      "text": "Performance can vary with the browser, microphone, language, pronunciation, and recording environment."
+    },
+    {
+      "type": "paragraph",
+      "html": "The qualification remains visible and understandable."
+    },
+    {
+      "type": "paragraph",
+      "html": "When a source supports only an association, do not rewrite it as causation. When a product page confirms that a feature exists, do not convert that into an independent performance claim."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Use full scripts and bullet points together"
+    },
+    {
+      "type": "paragraph",
+      "html": "Not every section needs the same level of scripting."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use full wording for:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Hooks."
+        },
+        {
+          "text": "Definitions."
+        },
+        {
+          "text": "Evidence."
+        },
+        {
+          "text": "Disclosures."
+        },
+        {
+          "text": "Transitions."
+        },
+        {
+          "text": "Calls to action."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Use bullet points for:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Personal examples."
+        },
+        {
+          "text": "Demonstrations."
+        },
+        {
+          "text": "Commentary."
+        },
+        {
+          "text": "Stories you know well."
+        },
+        {
+          "text": "Responses to visible events."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Example:"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "[SCRIPT]"
+    },
+    {
+      "type": "paragraph",
+      "html": "A fixed-speed teleprompter keeps moving"
+    },
+    {
+      "type": "paragraph",
+      "html": "even when the speaker pauses."
+    },
+    {
+      "type": "paragraph",
+      "html": "[NOTES]"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Demonstrate a five-second pause"
+        },
+        {
+          "text": "Show the text moving"
+        },
+        {
+          "text": "Explain why the presenter begins rushing"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "[SCRIPT]"
+    },
+    {
+      "type": "paragraph",
+      "html": "Voice-assisted scrolling is designed"
+    },
+    {
+      "type": "paragraph",
+      "html": "for a different workflow."
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "paragraph",
+      "html": "For a full comparison, read <a href=\"/blog/teleprompter-vs-memorizing-vs-bullet-points/\">Teleprompter vs Memorizing vs Bullet Points</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Edit by reading aloud"
+    },
+    {
+      "type": "paragraph",
+      "html": "Silent editing cannot reveal every delivery problem."
+    },
+    {
+      "type": "paragraph",
+      "html": "Read the script aloud and mark:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Words you repeatedly replace."
+        },
+        {
+          "text": "Sentences that require extra breath."
+        },
+        {
+          "text": "Places where your voice becomes flat."
+        },
+        {
+          "text": "Transitions that feel abrupt."
+        },
+        {
+          "text": "Pronunciations that interrupt the take."
+        },
+        {
+          "text": "Sections where you lose the main point."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "If you naturally replace a phrase each time, consider changing the script to the phrase you actually use."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use this editing loop:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Read aloud."
+        },
+        {
+          "text": "Mark the difficult line."
+        },
+        {
+          "text": "Simplify the wording."
+        },
+        {
+          "text": "Add a line break."
+        },
+        {
+          "text": "Read it again."
+        },
+        {
+          "text": "Load it into the teleprompter."
+        },
+        {
+          "text": "Record a short test."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Teleprompter script example"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Written version"
+    },
+    {
+      "type": "quote",
+      "text": "The implementation of voice-activated scrolling provides users with the ability to deliver presentations at a variable pace without the necessity of continuously modifying the speed controls."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Spoken rewrite"
+    },
+    {
+      "type": "quote",
+      "text": "Voice-activated scrolling follows a changing speaking pace."
+    },
+    {
+      "type": "quote",
+      "text": "You can pause,"
+    },
+    {
+      "type": "quote",
+      "text": "slow down,"
+    },
+    {
+      "type": "quote",
+      "text": "or emphasize a point"
+    },
+    {
+      "type": "quote",
+      "text": "without constantly adjusting the speed."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Teleprompter-formatted version"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "Voice-activated scrolling"
+    },
+    {
+      "type": "paragraph",
+      "html": "follows a changing speaking pace."
+    },
+    {
+      "type": "paragraph",
+      "html": "You can pause,"
+    },
+    {
+      "type": "paragraph",
+      "html": "slow down,"
+    },
+    {
+      "type": "paragraph",
+      "html": "or emphasize a point"
+    },
+    {
+      "type": "paragraph",
+      "html": "without constantly"
+    },
+    {
+      "type": "paragraph",
+      "html": "adjusting the speed."
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "paragraph",
+      "html": "The final format does not prove that the feature will perform the same way in every environment. It simply makes the explanation easier to deliver."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Load the script into SolPrompter"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter allows you to paste a script or import TXT, Markdown, or DOCX files. You can then adjust font size, margins, alignment, and line position before selecting voice-assisted, fixed-speed, or manual scrolling. <a href=\"/teleprompter-guide\">Product guide</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "After formatting the script:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Open the teleprompter."
+        },
+        {
+          "text": "Narrow the reading area."
+        },
+        {
+          "text": "Position it near the camera."
+        },
+        {
+          "text": "Read the first section aloud."
+        },
+        {
+          "text": "Edit any line that still feels written."
+        },
+        {
+          "text": "Record a short test."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "For delivery help, read <a href=\"/blog/how-to-read-a-teleprompter-naturally/\">How to Read a Teleprompter Naturally</a>. For diagnosis, use <a href=\"/blog/common-teleprompter-mistakes/\">Common Teleprompter Mistakes</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frequently asked questions"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "How long should a teleprompter sentence be?"
+    },
+    {
+      "type": "paragraph",
+      "html": "There is no universal word limit. Keep a sentence short enough to say clearly in one natural thought and split it when the idea changes."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Should each sentence be on a new line?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Not necessarily. Use line breaks to support phrases, pauses, and meaning. Avoid breaking a natural phrase in the middle."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Should I use contractions?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use them when they match your normal speech and the context allows them. Do not force them into formal or legally approved language."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Should I write every word?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Write every word when exact wording matters. Use structured bullet points when flexibility is more valuable."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Can AI write a teleprompter script?"
+    },
+    {
+      "type": "paragraph",
+      "html": "AI can assist with a draft, but factual claims, examples, experience, and product details must be checked. Rewrite the result in the speaker’s real voice and read it aloud before recording."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Next steps"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Load the revised script with the <a href=\"/teleprompter-guide\">SolPrompter product guide</a>."
+        },
+        {
+          "text": "<a href=\"https://solprompter.com/\">Open SolPrompter</a> and read the first section aloud."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Editorial disclosure"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter publishes this guide and develops the product referenced in it. Product instructions are based on current first-party documentation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "References"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Narisi, S. <a href=\"https://uark.pressbooks.pub/journalismgsp/chapter/broadcast/\">“Broadcast Writing.”</a> University of Arkansas."
+        },
+        {
+          "text": "<a href=\"https://cwi.pressbooks.pub/introductiontojournalismandnewswriting/chapter/chapter-8-writing-for-broadcast-journalism/\">“Writing for Broadcast Journalism.”</a> College of Western Idaho."
+        },
+        {
+          "text": "MeyerPro. <a href=\"https://meyerproinc.com/teleprompter-best-practices-for-executives/\">“Teleprompter Best Practices for Executives.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/teleprompter-guide\">“How to Use SolPrompter.”</a>"
+        }
+      ]
+    }
+  ]
+}

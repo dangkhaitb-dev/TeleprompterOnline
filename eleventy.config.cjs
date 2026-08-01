@@ -14,11 +14,69 @@ const allocateUniqueId = (baseId, allocatedIds) => {
   return candidateId;
 };
 
+const stripHtml = (value) => String(value)
+  .replace(/<[^>]*>/g, '')
+  .replace(/&nbsp;/g, ' ')
+  .replace(/&amp;/g, '&')
+  .replace(/&lt;/g, '<')
+  .replace(/&gt;/g, '>')
+  .trim();
+
+const codeLineFromBlock = (block) => {
+  if (block.type === 'paragraph') return stripHtml(block.html);
+  if (block.type === 'quote') return stripHtml(block.text);
+  if (block.type === 'list') {
+    return block.items.map((item) => {
+      const title = item.title ? `${stripHtml(item.title)}: ` : '';
+      return `- ${title}${stripHtml(item.text)}`;
+    }).join('\n');
+  }
+  return '';
+};
+
+const transformFencedCodeBlocks = (content, file) => {
+  const transformed = [];
+
+  for (let index = 0; index < content.length; index += 1) {
+    const block = content[index];
+    const fence = block.type === 'paragraph' && /^```([a-z0-9+-]*)\s*$/i.exec(block.html.trim());
+
+    if (!fence) {
+      transformed.push(block);
+      continue;
+    }
+
+    const codeLines = [];
+    let closingIndex = index + 1;
+
+    while (closingIndex < content.length) {
+      const candidate = content[closingIndex];
+      if (candidate.type === 'paragraph' && candidate.html.trim() === '```') break;
+      const line = codeLineFromBlock(candidate);
+      if (line) codeLines.push(line);
+      closingIndex += 1;
+    }
+
+    if (closingIndex === content.length) {
+      throw new Error(`[articles] ${file}: code fence at content block ${index + 1} is not closed.`);
+    }
+
+    transformed.push({
+      type: 'code',
+      language: fence[1] || 'text',
+      text: codeLines.join('\n'),
+    });
+    index = closingIndex;
+  }
+
+  return transformed;
+};
+
 function configureEleventy(eleventyConfig) {
   eleventyConfig.addWatchTarget('_templates/_data/');
 
   const articlesDataDir = path.join(__dirname, '_templates/_data/articles');
-  const allowedArticleBlocks = new Set(['paragraph', 'heading', 'quote', 'list', 'image', 'toc', 'endnote']);
+  const allowedArticleBlocks = new Set(['paragraph', 'heading', 'quote', 'list', 'image', 'toc', 'endnote', 'code']);
   const blogArticles = [];
   const slugifyUrlPart = (value) => String(value)
     .replace(/[Đđ]/g, (character) => character === 'Đ' ? 'D' : 'd')
@@ -28,6 +86,22 @@ function configureEleventy(eleventyConfig) {
     .replace(/['’]/g, '')
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-+|-+$/g, '');
+
+  // Parse a heading text that may contain a single Markdown link [label](url).
+  // Returns { label, headingHtml } where label is plain text (used for IDs/TOC)
+  // and headingHtml is safe HTML to render inside a heading element.
+  const parseHeadingText = (text) => {
+    const mdLink = /^\[([^\]]+)\]\(([^)]+)\)$/.exec(text.trim());
+    if (mdLink) {
+      const label = mdLink[1];
+      const url = mdLink[2];
+      const safeLabel = label.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const safeUrl = url.replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      return { label, headingHtml: `<a href="${safeUrl}">${safeLabel}</a>` };
+    }
+    const safeText = text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    return { label: text, headingHtml: safeText };
+  };
 
   if (fs.existsSync(articlesDataDir)) {
     const articleFiles = fs.readdirSync(articlesDataDir)
@@ -55,11 +129,10 @@ function configureEleventy(eleventyConfig) {
         throw new Error(`[articles] ${file}: "category" could not be converted to a URL slug.`);
       }
 
-      if (article.slug !== titleSlug) {
-        throw new Error(`[articles] ${file}: "slug" must be "${titleSlug}" to match the title.`);
-      }
+      // The strict title-slug matching requirement has been removed to support custom editorial slugs
 
       article.categorySlug = categorySlug;
+      article.url = article.flatUrl ? '/blog/' + article.slug + '/' : '/blog/' + article.categorySlug + '/' + article.slug + '/';
 
       if (!article.seo?.title || !article.seo?.description) {
         throw new Error(`[articles] ${file}: "seo.title" and "seo.description" are required.`);
@@ -80,6 +153,8 @@ function configureEleventy(eleventyConfig) {
       if (!Array.isArray(article.content) || article.content.length === 0) {
         throw new Error(`[articles] ${file}: "content" must contain at least one block.`);
       }
+
+      article.content = transformFencedCodeBlocks(article.content, file);
 
       const allocatedHeadingIds = new Set(['article-content', 'article-toc-title']);
       const tocItems = [];
@@ -107,7 +182,10 @@ function configureEleventy(eleventyConfig) {
           throw new Error(`[articles] ${file}: only level-three headings may opt into the table of contents.`);
         }
 
-        const baseHeadingId = slugifyUrlPart(block.text);
+        const { label: headingLabel, headingHtml } = parseHeadingText(block.text);
+        block.headingHtml = headingHtml;
+
+        const baseHeadingId = slugifyUrlPart(headingLabel);
         if (!baseHeadingId) {
           throw new Error(`[articles] ${file}: heading ${index + 1} could not be converted to an anchor.`);
         }
@@ -119,14 +197,14 @@ function configureEleventy(eleventyConfig) {
             throw new Error(`[articles] ${file}: heading ${index + 1} cannot enter the table of contents before a level-two heading.`);
           }
           if (block.includeInToc) {
-            currentTocSection.children.push({ id: block.id, text: block.text });
+            currentTocSection.children.push({ id: block.id, text: headingLabel });
           }
           return;
         }
 
         currentTocSection = {
           id: block.id,
-          text: block.text,
+          text: headingLabel,
           children: [],
         };
         tocItems.push(currentTocSection);
@@ -166,7 +244,12 @@ function configureEleventy(eleventyConfig) {
     }
   }
 
+  for (const category of blogCategoryBySlug.values()) {
+    category.hasHub = blogArticles.some(a => a.slug === category.slug && a.flatUrl);
+  }
+
   const blogCategories = [...blogCategoryBySlug.values()];
+  const blogCategoryPages = blogCategories.filter(c => !c.hasHub);
 
   const simplePagesDataDir = path.join(__dirname, '_templates/_data/simple-pages');
   const allowedSimplePageBlocks = new Set(['paragraph', 'heading', 'list', 'image']);
@@ -253,6 +336,7 @@ function configureEleventy(eleventyConfig) {
   eleventyConfig.addGlobalData('i18nPages', i18nPages);
   eleventyConfig.addGlobalData('blogArticles', blogArticles);
   eleventyConfig.addGlobalData('blogCategories', blogCategories);
+  eleventyConfig.addGlobalData('blogCategoryPages', blogCategoryPages);
   eleventyConfig.addGlobalData('simplePages', simplePages);
 
   const languages = require('./_templates/_data/languages.cjs');

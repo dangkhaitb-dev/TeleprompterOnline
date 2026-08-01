@@ -1,0 +1,677 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "voice-scroll-vs-fixed-speed-teleprompter",
+  "published": true,
+  "flatUrl": true,
+  "title": "Voice Scroll vs Fixed-Speed Teleprompter: Which Is Better?",
+  "date": "2026-08-01",
+  "dateDisplay": "August 1, 2026",
+  "modified": "2026-08-01",
+  "author": {
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
+  },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "August 1, 2026"
+  },
+  "category": "Teleprompter Guides",
+  "shortName": "Voice Scroll vs Fixed-Speed Teleprompter",
+  "keywords": [
+    "teleprompter",
+    "speaking on camera",
+    "teleprompter setup",
+    "teleprompter script"
+  ],
+  "mentions": [],
+  "seo": {
+    "title": "Voice Scroll vs Fixed-Speed Teleprompter: Which Is Better?",
+    "description": "Compare voice scrolling and fixed-speed teleprompters for pauses, pace changes, noise, improvisation, and recording reliability before choosing a mode.",
+    "image": "https://solprompter.com/media/blog/voice-scroll-vs-fixed-speed-teleprompter/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/voice-scroll-vs-fixed-speed-teleprompter/hero.webp",
+    "alt": "Creator recording with a teleprompter beside an abstract voice waveform and scrolling display",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": {
+    "label": "Open SolPrompter",
+    "url": "/"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "Voice scrolling is usually better when your pace changes or you pause often. Fixed-speed scrolling is usually better when the script is rehearsed and must follow a predictable timeline. Manual or remote control may be safer when the presentation includes extensive improvisation or live interaction."
+    },
+    {
+      "type": "paragraph",
+      "html": "No mode is best in every environment."
+    },
+    {
+      "type": "toc",
+      "title": "Table of contents"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Quick comparison"
+    },
+    {
+      "type": "paragraph",
+      "html": "<div class='table-wrapper'><table>\n<tr><th>Condition</th><th>Voice-assisted</th><th>Fixed speed</th><th>Manual or remote</th></tr>\n<tr><td>Pace changes frequently</td><td>Often suitable</td><td>Can create pressure</td><td>Suitable with active control</td></tr>\n<tr><td>Long pauses</td><td>Designed to wait when silence is recognized</td><td>Continues until paused</td><td>Operator pauses directly</td></tr>\n<tr><td>Tight time requirement</td><td>Less predictable</td><td>Strong candidate</td><td>Strong with an operator</td></tr>\n<tr><td>Background noise</td><td>Requires testing</td><td>Mostly unaffected</td><td>Mostly unaffected</td></tr>\n<tr><td>Extensive improvisation</td><td>May lose alignment</td><td>Script continues</td><td>Strong candidate</td></tr>\n<tr><td>Solo recording</td><td>Convenient when recognition works well</td><td>Simple and predictable</td><td>Requires touch, keys, or remote</td></tr>\n<tr><td>Live high-stakes event</td><td>Use with backup</td><td>Possible</td><td>Operator control is often safer</td></tr>\n</table></div>"
+    },
+    {
+      "type": "paragraph",
+      "html": "The table is a decision guide, not a benchmark."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "How fixed-speed scrolling works"
+    },
+    {
+      "type": "paragraph",
+      "html": "Fixed-speed scrolling moves the script at a selected pace, commonly expressed in words per minute."
+    },
+    {
+      "type": "paragraph",
+      "html": "It is predictable. The same setting produces the same scrolling behavior regardless of the speaker."
+    },
+    {
+      "type": "paragraph",
+      "html": "This works well when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "The script has been rehearsed."
+        },
+        {
+          "text": "The presenter speaks at a stable pace."
+        },
+        {
+          "text": "The delivery must fit a known duration."
+        },
+        {
+          "text": "The environment is noisy."
+        },
+        {
+          "text": "Microphone access is unavailable."
+        },
+        {
+          "text": "An operator can adjust speed."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "The main limitation is that the text does not know when the presenter pauses, repeats a line, or changes pace."
+    },
+    {
+      "type": "paragraph",
+      "html": "If the presenter slows down, the script may move ahead."
+    },
+    {
+      "type": "paragraph",
+      "html": "If the presenter speeds up, the script may fall behind."
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter’s fixed-speed mode currently uses WPM controls and a documented default of 110 WPM. The default is a starting point, not a universal recommendation. <a href=\"/teleprompter-guide\">Product guide</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "How voice-assisted scrolling works"
+    },
+    {
+      "type": "paragraph",
+      "html": "Voice-assisted scrolling uses recognized speech to decide how the script should advance."
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter states that its AI Voice Scroll uses speech recognition supplied by the browser and compares recognized words with the script. The feature is designed to follow the delivery, wait during silence, and attempt to realign when the speaker returns to recognizable script text. <a href=\"/blog/product/solprompter-ai-teleprompter-features-tested/\">Feature notes</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "This can help when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "The presenter pauses for emphasis."
+        },
+        {
+          "text": "The pace changes between sections."
+        },
+        {
+          "text": "The speaker records alone."
+        },
+        {
+          "text": "The script includes short unscripted comments."
+        },
+        {
+          "text": "Touching the screen would be distracting."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Voice-assisted scrolling is not a guarantee of perfect alignment. Recognition can be affected by:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Browser support."
+        },
+        {
+          "text": "Microphone quality."
+        },
+        {
+          "text": "Background noise."
+        },
+        {
+          "text": "Pronunciation."
+        },
+        {
+          "text": "Language."
+        },
+        {
+          "text": "Accent."
+        },
+        {
+          "text": "Speaking volume."
+        },
+        {
+          "text": "Differences between the spoken words and the script."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter’s Terms state that automated features may mishear words, lose position, or scroll at an unsuitable pace. Important recordings should be tested and should have an alternative control method. <a href=\"/term\">Terms</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When manual or remote control is better"
+    },
+    {
+      "type": "paragraph",
+      "html": "Manual control is useful when the speaker wants complete control over the script position."
+    },
+    {
+      "type": "paragraph",
+      "html": "Remote control is useful when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "A second person operates the teleprompter."
+        },
+        {
+          "text": "The presenter stands away from the computer."
+        },
+        {
+          "text": "The recording device should not be touched."
+        },
+        {
+          "text": "The script must react to an audience or demonstration."
+        },
+        {
+          "text": "The operator needs to jump between sections."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter provides keyboard, touch, and cross-device remote controls for play, pause, navigation, speed, and supported recording actions. <a href=\"/teleprompter-guide\">Product guide</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "In a high-stakes event, a human operator may be more reliable than a fully automated mode because the operator can interpret context that speech recognition cannot."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What happens when you pause"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fixed speed"
+    },
+    {
+      "type": "paragraph",
+      "html": "The text continues moving unless the presenter or operator pauses it."
+    },
+    {
+      "type": "paragraph",
+      "html": "This can cause the speaker to:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Rush after a long pause."
+        },
+        {
+          "text": "Lose the next line."
+        },
+        {
+          "text": "Skip emphasis."
+        },
+        {
+          "text": "Reach for the control during a take."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Voice-assisted"
+    },
+    {
+      "type": "paragraph",
+      "html": "The intended behavior is to stop advancing while no speech is recognized."
+    },
+    {
+      "type": "paragraph",
+      "html": "The practical result depends on the recognition environment. Test a normal pause, a long silence, and a quiet sentence before the real production."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Manual or remote"
+    },
+    {
+      "type": "paragraph",
+      "html": "The script remains exactly where the operator leaves it."
+    },
+    {
+      "type": "paragraph",
+      "html": "This provides control, but someone must press the control at the correct time."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What happens when you go off script"
+    },
+    {
+      "type": "paragraph",
+      "html": "Going off script can mean:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Replacing a word."
+        },
+        {
+          "text": "Adding a short explanation."
+        },
+        {
+          "text": "Repeating a sentence."
+        },
+        {
+          "text": "Skipping a paragraph."
+        },
+        {
+          "text": "Telling an extended story."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Fixed speed continues regardless of the change."
+    },
+    {
+      "type": "paragraph",
+      "html": "Voice-assisted scrolling may tolerate small wording differences and attempt to find recognizable script text. Large departures can make alignment more difficult."
+    },
+    {
+      "type": "paragraph",
+      "html": "Manual control lets the presenter or operator decide where to resume."
+    },
+    {
+      "type": "paragraph",
+      "html": "For content with extensive improvisation, use bullet points or manual control rather than expecting automated recognition to interpret the entire conversation."
+    },
+    {
+      "type": "paragraph",
+      "html": "Read <a href=\"/blog/teleprompter-vs-memorizing-vs-bullet-points/\">Teleprompter vs Memorizing vs Bullet Points</a> for workflow design."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Noise, microphones, languages, and accents"
+    },
+    {
+      "type": "paragraph",
+      "html": "Do not make universal claims about recognition accuracy without a defined test."
+    },
+    {
+      "type": "paragraph",
+      "html": "Before recording, check:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "The selected microphone."
+        },
+        {
+          "text": "Input level."
+        },
+        {
+          "text": "Distance from the microphone."
+        },
+        {
+          "text": "Background fans, traffic, music, or other speakers."
+        },
+        {
+          "text": "Browser language settings."
+        },
+        {
+          "text": "The language of the script."
+        },
+        {
+          "text": "Pronunciation of names and technical terms."
+        },
+        {
+          "text": "Whether recognition is available offline."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "The SolPrompter homepage explains that browser-supplied recognition may run on-device or through a provider, depending on browser support. The behavior and privacy implications can therefore vary by configuration. <a href=\"https://solprompter.com/\">SolPrompter homepage</a> and <a href=\"/policy\">Privacy Policy</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use fixed speed or manual control when speech recognition is unavailable or untested."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choose by recording type"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Talking-head video"
+    },
+    {
+      "type": "paragraph",
+      "html": "Voice-assisted scrolling can work well when the presenter changes pace. Fixed speed is suitable after rehearsal."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Short-form video"
+    },
+    {
+      "type": "paragraph",
+      "html": "A short fixed-speed script may be simple and predictable. Voice control can be unnecessary for a fifteen-second take."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Online course"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use fixed speed for highly rehearsed modules or voice-assisted scrolling for instructors who pause to explain concepts. Keep manual pause available."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Webinar"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use scripted sections for the opening, transitions, and closing. Use manual or remote control during live interaction."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Sales presentation"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use approved wording for claims and pricing. A remote operator may be useful when the presenter responds to the audience."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Public event"
+    },
+    {
+      "type": "paragraph",
+      "html": "A dedicated operator and backup script are often more appropriate than relying on one automated system."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "How to compare modes fairly"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use the same script and setup for each mode."
+    },
+    {
+      "type": "paragraph",
+      "html": "Test:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Normal pace."
+        },
+        {
+          "text": "A five-second pause."
+        },
+        {
+          "text": "A repeated sentence."
+        },
+        {
+          "text": "A skipped sentence."
+        },
+        {
+          "text": "A short unscripted comment."
+        },
+        {
+          "text": "Faster delivery."
+        },
+        {
+          "text": "Slower delivery."
+        },
+        {
+          "text": "Background noise."
+        },
+        {
+          "text": "A different microphone, when available."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Record:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Device."
+        },
+        {
+          "text": "Browser."
+        },
+        {
+          "text": "Microphone."
+        },
+        {
+          "text": "Language."
+        },
+        {
+          "text": "Environment."
+        },
+        {
+          "text": "Script length."
+        },
+        {
+          "text": "Problems observed."
+        },
+        {
+          "text": "How the presenter recovered."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Do not report a universal accuracy percentage unless the test has a defined dataset, scoring method, and sufficient sample."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common problems"
+    },
+    {
+      "type": "paragraph",
+      "html": "<div class='table-wrapper'><table>\n<tr><th>Problem</th><th>Likely reason</th><th>Adjustment</th></tr>\n<tr><td>Fixed speed runs ahead</td><td>Presenter pauses or slows</td><td>Reduce WPM or pause manually</td></tr>\n<tr><td>Fixed speed falls behind</td><td>Presenter speaks faster</td><td>Increase WPM after rehearsal</td></tr>\n<tr><td>Voice mode does not start</td><td>Permission or browser recognition issue</td><td>Check microphone and browser permissions</td></tr>\n<tr><td>Voice mode loses position</td><td>Speech differs substantially from script</td><td>Return to recognizable text or use manual control</td></tr>\n<tr><td>Recognition struggles</td><td>Noise, microphone, language, or pronunciation</td><td>Improve input or change mode</td></tr>\n<tr><td>Presenter feels rushed</td><td>Scrolling mode controls the delivery</td><td>Slow the text or use voice/manual control</td></tr>\n</table></div>"
+    },
+    {
+      "type": "paragraph",
+      "html": "For a wider diagnosis, read <a href=\"/blog/common-teleprompter-mistakes/\">Common Teleprompter Mistakes</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frequently asked questions"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Is voice scrolling more natural?"
+    },
+    {
+      "type": "paragraph",
+      "html": "It can support natural pauses and pace changes, but only when recognition works well in the actual environment."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Is fixed speed more reliable?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Its behavior is predictable because it does not depend on speech recognition. It still requires a pace that matches the presenter."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Does voice scrolling work with every accent?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Do not assume universal support. Recognition depends on the browser, language model, microphone, pronunciation, and environment."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "What is the best fixed speed?"
+    },
+    {
+      "type": "paragraph",
+      "html": "There is no universal WPM. Begin slower than your expected pace and adjust after rehearsal."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Should I use a remote?"
+    },
+    {
+      "type": "paragraph",
+      "html": "A remote is useful when the presenter cannot touch the recording device or when another person manages the script."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Next steps"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Use the <a href=\"/teleprompter-guide\">SolPrompter product guide</a> to configure the selected mode."
+        },
+        {
+          "text": "<a href=\"https://solprompter.com/\">Open SolPrompter</a> and compare the modes with one short script."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Editorial disclosure"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter publishes this guide and develops the scrolling modes discussed. Product behavior is described from first-party documentation and must be tested under the reader’s actual conditions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "References"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/teleprompter-guide\">“How to Use SolPrompter.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/blog/product/solprompter-ai-teleprompter-features-tested/\">“Features Tested.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/term\">“Terms of Service.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/policy\">“Privacy and Cookie Policy.”</a>"
+        }
+      ]
+    }
+  ]
+}

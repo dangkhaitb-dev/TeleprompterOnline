@@ -1,0 +1,716 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "teleprompter-setup-without-hardware",
+  "published": true,
+  "flatUrl": true,
+  "title": "How to Set Up a Teleprompter Without Special Hardware",
+  "date": "2026-08-01",
+  "dateDisplay": "August 1, 2026",
+  "modified": "2026-08-01",
+  "author": {
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
+  },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "August 1, 2026"
+  },
+  "category": "Teleprompter Guides",
+  "shortName": "How to Set Up a Teleprompter Without Special Hardware",
+  "keywords": [
+    "teleprompter",
+    "speaking on camera",
+    "teleprompter setup",
+    "teleprompter script"
+  ],
+  "mentions": [],
+  "seo": {
+    "title": "How to Set Up a Teleprompter Without Special Hardware",
+    "description": "Set up a teleprompter without special hardware using a laptop, phone, tablet, or webcam, then improve eye line with practical placement and text settings.",
+    "image": "https://solprompter.com/media/blog/teleprompter-setup-without-hardware/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/teleprompter-setup-without-hardware/hero.webp",
+    "alt": "Laptop, webcam, smartphone stand, and microphone in a no-hardware teleprompter setup",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": {
+    "label": "Open SolPrompter",
+    "url": "/"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "You can use a browser teleprompter with a laptop, tablet, or phone without buying beam-splitter glass. Position the active reading area near the camera, narrow the text column, choose a readable font, and record a short eye-line test before the real take."
+    },
+    {
+      "type": "paragraph",
+      "html": "A screen-based setup will not place the words directly over the lens in every case. The objective is to reduce the visible offset enough for your framing and content."
+    },
+    {
+      "type": "toc",
+      "title": "Table of contents"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What you need"
+    },
+    {
+      "type": "paragraph",
+      "html": "For a basic browser setup:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "A laptop, tablet, or phone."
+        },
+        {
+          "text": "A browser."
+        },
+        {
+          "text": "A prepared script."
+        },
+        {
+          "text": "A camera if the device is not recording."
+        },
+        {
+          "text": "A microphone if you need audio or voice-assisted scrolling."
+        },
+        {
+          "text": "A stable stand or surface."
+        },
+        {
+          "text": "A short test recording."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter runs in the browser and allows users to paste or upload a script, choose a scroll mode, adjust the reading view, and record on supported devices. <a href=\"/teleprompter-guide\">Complete product guide</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Laptop webcam setup"
+    },
+    {
+      "type": "paragraph",
+      "html": "A laptop is the simplest starting point."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Place the laptop at eye level."
+        },
+        {
+          "text": "Open the teleprompter."
+        },
+        {
+          "text": "Move the active reading area toward the top center."
+        },
+        {
+          "text": "Narrow the text so the eyes do not scan across the screen."
+        },
+        {
+          "text": "Increase the font until you can sit normally."
+        },
+        {
+          "text": "Record ten to thirty seconds."
+        },
+        {
+          "text": "Adjust the reading position based on the recording."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Avoid placing the laptop low on a desk. This encourages the presenter to look downward and can create an unflattering camera angle."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use a stand or stable stack to raise the device. Keep the screen and webcam close to eye height."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "External webcam setup"
+    },
+    {
+      "type": "paragraph",
+      "html": "An external webcam gives you more control over the camera position."
+    },
+    {
+      "type": "paragraph",
+      "html": "Place the webcam:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "At the top center of the monitor."
+        },
+        {
+          "text": "Directly above a compact reading window."
+        },
+        {
+          "text": "On a small mount close to the visible text."
+        },
+        {
+          "text": "At eye level rather than high above or below the face."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "The webcam does not have to remain attached to the display. A small tripod may let you place it closer to the reading column."
+    },
+    {
+      "type": "paragraph",
+      "html": "Check that the camera does not cover important words or controls."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Phone setup"
+    },
+    {
+      "type": "paragraph",
+      "html": "A phone can function as:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "The recording camera and teleprompter."
+        },
+        {
+          "text": "A separate teleprompter beside another camera."
+        },
+        {
+          "text": "A remote control for a teleprompter running on another device."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "When the phone is both camera and teleprompter:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Identify the front-camera position."
+        },
+        {
+          "text": "Place the active text near that camera."
+        },
+        {
+          "text": "Use a narrow column."
+        },
+        {
+          "text": "Keep only a small number of lines visible."
+        },
+        {
+          "text": "Mount the phone securely."
+        },
+        {
+          "text": "Record in the final orientation: portrait or landscape."
+        },
+        {
+          "text": "Review eye-line and audio."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "A phone screen shows less context than a laptop. Use shorter paragraphs and clearer line breaks."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tablet setup"
+    },
+    {
+      "type": "paragraph",
+      "html": "A tablet provides a larger reading area than a phone while remaining portable."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use it:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Directly below an external camera."
+        },
+        {
+          "text": "Beside a phone that is recording."
+        },
+        {
+          "text": "As the primary teleprompter for a person sitting at a desk."
+        },
+        {
+          "text": "As a remote-control device."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "A larger screen can create wider eye movement if the text stretches across the full display. Keep the reading column compact."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Camera with a separate display"
+    },
+    {
+      "type": "paragraph",
+      "html": "For a mirrorless, DSLR, or cinema camera, position a laptop, tablet, or phone as close to the lens as the framing permits."
+    },
+    {
+      "type": "paragraph",
+      "html": "This setup works best when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "The speaker is close to the camera."
+        },
+        {
+          "text": "The shot is not an extreme close-up."
+        },
+        {
+          "text": "The reading column is narrow."
+        },
+        {
+          "text": "The presenter can read the text without turning the head."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "When the speaker stands farther away, a physical beam-splitter rig may provide a better optical alignment."
+    },
+    {
+      "type": "paragraph",
+      "html": "Academic teleconferencing systems have used beam-splitter arrangements to place a camera and reflected visual content near a shared viewing axis. This explains the principle, but it does not mean every rig uses one identical angle or design. <a href=\"https://vgl.ict.usc.edu/Research/3DTeleconferencing/3DTeleconferencing-USCICT-SIGGRAPH2009.pdf\">USC ICT paper</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Position the text near the lens"
+    },
+    {
+      "type": "paragraph",
+      "html": "Research on video communication shows that camera position affects the appearance of gaze and conversational cues. Viewers can be sensitive to the direction of the visible offset. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">Stanford research</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use this practical method:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Place the reading area directly below the camera."
+        },
+        {
+          "text": "Record a short clip."
+        },
+        {
+          "text": "Move it slightly left or right if the camera is not centered."
+        },
+        {
+          "text": "Compare the clips at normal viewing size."
+        },
+        {
+          "text": "Keep the position that looks most direct without becoming difficult to read."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Do not rely on a universal distance such as sixty centimeters or two feet. Screen size, lens position, framing, and presenter distance change the perceived result."
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter’s Notch Mode creates a compact, draggable reading window near the top of the display. It is designed to reduce the visual separation between the text and a laptop or screen-mounted camera. <a href=\"/blog/product/solprompter-ai-teleprompter-features-tested/\">Feature overview</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choose font size and reading width"
+    },
+    {
+      "type": "paragraph",
+      "html": "Increase the font until you can:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Read without leaning."
+        },
+        {
+          "text": "Keep the face relaxed."
+        },
+        {
+          "text": "See enough context to anticipate the next phrase."
+        },
+        {
+          "text": "Maintain a natural posture."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Narrow the text until the eyes do not travel across most of the display."
+    },
+    {
+      "type": "paragraph",
+      "html": "The correct combination depends on:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Viewing distance."
+        },
+        {
+          "text": "Screen size."
+        },
+        {
+          "text": "Camera position."
+        },
+        {
+          "text": "Vision."
+        },
+        {
+          "text": "Script complexity."
+        },
+        {
+          "text": "Recording framing."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter currently provides adjustable font sizes, margins, alignment, and an eye-line guide. <a href=\"/teleprompter-guide\">Product guide</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Select a scrolling method"
+    },
+    {
+      "type": "paragraph",
+      "html": "Choose among:"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fixed speed"
+    },
+    {
+      "type": "paragraph",
+      "html": "Useful for rehearsed delivery with a consistent pace."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Voice-assisted scrolling"
+    },
+    {
+      "type": "paragraph",
+      "html": "Useful when the pace and pauses change. Performance depends on speech-recognition conditions such as browser support, microphone quality, language, pronunciation, and noise."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Manual scrolling"
+    },
+    {
+      "type": "paragraph",
+      "html": "Useful when the presenter prefers direct control."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Remote control"
+    },
+    {
+      "type": "paragraph",
+      "html": "Useful when the recording device should not be touched or when another person operates the teleprompter."
+    },
+    {
+      "type": "paragraph",
+      "html": "Compare the options in <a href=\"/blog/voice-scroll-vs-fixed-speed-teleprompter/\">Voice Scroll vs Fixed-Speed Teleprompter</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Test camera, microphone, and performance"
+    },
+    {
+      "type": "paragraph",
+      "html": "Before an important recording, test:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Camera permission."
+        },
+        {
+          "text": "Microphone permission."
+        },
+        {
+          "text": "Audio level."
+        },
+        {
+          "text": "Framing."
+        },
+        {
+          "text": "Lighting."
+        },
+        {
+          "text": "Text position."
+        },
+        {
+          "text": "Scroll behavior."
+        },
+        {
+          "text": "Recording resolution."
+        },
+        {
+          "text": "Browser performance."
+        },
+        {
+          "text": "Storage availability."
+        },
+        {
+          "text": "A backup workflow."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Browser features can vary with the device, browser version, hardware, available memory, extensions, and power-saving settings. SolPrompter documents these limitations in its feature notes and <a href=\"/term\">Terms</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "Change one variable at a time. If you change camera position, text width, font size, and speed together, you will not know which adjustment helped."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When to buy a physical teleprompter"
+    },
+    {
+      "type": "paragraph",
+      "html": "Consider a beam-splitter rig when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "The speaker stands far from the camera."
+        },
+        {
+          "text": "The shot is a close-up."
+        },
+        {
+          "text": "Direct optical alignment is important."
+        },
+        {
+          "text": "A professional camera and lens are used."
+        },
+        {
+          "text": "Long scripts must remain easy to read."
+        },
+        {
+          "text": "The same setup is used regularly."
+        },
+        {
+          "text": "A remote operator controls the text."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "A browser setup remains useful inside a physical rig when it supports Mirror Mode. SolPrompter includes a horizontal Mirror Mode for reflected teleprompter systems. <a href=\"/teleprompter-guide\">Product guide</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common setup mistakes"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Placing the device below eye level."
+        },
+        {
+          "text": "Using text across the full monitor."
+        },
+        {
+          "text": "Choosing a font that requires leaning."
+        },
+        {
+          "text": "Recording before testing the final orientation."
+        },
+        {
+          "text": "Assuming mobile and desktop behave identically."
+        },
+        {
+          "text": "Depending on voice recognition without a backup."
+        },
+        {
+          "text": "Moving the camera after rehearsal."
+        },
+        {
+          "text": "Using ordinary glass and expecting professional beam-splitter performance."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "For diagnosis, read <a href=\"/blog/common-teleprompter-mistakes/\">Common Teleprompter Mistakes</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frequently asked questions"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Can I use my phone as a teleprompter and camera?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Yes. Keep the text close to the front camera, use a compact reading area, and review a test clip because the small screen limits context."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Can I use a laptop without beam-splitter glass?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Yes. Position the reading area near the webcam. The words will not be directly over the lens, so eye-line testing remains important."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Where should I put the teleprompter?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Place the active text as close to the lens as practical, then compare short recordings. Do not rely on one universal physical measurement."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "What font size should I use?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use a size that is comfortable at the final reading distance and still shows enough context for the next phrase."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Is a physical teleprompter better?"
+    },
+    {
+      "type": "paragraph",
+      "html": "It can provide better optical alignment for close-ups, long distances, and professional cameras. A browser setup is faster and less expensive for many laptop, phone, and desk workflows."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Next steps"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Follow the <a href=\"/teleprompter-guide\">SolPrompter product guide</a> for the exact controls."
+        },
+        {
+          "text": "<a href=\"https://solprompter.com/\">Open SolPrompter</a> and record a short setup test."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Editorial disclosure"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter publishes this guide and develops the browser product referenced in it. Compatibility and performance can vary by device, browser, camera, microphone, and environment."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "References"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "USC Institute for Creative Technologies. <a href=\"https://vgl.ict.usc.edu/Research/3DTeleconferencing/3DTeleconferencing-USCICT-SIGGRAPH2009.pdf\">“3D Teleconferencing.”</a> SIGGRAPH, 2009."
+        },
+        {
+          "text": "Chen, M. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">“Conveying Conversational Cues Through Video.”</a> Stanford University."
+        },
+        {
+          "text": "Chen, M. <a href=\"https://aperture.stanford.edu/papers/eye_contact/paper.pdf\">“Leveraging the Asymmetric Sensitivity of Eye Contact for Videoconferencing.”</a> CHI, 2002."
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/teleprompter-guide\">“How to Use SolPrompter.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/blog/product/solprompter-ai-teleprompter-features-tested/\">“Features Tested.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/term\">“Terms of Service.”</a>"
+        }
+      ]
+    }
+  ]
+}

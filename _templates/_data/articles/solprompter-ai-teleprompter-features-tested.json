@@ -608,6 +608,10 @@
       "html": "Because the primary teleprompter and recording functions operate locally, normal server traffic does not affect scrolling performance. The user's device performs the time-sensitive work."
     },
     {
+      "type": "paragraph",
+      "html": "If you are setting up your workspace, review our <a href=\"/blog/teleprompter-setup-without-hardware/\">teleprompter setup without hardware</a> guide."
+    },
+    {
       "type": "heading",
       "level": 2,
       "text": "AI Voice Scroll: a teleprompter that follows your speech"

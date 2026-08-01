@@ -4,7 +4,7 @@
     {%- for article in articles -%}
     {%- if loop.first %}
     <article class="blog-featured">
-        <a class="blog-featured-media" href="/blog/{{ article.categorySlug }}/{{ article.slug }}/">
+        <a class="blog-featured-media" href="{{ article.url }}">
             <img
                 src="{{ article.hero.src }}"
                 width="{{ article.hero.width }}"
@@ -21,10 +21,10 @@
                 <time datetime="{{ article.date }}">{{ article.dateDisplay }}</time>
             </div>
             <h2 class="blog-featured-title">
-                <a href="/blog/{{ article.categorySlug }}/{{ article.slug }}/">{{ article.title }}</a>
+                <a href="{{ article.url }}">{{ article.title }}</a>
             </h2>
             <p class="blog-featured-description">{{ article.seo.description }}</p>
-            <a class="blog-read-link" href="/blog/{{ article.categorySlug }}/{{ article.slug }}/">
+            <a class="blog-read-link" href="{{ article.url }}">
                 {{ pageData.readArticle }} <span aria-hidden="true">↗</span>
             </a>
         </div>
@@ -32,7 +32,7 @@
     {%- elif loop.index0 == 1 %}
     <div class="blog-grid">
         <article class="blog-card">
-            <a class="blog-card-media" href="/blog/{{ article.categorySlug }}/{{ article.slug }}/">
+            <a class="blog-card-media" href="{{ article.url }}">
                 <img
                     src="{{ article.hero.src }}"
                     width="{{ article.hero.width }}"
@@ -47,7 +47,7 @@
                     <time datetime="{{ article.date }}">{{ article.dateDisplay }}</time>
                 </div>
                 <h2 class="blog-card-title">
-                    <a href="/blog/{{ article.categorySlug }}/{{ article.slug }}/">{{ article.title }}</a>
+                    <a href="{{ article.url }}">{{ article.title }}</a>
                 </h2>
                 <p>{{ article.seo.description }}</p>
             </div>
@@ -55,7 +55,7 @@
     {%- if loop.last %}</div>{% endif -%}
     {%- else %}
         <article class="blog-card">
-            <a class="blog-card-media" href="/blog/{{ article.categorySlug }}/{{ article.slug }}/">
+            <a class="blog-card-media" href="{{ article.url }}">
                 <img
                     src="{{ article.hero.src }}"
                     width="{{ article.hero.width }}"
@@ -70,7 +70,7 @@
                     <time datetime="{{ article.date }}">{{ article.dateDisplay }}</time>
                 </div>
                 <h2 class="blog-card-title">
-                    <a href="/blog/{{ article.categorySlug }}/{{ article.slug }}/">{{ article.title }}</a>
+                    <a href="{{ article.url }}">{{ article.title }}</a>
                 </h2>
                 <p>{{ article.seo.description }}</p>
             </div>

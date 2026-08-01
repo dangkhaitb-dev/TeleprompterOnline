@@ -1,0 +1,817 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "how-to-read-a-teleprompter-naturally",
+  "published": true,
+  "flatUrl": true,
+  "title": "How to Read a Teleprompter Naturally Without Looking Like You’re Reading",
+  "date": "2026-08-01",
+  "dateDisplay": "August 1, 2026",
+  "modified": "2026-08-01",
+  "author": {
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
+  },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "August 1, 2026"
+  },
+  "category": "Teleprompter Guides",
+  "shortName": "How to Read a Teleprompter Naturally Without Looking Like You’re Reading",
+  "keywords": [
+    "teleprompter",
+    "speaking on camera",
+    "teleprompter setup",
+    "teleprompter script"
+  ],
+  "mentions": [],
+  "seo": {
+    "title": "How to Read a Teleprompter Naturally Without Looking Like You’re Reading",
+    "description": "Learn how to read a teleprompter naturally with better script phrasing, eye line, text width, scrolling, and rehearsal for confident on-camera delivery.",
+    "image": "https://solprompter.com/media/blog/how-to-read-a-teleprompter-naturally/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/how-to-read-a-teleprompter-naturally/hero.webp",
+    "alt": "Creator speaking naturally to a camera with a teleprompter placed below the lens",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": {
+    "label": "Open SolPrompter",
+    "url": "/"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "<a href=\"https://solprompter.com/\">Open SolPrompter</a>"
+    },
+    {
+      "type": "paragraph",
+      "html": "To read a teleprompter naturally, write the script the way you speak, position the active text close to the camera, keep the reading column narrow, and use a scrolling method that follows your delivery."
+    },
+    {
+      "type": "paragraph",
+      "html": "The goal is not to keep your eyes perfectly motionless. The goal is to prevent the reading movement from distracting the viewer."
+    },
+    {
+      "type": "toc",
+      "title": "Table of contents"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Why teleprompter delivery looks unnatural"
+    },
+    {
+      "type": "paragraph",
+      "html": "A teleprompter can expose problems in the script and setup that were already present."
+    },
+    {
+      "type": "paragraph",
+      "html": "Common signs include:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Side-to-side eye movement."
+        },
+        {
+          "text": "A flat, constant rhythm."
+        },
+        {
+          "text": "Pauses that follow punctuation rather than meaning."
+        },
+        {
+          "text": "A formal voice that does not match normal conversation."
+        },
+        {
+          "text": "Tension in the face."
+        },
+        {
+          "text": "Rushing to keep up with the text."
+        },
+        {
+          "text": "Reading every word with equal emphasis."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Research on videoconferencing has shown that camera placement changes the visual cues viewers receive and that people can be sensitive to gaze that appears above, below, or beside the expected eye line. This does not produce one universal camera distance, but it supports placing the active reading area close to the lens and checking the result on video. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">Stanford dissertation</a> and <a href=\"https://aperture.stanford.edu/papers/eye_contact/paper.pdf\">CHI paper</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Write for speech"
+    },
+    {
+      "type": "paragraph",
+      "html": "A sentence can look professional on a page and still sound unnatural when spoken."
+    },
+    {
+      "type": "paragraph",
+      "html": "Broadcast-writing guidance recommends language that is conversational and understandable the first time it is heard. It also favors short, direct sentences and one main idea at a time. <a href=\"https://uark.pressbooks.pub/journalismgsp/chapter/broadcast/\">University of Arkansas guidance</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "Instead of:"
+    },
+    {
+      "type": "quote",
+      "text": "The implementation of this workflow will facilitate a more efficient production process."
+    },
+    {
+      "type": "paragraph",
+      "html": "Write:"
+    },
+    {
+      "type": "quote",
+      "text": "This workflow makes production easier."
+    },
+    {
+      "type": "paragraph",
+      "html": "Instead of:"
+    },
+    {
+      "type": "quote",
+      "text": "You will not be required to install an additional application."
+    },
+    {
+      "type": "paragraph",
+      "html": "Write:"
+    },
+    {
+      "type": "quote",
+      "text": "You don’t need to install another app."
+    },
+    {
+      "type": "paragraph",
+      "html": "Professional teleprompter guidance also recommends contractions, clear transitions, and one idea per line when those choices match the presenter’s natural speech. <a href=\"https://meyerproinc.com/teleprompter-best-practices-for-executives/\">MeyerPro guidance</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "For a complete process, read <a href=\"/blog/how-to-write-a-teleprompter-script/\">How to Write a Teleprompter Script</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Understand the message before reading"
+    },
+    {
+      "type": "paragraph",
+      "html": "You do not need to memorize the script, but you should know:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "What each section is trying to communicate."
+        },
+        {
+          "text": "Which sentence is the main takeaway."
+        },
+        {
+          "text": "Which words must remain exact."
+        },
+        {
+          "text": "Where you can add an example."
+        },
+        {
+          "text": "Where the listener needs a pause."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "When you understand the message, a small wording change does not destroy the take. You can return to the idea rather than searching for the exact missing word."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use three passes:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Read the script aloud and fix awkward language."
+        },
+        {
+          "text": "Rehearse it in the teleprompter and adjust layout."
+        },
+        {
+          "text": "Record thirty to sixty seconds and review eye movement, voice, and posture."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Move the active text near the camera"
+    },
+    {
+      "type": "paragraph",
+      "html": "The larger the visual separation between the words and the lens, the more likely the viewer is to notice that you are looking elsewhere."
+    },
+    {
+      "type": "paragraph",
+      "html": "For a laptop webcam:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Move the active text toward the top center."
+        },
+        {
+          "text": "Place it directly below the webcam when possible."
+        },
+        {
+          "text": "Avoid reading from the bottom half of the screen."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "For a phone:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Keep the text near the front camera."
+        },
+        {
+          "text": "Use a narrow column."
+        },
+        {
+          "text": "Check whether the camera is on the left, center, or right of the screen."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "For an external camera:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Position the browser window close to the lens."
+        },
+        {
+          "text": "Consider a second display or physical beam-splitter rig if the speaker must stand far away."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Record a short clip from several positions. Judge the recording, not only how the setup feels while you read."
+    },
+    {
+      "type": "paragraph",
+      "html": "For practical setup options, read <a href=\"/blog/teleprompter-setup-without-hardware/\">How to Set Up a Teleprompter Without Special Hardware</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Narrow the reading column"
+    },
+    {
+      "type": "paragraph",
+      "html": "Text stretched across a wide monitor creates visible horizontal scanning."
+    },
+    {
+      "type": "paragraph",
+      "html": "Start with a compact column close to the camera. Widen it only when the lines become too cramped to read comfortably."
+    },
+    {
+      "type": "paragraph",
+      "html": "A useful reading column:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Shows enough words to absorb a short phrase."
+        },
+        {
+          "text": "Does not require the eyes to cross most of the screen."
+        },
+        {
+          "text": "Keeps line changes predictable."
+        },
+        {
+          "text": "Leaves enough context to anticipate the next thought."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Avoid absolute character limits. The appropriate width depends on font size, distance, camera position, screen size, and the presenter’s vision."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choose readable text settings"
+    },
+    {
+      "type": "paragraph",
+      "html": "A font that is too small creates squinting and tension. A font that is too large shows so little context that the presenter cannot prepare for the next phrase."
+    },
+    {
+      "type": "paragraph",
+      "html": "Choose settings that allow you to:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Read without leaning forward."
+        },
+        {
+          "text": "See the current and next phrase."
+        },
+        {
+          "text": "Maintain a relaxed face."
+        },
+        {
+          "text": "Keep a natural posture."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Use:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Strong contrast."
+        },
+        {
+          "text": "A clear sans-serif font."
+        },
+        {
+          "text": "Paragraph spacing."
+        },
+        {
+          "text": "Consistent alignment."
+        },
+        {
+          "text": "Occasional cues such as `[PAUSE]` or `[SLOW]`."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Avoid:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "All-capital paragraphs."
+        },
+        {
+          "text": "Decorative fonts."
+        },
+        {
+          "text": "Several colors without a clear purpose."
+        },
+        {
+          "text": "Dense blocks with no visual rhythm."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Match the scrolling method to your pace"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fixed-speed scrolling"
+    },
+    {
+      "type": "paragraph",
+      "html": "Fixed speed is useful when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "The script is rehearsed."
+        },
+        {
+          "text": "The pace is consistent."
+        },
+        {
+          "text": "The delivery must fit a fixed timeline."
+        },
+        {
+          "text": "You do not want microphone-based control."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Begin slower than your expected pace. Increase the speed only when you can pause and emphasize ideas without falling behind."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Voice-assisted scrolling"
+    },
+    {
+      "type": "paragraph",
+      "html": "Voice-assisted scrolling is useful when your pace changes or you pause often."
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter’s AI Voice Scroll is designed to advance with recognized speech and wait while the speaker is silent. Performance may vary with browser speech recognition, language, pronunciation, microphone quality, and background noise. The product should be tested in the actual recording environment. <a href=\"/blog/product/solprompter-ai-teleprompter-features-tested/\">SolPrompter feature notes</a> and <a href=\"/term\">Terms</a>."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Manual or remote control"
+    },
+    {
+      "type": "paragraph",
+      "html": "Manual control can be better when:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "You improvise frequently."
+        },
+        {
+          "text": "Several people share the script."
+        },
+        {
+          "text": "An operator is available."
+        },
+        {
+          "text": "The presentation reacts to slides or an audience."
+        },
+        {
+          "text": "Automated recognition would create unacceptable risk."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "For a full comparison, read <a href=\"/blog/voice-scroll-vs-fixed-speed-teleprompter/\">Voice Scroll vs Fixed-Speed Teleprompter</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Read phrases instead of isolated words"
+    },
+    {
+      "type": "paragraph",
+      "html": "Word-by-word reading creates an even, mechanical cadence."
+    },
+    {
+      "type": "paragraph",
+      "html": "Try to absorb a short phrase before saying it."
+    },
+    {
+      "type": "paragraph",
+      "html": "Instead of processing:"
+    },
+    {
+      "type": "quote",
+      "text": "The / best / setting / depends / on / your / camera."
+    },
+    {
+      "type": "paragraph",
+      "html": "Group the thought:"
+    },
+    {
+      "type": "quote",
+      "text": "The best setting"
+    },
+    {
+      "type": "quote",
+      "text": "depends on your camera."
+    },
+    {
+      "type": "paragraph",
+      "html": "Format the script so each line supports meaning:"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "The goal is not"
+    },
+    {
+      "type": "paragraph",
+      "html": "to keep your eyes perfectly still."
+    },
+    {
+      "type": "paragraph",
+      "html": "The goal is"
+    },
+    {
+      "type": "paragraph",
+      "html": "to keep the movement from distracting the viewer."
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "paragraph",
+      "html": "Small wording changes are usually acceptable in creator and educational content as long as the meaning remains accurate. Exact wording may still be required for legal, medical, financial, safety, or regulated statements."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Use vocal and physical expression"
+    },
+    {
+      "type": "paragraph",
+      "html": "A teleprompter displays words. It does not display intention."
+    },
+    {
+      "type": "paragraph",
+      "html": "Before recording, decide:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Which sentence is the main takeaway."
+        },
+        {
+          "text": "Which word deserves emphasis."
+        },
+        {
+          "text": "Where the listener needs a pause."
+        },
+        {
+          "text": "Where your energy should rise or fall."
+        },
+        {
+          "text": "Which question should sound like a genuine question."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Keep gestures connected to the message. Do not add movement simply to appear animated."
+    },
+    {
+      "type": "paragraph",
+      "html": "One useful exercise is to explain the topic without the script for thirty seconds. Notice your natural pauses, gestures, and emphasis. Then preserve those patterns when you return to the teleprompter."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practice with the real setup"
+    },
+    {
+      "type": "paragraph",
+      "html": "Rehearse with the same:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Camera."
+        },
+        {
+          "text": "Screen."
+        },
+        {
+          "text": "Viewing distance."
+        },
+        {
+          "text": "Browser."
+        },
+        {
+          "text": "Microphone."
+        },
+        {
+          "text": "Lighting."
+        },
+        {
+          "text": "Recording orientation."
+        },
+        {
+          "text": "Scroll mode."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Review a test clip for:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Side-to-side scanning."
+        },
+        {
+          "text": "Looking below the lens."
+        },
+        {
+          "text": "A flat voice."
+        },
+        {
+          "text": "Unnatural pauses."
+        },
+        {
+          "text": "Facial tension."
+        },
+        {
+          "text": "Sentences that still sound written."
+        },
+        {
+          "text": "Speed changes caused by the screen."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Change one variable at a time so you know what improved the result."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Use SolPrompter for a compact eye line"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter includes several controls that support this workflow:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Notch Mode creates a compact, draggable reading window near the camera."
+        },
+        {
+          "text": "Margin guides narrow the reading column."
+        },
+        {
+          "text": "Font and line settings adjust readability."
+        },
+        {
+          "text": "AI Voice Scroll, fixed speed, and manual scrolling provide different control methods."
+        },
+        {
+          "text": "Remote Control lets a second device play, pause, and adjust the script."
+        },
+        {
+          "text": "Browser recording lets you review a short test without changing tools."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "These features support the setup; they do not replace script preparation or rehearsal."
+    },
+    {
+      "type": "paragraph",
+      "html": "See <a href=\"/teleprompter-guide\">How to Use SolPrompter</a> for product instructions and <a href=\"/blog/common-teleprompter-mistakes/\">Common Teleprompter Mistakes</a> for diagnosis."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frequently asked questions"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "How do I stop my eyes moving on a teleprompter?"
+    },
+    {
+      "type": "paragraph",
+      "html": "You may not eliminate all eye movement. Reduce distracting movement by narrowing the reading area, moving it close to the camera, increasing the font enough to stay relaxed, and reading short phrases rather than individual words."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Why do I sound robotic?"
+    },
+    {
+      "type": "paragraph",
+      "html": "The script may be too formal, the sentences may be too long, or the scrolling may be controlling your pace. Rewrite the script for speech and mark intentional pauses and emphasis."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Should I memorize the script first?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Understand the message and the purpose of each section. You do not need to memorize every sentence unless exact wording is required."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Where should I position the text?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Place the active line as close to the camera as the setup allows, then record a short test. The best position depends on the camera, screen, distance, and framing."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Is voice scrolling better for natural delivery?"
+    },
+    {
+      "type": "paragraph",
+      "html": "It can help when pace and pauses vary, but it depends on recognition conditions. Fixed speed or manual control may be more predictable in other situations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Next steps"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Follow the <a href=\"/teleprompter-guide\">SolPrompter product guide</a> to adjust Notch Mode, margins, and scrolling."
+        },
+        {
+          "text": "<a href=\"https://solprompter.com/\">Open SolPrompter</a> and review a short test recording."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Editorial disclosure"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter publishes this guide and develops the product referenced in it. Product descriptions are based on first-party documentation. Independent research and professional guidance are identified separately."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "References"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Chen, M. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">“Conveying Conversational Cues Through Video.”</a> Stanford University."
+        },
+        {
+          "text": "Chen, M. <a href=\"https://aperture.stanford.edu/papers/eye_contact/paper.pdf\">“Leveraging the Asymmetric Sensitivity of Eye Contact for Videoconferencing.”</a> CHI, 2002."
+        },
+        {
+          "text": "Narisi, S. <a href=\"https://uark.pressbooks.pub/journalismgsp/chapter/broadcast/\">“Broadcast Writing.”</a> University of Arkansas."
+        },
+        {
+          "text": "MeyerPro. <a href=\"https://meyerproinc.com/teleprompter-best-practices-for-executives/\">“Teleprompter Best Practices for Executives.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/teleprompter-guide\">“How to Use SolPrompter.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/blog/product/solprompter-ai-teleprompter-features-tested/\">“Features Tested.”</a>"
+        }
+      ]
+    }
+  ]
+}

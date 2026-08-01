@@ -1,0 +1,183 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "teleprompter-guides",
+  "published": true,
+  "flatUrl": true,
+  "title": "Teleprompter Guides",
+  "date": "2026-08-01",
+  "dateDisplay": "August 1, 2026",
+  "modified": "2026-08-01",
+  "author": {
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
+  },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "August 1, 2026"
+  },
+  "category": "Guides",
+  "shortName": "Teleprompter Guides",
+  "keywords": [
+    "teleprompter",
+    "speaking on camera",
+    "teleprompter setup",
+    "teleprompter script"
+  ],
+  "mentions": [],
+  "seo": {
+    "title": "Teleprompter Guides: Setup, Scripts & Natural Delivery",
+    "description": "Browse practical teleprompter guides for choosing a workflow, writing scripts, setting up your camera, reading naturally, and fixing common mistakes.",
+    "image": "https://solprompter.com/media/blog/teleprompter-guides/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/teleprompter-guides/hero.webp",
+    "alt": "Camera, laptop teleprompter, microphone, and notebook in a creator recording setup",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": {
+    "label": "Open SolPrompter",
+    "url": "/"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "Use this collection to decide whether a teleprompter fits your workflow, prepare a script, set up the camera and reading area, deliver the script naturally, choose a scrolling method, and fix common problems."
+    },
+    {
+      "type": "paragraph",
+      "html": "Start with the problem you have now. You do not need to read the guides in order."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Decision"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "[Should You Use a Teleprompter?](/blog/should-you-use-a-teleprompter/)"
+    },
+    {
+      "type": "paragraph",
+      "html": "Decide whether a teleprompter is appropriate for your recording, teaching, webinar, presentation, or public-speaking workflow."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "[Teleprompter vs Memorizing vs Bullet Points](/blog/teleprompter-vs-memorizing-vs-bullet-points/)"
+    },
+    {
+      "type": "paragraph",
+      "html": "Compare delivery methods by accuracy, preparation, flexibility, production style, and use case."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Preparation"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "[How to Write a Teleprompter Script](/blog/how-to-write-a-teleprompter-script/)"
+    },
+    {
+      "type": "paragraph",
+      "html": "Turn written prose into a spoken script using conversational wording, shorter sentences, meaningful line breaks, pauses, and clear emphasis."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Setup"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "[How to Set Up a Teleprompter Without Special Hardware](/blog/teleprompter-setup-without-hardware/)"
+    },
+    {
+      "type": "paragraph",
+      "html": "Build a practical browser setup with a laptop, external webcam, phone, tablet, or separate camera before deciding whether you need a beam-splitter rig."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Delivery"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "[How to Read a Teleprompter Naturally](/blog/how-to-read-a-teleprompter-naturally/)"
+    },
+    {
+      "type": "paragraph",
+      "html": "Reduce distracting eye movement, avoid robotic pacing, read phrases instead of isolated words, and rehearse with the actual camera setup."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Scroll control"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "[Voice Scroll vs Fixed-Speed Teleprompter](/blog/voice-scroll-vs-fixed-speed-teleprompter/)"
+    },
+    {
+      "type": "paragraph",
+      "html": "Compare voice-assisted, fixed-speed, manual, and remote control based on pauses, timing, noise, improvisation, and production risk."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Troubleshooting"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "[Common Teleprompter Mistakes](/blog/common-teleprompter-mistakes/)"
+    },
+    {
+      "type": "paragraph",
+      "html": "Diagnose problems with text width, camera position, script language, scrolling, recognition, font size, rehearsal, and backup controls."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Product instructions"
+    },
+    {
+      "type": "paragraph",
+      "html": "These editorial guides explain decisions, principles, and workflows."
+    },
+    {
+      "type": "paragraph",
+      "html": "For instructions on adding a script, selecting a scroll mode, adjusting the reading view, enabling Notch Mode, using Remote Control, and recording, use the <a href=\"/teleprompter-guide\">SolPrompter product guide</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "For a feature-by-feature product overview, read <a href=\"/blog/product/solprompter-ai-teleprompter-features-tested/\">SolPrompter AI Teleprompter: Features Tested</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "<a href=\"https://solprompter.com/\">Open SolPrompter</a>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Editorial disclosure"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter publishes this guide collection and develops the product referenced in it. Editorial guides distinguish first-party product documentation from independent research and professional guidance."
+    }
+  ]
+}

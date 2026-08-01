@@ -46,10 +46,10 @@ lang: en
                 {%- for article in blogArticles %}
                 {
                     "@type": "BlogPosting",
-                    "@id": "{{ site.url }}/blog/{{ article.categorySlug }}/{{ article.slug }}/#article",
+                    "@id": "{{ site.url }}{{ article.url }}#article",
                     "headline": "{{ article.title | jsonString | safe }}",
                     "description": "{{ article.seo.description | jsonString | safe }}",
-                    "url": "{{ site.url }}/blog/{{ article.categorySlug }}/{{ article.slug }}/",
+                    "url": "{{ site.url }}{{ article.url }}",
                     "image": "{{ article.seo.image }}",
                     "datePublished": "{{ article.date }}",
                     "dateModified": "{{ article.modified }}",

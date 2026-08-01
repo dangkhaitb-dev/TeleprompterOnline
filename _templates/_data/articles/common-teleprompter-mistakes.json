@@ -1,0 +1,849 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "common-teleprompter-mistakes",
+  "published": true,
+  "flatUrl": true,
+  "title": "12 Common Teleprompter Mistakes and How to Fix Them",
+  "date": "2026-08-01",
+  "dateDisplay": "August 1, 2026",
+  "modified": "2026-08-01",
+  "author": {
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
+  },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "August 1, 2026"
+  },
+  "category": "Teleprompter Guides",
+  "shortName": "12 Common Teleprompter Mistakes and How to Fix Them",
+  "keywords": [
+    "teleprompter",
+    "speaking on camera",
+    "teleprompter setup",
+    "teleprompter script"
+  ],
+  "mentions": [],
+  "seo": {
+    "title": "12 Common Teleprompter Mistakes and How to Fix Them",
+    "description": "Fix common teleprompter mistakes, from eye line and text width to scrolling, scripts, and rehearsal, with practical tests for more natural videos.",
+    "image": "https://solprompter.com/media/blog/common-teleprompter-mistakes/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/common-teleprompter-mistakes/hero.webp",
+    "alt": "Creator correcting their eye line while recording with a laptop teleprompter",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": {
+    "label": "Open SolPrompter",
+    "url": "/"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "Most teleprompter problems come from four areas: the script, the reading position, the scrolling method, or insufficient testing."
+    },
+    {
+      "type": "paragraph",
+      "html": "Fix the problem by identifying the visible symptom, changing one variable, and recording another short test."
+    },
+    {
+      "type": "toc",
+      "title": "Table of contents"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "1. The reading area is too wide"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "Your eyes move visibly from left to right."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "The script stretches across a large part of the monitor."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Narrow the text column and move it closer to the camera."
+    },
+    {
+      "type": "paragraph",
+      "html": "The column should show enough words for a short phrase without requiring the eyes to cross the display."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Retest"
+    },
+    {
+      "type": "paragraph",
+      "html": "Record ten seconds at three widths. Review the video at normal size."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "2. The text is too far from the camera"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "You appear to look below or beside the viewer."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "The active line is separated from the lens."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Move the reading area immediately below or beside the camera."
+    },
+    {
+      "type": "paragraph",
+      "html": "Stanford research on video communication shows that camera position affects visible gaze cues and that viewers can be sensitive to directional misalignment. This supports testing the actual recording rather than choosing one universal distance. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">Stanford dissertation</a>."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Retest"
+    },
+    {
+      "type": "paragraph",
+      "html": "Record from the center of the screen, below the camera, and slightly beside the camera. Compare the clips."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "3. The script sounds like an article"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "Your voice becomes formal, careful, and unlike normal conversation."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "The script was written for silent reading."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use conversational language, short sentences, and one main idea at a time."
+    },
+    {
+      "type": "paragraph",
+      "html": "Broadcast-writing guidance recommends writing for the ear and making the message understandable when heard once. <a href=\"https://uark.pressbooks.pub/journalismgsp/chapter/broadcast/\">University of Arkansas</a>."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Retest"
+    },
+    {
+      "type": "paragraph",
+      "html": "Explain the same point without the script. Compare your natural wording with the draft and rewrite the difference."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "4. The sentences are too long"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "You run out of breath, lose emphasis, or restart near the end of sentences."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "One sentence contains several ideas and qualifications."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Split the sentence where the idea changes. Put important qualifications in a separate sentence rather than removing them."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Retest"
+    },
+    {
+      "type": "paragraph",
+      "html": "Read the new version aloud without the teleprompter. If you still need an unnatural breath, split it again."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "5. You read one word at a time"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "Every word receives the same emphasis and the rhythm sounds mechanical."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "Your eyes and voice move through the script at the same point."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Absorb short phrases before speaking them. Use line breaks to group meaning."
+    },
+    {
+      "type": "paragraph",
+      "html": "Example:"
+    },
+    {
+      "type": "paragraph",
+      "html": "```text"
+    },
+    {
+      "type": "paragraph",
+      "html": "The teleprompter should support your pace."
+    },
+    {
+      "type": "paragraph",
+      "html": "It should not force you"
+    },
+    {
+      "type": "paragraph",
+      "html": "to chase the screen."
+    },
+    {
+      "type": "paragraph",
+      "html": "```"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Retest"
+    },
+    {
+      "type": "paragraph",
+      "html": "Record the original paragraph and the phrase-grouped version."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "6. The fixed speed controls your voice"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "You rush when the text moves ahead or stretch words while waiting for it."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "The selected WPM does not match the delivery."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Start slower. Rehearse the full section and increase the speed gradually."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use voice-assisted scrolling when your pace changes significantly, or manual control when you improvise."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "7. You rely on voice recognition without testing"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "The script does not advance, loses position, or behaves differently during the real recording."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "The browser, microphone, language, noise, or spoken wording differs from the rehearsal conditions."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Test:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Microphone permission."
+        },
+        {
+          "text": "Input level."
+        },
+        {
+          "text": "Browser recognition."
+        },
+        {
+          "text": "Background noise."
+        },
+        {
+          "text": "Script language."
+        },
+        {
+          "text": "Long pauses."
+        },
+        {
+          "text": "Repeated and skipped sentences."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Keep fixed-speed or manual control available."
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter’s Terms state that automated features may mishear, lose position, or scroll at an unsuitable pace. <a href=\"/term\">Terms</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "8. The font is uncomfortable"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "You lean forward, squint, or lose the next phrase."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "The font is too small, too large, or poorly spaced for the viewing distance."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Increase the font until the face and posture relax. Keep enough text visible to anticipate the next phrase."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use strong contrast and paragraph spacing."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Retest"
+    },
+    {
+      "type": "paragraph",
+      "html": "Record at the actual distance. Do not choose font size while sitting closer to the screen than you will during the take."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "9. You try to reproduce every word perfectly"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "A minor wording change causes a complete restart."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "You are treating the script as a memory test."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Understand the purpose of each section. Allow small wording differences when exact language is not required."
+    },
+    {
+      "type": "paragraph",
+      "html": "Preserve exact wording for:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Legal statements."
+        },
+        {
+          "text": "Safety instructions."
+        },
+        {
+          "text": "Medical information."
+        },
+        {
+          "text": "Financial disclosures."
+        },
+        {
+          "text": "Approved claims."
+        },
+        {
+          "text": "Direct quotations."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Retest"
+    },
+    {
+      "type": "paragraph",
+      "html": "Practice returning to the main idea after replacing or skipping one word."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "10. You rehearse with a different setup"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "The delivery looks natural during practice but not during the real take."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "The camera, reading distance, screen, font, orientation, or microphone changed."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Rehearse with the final setup."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use the same:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Device."
+        },
+        {
+          "text": "Camera."
+        },
+        {
+          "text": "Browser."
+        },
+        {
+          "text": "Reading position."
+        },
+        {
+          "text": "Font and margins."
+        },
+        {
+          "text": "Scroll mode."
+        },
+        {
+          "text": "Microphone."
+        },
+        {
+          "text": "Lighting."
+        },
+        {
+          "text": "Recording orientation."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "11. You record a take that is too long"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "The beginning is strong, but errors and tension increase later."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "The take exceeds the presenter’s comfortable concentration or the script contains no natural break points."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Divide the recording into logical sections when the format allows it."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use paragraphs, transitions, or slide changes as edit points."
+    },
+    {
+      "type": "paragraph",
+      "html": "A long single take may still be necessary for live or continuous presentations. In that case, add rehearsal, an operator, and backup controls."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "12. You have no backup control method"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Symptom"
+    },
+    {
+      "type": "paragraph",
+      "html": "One recognition, browser, or device problem stops the production."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Likely cause"
+    },
+    {
+      "type": "paragraph",
+      "html": "The workflow depends on a single automated feature."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Fix"
+    },
+    {
+      "type": "paragraph",
+      "html": "Prepare at least one alternative:"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Fixed-speed scrolling."
+        },
+        {
+          "text": "Manual keyboard control."
+        },
+        {
+          "text": "Touch scrolling."
+        },
+        {
+          "text": "A second device as remote."
+        },
+        {
+          "text": "Printed notes."
+        },
+        {
+          "text": "A backup script file."
+        },
+        {
+          "text": "A physical operator."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "For high-stakes production, test the backup before the event."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A diagnosis table"
+    },
+    {
+      "type": "paragraph",
+      "html": "<div class='table-wrapper'><table>\n<tr><th>Visible problem</th><th>First adjustment</th><th>Next guide</th></tr>\n<tr><td>Eyes scan horizontally</td><td>Narrow the column</td><td><a href=\"/blog/how-to-read-a-teleprompter-naturally/\">Read Naturally</a></td></tr>\n<tr><td>Eyes look below the viewer</td><td>Move text near camera</td><td><a href=\"/blog/teleprompter-setup-without-hardware/\">Setup Without Hardware</a></td></tr>\n<tr><td>Voice sounds formal</td><td>Rewrite for speech</td><td><a href=\"/blog/how-to-write-a-teleprompter-script/\">Write a Teleprompter Script</a></td></tr>\n<tr><td>Presenter rushes</td><td>Reduce WPM</td><td><a href=\"/blog/voice-scroll-vs-fixed-speed-teleprompter/\">Voice vs Fixed Speed</a></td></tr>\n<tr><td>Important ideas are omitted</td><td>Use full or hybrid script</td><td><a href=\"/blog/teleprompter-vs-memorizing-vs-bullet-points/\">Teleprompter vs Bullet Points</a></td></tr>\n<tr><td>Voice mode loses position</td><td>Check recognition and use backup</td><td><a href=\"/teleprompter-guide\">SolPrompter Guide</a></td></tr>\n<tr><td>Setup is confusing</td><td>Follow product instructions</td><td><a href=\"/teleprompter-guide\">SolPrompter Guide</a></td></tr>\n</table></div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frequently asked questions"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Why do I look like I am reading?"
+    },
+    {
+      "type": "paragraph",
+      "html": "The text may be too wide, too far from the camera, or too difficult to scan. You may also be reading individual words rather than phrases."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Why does my voice sound robotic?"
+    },
+    {
+      "type": "paragraph",
+      "html": "The script may use written language, the scrolling may control your pace, or you may be focusing on exact reproduction instead of meaning."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "How do I stop chasing the teleprompter?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Lower the fixed speed, switch to voice-assisted scrolling after testing it, or use manual control."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Why does voice scrolling lose my place?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Recognition can be affected by browser support, microphone quality, noise, language, pronunciation, and large departures from the script."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Should I record one long take?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Only when the format requires it. Logical sections can reduce pressure and create natural edit points."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Next steps"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Follow the <a href=\"/teleprompter-guide\">SolPrompter product guide</a> when the issue concerns a product control or permission."
+        },
+        {
+          "text": "Reassess the broader workflow in <a href=\"/blog/should-you-use-a-teleprompter/\">Should You Use a Teleprompter?</a>."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Editorial disclosure"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter publishes this guide and develops the product referenced in it. “Likely cause” means a practical diagnosis to test, not a guaranteed explanation for every recording."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "References"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Chen, M. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">“Conveying Conversational Cues Through Video.”</a> Stanford University."
+        },
+        {
+          "text": "Chen, M. <a href=\"https://aperture.stanford.edu/papers/eye_contact/paper.pdf\">“Leveraging the Asymmetric Sensitivity of Eye Contact for Videoconferencing.”</a> CHI, 2002."
+        },
+        {
+          "text": "Narisi, S. <a href=\"https://uark.pressbooks.pub/journalismgsp/chapter/broadcast/\">“Broadcast Writing.”</a> University of Arkansas."
+        },
+        {
+          "text": "MeyerPro. <a href=\"https://meyerproinc.com/teleprompter-best-practices-for-executives/\">“Teleprompter Best Practices for Executives.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/teleprompter-guide\">“How to Use SolPrompter.”</a>"
+        },
+        {
+          "text": "SolPrompter. <a href=\"https://solprompter.com/term\">“Terms of Service.”</a>"
+        }
+      ]
+    }
+  ]
+}

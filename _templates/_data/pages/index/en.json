@@ -528,6 +528,10 @@
             "url": "/teleprompter-guide"
           },
           {
+            "label": "Teleprompter Guides",
+            "url": "/blog/teleprompter-guides/"
+          },
+          {
             "label": "Blog",
             "url": "/blog"
           },

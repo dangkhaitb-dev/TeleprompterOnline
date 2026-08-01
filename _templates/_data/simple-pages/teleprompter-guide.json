@@ -45,6 +45,10 @@
       "html": "All you need is a browser and a script. A camera and microphone are optional for presenting, but you will need to allow browser access to them if you want to record video and audio."
     },
     {
+      "type": "paragraph",
+      "html": "For a complete list of setup and delivery tutorials, browse our <a href=\"/blog/teleprompter-guides/\">Teleprompter Guides</a>."
+    },
+    {
       "type": "heading",
       "id": "add-your-script",
       "text": "1. Add your script"
@@ -269,7 +273,7 @@
         "Position the reading area as close to your camera lens as possible.",
         "Use AI Voice Scroll or a comfortable WPM so you never feel rushed.",
         "Record a short test clip to check framing, lighting and audio first.",
-        "Keep sentences short and add line breaks where you want to pause."
+        "Keep sentences short and add line breaks where you want to pause. If you want to read naturally, see our guide on <a href=\"/blog/how-to-read-a-teleprompter-naturally/\">how to read a teleprompter naturally</a>."
       ]
     },
     {

@@ -4049,6 +4049,18 @@ html.theme-instant *::after {
   .mobile-sidebar.is-open {
     transform: translateX(0);
     background: var(--tp-white);
+    color: #101318;
+  }
+
+  .mobile-sidebar.is-open .mobile-sidebar-title,
+  .mobile-sidebar.is-open .mobile-sidebar-link,
+  .mobile-sidebar.is-open .mobile-sidebar-close {
+    color: #101318;
+  }
+
+  .mobile-sidebar.is-open .mobile-sidebar-link svg,
+  .mobile-sidebar.is-open .mobile-sidebar-close svg {
+    color: #101318;
   }
 
   .mobile-sidebar-head {

@@ -58,12 +58,6 @@ lang: en
             <p class="eyebrow">{{ pageData.hero.eyebrow }}</p>
             {%- endif %}
             <h1 class="hero-title">{{ pageData.hero.title }}</h1>
-            {%- if pageData.hero.description %}
-            <p class="hero-desc">{{ pageData.hero.description }}</p>
-            {%- endif %}
-            {%- if pageData.hero.note %}
-            <p class="hero-note">{{ pageData.hero.note }}</p>
-            {%- endif %}
         </div>
     </section>
 
@@ -71,15 +65,24 @@ lang: en
     <section class="section plans" id="plans">
         <div class="section-inner plans-inner">
             <h2 class="visually-hidden">Plans and pricing</h2>
-            <ul class="plan-grid">
-                {%- for plan in plans.items %}
-                <li class="plan-card{% if plan.featured %} plan-card--featured{% endif %}">
+            <div class="billing-toggle" role="tablist" aria-label="{{ plans.billingLabel }}">
+                {%- for cycle in plans.cycles %}
+                <button class="billing-toggle-button" id="billing-tab-{{ cycle.id }}" type="button" role="tab" aria-selected="{{ 'true' if cycle.id == plans.defaultCycle else 'false' }}" aria-controls="billing-panel-{{ cycle.id }}" data-billing-cycle="{{ cycle.id }}">
+                    {{ cycle.label }}{% if cycle.badge %}<span>({{ cycle.badge }})</span>{% endif %}
+                </button>
+                {%- endfor %}
+            </div>
+            {%- for cycle in plans.cycles %}
+            <div class="billing-panel" id="billing-panel-{{ cycle.id }}" role="tabpanel" aria-labelledby="billing-tab-{{ cycle.id }}"{% if cycle.id != plans.defaultCycle %} hidden{% endif %}>
+                <ul class="plan-grid">
+                {%- for plan in cycle.items %}
+                    <li class="plan-card{% if plan.featured %} plan-card--featured{% endif %}">
                     {%- if plan.badge %}
-                    <p class="plan-badge{% if not plan.featured %} plan-badge--quiet{% endif %}">{{ plan.badge }}</p>
+                    <p class="plan-badge{% if not plan.featured %} plan-badge--quiet{% endif %}{% if plan.sale %} plan-badge--sale{% endif %}">{{ plan.badge }}</p>
                     {%- endif %}
                     <h3 class="plan-name">{{ plan.name }}</h3>
                     <p class="plan-desc">{{ plan.description }}</p>
-                    <p class="plan-price">{{ plan.price }}{% if plan.priceWas %}<span class="plan-price-was"><span class="visually-hidden">Regular price </span><s>{{ plan.priceWas }}</s></span>{% endif %}</p>
+                    <p class="plan-price">{% if plan.priceWasFirst %}<span class="plan-price-was plan-price-was--leading"><span class="visually-hidden">Regular price </span><s>{{ plan.priceWas }}</s></span>{% endif %}{{ plan.price }}{% if plan.priceWas and not plan.priceWasFirst %}<span class="plan-price-was"><span class="visually-hidden">Regular price </span><s>{{ plan.priceWas }}</s></span>{% endif %}</p>
                     <p class="plan-price-note">{{ plan.priceNote }}</p>
                     {%- if plan.cta.unavailable %}
                     <button class="btn plan-cta plan-cta--unavailable{% if plan.featured %} btn-primary{% else %} plan-cta--ghost{% endif %}" type="button" disabled aria-disabled="true">{{ plan.cta.label }}</button>
@@ -104,9 +107,15 @@ lang: en
                         <li>{{ feature }}</li>
                         {%- endfor %}
                     </ul>
-                </li>
+                    </li>
                 {%- endfor %}
-            </ul>
+                </ul>
+            </div>
+            {%- endfor %}
+            <div class="plans-footnote">
+                <p>{{ plans.footnote }}</p>
+                <p>{{ plans.license.text }} <a href="{{ plans.license.url }}">{{ plans.license.label }}</a></p>
+            </div>
         </div>
     </section>
 

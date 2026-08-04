@@ -51,3 +51,10 @@ export const LS_VOICE_SCROLL_ASR_LOCALES = 'solprompter:voice-scroll-asr-locales
 // Written by utils/cookie-consent.js; read by firebase-init.js.
 // KEY must match CONSENT_KEY in utils/cookie-consent.js.
 export const LS_ANALYTICS_CONSENT = 'solprompter:analytics-consent';
+
+// Polar license entered on /license. The key stays on this device; app code
+// reads it only through the license logic and the storage wrapper above.
+export const LS_LICENSE = 'solprompter:license-v1';
+
+// Local calendar-month usage for the free Auto Scroll allowance.
+export const LS_AUTO_SCROLL_USAGE = 'solprompter:auto-scroll-usage-v1';

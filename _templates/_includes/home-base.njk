@@ -48,7 +48,11 @@
     {{ content | safe }}
     {% include "partials/support-widget.njk" %}
     {% include "partials/feedback-widget.njk" %}
+    {%- if pageKey == 'license' %}
+    <script type="module" src="/src/script/license-main.js"></script>
+    {%- else %}
     <script type="module" src="/src/script/home-main.js"></script>
+    {%- endif %}
 </body>
 
 </html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Validate and manage a SolPrompter license key for unlimited Auto Scroll.">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="color-scheme" content="light dark">
+    <meta name="theme-color" content="#fbfcfd">
+    <meta property="og:title" content="Manage Your SolPrompter License">
+    <meta property="og:description" content="Add a valid license key to unlock unlimited Auto Scroll on this browser.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://solprompter.com/license">
+    <meta property="og:image" content="https://solprompter.com/og-solprompter.png">
+    <meta property="og:image:width" content="1536">
+    <meta property="og:image:height" content="1024">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Manage Your SolPrompter License">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Manage Your SolPrompter License">
+    <meta name="twitter:description" content="Add a valid license key to unlock unlimited Auto Scroll on this browser.">
+    <meta name="twitter:image" content="https://solprompter.com/og-solprompter.png">
+    <meta name="twitter:image:alt" content="Manage Your SolPrompter License">
+    <link rel="canonical" href="https://solprompter.com/license">
+    <title>Manage Your License | SolPrompter</title>
+    
+<script>if ("scrollRestoration" in history) history.scrollRestoration = "manual";</script><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+<link rel="icon" type="image/png" sizes="256x256" href="/favicon-256x256.png">
+<link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+
+</head>
+
+<body class="home">
+    <header class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="/" class="brand" aria-label="SolPrompter home"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+  <image href="/logo.webp" width="500" height="500"/>
+</svg><span class="brand-text">SolPrompter</span></a>
+      <nav class="nav-menu" aria-label="Primary">
+        <a href="/#features" class="nav-item">Features</a>
+        <a href="/#voice-scroll" class="nav-item">Auto-scroll</a>
+        <a href="/#notch" class="nav-item">Rig &amp; Control</a>
+        <a href="/#recording" class="nav-item">Recording &amp; Privacy</a>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <a href="/pricing" class="btn btn-workspaces">View pricing</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobileNav">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav-scrim" id="mobileNavScrim"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+  <div class="mobile-nav-head">
+    <span class="mobile-nav-title">SolPrompter</span>
+    <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+  <ul class="mobile-nav-list">
+    <li><a href="/#features" class="mobile-nav-link">Features</a></li>
+    <li><a href="/#voice-scroll" class="mobile-nav-link">Auto-scroll</a></li>
+    <li><a href="/#notch" class="mobile-nav-link">Rig &amp; Control</a></li>
+    <li><a href="/#recording" class="mobile-nav-link">Recording &amp; Privacy</a></li>
+  </ul>
+  <a href="/pricing" class="btn btn-workspaces mobile-nav-cta">View pricing</a>
+</nav>
+
+<main class="license-page" id="main" tabindex="-1">
+  <section class="license-hero">
+    <div class="license-shell">
+      <p class="license-kicker">License access</p>
+      <h1>Enter your license key.</h1>
+    </div>
+  </section>
+
+  <section class="license-workspace" aria-labelledby="license-form-title">
+    <div class="license-shell license-workspace-grid">
+      <div class="license-form-panel">
+        <h2 id="license-form-title">Unlock unlimited Auto Scroll</h2>
+        <form id="licenseForm" class="license-form" novalidate>
+          <label for="licenseKey">License key</label>
+          <div class="license-input-row">
+            <input id="licenseKey" name="licenseKey" type="text" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="200" placeholder="SOL_••••••••••••" required>
+            <button id="licenseSubmit" class="btn btn-primary license-submit" type="submit">
+              <span class="license-submit-label">Validate key</span>
+              <span class="license-submit-loading" hidden>Checking…</span>
+            </button>
+          </div>
+          <p class="license-form-help">The key is sent securely to the SolPrompter license API for validation.</p>
+          <p id="licenseFormMessage" class="license-form-message" role="status" aria-live="polite" hidden></p>
+        </form>
+        <div class="license-form-context">
+          <p>Paste the complete key exactly as it appears in your Polar receipt or customer portal.</p>
+          <p class="license-local-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            Your key is saved only in this browser&#39;s local storage.
+          </p>
+        </div>
+      </div>
+
+      <aside id="licenseStatusPanel" class="license-status-panel" aria-labelledby="license-status-title" hidden>
+        <div class="license-status-head">
+          <div>
+            <p class="license-step">Verified</p>
+            <h2 id="license-status-title">License active</h2>
+          </div>
+          <span id="licenseBadge" class="license-badge" data-status="free">Active</span>
+        </div>
+        <dl class="license-status-list">
+          <div><dt>Plan</dt><dd id="licensePlan">Free — 500 Auto Scroll sessions / month</dd></div>
+          <div><dt>Saved key</dt><dd id="licenseDisplayKey">No license key</dd></div>
+          <div><dt>Expires</dt><dd id="licenseExpiry">Not applicable</dd></div>
+        </dl>
+        <div class="license-status-actions">
+          <button id="licenseRecheck" class="license-text-button" type="button" hidden>Check again</button>
+          <button id="licenseRemove" class="license-text-button license-text-button--danger" type="button" hidden>Remove key</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="license-how" aria-labelledby="license-how-title">
+    <div class="license-shell license-how-grid">
+      <div>
+        <p class="license-kicker">How access works</p>
+        <h2 id="license-how-title">Purchase once. Activate in seconds.</h2>
+      </div>
+      <ol>
+        <li><span>01</span><div><h3>Complete checkout</h3><p>Buy an eligible SolPrompter plan through Polar.</p></div></li>
+        <li><span>02</span><div><h3>Receive your key</h3><p>Polar creates the license and makes it available in your receipt and customer portal.</p></div></li>
+        <li><span>03</span><div><h3>Validate here</h3><p>This page checks the current key status and expiration before enabling unlimited Auto Scroll.</p></div></li>
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="brand" aria-label="SolPrompter home"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+  <image href="/logo.webp" width="500" height="500"/>
+</svg><span class="footer-logo-text">SolPrompter</span></a>
+        <p class="footer-desc">A free online teleprompter for natural presentations and professional video recording.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col"><h3 class="footer-col-title">Product</h3><ul class="footer-col-links"><li><a href="/pricing" class="footer-link">Pricing</a></li><li><a href="/#features" class="footer-link">Features</a></li><li><a href="/#how-it-works" class="footer-link">How It Works</a></li><li><a href="/#voice-scroll" class="footer-link">Voice Scroll</a></li><li><a href="/#notch" class="footer-link">Notch Mode</a></li><li><a href="/#recording" class="footer-link">4K Recording</a></li>
+        </ul></div>
+        <div class="footer-col"><h3 class="footer-col-title">Resources</h3><ul class="footer-col-links"><li><a href="/#how-it-works" class="footer-link">How to Use</a></li><li><a href="/teleprompter-guide" class="footer-link">Teleprompter Guide</a></li><li><a href="/blog/teleprompter-guides/" class="footer-link">Teleprompter Guides</a></li><li><a href="/blog" class="footer-link">Blog</a></li><li><a href="/about" class="footer-link">About</a></li>
+        </ul></div>
+        <div class="footer-col"><h3 class="footer-col-title">Legal</h3><ul class="footer-col-links"><li><a href="/policy" class="footer-link">Privacy Policy</a></li><li><a href="/term" class="footer-link">Terms of Service</a></li><li><a href="/billing" class="footer-link">Billing &amp; Refunds</a></li>
+        </ul></div>
+      </div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 SolPrompter.</span></div>
+  </div>
+</footer>
+
+<script type="application/json" id="licenseCopy">{
+  "activeBadge": "Active",
+  "invalidBadge": "Invalid",
+  "expiredBadge": "Expired",
+  "revokedBadge": "Revoked",
+  "unlimitedPlan": "Licensed — unlimited Auto Scroll",
+  "noExpiry": "No expiration",
+  "validUntil": "Valid until",
+  "unlimitedUsage": "Unlimited",
+  "usageOf": "of 500 sessions used this month",
+  "validMessage": "License verified. Unlimited Auto Scroll is active on this browser.",
+  "invalidMessage": "This key is not active. Check the key and try again.",
+  "networkMessage": "The license service could not be reached. Your saved key was not changed.",
+  "formatMessage": "Enter a complete license key using letters, numbers, dashes, or underscores.",
+  "removeTitle": "Remove saved license?",
+  "removeMessage": "This browser will return to the Free plan. Your Polar purchase and license are not canceled.",
+  "removeConfirm": "Remove key",
+  "removeCancel": "Keep key",
+  "removedMessage": "The license key was removed from this browser."
+}</script>
+
+    <script type="module" src="/src/script/support-main.js"></script>
+
+    <aside
+    class="feedback-widget"
+    data-feedback-widget
+    data-feedback-pending="Sending…"
+    data-feedback-success="Thanks — your feedback has been sent."
+    data-feedback-error="We couldn&#39;t send your feedback. Please try again."
+    data-feedback-email-required="Enter your email address."
+    data-feedback-email-invalid="Enter a valid email address."
+    data-feedback-content-required="Enter your feedback."
+    data-feedback-content-too-short="Feedback must be at least 3 characters."
+    data-feedback-content-too-long="Feedback must be no more than 5000 characters."
+>
+    <section
+        class="feedback-widget__dialog"
+        id="feedback-dialog"
+        data-feedback-dialog
+        role="dialog"
+        aria-labelledby="feedback-title"
+        hidden
+    >
+        <header class="feedback-widget__header">
+            <div>
+                <p class="feedback-widget__eyebrow">Help us improve</p>
+                <h2 class="feedback-widget__title" id="feedback-title">Send feedback</h2>
+            </div>
+            <button
+                class="feedback-widget__close"
+                type="button"
+                data-feedback-close
+                data-analytics-name="feedbackCloseClick"
+                aria-label="Close feedback form"
+            >
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M6 6l12 12M18 6 6 18" />
+                </svg>
+            </button>
+        </header>
+
+        <form class="feedback-widget__form" data-feedback-form novalidate>
+            <div class="feedback-widget__field">
+                <label for="feedback-email">Email (optional)</label>
+                <input
+                    id="feedback-email"
+                    name="email"
+                    type="email"
+                    autocomplete="email"
+                    maxlength="254"
+                    placeholder="you@example.com"
+                    aria-describedby="feedback-email-error"
+                >
+                <p
+                    class="feedback-widget__field-error"
+                    id="feedback-email-error"
+                    data-feedback-email-error
+                    hidden
+                ></p>
+            </div>
+
+            <div class="feedback-widget__field">
+                <div class="feedback-widget__label-row">
+                    <label for="feedback-content">
+                        Feedback<span class="feedback-widget__required" aria-hidden="true">*</span>
+                    </label>
+                </div>
+                <textarea
+                    id="feedback-content"
+                    name="content"
+                    rows="5"
+                    minlength="3"
+                    maxlength="5000"
+                    placeholder="What worked well, or what should we improve?"
+                    aria-describedby="feedback-content-error"
+                    required
+                ></textarea>
+                <p
+                    class="feedback-widget__field-error"
+                    id="feedback-content-error"
+                    data-feedback-content-error
+                    hidden
+                ></p>
+            </div>
+
+            <button
+                class="feedback-widget__submit"
+                type="submit"
+                data-feedback-submit
+                data-analytics-name="feedbackSubmitClick"
+            >Send feedback</button>
+            <p class="feedback-widget__status" data-feedback-status role="status" hidden></p>
+        </form>
+    </section>
+
+    <button
+        class="feedback-widget__trigger"
+        type="button"
+        data-feedback-open
+        data-analytics-name="feedbackOpenClick"
+        aria-expanded="false"
+        aria-controls="feedback-dialog"
+    >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M5 5.75h14v9.5H9.5L5 19V5.75Z" />
+            <path d="M8.5 9.25h7M8.5 12h4.5" />
+        </svg>
+        <span>Feedback</span>
+    </button>
+</aside>
+<script type="module" src="/src/script/feedback-main.js"></script>
+
+    <script type="module" src="/src/script/license-main.js"></script>
+</body>
+
+</html>

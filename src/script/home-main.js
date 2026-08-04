@@ -7,6 +7,7 @@ import '../styles/pricing.css';
 import '../styles/components/cookie-banner.css';
 
 import { initHomeUI } from './features/home/home.ui.js';
+import { initPricingUI } from './features/pricing/pricing.ui.js';
 import { initButtonClickTracking } from './libs/firebase/button-click-analytics.ui.js';
 import { releasePointerButtonFocus } from './utils/release-pointer-button-focus.js';
 import { initCookieBannerUI } from './features/cookie-banner/cookie-banner.ui.js';
@@ -19,3 +20,4 @@ releasePointerButtonFocus();
 listenForConsentAndInitAnalytics();
 initCookieBannerUI();
 initHomeUI();
+initPricingUI();

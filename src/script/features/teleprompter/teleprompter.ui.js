@@ -26,6 +26,7 @@ import {
   hexToRgb,
 } from './teleprompter.model.js';
 import '../../../styles/components/permission-popup.css';
+import '../../../styles/components/confirm-popup.css';
 import '../../../styles/components/toast.css';
 import '../../../styles/features/voice-scroll.css';
 import '../../../styles/features/first-visit-tour.css';
@@ -37,6 +38,7 @@ import {
 } from '../../utils/media.js';
 import { detectPlatform } from '../../utils/platform.js';
 import { showPermissionPopup } from '../../components/permission-popup.js';
+import { showConfirm } from '../../components/confirm-popup.js';
 import { showToast, hideToast } from '../../components/toast.js';
 import { debounce } from '../../utils/debounce.js';
 import { handlePlainTextPaste } from '../../utils/plain-paste.js';
@@ -88,6 +90,7 @@ import {
 } from './components/voice-scroll.logic.js';
 import { initCustomTooltips } from '../../utils/tooltip.js';
 import { mountSceneEditor } from '../scene-editor/scene-editor.ui.js';
+import { createAutoScrollAccessController } from '../license/auto-scroll-access.logic.js';
 
 const TIMESLICE_LABEL_MS = 250;
 const VOICE_LANGUAGE_EDIT_DEBOUNCE_MS = 1800;
@@ -1066,11 +1069,44 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     return allowed;
   }
 
+  const autoScrollAccess = createAutoScrollAccessController();
+  let autoScrollLimitOpen = false;
+
+  async function showAutoScrollLimit(reason) {
+    if (autoScrollLimitOpen) return;
+    autoScrollLimitOpen = true;
+    const verificationUnavailable = reason === 'verification-unavailable';
+    const openLicense = await showConfirm({
+      title: verificationUnavailable
+        ? copy.license?.verificationTitle
+        : copy.license?.limitTitle,
+      message: verificationUnavailable
+        ? copy.license?.verificationMessage
+        : copy.license?.limitMessage,
+      confirmLabel: copy.license?.manageAction || 'Manage license',
+      cancelLabel: copy.license?.cancelAction || 'Not now',
+      icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="15" r="4"/><path d="m11 12 8-8m-3 3 2 2m-5 1 2 2"/></svg>',
+      container: portal,
+    });
+    autoScrollLimitOpen = false;
+    if (openLicense) window.location.href = '/license';
+  }
+
   async function startVoiceScroll() {
     if (voiceScrollUI || voiceScrollStarting || selectedScrollMode !== 'auto') return;
     const attempt = ++voiceScrollAttempt;
     voiceScrollStarting = true;
     setVoiceScrollButton({ busy: true, phase: 'requesting-microphone' });
+
+    const access = await autoScrollAccess.prepareStart();
+    if (attempt !== voiceScrollAttempt) return;
+    if (!access.allowed) {
+      voiceScrollStarting = false;
+      setVoiceScrollButton();
+      void showAutoScrollLimit(access.reason);
+      return;
+    }
+
     logVoiceScroll('voice-scroll-start-requested');
     logVoiceScroll('voice-scroll-language-check-requested');
     console.info('[VoiceScroll] checking script language');
@@ -1168,6 +1204,13 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       if (!started) {
         logVoiceScroll('voice-scroll-not-started', { reason: 'start-timeout' });
         stopVoiceScroll({ error: 'start-timeout' });
+        return;
+      }
+
+      const committedAccess = autoScrollAccess.commitSuccessfulStart(access);
+      if (!committedAccess.allowed) {
+        stopVoiceScroll();
+        void showAutoScrollLimit(committedAccess.reason);
         return;
       }
 
@@ -1303,6 +1346,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     if (pauseButton) pauseButton.classList.remove('show', 'paused');
     if (headerPlayButton) headerPlayButton.classList.remove('hidden');
     setEditingEnabled(false);
+    autoScrollAccess.beginSession();
     readingSession.begin('play', { waitFor: ['layout'] });
     enterReadingUI(() => readingSession.release('layout'));
   }
@@ -1982,6 +2026,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
           if (!isRecordModeActive()) return;
           if (headerPlayButton) headerPlayButton.classList.add('hidden');
           // Slide the first line down onto the eye-line (runs through the countdown).
+          autoScrollAccess.beginSession();
           readingSession.begin('record', { waitFor: ['layout', 'capture'] });
           enterReadingUI(() => readingSession.release('layout'));
           if (settings.wantsCountdown()) startRecordCountdown();

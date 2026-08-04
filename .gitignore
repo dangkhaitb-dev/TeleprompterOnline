@@ -51,6 +51,9 @@ node_modules/
 .env
 .env.local
 .env.*.local
+.dev.vars
+.dev.vars.*
+**/.wrangler/
 
 # Editors/IDE
 .vscode/

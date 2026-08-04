@@ -11,25 +11,6 @@
   padding-bottom: 0;
 }
 
-.hero--pricing .hero-desc {
-  margin-bottom: 0;
-}
-
-.hero-note {
-  display: inline-flex;
-  align-items: center;
-  margin: 1.25rem 0 0;
-  padding: 0.35rem 0.85rem;
-  border: 1px solid var(--brand-soft);
-  border-radius: var(--radius-pill);
-  background: var(--brand-tint);
-  color: var(--brand-strong);
-  font-size: 0.8rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
 /* ===== PLAN GRID ===== */
 .plans {
   padding-top: clamp(2.5rem, 1.8rem + 3vw, 3.5rem);
@@ -39,9 +20,55 @@
   max-width: 72rem;
 }
 
-/* Three plans: stacked (and kept narrow so the cards never stretch into
-   letterboxes) until there is room for the full row. No 2-column step — it
-   would orphan the third card. */
+.billing-toggle {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  width: min(100%, 24rem);
+  margin: 0 auto clamp(2.75rem, 4vw, 4rem);
+  padding: 0.15rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  background: var(--line-soft);
+}
+
+.billing-toggle-button {
+  min-height: 44px;
+  padding: 0.35rem 0.7rem;
+  border: 0;
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-muted);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+.billing-toggle-button[aria-selected="true"] {
+  background: var(--license-panel-dark);
+  color: var(--license-panel-dark-ink);
+  box-shadow: var(--plan-shadow);
+}
+
+.billing-toggle-button span {
+  color: var(--brand-strong);
+  font-size: 0.75rem;
+}
+
+.billing-toggle-button[aria-selected="true"] span {
+  color: var(--license-panel-dark-ink);
+}
+
+.billing-toggle-button:focus-visible {
+  outline: 2px solid var(--brand-strong);
+  outline-offset: 2px;
+}
+
+.billing-panel[hidden] {
+  display: none;
+}
+
+/* One readable column on phones, then a complete three-plan comparison row. */
 .plan-grid {
   list-style: none;
   max-width: 26rem;
@@ -53,10 +80,10 @@
   align-items: stretch;
 }
 
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   .plan-grid {
     max-width: none;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 1.1rem;
   }
 }
@@ -87,8 +114,7 @@
   border-color: var(--brand-strong);
 }
 
-/* The plan we actually sell: white surface, brand frame, deeper elevation. In
-   the five-across row it breaks the grid line by an extra rem top and bottom. */
+/* The subscription plan gets the strongest emphasis. */
 .plan-card--featured {
   padding: 1.85rem 1.5rem;
   border: 2px solid var(--brand);
@@ -96,7 +122,7 @@
   box-shadow: var(--plan-shadow-featured);
 }
 
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   .plan-card--featured {
     margin-block: -1rem;
   }
@@ -123,6 +149,15 @@
   border: 1px solid var(--line);
   background: var(--plan-surface);
   color: var(--ink-soft);
+}
+
+.plan-badge--sale {
+  padding: 0.35rem 0.9rem;
+  border: 2px solid var(--brand-strong);
+  background: var(--brand-strong);
+  color: var(--accent-contrast);
+  font-size: 0.76rem;
+  letter-spacing: 0.12em;
 }
 
 .plan-name {
@@ -166,6 +201,10 @@
   color: var(--ink-faint);
 }
 
+.plan-price-was--leading {
+  font-size: 1.3rem;
+}
+
 .plan-price-note {
   margin: 0.5rem 0 1.25rem;
   font-size: 0.82rem;
@@ -176,7 +215,7 @@
 /* Once the cards sit side by side, reserve the second line a wrapping
    description would take — otherwise the prices of neighbouring cards stop
    lining up. Stacked cards need no such padding. */
-@media (min-width: 900px) {
+@media (min-width: 700px) {
   .plan-desc {
     min-height: calc(1.45em * 2);
   }
@@ -216,7 +255,6 @@
   opacity: 0.72;
 }
 
-/* Hint under the day-pass CTA. */
 .plan-cta-note {
   margin: 0.7rem 0 0;
   font-size: 0.8rem;
@@ -224,52 +262,6 @@
   line-height: 1.45;
   text-align: center;
   color: var(--ink-muted);
-}
-
-/* The annual plan has no card of its own, so its offer has to read as a real
-   second option inside the Pro card — a tinted block, not a footnote. */
-.plan-cta-offer {
-  margin: 0.9rem 0 0;
-  padding: 0.75rem 0.85rem;
-  border: 1px solid var(--brand-soft);
-  border-radius: var(--radius-md);
-  background: var(--brand-tint);
-  font-size: 0.88rem;
-  line-height: 1.5;
-  text-align: center;
-  color: var(--ink-soft);
-}
-
-.plan-cta-offer .text-link {
-  display: inline-block;
-  margin-top: 0.15rem;
-  font-size: 1.02rem;
-  font-weight: 700;
-  text-decoration: none;
-}
-
-.plan-cta-offer .text-link:hover {
-  color: var(--ink);
-  text-decoration: underline;
-}
-
-.plan-cta-offer .text-link--unavailable,
-.plan-cta-offer .text-link--unavailable:hover {
-  color: var(--ink-muted);
-  cursor: not-allowed;
-  text-decoration: none;
-}
-
-.plan-save {
-  display: inline-block;
-  margin-left: 0.35rem;
-  padding: 0.15rem 0.5rem;
-  border-radius: var(--radius-pill);
-  background: var(--brand-strong);
-  color: var(--accent-contrast);
-  font-size: 0.75rem;
-  font-weight: 700;
-  white-space: nowrap;
 }
 
 /* ===== FEATURES ===== */
@@ -302,6 +294,29 @@
   font-size: 0.8rem;
   font-weight: 700;
   color: var(--brand-strong);
+}
+
+.plans-footnote {
+  max-width: 42rem;
+  margin: clamp(2rem, 5vw, 3rem) auto 0;
+  color: var(--ink-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.plans-footnote p {
+  margin: 0;
+}
+
+.plans-footnote p + p {
+  margin-top: 0.45rem;
+}
+
+.plans-footnote a {
+  color: var(--ink);
+  font-weight: 650;
+  text-underline-offset: 0.2em;
 }
 
 /* ===== TRUST BAND ===== */
@@ -347,6 +362,7 @@
 
 @media (prefers-reduced-motion: reduce) {
   .plan-card,
+  .billing-toggle-button,
   .text-link {
     transition: none;
   }

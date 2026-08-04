@@ -1,11 +1,11 @@
 {
   "seo": {
-    "title": "Pricing — Day Pass, Pro and Lifetime | SolPrompter",
-    "description": "SolPrompter early adopter pricing: a $3.99 one-day pass, Pro at $6.99 per month or $49 a year, and a $169 lifetime plan. AI Scroll, cloud sync and remote control included.",
+    "title": "Pricing — Free, Pro and Lifetime | SolPrompter",
+    "description": "Start free with 500 Auto Scroll sessions each month, upgrade to Pro monthly or yearly, or choose Lifetime for unlimited Auto Scroll.",
     "canonical": "/pricing",
     "robots": "noindex, nofollow",
     "ogTitle": "SolPrompter Pricing — Lock In Your Price Forever",
-    "ogDescription": "Early adopter pricing: One-Day Pass $3.99, Pro $6.99/month, Lifetime $169. Prices go up as we add more premium features.",
+    "ogDescription": "Free includes 500 Auto Scroll sessions each month. Licensed plans unlock unlimited Auto Scroll.",
     "ogType": "website",
     "ogImage": "/og-solprompter.png"
   },
@@ -17,79 +17,127 @@
     "title": "Pricing"
   },
   "plans": {
-    "items": [
+    "billingLabel": "Billing period",
+    "defaultCycle": "yearly",
+    "cycles": [
       {
-        "id": "day",
-        "name": "One-Day Pass",
-        "description": "24-hour access to Pro features.",
-        "price": "$3.99",
-        "priceWas": "$5.99",
-        "priceNote": "24-hour access",
-        "amount": "3.99",
-        "badge": null,
-        "featured": false,
-        "features": [
-          "AI Scroll",
-          "More generous rate limits",
-          "Cloud Sync",
-          "100 GB Cloud Storage",
-          "Remote Control",
-          "Premium Themes",
-          "Mirror and Fullscreen Mode"
-        ],
-        "cta": { "label": "Coming soon", "unavailable": true },
-        "ctaNote": "Perfect for one-time recordings."
+        "id": "monthly",
+        "label": "Monthly",
+        "items": [
+          {
+            "id": "free-monthly",
+            "name": "Free",
+            "description": "Start presenting with no payment.",
+            "price": "$0",
+            "priceNote": "No credit card required",
+            "featured": false,
+            "features": [
+              "500 Auto Scroll sessions per month",
+              "Fixed-speed and timed scrolling",
+              "Local scripts and recordings",
+              "Camera and microphone recording"
+            ],
+            "cta": { "label": "Start free", "url": "/" },
+            "ctaNote": "Usage resets each calendar month."
+          },
+          {
+            "id": "pro-monthly",
+            "name": "Pro Monthly",
+            "description": "Unlimited Auto Scroll with flexible monthly billing.",
+            "price": "$3.99",
+            "priceNote": "per month, billed monthly",
+            "badge": "Most Popular",
+            "featured": true,
+            "features": [
+              "Unlimited Auto Scroll",
+              "Cancel anytime",
+              "License key activation",
+              "All Free features"
+            ],
+            "cta": { "label": "Coming soon", "unavailable": true }
+          },
+          {
+            "id": "lifetime-monthly",
+        "name": "Pro Lifetime",
+            "description": "Pay once. Use forever.",
+            "price": "$69",
+            "priceWas": "$199",
+            "priceNote": "One-time payment",
+            "badge": "Sale",
+            "sale": true,
+            "featured": false,
+            "features": [
+              "Unlimited Auto Scroll",
+              "No recurring payment",
+              "Lifetime updates",
+              "License key activation"
+            ],
+            "cta": { "label": "Coming soon", "unavailable": true }
+          }
+        ]
       },
       {
-        "id": "pro",
-        "name": "Pro",
-        "description": "Everything creators need.",
-        "price": "$6.99",
-        "priceWas": "$9.99",
-        "priceNote": "per month",
-        "amount": "6.99",
-        "badge": "Most Popular",
-        "featured": true,
-        "features": [
-          "AI Scroll",
-          "More generous rate limits",
-          "100 GB Cloud Storage",
-          "Sync Across Devices",
-          "Remote Control",
-          "Premium Themes",
-          "Script History",
-          "Priority Support"
-        ],
-        "cta": { "label": "Coming soon", "unavailable": true },
-        "ctaOffer": {
-          "text": "Prefer annual billing?",
-          "link": { "label": "Annual checkout coming soon", "unavailable": true },
-          "note": "Save $34",
-          "amount": "49",
-          "name": "Pro Annual"
-        }
-      },
-      {
-        "id": "lifetime",
-        "name": "Lifetime",
-        "description": "Pay once. Use forever.",
-        "price": "$169",
-        "priceWas": "$199",
-        "priceNote": "One-time payment",
-        "amount": "169",
-        "badge": "Best Value",
-        "featured": false,
-        "features": [
-          "Everything in Pro",
-          "More generous rate limits",
-          "Lifetime Updates",
-          "Future Premium Features",
-          "Founder Badge",
-          "Early Feature Access"
-        ],
-        "cta": { "label": "Coming soon", "unavailable": true }
+        "id": "yearly",
+        "label": "Yearly",
+        "badge": "Save 38%",
+        "items": [
+          {
+            "id": "free-yearly",
+            "name": "Free",
+            "description": "Start presenting with no payment.",
+            "price": "$0",
+            "priceNote": "No credit card required",
+            "featured": false,
+            "features": [
+              "500 Auto Scroll sessions per month",
+              "Fixed-speed and timed scrolling",
+              "Local scripts and recordings",
+              "Camera and microphone recording"
+            ],
+            "cta": { "label": "Start free", "url": "/" },
+            "ctaNote": "Usage resets each calendar month."
+          },
+          {
+            "id": "pro-yearly",
+            "name": "Pro Yearly",
+            "description": "The lowest monthly rate for regular use.",
+            "price": "$2.49",
+            "priceWas": "$3.99",
+            "priceWasFirst": true,
+            "priceNote": "per month, billed $29.88 yearly",
+            "badge": "Save 38%",
+            "featured": true,
+            "features": [
+              "Unlimited Auto Scroll",
+              "12 months of Pro access",
+              "License key activation",
+              "All Free features"
+            ],
+            "cta": { "label": "Coming soon", "unavailable": true }
+          },
+          {
+            "id": "lifetime-yearly",
+        "name": "Pro Lifetime",
+            "description": "Pay once. Use forever.",
+            "price": "$69",
+            "priceWas": "$199",
+            "priceNote": "One-time payment",
+            "badge": "Sale",
+            "sale": true,
+            "featured": false,
+            "features": [
+              "Unlimited Auto Scroll",
+              "No recurring payment",
+              "Lifetime updates",
+              "License key activation"
+            ],
+            "cta": { "label": "Coming soon", "unavailable": true }
+          }
+        ]
       }
-    ]
+    ],
+    "footnote": "Use Auto Scroll free up to 500 sessions per calendar month. Every active license key unlocks unlimited Auto Scroll on this browser.",
+    "license": { "text": "Already have a key?", "label": "Manage your license", "url": "/license" }
   },
   "trust": {
     "items": [
@@ -105,8 +153,8 @@
     "items": [
       {
         "anchor": "faq-fair-use",
-        "q": "What are the AI Scroll rate limits?",
-        "a": "AI Scroll limits are sized for normal individual creator usage. To ensure reliable service for everyone, extremely excessive, automated or abusive usage may be limited under our Fair Use Policy."
+        "q": "How does the Free Auto Scroll limit work?",
+        "a": "Free includes 500 Auto Scroll sessions per local calendar month. One session is counted when Auto Scroll successfully starts for a new Play or Record session; pausing, resuming, restarting or changing the reading layout inside that session does not use another. The counter resets when a new calendar month begins. A valid license key makes Auto Scroll unlimited."
       },
       {
         "anchor": "faq-price-increase",
@@ -129,9 +177,9 @@
         "a": "We offer a voluntary 7-day refund guarantee on your first purchase made directly through SolPrompter, subject to the conditions in the Billing and Refund Policy. Mandatory consumer rights in your country always apply on top of it."
       },
       {
-        "anchor": "faq-day-pass",
-        "q": "What happens when the One-Day Pass expires?",
-        "a": "Pro features simply stop after 24 hours and the pass does not renew. Your scripts and recordings stay where they are, and you can buy another pass or move to Pro whenever you want."
+        "anchor": "faq-annual-billing",
+        "q": "How does yearly billing work?",
+        "a": "Pro Yearly costs $29.88 for 12 months, paid once each year. The displayed $2.49 is the equivalent monthly rate, not a monthly charge."
       },
       {
         "anchor": "faq-taxes",

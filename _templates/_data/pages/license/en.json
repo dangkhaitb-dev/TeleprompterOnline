@@ -1,0 +1,78 @@
+{
+  "seo": {
+    "title": "Manage Your License | SolPrompter",
+    "description": "Validate and manage a SolPrompter license key for unlimited Auto Scroll.",
+    "canonical": "/license",
+    "robots": "noindex, nofollow",
+    "ogTitle": "Manage Your SolPrompter License",
+    "ogDescription": "Add a valid license key to unlock unlimited Auto Scroll on this browser.",
+    "ogType": "website",
+    "ogImage": "/og-solprompter.png"
+  },
+  "nav": {
+    "homeAria": "SolPrompter home",
+    "primaryAria": "Primary",
+    "mobileAria": "Mobile navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "navCta": { "label": "View pricing", "url": "/pricing" },
+  "hero": {
+    "eyebrow": "License access",
+    "title": "Enter your license key.",
+    "description": "Enter the license key delivered after your Polar purchase. SolPrompter checks its live status and unlocks unlimited Auto Scroll while the key remains active.",
+    "localNote": "Your key is saved only in this browser's local storage."
+  },
+  "form": {
+    "step": "Add key",
+    "title": "Unlock unlimited Auto Scroll",
+    "description": "Paste the complete key exactly as it appears in your Polar receipt or customer portal.",
+    "label": "License key",
+    "placeholder": "SOL_••••••••••••",
+    "submit": "Validate key",
+    "checking": "Checking…",
+    "help": "The key is sent securely to the SolPrompter license API for validation."
+  },
+  "status": {
+    "step": "Verified",
+    "title": "License active",
+    "freeBadge": "Active",
+    "planLabel": "Plan",
+    "freePlan": "Free — 500 Auto Scroll sessions / month",
+    "keyLabel": "Saved key",
+    "noKey": "No license key",
+    "expiryLabel": "Expires",
+    "notApplicable": "Not applicable",
+    "recheck": "Check again",
+    "remove": "Remove key"
+  },
+  "how": {
+    "eyebrow": "How access works",
+    "title": "Purchase once. Activate in seconds.",
+    "items": [
+      { "title": "Complete checkout", "description": "Buy an eligible SolPrompter plan through Polar." },
+      { "title": "Receive your key", "description": "Polar creates the license and makes it available in your receipt and customer portal." },
+      { "title": "Validate here", "description": "This page checks the current key status and expiration before enabling unlimited Auto Scroll." }
+    ]
+  },
+  "client": {
+    "activeBadge": "Active",
+    "invalidBadge": "Invalid",
+    "expiredBadge": "Expired",
+    "revokedBadge": "Revoked",
+    "unlimitedPlan": "Licensed — unlimited Auto Scroll",
+    "noExpiry": "No expiration",
+    "validUntil": "Valid until",
+    "unlimitedUsage": "Unlimited",
+    "usageOf": "of 500 sessions used this month",
+    "validMessage": "License verified. Unlimited Auto Scroll is active on this browser.",
+    "invalidMessage": "This key is not active. Check the key and try again.",
+    "networkMessage": "The license service could not be reached. Your saved key was not changed.",
+    "formatMessage": "Enter a complete license key using letters, numbers, dashes, or underscores.",
+    "removeTitle": "Remove saved license?",
+    "removeMessage": "This browser will return to the Free plan. Your Polar purchase and license are not canceled.",
+    "removeConfirm": "Remove key",
+    "removeCancel": "Keep key",
+    "removedMessage": "The license key was removed from this browser."
+  }
+}

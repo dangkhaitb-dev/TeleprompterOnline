@@ -1,0 +1,137 @@
+---
+layout: home-base.njk
+permalink: /license.html
+pageKey: license
+lang: en
+---
+{%- set pageData = i18nPages['license']['en'] -%}
+{%- set chrome = i18nPages['index']['en'] -%}
+{%- from "partials/logo.njk" import brandLogo -%}
+{%- set logoSvg = brandLogo('currentColor') -%}
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <a href="/" class="brand" aria-label="{{ pageData.nav.homeAria }}">{{ logoSvg | safe }}<span class="brand-text">{{ chrome.footer.brand }}</span></a>
+      <nav class="nav-menu" aria-label="{{ pageData.nav.primaryAria }}">
+        {%- for item in chrome.nav.items %}
+        {%- set navHref = ('/' + item.url) if '#' in item.url else item.url %}
+        <a href="{{ navHref }}" class="nav-item">{{ item.label }}</a>
+        {%- endfor %}
+      </nav>
+    </div>
+    <div class="nav-right">
+      <a href="{{ pageData.navCta.url }}" class="btn btn-workspaces">{{ pageData.navCta.label }}</a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="{{ pageData.nav.openMenu }}" aria-expanded="false" aria-controls="mobileNav">
+        <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav-scrim" id="mobileNavScrim"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="{{ pageData.nav.mobileAria }}">
+  <div class="mobile-nav-head">
+    <span class="mobile-nav-title">{{ chrome.footer.brand }}</span>
+    <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="{{ pageData.nav.closeMenu }}">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+  </div>
+  <ul class="mobile-nav-list">
+    {%- for item in chrome.nav.items %}
+    {%- set navHref = ('/' + item.url) if '#' in item.url else item.url %}
+    <li><a href="{{ navHref }}" class="mobile-nav-link">{{ item.label }}</a></li>
+    {%- endfor %}
+  </ul>
+  <a href="{{ pageData.navCta.url }}" class="btn btn-workspaces mobile-nav-cta">{{ pageData.navCta.label }}</a>
+</nav>
+
+<main class="license-page" id="main" tabindex="-1">
+  <section class="license-hero">
+    <div class="license-shell">
+      <p class="license-kicker">{{ pageData.hero.eyebrow }}</p>
+      <h1>{{ pageData.hero.title }}</h1>
+    </div>
+  </section>
+
+  <section class="license-workspace" aria-labelledby="license-form-title">
+    <div class="license-shell license-workspace-grid">
+      <div class="license-form-panel">
+        <h2 id="license-form-title">{{ pageData.form.title }}</h2>
+        <form id="licenseForm" class="license-form" novalidate>
+          <label for="licenseKey">{{ pageData.form.label }}</label>
+          <div class="license-input-row">
+            <input id="licenseKey" name="licenseKey" type="text" inputmode="text" autocomplete="off" autocapitalize="off" spellcheck="false" maxlength="200" placeholder="{{ pageData.form.placeholder }}" required>
+            <button id="licenseSubmit" class="btn btn-primary license-submit" type="submit">
+              <span class="license-submit-label">{{ pageData.form.submit }}</span>
+              <span class="license-submit-loading" hidden>{{ pageData.form.checking }}</span>
+            </button>
+          </div>
+          <p class="license-form-help">{{ pageData.form.help }}</p>
+          <p id="licenseFormMessage" class="license-form-message" role="status" aria-live="polite" hidden></p>
+        </form>
+        <div class="license-form-context">
+          <p>{{ pageData.form.description }}</p>
+          <p class="license-local-note">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+            {{ pageData.hero.localNote }}
+          </p>
+        </div>
+      </div>
+
+      <aside id="licenseStatusPanel" class="license-status-panel" aria-labelledby="license-status-title" hidden>
+        <div class="license-status-head">
+          <div>
+            <p class="license-step">{{ pageData.status.step }}</p>
+            <h2 id="license-status-title">{{ pageData.status.title }}</h2>
+          </div>
+          <span id="licenseBadge" class="license-badge" data-status="free">{{ pageData.status.freeBadge }}</span>
+        </div>
+        <dl class="license-status-list">
+          <div><dt>{{ pageData.status.planLabel }}</dt><dd id="licensePlan">{{ pageData.status.freePlan }}</dd></div>
+          <div><dt>{{ pageData.status.keyLabel }}</dt><dd id="licenseDisplayKey">{{ pageData.status.noKey }}</dd></div>
+          <div><dt>{{ pageData.status.expiryLabel }}</dt><dd id="licenseExpiry">{{ pageData.status.notApplicable }}</dd></div>
+        </dl>
+        <div class="license-status-actions">
+          <button id="licenseRecheck" class="license-text-button" type="button" hidden>{{ pageData.status.recheck }}</button>
+          <button id="licenseRemove" class="license-text-button license-text-button--danger" type="button" hidden>{{ pageData.status.remove }}</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section class="license-how" aria-labelledby="license-how-title">
+    <div class="license-shell license-how-grid">
+      <div>
+        <p class="license-kicker">{{ pageData.how.eyebrow }}</p>
+        <h2 id="license-how-title">{{ pageData.how.title }}</h2>
+      </div>
+      <ol>
+        {%- for item in pageData.how.items %}
+        <li><span>0{{ loop.index }}</span><div><h3>{{ item.title }}</h3><p>{{ item.description }}</p></div></li>
+        {%- endfor %}
+      </ol>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="/" class="brand" aria-label="{{ pageData.nav.homeAria }}">{{ logoSvg | safe }}<span class="footer-logo-text">{{ chrome.footer.brand }}</span></a>
+        <p class="footer-desc">{{ chrome.footer.description }}</p>
+      </div>
+      <div class="footer-cols">
+        {%- for column in chrome.footer.columns %}
+        <div class="footer-col"><h3 class="footer-col-title">{{ column.title }}</h3><ul class="footer-col-links">
+          {%- for link in column.links %}{%- set footerHref = ('/' + link.url) if '#' in link.url else link.url %}<li><a href="{{ footerHref }}" class="footer-link">{{ link.label }}</a></li>{%- endfor %}
+        </ul></div>
+        {%- endfor %}
+      </div>
+    </div>
+    <div class="footer-bottom"><span>{{ chrome.footer.copyright }}</span></div>
+  </div>
+</footer>
+
+<script type="application/json" id="licenseCopy">{{ pageData.client | dump | safe }}</script>

@@ -7,6 +7,8 @@
 
 export const API_BASES = {
   feedback: 'https://feedback-api.solplatform.workers.dev',
+  license: import.meta.env.VITE_LICENSE_API_BASE_URL
+    || 'https://license-api.solplatform.workers.dev',
 };
 
 export const ENDPOINTS = {
@@ -15,5 +17,11 @@ export const ENDPOINTS = {
     baseUrl: API_BASES.feedback,
     method: 'POST',
     timeoutKey: 'default',
+  },
+  LICENSE_VALIDATE: {
+    path: '/v1/license/validate',
+    baseUrl: API_BASES.license,
+    method: 'POST',
+    timeoutKey: 'licenseValidate',
   },
 };

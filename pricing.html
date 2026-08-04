@@ -4,12 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="SolPrompter early adopter pricing: a $3.99 one-day pass, Pro at $6.99 per month or $49 a year, and a $169 lifetime plan. AI Scroll, cloud sync and remote control included.">
+    <meta name="description" content="Start free with 500 Auto Scroll sessions each month, upgrade to Pro monthly or yearly, or choose Lifetime for unlimited Auto Scroll.">
     <meta name="robots" content="noindex, nofollow">
     <meta name="color-scheme" content="light dark">
     <meta name="theme-color" content="#fbfcfd">
     <meta property="og:title" content="SolPrompter Pricing — Lock In Your Price Forever">
-    <meta property="og:description" content="Early adopter pricing: One-Day Pass $3.99, Pro $6.99/month, Lifetime $169. Prices go up as we add more premium features.">
+    <meta property="og:description" content="Free includes 500 Auto Scroll sessions each month. Licensed plans unlock unlimited Auto Scroll.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://solprompter.com/pricing">
     <meta property="og:image" content="https://solprompter.com/og-solprompter.png">
@@ -19,11 +19,11 @@
     <meta property="og:image:alt" content="SolPrompter Pricing — Lock In Your Price Forever">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="SolPrompter Pricing — Lock In Your Price Forever">
-    <meta name="twitter:description" content="Early adopter pricing: One-Day Pass $3.99, Pro $6.99/month, Lifetime $169. Prices go up as we add more premium features.">
+    <meta name="twitter:description" content="Free includes 500 Auto Scroll sessions each month. Licensed plans unlock unlimited Auto Scroll.">
     <meta name="twitter:image" content="https://solprompter.com/og-solprompter.png">
     <meta name="twitter:image:alt" content="SolPrompter Pricing — Lock In Your Price Forever">
     <link rel="canonical" href="https://solprompter.com/pricing">
-    <title>Pricing — Day Pass, Pro and Lifetime | SolPrompter</title>
+    <title>Pricing — Free, Pro and Lifetime | SolPrompter</title>
     
 <script>if ("scrollRestoration" in history) history.scrollRestoration = "manual";</script><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -90,63 +90,110 @@
     <section class="section plans" id="plans">
         <div class="section-inner plans-inner">
             <h2 class="visually-hidden">Plans and pricing</h2>
-            <ul class="plan-grid">
-                <li class="plan-card">
-                    <h3 class="plan-name">One-Day Pass</h3>
-                    <p class="plan-desc">24-hour access to Pro features.</p>
-                    <p class="plan-price">$3.99<span class="plan-price-was"><span class="visually-hidden">Regular price </span><s>$5.99</s></span></p>
-                    <p class="plan-price-note">24-hour access</p>
-                    <button class="btn plan-cta plan-cta--unavailable plan-cta--ghost" type="button" disabled aria-disabled="true">Coming soon</button>
-                    <p class="plan-cta-note">Perfect for one-time recordings.</p>
+            <div class="billing-toggle" role="tablist" aria-label="Billing period">
+                <button class="billing-toggle-button" id="billing-tab-monthly" type="button" role="tab" aria-selected="false" aria-controls="billing-panel-monthly" data-billing-cycle="monthly">
+                    Monthly
+                </button>
+                <button class="billing-toggle-button" id="billing-tab-yearly" type="button" role="tab" aria-selected="true" aria-controls="billing-panel-yearly" data-billing-cycle="yearly">
+                    Yearly<span>(Save 38%)</span>
+                </button>
+            </div>
+            <div class="billing-panel" id="billing-panel-monthly" role="tabpanel" aria-labelledby="billing-tab-monthly" hidden>
+                <ul class="plan-grid">
+                    <li class="plan-card">
+                    <h3 class="plan-name">Free</h3>
+                    <p class="plan-desc">Start presenting with no payment.</p>
+                    <p class="plan-price">$0</p>
+                    <p class="plan-price-note">No credit card required</p>
+                    <a class="btn plan-cta plan-cta--ghost" href="/" data-plan="free-monthly">Start free</a>
+                    <p class="plan-cta-note">Usage resets each calendar month.</p>
                     <ul class="plan-features">
-                        <li>AI Scroll</li>
-                        <li>More generous rate limits</li>
-                        <li>Cloud Sync</li>
-                        <li>100 GB Cloud Storage</li>
-                        <li>Remote Control</li>
-                        <li>Premium Themes</li>
-                        <li>Mirror and Fullscreen Mode</li>
+                        <li>500 Auto Scroll sessions per month</li>
+                        <li>Fixed-speed and timed scrolling</li>
+                        <li>Local scripts and recordings</li>
+                        <li>Camera and microphone recording</li>
                     </ul>
-                </li>
-                <li class="plan-card plan-card--featured">
+                    </li>
+                    <li class="plan-card plan-card--featured">
                     <p class="plan-badge">Most Popular</p>
-                    <h3 class="plan-name">Pro</h3>
-                    <p class="plan-desc">Everything creators need.</p>
-                    <p class="plan-price">$6.99<span class="plan-price-was"><span class="visually-hidden">Regular price </span><s>$9.99</s></span></p>
-                    <p class="plan-price-note">per month</p>
+                    <h3 class="plan-name">Pro Monthly</h3>
+                    <p class="plan-desc">Unlimited Auto Scroll with flexible monthly billing.</p>
+                    <p class="plan-price">$3.99</p>
+                    <p class="plan-price-note">per month, billed monthly</p>
                     <button class="btn plan-cta plan-cta--unavailable btn-primary" type="button" disabled aria-disabled="true">Coming soon</button>
-                    <p class="plan-cta-offer">Prefer annual billing?
-                        <span class="text-link text-link--unavailable" aria-disabled="true">Annual checkout coming soon</span>
-                        <span class="plan-save">Save $34</span>
-                    </p>
                     <ul class="plan-features">
-                        <li>AI Scroll</li>
-                        <li>More generous rate limits</li>
-                        <li>100 GB Cloud Storage</li>
-                        <li>Sync Across Devices</li>
-                        <li>Remote Control</li>
-                        <li>Premium Themes</li>
-                        <li>Script History</li>
-                        <li>Priority Support</li>
+                        <li>Unlimited Auto Scroll</li>
+                        <li>Cancel anytime</li>
+                        <li>License key activation</li>
+                        <li>All Free features</li>
                     </ul>
-                </li>
-                <li class="plan-card">
-                    <p class="plan-badge plan-badge--quiet">Best Value</p>
-                    <h3 class="plan-name">Lifetime</h3>
+                    </li>
+                    <li class="plan-card">
+                    <p class="plan-badge plan-badge--quiet plan-badge--sale">Sale</p>
+                    <h3 class="plan-name">Pro Lifetime</h3>
                     <p class="plan-desc">Pay once. Use forever.</p>
-                    <p class="plan-price">$169<span class="plan-price-was"><span class="visually-hidden">Regular price </span><s>$199</s></span></p>
+                    <p class="plan-price">$69<span class="plan-price-was"><span class="visually-hidden">Regular price </span><s>$199</s></span></p>
                     <p class="plan-price-note">One-time payment</p>
                     <button class="btn plan-cta plan-cta--unavailable plan-cta--ghost" type="button" disabled aria-disabled="true">Coming soon</button>
                     <ul class="plan-features">
-                        <li>Everything in Pro</li>
-                        <li>More generous rate limits</li>
-                        <li>Lifetime Updates</li>
-                        <li>Future Premium Features</li>
-                        <li>Founder Badge</li>
-                        <li>Early Feature Access</li>
+                        <li>Unlimited Auto Scroll</li>
+                        <li>No recurring payment</li>
+                        <li>Lifetime updates</li>
+                        <li>License key activation</li>
                     </ul>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="billing-panel" id="billing-panel-yearly" role="tabpanel" aria-labelledby="billing-tab-yearly">
+                <ul class="plan-grid">
+                    <li class="plan-card">
+                    <h3 class="plan-name">Free</h3>
+                    <p class="plan-desc">Start presenting with no payment.</p>
+                    <p class="plan-price">$0</p>
+                    <p class="plan-price-note">No credit card required</p>
+                    <a class="btn plan-cta plan-cta--ghost" href="/" data-plan="free-yearly">Start free</a>
+                    <p class="plan-cta-note">Usage resets each calendar month.</p>
+                    <ul class="plan-features">
+                        <li>500 Auto Scroll sessions per month</li>
+                        <li>Fixed-speed and timed scrolling</li>
+                        <li>Local scripts and recordings</li>
+                        <li>Camera and microphone recording</li>
+                    </ul>
+                    </li>
+                    <li class="plan-card plan-card--featured">
+                    <p class="plan-badge">Save 38%</p>
+                    <h3 class="plan-name">Pro Yearly</h3>
+                    <p class="plan-desc">The lowest monthly rate for regular use.</p>
+                    <p class="plan-price"><span class="plan-price-was plan-price-was--leading"><span class="visually-hidden">Regular price </span><s>$3.99</s></span>$2.49</p>
+                    <p class="plan-price-note">per month, billed $29.88 yearly</p>
+                    <button class="btn plan-cta plan-cta--unavailable btn-primary" type="button" disabled aria-disabled="true">Coming soon</button>
+                    <ul class="plan-features">
+                        <li>Unlimited Auto Scroll</li>
+                        <li>12 months of Pro access</li>
+                        <li>License key activation</li>
+                        <li>All Free features</li>
+                    </ul>
+                    </li>
+                    <li class="plan-card">
+                    <p class="plan-badge plan-badge--quiet plan-badge--sale">Sale</p>
+                    <h3 class="plan-name">Pro Lifetime</h3>
+                    <p class="plan-desc">Pay once. Use forever.</p>
+                    <p class="plan-price">$69<span class="plan-price-was"><span class="visually-hidden">Regular price </span><s>$199</s></span></p>
+                    <p class="plan-price-note">One-time payment</p>
+                    <button class="btn plan-cta plan-cta--unavailable plan-cta--ghost" type="button" disabled aria-disabled="true">Coming soon</button>
+                    <ul class="plan-features">
+                        <li>Unlimited Auto Scroll</li>
+                        <li>No recurring payment</li>
+                        <li>Lifetime updates</li>
+                        <li>License key activation</li>
+                    </ul>
+                    </li>
+                </ul>
+            </div>
+            <div class="plans-footnote">
+                <p>Use Auto Scroll free up to 500 sessions per calendar month. Every active license key unlocks unlimited Auto Scroll on this browser.</p>
+                <p>Already have a key? <a href="/license">Manage your license</a></p>
+            </div>
         </div>
     </section>
 
@@ -181,8 +228,8 @@
             </div>
             <div class="faq">
                 <details class="faq-item" id="faq-fair-use">
-                    <summary class="faq-q">What are the AI Scroll rate limits?</summary>
-                    <p class="faq-a">AI Scroll limits are sized for normal individual creator usage. To ensure reliable service for everyone, extremely excessive, automated or abusive usage may be limited under our Fair Use Policy.</p>
+                    <summary class="faq-q">How does the Free Auto Scroll limit work?</summary>
+                    <p class="faq-a">Free includes 500 Auto Scroll sessions per local calendar month. One session is counted when Auto Scroll successfully starts for a new Play or Record session; pausing, resuming, restarting or changing the reading layout inside that session does not use another. The counter resets when a new calendar month begins. A valid license key makes Auto Scroll unlimited.</p>
                 </details>
                 <details class="faq-item" id="faq-price-increase">
                     <summary class="faq-q">Will these prices go up?</summary>
@@ -200,9 +247,9 @@
                     <summary class="faq-q">Do you offer refunds?</summary>
                     <p class="faq-a">We offer a voluntary 7-day refund guarantee on your first purchase made directly through SolPrompter, subject to the conditions in the Billing and Refund Policy. Mandatory consumer rights in your country always apply on top of it.</p>
                 </details>
-                <details class="faq-item" id="faq-day-pass">
-                    <summary class="faq-q">What happens when the One-Day Pass expires?</summary>
-                    <p class="faq-a">Pro features simply stop after 24 hours and the pass does not renew. Your scripts and recordings stay where they are, and you can buy another pass or move to Pro whenever you want.</p>
+                <details class="faq-item" id="faq-annual-billing">
+                    <summary class="faq-q">How does yearly billing work?</summary>
+                    <p class="faq-a">Pro Yearly costs $29.88 for 12 months, paid once each year. The displayed $2.49 is the equivalent monthly rate, not a monthly charge.</p>
                 </details>
                 <details class="faq-item" id="faq-taxes">
                     <summary class="faq-q">Do the prices include tax?</summary>

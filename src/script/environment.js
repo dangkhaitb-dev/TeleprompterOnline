@@ -35,6 +35,7 @@ const environment = {
         // Request timeouts (in milliseconds)
         timeout: {
             default: 15000,
+            licenseValidate: 12000,
             polling_timeout: 1000, // 1 second for progress polling requests
             extract: 1800000, // 30 minutes for extract operations
             searchTitle: 20000,

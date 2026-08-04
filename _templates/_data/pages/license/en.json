@@ -26,7 +26,7 @@
   "form": {
     "step": "Add key",
     "title": "Unlock unlimited Auto Scroll",
-    "description": "Paste the complete key exactly as it appears in your Polar receipt or customer portal.",
+    "description": "After checkout, open the email from Polar and paste the complete license key exactly as it appears there.",
     "label": "License key",
     "placeholder": "SOL_••••••••••••",
     "submit": "Validate key",
@@ -51,7 +51,7 @@
     "title": "Purchase once. Activate in seconds.",
     "items": [
       { "title": "Complete checkout", "description": "Buy an eligible SolPrompter plan through Polar." },
-      { "title": "Receive your key", "description": "Polar creates the license and makes it available in your receipt and customer portal." },
+      { "title": "Check your email", "description": "After checkout, open the email from Polar to find your license key." },
       { "title": "Validate here", "description": "This page checks the current key status and expiration before enabling unlimited Auto Scroll." }
     ]
   },

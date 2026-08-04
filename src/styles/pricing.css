@@ -6,8 +6,8 @@
 /* The composer hero needs air under it; the pricing hero sits directly on the
    plan grid, so collapse the gap and let the grid own the rhythm. */
 .hero--pricing {
-  min-height: auto;
-  padding-top: clamp(4rem, 3rem + 4vw, 6rem);
+  min-height: 0;
+  padding-top: clamp(2.5rem, 2rem + 2vw, 4rem);
   padding-bottom: 0;
 }
 

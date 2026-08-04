@@ -1,8 +1,8 @@
 import { showConfirm } from '../../components/confirm-popup.js';
+import { HttpError } from '../../http/errors.js';
 import {
   clearLicense,
   getStoredLicense,
-  isLicenseKeyFormatValid,
   validateAndSaveLicense,
   validateStoredLicense,
 } from './license.logic.js';
@@ -29,6 +29,16 @@ function formatExpiry(value, copy) {
   return `${copy.validUntil || 'Valid until'} ${new Intl.DateTimeFormat(undefined, {
     dateStyle: 'medium',
   }).format(date)}`;
+}
+
+function getLicenseErrorMessage(error, copy) {
+  const errorCode = error instanceof HttpError && error.data && typeof error.data === 'object'
+    ? error.data.code || error.data.error
+    : '';
+  if (error instanceof HttpError && error.status === 503 && errorCode === 'service_not_configured') {
+    return copy.configurationMessage || 'License validation is being set up. Please try again shortly.';
+  }
+  return copy.networkMessage || 'The license service could not be reached. Your saved key was not changed.';
 }
 
 export function initLicenseUI({ root = document } = {}) {
@@ -96,8 +106,8 @@ export function initLicenseUI({ root = document } = {}) {
     recheck.disabled = true;
     try {
       render(await validateStoredLicense({ force: true }));
-    } catch {
-      showMessage(copy.networkMessage || 'The license service could not be reached.', 'error');
+    } catch (error) {
+      showMessage(getLicenseErrorMessage(error, copy), 'error');
     } finally {
       recheck.disabled = false;
     }
@@ -106,11 +116,6 @@ export function initLicenseUI({ root = document } = {}) {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     showMessage('');
-    if (!isLicenseKeyFormatValid(input.value)) {
-      showMessage(copy.formatMessage || 'Enter a complete license key.', 'error');
-      input.focus();
-      return;
-    }
     setLoading(true);
     try {
       const status = await validateAndSaveLicense(input.value);
@@ -121,8 +126,8 @@ export function initLicenseUI({ root = document } = {}) {
       input.value = '';
       render(status);
       showMessage(copy.validMessage || 'License verified.', 'success');
-    } catch {
-      showMessage(copy.networkMessage || 'The license service could not be reached.', 'error');
+    } catch (error) {
+      showMessage(getLicenseErrorMessage(error, copy), 'error');
     } finally {
       setLoading(false);
     }

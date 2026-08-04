@@ -54,6 +54,14 @@ describe('license logic', () => {
     expect(setItem).not.toHaveBeenCalled();
   });
 
+  it('sends every entered value to the Worker for validation', async () => {
+    checkLicenseKey.mockResolvedValue({ valid: false, keyStatus: 'invalid' });
+
+    await validateAndSaveLicense(' key with spaces ');
+
+    expect(checkLicenseKey).toHaveBeenCalledWith('key with spaces');
+  });
+
   it('returns only a normalized stored license shape', () => {
     getItem.mockReturnValue({
       key: 'SOL_TEST_1234',

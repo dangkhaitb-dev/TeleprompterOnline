@@ -6,8 +6,6 @@ import { getItem, removeItem, setItem } from '../../utils/storage.js';
 import { LS_LICENSE } from '../../utils/storage-keys.js';
 import { toLicenseStatus } from './license.model.js';
 
-const MIN_KEY_LENGTH = 8;
-const MAX_KEY_LENGTH = 200;
 const VALIDATION_TTL_MS = 5 * 60 * 1000;
 
 let validationPromise = null;
@@ -16,13 +14,6 @@ let validationExpiresAt = 0;
 
 export function normalizeLicenseKey(value) {
   return typeof value === 'string' ? value.trim() : '';
-}
-
-export function isLicenseKeyFormatValid(value) {
-  const key = normalizeLicenseKey(value);
-  return key.length >= MIN_KEY_LENGTH
-    && key.length <= MAX_KEY_LENGTH
-    && /^[A-Za-z0-9_-]+$/.test(key);
 }
 
 function storedRecord(key, status) {
@@ -38,10 +29,6 @@ export function getStoredLicense() {
 
 export async function validateAndSaveLicense(value) {
   const key = normalizeLicenseKey(value);
-  if (!isLicenseKeyFormatValid(key)) {
-    return toLicenseStatus({ valid: false, keyStatus: 'invalid' });
-  }
-
   const status = toLicenseStatus(await checkLicenseKey(key));
   if (status.valid) {
     const next = storedRecord(key, status);

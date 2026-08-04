@@ -54,7 +54,7 @@
               "License key activation",
               "All Free features"
             ],
-            "cta": { "label": "Coming soon", "unavailable": true }
+            "cta": { "label": "Get Pro", "url": "https://buy.polar.sh/polar_cl_SpiPvpL9E7qFq3ifC2cyd9TZPBZbAWYz0XOle2aHf8X" }
           },
           {
             "id": "lifetime-monthly",
@@ -72,7 +72,7 @@
               "Lifetime updates",
               "License key activation"
             ],
-            "cta": { "label": "Coming soon", "unavailable": true }
+            "cta": { "label": "Get Lifetime", "url": "https://buy.polar.sh/polar_cl_iudOORtRNke6UYWCJQ6geoC9GmT2DdDNzqPFb0amzBa" }
           }
         ]
       },
@@ -113,7 +113,7 @@
               "License key activation",
               "All Free features"
             ],
-            "cta": { "label": "Coming soon", "unavailable": true }
+            "cta": { "label": "Get Pro", "url": "https://buy.polar.sh/polar_cl_Spupkst8LcJgy3ml8BnYhBT4Nf9Nzlnhmbo9C20Kma9" }
           },
           {
             "id": "lifetime-yearly",
@@ -131,7 +131,7 @@
               "Lifetime updates",
               "License key activation"
             ],
-            "cta": { "label": "Coming soon", "unavailable": true }
+            "cta": { "label": "Get Lifetime", "url": "https://buy.polar.sh/polar_cl_iudOORtRNke6UYWCJQ6geoC9GmT2DdDNzqPFb0amzBa" }
           }
         ]
       }

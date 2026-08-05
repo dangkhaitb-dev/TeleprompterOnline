@@ -52,14 +52,13 @@ lang: en
 
 <!-- HERO + MAIN -->
 <main id="main" tabindex="-1">
-    <section class="hero hero--pricing">
-        <div class="hero-inner">
-            {%- if pageData.hero.eyebrow %}
-            <p class="eyebrow">{{ pageData.hero.eyebrow }}</p>
-            {%- endif %}
-            <h1 class="hero-title">{{ pageData.hero.title }}</h1>
-        </div>
-    </section>
+    <header class="pricing-header">
+        {%- if pageData.hero.eyebrow %}
+        <p class="pricing-eyebrow">{{ pageData.hero.eyebrow }}</p>
+        {%- endif %}
+        <h1 class="pricing-title">{{ pageData.hero.title }}</h1>
+    </header>
+
 
     {%- set plans = pageData.plans %}
     <section class="section plans" id="plans">

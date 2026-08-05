@@ -2,14 +2,35 @@
    nav, hero, section, FAQ and button primitives come from home.css (this page
    ships in the same bundle via home-main.js). Mobile-first, tokens only. */
 
-/* ===== HERO ===== */
-/* The composer hero needs air under it; the pricing hero sits directly on the
-   plan grid, so collapse the gap and let the grid own the rhythm. */
-.hero--pricing {
-  min-height: 0;
-  padding-top: clamp(2.5rem, 2rem + 2vw, 4rem);
+/* ===== PRICING HEADER ===== */
+.pricing-header {
+  max-width: var(--maxw-content);
+  margin: 0 auto;
+  padding-top: clamp(2.5rem, 2.2rem + 3vw, 4.5rem);
   padding-bottom: 0;
+  padding-inline: var(--space-6);
+  text-align: center;
 }
+
+.pricing-eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand-soft);
+}
+
+.pricing-title {
+  margin: 0 0 1rem;
+  font-size: clamp(2.2rem, 1.8rem + 2vw, 3.2rem);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  font-family: var(--font-sans);
+}
+
 
 /* ===== PLAN GRID ===== */
 .plans {

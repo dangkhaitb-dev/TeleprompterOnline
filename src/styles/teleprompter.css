@@ -2442,11 +2442,11 @@ html[data-theme="dark"] .settings-group-content {
   }
 
   /* Mobile studio bar (fixed ở đáy) che phần text edit phía dưới prompt-box.
-     Clearance = 14px (offset của bar) + chiều cao bar + 20px buffer cho dòng
-     cuối thoáng trên bar + safe-area. Chỉ áp khi chưa record-dim: lúc record-dim
-     bar thu gọn thành nút float nên không cần. */
+     Clearance = 14px (offset của bar) + chiều cao bar + 56px buffer cho vùng
+     soạn thảo thoáng trên bar + safe-area. Chỉ áp khi chưa record-dim: lúc
+     record-dim bar thu gọn thành nút float nên không cần. */
   .app:not(.record-dim) .prompt-box {
-    padding-bottom: calc(14px + var(--mobile-studio-bar-h) + 20px + env(safe-area-inset-bottom));
+    padding-bottom: calc(14px + var(--mobile-studio-bar-h) + 56px + env(safe-area-inset-bottom));
   }
 
   .panel {

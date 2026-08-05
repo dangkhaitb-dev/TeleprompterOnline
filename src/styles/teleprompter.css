@@ -2398,10 +2398,21 @@ html[data-theme="dark"] .settings-group-content {
 @media (max-width: 600px) {
   .app {
     min-height: 100%;
+    /* Chiều cao thực của thanh mobile studio bar cố định ở đáy (đo: 121px).
+       Dùng làm clearance cho prompt-box để text edit không bị bar che. */
+    --mobile-studio-bar-h: 121px;
   }
 
   .stage {
     inset: 60px 0 0;
+  }
+
+  /* Camera full màn hình mobile: mặc định object-fit: contain hiện trọn khung
+     camera nhưng trên điện thoại dọc video bị thu nhỏ giữa hai dải đen lớn.
+     Dùng cover để video phủ toàn bộ chiều cao stage (cắt bớt hai bên thay vì
+     để vùng thừa đen). Chỉ ảnh hưởng hiển thị, không đụng tới bản ghi. */
+  .camera-feed {
+    object-fit: cover;
   }
 
   .record-controls {
@@ -2428,6 +2439,14 @@ html[data-theme="dark"] .settings-group-content {
     min-height: 0;
     padding: 16px 20px 96px;
     font-size: 16px;
+  }
+
+  /* Mobile studio bar (fixed ở đáy) che phần text edit phía dưới prompt-box.
+     Clearance = 14px (offset của bar) + chiều cao bar + 20px buffer cho dòng
+     cuối thoáng trên bar + safe-area. Chỉ áp khi chưa record-dim: lúc record-dim
+     bar thu gọn thành nút float nên không cần. */
+  .app:not(.record-dim) .prompt-box {
+    padding-bottom: calc(14px + var(--mobile-studio-bar-h) + 20px + env(safe-area-inset-bottom));
   }
 
   .panel {

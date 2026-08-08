@@ -1,0 +1,361 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "where-to-look-when-speaking-on-camera",
+  "published": true,
+  "flatUrl": true,
+  "title": "Where to Look When Speaking on Camera",
+  "date": "2026-08-08",
+  "dateDisplay": "August 8, 2026",
+  "modified": "2026-08-08",
+  "author": {
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
+  },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "August 8, 2026"
+  },
+  "category": "Speaking on Camera",
+  "shortName": "Where to Look When Speaking on Camera",
+  "keywords": [
+    "where to look when speaking on camera",
+    "where to look when talking to a camera",
+    "camera eye contact",
+    "where to look on video calls",
+    "look at the camera lens"
+  ],
+  "mentions": [],
+  "seo": {
+    "title": "Where to Look When Speaking on Camera: Lens, Notes, or Script",
+    "description": "Learn where to look when talking to a camera for recordings, video calls, and interviews, with simple eye-line tests that feel natural.",
+    "image": "https://solprompter.com/media/blog/where-to-look-when-speaking-on-camera/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/where-to-look-when-speaking-on-camera/hero.webp",
+    "alt": "Speaker looking through beam-splitter glass toward the camera lens mounted behind it",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": {
+    "label": "Open SolPrompter",
+    "url": "/"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "For a recorded message to the viewer, look at the camera lens when you deliver the important thought. For a video call, look at the other person’s face most of the time and glance at the lens for key moments. For an interview, follow the interviewer unless the producer asks you to address the camera directly."
+    },
+    {
+      "type": "paragraph",
+      "html": "You do not need to stare into the lens without blinking. Good camera eye contact is a pattern: choose the right target for the format, return to it deliberately, and confirm on a short recording that it looks natural from the viewer’s side."
+    },
+    {
+      "type": "paragraph",
+      "html": "Use this gaze guide alongside the broader <a href=\"/blog/speaking-on-camera/\">Speaking on Camera</a> workflow, which keeps eye line separate from confidence, body language, and vocal delivery."
+    },
+    {
+      "type": "toc",
+      "title": "Table of contents"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Why the lens matters"
+    },
+    {
+      "type": "paragraph",
+      "html": "The lens is the viewer’s point of view. When you speak to it, the recording can feel more direct. When your eyes stay on a screen, notes, or preview window far from it, the viewer may see an obvious sideways or downward gaze."
+    },
+    {
+      "type": "paragraph",
+      "html": "Research from Stanford’s CHI work on <em>videoconferencing</em> found that people’s sensitivity to apparent eye contact is asymmetric: viewers were less sensitive to a gaze below their eyes than to one above or to either side. That result helps explain why video-call camera placement matters, but it is not a universal prescription for every filmed performance or camera angle. <a href=\"https://graphics.stanford.edu/papers/eye_contact/\">Stanford CHI: Leveraging the Asymmetric Sensitivity of Eye Contact for Videoconferencing</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choose your target by format"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Recorded monologue: use the lens as the listener"
+    },
+    {
+      "type": "paragraph",
+      "html": "For an explainer, lesson, announcement, sales video, or social clip where you are speaking directly to the viewer, make the lens your default target. Look at it for your opening, the main claim, a transition, and the closing. These are the moments when the viewer most needs to feel addressed."
+    },
+    {
+      "type": "paragraph",
+      "html": "You can glance away to think, demonstrate something, or use a natural gesture. Return to the lens before the next complete idea. If you keep looking slightly above it, put a small removable marker near the lens and use that only as a training cue; do not cover the camera."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Video call: prioritize the person, then signal presence"
+    },
+    {
+      "type": "paragraph",
+      "html": "On a call, watching the other person’s face helps you read their reactions and makes conversation easier. The tradeoff is that they may see you looking slightly down at their image instead of directly toward their lens. That is normal for ordinary conversation."
+    },
+    {
+      "type": "paragraph",
+      "html": "Glance at your camera when you greet someone, give a concise key point, or want to show that you are addressing the group. Then return to the speaker’s video. If you must read a slide or shared document, say so briefly and look at the material; trying to maintain lens contact while you cannot see the conversation is less useful."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Interview: follow the relationship in the room"
+    },
+    {
+      "type": "paragraph",
+      "html": "In a seated interview, the interviewer is usually your conversational partner. Look at them while answering unless they or the producer specifically asks for a direct-to-camera response. Looking into the lens when the format expects an interview can feel disconnected from the exchange."
+    },
+    {
+      "type": "paragraph",
+      "html": "Before recording, ask one simple question: “Should I answer you, or should I answer the camera?” If there are multiple cameras, ask which lens is live for a direct address. This saves you from guessing after the interview begins."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Lens glance, not lens stare"
+    },
+    {
+      "type": "paragraph",
+      "html": "A fixed stare can make a speaker look tense because normal conversation includes blinking, brief thought pauses, and occasional shifts of attention. Aim for a relaxed face and a clear return to the lens, not immobility."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Look at the lens for a complete sentence or idea, not for a rigid number of seconds."
+        },
+        {
+          "text": "Blink normally and let your eyes briefly move when you recall an example."
+        },
+        {
+          "text": "Keep your head generally pointed toward the camera instead of turning it sharply toward a second screen."
+        },
+        {
+          "text": "Use a gentle expression that matches the message; forcing a smile can be as distracting as staring."
+        },
+        {
+          "text": "Return to the lens before you state the conclusion, ask for action, or finish a thought."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "The University of Michigan suggests speaking into the camera as if it were a person, practicing with someone immediately behind it if useful, and learning the boundaries of your frame. Those suggestions are especially helpful when direct address still feels artificial. <a href=\"https://onlineteaching.umich.edu/articles/getting-comfortable-on-screen/\">University of Michigan: Getting Comfortable On Screen</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Set up the camera for an easier eye line"
+    },
+    {
+      "type": "paragraph",
+      "html": "Good eye contact starts before you speak. A laptop webcam low on a desk encourages a downward gaze, while a camera that is too high can make you tip your chin upward. Raise the device or camera until the lens is near eye level, then choose a comfortable speaking distance and keep it consistent for the test."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Find the actual lens, especially on a phone with several visible sensors."
+        },
+        {
+          "text": "Place the lens near eye height rather than treating the center of the screen as the target."
+        },
+        {
+          "text": "Move the video-call window close to the webcam when you need to see participants."
+        },
+        {
+          "text": "Avoid a large second monitor far to one side when you are expected to address the camera."
+        },
+        {
+          "text": "Check the final orientation—portrait or landscape—because the lens position may change."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Run a 60-second eye-line test"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use this test whenever you change devices, framing, or the type of recording. It takes less time than trying to fix an eye-line problem in a finished video."
+    },
+    {
+      "type": "list",
+      "style": "principles",
+      "items": [
+        {
+          "title": "Record three versions",
+          "text": "Say the same 20-second message while looking at the lens, at the center of the screen, and at the place where you normally keep a call window or notes."
+        },
+        {
+          "title": "Label the clips",
+          "text": "Name them by target so you do not rely on memory when comparing them later."
+        },
+        {
+          "title": "Review as a viewer",
+          "text": "Play them at normal size and ask which version makes the speaker seem easiest to follow, not which one felt most unusual while recording."
+        },
+        {
+          "title": "Adjust one variable",
+          "text": "Raise the camera, move the call window, or narrow the reading area. Then repeat the same message rather than changing everything at once."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "If you record with another person, ask them one precise question: “Which clip feels most like I am talking to you?” A simple viewer response can expose an offset that is hard to judge from behind the camera."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When you need notes or a teleprompter"
+    },
+    {
+      "type": "paragraph",
+      "html": "Notes can support an accurate message, but keep them close to the lens and use short prompts instead of reading a wide block of text. For a longer scripted recording, place the active text near the camera, keep the column narrow, and test the eye movement in a short clip. See <a href=\"/blog/how-to-read-a-teleprompter-naturally/\">How to Read a Teleprompter Naturally</a> and <a href=\"/blog/teleprompter-setup-without-hardware/\">How to Set Up a Teleprompter Without Special Hardware</a> for the setup details."
+    },
+    {
+      "type": "paragraph",
+      "html": "The priority remains the relationship with the viewer. Use notes to support your delivery, not to turn every sentence into a reading task."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common eye-line mistakes and practical fixes"
+    },
+    {
+      "type": "list",
+      "style": "principles",
+      "items": [
+        {
+          "title": "Looking at your own preview",
+          "text": "Shrink or move the self-view, then choose the lens as the target for direct-to-camera moments."
+        },
+        {
+          "title": "Reading from a side monitor",
+          "text": "Move the key window near the camera or use a shorter outline that you can glance at quickly."
+        },
+        {
+          "title": "Talking to the screen on a call",
+          "text": "Keep watching the other person, but add brief lens glances at greetings and key points."
+        },
+        {
+          "title": "Trying to maintain a constant stare",
+          "text": "Speak in complete ideas, blink normally, and return to the lens at transitions instead."
+        },
+        {
+          "title": "Using the wrong target in an interview",
+          "text": "Ask the interviewer or producer before the take whether the answer is for them or for the camera."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frequently asked questions"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Should I look at the camera or the screen?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Look at the lens for a direct recorded message. On a video call, watch the other person’s face for most of the conversation and use brief lens glances when you want to address them directly."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Where should I look during a Zoom or Teams call?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Keep the participant’s video near your webcam if possible. Look at their face while listening and speaking normally, then look into the webcam for a greeting, key statement, or closing."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Is it okay to look away from the camera while talking?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Yes. Natural delivery includes brief glances away to think, demonstrate, or refer to a visual. The important part is returning to the lens for complete, viewer-facing ideas rather than remaining fixed on another screen."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "How do I remember where my phone camera is?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Identify the active lens before recording and use a small marker beside it if needed. Record a short test in the final orientation because the lens can be in a different place in portrait and landscape."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Should I stare into the lens for the entire video?"
+    },
+    {
+      "type": "paragraph",
+      "html": "No. Use the lens as your primary target for a monologue, but blink, gesture, and take natural thinking pauses. A relaxed return to the lens usually looks more conversational than a constant stare."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Next steps"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Run the three-clip eye-line test with the device you use most."
+        },
+        {
+          "text": "Find more delivery guidance in <a href=\"/blog/speaking-on-camera/\">Speaking on Camera</a>."
+        },
+        {
+          "text": "Check <a href=\"/blog/how-to-look-natural-on-camera/\">visual delivery and body language</a> separately so posture changes do not hide an eye-line problem."
+        },
+        {
+          "text": "For a scripted recording, <a href=\"https://solprompter.com/\">open SolPrompter</a> and test a short passage near your lens."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Editorial disclosure"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter publishes this guide and develops the product mentioned in it. Product guidance is based on first-party documentation; independent educational and research sources are linked separately. Camera placement and perceived eye contact vary by framing, device, and communication format."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "References"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "Chen, Milton. <a href=\"https://graphics.stanford.edu/papers/eye_contact/\">“Leveraging the Asymmetric Sensitivity of Eye Contact for Videoconferencing.”</a> Proceedings of CHI, 2002."
+        },
+        {
+          "text": "University of Michigan. <a href=\"https://onlineteaching.umich.edu/articles/getting-comfortable-on-screen/\">“Getting Comfortable On Screen.”</a>"
+        }
+      ]
+    }
+  ]
+}

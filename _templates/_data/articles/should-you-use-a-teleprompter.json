@@ -3,10 +3,10 @@
   "slug": "should-you-use-a-teleprompter",
   "published": true,
   "flatUrl": true,
-  "title": "Should You Use a Teleprompter? A Practical Guide for Speaking on Camera",
+  "title": "Should You Use a Teleprompter? A Practical Decision Guide",
   "date": "2026-08-01",
   "dateDisplay": "August 1, 2026",
-  "modified": "2026-08-01",
+  "modified": "2026-08-08",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,19 +14,19 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 1, 2026"
+    "updatedDisplay": "August 8, 2026"
   },
   "category": "Teleprompter Guides",
-  "shortName": "Should You Use a Teleprompter? A Practical Guide for Speaking on Camera",
+  "shortName": "Should You Use a Teleprompter?",
   "keywords": [
-    "teleprompter",
-    "speaking on camera",
-    "teleprompter setup",
-    "teleprompter script"
+    "should I use a teleprompter",
+    "teleprompter pros and cons",
+    "teleprompter vs bullet points",
+    "teleprompter decision guide"
   ],
   "mentions": [],
   "seo": {
-    "title": "Should You Use a Teleprompter? A Practical Guide for Speaking on Camera",
+    "title": "Should You Use a Teleprompter? A Practical Decision Guide",
     "description": "Should you use a teleprompter? Compare full scripts, bullet points, memorization, and off-the-cuff delivery to choose the right method for your video.",
     "image": "https://solprompter.com/media/blog/should-you-use-a-teleprompter/hero.webp"
   },
@@ -435,6 +435,9 @@
       "type": "list",
       "style": "bullets",
       "items": [
+        {
+          "text": "Build the surrounding delivery skills in <a href=\"/blog/speaking-on-camera/\">Speaking on Camera</a>."
+        },
         {
           "text": "<a href=\"https://solprompter.com/\">Open SolPrompter</a> and test one short script."
         },

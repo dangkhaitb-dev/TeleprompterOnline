@@ -6,7 +6,7 @@
   "title": "Teleprompter Guides",
   "date": "2026-08-01",
   "dateDisplay": "August 1, 2026",
-  "modified": "2026-08-01",
+  "modified": "2026-08-08",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +14,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 1, 2026"
+    "updatedDisplay": "August 8, 2026"
   },
   "category": "Guides",
   "shortName": "Teleprompter Guides",
@@ -148,6 +148,21 @@
     {
       "type": "paragraph",
       "html": "Diagnose problems with text width, camera position, script language, scrolling, recognition, font size, rehearsal, and backup controls."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Speaking on camera beyond the teleprompter"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "[Speaking on Camera](/blog/speaking-on-camera/)"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use the broader speaking-on-camera collection for confidence practice, visual and vocal delivery, camera eye contact, and pre-recorded presentations. These skills apply whether you use a full script, bullet points, or no teleprompter."
     },
     {
       "type": "heading",

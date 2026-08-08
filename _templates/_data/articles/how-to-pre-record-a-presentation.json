@@ -1,0 +1,363 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "how-to-pre-record-a-presentation",
+  "published": true,
+  "flatUrl": true,
+  "title": "How to Pre-Record a Presentation",
+  "date": "2026-08-08",
+  "dateDisplay": "August 8, 2026",
+  "modified": "2026-08-08",
+  "author": {
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
+  },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "August 8, 2026"
+  },
+  "category": "Speaking on Camera",
+  "shortName": "How to Pre-Record a Presentation",
+  "keywords": [
+    "how to pre-record a presentation",
+    "recorded presentation checklist",
+    "video presentation workflow",
+    "pre-recorded presentation tips"
+  ],
+  "mentions": [],
+  "seo": {
+    "title": "How to Pre-Record a Presentation That Feels Live",
+    "description": "Make a clear pre-recorded video presentation with a practical workflow for audience, slides, notes, rehearsal, recording, captions, export, and upload.",
+    "image": "https://solprompter.com/media/blog/how-to-pre-record-a-presentation/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/how-to-pre-record-a-presentation/hero.webp",
+    "alt": "Presenter recording with slides while the camera sits behind beam-splitter teleprompter glass",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": {
+    "label": "Open SolPrompter",
+    "url": "/"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "To make a pre-recorded video presentation, decide what one audience should understand or do, shape the material to the required time and format, rehearse in the real setup, record in manageable sections, then review the finished file before you export and upload it."
+    },
+    {
+      "type": "paragraph",
+      "html": "The advantage of pre-recording is not perfection. It is control: you can test the message, repeat a weak section, check the final format, and add accessible captions before the audience sees it."
+    },
+    {
+      "type": "paragraph",
+      "html": "This task-focused guide applies the <a href=\"/blog/speaking-on-camera/\">Speaking on Camera</a> workflow to presentations with deadlines, visuals, timing, captions, export, and upload requirements."
+    },
+    {
+      "type": "toc",
+      "title": "Table of contents"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Confirm the audience, message, and constraints"
+    },
+    {
+      "type": "paragraph",
+      "html": "Start with the brief, not the recording tool. Who will watch? What should they understand by the end? What is the expected length, platform, deadline, file type, and accessibility requirement? A clear answer prevents a polished video from being unusable for the assignment, event, or client."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Write one sentence describing the audience and their starting knowledge." },
+        { "text": "Write one outcome the viewer should leave with." },
+        { "text": "Check the stated time limit and whether it includes questions, title cards, or demonstrations." },
+        { "text": "Confirm the upload destination, deadline, privacy setting, and any required file or caption format." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Central Washington University’s guidance makes the same practical point in its context: verify the receiving system’s supported file types and prepare early enough to record and upload before the deadline. <a href=\"https://www.cwu.edu/academics/research/undergrad-research/source/presenting/recorded-presentations.php\">Central Washington University</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Build a simple run of show"
+    },
+    {
+      "type": "paragraph",
+      "html": "A run of show is a short map of what appears and what the viewer needs at each stage. It is lighter than a full production plan but strong enough to prevent improvising the structure once the camera is on."
+    },
+    {
+      "type": "list",
+      "style": "principles",
+      "items": [
+        { "title": "Opening", "text": "State the topic, why it matters to this audience, and where the presentation is going." },
+        { "title": "Body", "text": "Group the explanation into a few distinct points, examples, or steps." },
+        { "title": "Visual changes", "text": "Note where a slide, screen demonstration, image, or on-camera explanation appears." },
+        { "title": "Closing", "text": "Restate the takeaway and name the next action, resource, or question." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Time the run of show in rehearsal. Do not rely on a universal slide-to-time ratio: slides can support a single image, a complex diagram, or a long demonstration, so their useful duration varies."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Decide what the viewer needs to see"
+    },
+    {
+      "type": "paragraph",
+      "html": "Choose slides, speaker video, screen sharing, or a combination based on the message. The visual should earn its place by helping the audience understand something they could not get as easily from audio alone."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "When slides lead"
+    },
+    {
+      "type": "paragraph",
+      "html": "Let slides lead when the audience needs to compare information, inspect an image or diagram, follow a process, or retain a few key terms. Keep the visible text concise enough that viewers are not forced to read a paragraph while listening to a different paragraph."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "When the speaker leads"
+    },
+    {
+      "type": "paragraph",
+      "html": "Keep the speaker prominent for an introduction, a personal explanation, a sensitive message, or a conclusion where trust and connection matter. A small camera view beside slides can work when both the person and the evidence are useful."
+    },
+    {
+      "type": "paragraph",
+      "html": "CWU recommends choosing a professional format that communicates the work and notes that presentation software can combine slides with a voice-over. Use the tools available to you, but test the actual result rather than assuming one layout transfers perfectly between platforms. <a href=\"https://www.cwu.edu/academics/research/undergrad-research/source/presenting/recorded-presentations.php\">Central Washington University</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choose notes, a script, or both"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use notes when you know the material well and want flexibility. Use a full script when wording must be exact, the topic is complex, or the time limit is tight. A hybrid often works best: write the opening, transitions, technical language, and closing exactly; use notes for examples you can explain naturally."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "title": "Notes", "text": "Best for a familiar topic, a demonstration, or a presenter who can vary wording without losing accuracy." },
+        { "title": "Script", "text": "Best for precise claims, quotations, short timed messages, and situations where the same wording needs review." },
+        { "title": "Hybrid", "text": "Best when a clear structure matters but a few sections benefit from conversational explanation." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "If you use a teleprompter, prepare the text for speech and practice it in the exact display position. The guides on <a href=\"/blog/how-to-write-a-teleprompter-script/\">writing a teleprompter script</a> and <a href=\"/blog/how-to-read-a-teleprompter-naturally/\">reading it naturally</a> cover that work in detail."
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter can support browser-based script, camera, and audio practice on supported browsers. Use the presentation or recording tool required by your host for any slide or screen capture, and test the complete combination before the final take."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Test the equipment before the rehearsal"
+    },
+    {
+      "type": "paragraph",
+      "html": "A camera preview can look fine while the recorded file has an unhelpful microphone, clipped screen, missing permissions, or a camera bubble covering the slide. Make a brief technical test before you invest energy in a full rehearsal."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Check the selected microphone, camera, and screen or window." },
+        { "text": "Record a short clip and listen with the same headphones or speakers you will use for review." },
+        { "text": "Confirm slides, shared windows, and camera placement do not cover essential content." },
+        { "text": "Check available storage, battery or power, and a stable connection if the tool uploads while recording." },
+        { "text": "Close notifications and unnecessary applications before the real take." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "The Simmons presenter guide documents different recording modes, including screen plus camera, screen only, and camera only, and describes controls for pausing and moving the camera view. Treat those kinds of options as a reason to test your chosen mode, not a reason to assume the default layout is right. <a href=\"https://www.simmons.edu/sites/default/files/2021-11/Loom-User-Guide-and-Presenter-Guidelines.pdf\">Simmons University</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Rehearse the whole path once"
+    },
+    {
+      "type": "paragraph",
+      "html": "A rehearsal is a timing and clarity test, not an audition you must pass. Run the complete presentation in order with the real slides, notes, camera position, and recording controls. Mark where you lose the thread, rush a transition, or need a visual that is not yet ready."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Start the recording process exactly as you will on the day." },
+        { "text": "Time the result against the actual requirement." },
+        { "text": "Check that every slide and screen change is understandable without extra explanation." },
+        { "text": "Make a short list of corrections, then rehearse the corrected sections instead of restarting from zero." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "CWU’s preparation guidance calls for planning ahead, preparing slides in advance, getting feedback where available, and practicing. These are small steps, but they separate content work from the pressure of the final upload. <a href=\"https://www.cwu.edu/academics/research/undergrad-research/source/presenting/recorded-presentations.php\">Central Washington University</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Record in sections when the format allows"
+    },
+    {
+      "type": "paragraph",
+      "html": "For many presentations, recording a clean opening, each major point, and the closing separately is less exhausting than chasing one flawless long take. It also makes it easier to replace a single weak section. Keep your lighting, framing, microphone position, and slide state consistent so the edits do not feel abrupt."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Run a final quality check"
+    },
+    {
+      "type": "paragraph",
+      "html": "Before exporting, watch the complete presentation as your audience will. Do not rely on the editor timeline alone. Check the content, the technical file, and the requirements in separate passes."
+    },
+    {
+      "type": "list",
+      "style": "principles",
+      "items": [
+        { "title": "Message", "text": "Does the opening promise match the conclusion, and is the key point understandable?" },
+        { "title": "Visuals", "text": "Are slides readable, demonstrations visible, and the speaker frame intentional?" },
+        { "title": "Audio", "text": "Is speech understandable at a consistent level without distracting background sound?" },
+        { "title": "Timing", "text": "Does the completed file meet the stated limit and include required opening or closing material?" },
+        { "title": "Accessibility", "text": "Are captions or a transcript accurate enough for the intended platform and requirement?" }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "The Simmons guide includes a transcript-for-accessibility section and demonstrates post-recording editing controls such as trimming. If you edit, review the finished cut again so captions, transitions, and the message still match. <a href=\"https://www.simmons.edu/sites/default/files/2021-11/Loom-User-Guide-and-Presenter-Guidelines.pdf\">Simmons University</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Export and upload with a checklist"
+    },
+    {
+      "type": "paragraph",
+      "html": "Exporting is not the end of the workflow. Confirm the file opens, then upload early enough to resolve a conversion, permission, or processing issue. Keep the final file and project materials until you know the upload has been accepted."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Export in the required or supported format and play the exported file once." },
+        { "text": "Use a clear filename that identifies the presentation and version." },
+        { "text": "Upload the video and any required caption file, transcript, or slides." },
+        { "text": "Check the platform’s processing result, privacy setting, title, and permissions." },
+        { "text": "Save confirmation of submission and keep a local backup until the presentation is complete." }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "CWU specifically advises checking compatibility with the destination’s file types and preparing for upload before the deadline. The exact accepted formats differ by platform, so the destination’s current instructions take priority. <a href=\"https://www.cwu.edu/academics/research/undergrad-research/source/presenting/recorded-presentations.php\">Central Washington University</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frequently asked questions"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Should I show my face in a recorded presentation?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Show your face when presence, explanation, or trust improves the message. Use slides or screen content as the main view when the audience needs to inspect information. A combination can work when both are useful."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Should I use a full script or bullet points?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Use a script for precise or time-sensitive wording, notes for familiar material that benefits from flexibility, and a hybrid when you need both. Rehearse the choice aloud before committing to it."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Is it okay to record a presentation in sections?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Usually, if the assignment or platform allows editing. Keep the setup consistent and review the joins so the audience experiences one coherent presentation."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "How do I keep a recorded presentation within the time limit?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Rehearse the whole path with the real visuals and time the completed presentation. Cut or simplify less important material rather than rushing every line."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Do pre-recorded presentations need captions?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Follow the host’s accessibility requirements. Captions or a transcript can also help viewers who cannot listen at that moment; review their accuracy against the final edit."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Next steps"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Explore the <a href=\"/blog/speaking-on-camera/\">Speaking on Camera</a> collection before your rehearsal." },
+        { "text": "Use the <a href=\"/blog/how-to-speak-confidently-on-camera/\">camera confidence practice plan</a> before a high-stakes presentation." },
+        { "text": "Review <a href=\"/blog/where-to-look-when-speaking-on-camera/\">where to look</a> and <a href=\"/blog/how-to-sound-natural-on-camera/\">how to manage pace, pauses, and emphasis</a> for the speaker portions." },
+        { "text": "<a href=\"https://solprompter.com/\">Open SolPrompter</a> to rehearse one timed section with your notes or script." }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Editorial disclosure"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter publishes this guide and develops the product referenced in it. Product guidance is based on first-party documentation; independent university guidance is identified separately."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "References"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "Central Washington University. <a href=\"https://www.cwu.edu/academics/research/undergrad-research/source/presenting/recorded-presentations.php\">“Pre-Recorded Presentation Prep.”</a>" },
+        { "text": "Simmons University. <a href=\"https://www.simmons.edu/sites/default/files/2021-11/Loom-User-Guide-and-Presenter-Guidelines.pdf\">“Loom User Guide and Presenter Guidelines.”</a>" },
+        { "text": "SolPrompter. <a href=\"https://solprompter.com/teleprompter-guide\">“How to Use SolPrompter.”</a>" }
+      ]
+    }
+  ]
+}

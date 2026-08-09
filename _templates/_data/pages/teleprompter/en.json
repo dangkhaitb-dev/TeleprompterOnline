@@ -22,6 +22,7 @@
   "format": {
     "toolbarAria": "Text formatting",
     "fontSizeLabel": "Font size",
+    "customFontSize": "Custom",
     "fontSizes": [
       { "value": "16", "label": "16px" },
       { "value": "18", "label": "18px" },

@@ -58,9 +58,13 @@ lang: en
 
     <!-- Format toolbar: desktop pill, centered while editing (pre-record). -->
     <div class="format-toolbar" id="formatToolbar" role="toolbar" aria-label="{{ pageData.format.toolbarAria }}">
-      <select id="fontSizeSelect" class="ft-font-size" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}">
-        {%- for s in pageData.format.fontSizes %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
-      </select>
+      <div class="font-size-control">
+        <button class="font-size-trigger" type="button" aria-label="{{ pageData.format.fontSizeLabel }}" aria-expanded="false"><span class="font-size-value">24px</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button>
+        <div class="font-size-menu" role="listbox" hidden>
+          <label class="font-size-custom-input"><span>{{ pageData.format.customFontSize }}</span><input id="fontSizeSelect" class="ft-font-size" type="number" min="0" step="any" inputmode="decimal" value="24" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}"><em>px</em></label>
+          {%- for s in pageData.format.fontSizes %}<button type="button" role="option" data-font-size="{{ s.value }}">{{ s.label }}</button>{% endfor %}
+        </div>
+      </div>
       <span class="ft-divider"></span>
       <div class="ft-bi-group">
         <button type="button" class="ft-bold" data-cmd="bold" title="{{ pageData.format.boldTitle }}">B</button>
@@ -142,9 +146,13 @@ lang: en
 
   <!-- Mobile format-toolbar (≤768px): own bar below the header, scrolls horizontally. -->
   <div class="format-toolbar mobile-format-toolbar" id="mobileFormatToolbar" role="toolbar" aria-label="{{ pageData.format.toolbarAria }}">
-    <select class="ft-font-size" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}">
-      {%- for s in pageData.format.fontSizes %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
-    </select>
+    <div class="font-size-control">
+      <button class="font-size-trigger" type="button" aria-label="{{ pageData.format.fontSizeLabel }}" aria-expanded="false"><span class="font-size-value">24px</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button>
+      <div class="font-size-menu" role="listbox" hidden>
+        <label class="font-size-custom-input"><span>{{ pageData.format.customFontSize }}</span><input class="ft-font-size" type="number" min="0" step="any" inputmode="decimal" value="24" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}"><em>px</em></label>
+        {%- for s in pageData.format.fontSizes %}<button type="button" role="option" data-font-size="{{ s.value }}">{{ s.label }}</button>{% endfor %}
+      </div>
+    </div>
     <span class="ft-divider"></span>
     <div class="ft-bi-group">
       <button type="button" class="ft-bold" data-cmd="bold" title="{{ pageData.format.boldTitle }}">B</button>
@@ -636,9 +644,13 @@ lang: en
     <div class="notch-edit-resize" data-notch-edit-resize="sw" aria-hidden="true"></div>
     <div class="notch-edit-body" id="notchEditBody">
       <div class="notch-edit-toolbar" id="notchEditToolbar" role="toolbar" aria-label="{{ pageData.notch.toolbarAria }}">
-        <select class="notch-edit-select" id="notchEditFontSize" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}">
-          {%- for s in pageData.notch.fontSizes %}<option value="{{ s.value }}"{% if s.selected %} selected{% endif %}>{{ s.label }}</option>{% endfor %}
-        </select>
+        <div class="font-size-control notch-font-size-control">
+          <button class="font-size-trigger" type="button" aria-label="{{ pageData.format.fontSizeLabel }}" aria-expanded="false"><span class="font-size-value">24px</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button>
+          <div class="font-size-menu" role="listbox" hidden>
+            <label class="font-size-custom-input"><span>{{ pageData.format.customFontSize }}</span><input class="notch-edit-select" id="notchEditFontSize" type="number" min="0" step="any" inputmode="decimal" value="24" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}"><em>px</em></label>
+            {%- for s in pageData.notch.fontSizes %}<button type="button" role="option" data-font-size="{{ s.value }}">{{ s.label }}</button>{% endfor %}
+          </div>
+        </div>
         <span class="notch-edit-divider" aria-hidden="true"></span>
         <button type="button" class="notch-edit-cmd" data-cmd="bold" title="{{ pageData.format.boldTitle }}" aria-label="Bold"><b>B</b></button>
         <button type="button" class="notch-edit-cmd" data-cmd="italic" title="{{ pageData.format.italicTitle }}" aria-label="Italic"><i>I</i></button>

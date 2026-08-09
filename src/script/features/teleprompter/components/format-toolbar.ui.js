@@ -29,7 +29,9 @@ export function initFormatToolbar({
   const colorTriggers = Array.from(root.querySelectorAll('.ft-color-picker-btn, #notchEditColorTrigger'));
   const colorBars = Array.from(root.querySelectorAll('.ft-color-bar, #notchEditColorBar'));
   const colorApplyBtns = Array.from(root.querySelectorAll('.ft-color, #notchEditColorApplyBtn'));
-  const fontSizeSelects = Array.from(root.querySelectorAll('.format-toolbar .ft-font-size, #notchEditFontSize'));
+  const fontSizeControls = Array.from(root.querySelectorAll('.format-toolbar .ft-font-size, #notchEditFontSize'));
+  const fontSizeControlGroups = Array.from(root.querySelectorAll('.font-size-control'));
+  const fontSizeMenus = new Map(fontSizeControlGroups.map((group) => [group, group.querySelector('.font-size-menu')]));
   const lineHeightSelects = Array.from(root.querySelectorAll('.format-toolbar .ft-line-height, #notchEditLineHeight'));
   const alignButtons = Array.from(root.querySelectorAll('.format-toolbar .ft-align, #notchEditToolbar .notch-edit-align'));
 
@@ -49,6 +51,63 @@ export function initFormatToolbar({
     select.value = value || (fallback ? fallback.value : '');
   }
 
+  function normalizeFontSize(value) {
+    const size = Number.parseFloat(value);
+    return Number.isFinite(size) && size > 0 ? String(size) : '';
+  }
+
+  function setFontSizeValue(control, value) {
+    const size = normalizeFontSize(value) || control.defaultValue || '';
+    control.value = size;
+    const label = control.closest('.font-size-control')?.querySelector('.font-size-value');
+    if (label) label.textContent = size ? `${size}px` : '';
+  }
+
+  function closeFontSizeMenus(except = null) {
+    fontSizeControlGroups.forEach((group) => {
+      if (group === except) return;
+      const menu = fontSizeMenus.get(group);
+      const toggle = group.querySelector('.font-size-trigger');
+      if (menu) {
+        menu.hidden = true;
+        if (menu.parentElement !== group) group.appendChild(menu);
+      }
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  function positionFontSizeMenu(group, menu) {
+    const { left, top, bottom } = group.getBoundingClientRect();
+    const menuHeight = Math.min(menu.scrollHeight, window.innerHeight - 16);
+    const leftPosition = Math.min(Math.max(8, left), window.innerWidth - menu.offsetWidth - 8);
+    const hasRoomBelow = window.innerHeight - bottom - 8 >= Math.min(menuHeight, 180);
+    const topPosition = hasRoomBelow
+      ? bottom + 8
+      : Math.max(8, top - menuHeight - 8);
+
+    menu.style.left = `${leftPosition}px`;
+    menu.style.top = `${topPosition}px`;
+  }
+
+  function toggleFontSizeMenu(group) {
+    const menu = fontSizeMenus.get(group);
+    const toggle = group.querySelector('.font-size-trigger');
+    const input = group.querySelector('.ft-font-size, #notchEditFontSize');
+    if (!menu || !toggle || !input) return;
+    const isOpen = menu.hidden;
+    closeFontSizeMenus(group);
+    if (isOpen) {
+      menu.classList.toggle('font-size-menu--notch', group.classList.contains('notch-font-size-control'));
+      menu.classList.toggle('font-size-menu--dark', Boolean(group.closest('.panel:not(.theme-light)')));
+      menu.classList.toggle('font-size-menu--mobile', group.closest('#mobileFormatToolbar') !== null);
+      document.body.appendChild(menu);
+    }
+    menu.hidden = !isOpen;
+    if (!isOpen) group.appendChild(menu);
+    if (isOpen) positionFontSizeMenu(group, menu);
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  }
+
   function applySettings(settings = {}) {
     const fontSize = settings.fontSize || '';
     const lineHeight = settings.lineHeight || '1.25';
@@ -61,7 +120,7 @@ export function initFormatToolbar({
       surface.style.fontStyle = settings.italic ? 'italic' : '';
       surface.style.textDecoration = settings.underline ? 'underline' : '';
     });
-    fontSizeSelects.forEach((select) => setSelectValue(select, fontSize));
+    fontSizeControls.forEach((control) => setFontSizeValue(control, fontSize));
     lineHeightSelects.forEach((select) => setSelectValue(select, lineHeight));
     colorHex = color || DEFAULT_COLOR;
     colorBars.forEach((bar) => { bar.style.background = colorHex; });
@@ -158,16 +217,10 @@ export function initFormatToolbar({
       }
     }
 
-    fontSizeSelects.forEach((select) => {
+    fontSizeControls.forEach((control) => {
       if (detectedSize) {
-        const hasOption = Array.from(select.options).some((opt) => opt.value === detectedSize);
-        if (hasOption) {
-          select.value = detectedSize;
-          return;
-        }
+        setFontSizeValue(control, detectedSize);
       }
-      const defaultOption = Array.from(select.options).find((opt) => opt.hasAttribute('selected')) || select.options[0];
-      select.value = defaultOption ? defaultOption.value : '';
     });
   }
 
@@ -344,7 +397,7 @@ export function initFormatToolbar({
         cleanEmptySpans(s);
       });
       patch.fontSize = value;
-      fontSizeSelects.forEach((select) => { select.value = value; });
+      fontSizeControls.forEach((control) => { setFontSizeValue(control, value); });
     } else if (cmd === 'lineHeight') {
       surfaces.forEach((s) => {
         s.style.lineHeight = value || '1.25';
@@ -437,10 +490,11 @@ export function initFormatToolbar({
     });
   });
 
-  fontSizeSelects.forEach((select) => {
-    on(select, 'change', () => {
-      const px = select.value;
+  fontSizeControls.forEach((control) => {
+    on(control, 'change', () => {
+      const px = normalizeFontSize(control.value);
       if (!px) return;
+      fontSizeControls.forEach((otherControl) => { setFontSizeValue(otherControl, px); });
       if (isSelectionActive()) {
         applyFormat(() => {
           // execCommand fontSize only takes 1-7: use size 7 as a marker then swap to px.
@@ -468,6 +522,36 @@ export function initFormatToolbar({
         applyGlobalFormat('fontSize', px);
       }
     });
+    on(control, 'keydown', (event) => {
+      if (event.key !== 'Enter') return;
+      event.preventDefault();
+      control.dispatchEvent(new Event('change', { bubbles: true }));
+      closeFontSizeMenus();
+      control.blur();
+    });
+  });
+
+  fontSizeControlGroups.forEach((group) => {
+    const toggle = group.querySelector('.font-size-trigger');
+    const menu = fontSizeMenus.get(group);
+    on(toggle, 'click', () => toggleFontSizeMenu(group));
+    on(menu, 'click', (event) => {
+      const option = event.target.closest('[data-font-size]');
+      if (!option) return;
+      const input = menu.querySelector('.ft-font-size, #notchEditFontSize');
+      if (!input) return;
+      input.value = option.dataset.fontSize;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+      closeFontSizeMenus();
+      toggle.focus();
+    });
+  });
+
+  on(root, 'click', (event) => {
+    if (!event.target.closest('.font-size-control, .font-size-menu')) closeFontSizeMenus();
+  });
+  on(root, 'keydown', (event) => {
+    if (event.key === 'Escape') closeFontSizeMenus();
   });
 
   // Line height is a shared reading-layout setting, so it always applies to

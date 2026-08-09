@@ -19,7 +19,7 @@ describe('shared format toolbar controller', () => {
         <div id="teleprompterText" contenteditable="true">Popup text</div>
         <div id="notchEditPanel" class="show">
           <div id="notchEditToolbar">
-            <select id="notchEditFontSize"><option value="24" selected>24</option><option value="32">32</option></select>
+            <div class="font-size-control"><button class="font-size-trigger" type="button"><span class="font-size-value">24px</span></button><div class="font-size-menu" hidden><input id="notchEditFontSize" type="number" min="0" step="any" value="24"><button type="button" data-font-size="32">32px</button></div></div>
             <select id="notchEditLineHeight"><option value="1.25" selected>Line 1.25</option><option value="1.5">Line 1.5</option></select>
             <button data-cmd="bold">B</button>
             <button data-cmd="underline">U</button>
@@ -83,7 +83,7 @@ describe('shared format toolbar controller', () => {
 
     const size = document.getElementById('notchEditFontSize');
     size.value = '32';
-    size.dispatchEvent(new Event('change', { bubbles: true }));
+    size.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }));
 
     [promptBox, teleprompterText, notchEditText].forEach((surface) => {
       expect(surface.style.fontSize).toBe('32px');
@@ -91,6 +91,39 @@ describe('shared format toolbar controller', () => {
     // Commit against the surface being edited (the open notch panel), not the
     // stale main promptBox.
     expect(onFormatChange).toHaveBeenCalledWith(notchEditText, { fontSize: '32' });
+  });
+
+  it('accepts and synchronizes a custom font size outside the suggested list', () => {
+    const promptBox = document.getElementById('promptBox');
+    const teleprompterText = document.getElementById('teleprompterText');
+    const notchEditText = document.getElementById('notchEditText');
+    controller = initFormatToolbar({ promptBox, teleprompterText, notchEditText });
+
+    const size = document.getElementById('notchEditFontSize');
+    size.value = '137.5';
+    size.dispatchEvent(new Event('change', { bubbles: true }));
+
+    [promptBox, teleprompterText, notchEditText].forEach((surface) => {
+      expect(surface.style.fontSize).toBe('137.5px');
+    });
+    expect(size.value).toBe('137.5');
+  });
+
+  it('opens the font-size menu and applies a suggested size from it', () => {
+    const promptBox = document.getElementById('promptBox');
+    const teleprompterText = document.getElementById('teleprompterText');
+    const notchEditText = document.getElementById('notchEditText');
+    controller = initFormatToolbar({ promptBox, teleprompterText, notchEditText });
+
+    const group = document.querySelector('#notchEditToolbar .font-size-control');
+    const menu = group.querySelector('.font-size-menu');
+    group.querySelector('.font-size-trigger').click();
+    expect(menu.hidden).toBe(false);
+    expect(menu.parentElement).toBe(document.body);
+
+    menu.querySelector('[data-font-size="32"]').click();
+    expect(menu.hidden).toBe(true);
+    expect(promptBox.style.fontSize).toBe('32px');
   });
 
   it('applies and synchronizes line height across every teleprompter toolbar and surface', () => {

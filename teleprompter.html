@@ -174,8 +174,12 @@
 
     <!-- Format toolbar: desktop pill, centered while editing (pre-record). -->
     <div class="format-toolbar" id="formatToolbar" role="toolbar" aria-label="Text formatting">
-      <select id="fontSizeSelect" class="ft-font-size" title="Font size" aria-label="Font size"><option value="16">16px</option><option value="18">18px</option><option value="20">20px</option><option value="24" selected>24px</option><option value="28">28px</option><option value="32">32px</option><option value="36">36px</option><option value="42">42px</option><option value="48">48px</option>
-      </select>
+      <div class="font-size-control">
+        <button class="font-size-trigger" type="button" aria-label="Font size" aria-expanded="false"><span class="font-size-value">24px</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button>
+        <div class="font-size-menu" role="listbox" hidden>
+          <label class="font-size-custom-input"><span>Custom</span><input id="fontSizeSelect" class="ft-font-size" type="number" min="0" step="any" inputmode="decimal" value="24" title="Font size" aria-label="Font size"><em>px</em></label><button type="button" role="option" data-font-size="16">16px</button><button type="button" role="option" data-font-size="18">18px</button><button type="button" role="option" data-font-size="20">20px</button><button type="button" role="option" data-font-size="24">24px</button><button type="button" role="option" data-font-size="28">28px</button><button type="button" role="option" data-font-size="32">32px</button><button type="button" role="option" data-font-size="36">36px</button><button type="button" role="option" data-font-size="42">42px</button><button type="button" role="option" data-font-size="48">48px</button>
+        </div>
+      </div>
       <span class="ft-divider"></span>
       <div class="ft-bi-group">
         <button type="button" class="ft-bold" data-cmd="bold" title="Bold (Ctrl+B)">B</button>
@@ -256,8 +260,12 @@
 
   <!-- Mobile format-toolbar (≤768px): own bar below the header, scrolls horizontally. -->
   <div class="format-toolbar mobile-format-toolbar" id="mobileFormatToolbar" role="toolbar" aria-label="Text formatting">
-    <select class="ft-font-size" title="Font size" aria-label="Font size"><option value="16">16px</option><option value="18">18px</option><option value="20">20px</option><option value="24" selected>24px</option><option value="28">28px</option><option value="32">32px</option><option value="36">36px</option><option value="42">42px</option><option value="48">48px</option>
-    </select>
+    <div class="font-size-control">
+      <button class="font-size-trigger" type="button" aria-label="Font size" aria-expanded="false"><span class="font-size-value">24px</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button>
+      <div class="font-size-menu" role="listbox" hidden>
+        <label class="font-size-custom-input"><span>Custom</span><input class="ft-font-size" type="number" min="0" step="any" inputmode="decimal" value="24" title="Font size" aria-label="Font size"><em>px</em></label><button type="button" role="option" data-font-size="16">16px</button><button type="button" role="option" data-font-size="18">18px</button><button type="button" role="option" data-font-size="20">20px</button><button type="button" role="option" data-font-size="24">24px</button><button type="button" role="option" data-font-size="28">28px</button><button type="button" role="option" data-font-size="32">32px</button><button type="button" role="option" data-font-size="36">36px</button><button type="button" role="option" data-font-size="42">42px</button><button type="button" role="option" data-font-size="48">48px</button>
+      </div>
+    </div>
     <span class="ft-divider"></span>
     <div class="ft-bi-group">
       <button type="button" class="ft-bold" data-cmd="bold" title="Bold (Ctrl+B)">B</button>
@@ -758,8 +766,12 @@
     <div class="notch-edit-resize" data-notch-edit-resize="sw" aria-hidden="true"></div>
     <div class="notch-edit-body" id="notchEditBody">
       <div class="notch-edit-toolbar" id="notchEditToolbar" role="toolbar" aria-label="Notch text formatting">
-        <select class="notch-edit-select" id="notchEditFontSize" title="Font size" aria-label="Font size"><option value="14">14px</option><option value="16">16px</option><option value="18">18px</option><option value="20">20px</option><option value="24" selected>24px</option><option value="28">28px</option><option value="32">32px</option>
-        </select>
+        <div class="font-size-control notch-font-size-control">
+          <button class="font-size-trigger" type="button" aria-label="Font size" aria-expanded="false"><span class="font-size-value">24px</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button>
+          <div class="font-size-menu" role="listbox" hidden>
+            <label class="font-size-custom-input"><span>Custom</span><input class="notch-edit-select" id="notchEditFontSize" type="number" min="0" step="any" inputmode="decimal" value="24" title="Font size" aria-label="Font size"><em>px</em></label><button type="button" role="option" data-font-size="14">14px</button><button type="button" role="option" data-font-size="16">16px</button><button type="button" role="option" data-font-size="18">18px</button><button type="button" role="option" data-font-size="20">20px</button><button type="button" role="option" data-font-size="24">24px</button><button type="button" role="option" data-font-size="28">28px</button><button type="button" role="option" data-font-size="32">32px</button>
+          </div>
+        </div>
         <span class="notch-edit-divider" aria-hidden="true"></span>
         <button type="button" class="notch-edit-cmd" data-cmd="bold" title="Bold (Ctrl+B)" aria-label="Bold"><b>B</b></button>
         <button type="button" class="notch-edit-cmd" data-cmd="italic" title="Italic (Ctrl+I)" aria-label="Italic"><i>I</i></button>

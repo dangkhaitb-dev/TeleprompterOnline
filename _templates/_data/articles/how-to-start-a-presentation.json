@@ -1,0 +1,86 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "how-to-start-a-presentation",
+  "title": "How to Start a Presentation: A Clear Opening That Works",
+  "shortName": "How to Start a Presentation",
+  "category": "Presentation & Public Speaking",
+  "date": "2026-08-09",
+  "dateDisplay": "August 9, 2026",
+  "modified": "2026-08-09",
+  "keywords": ["how to start a presentation", "presentation opening", "presentation introduction examples", "how to introduce a presentation"],
+  "mentions": ["presentation opening", "public speaking", "audience attention"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 9, 2026" },
+  "seo": {
+    "title": "How to Start a Presentation: A Clear Opening That Works",
+    "description": "Start a presentation with a relevant hook, a clear audience promise, and a simple roadmap. Use the examples and checklist to write your opening.",
+    "image": "https://solprompter.com/media/blog/how-to-start-a-presentation/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/how-to-start-a-presentation/hero.webp",
+    "alt": "Presenter beginning a talk in a modern conference room",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "Start a presentation by giving people a reason to listen, naming the useful idea they will leave with, and showing the path you will take. You do not need an elaborate joke, a dramatic statistic, or a long personal introduction. A short, relevant opening that leads directly to your point is easier to deliver and easier for an audience to follow." },
+    { "type": "paragraph", "html": "This guide focuses only on the first minute. For the complete message structure—including slide narration and transitions—use the <a href=\"/blog/presentation-script-template/\">presentation script template</a>. For the final minute, continue with <a href=\"/blog/presentation-public-speaking/how-to-end-a-presentation/\">How to End a Presentation</a>." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Give the opening three jobs" },
+    { "type": "paragraph", "html": "A useful opening has three parts: a connection to the audience’s situation, a clear point or outcome, and a brief preview of what comes next. The order can vary, but every line should help the room answer: “Why should I pay attention, and where is this going?”" },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Connection", "text": "Name a problem, opportunity, question, or moment your audience recognizes." },
+      { "title": "Promise", "text": "Say what they will understand, decide, or be able to do by the end." },
+      { "title": "Roadmap", "text": "Preview the two or three ideas that will deliver that promise." }
+    ] },
+    { "type": "paragraph", "html": "Toastmasters describes an opening hook as brief and relevant: it should gain interest and direct that interest toward the main point. That relevance matters more than trying to sound impressive. <a href=\"https://www.toastmasters.org/magazine/magazine-issues/2025/november/how-to-hook-audiences-from-the-start\">Read its guidance on opening hooks</a>." },
+    { "type": "heading", "level": 2, "text": "Choose a hook that belongs to the talk" },
+    { "type": "paragraph", "html": "The best hook is not a category to fill; it is the fastest honest route into your subject. Choose one that makes the audience want the answer your presentation provides. If it needs a long explanation before it connects to the topic, leave it out." },
+    { "type": "list", "style": "bullets", "items": [
+      { "title": "A specific audience question", "text": "“How many client updates this month ended without a clear decision?” Use this when the room can answer from experience." },
+      { "title": "A short contrast", "text": "“Most updates report activity. Useful updates make a decision visible.” Use this when your presentation corrects a common approach." },
+      { "title": "A brief scenario", "text": "Describe one recognizable moment, then name the consequence. Keep it to two or three sentences." },
+      { "title": "A relevant number", "text": "Use a verified figure only when you can explain what it means for this audience. Do not let a statistic replace the point." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Write the promise in audience language" },
+    { "type": "paragraph", "html": "A topic is not yet a promise. “Today I will discuss project handoffs” tells people the subject. “By the end, you will have a three-question handoff check you can use before Friday” tells them the value. Keep the promise small enough that the rest of the presentation can genuinely fulfil it." },
+    { "type": "quote", "text": "“When a handoff fails, the problem is usually not effort—it is an unanswered question. In the next six minutes, I will show you the three questions that make the next owner, decision, and deadline visible.”" },
+    { "type": "paragraph", "html": "The example works because the hook, promise, and topic are the same idea viewed from three angles. Replace its details with your own subject rather than borrowing the wording." },
+    { "type": "heading", "level": 2, "text": "Use a roadmap only when it helps" },
+    { "type": "paragraph", "html": "For a short presentation, one sentence can orient the room: “We will look at the handoff problem, the three-question check, and one worked example.” For a very short update, the promise may be enough. For a longer or more technical presentation, a roadmap reduces uncertainty before you add detail." },
+    { "type": "paragraph", "html": "Keep the roadmap at the level of the audience’s journey, not the names of your slides. “First the risk, then the decision, then the next step” is more useful than reading a list of section labels." },
+    { "type": "heading", "level": 2, "text": "What to avoid in the first minute" },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "A generic welcome", "text": "A greeting is fine, but move quickly to why this topic matters now." },
+      { "title": "Credentials before relevance", "text": "Share only the experience that helps the audience trust this specific message; let the host introduce the rest." },
+      { "title": "A hook with no bridge", "text": "Do not use a story, question, or quote unless you immediately connect it to the main point." },
+      { "title": "Too many promises", "text": "If you promise five outcomes, the audience cannot tell what to remember. Choose one primary result." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Practice the opening separately" },
+    { "type": "paragraph", "html": "Practice the first 30 to 60 seconds aloud until you can begin without searching for the first sentence. You can script the opening exactly, then use notes for familiar examples and discussion. A rehearsal should include the real slide, clicker, camera position, and the pause before your first line; use the <a href=\"/blog/presentation-public-speaking/presentation-rehearsal-checklist/\">presentation rehearsal checklist</a> to test the whole delivery." },
+    { "type": "heading", "level": 2, "text": "Opening checklist" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "The first line connects directly to the audience or their situation." },
+      { "text": "The main promise is specific and achievable in the available time." },
+      { "text": "The hook leads to the point without an extra explanation." },
+      { "text": "The roadmap has no more than three parts, or you have intentionally omitted it." },
+      { "text": "You have read the opening aloud with the real visual or camera setup." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "Should I introduce myself first?", "includeInToc": true },
+    { "type": "paragraph", "html": "Usually, state your name briefly, then move to the audience’s reason for listening. If a host has already introduced you, begin with the topic rather than repeating a full biography." },
+    { "type": "heading", "level": 3, "text": "How long should a presentation introduction be?", "includeInToc": true },
+    { "type": "paragraph", "html": "Keep it proportional to the talk. A short update may need only two sentences; a longer presentation may need a minute or two to establish the problem and route. Cut setup that does not change the audience’s understanding." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "Once your opening makes a clear promise, build the middle so every section delivers it.", "label": "Use the Presentation Script Template", "url": "/blog/presentation-script-template/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops the product linked here. The communication guidance is usable with any presentation setup; the product link is included only as an optional practice tool." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Toastmasters International. <a href=\"https://www.toastmasters.org/magazine/magazine-issues/2025/november/how-to-hook-audiences-from-the-start\">“How to Hook Audiences from the Start.”</a>" },
+      { "text": "Toastmasters International. <a href=\"https://www.toastmasters.org/magazine/magazine-issues/2021/nov/build-a-great-speech\">“Build a Great Speech.”</a>" }
+    ] }
+  ]
+}

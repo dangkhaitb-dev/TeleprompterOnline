@@ -1,0 +1,93 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "presentation-rehearsal-checklist",
+  "title": "Presentation Rehearsal Checklist: Practice Before You Speak",
+  "shortName": "Presentation Rehearsal Checklist",
+  "category": "Presentation & Public Speaking",
+  "date": "2026-08-09",
+  "dateDisplay": "August 9, 2026",
+  "modified": "2026-08-09",
+  "keywords": ["presentation rehearsal checklist", "how to rehearse a presentation", "presentation practice tips", "public speaking rehearsal"],
+  "mentions": ["presentation rehearsal", "public speaking practice", "speaker notes"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 9, 2026" },
+  "seo": {
+    "title": "Presentation Rehearsal Checklist: Practice Before You Speak",
+    "description": "Rehearse a presentation with a focused checklist for timing, slides, transitions, delivery, questions, and technical backup—without over-practicing.",
+    "image": "https://solprompter.com/media/blog/presentation-rehearsal-checklist/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/presentation-rehearsal-checklist/hero.webp",
+    "alt": "Professional rehearsing a presentation in a meeting room with a laptop and screen",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "Rehearse a presentation in stages: first test whether the message makes sense aloud, then test timing and transitions, then run the complete setup as the audience will experience it. Each rehearsal should answer a question. Repeating the full talk without a focus can make you tired without making the presentation clearer." },
+    { "type": "paragraph", "html": "Use this checklist for a live, remote, or recorded talk. It covers delivery rather than script development; start with the <a href=\"/blog/presentation-script-template/\">presentation script template</a> if you still need to decide what belongs on each slide. For a recorded assignment or video, also use <a href=\"/blog/how-to-pre-record-a-presentation/\">How to Pre-Record a Presentation</a>." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Rehearse in three passes" },
+    { "type": "paragraph", "html": "Separate content, delivery, and setup so you can fix the right problem. A polished voice will not fix a confusing sequence, and a well-written script will not reveal whether a clicker or screen share works until you test it." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Pass 1: message", "text": "Speak the outline aloud. Check that each section earns its place and that transitions explain why the next point follows." },
+      { "title": "Pass 2: delivery", "text": "Time the whole talk. Notice rushed sections, awkward phrases, eye line, pace, and the first and final lines." },
+      { "title": "Pass 3: real setup", "text": "Use the real slides, notes, room or meeting platform, microphone, camera, clicker, and any recording controls." }
+    ] },
+    { "type": "paragraph", "html": "Toastmasters notes that an out-loud rehearsal exposes clunky phrasing, unclear logic, weak transitions, and stories that need trimming. That is why a silent read is not enough for a speaking task. <a href=\"https://www.toastmasters.org/magazine/magazine-issues/2026/march/10-ways-to-prepare-for-a-work-presentation\">Read its work-presentation preparation guidance</a>." },
+    { "type": "heading", "level": 2, "text": "Pass 1: test the message aloud" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "State the audience outcome in one sentence before you begin." },
+      { "text": "Check that every main section supports that outcome." },
+      { "text": "Say each transition aloud; replace “next slide” with the reason the next idea matters." },
+      { "text": "Mark any explanation you cannot say simply on the first read." },
+      { "text": "Remove repeated setup before cutting a necessary example or condition." }
+    ] },
+    { "type": "paragraph", "html": "Do not aim for a performance in this pass. Stop, rewrite a confusing sentence, and begin again from the previous signpost. If your script is written like an article, use <a href=\"/blog/turn-writing-into-a-speaking-script/\">the speaking-script rewrite workflow</a> before practicing more." },
+    { "type": "heading", "level": 2, "text": "Pass 2: test time and delivery" },
+    { "type": "paragraph", "html": "Time a full rehearsal with natural pauses, slide changes, audience prompts, and the opening and close included. A word-count estimate is only a starting point; your own pace, examples, and pauses decide the actual time. If you run long, simplify the least essential explanation rather than speeding through every line." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Start with the real first slide and time from your first spoken word." },
+      { "text": "Check the opening for a clear hook and promise; use <a href=\"/blog/presentation-public-speaking/how-to-start-a-presentation/\">the opening guide</a> if it is still vague." },
+      { "text": "Listen for a pace change at complex points; add a pause instead of filling silence." },
+      { "text": "Practice the last 30 seconds exactly, including what happens after Q&amp;A." },
+      { "text": "Use a recording to review one delivery issue at a time, not every detail at once." }
+    ] },
+    { "type": "paragraph", "html": "For camera-based practice, short record–review–retry loops keep feedback manageable. The <a href=\"/blog/how-to-speak-confidently-on-camera/\">camera confidence practice plan</a> shows how to review one useful change and retry instead of turning one take into a verdict." },
+    { "type": "heading", "level": 2, "text": "Pass 3: test the environment and backup plan" },
+    { "type": "paragraph", "html": "The final rehearsal should look as close as practical to the actual delivery. Test what the audience will see and hear—not only what you can see from the presenter position. In a room, check sightlines and slide legibility. Online, test screen share, camera framing, microphone level, chat or Q&amp;A, and the join link." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Slides and notes", "text": "Open the correct version, test every transition, and make sure speaker notes cannot be accidentally shared." },
+      { "title": "Audio and camera", "text": "Record a short sample, listen with headphones, and confirm the camera frame and eye line." },
+      { "title": "Controls", "text": "Test the clicker, remote, keyboard shortcuts, screen share, and any teleprompter or cueing method you will use." },
+      { "title": "Backup", "text": "Keep a local copy of the slides, a readable outline, and a way to continue if a link, battery, or connection fails." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Use feedback without losing the message" },
+    { "type": "paragraph", "html": "Ask one trusted reviewer for feedback tied to the presentation goal: “After hearing this, what do you think I want you to do?” and “Where did the logic become less clear?” Avoid asking only whether they liked it. Their answer can reveal whether the takeaway and transitions are doing their job." },
+    { "type": "paragraph", "html": "Choose one or two changes for the next run. Trying to correct posture, gestures, wording, slides, timing, and confidence at once makes it hard to know which adjustment helped." },
+    { "type": "heading", "level": 2, "text": "Final rehearsal checklist" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "The opening names a relevant problem or opportunity and a clear promise." },
+      { "text": "Every main section connects to the audience outcome." },
+      { "text": "The presentation fits the time limit with natural pauses included." },
+      { "text": "Slides, notes, audio, camera, and controls have been tested in the real path." },
+      { "text": "You have a concise outline and a backup for the most likely technical failure." },
+      { "text": "The closing restates the main takeaway and tells the audience what happens next." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "How many times should I rehearse a presentation?", "includeInToc": true },
+    { "type": "paragraph", "html": "Rehearse until you have tested the message, timing, and setup—not until every word is memorized. For a short or high-stakes talk, that may mean several focused passes and one complete technical run." },
+    { "type": "heading", "level": 3, "text": "Should I memorize my presentation?", "includeInToc": true },
+    { "type": "paragraph", "html": "Memorize wording that must be exact, such as the opening, closing, or a sensitive statement. Use notes for familiar examples and live interaction when flexibility matters. Compare the trade-offs in <a href=\"/blog/teleprompter-vs-memorizing-vs-bullet-points/\">Teleprompter vs Memorizing vs Bullet Points</a>." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "Use a focused rehearsal to make the first and final minutes feel as deliberate as the rest of the presentation.", "label": "Read How to End a Presentation", "url": "/blog/presentation-public-speaking/how-to-end-a-presentation/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops the product linked here. The checklist works with any presentation setup; the product link is included only as an optional practice tool." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Toastmasters International. <a href=\"https://www.toastmasters.org/magazine/magazine-issues/2026/march/10-ways-to-prepare-for-a-work-presentation\">“10 Ways to Prepare for a Work Presentation.”</a>" },
+      { "text": "Toastmasters International. <a href=\"https://www.toastmasters.org/websiteApps/Pathways/IceBreaker/tm100101/resources/8101-ice-breaker.pdf\">“Ice Breaker.”</a>" }
+    ] }
+  ]
+}

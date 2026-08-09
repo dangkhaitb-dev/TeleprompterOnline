@@ -2945,7 +2945,8 @@ html[data-theme="dark"] .mff-more-left {
   text-overflow: ellipsis;
 }
 
-.format-toolbar .ft-font-size {
+.format-toolbar .ft-font-size,
+.font-size-menu .ft-font-size {
   width: 62px;
   min-width: 0;
   height: 34px;
@@ -2993,9 +2994,14 @@ html[data-theme="dark"] .mff-more-left {
   position: fixed;
   z-index: 100;
   width: 156px;
+  max-width: calc(100vw - 16px);
   max-height: min(280px, calc(100vh - 120px));
   padding: 6px;
   overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
   background: var(--tp-surface);
   border: 1px solid var(--tp-divider);
   border-radius: 10px;
@@ -3017,6 +3023,7 @@ html[data-theme="dark"] .mff-more-left {
 .font-size-menu--notch .font-size-custom-input {
   border-color: rgba(255, 255, 255, 0.16);
   color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.08);
 }
 
 .font-size-menu--dark .font-size-custom-input em,
@@ -3037,36 +3044,101 @@ html[data-theme="dark"] .mff-more-left {
 
 .font-size-custom-input {
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  grid-template-columns: 50px minmax(0, 1fr);
   gap: 6px;
   align-items: center;
-  min-height: 38px;
-  margin: 0 0 5px;
-  padding: 0 7px 0 10px;
-  border-bottom: 1px solid var(--tp-divider);
-  color: var(--tp-page-text-muted);
+  position: relative;
+  min-height: 36px;
+  margin: 0 0 6px;
+  padding: 3px 8px 3px 10px;
+  border: 1px solid var(--tp-divider);
+  border-radius: 8px;
+  background: var(--tp-surface-hover);
+  color: var(--tp-page-text);
   font-size: 12px;
   font-weight: 650;
 }
 
 .font-size-custom-input em {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
   font-style: normal;
-  color: var(--tp-page-text-muted);
+  color: var(--tp-page-text);
+  opacity: 0.72;
 }
 
-.format-toolbar .font-size-menu button {
+.font-size-menu button {
   display: flex;
   width: 100%;
-  min-height: 36px;
+  min-height: 34px;
+  border: 0;
   padding: 0 10px;
+  color: var(--tp-page-text);
+  background: transparent;
   border-radius: 7px;
   justify-content: flex-start;
   font-size: 14px;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.format-toolbar .font-size-menu button:hover,
-.format-toolbar .font-size-menu button:focus-visible {
+.font-size-menu button:hover,
+.font-size-menu button:focus-visible {
   background: var(--tp-surface-hover);
+}
+
+.font-size-menu .ft-font-size {
+  min-width: 0;
+  height: 28px;
+  width: 100%;
+  padding: 0 24px 0 4px;
+  border: 1px solid var(--tp-divider);
+  background: var(--tp-surface);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.font-size-menu .ft-font-size::-webkit-inner-spin-button,
+.font-size-menu .ft-font-size::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+.font-size-menu--dark .ft-font-size,
+.font-size-menu--notch .ft-font-size {
+  border-color: rgba(255, 255, 255, 0.2);
+  background: rgba(0, 0, 0, 0.28);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .font-size-custom-input {
+  border-color: rgba(255, 255, 255, 0.28);
+  background: rgba(255, 255, 255, 0.12);
+  color: #f5f5f7;
+}
+
+html[data-theme="dark"] .font-size-custom-input em {
+  color: #d1d1d6;
+  opacity: 1;
+}
+
+html[data-theme="dark"] .font-size-menu .ft-font-size {
+  border-color: rgba(255, 255, 255, 0.32);
+  background: #17181b;
+  color: #ffffff;
+}
+
+.font-size-value {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .format-toolbar select:hover:not(.ft-line-height),
@@ -3843,7 +3915,7 @@ html.theme-instant *::after {
 
 @media (max-width: 1024px) {
   .font-size-menu--mobile button {
-    min-height: 44px;
+    min-height: 40px;
     font-size: 16px;
   }
 
@@ -3862,7 +3934,7 @@ html.theme-instant *::after {
   }
 
   .font-size-menu--mobile .font-size-custom-input {
-    min-height: 44px;
+    min-height: 38px;
     font-size: 13px;
   }
 }

@@ -32,7 +32,8 @@
       { "value": "32", "label": "32px" },
       { "value": "36", "label": "36px" },
       { "value": "42", "label": "42px" },
-      { "value": "48", "label": "48px" }
+      { "value": "48", "label": "48px" },
+      { "value": "250", "label": "250px" }
     ],
     "lineHeightLabel": "Line height",
     "lineHeights": [
@@ -239,7 +240,8 @@
       { "value": "20", "label": "20px" },
       { "value": "24", "label": "24px", "selected": true },
       { "value": "28", "label": "28px" },
-      { "value": "32", "label": "32px" }
+      { "value": "32", "label": "32px" },
+      { "value": "250", "label": "250px" }
     ],
     "editPlaceholder": "Edit script…",
     "editTextAria": "Edit notch script text"

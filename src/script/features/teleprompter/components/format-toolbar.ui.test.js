@@ -99,6 +99,7 @@ describe('shared format toolbar controller', () => {
     const notchEditText = document.getElementById('notchEditText');
     controller = initFormatToolbar({ promptBox, teleprompterText, notchEditText });
 
+    document.querySelector('#notchEditToolbar .font-size-trigger').click();
     const size = document.getElementById('notchEditFontSize');
     size.value = '137.5';
     size.dispatchEvent(new Event('change', { bubbles: true }));
@@ -107,6 +108,7 @@ describe('shared format toolbar controller', () => {
       expect(surface.style.fontSize).toBe('137.5px');
     });
     expect(size.value).toBe('137.5');
+    expect(document.querySelector('#notchEditToolbar .font-size-value').textContent).toBe('137.5px');
   });
 
   it('opens the font-size menu and applies a suggested size from it', () => {

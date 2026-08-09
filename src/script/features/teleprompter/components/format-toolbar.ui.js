@@ -31,6 +31,7 @@ export function initFormatToolbar({
   const colorApplyBtns = Array.from(root.querySelectorAll('.ft-color, #notchEditColorApplyBtn'));
   const fontSizeControls = Array.from(root.querySelectorAll('.format-toolbar .ft-font-size, #notchEditFontSize'));
   const fontSizeControlGroups = Array.from(root.querySelectorAll('.font-size-control'));
+  const fontSizeGroupsByControl = new Map(fontSizeControls.map((control) => [control, control.closest('.font-size-control')]));
   const fontSizeMenus = new Map(fontSizeControlGroups.map((group) => [group, group.querySelector('.font-size-menu')]));
   const lineHeightSelects = Array.from(root.querySelectorAll('.format-toolbar .ft-line-height, #notchEditLineHeight'));
   const alignButtons = Array.from(root.querySelectorAll('.format-toolbar .ft-align, #notchEditToolbar .notch-edit-align'));
@@ -59,7 +60,8 @@ export function initFormatToolbar({
   function setFontSizeValue(control, value) {
     const size = normalizeFontSize(value) || control.defaultValue || '';
     control.value = size;
-    const label = control.closest('.font-size-control')?.querySelector('.font-size-value');
+    const group = fontSizeGroupsByControl.get(control) || control.closest('.font-size-control');
+    const label = group?.querySelector('.font-size-value');
     if (label) label.textContent = size ? `${size}px` : '';
   }
 

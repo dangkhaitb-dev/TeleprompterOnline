@@ -1,0 +1,104 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "how-to-prepare-for-a-job-interview",
+  "title": "How to Prepare for a Job Interview: A Practical Plan",
+  "shortName": "How to Prepare for a Job Interview",
+  "category": "Interview & Meeting Preparation",
+  "date": "2026-08-09",
+  "dateDisplay": "August 9, 2026",
+  "modified": "2026-08-09",
+  "keywords": ["how to prepare for a job interview", "job interview preparation", "interview preparation checklist", "behavioral interview preparation"],
+  "mentions": ["job interview preparation", "behavioral interview", "STAR method", "mock interview"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 9, 2026" },
+  "seo": {
+    "title": "How to Prepare for a Job Interview: A Practical Plan",
+    "description": "Prepare for a job interview: research the role, choose evidence, practice answers aloud, ask useful questions, and handle logistics.",
+    "image": "https://solprompter.com/media/blog/how-to-prepare-for-a-job-interview/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/how-to-prepare-for-a-job-interview/hero.webp",
+    "alt": "Job candidate preparing for an interview with a role description and research notes at a desk",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "Prepare for a job interview by connecting three things: what the employer needs, evidence from your own work, and the questions you need answered before deciding whether the role fits. Then practice explaining that connection aloud. This approach is more useful than trying to memorize a perfect response for every possible question." },
+    { "type": "paragraph", "html": "Start several days ahead when possible. Research the organization and role, select a small set of accurate examples, rehearse concise answers with a person or recording, and confirm the interview format and logistics. MIT Career Advising similarly recommends researching the target organization, practicing, and planning ahead. <a href=\"https://capd.mit.edu/channels/interview/\">Read MIT’s interview guidance</a>." },
+    { "type": "paragraph", "html": "This guide covers preparation for a standard job interview. If your conversation is on a call, pair it with the <a href=\"/blog/interview-meeting-preparation/video-interview-checklist/\">video interview checklist</a>. For a professional conversation that is not a hiring interview, use <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-meeting/\">How to Prepare for a Meeting</a>." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Use a four-part interview preparation plan" },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "1. Decode the role", "text": "Read the job description closely. Mark the responsibilities, outcomes, and capabilities that recur, then identify what you can honestly demonstrate." },
+      { "title": "2. Research the context", "text": "Learn what the organization does, who it serves, recent priorities, and the team or interviewer’s public professional context when available." },
+      { "title": "3. Choose your evidence", "text": "Prepare several true stories that show how you approached relevant work, collaborated, made decisions, handled difficulty, or learned." },
+      { "title": "4. Practice the conversation", "text": "Say your examples out loud, prepare questions for the employer, and test the route, link, timing, and materials." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Turn the job description into a preparation brief" },
+    { "type": "paragraph", "html": "Do not research broadly and hope it becomes relevant. Make a one-page preparation brief from the actual posting. Put the role’s main responsibilities in one column, the skills or outcomes they imply in another, and a specific example from your experience in a third. A blank space is useful information: it tells you where to learn, ask a question, or describe an adjacent skill without overstating your experience." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Underline repeated verbs such as build, analyze, coordinate, improve, advise, or present." },
+      { "text": "Note the audience or partners involved: customers, senior leaders, a technical team, or a cross-functional group." },
+      { "text": "Write one result or learning point beside each experience you may discuss." },
+      { "text": "Separate required qualifications from preferred ones so you can address the essentials first." },
+      { "text": "Keep your résumé, application, portfolio, and public profile consistent with the examples you plan to use." }
+    ] },
+    { "type": "paragraph", "html": "Harvard’s career guidance advises candidates to market their skills and experience against job requirements using employer research. The practical version is simple: make each answer easy for an interviewer to connect to a responsibility they are hiring for. <a href=\"https://careerservices.fas.harvard.edu/resources/interviewing/\">See Harvard’s interviewing resource</a>." },
+    { "type": "heading", "level": 2, "text": "Research enough to have a useful point of view" },
+    { "type": "paragraph", "html": "Aim to understand the organization well enough to explain why this role is interesting to you and to ask informed questions—not to recite every page of its website. Start with its official site, the job description, recent announcements, products or services, and the interviewer’s public profile if they shared it. Prefer primary sources and record the date of anything time-sensitive." },
+    { "type": "paragraph", "html": "Write three short notes: what the organization appears to be trying to accomplish, what this role likely contributes, and which part of that work connects to your experience or direction. Treat these as conversation starters, not a speech. If a fact is uncertain, ask about it rather than presenting it as settled." },
+    { "type": "heading", "level": 2, "text": "Prepare true stories instead of scripted answers" },
+    { "type": "paragraph", "html": "Behavioral questions commonly ask for an example of something you did: resolving a conflict, improving a process, influencing a decision, learning from an error, or working through uncertainty. Yale’s Office of Career Strategy recommends structuring these accomplishment stories so they answer the full question. <a href=\"https://ocs.yale.edu/channels/the-behavioral-interview/posts/\">Review Yale’s behavioral-interview guide</a>." },
+    { "type": "paragraph", "html": "A STAR outline—situation, task, action, result—can keep a story understandable. Use only enough context to orient the listener, spend most of the answer on your own actions and judgment, and end with the outcome or what you learned. If the result was shared, describe your contribution accurately. You do not need to force every answer into the same formula; the framework is a planning aid, not a performance." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Situation and task", "text": "Name the setting, the problem, and your responsibility in one or two sentences." },
+      { "title": "Action", "text": "Explain the choices you made, the people you involved, and why your approach fit the problem." },
+      { "title": "Result and learning", "text": "Share the outcome you can support, then name what you would repeat or do differently when that is relevant." }
+    ] },
+    { "type": "paragraph", "html": "Choose five to seven stories that can be adapted across likely themes: a win, a difficult collaboration, a change or setback, an initiative, a problem you solved, and a time you learned quickly. Do not invent metrics or embellish responsibility. Specific, accurate detail is more credible than a dramatic but vague story." },
+    { "type": "heading", "level": 2, "text": "Practice aloud for clarity and follow-up questions" },
+    { "type": "paragraph", "html": "Practice is for becoming clearer and more responsive, not for learning a speech to recite. Ask a trusted person to use the job description to choose questions, or record a short mock interview and review it once. Notice whether your answer addresses the question, gives enough context, names your contribution, and leaves room for a follow-up." },
+    { "type": "paragraph", "html": "Start with the questions most likely to shape the conversation: “Tell me about yourself,” “Why this role?”, “Why this organization?”, and examples tied to the role’s core responsibilities. Then rehearse a calm reset for an unfamiliar question: pause, ask for clarification if needed, think aloud briefly about the relevant experience, and answer honestly. It is better to take a moment than to rush into an unrelated story." },
+    { "type": "paragraph", "html": "For delivery practice, use a short outline of topics before the session and put it away once the conversation begins. Do not read prepared answers during a live interview. If you use a speaking tool, use it to rehearse your opening or stories beforehand; <a href=\"/blog/teleprompter-vs-memorizing-vs-bullet-points/\">Teleprompter vs Memorizing vs Bullet Points</a> explains when each practice method is useful." },
+    { "type": "heading", "level": 2, "text": "Prepare questions that help you evaluate the role" },
+    { "type": "paragraph", "html": "A good interview is also your chance to learn whether the work, expectations, manager, and team fit. Prepare several questions, then select the ones the conversation has not already answered. Harvard and Yale both advise candidates to arrive with questions for the employer." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "What would a strong first three to six months look like in this role?" },
+      { "text": "What problem is the team most focused on solving now?" },
+      { "text": "How does this role work with the people or teams it depends on most?" },
+      { "text": "What distinguishes someone who succeeds in this position?" },
+      { "text": "What are the next steps and expected timeline for the process?" }
+    ] },
+    { "type": "heading", "level": 2, "text": "Complete the logistics check" },
+    { "type": "paragraph", "html": "The day before, confirm the time zone, format, names and titles of participants, location or meeting link, expected length, and any presentation or work sample. Choose appropriate clothing for the organization and format, prepare a clean copy of your résumé or portfolio if relevant, and plan to arrive or join a few minutes early. For remote calls, test the device and connection in advance rather than troubleshooting while the interview begins." },
+    { "type": "paragraph", "html": "Bring only what supports the interview: identification if required, a portfolio or work sample when requested, a pen, and a small notepad for questions and next steps. Keep personal notifications off. If an unexpected delay or technical problem happens, contact the provided organizer promptly and concisely." },
+    { "type": "heading", "level": 2, "text": "Job interview preparation checklist" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "I can explain the role’s main responsibilities and why they fit my experience or direction." },
+      { "text": "I have researched the organization from current, reliable sources." },
+      { "text": "I have five to seven accurate stories and can adapt them to common behavioral themes." },
+      { "text": "I have practiced explaining my background, interest in the role, and examples aloud without reading a script." },
+      { "text": "I have prepared questions that help me understand success, priorities, and the team." },
+      { "text": "I have confirmed the format, time zone, route or joining details, and materials." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "How far ahead should I prepare for a job interview?", "includeInToc": true },
+    { "type": "paragraph", "html": "Begin as soon as you are invited. If you have several days, spread research, story selection, and a mock interview across separate sessions. If time is short, prioritize the job description, organization research, your most relevant examples, questions for the employer, and logistics." },
+    { "type": "heading", "level": 3, "text": "Should I memorize answers for a job interview?", "includeInToc": true },
+    { "type": "paragraph", "html": "No. Memorize only facts that must be exact, such as names, dates, or a brief introduction if it helps you begin. Prepare story outlines and practice them aloud, but respond to the interviewer’s actual question in your own words. Reading answers during a live interview makes it harder to listen and adapt." },
+    { "type": "heading", "level": 3, "text": "What if I do not have direct experience for a requirement?", "includeInToc": true },
+    { "type": "paragraph", "html": "Be direct about the gap, then connect it to a truthful adjacent example, relevant learning, or a plan for getting up to speed. Do not claim experience you do not have. A thoughtful question about the team’s expectations can also clarify what support and ramp-up the role includes." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "For a remote interview, turn this preparation plan into a reliable call setup and delivery routine.", "label": "Read the Video Interview Checklist", "url": "/blog/interview-meeting-preparation/video-interview-checklist/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops the optional speaking-practice tool linked here. The preparation plan is designed to work with any interview format and does not require SolPrompter." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "MIT Career Advising &amp; Professional Development. <a href=\"https://capd.mit.edu/channels/interview/\">“Interviewing.”</a>" },
+      { "text": "Harvard FAS Mignone Center for Career Success. <a href=\"https://careerservices.fas.harvard.edu/resources/interviewing/\">“Interviewing.”</a>" },
+      { "text": "Yale Office of Career Strategy. <a href=\"https://ocs.yale.edu/channels/the-behavioral-interview/posts/\">“The Behavioral Interview.”</a>" }
+    ] }
+  ]
+}

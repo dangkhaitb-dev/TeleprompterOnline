@@ -1,0 +1,95 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "video-interview-checklist",
+  "title": "Video Interview Checklist: Technical Setup and Delivery",
+  "shortName": "Video Interview Checklist",
+  "category": "Interview & Meeting Preparation",
+  "date": "2026-08-09",
+  "dateDisplay": "August 9, 2026",
+  "modified": "2026-08-09",
+  "keywords": ["video interview checklist", "video interview setup", "how to prepare for a video interview", "Zoom interview checklist"],
+  "mentions": ["video interview", "remote interview", "camera setup", "audio test"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 9, 2026" },
+  "seo": {
+    "title": "Video Interview Checklist: Technical Setup and Delivery",
+    "description": "Use this video interview checklist to test audio, camera, lighting, connection, meeting controls, delivery, and a simple backup plan before you join.",
+    "image": "https://solprompter.com/media/blog/video-interview-checklist/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/video-interview-checklist/hero.webp",
+    "alt": "Candidate testing camera and microphone for a video job interview at a laptop",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "A reliable video interview setup is simple: test the actual meeting path, make your face and voice easy to understand, remove predictable interruptions, and know how you will contact the organizer if the call fails. Do this before interview day when possible, then repeat a short check shortly before you join." },
+    { "type": "paragraph", "html": "The technical setup should support the conversation, not become the focus of it. You do not need expensive equipment. A working camera, clear audio, stable enough connection, front-facing light, and a quiet place are usually more valuable than a complicated production setup." },
+    { "type": "paragraph", "html": "This checklist covers the remote-specific part of interview preparation. First prepare your role research, examples, and questions with <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/\">How to Prepare for a Job Interview</a>. For recurring team calls, see <a href=\"/blog/interview-meeting-preparation/how-to-lead-a-meeting/\">How to Lead a Meeting</a>." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Test the real interview path" },
+    { "type": "paragraph", "html": "Use the same computer, browser or app, network, camera, microphone, and location you expect to use for the interview. Open the meeting platform in advance, sign in if necessary, check that permissions are allowed, and learn where to mute, select a device, leave, and rejoin. If the employer provided a special platform or instructions, follow those rather than assuming your usual app will work." },
+    { "type": "paragraph", "html": "Zoom’s support guidance recommends testing audio and using a test meeting to become familiar with controls; its interview guidance also recommends testing video and audio before the call. <a href=\"https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0062765\">See Zoom’s audio-testing instructions</a> and <a href=\"https://www.zoom.com/en/blog/zoom-interview/\">its video-interview preparation guide</a>." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Open the invitation and confirm the date, time zone, platform, passcode, and participant names." },
+      { "text": "Install or update the required app only from its official source, then sign in before the interview day if an account is needed." },
+      { "text": "Allow camera and microphone permissions, and select the intended devices in the platform settings." },
+      { "text": "Join a test meeting or call a trusted person to check the exact path from link to audio and video." },
+      { "text": "Practice muting, unmuting, turning the camera on and off, choosing a camera, and rejoining after a disconnect." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Make audio your first priority" },
+    { "type": "paragraph", "html": "Interviewers can tolerate an ordinary webcam image more easily than unclear speech. Record a short sample and listen through the device you plan to use. Confirm that the platform selected the correct microphone and speaker, your voice is audible without clipping, and nearby noise is not competing with you. Headphones can reduce echo and background sound when they are comfortable and appropriate for the interview." },
+    { "type": "paragraph", "html": "Close unnecessary apps and downloads before the call. Zoom notes that other applications can compete for computer and network resources, and its troubleshooting guidance recommends checking the selected microphone input when others cannot hear you. <a href=\"https://www.zoom.com/en/blog/how-to-get-the-most-out-of-your-zoom-experience/\">Read Zoom’s video-communications guidance</a>." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Microphone", "text": "Speak at normal volume in a short recording. If you use headphones or an external microphone, connect them before opening the meeting app and confirm they are selected." },
+      { "title": "Room sound", "text": "Choose the quietest available room, close a door or window when practical, and silence notifications and nearby devices." },
+      { "title": "Echo", "text": "Avoid joining the same call with two unmuted devices in one room. Use headphones or mute the extra device if a second device is necessary as a backup." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Set a clear, natural camera frame" },
+    { "type": "paragraph", "html": "Place the camera near eye level and sit far enough back to show your head, shoulders, and some space around you. Put the main light in front of you rather than behind you, then check a test image at the time of day you will interview. Use a simple, non-distracting background; a virtual background is optional and should be tested for visual glitches before the call." },
+    { "type": "paragraph", "html": "When you are speaking, look toward the camera for key points, then return your attention to the interviewer on screen to listen. This creates a more natural sense of eye contact without forcing an unbroken stare. For a focused practice routine, read <a href=\"/blog/how-to-look-natural-on-camera/\">How to Look Natural on Camera</a> and <a href=\"/blog/where-to-look-when-speaking-on-camera/\">Where to Look When Speaking on Camera</a>." },
+    { "type": "heading", "level": 2, "text": "Prepare your delivery, not a script to read" },
+    { "type": "paragraph", "html": "Review the job description, your examples, and questions for the employer before the call. During the live interview, listen to the full question, pause when you need to think, and answer in your own words. Do not read prepared answers from a screen. It can pull your eyes away from the conversation and make it harder to respond to follow-up questions." },
+    { "type": "paragraph", "html": "Practice the first minute aloud: greeting, a concise introduction if invited, and the transition into conversation. Then rehearse a few true examples from bullet-point outlines, not a word-for-word text. Short recording and review loops can help you notice pace, eye line, and sound; <a href=\"/blog/how-to-speak-confidently-on-camera/\">the on-camera practice plan</a> uses that approach." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Look toward the lens while making a key point, then look back at the interviewer’s image while listening." },
+      { "text": "Let the interviewer finish, especially when audio delay makes a pause feel longer than it is." },
+      { "text": "If a question is unclear, ask for it to be repeated or narrowed rather than guessing." },
+      { "text": "Keep answers focused on the question, your contribution, and a specific outcome or learning." },
+      { "text": "Keep a pen and blank notepad for questions and next steps, not a written answer script." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Create a small technical backup plan" },
+    { "type": "paragraph", "html": "A backup plan is a contact path, not a second full production. Save the recruiter’s or organizer’s email and phone number if provided. Keep your phone charged, know where your meeting link is, and decide whether you can move to a more reliable connection or use a different device if the primary setup fails. Do not wait silently if you cannot join or are disconnected; send a brief message explaining that you are reconnecting." },
+    { "type": "paragraph", "html": "If audio fails after you join, first check mute status and the selected microphone. If video fails, check the selected camera and its permissions. Then rejoin once if needed. Zoom’s camera troubleshooting guidance notes that selecting another available camera or allowing camera access may resolve common problems. <a href=\"https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0068908\">See Zoom’s camera troubleshooting steps</a>." },
+    { "type": "heading", "level": 2, "text": "Video interview checklist" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "The invitation, time zone, platform, passcode, and interviewer names are confirmed." },
+      { "text": "The required app or browser has been tested on the device and network I will use." },
+      { "text": "The selected microphone, speaker, and camera work in a short test call." },
+      { "text": "My face is lit from the front, the camera is near eye level, and the background is simple." },
+      { "text": "Unneeded apps, downloads, alerts, and nearby devices are closed or silenced." },
+      { "text": "I have the organizer’s contact details and a clear next step if the call disconnects." },
+      { "text": "I have practiced my introduction and examples aloud, but will not read answers during the live interview." },
+      { "text": "I will join a few minutes early to confirm the link and settle in." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "How early should I join a video interview?", "includeInToc": true },
+    { "type": "paragraph", "html": "Join a few minutes early—unless the invitation specifies a waiting room or another instruction—so you can confirm the link, audio, and camera. Do not enter so far in advance that you create pressure for the interviewer to begin before the scheduled time." },
+    { "type": "heading", "level": 3, "text": "Do I need a separate webcam or microphone for a video interview?", "includeInToc": true },
+    { "type": "paragraph", "html": "Usually no. Built-in devices are suitable when they produce a clear, stable image and understandable audio. Use an external device only if it solves a problem you identified in a test call, and test it with the actual meeting platform before relying on it." },
+    { "type": "heading", "level": 3, "text": "What should I do if my video interview connection drops?", "includeInToc": true },
+    { "type": "paragraph", "html": "Try to rejoin promptly. If that does not work, use the backup contact information from the invitation to tell the organizer you are reconnecting or ask how they would like to continue. Keep the message short and factual; technical issues happen, and clear communication helps the process move forward." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "Once the setup works, focus on the interview itself: connect your experience to the role and prepare questions that help you evaluate the opportunity.", "label": "Read How to Prepare for a Job Interview", "url": "/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops the optional speaking-practice tool linked here. The checklist works with standard video-interview platforms and does not require SolPrompter." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Zoom. <a href=\"https://www.zoom.com/en/blog/zoom-interview/\">“20 Zoom Interview Tips to Help You Land Your Dream Job.”</a>" },
+      { "text": "Zoom Support. <a href=\"https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0062765\">“Testing Your Audio Settings for Zoom Meetings.”</a>" },
+      { "text": "Zoom Support. <a href=\"https://support.zoom.com/hc/en/article?id=zm_kb&amp;sysparm_article=KB0068908\">“Troubleshooting Camera Issues During a Meeting.”</a>" }
+    ] }
+  ]
+}

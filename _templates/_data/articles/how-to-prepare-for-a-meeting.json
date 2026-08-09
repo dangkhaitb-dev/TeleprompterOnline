@@ -1,0 +1,101 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "how-to-prepare-for-a-meeting",
+  "title": "How to Prepare for a Meeting: A Participant’s Checklist",
+  "shortName": "How to Prepare for a Meeting",
+  "category": "Interview & Meeting Preparation",
+  "date": "2026-08-09",
+  "dateDisplay": "August 9, 2026",
+  "modified": "2026-08-09",
+  "keywords": ["how to prepare for a meeting", "meeting preparation checklist", "meeting attendee preparation", "prepare for a work meeting"],
+  "mentions": ["meeting preparation", "agenda", "pre-reading", "meeting participation"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 9, 2026" },
+  "seo": {
+    "title": "How to Prepare for a Meeting: A Participant’s Checklist",
+    "description": "Prepare for a work meeting as an attendee: understand the outcome, review the agenda and evidence, form a contribution, and confirm the practical details.",
+    "image": "https://solprompter.com/media/blog/how-to-prepare-for-a-meeting/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/how-to-prepare-for-a-meeting/hero.webp",
+    "alt": "Professional reviewing an agenda and notes before a work meeting",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "Prepare for a meeting by finding the decision, discussion, or update it is meant to produce; reviewing only the material needed for your role; and arriving with one useful contribution. Good preparation is not reading every linked document or writing a speech. It is reducing the amount of time the group needs to spend bringing you up to speed." },
+    { "type": "paragraph", "html": "This is a guide for participants, subject-matter contributors, and decision makers who have been invited to a meeting. It does not cover designing the agenda or facilitating the room; if you are responsible for the meeting itself, use <a href=\"/blog/interview-meeting-preparation/how-to-lead-a-meeting/\">How to Lead a Meeting</a>. For interview-specific preparation, see <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/\">How to Prepare for a Job Interview</a> or the <a href=\"/blog/interview-meeting-preparation/video-interview-checklist/\">Video Interview Checklist</a>." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Start with the meeting’s expected outcome" },
+    { "type": "paragraph", "html": "Read the invitation and agenda for the result, not just the topic. “Project update” can mean you are there to listen, flag a risk, choose among options, or approve a recommendation. An agenda is more useful when each item has a desired outcome, time frame, and role; MIT’s meeting guidance uses outcomes such as an agreement, a decision, or a list. <a href=\"https://hr.mit.edu/learning-topics/meetings/articles/agendas\">See MIT Human Resources’ agenda guidance</a>." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Information", "text": "Know what you need to understand or acknowledge. Prepare a clarifying question only if the answer changes your work." },
+      { "title": "Discussion", "text": "Bring the perspective, evidence, or trade-off you were invited to add. State it in a sentence before you enter the room." },
+      { "title": "Decision", "text": "Know the decision to be made, your authority, the options, and the consequence of delaying it." },
+      { "title": "Working session", "text": "Complete your assigned input before the session so the group can use its shared time to solve the open problem." }
+    ] },
+    { "type": "paragraph", "html": "If the invite does not make the outcome clear, do not guess. Send a short note: “I want to prepare the right input. Are we deciding between the two approaches, or reviewing them for feedback?” That question is more useful than asking for a broad explanation of the meeting." },
+    { "type": "heading", "level": 2, "text": "Turn the agenda into a personal prep list" },
+    { "type": "paragraph", "html": "For each item that involves you, identify the smallest preparation that lets you contribute responsibly. Mark what you must read, what you can skim, what data you need to verify, and what you are expected to bring. A well-designed agenda should identify the topic, desired outcome, priority, time, who, and method; use those fields to decide where your effort matters. <a href=\"https://hr.mit.edu/learning-topics/meetings/articles/agendas\">MIT’s example agenda</a> is a useful model for reading invitations this way." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Write the one question the group needs your help answering." },
+      { "text": "Pull the current facts, constraints, and source links that support your answer." },
+      { "text": "Note one recommendation or position, plus the assumption that could change it." },
+      { "text": "Prepare a concise update: status, implication, and what you need from others." },
+      { "text": "If another attendee owns the detail, avoid duplicating it; prepare the dependency or decision that belongs to you." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Read pre-work actively, not exhaustively" },
+    { "type": "paragraph", "html": "Open the agenda before the attachments. Then read the items connected to your role deeply enough to identify the claim, evidence, decision, and unanswered question. Leave a note beside material that is unclear rather than silently carrying an assumption into the meeting. Supporting material shared in advance is meant to enable more informed discussion, not to create a test of endurance. <a href=\"https://www.atlassian.com/software/confluence/resources/guides/how-to/meeting-agenda\">Atlassian’s agenda guidance</a> likewise recommends linking the context participants should review beforehand." },
+    { "type": "quote", "text": "For each document, ask: What does this ask the group to understand, decide, or do—and what do I need to add?" },
+    { "type": "paragraph", "html": "If you cannot finish essential pre-work, tell the organizer before the meeting, name what you have reviewed, and ask whether your item should move. Showing up unprepared for a decision is usually worse than giving advance notice. Do not use the meeting to read a document everyone expected you to have read." },
+    { "type": "heading", "level": 2, "text": "Prepare a contribution that fits the time" },
+    { "type": "paragraph", "html": "Most meeting contributions become clearer when they follow a simple shape: context, point, and request. Start with the fact or change that matters, state your interpretation or recommendation, then say what you need the group to decide, confirm, or help resolve. Put the conclusion first when the time is short; supporting detail can follow if the group needs it." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "A status update", "text": "“The vendor test is complete. Two issues affect the launch date; I need agreement on whether we fix both now or ship with the documented limitation.”" },
+      { "title": "A recommendation", "text": "“I recommend option B because it meets the deadline with the lower operational risk. The trade-off is a smaller first release.”" },
+      { "title": "A question", "text": "“Before I estimate this work, can we confirm whether accessibility review is required in this phase?”" },
+      { "title": "A disagreement", "text": "“I see the cost benefit, but the current data does not include support load. Could we compare the two options on that measure before deciding?”" }
+    ] },
+    { "type": "paragraph", "html": "Bring a note, not a script. For a high-stakes or remote contribution, write the opening sentence, key evidence, and precise ask. Practicing it aloud once helps you discover whether the thought can be said in the time available without reading from a page." },
+    { "type": "heading", "level": 2, "text": "Confirm the practical path" },
+    { "type": "paragraph", "html": "Five minutes of logistics can protect the work you did to prepare. Confirm the start time and time zone, location or joining link, expected format, access to shared documents, and whether you need to present or screen share. For a remote meeting, test the link, audio, camera, and any file permissions early enough to resolve an issue without making the group wait." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Accept or decline the invitation, or send your input if you cannot attend." },
+      { "text": "Open the current agenda and make sure you have permission to the linked files." },
+      { "text": "Have the relevant document, data, or slide open before the meeting begins." },
+      { "text": "For remote participation, join a few minutes early with headphones and a stable connection where possible." },
+      { "text": "Know how you will take notes on decisions and commitments that affect your work." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Participate without taking over" },
+    { "type": "paragraph", "html": "Preparation should make you more useful, not more dominant. Listen for the question currently on the table, add your evidence when it changes the answer, and make space for expertise you do not have. If the conversation shifts away from your prepared point, decide whether it still serves the stated outcome before raising it. A parking lot or follow-up is often a better home for an important but untimely issue." },
+    { "type": "paragraph", "html": "When a decision is stated, repeat it in your notes with its owner and deadline. The meeting record should distinguish a discussion from a decision and an action; a local-government minutes guide recommends recording what was agreed and who is responsible for the action. <a href=\"https://www.west-dunbarton.gov.uk/housing/council-housing/tenant-participation/tenants-residents-groups/taking-a-minute-of-your-meeting\">Read the guidance on taking meeting minutes</a>." },
+    { "type": "heading", "level": 2, "text": "Participant meeting-preparation checklist" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "I can name the result this meeting should produce and my role in producing it." },
+      { "text": "I have reviewed the agenda items and pre-work that involve me." },
+      { "text": "I have current facts or examples, not memory alone, for a claim I need to make." },
+      { "text": "I can state my update, recommendation, or question in a few sentences." },
+      { "text": "I know the time, place or link, materials, and technical setup required." },
+      { "text": "If I cannot attend or complete essential preparation, I have told the organizer in advance." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "How early should I prepare for a meeting?", "includeInToc": true },
+    { "type": "paragraph", "html": "Start when the agenda and pre-work arrive. For a routine update, a short review before the meeting may be enough. For a decision, presentation, or cross-functional discussion, give yourself enough lead time to verify facts, ask a clarifying question, and let the organizer know about a material gap." },
+    { "type": "heading", "level": 3, "text": "What should I do when there is no agenda?", "includeInToc": true },
+    { "type": "paragraph", "html": "Ask for the intended outcome and your expected role. If the meeting is important and neither is clear, offer the organizer a short proposed purpose or a question you believe the group needs to answer. Do not invent a full agenda unless you have been asked to lead it." },
+    { "type": "heading", "level": 3, "text": "Should I prepare questions for every meeting?", "includeInToc": true },
+    { "type": "paragraph", "html": "Prepare questions that unblock your work, test an assumption, or help the group make the stated decision. Questions asked only to demonstrate preparation can consume time without improving the outcome." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "When you are responsible for the outcome, use a leader’s workflow for agenda design, participation, decisions, and follow-through.", "label": "Read How to Lead a Meeting", "url": "/blog/interview-meeting-preparation/how-to-lead-a-meeting/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops the product linked here. The meeting-preparation advice works with any calendar, meeting platform, and note-taking system; the product link is included only as an optional tool for practicing a short contribution." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "MIT Human Resources. <a href=\"https://hr.mit.edu/learning-topics/meetings/articles/agendas\">“How and Why to Use a Meeting Agenda.”</a>" },
+      { "text": "Atlassian. <a href=\"https://www.atlassian.com/software/confluence/resources/guides/how-to/meeting-agenda\">“Free Meeting Agenda Template.”</a>" },
+      { "text": "West Dunbartonshire Council. <a href=\"https://www.west-dunbarton.gov.uk/housing/council-housing/tenant-participation/tenants-residents-groups/taking-a-minute-of-your-meeting\">“Taking a Minute of Your Meeting.”</a>" }
+    ] }
+  ]
+}

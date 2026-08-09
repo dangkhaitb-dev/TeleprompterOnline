@@ -1,0 +1,93 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "flatUrl": true,
+  "slug": "presentation-script-template",
+  "title": "Presentation Script Template for Live and Recorded Talks",
+  "shortName": "Presentation Script Template",
+  "category": "Script Writing for Speaking",
+  "date": "2026-08-09",
+  "dateDisplay": "August 9, 2026",
+  "modified": "2026-08-09",
+  "keywords": ["presentation script template", "how to write a presentation script", "presentation speaker notes", "recorded presentation script"],
+  "mentions": ["presentation script", "speaker notes", "teleprompter"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 9, 2026" },
+  "seo": {
+    "title": "Presentation Script Template for Live and Recorded Talks",
+    "description": "Use a practical presentation script template to plan an opening, slide narration, transitions, timing, and a clear close for a live or recorded talk.",
+    "image": "https://solprompter.com/media/blog/presentation-script-template/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/presentation-script-template/hero.webp",
+    "alt": "Presenter preparing a slide-by-slide speaking script beside a laptop presentation",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "A useful presentation script tells you what the audience needs to hear, not every word already visible on a slide. Start with one outcome, give each section a job, and write transitions that make the next idea feel inevitable. Use the template below for a live or recorded talk, then choose whether you need a full script, speaker notes, or a hybrid." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Copy this presentation script template" },
+    { "type": "paragraph", "html": "Copy this structure into your document before you design the wording. It works because it separates the audience's journey from the slide deck: the slide supports the point; your voice explains why the point matters." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Audience and outcome", "text": "Who is listening, what do they already know, and what should they understand or do by the end?" },
+      { "title": "Opening", "text": "State the problem, the promise, and why the next few minutes are worth their attention." },
+      { "title": "Section signpost", "text": "Name the next idea in plain language before you explain it." },
+      { "title": "For each slide", "text": "Write: slide purpose; what you say that is not on screen; an example or evidence; and the transition to the next slide." },
+      { "title": "Close", "text": "Restate the useful takeaway and give one specific next action." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Decide what the audience should understand or do" },
+    { "type": "paragraph", "html": "Before writing an introduction, complete this sentence: “After this presentation, my audience can ___.” Make the blank observable. “Understand our service” is vague; “choose the three checks to make before a client update” gives the talk a usable destination." },
+    { "type": "paragraph", "html": "If the purpose needs several sentences to explain, narrow the presentation before adding more slides. A single audience outcome makes it easier to decide what evidence, examples, and terminology belong in the script." },
+    { "type": "heading", "level": 2, "text": "Write an opening that earns attention" },
+    { "type": "paragraph", "html": "An opening does three jobs: it orients the room, identifies the problem or opportunity, and promises a useful result. Skip a long biography or a generic “thank you for having me” when the audience needs context first." },
+    { "type": "quote", "text": "“If your weekly update runs long, the issue is often not effort. It is that no one can see which decision matters first. In the next five minutes, you will get a three-part update structure that makes the priority clear.”" },
+    { "type": "paragraph", "html": "The example makes a promise the rest of the talk can fulfil. Change the situation and outcome for your subject rather than copying its wording." },
+    { "type": "heading", "level": 2, "text": "Use signposts to guide the audience" },
+    { "type": "paragraph", "html": "Listeners cannot scan backward through a spoken explanation as easily as readers scan a document. Use short signposts at the beginning of a section and transitions at the end: “First, we will define the decision.” “Now that the constraint is clear, here is the practical option.”" },
+    { "type": "paragraph", "html": "Writing for the ear benefits from simple, direct language and a read-aloud test. The University of Florida's broadcast-writing guidance makes the same distinction between material written to be heard and material written to be read. <a href=\"https://ask.ifas.ufl.edu/publication/WC193\">Read the guidance</a>." },
+    { "type": "heading", "level": 2, "text": "Write what to say with each slide—not what is already on it" },
+    { "type": "paragraph", "html": "A slide title and three bullets are rarely a script. Instead of reading them aloud, use them as a prompt to add context, an example, or an interpretation. This keeps the audience looking at the visual while receiving information only you can provide." },
+    { "type": "list", "style": "bullets", "items": [
+      { "title": "Slide says", "text": "“Three approval checks.”" },
+      { "title": "You say", "text": "“The first check is ownership. Before a request enters the queue, name the person who can decide it. That removes the most common reason an update stalls.”" },
+      { "title": "Transition", "text": "“Once ownership is clear, the next check is the deadline.”" }
+    ] },
+    { "type": "heading", "level": 2, "text": "Plan transitions, examples, and audience moments" },
+    { "type": "paragraph", "html": "A transition is a sentence with a reason, not just “next slide.” State how the previous point creates the next question. Reserve examples for the points that would otherwise remain abstract, and put any audience question where it changes what you explain next." },
+    { "type": "paragraph", "html": "For a simple talk, a one-column speaker script is usually enough. When the presentation has meaningful visual actions, a “slide / say / audience action / time” table can keep the audio and visual plans together. The U.S. Defense Information School similarly distinguishes simple single-column scripts from more complex audio/visual formats. <a href=\"https://pavilion.dinfos.edu/How-To/Article/2379830/how-to-compose-format-a-script/\">See its script-format overview</a>." },
+    { "type": "heading", "level": 2, "text": "Full script, speaker notes, or a hybrid?" },
+    { "type": "paragraph", "html": "Use a full script for an opening, a regulated claim, a sensitive transition, or any wording that must be exact. Use detailed notes when you know the material and need room to respond to the audience. A hybrid often works best: script the high-stakes lines, then use notes for examples and discussion." },
+    { "type": "paragraph", "html": "For the wider decision—including teleprompter, memorization, bullet points, and hybrid delivery—use <a href=\"/blog/teleprompter-vs-memorizing-vs-bullet-points/\">Teleprompter vs Memorizing vs Bullet Points</a>." },
+    { "type": "heading", "level": 2, "text": "Filled example: a five-minute presentation" },
+    { "type": "paragraph", "html": "This illustrative outline shows the level of detail to plan. Replace the example facts with evidence from your own work; it is a structure, not a claim about a real organization." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "0:00–0:30 — Opening", "text": "“A weekly update should help a team make one decision, not report every activity. Today I will show a three-part structure that makes the decision visible.”" },
+      { "title": "0:30–1:30 — Problem", "text": "Show a crowded example slide. Explain that a list of activity hides ownership, deadline, and decision." },
+      { "title": "1:30–3:30 — Three-part structure", "text": "For each part, name the check, show one concise line, and say why it changes the reader's next action." },
+      { "title": "3:30–4:30 — Applied example", "text": "Walk through one fictional update from vague status to a decision-ready summary." },
+      { "title": "4:30–5:00 — Close", "text": "“For your next update, start by naming the decision. Then add the owner and deadline before you add background.”" }
+    ] },
+    { "type": "heading", "level": 2, "text": "Time a rehearsal before finalizing the script" },
+    { "type": "paragraph", "html": "Word count is a planning aid, not a promise. Time a full read with the slides, examples, and natural pauses in place. If you run long, remove repeated setup or optional examples before cutting a condition that changes the meaning. Use <a href=\"/blog/teleprompter-script-word-count/\">the word-count and timing guide</a> to calculate a personal starting budget." },
+    { "type": "heading", "level": 2, "text": "Prepare the script for your delivery setup" },
+    { "type": "paragraph", "html": "If you will read the exact wording, format the completed text for the display and rehearse with the actual camera position. <a href=\"/blog/how-to-write-a-teleprompter-script/\">How to Write a Teleprompter Script</a> covers line breaks, pronunciation, and delivery cues. For camera, slides, captions, export, and recording workflow, continue with <a href=\"/blog/how-to-pre-record-a-presentation/\">How to Pre-Record a Presentation</a>." },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "Should I script every slide?", "includeInToc": true },
+    { "type": "paragraph", "html": "No. Script the parts where wording, order, or transitions matter. Use speaker notes for familiar examples and audience interaction when flexibility is more useful than exact phrasing." },
+    { "type": "heading", "level": 3, "text": "What belongs in presentation speaker notes?", "includeInToc": true },
+    { "type": "paragraph", "html": "Include the point of the slide, the evidence or example you need to mention, a transition, and a time cue. Do not use notes to repeat visible slide text unless the wording itself needs emphasis." },
+    { "type": "heading", "level": 3, "text": "Can I use this template for a recorded presentation?", "includeInToc": true },
+    { "type": "paragraph", "html": "Yes. Keep the message structure, then add recording requirements such as captions, slide timing, and export checks in the separate pre-recorded-presentation workflow." },
+    { "type": "heading", "level": 2, "text": "Next steps" },
+    { "type": "endnote", "text": "Use the broader writing workflow to turn an idea into a spoken message, then choose the format that fits your presentation.", "label": "Script Writing for Speaking", "url": "/blog/script-writing-for-speaking/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops the product linked here. The template is usable without the product; product links are included only where a teleprompter or local recording workflow can help." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "University of Florida IFAS Extension. <a href=\"https://ask.ifas.ufl.edu/publication/WC193\">“Broadcast Writing.”</a>" },
+      { "text": "Defense Information School. <a href=\"https://pavilion.dinfos.edu/How-To/Article/2379830/how-to-compose-format-a-script/\">“How to Compose / Format a Script.”</a>" }
+    ] }
+  ]
+}

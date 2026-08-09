@@ -6,7 +6,7 @@
   "title": "How to Write a Teleprompter Script That Sounds Natural",
   "date": "2026-08-01",
   "dateDisplay": "August 1, 2026",
-  "modified": "2026-08-01",
+  "modified": "2026-08-09",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,9 +14,9 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 1, 2026"
+    "updatedDisplay": "August 9, 2026"
   },
-  "category": "Teleprompter Guides",
+  "category": "Script Writing for Speaking",
   "shortName": "How to Write a Teleprompter Script That Sounds Natural",
   "keywords": [
     "teleprompter",
@@ -1017,9 +1017,15 @@
         {
           "text": "Load the revised script with the <a href=\"/teleprompter-guide\">SolPrompter product guide</a>."
         },
-        {
-          "text": "<a href=\"https://solprompter.com/\">Open SolPrompter</a> and read the first section aloud."
-        }
+      {
+        "text": "<a href=\"https://solprompter.com/\">Open SolPrompter</a> and read the first section aloud."
+      },
+      {
+        "text": "Start with <a href=\"/blog/script-writing-for-speaking/\">Script Writing for Speaking</a> when you need to plan the message before formatting it for a teleprompter."
+      },
+      {
+        "text": "Use the <a href=\"/blog/turn-writing-into-a-speaking-script/\">prose-to-speaking rewrite</a>, <a href=\"/blog/teleprompter-script-word-count/\">timing guide</a>, and <a href=\"/blog/talking-head-video-script-template/\">talking-head template</a> for a specific writing task."
+      }
       ]
     },
     {

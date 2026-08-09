@@ -16,6 +16,7 @@ SolPrompter is currently free to use, without advertisements or a branded video 
 ## Research and Updates
 
 - [SolPrompter blog](https://solprompter.com/blog): Product research, announcements and articles.
+- [Script Writing for Speaking](https://solprompter.com/blog/script-writing-for-speaking/): A people-first guide to planning a spoken message, rewriting prose, timing a script, and choosing video or presentation templates.
 - [SolPrompter AI Teleprompter: Features Tested](https://solprompter.com/blog/product/solprompter-ai-teleprompter-features-tested/): Feature-by-feature coverage of AI Voice Scroll, Notch Mode, remote control, recording, privacy and performance considerations.
 
 ## Policies

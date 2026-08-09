@@ -1,0 +1,104 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "flatUrl": true,
+  "slug": "teleprompter-script-word-count",
+  "title": "How Long Should a Teleprompter Script Be? Word Count and Timing Guide",
+  "shortName": "Teleprompter Script Word Count",
+  "category": "Script Writing for Speaking",
+  "date": "2026-08-09",
+  "dateDisplay": "August 9, 2026",
+  "modified": "2026-08-09",
+  "keywords": ["teleprompter script word count", "how long should a teleprompter script be", "video script word count", "teleprompter script timing"],
+  "mentions": ["teleprompter script", "video timing", "rehearsal", "speaking pace"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 9, 2026" },
+  "seo": {
+    "title": "Teleprompter Script Word Count: Time Your Video Accurately",
+    "description": "Calculate a teleprompter script word count from your own rehearsal pace. Plan pauses and visuals, then use the timing worksheet to fit your video length.",
+    "image": "https://solprompter.com/media/blog/teleprompter-script-word-count/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/teleprompter-script-word-count/hero.webp",
+    "alt": "Video creator timing a teleprompter script beside a laptop and camera",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "A teleprompter script should be as long as your audience, message, and real delivery time allow. The reliable way to find that number is to rehearse a representative section aloud, calculate your own words per minute, and leave room for pauses, demonstrations, and retakes. Word count is a planning tool—not a promise that every read will take the same time." },
+    { "type": "paragraph", "html": "This guide answers the timing question. For sentence length, line breaks, and delivery cues, use <a href=\"/blog/how-to-write-a-teleprompter-script/\">How to Write a Teleprompter Script That Sounds Natural</a>." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Start with a timed rehearsal, not a universal speed" },
+    { "type": "paragraph", "html": "There is no single correct words-per-minute figure for a video. Pace changes with the subject, language, pronunciation, audience familiarity, emotion, slide changes, and whether you are reading or speaking from notes. A number copied from someone else's workflow cannot account for those conditions." },
+    { "type": "paragraph", "html": "Instead, record a one- to two-minute section in the actual setup. Keep the intended pauses and any on-screen action. Count its words, divide by the elapsed minutes, and use that result as your starting rate." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Measure a representative section", "text": "Do not time only the fastest paragraph or a greeting. Include the kind of explanation your video mostly contains." },
+      { "title": "Use the delivery setup", "text": "Read from the same display, font size, and camera position you will use on the final take." },
+      { "title": "Repeat once", "text": "A second read catches an unusually rushed or hesitant first attempt." },
+      { "title": "Plan below the hard limit", "text": "If a video must fit a fixed duration, reserve time before writing the last sentence." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Use this teleprompter script timing formula" },
+    { "type": "paragraph", "html": "Calculate a draft budget with this simple formula: <strong>script-word budget = personal rehearsal rate × speaking minutes available</strong>. Speaking minutes are the total video duration minus time for non-scripted moments." },
+    { "type": "quote", "text": "Example: a 4:00 video has 3:10 available for spoken script after a 20-second visual demonstration, 15 seconds of planned pauses, and 15 seconds of opening and closing room. A rehearsal rate of 128 words per minute gives a starting budget of about 405 words (128 × 3.17)." },
+    { "type": "paragraph", "html": "Round down when a deadline is strict. The calculation is deliberately modest: it treats visual beats and breathing space as part of the video, rather than hoping they will fit after the draft is written." },
+    { "type": "heading", "level": 2, "text": "Make a timing budget before you draft" },
+    { "type": "paragraph", "html": "A video runtime has more than spoken words in it. List the moments that need time before you assign words to sections. This makes it easier to protect the main explanation instead of cutting it late in the edit." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Total runtime", "text": "Write the true limit, such as 5:00—not the hoped-for length." },
+      { "title": "Non-speaking time", "text": "Reserve demonstrations, screen recordings, title cards, slide changes, questions, and deliberate silence." },
+      { "title": "Speaking time", "text": "Subtract the reserved time from the total runtime." },
+      { "title": "Word budget", "text": "Multiply speaking time by your measured rehearsal rate, then round down." },
+      { "title": "Section budgets", "text": "Give the opening, explanation, example, and close a share of the words before drafting." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Worked example: a five-minute product walkthrough" },
+    { "type": "paragraph", "html": "The numbers below are an original planning example, not a recommended pace. The presenter measured 122 words per minute over two rehearsal reads." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "5:00 total runtime", "text": "The published-video limit." },
+      { "title": "0:50 reserved", "text": "Thirty seconds for a screen demonstration, ten seconds for a title card, and ten seconds for natural pauses." },
+      { "title": "4:10 speaking time", "text": "Five minutes minus fifty seconds equals 4.17 minutes." },
+      { "title": "508-word ceiling", "text": "122 × 4.17 = 509; the presenter rounds down to 508 to preserve a small margin." },
+      { "title": "Draft allocation", "text": "70 words for the hook, 280 for the explanation, 110 for the demonstration setup, and 48 for the close." }
+    ] },
+    { "type": "paragraph", "html": "After the first full rehearsal, revise the allocation rather than merely accelerating the read. If the explanation runs long, remove duplicated setup or move a secondary detail to the description, caption, or follow-up resource." },
+    { "type": "heading", "level": 2, "text": "Why a word count and a final runtime can differ" },
+    { "type": "paragraph", "html": "Two scripts with the same number of words can take different amounts of time. Names, numbers, quotations, unfamiliar terms, emphasis, breathing, and camera resets all change delivery. Visual media also needs space for viewers to see what is on screen before the narration moves on." },
+    { "type": "paragraph", "html": "If your video has slides or a demo, time the complete run—not an audio-only read. The U.S. Defense Information School distinguishes simple spoken scripts from formats that must coordinate audio and visual elements; that distinction is useful when timing a video with meaningful on-screen action. <a href=\"https://pavilion.dinfos.edu/How-To/Article/2379830/how-to-compose-format-a-script/\">See its script-format overview</a>." },
+    { "type": "heading", "level": 2, "text": "How to shorten a script without making it rushed" },
+    { "type": "paragraph", "html": "Cut repetition before you cut clarity. Listeners hear a spoken explanation once, so deleting a condition that changes the meaning can make a shorter script less useful. Broadcast-writing guidance similarly emphasizes direct, conversational language written to be heard. <a href=\"https://ask.ifas.ufl.edu/publication/WC193\">Read the University of Florida guidance</a>." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Remove a second version of the same point, not the first clear explanation." },
+      { "text": "Replace a long setup with one concrete example." },
+      { "text": "Move optional background to the description, a link, or a separate video." },
+      { "text": "Keep exact language where a claim, legal statement, or instruction requires it." },
+      { "text": "Rehearse the shorter version; do not assume the saved words create the expected time." }
+    ] },
+    { "type": "heading", "level": 2, "text": "When to use a full script, notes, or bullets" },
+    { "type": "paragraph", "html": "A word budget is most useful for a full script. If you work from notes or bullet points, plan section time instead and rehearse the transitions you must hit. Use a hybrid when only the opening, sensitive claims, or close need exact wording." },
+    { "type": "paragraph", "html": "For help choosing the format, see <a href=\"/blog/teleprompter-vs-memorizing-vs-bullet-points/\">Teleprompter vs Memorizing vs Bullet Points</a>. For a camera-first structure, use the <a href=\"/blog/talking-head-video-script-template/\">Talking-Head Video Script Template</a>." },
+    { "type": "heading", "level": 2, "text": "Final timing checklist" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Time a representative read aloud before deciding the word budget." },
+      { "text": "Reserve time for visuals, pauses, and any audience action." },
+      { "text": "Use the final camera, display, and slide setup for the full rehearsal." },
+      { "text": "Leave a margin when the runtime is fixed." },
+      { "text": "Edit the message, then time it again." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "How many words are in a one-minute teleprompter script?", "includeInToc": true },
+    { "type": "paragraph", "html": "Use the number of words you personally deliver in one timed minute. Measure it by rehearsing the kind of script you plan to record, with the same pauses and setup; one generic figure cannot reliably predict every presenter or topic." },
+    { "type": "heading", "level": 3, "text": "Should I write to the exact word limit?", "includeInToc": true },
+    { "type": "paragraph", "html": "No. Treat the calculated number as a ceiling, then leave a margin for natural delivery and production moments. A full rehearsal is the only reliable check against the actual runtime." },
+    { "type": "heading", "level": 3, "text": "Why is my teleprompter script taking longer than expected?", "includeInToc": true },
+    { "type": "paragraph", "html": "The draft may omit time for pauses, visual action, difficult wording, or reading from the display. Time the full setup, identify which section expands, and simplify or shorten that section rather than trying to rush the whole video." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "Build the message first, then apply this timing method when you turn it into a script for delivery.", "label": "Script Writing for Speaking", "url": "/blog/script-writing-for-speaking/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops the teleprompter product linked here. The calculation and rehearsal method work with any script editor; product links appear only where a reading workflow may help." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "University of Florida IFAS Extension. <a href=\"https://ask.ifas.ufl.edu/publication/WC193\">“Broadcast Writing.”</a>" },
+      { "text": "Defense Information School. <a href=\"https://pavilion.dinfos.edu/How-To/Article/2379830/how-to-compose-format-a-script/\">“How to Compose / Format a Script.”</a>" }
+    ] }
+  ]
+}

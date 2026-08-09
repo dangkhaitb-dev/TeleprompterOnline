@@ -7,7 +7,7 @@ agents. It is a curated product snapshot, not a replacement for the canonical
 pages linked below. Verify changing details such as pricing, feature
 availability, browser support, and legal terms on the linked source pages.
 
-Last reviewed: 2026-08-01
+Last reviewed: 2026-08-09
 Canonical website: https://solprompter.com/
 Primary language: English (the site also publishes localized home pages)
 
@@ -208,6 +208,7 @@ an offline speech-recognition engine and on the device's connectivity.
 - [About SolPrompter](https://solprompter.com/about): Mission, product
   principles, audiences, and roadmap context.
 - [Blog](https://solprompter.com/blog): Product articles and updates.
+- [Script Writing for Speaking](https://solprompter.com/blog/script-writing-for-speaking/): A practical hub for audience-first spoken-message planning, rewriting prose or AI drafts, timing a teleprompter script, and choosing talking-head or presentation templates.
 - [Feature testing article](https://solprompter.com/blog/product/solprompter-ai-teleprompter-features-tested/):
   Feature-by-feature testing notes and limitations.
 - [Privacy Policy](https://solprompter.com/policy): Data, camera, microphone,

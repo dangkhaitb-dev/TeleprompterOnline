@@ -1,0 +1,283 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "slug": "script-writing-for-speaking",
+  "published": true,
+  "flatUrl": true,
+  "title": "Script Writing for Speaking: How to Plan Words People Can Follow",
+  "date": "2026-08-09",
+  "dateDisplay": "August 9, 2026",
+  "modified": "2026-08-09",
+  "author": {
+    "type": "Organization",
+    "name": "The SolPrompter Team",
+    "url": "/about"
+  },
+  "review": {
+    "by": "the SolPrompter team",
+    "updatedDisplay": "August 9, 2026"
+  },
+  "category": "Guides",
+  "shortName": "Script Writing for Speaking",
+  "keywords": [
+    "script writing for speaking",
+    "how to write a speaking script",
+    "speech script writing",
+    "video script writing"
+  ],
+  "mentions": [
+    "Spoken-language writing",
+    "Video scripts",
+    "Presentation scripts",
+    "Teleprompter scripts"
+  ],
+  "seo": {
+    "title": "Script Writing for Speaking: Plan Words People Can Follow",
+    "description": "Write scripts people can follow the first time they hear them. Plan the audience and outcome, draft for the ear, rehearse aloud, and choose the right delivery format.",
+    "image": "https://solprompter.com/media/blog/script-writing-for-speaking/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/script-writing-for-speaking/hero.webp",
+    "alt": "Writer planning a spoken video script with a laptop, notebook, and camera on a desk",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": {
+    "label": "Open SolPrompter",
+    "url": "/"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "html": "To write a script for speaking, decide what one listener needs to understand or do, arrange the ideas in the order they need to hear them, and revise the draft aloud. A speaking script is not an essay read out loud: it is a listening aid for a person who cannot reread the previous sentence."
+    },
+    {
+      "type": "paragraph",
+      "html": "This guide is the starting point for SolPrompter’s <strong>Script Writing for Speaking</strong> collection. Use it to choose the right amount of structure, then move to the focused guide that matches your format: a rewritten draft, a talking-head video, a presentation, or a teleprompter."
+    },
+    {
+      "type": "toc",
+      "title": "Table of contents"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What makes a script easy to speak?"
+    },
+    {
+      "type": "paragraph",
+      "html": "An easy-to-speak script has a clear listener, one job per section, words the presenter would naturally use, and enough space to breathe and think. It does not require short sentences everywhere; it keeps the listener from carrying too many new ideas at once. University of Florida broadcast-writing guidance similarly emphasizes clear, conversational language for an audience that hears the message rather than rereads it. <a href=\"https://ask.ifas.ufl.edu/publication/WC193\">University of Florida IFAS Extension guidance</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Start with the listener and one outcome"
+    },
+    {
+      "type": "paragraph",
+      "html": "Before writing an opening, name the listener, the situation, and the outcome. ‘Everyone’ is not a useful audience. ‘A new manager deciding how to introduce a weekly update’ gives you a clearer decision about what to explain, define, and leave out."
+    },
+    {
+      "type": "list",
+      "style": "principles",
+      "items": [
+        {
+          "title": "Listener",
+          "text": "Who is hearing this, and what do they already know?"
+        },
+        {
+          "title": "Moment",
+          "text": "What are they trying to decide, do, or understand right now?"
+        },
+        {
+          "title": "Outcome",
+          "text": "What should be different for them after they hear the message?"
+        },
+        {
+          "title": "Constraint",
+          "text": "Which facts, names, legal wording, timing, or calls to action must remain exact?"
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "Write the outcome as a sentence you can say without notes. For example: ‘After this two-minute video, a new customer can choose the right first setup step.’ If that sentence is vague, more prose will not solve the underlying message problem."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choose a full script, bullet points, or a hybrid"
+    },
+    {
+      "type": "paragraph",
+      "html": "A full script is useful when accuracy, timing, approved language, or a complex explanation matters. Bullet points are useful when the sequence matters but the exact phrasing can change. A hybrid often works well: write the opening, transitions, technical language, and closing in full; use short prompts for familiar examples."
+    },
+    {
+      "type": "paragraph",
+      "html": "For a decision framework, read <a href=\"/blog/teleprompter-vs-memorizing-vs-bullet-points/\">Teleprompter vs Memorizing vs Bullet Points</a>. That guide owns the delivery-method decision. This guide focuses on designing language and structure that a listener can follow."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Build a spoken outline before writing sentences"
+    },
+    {
+      "type": "paragraph",
+      "html": "Most useful speaking scripts can be planned as a short path. Start by orienting the listener. Give the explanation in the smallest number of steps that makes it usable. Then state the next action or the point to remember. This is a planning aid, not a formula that requires the same words in every video or talk."
+    },
+    {
+      "type": "list",
+      "style": "principles",
+      "items": [
+        {
+          "title": "Promise",
+          "text": "Name the problem or result so the listener knows why to keep listening."
+        },
+        {
+          "title": "Path",
+          "text": "Give the ideas in the order they must be understood; define unfamiliar terms before using them."
+        },
+        {
+          "title": "Proof or example",
+          "text": "Show what the advice looks like in a realistic situation."
+        },
+        {
+          "title": "Next step",
+          "text": "Tell the listener what to try, decide, or remember after the message ends."
+        }
+      ]
+    },
+    {
+      "type": "paragraph",
+      "html": "For a talking-head recording, the path may be a hook, one useful idea, an example, and a close. For a presentation, it may include signposts between sections and a recap. Use <a href=\"/blog/talking-head-video-script-template/\">the talking-head video script template</a> or <a href=\"/blog/presentation-script-template/\">the presentation script template</a> when you need a ready-to-adapt structure."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Draft for the ear, not the page"
+    },
+    {
+      "type": "paragraph",
+      "html": "Listeners receive speech in sequence. They cannot scan ahead, compare paragraphs, or quietly reread a dense sentence. Broadcast-writing guidance therefore emphasizes conversational wording, direct sentences, and one main idea at a time. <a href=\"https://uark.pressbooks.pub/journalismgsp/chapter/broadcast/\">University of Arkansas broadcast-writing guidance</a>."
+    },
+    {
+      "type": "paragraph",
+      "html": "That does not mean making every sentence short or casual. It means choosing words you would genuinely say, placing the important noun and verb where the listener can find them, and splitting an idea when the listener needs a beat to process it."
+    },
+    {
+      "type": "paragraph",
+      "html": "Try this revision test: if you need to reread a sentence silently before you can say it aloud, simplify the sentence or separate the ideas."
+    },
+    {
+      "type": "quote",
+      "text": "Page draft: The implementation of a narrower reading area may facilitate improved visual focus during delivery."
+    },
+    {
+      "type": "quote",
+      "text": "Speaking draft: A narrower reading area can make it easier to keep your eyes near the camera."
+    },
+    {
+      "type": "paragraph",
+      "html": "When you are converting an existing article, report, or AI output, use <a href=\"/blog/turn-writing-into-a-speaking-script/\">How to Turn an Essay or AI Draft into a Natural Speaking Script</a>. It covers that rewrite workflow in depth so this hub does not repeat it."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Rehearse, time, and revise the script"
+    },
+    {
+      "type": "paragraph",
+      "html": "Rehearsal reveals problems that silent editing misses: breath, pace, emphasis, and wording that does not sound like you. Read the draft in the real delivery format, then time a complete section instead of estimating from the page. Defense Information School guidance treats the script as a production document with a format that supports the finished media. <a href=\"https://pavilion.dinfos.edu/How-To/Article/2379830/how-to-compose-format-a-script/\">Defense Information School guidance</a>."
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        {
+          "text": "For a word-count and rehearsal-time estimate, use <a href=\"/blog/teleprompter-script-word-count/\">How Long Should a Teleprompter Script Be?</a>."
+        },
+        {
+          "text": "For line breaks, cues, numbers, and a layout designed for reading from a prompter, use <a href=\"/blog/how-to-write-a-teleprompter-script/\">How to Write a Teleprompter Script That Sounds Natural</a>."
+        },
+        {
+          "text": "For the physical reading and practice workflow, use <a href=\"/blog/how-to-read-a-teleprompter-naturally/\">How to Read a Teleprompter Naturally</a>."
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choose the next guide for your format"
+    },
+    {
+      "type": "paragraph",
+      "html": "Choose the guide that solves the next specific problem. The collection is designed so each page has a distinct job: conversion, timing, template choice, teleprompter formatting, or delivery. That separation helps you improve a script without turning every article into a duplicate overview."
+    },
+    {
+      "type": "paragraph",
+      "html": "A short test recording is more useful than repeatedly polishing a document. The University of Mary Washington recommends practicing aloud and using the actual equipment when preparing a speech. <a href=\"https://academics.umw.edu/speaking/resources/handouts/handling-speech-anxiety/\">University of Mary Washington guidance</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frequently asked questions"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "I can name one listener and one useful outcome." },
+        { "text": "The opening tells the listener why this message matters." },
+        { "text": "Each section has one job and a clear transition." },
+        { "text": "Terms, acronyms, names, and claims are checked and introduced clearly." },
+        { "text": "The wording sounds like something I would say." },
+        { "text": "I have read it aloud and revised the parts that did not work in speech." },
+        { "text": "The script format matches the chosen delivery method." }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Should I write a script word for word?"
+    },
+    {
+      "type": "paragraph",
+      "html": "Write word for word when exact language, timing, or complex wording matters. Use bullet points when the structure matters more than exact phrasing. A hybrid gives many presenters the control of a script without forcing every familiar example into fixed language."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "includeInToc": true,
+      "text": "Can I use AI to draft a speaking script?"
+    },
+    {
+      "type": "paragraph",
+      "html": "AI can help produce a starting draft, outline, or alternative phrasing. You still need to verify facts, remove invented detail, add your real experience, and rehearse the result aloud. Google’s guidance similarly emphasizes helpful, reliable, people-first content rather than content made only to attract search traffic. <a href=\"https://developers.google.com/search/docs/fundamentals/creating-helpful-content\">Google Search Central guidance</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Editorial disclosure"
+    },
+    {
+      "type": "paragraph",
+      "html": "SolPrompter publishes this guide and develops teleprompter software. The editorial guidance here is intended to help people plan and rehearse spoken messages; product instructions are kept separate in the <a href=\"/teleprompter-guide\">SolPrompter product guide</a>."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "References"
+    },
+    {
+      "type": "list",
+      "style": "bullets",
+      "items": [
+        { "text": "University of Florida IFAS Extension. <a href=\"https://ask.ifas.ufl.edu/publication/WC193\">“Writing for the Broadcast Media.”</a>" },
+        { "text": "Defense Information School. <a href=\"https://pavilion.dinfos.edu/How-To/Article/2379830/how-to-compose-format-a-script/\">“How to Compose & Format a Script.”</a>" },
+        { "text": "Narisi, S. <a href=\"https://uark.pressbooks.pub/journalismgsp/chapter/broadcast/\">“Broadcast Writing.”</a> University of Arkansas." },
+        { "text": "University of Mary Washington. <a href=\"https://academics.umw.edu/speaking/resources/handouts/handling-speech-anxiety/\">“Handling Speech Anxiety.”</a>" },
+        { "text": "Google Search Central. <a href=\"https://developers.google.com/search/docs/fundamentals/creating-helpful-content\">“Creating helpful, reliable, people-first content.”</a>" }
+      ]
+    }
+  ]
+}

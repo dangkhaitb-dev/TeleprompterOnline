@@ -1,12 +1,13 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "common-teleprompter-mistakes",
+  "answer": "Most teleprompter problems come from the script, the reading position, the scrolling method, or insufficient testing. Identify the visible symptom, change one variable, and record a short test before changing anything else.",
   "published": true,
   "flatUrl": true,
   "title": "12 Common Teleprompter Mistakes and How to Fix Them",
   "date": "2026-08-01",
   "dateDisplay": "August 1, 2026",
-  "modified": "2026-08-01",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 1, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Teleprompter Guides",
   "shortName": "12 Common Teleprompter Mistakes and How to Fix Them",

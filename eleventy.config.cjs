@@ -110,12 +110,17 @@ function configureEleventy(eleventyConfig) {
     for (const file of articleFiles) {
       const filePath = path.join(articlesDataDir, file);
       const article = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-      const requiredStrings = ['slug', 'title', 'category', 'date', 'dateDisplay', 'modified'];
+      const requiredStrings = ['slug', 'title', 'answer', 'category', 'date', 'dateDisplay', 'modified'];
 
       for (const field of requiredStrings) {
         if (typeof article[field] !== 'string' || !article[field].trim()) {
           throw new Error(`[articles] ${file}: "${field}" must be a non-empty string.`);
         }
+      }
+
+      const answerSentenceCount = article.answer.match(/[.!?](?=\s|$)/g)?.length || 0;
+      if (answerSentenceCount < 2 || answerSentenceCount > 4) {
+        throw new Error(`[articles] ${file}: "answer" must contain 2–4 sentences.`);
       }
 
       const titleSlug = slugifyUrlPart(article.title);

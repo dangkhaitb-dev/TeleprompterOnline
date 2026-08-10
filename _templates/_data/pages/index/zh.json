@@ -1,18 +1,18 @@
 {
   "seo": {
     "title": "支持 AI 语音滚动的免费在线提词器 | SolPrompter",
-    "description": "免费在线提词器，配备语音激活滚动、相机贴齐模式（notch mode）及 QR 码远程控制。无广告、免注册，文稿与录像均保留在您的设备上。",
+    "description": "免费在线提词器，支持语音滚动、镜头对齐模式（Notch Mode）和二维码遥控。无广告、无需注册，文稿与录像都保留在您的设备上。",
     "canonical": "/zh/",
     "ogTitle": "免费在线提词器 — SolPrompter",
-    "ogDescription": "使用我们基于浏览器的提词器自然地呈现。随着您的声音自动滚动，最大限度地减少眼球运动，并支持二维码远程控制。",
+    "ogDescription": "使用基于浏览器的提词器，自然地完成演示。文稿会随您的声音自动滚动，减少眼球移动，并支持二维码遥控。",
     "ogType": "website",
     "ogImage": "/og-solprompter.png",
     "ogImageAlt": "SolPrompter 语音控制提词器界面"
   },
   "schema": {
-    "orgDescription": "SolPrompter 提供免费的在线提词器，用于自然演示和专业视频录制。",
-    "brandDescription": "SolPrompter 是一款免费的在线提词器，专为自然演示和专业视频录制而设计。",
-    "websiteDescription": "免费的在线提词器，具有人工智能语音滚动、缺口模式、无线遥控和专业4K视频录制功能。",
+    "orgDescription": "SolPrompter 提供免费的在线提词器，帮助您自然地完成演示和专业视频录制。",
+    "brandDescription": "SolPrompter 是一款免费的在线提词器，专为自然表达和专业视频录制而设计。",
+    "websiteDescription": "免费的在线提词器，支持 AI 语音滚动、镜头对齐模式、无线遥控和专业 4K 视频录制。",
     "webpageName": "支持 AI 语音滚动的免费在线提词器 | SolPrompter",
     "alternateNames": [
       "SolPrompter",
@@ -23,7 +23,7 @@
     "primaryImage": "/og-solprompter.png",
     "primaryImageCaption": "SolPrompter 免费在线提词器",
     "appAlternateName": "SolPrompter 免费在线提词器",
-    "appDescription": "免费的在线提词器，具有声控滚动、眼神接触的缺口模式、无线遥控、脚本管理以及专业的全高清和 4K 视频录制。",
+    "appDescription": "免费的在线提词器，支持语音滚动、用于保持眼神交流的镜头对齐模式、无线遥控、文稿管理，以及专业的全高清和 4K 视频录制。",
     "applicationCategory": "MultimediaApplication",
     "applicationSubCategory": "在线提词器",
     "operatingSystem": "任何配备现代网页浏览器的操作系统",
@@ -38,12 +38,12 @@
       "AI 语音激活滚动",
       "手动提词器滚动",
       "固定速度自动滚动",
-      "刘海提词器模式",
+      "镜头对齐提词器模式",
       "通过其他设备远程遥控",
       "全高清视频录制",
       "4K 视频录制",
-      "脚本创建与编辑",
-      "脚本管理",
+      "文稿创建与编辑",
+      "文稿管理",
       "录制内容管理",
       "自适应移动端界面",
       "支持桌面端和移动端浏览器",
@@ -52,9 +52,9 @@
     ],
     "offerDescription": "免费使用 SolPrompter 在线提词器的各项功能。",
     "howToName": "如何使用 SolPrompter",
-    "howToDescription": "了解如何添加脚本、选择滚动模式、自定义提词器，并使用 SolPrompter 开始演讲或录制。",
+    "howToDescription": "了解如何添加文稿、选择滚动模式、自定义提词器，并使用 SolPrompter 开始演示或录制。",
     "faqName": "SolPrompter 在线提词器常见问题解答",
-    "faqDescription": "关于 SolPrompter、AI 语音滚动、刘海模式、远程遥控、支持的设备和视频录制的常见问题。"
+    "faqDescription": "关于 SolPrompter、AI 语音滚动、镜头对齐模式、远程遥控、支持的设备和视频录制的常见问题。"
   },
   "nav": {
     "items": [
@@ -71,7 +71,7 @@
         "url": "#notch"
       },
       {
-        "label": "录音与隐私",
+        "label": "录制与隐私",
         "url": "#recording"
       }
     ],
@@ -83,8 +83,8 @@
   "hero": {
     "eyebrow": "SolPrompter — 免费在线提词器",
     "title": "免费在线提词器",
-    "subtitle": "自动随您的声音滚动，并将文字锚定在相机镜头附近，以减少眼球转动。文稿与录像均保留在您的设备上。",
-    "placeholder": "粘贴您的脚本或上传文件即可开始……",
+    "subtitle": "文稿会随您的声音自动滚动，并停留在相机镜头附近，帮助减少眼球移动。文稿与录像都保留在您的设备上。",
+    "placeholder": "粘贴您的文稿或上传文件即可开始……",
     "uploadLabel": "上传文件",
     "uploadLabelShort": "上传",
     "startLabel": "开始演示",
@@ -94,21 +94,21 @@
     "dropHint": "支持 TXT、DOCX 和 Markdown"
   },
   "messages": {
-    "errorEmpty": "开始使用提词器前，请先输入您的脚本内容。",
+    "errorEmpty": "开始使用提词器前，请先输入文稿内容。",
     "errorRead": "不支持的格式。请选择 .txt、.md 或 .docx 文件。"
   },
   "features": {
     "eyebrow": "主要特点",
-    "title": "专为自然分娩而设计",
-    "description": "完整的基于浏览器的工作流程，无需安装软件即可进行写入、读取和记录。",
+    "title": "专为自然表达而设计",
+    "description": "完整的浏览器工作流程，无需安装软件即可写作、阅读和录制。",
     "items": [
       {
-        "title": "AI语音滚动",
+        "title": "AI 语音滚动",
         "description": "使用本机浏览器语音识别功能在您说话时自动滚动。"
       },
       {
-        "title": "缺口读取模式",
-        "description": "将狭窄的读数块直接固定在相机镜头下方，以最大限度地减少眼球运动。"
+        "title": "镜头对齐阅读模式",
+        "description": "将窄幅阅读区域直接固定在相机镜头下方，尽量减少眼球移动。"
       },
       {
         "title": "二维码遥控器",
@@ -120,7 +120,7 @@
       },
       {
         "title": "针对平板电脑进行了优化",
-        "description": "响应式布局可将阅读区域、导航和控件调整为纵向或横向屏幕，以获得专注的、类似应用程序的体验。"
+        "description": "响应式布局会根据竖屏或横屏调整阅读区域、导航和控件，带来专注、近似应用的使用体验。"
       },
       {
         "title": "无水印",
@@ -131,7 +131,7 @@
   "howItWorks": {
     "eyebrow": "工作流程",
     "title": "简单即时",
-    "description": "只需几个步骤即可准备好脚本并开始演示或录制。",
+    "description": "只需几个步骤即可准备好文稿并开始演示或录制。",
     "resourceLink": {
       "label": "阅读完整的提词器指南",
       "url": "/teleprompter-guide"
@@ -139,8 +139,8 @@
     "steps": [
       {
         "anchor": "step-add-script",
-        "title": "输入脚本",
-        "description": "直接粘贴文本或从您的设备上传文档。"
+        "title": "输入文稿",
+        "description": "直接粘贴文字，或从设备上传文档。"
       },
       {
         "anchor": "step-choose-scroll-mode",
@@ -161,18 +161,18 @@
   },
   "voiceScroll": {
     "eyebrow": "语音同步",
-    "title": "AI语音卷轴提词器",
-    "subTitle": "以你声音的速度滚动",
+    "title": "AI 语音滚动提词器",
+    "subTitle": "按您说话的速度滚动",
     "problemSolution": {
       "problemTitle": "问题：传统提词器以固定速度滚动",
-      "problemDesc": "如果你说得更快，你就会失去位置。如果你暂停，脚本就会继续移动。这使得演示感觉僵化且有压力。",
+      "problemDesc": "如果说得更快，就会跟不上文稿；如果停下来，文稿却还在移动。这会让演示显得僵硬而有压力。",
       "solutionTitle": "解决方案：AI语音滚动",
       "solutionDesc": "SolPrompter 会在您朗读时进行聆听并推进文稿，从而适应您说话速度的变化。"
     },
     "description": "语音识别会跟随您的表达并在您说话时推进文稿，在您的速度发生任何变化时即时做出响应。",
     "benefits": [
       {
-        "title": "说话自然",
+        "title": "自然说话",
         "description": "按照自己的节奏阅读，不会感到匆忙或听起来很机械。"
       },
       {
@@ -184,13 +184,13 @@
         "description": "活动线精确地保持在您的视线水平中心。"
       },
       {
-        "title": "尽量减少重考",
-        "description": "避免因脚本滚动太快或太慢而导致的错误。"
+        "title": "减少重录",
+        "description": "避免因文稿滚动过快或过慢而出错。"
       }
     ],
     "qa": {
       "q": "AI语音滚动需要账号吗？",
-      "a": "不需要，SolPrompter 是一款免费提词器，无需注册。您可以粘贴视频脚本或语音脚本并立即开始提示。"
+      "a": "不需要。SolPrompter 是一款无需注册的免费提词器。您可以粘贴视频或演讲文稿，立即开始提词。"
     },
     "supporting": "更喜欢传统的滚动？手动和定速控制始终可用。",
     "cta": {
@@ -200,15 +200,15 @@
   },
   "notch": {
     "eyebrow": "专业装备设置",
-    "title": "自然眼神接触的凹口模式",
-    "description": "通过将线条直接放置在镜头下方并同步手机进行远程调整，以保持自然的相机眼神接触，从而优化相机角度。",
+    "title": "保持自然眼神交流的镜头对齐模式",
+    "description": "将文稿行直接放在镜头下方，并通过手机同步进行远程调整，让您与镜头保持自然的眼神交流。",
     "items": [
-      "将行宽限制为 50-70 个字符，以防止横向扫描。",
+      "将每行宽度限制为 50–70 个字，以减少眼睛左右扫视。",
       "将文本直接固定在相机镜头下方。",
-      "自定义视口高度以仅显示您需要的线条。",
+      "自定义视口高度，只显示需要阅读的文稿行。",
       "与观众保持直接、自然的目光接触。"
     ],
-    "supporting": "非常适合主讲视频、视频通话、远程采访和在线课程。",
+    "supporting": "非常适合出镜视频、视频通话、远程采访和在线课程。",
     "cta": {
       "label": "打开提词器",
       "url": "/teleprompter"
@@ -220,19 +220,19 @@
     "description": "通过 QR 码和配对的 WebSocket 会话连接手机或平板电脑。无需安装其他应用程序即可控制您的演示。",
     "items": [
       {
-        "title": "播放和暂停脚本",
-        "description": "演示时谨慎启动或冻结提词器。"
+        "title": "播放和暂停文稿",
+        "description": "演示时低调地启动或暂停提词器。"
       },
       {
         "title": "调整速度",
         "description": "直接从手机屏幕上微调滚动速度。"
       },
       {
-        "title": "导航脚本",
+        "title": "浏览文稿",
         "description": "向前、向后跳转或立即跳至其他部分。"
       },
       {
-        "title": "触发录音",
+        "title": "启动录制",
         "description": "从房间另一端开始和停止摄像头录制。"
       }
     ],
@@ -242,13 +242,13 @@
     },
     "supporting": "独奏创作者、企业主持人和舞台演讲者的基本工作流程。",
     "cta": {
-      "label": "连接远程",
+      "label": "连接遥控器",
       "url": "/teleprompter"
     }
   },
   "recording": {
-    "eyebrow": "录音与隐私",
-    "title": "浏览器内 4K 录制和本地脚本隐私",
+    "eyebrow": "录制与隐私",
+    "title": "浏览器内 4K 录制与本地文稿隐私",
     "description": "在浏览器中录制视频，同时将文稿和录像保留在您设备的浏览器本地存储空间中。",
     "items": [
       {
@@ -265,7 +265,7 @@
       },
       {
         "title": "录制资料库",
-        "description": "将所有录制的镜头组织起来并与各自的脚本联系起来。"
+        "description": "整理所有录制片段，并将它们与对应的文稿关联起来。"
       }
     ],
     "qa": {
@@ -273,7 +273,7 @@
       "a": "是的！ SolPrompter 具有零水印的高质量浏览器视频录制功能（在支持的桌面上最高可达 4K 分辨率，在 iOS 设备上最高可达 1080p）。您录制的剪辑存储在您的设备本地，以实现最大程度的隐私保护。"
     },
     "cta": {
-      "label": "开始录音",
+      "label": "开始录制",
       "url": "/teleprompter"
     },
     "resourceLink": {
@@ -283,11 +283,11 @@
   },
   "workspace": {
     "eyebrow": "私人工作空间",
-    "title": "您的脚本保持私密",
-    "description": "您的脚本和录音保留在您的设备上，因此您可以处理敏感内容，而无需将其发送到 SolPrompter。",
+    "title": "您的文稿始终私密",
+    "description": "文稿和录制内容保留在您的设备上，因此您可以处理敏感内容，而无需将其发送到 SolPrompter。",
     "items": [
       {
-        "title": "编写和编辑脚本",
+        "title": "编写和编辑文稿",
         "description": "直接在工具内创建新草稿或编辑现有草稿。"
       },
       {
@@ -295,23 +295,23 @@
         "description": "直接上传 TXT、DOCX 或 Markdown 文件，而不是复制粘贴。"
       },
       {
-        "title": "无限脚本",
-        "description": "存储浏览器本地数据库允许的尽可能多的脚本。"
+        "title": "不限数量的文稿",
+        "description": "在浏览器本地数据库容量允许的范围内保存任意数量的文稿。"
       },
       {
         "title": "即时重复使用",
-        "description": "打开过去的脚本、更新详细信息并在几秒钟内录制新的镜头。"
+        "description": "打开之前的文稿、更新内容，并在几秒钟内录制新的片段。"
       }
     ],
     "qa": {
       "q": "我可以上传 DOCX 文件吗？",
-      "a": "是的！您可以轻松地将 TXT、Markdown 和 DOCX 文档直接导入到本地工作区。这些脚本在您的浏览器中本地处理，并且永远不会上传到任何服务器。"
+      "a": "可以！您可以将 TXT、Markdown 和 DOCX 文档直接导入本地工作区。文稿会在浏览器中本地处理，永远不会上传到服务器。"
     }
   },
   "mobile": {
     "eyebrow": "为每一块屏幕而设计",
     "title": "适配移动端的在线提词器",
-    "description": "SolPrompter 使其阅读区域、导航和控件适应手机和平板电脑，在纵向或横向方向上提供类似应用程序的集中体验。",
+    "description": "SolPrompter 会让阅读区域、导航和控件适应手机和平板电脑，在竖屏或横屏下都提供专注、近似应用的体验。",
     "items": [
       {
         "title": "自适应界面",
@@ -330,10 +330,10 @@
         "description": "在支持的浏览器中打开 SolPrompter，即可开始在线使用提词器。"
       }
     ],
-    "supporting": "使用 SolPrompter 作为您的移动提词器、桌面提词器或基于浏览器的在线自动提示。"
+    "supporting": "将 SolPrompter 用作移动提词器、桌面提词器，或直接在浏览器中使用的在线提词器。"
   },
   "useCases": {
-    "eyebrow": "使用案例",
+    "eyebrow": "适用场景",
     "title": "SolPrompter 适合谁？",
     "items": [
       {
@@ -342,7 +342,7 @@
       },
       {
         "title": "YouTube 博主",
-        "description": "以自然流利的语言风格提供教程、解释和评论。"
+        "description": "以自然流畅的表达方式制作教程、讲解和评论。"
       },
       {
         "title": "播客主",
@@ -366,13 +366,13 @@
       },
       {
         "title": "远程团队",
-        "description": "使用缺口模式演示幻灯片、报告状态和引导视频通话。"
+        "description": "使用镜头对齐模式展示幻灯片、汇报进展并主持视频通话。"
       }
     ]
   },
   "comparison": {
     "eyebrow": "比较",
-    "title": "完整的浏览器提词器",
+    "title": "功能完整的浏览器提词器",
     "description": "使用语音、固定速度或手动滚动；远程控制提词器；并从单个浏览器工作区进行录制。",
     "whyChoose": {
       "title": "为什么创作者选择 SolPrompter",
@@ -387,25 +387,25 @@
         },
         {
           "title": "无需注册或设置",
-          "description": "没有帐户，没有入职问题。只需访问该网站，粘贴您的脚本，然后立即开始演示。"
+          "description": "无需账户，也没有复杂的新手引导。访问网站、粘贴文稿，即可立即开始演示。"
         }
       ]
     },
-    "supporting": "从编写第一个脚本到录制最终视频，SolPrompter 在一个浏览器窗口中提供了所有工具。"
+    "supporting": "从编写第一份文稿到录制最终视频，SolPrompter 在一个浏览器窗口中提供所有工具。"
   },
   "about": {
     "eyebrow": "关于",
-    "title": "让在线阅读感觉像一次自然的对话",
+    "title": "让在线读稿像自然对话一样",
     "paragraphs": [
       "SolPrompter 旨在帮助演讲者自信地进行演示，而无需记住长文本或担心滚动速度。",
-      "我们专注于打造一个极简的在线提词器，结合语音同步滚动、人机工程学设计与简易的视频录制功能。",
-      "无论您是用手机拍摄、用笔记本电脑录音还是管理工作室，SolPrompter 都能让您专注于观众。"
+      "我们专注于打造一款简洁的在线提词器，结合语音同步滚动、符合人体工学的设计和简单易用的视频录制功能。",
+      "无论您用手机拍摄、用笔记本电脑录制，还是在工作室进行制作，SolPrompter 都能让您专注于观众。"
     ]
   },
   "finalCta": {
     "eyebrow": "开始说话",
     "title": "使用 SolPrompter 自然呈现",
-    "description": "立即输入脚本、配置显示设置并录制视频。",
+    "description": "立即输入文稿、设置显示方式并录制视频。",
     "cta": {
       "label": "打开提词器",
       "url": "/teleprompter"
@@ -419,11 +419,11 @@
       {
         "anchor": "常见问题保持目光接触",
         "q": "如何避免看起来像是在读书并保持目光接触？",
-        "a": "<strong>启用 SolPrompter 的相机贴齐模式（Notch Mode），将您的文稿直接置于镜头下方。</strong> 较窄的阅读栏目可减少显著的左右扫视，但结果仍取决于您的屏幕大小、相机位置和阅读距离。"
+        "a": "<strong>启用 SolPrompter 的镜头对齐模式（Notch Mode），将文稿直接放在镜头下方。</strong> 较窄的阅读栏可以减少明显的左右扫视，但效果仍取决于屏幕大小、相机位置和阅读距离。"
       },
       {
         "anchor": "常见问题与应用商店",
-        "q": "为什么选择 SolPrompter 而不是 App Store 应用程序？",
+        "q": "为什么选择 SolPrompter，而不是 App Store 中的应用？",
         "a": "<strong>SolPrompter 直接在网页上运行，无需下载，且导出的视频不会加上水印。</strong> 当您想直接粘贴文稿并开始使用，而不想安装或创建账户时，这是一个实用的选择。"
       },
       {
@@ -438,7 +438,7 @@
       },
       {
         "anchor": "常见问题解答脚本隐私",
-        "q": "我的脚本和公司草稿安全吗？",
+        "q": "我的文稿和公司草稿安全吗？",
         "a": "<strong>您的文稿和录像在您工作时会保留在您的设备上。</strong> SolPrompter 不会将该内容上传到其服务器。语音识别仍可能使用设备端引擎或浏览器提供的识别服务。"
       },
       {
@@ -448,8 +448,8 @@
       },
       {
         "anchor": "离线使用常见问题解答",
-        "q": "我可以离线运行提词器吗？",
-        "a": "<strong>提词器工作区可在网页加载后离线继续使用，但语音同步的可用性取决于您浏览器的识别模式。</strong> 当无法使用离线语音识别引擎时，请使用固定速度或手动滚动。"
+        "q": "我可以离线使用提词器吗？",
+        "a": "<strong>网页加载后，提词器工作区可以继续离线使用，但语音同步是否可用取决于浏览器的识别模式。</strong> 如果浏览器无法使用离线语音识别，请改用定速或手动滚动。"
       },
       {
         "anchor": "常见问题解答-字体大小-距离",
@@ -473,7 +473,7 @@
       },
       {
         "title": "默认隐私",
-        "description": "您的脚本和录音保留在您的设备上，而不是上传到 SolPrompter，让您可以直接控制敏感内容。"
+        "description": "您的文稿和录制内容保留在您的设备上，而不是上传到 SolPrompter，让您可以直接掌控敏感内容。"
       }
     ],
     "evidenceTitle": "具备已记录限制的性能表现",
@@ -485,7 +485,7 @@
   },
   "footer": {
     "brand": "SolPrompter",
-    "description": "免费的在线提词器，用于自然演示和专业视频录制。",
+    "description": "免费的在线提词器，帮助您自然地完成演示和专业视频录制。",
     "columns": [
       {
         "title": "产品",
@@ -503,11 +503,11 @@
             "url": "#how-it-works"
           },
           {
-            "label": "语音卷轴",
+            "label": "语音滚动",
             "url": "#voice-scroll"
           },
           {
-            "label": "刘海模式",
+            "label": "镜头对齐模式",
             "url": "#notch"
           },
           {

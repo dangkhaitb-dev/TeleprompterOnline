@@ -1,12 +1,13 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "script-writing-for-speaking",
+  "answer": "Write a speaking script around one listener's need: decide what they should understand or do, order the ideas for listening, and revise the draft aloud. A speaking script is a listening aid, not an essay read word for word.",
   "published": true,
   "flatUrl": true,
   "title": "Script Writing for Speaking: How to Plan Words People Can Follow",
   "date": "2026-08-09",
   "dateDisplay": "August 9, 2026",
-  "modified": "2026-08-09",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 9, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Guides",
   "shortName": "Script Writing for Speaking",

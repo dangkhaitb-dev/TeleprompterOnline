@@ -89,6 +89,17 @@ body.blog-article-page {
   text-wrap: balance;
 }
 
+.article-answer {
+  margin: clamp(1.5rem, 3vw, 2rem) 0 0;
+  padding: 1.25rem 1.35rem;
+  border-inline-start: 3px solid var(--brand);
+  background: var(--line-soft);
+  color: var(--ink);
+  font-size: clamp(1.05rem, 1.25vw, 1.2rem);
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+
 .article-cta {
   margin-top: clamp(1.5rem, 2.5vw, 2rem);
   padding: 1rem 1.45rem;

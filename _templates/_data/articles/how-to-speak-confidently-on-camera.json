@@ -1,12 +1,13 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "how-to-speak-confidently-on-camera",
+  "answer": "Build confidence on camera by making the camera ordinary: record short clips, review one useful detail, and try again. A small, repeatable seven-day practice plan makes preparation, setup, and review familiar.",
   "published": true,
   "flatUrl": true,
   "title": "How to Speak Confidently on Camera: A Practice Plan",
   "date": "2026-08-08",
   "dateDisplay": "August 8, 2026",
-  "modified": "2026-08-08",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 8, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Speaking on Camera",
   "shortName": "How to Speak Confidently on Camera",

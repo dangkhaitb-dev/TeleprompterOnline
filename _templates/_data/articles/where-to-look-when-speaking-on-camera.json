@@ -1,12 +1,13 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "where-to-look-when-speaking-on-camera",
+  "answer": "For a recorded message, look at the camera lens when delivering the important thought; for a video call, look mostly at the other person's face and glance at the lens at key moments. Choose the right target for the format, return to it deliberately, and review a short recording.",
   "published": true,
   "flatUrl": true,
   "title": "Where to Look When Speaking on Camera",
   "date": "2026-08-08",
   "dateDisplay": "August 8, 2026",
-  "modified": "2026-08-08",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 8, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Speaking on Camera",
   "shortName": "Where to Look When Speaking on Camera",

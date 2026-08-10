@@ -24,7 +24,7 @@ Required top-level fields:
 - `published`: use `false` to keep a draft out of the build
 - `slug`: lowercase, accent-free words separated by hyphens; it must match `title`
 - `category`: the display label; the build derives its URL slug automatically
-- `title`, `date`, `dateDisplay`, `modified`
+- `title`, `answer`, `date`, `dateDisplay`, `modified`
 - `author.name`
 - `review.by`, `review.updatedDisplay`: editorial review attribution shown in the article header
 - `seo.title`, `seo.description`, `seo.image`

@@ -1,11 +1,12 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "solprompter-ai-teleprompter-features-tested",
+  "answer": "SolPrompter is a free online teleprompter and browser-based recording studio for creators who want to paste a script and start recording without installing software. This review covers its scrolling, recording, privacy, device, and workflow behavior, including documented limitations.",
   "published": true,
   "title": "SolPrompter AI Teleprompter: Features Tested",
   "date": "2026-07-10",
   "dateDisplay": "July 10, 2026",
-  "modified": "2026-07-29",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -13,7 +14,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "July 29, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Product",
   "shortName": "SolPrompter AI Teleprompter",

@@ -8,6 +8,7 @@
     "slug",
     "published",
     "title",
+    "answer",
     "category",
     "date",
     "dateDisplay",
@@ -27,6 +28,7 @@
     },
     "published": { "type": "boolean" },
     "title": { "type": "string", "minLength": 1 },
+    "answer": { "type": "string", "minLength": 1 },
     "category": { "type": "string", "minLength": 1 },
     "shortName": { "type": "string", "minLength": 1 },
     "keywords": {

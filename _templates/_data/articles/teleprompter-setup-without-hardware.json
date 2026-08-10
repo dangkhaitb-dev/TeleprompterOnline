@@ -1,12 +1,13 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "teleprompter-setup-without-hardware",
+  "answer": "You can use a browser teleprompter with a laptop, tablet, or phone without buying beam-splitter glass. Place the active reading area near the camera, narrow the text column, choose a readable font, and record a short eye-line test.",
   "published": true,
   "flatUrl": true,
   "title": "How to Set Up a Teleprompter Without Special Hardware",
   "date": "2026-08-01",
   "dateDisplay": "August 1, 2026",
-  "modified": "2026-08-01",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 1, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Teleprompter Guides",
   "shortName": "How to Set Up a Teleprompter Without Special Hardware",

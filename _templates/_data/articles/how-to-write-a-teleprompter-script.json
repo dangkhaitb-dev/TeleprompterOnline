@@ -1,12 +1,13 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "how-to-write-a-teleprompter-script",
+  "answer": "Write a teleprompter script for the ear, not the page: use conversational wording, short sentences, one main idea at a time, and line breaks that show the intended rhythm. Read it aloud and rewrite anything that is difficult to say.",
   "published": true,
   "flatUrl": true,
   "title": "How to Write a Teleprompter Script That Sounds Natural",
   "date": "2026-08-01",
   "dateDisplay": "August 1, 2026",
-  "modified": "2026-08-09",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 9, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Script Writing for Speaking",
   "shortName": "How to Write a Teleprompter Script That Sounds Natural",

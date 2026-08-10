@@ -1,12 +1,13 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "how-to-sound-natural-on-camera",
+  "answer": "Sound natural on camera by speaking in complete thoughts, varying your pace, pausing when meaning changes, and emphasizing only the words that carry the point. Use language you would say to a person and leave room to breathe.",
   "published": true,
   "flatUrl": true,
   "title": "How to Sound Natural on Camera: Pace, Pauses, and Emphasis",
   "date": "2026-08-08",
   "dateDisplay": "August 8, 2026",
-  "modified": "2026-08-08",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 8, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Speaking on Camera",
   "shortName": "How to Sound Natural on Camera",

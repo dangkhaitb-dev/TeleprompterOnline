@@ -1,12 +1,13 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "speaking-on-camera",
+  "answer": "Speak naturally on camera by focusing on one person, preparing one clear message, choosing a controllable delivery method, and reviewing short recordings one skill at a time. Natural delivery comes from preparation that supports your attention rather than replacing it.",
   "published": true,
   "flatUrl": true,
   "title": "Speaking on Camera: A Practical Guide for Beginners",
   "date": "2026-08-08",
   "dateDisplay": "August 8, 2026",
-  "modified": "2026-08-09",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 9, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Guides",
   "shortName": "Speaking on Camera",

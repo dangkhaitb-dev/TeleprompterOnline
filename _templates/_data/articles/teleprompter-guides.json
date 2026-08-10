@@ -1,12 +1,13 @@
 {
   "$schema": "../schemas/blog-article.schema.json",
   "slug": "teleprompter-guides",
+  "answer": "Use these teleprompter guides to choose a setup, prepare a script, deliver it naturally, select a scrolling method, and fix common problems. Start with the problem you have now instead of reading the collection in order.",
   "published": true,
   "flatUrl": true,
   "title": "Teleprompter Guides",
   "date": "2026-08-01",
   "dateDisplay": "August 1, 2026",
-  "modified": "2026-08-09",
+  "modified": "2026-08-10",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -14,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 9, 2026"
+    "updatedDisplay": "August 10, 2026"
   },
   "category": "Guides",
   "shortName": "Teleprompter Guides",

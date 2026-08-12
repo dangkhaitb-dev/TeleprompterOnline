@@ -8,11 +8,11 @@
   "category": "Interview & Meeting Preparation",
   "date": "2026-08-09",
   "dateDisplay": "August 9, 2026",
-  "modified": "2026-08-10",
+  "modified": "2026-08-12",
   "keywords": ["how to prepare for a meeting", "meeting preparation checklist", "meeting attendee preparation", "prepare for a work meeting"],
   "mentions": ["meeting preparation", "agenda", "pre-reading", "meeting participation"],
   "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
-  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 10, 2026" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
   "seo": {
     "title": "How to Prepare for a Meeting: A Participant’s Checklist",
     "description": "Prepare for a work meeting as an attendee: understand the outcome, review the agenda and evidence, form a contribution, and confirm the practical details.",
@@ -27,7 +27,7 @@
   "cta": { "label": "Open SolPrompter", "url": "/" },
   "content": [
     { "type": "paragraph", "html": "Prepare for a meeting by finding the decision, discussion, or update it is meant to produce; reviewing only the material needed for your role; and arriving with one useful contribution. Good preparation is not reading every linked document or writing a speech. It is reducing the amount of time the group needs to spend bringing you up to speed." },
-    { "type": "paragraph", "html": "This is a guide for participants, subject-matter contributors, and decision makers who have been invited to a meeting. It does not cover designing the agenda or facilitating the room; if you are responsible for the meeting itself, use <a href=\"/blog/interview-meeting-preparation/how-to-lead-a-meeting/\">How to Lead a Meeting</a>. For interview-specific preparation, see <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/\">How to Prepare for a Job Interview</a> or the <a href=\"/blog/interview-meeting-preparation/video-interview-checklist/\">Video Interview Checklist</a>." },
+    { "type": "paragraph", "html": "This is a guide for participants, subject-matter contributors, and decision makers who have been invited to a meeting. It does not cover designing the agenda or facilitating the room; if you are responsible for the meeting itself, use <a href=\"/blog/interview-meeting-preparation/how-to-lead-a-meeting/\">How to Lead a Meeting</a>, <a href=\"/blog/interview-meeting-preparation/meeting-agenda-template/\">the Meeting Agenda Template</a>, and <a href=\"/blog/interview-meeting-preparation/how-to-start-a-meeting/\">How to Start a Meeting</a>. For interview-specific preparation, see <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/\">How to Prepare for a Job Interview</a> or the <a href=\"/blog/interview-meeting-preparation/video-interview-checklist/\">Video Interview Checklist</a>." },
     { "type": "toc", "title": "In this guide" },
     { "type": "heading", "level": 2, "text": "Start with the meeting’s expected outcome" },
     { "type": "paragraph", "html": "Read the invitation and agenda for the result, not just the topic. “Project update” can mean you are there to listen, flag a risk, choose among options, or approve a recommendation. An agenda is more useful when each item has a desired outcome, time frame, and role; MIT’s meeting guidance uses outcomes such as an agreement, a decision, or a list. <a href=\"https://hr.mit.edu/learning-topics/meetings/articles/agendas\">See MIT Human Resources’ agenda guidance</a>." },

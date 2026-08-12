@@ -197,12 +197,43 @@ Project-scoped Codex roles live in `.codex/agents/`.
 - Use `e2e-runner` for critical browser flows.
 - Use `refactor-cleaner` only for explicitly authorized cleanup.
 - Use `doc-updater` for documentation synchronization.
+- Use `blog-writer` for drafting, rewriting, or SEO-optimizing blog articles.
+- Use `seo-page-writer` for writing or SEO-optimizing non-blog pages, including
+  landing, product, feature, tool, pricing, and static pages.
 
 Delegate independent, read-heavy work in parallel when it materially improves
 speed or review quality. Avoid parallel agents editing overlapping files.
 When spawning a named custom agent, use no inherited context or a bounded
 recent-turn fork and pass task-local context explicitly. Do not combine a named
 custom agent type with a full-history fork.
+
+### Agent model routing
+
+- Choose agent models according to task complexity, ambiguity, risk, and scope.
+  Do not default every agent to the most expensive model or reasoning level.
+- Use `gpt-5.6-luna` with `medium` reasoning for straightforward repository
+  searches and inspections, `high` for small implementations and careful
+  mechanical changes, and `xhigh` for broad or ambiguous investigation that
+  does not require a high-risk architectural decision.
+- Use `gpt-5.6-terra` with `high` reasoning for normal feature implementation,
+  bug fixes, and changes spanning a small number of related modules.
+- Use `gpt-5.6-terra` with `xhigh` reasoning for difficult debugging,
+  cross-module refactoring, architectural verification, and high-risk reviews.
+- Use `gpt-5.6-sol` with `high` reasoning only for genuinely exceptional
+  complexity, high-impact architectural decisions, or problems that remain
+  unresolved after a serious `terra`/`xhigh` attempt. Use `sol` with `xhigh`
+  only when the extra reasoning depth is clearly justified.
+- Do not spawn an agent unless its task is concrete, bounded, and meaningfully
+  independent or parallelizable. Prefer one capable agent over several agents
+  with overlapping responsibilities.
+- Give every editing agent explicit ownership of its files or modules and tell
+  it to preserve and accommodate changes made by other agents or users.
+- The coordinating agent owns task decomposition, model selection, integration,
+  and final verification. Escalate models only when evidence shows that the
+  current tier is insufficient.
+- For a typical feature, prefer at most one `luna` exploration agent, one
+  `terra` implementation agent, and one `terra` review agent when the change is
+  significant. Do not use `sol` for routine review or mechanical confirmation.
 
 ## Security baseline
 

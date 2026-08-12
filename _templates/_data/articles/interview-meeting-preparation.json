@@ -1,0 +1,64 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "interview-meeting-preparation",
+  "flatUrl": true,
+  "answer": "Prepare for an interview or meeting by defining the outcome, choosing the information or examples that matter, and practicing the parts that need to sound clear aloud. The best preparation gives you useful structure without making you sound rehearsed or distract you from the people in the conversation.",
+  "title": "Interview & Meeting Preparation: Practical Guides for Better Conversations",
+  "shortName": "Interview & Meeting Preparation",
+  "category": "Guides",
+  "date": "2026-08-12",
+  "dateDisplay": "August 12, 2026",
+  "modified": "2026-08-12",
+  "keywords": ["interview and meeting preparation guides", "interview preparation resources", "meeting preparation resources", "interview and meeting skills"],
+  "mentions": ["job interviews", "video interviews", "meeting agendas", "meeting facilitation", "speaking practice"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
+  "seo": {
+    "title": "Interview & Meeting Preparation: Practical Guides for Better Conversations",
+    "description": "Browse practical interview and meeting preparation guides for job research, video setup, behavioral stories, agendas, participation, decisions, and follow-through.",
+    "image": "https://solprompter.com/media/blog/interview-meeting-preparation/hero.webp"
+  },
+  "hero": {
+    "src": "/media/blog/interview-meeting-preparation/hero.webp",
+    "alt": "Professional preparing notes for an interview and a meeting agenda at a desk",
+    "width": 1672,
+    "height": 941
+  },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "Preparation works when it makes the conversation easier to have. Before a job interview, that means connecting your experience to the role and being ready to listen. Before a meeting, it means knowing the result the group needs and bringing the right information or question. In either setting, preparation should create attention and judgment—not a speech to recite." },
+    { "type": "paragraph", "html": "Use this guide to choose the narrow resource that matches your role. The interview path focuses on candidates; the meeting path distinguishes an attendee’s preparation from a leader’s responsibility for the agenda, participation, decisions, and follow-up." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Start with the kind of conversation you are preparing for" },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Job interview", "text": "Connect the role’s needs to truthful evidence from your experience, prepare questions that help you evaluate the opportunity, and practice responding rather than reading." },
+      { "title": "Video interview", "text": "Add a deliberate test of the meeting link, audio, camera frame, lighting, interruptions, and a small backup plan." },
+      { "title": "Meeting participant", "text": "Find the expected outcome, review the material tied to your role, and arrive with one useful contribution or clarifying question." },
+      { "title": "Meeting leader", "text": "Design the agenda around outcomes, decision rules, participation, time, actions, and a written follow-up." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Job interview preparation guides" },
+    { "type": "paragraph", "html": "Interview preparation begins with the actual role, not a generic list of answers. Build a small evidence bank from work, study, volunteer, or other relevant experience, then rehearse explaining it in plain language. Keep notes for practice; during the interview, listen to the exact question and answer in your own words." },
+    { "type": "list", "style": "bullets", "items": [
+      { "title": "Plan the full preparation", "text": "<a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/\">How to Prepare for a Job Interview</a> covers role research, examples, questions, practice, and logistics." },
+      { "title": "Structure behavioral stories", "text": "Use <a href=\"/blog/interview-meeting-preparation/star-method-behavioral-interviews/\">the STAR Method guide</a> to turn a real experience into a focused answer without sounding formulaic." },
+      { "title": "Handle the opening", "text": "<a href=\"/blog/interview-meeting-preparation/tell-me-about-yourself-interview-answer/\">How to Answer ‘Tell Me About Yourself’</a> helps you make a concise, role-relevant introduction." },
+      { "title": "Evaluate the opportunity", "text": "<a href=\"/blog/interview-meeting-preparation/questions-to-ask-an-interviewer/\">Questions to Ask an Interviewer</a> gives you question types that reveal the work, team, manager, and process." },
+      { "title": "Prepare for the call", "text": "For a remote conversation, use the <a href=\"/blog/interview-meeting-preparation/video-interview-checklist/\">Video Interview Checklist</a>." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Meeting preparation guides" },
+    { "type": "paragraph", "html": "A meeting is not one skill. An invited participant needs to understand the purpose and prepare relevant input. A facilitator or owner needs to design the process by which people will make progress. Choose the guide that matches the responsibility you actually hold." },
+    { "type": "list", "style": "bullets", "items": [
+      { "title": "Attend with useful input", "text": "<a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-meeting/\">How to Prepare for a Meeting</a> is a participant’s checklist for pre-work, contribution, and practical setup." },
+      { "title": "Run the full meeting", "text": "<a href=\"/blog/interview-meeting-preparation/how-to-lead-a-meeting/\">How to Lead a Meeting</a> covers purpose, decisions, participation, actions, and follow-through." },
+      { "title": "Build the working plan", "text": "Use the <a href=\"/blog/interview-meeting-preparation/meeting-agenda-template/\">Meeting Agenda Template</a> when you need an agenda people can prepare from and facilitate against." },
+      { "title": "Open with clarity", "text": "<a href=\"/blog/interview-meeting-preparation/how-to-start-a-meeting/\">How to Start a Meeting</a> provides a short opening sequence for purpose, agenda, roles, and participation." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Use practice tools ethically" },
+    { "type": "paragraph", "html": "Recording a rehearsal can help you hear whether an opening rambles, whether a story has enough context, or whether a meeting introduction names a usable outcome. It should never replace your own judgment or be used to hide live answers during an interview. For any high-stakes conversation, prepare a short outline, rehearse it aloud, review once, and then meet the person in front of you." },
+    { "type": "heading", "level": 2, "text": "Choose a useful next step" },
+    { "type": "endnote", "text": "If you have a job interview coming up, start by turning the job description into a focused preparation brief.", "label": "Read How to Prepare for a Job Interview", "url": "/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes these guides and develops an optional browser-based speaking and recording tool. The methods here work with any suitable note-taking, calendar, conferencing, or rehearsal setup." }
+  ]
+}

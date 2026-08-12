@@ -8,11 +8,11 @@
   "category": "Interview & Meeting Preparation",
   "date": "2026-08-09",
   "dateDisplay": "August 9, 2026",
-  "modified": "2026-08-10",
+  "modified": "2026-08-12",
   "keywords": ["video interview checklist", "video interview setup", "how to prepare for a video interview", "Zoom interview checklist"],
   "mentions": ["video interview", "remote interview", "camera setup", "audio test"],
   "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
-  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 10, 2026" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
   "seo": {
     "title": "Video Interview Checklist: Technical Setup and Delivery",
     "description": "Use this video interview checklist to test audio, camera, lighting, connection, meeting controls, delivery, and a simple backup plan before you join.",
@@ -28,7 +28,7 @@
   "content": [
     { "type": "paragraph", "html": "A reliable video interview setup is simple: test the actual meeting path, make your face and voice easy to understand, remove predictable interruptions, and know how you will contact the organizer if the call fails. Do this before interview day when possible, then repeat a short check shortly before you join." },
     { "type": "paragraph", "html": "The technical setup should support the conversation, not become the focus of it. You do not need expensive equipment. A working camera, clear audio, stable enough connection, front-facing light, and a quiet place are usually more valuable than a complicated production setup." },
-    { "type": "paragraph", "html": "This checklist covers the remote-specific part of interview preparation. First prepare your role research, examples, and questions with <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/\">How to Prepare for a Job Interview</a>. For recurring team calls, see <a href=\"/blog/interview-meeting-preparation/how-to-lead-a-meeting/\">How to Lead a Meeting</a>." },
+    { "type": "paragraph", "html": "This checklist covers the remote-specific part of interview preparation. First prepare your role research, examples, and questions with <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/\">How to Prepare for a Job Interview</a>; rehearse the opening with <a href=\"/blog/interview-meeting-preparation/tell-me-about-yourself-interview-answer/\">How to Answer ‘Tell Me About Yourself’</a>. For the full map of interview and meeting resources, see <a href=\"/blog/interview-meeting-preparation/\">Interview &amp; Meeting Preparation</a>." },
     { "type": "toc", "title": "In this guide" },
     { "type": "heading", "level": 2, "text": "Test the real interview path" },
     { "type": "paragraph", "html": "Use the same computer, browser or app, network, camera, microphone, and location you expect to use for the interview. Open the meeting platform in advance, sign in if necessary, check that permissions are allowed, and learn where to mute, select a device, leave, and rejoin. If the employer provided a special platform or instructions, follow those rather than assuming your usual app will work." },

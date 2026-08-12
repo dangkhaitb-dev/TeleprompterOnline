@@ -1,0 +1,79 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "questions-to-ask-an-interviewer",
+  "answer": "Ask an interviewer questions that help you understand the actual work, how success is evaluated, who you will work with, and how the hiring process moves forward. Prepare several questions, then choose the ones the conversation has not already answered rather than asking a memorized list.",
+  "title": "Questions to Ask an Interviewer: Learn About the Role, Team, and Fit",
+  "shortName": "Questions to Ask an Interviewer",
+  "category": "Interview & Meeting Preparation",
+  "date": "2026-08-12",
+  "dateDisplay": "August 12, 2026",
+  "modified": "2026-08-12",
+  "keywords": ["questions to ask an interviewer", "questions to ask in a job interview", "what questions to ask interviewer", "interview questions for employer"],
+  "mentions": ["job interview questions", "role expectations", "team culture", "hiring process"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
+  "seo": { "title": "Questions to Ask an Interviewer: Learn About the Role, Team, and Fit", "description": "Questions to ask an interviewer about the role, success, manager, team, priorities, and hiring process—then choose what the conversation has not answered.", "image": "https://solprompter.com/media/blog/questions-to-ask-an-interviewer/hero.webp" },
+  "hero": { "src": "/media/blog/questions-to-ask-an-interviewer/hero.webp", "alt": "Job candidate writing thoughtful questions before an interview", "width": 1672, "height": 941 },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "The questions you ask in an interview should help you decide whether the role fits, not merely show that you prepared. Ask about the work, the outcome the team needs, the people and decisions around the role, and the process ahead. Then listen carefully enough to build on what the interviewer says." },
+    { "type": "paragraph", "html": "Harvard’s mock-interview guidance recommends arriving with questions because they show engagement and help you learn about the work environment, projects, and team. <a href=\"https://careerservices.fas.harvard.edu/blog/2024/10/01/6-mock-interview-questions-and-how-to-answer-them/\">Read the guidance</a>. A good question is specific enough to uncover something you need to know and open enough to invite a useful answer." },
+    { "type": "paragraph", "html": "This guide is one part of <a href=\"/blog/interview-meeting-preparation/\">Interview &amp; Meeting Preparation</a>. Use <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/\">the Job Interview Preparation guide</a> to research the role and organize the rest of your preparation." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Prepare categories, not a fixed list" },
+    { "type": "paragraph", "html": "Prepare more questions than you expect to use, organized by what you need to learn. Interviewers may answer several naturally during the conversation. Avoid asking a question simply because it is on a popular list; select the next question from the category that still has an important gap." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "The work", "text": "Clarify priorities, responsibilities, constraints, and the decisions this person will own or influence." },
+      { "title": "Success", "text": "Learn what a strong first few months look like and how good work is recognized or measured." },
+      { "title": "The team and manager", "text": "Understand collaboration, communication, feedback, and the context in which the role operates." },
+      { "title": "The organization", "text": "Explore an important priority, change, customer need, or challenge that is relevant to the role." },
+      { "title": "The process", "text": "Confirm the remaining interview steps and the expected decision timeline." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Questions about the work and success" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "What would a strong first three to six months look like in this role?" },
+      { "text": "Which problems or priorities would this person need to work on first?" },
+      { "text": "How do you decide what is most important when priorities compete?" },
+      { "text": "What distinguishes someone who is effective in this position?" },
+      { "text": "What is difficult about the work that may not be obvious from the job description?" }
+    ] },
+    { "type": "paragraph", "html": "Use wording that invites an honest answer. For example, asking what is difficult about the role often gives more useful information than asking whether the team is supportive. If the interviewer has already described a priority, build on it: ask how the role would contribute to that work." },
+    { "type": "heading", "level": 2, "text": "Questions about the team and manager" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Who would I work with most closely, and how do those partnerships usually work?" },
+      { "text": "How does the team share feedback or surface a disagreement?" },
+      { "text": "What decisions can this role make independently, and where does it need alignment?" },
+      { "text": "How does the manager support someone as they learn the role?" },
+      { "text": "What has helped the team work well together during a recent change or pressure point?" }
+    ] },
+    { "type": "paragraph", "html": "Ask these questions to understand the real working relationship, not to force an interviewer to sell the organization. Compare the answer with what matters to you and with the evidence you receive across the process." },
+    { "type": "heading", "level": 2, "text": "Questions about the organization and its direction" },
+    { "type": "paragraph", "html": "Research first using official, current sources. Then ask a question that connects a real organizational priority to the position. This avoids questions that could have been answered by a quick search and shows that you have thought about the work in context." },
+    { "type": "quote", "text": "“I saw that the organization is expanding its service for small teams. How is that changing the priorities for this group, and where would this role have the most influence?”" },
+    { "type": "heading", "level": 2, "text": "Ask about process at the right moment" },
+    { "type": "paragraph", "html": "Near the close, ask what happens next and when you can reasonably expect an update. If a practical question about location, schedule, pay, accessibility, or benefits is important to your decision, raise it at a stage and with a person who can answer accurately. The right timing varies by employer, country, and interview stage." },
+    { "type": "heading", "level": 2, "text": "Avoid questions that weaken the conversation" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Do not ask for information that the job description or company site already makes clear unless you have a more specific follow-up." },
+      { "text": "Do not frame a question as a disguised demand for reassurance." },
+      { "text": "Do not use the entire remaining time to run through a long list; choose the one or two questions that matter most." },
+      { "text": "Do not claim enthusiasm for a priority you have not researched or do not understand." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Prepare and use the questions naturally" },
+    { "type": "paragraph", "html": "Keep questions on a small note for preparation and bring them when that is appropriate to the format. In a video interview, place the note where it does not pull your attention away from the conversation. You do not need to memorize the wording; a brief prompt lets you listen and ask the question that best fits the moment." },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "How many questions should I ask an interviewer?", "includeInToc": true },
+    { "type": "paragraph", "html": "Prepare several but expect to ask only the questions that remain unanswered and fit the time. Two thoughtful questions are more useful than a long list delivered at the end of an already complete conversation." },
+    { "type": "heading", "level": 3, "text": "Is it okay to ask the same question to more than one interviewer?", "includeInToc": true },
+    { "type": "paragraph", "html": "Yes, when different interviewers can offer different perspectives. State the question in a way that fits their role, and acknowledge what you have already learned so it does not sound like you were not listening." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "Use your research and questions alongside a role-specific, truthful preparation plan.", "label": "Read How to Prepare for a Job Interview", "url": "/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops an optional speaking-practice tool. The interview questions are designed to help candidates make informed decisions; they are not a substitute for professional legal, employment, or compensation advice." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Harvard FAS Mignone Center for Career Success. <a href=\"https://careerservices.fas.harvard.edu/blog/2024/10/01/6-mock-interview-questions-and-how-to-answer-them/\">“6 Mock Interview Questions and How to Answer Them.”</a>" }
+    ] }
+  ]
+}

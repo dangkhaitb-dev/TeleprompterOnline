@@ -1,0 +1,73 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "how-to-start-a-meeting",
+  "answer": "Start a meeting by naming the result the group needs, confirming the agenda and roles, explaining how participation and decisions will work, and moving promptly into the first item. A short, clear opening creates shared expectations without turning the first minutes into a speech.",
+  "title": "How to Start a Meeting: A Clear Opening That Creates Focus",
+  "shortName": "How to Start a Meeting",
+  "category": "Interview & Meeting Preparation",
+  "date": "2026-08-12",
+  "dateDisplay": "August 12, 2026",
+  "modified": "2026-08-12",
+  "keywords": ["how to start a meeting", "meeting opening", "how to open a meeting", "meeting introduction"],
+  "mentions": ["meeting opening", "meeting facilitation", "meeting agenda", "decision rules"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
+  "seo": { "title": "How to Start a Meeting: A Clear Opening That Creates Focus", "description": "Start a meeting with a short opening that states the result, agenda, roles, participation method, decision rule, and first step without wasting time.", "image": "https://solprompter.com/media/blog/how-to-start-a-meeting/hero.webp" },
+  "hero": { "src": "/media/blog/how-to-start-a-meeting/hero.webp", "alt": "Meeting facilitator opening a focused discussion with a remote team", "width": 1672, "height": 941 },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "Start a meeting by making the purpose and process visible. In the first minute or two, name the result the group needs, orient people to the agenda, clarify roles or decision authority when needed, explain how people can contribute, and begin the first item. The aim is focus, not a ceremonial welcome." },
+    { "type": "paragraph", "html": "UMN Extension’s facilitation guidance emphasizes a clear purpose, an agenda with expected outcomes, participation design, and rehearsal of the process before the meeting. <a href=\"https://extension.umn.edu/community-news-and-insights/eight-ps-effective-facilitation-planning-and-preparation\">Read its planning guidance</a>. The opening is where that preparation becomes a shared working agreement." },
+    { "type": "paragraph", "html": "Build the agenda first with <a href=\"/blog/interview-meeting-preparation/meeting-agenda-template/\">the Meeting Agenda Template</a>. For the full meeting lifecycle, including decisions and follow-through, see <a href=\"/blog/interview-meeting-preparation/how-to-lead-a-meeting/\">How to Lead a Meeting</a>." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Decide what the opening needs to accomplish" },
+    { "type": "paragraph", "html": "A good opening reduces uncertainty about why people are here and what they are expected to do. The elements vary by meeting, but high-stakes or unfamiliar groups usually benefit from more explicit structure than a short recurring check-in." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Purpose", "text": "State why the group is meeting and the result it should produce." },
+      { "title": "Agenda", "text": "Name the major items, their priority, and the time available." },
+      { "title": "Roles", "text": "Clarify facilitator, note taker, topic leads, and decision owner when they are not obvious." },
+      { "title": "Participation", "text": "Tell people how input will be gathered: silent review, round-robin, chat, pairs, questions, or another method." },
+      { "title": "Decision rule", "text": "When a decision is needed, say whether the group is advising, seeking consensus, voting, or supplying input to a named owner." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Use a concise opening sequence" },
+    { "type": "paragraph", "html": "Most working meetings do not need all-purpose icebreakers or a long recap. Use a short sequence that fits the stakes, then transition to the work. If people need to know each other before a sensitive or new collaboration, introduce only what serves that purpose." },
+    { "type": "quote", "text": "“Thanks for joining. By the end of this meeting, we need to choose a launch sequence and assign the two highest-risk actions. We have 45 minutes: first a five-minute context review, then options and risks, then a decision. I will facilitate, Sam will capture actions, and Morgan will make the final call after hearing the group. Please use the first round to surface risks; we will compare options before deciding.”" },
+    { "type": "paragraph", "html": "The wording should change for your meeting. What matters is that people can hear the outcome, route, roles, and invitation to participate. Do not promise a decision if the group only has authority to recommend one." },
+    { "type": "heading", "level": 2, "text": "Start on time while respecting people" },
+    { "type": "paragraph", "html": "Begin at the stated time when practical. In a recurring meeting, late arrivals can catch up from the agenda or notes without requiring a restart. In a meeting where a missing person is essential to the decision, say what can proceed and what must wait rather than filling time with unrelated discussion." },
+    { "type": "paragraph", "html": "For remote meetings, confirm that the key participants can hear and participate, then move on. A full technical troubleshooting session at the beginning can consume the meeting; use a backup route when the problem cannot be resolved quickly." },
+    { "type": "heading", "level": 2, "text": "Invite participation with a question that fits the work" },
+    { "type": "paragraph", "html": "A vague “Any thoughts?” often produces silence or an unstructured debate. Ask a focused question that supports the item in front of the group. Give people a moment to think when the topic is complex, especially in remote or mixed-seniority groups." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "“What information would make this decision unsafe today?”" },
+      { "text": "“Which customer or delivery risk has not been named yet?”" },
+      { "text": "“What would need to be true for us to choose option A?”" },
+      { "text": "“Before we choose, is there a relevant perspective we have not heard?”" }
+    ] },
+    { "type": "heading", "level": 2, "text": "Practice the opening without reading it" },
+    { "type": "paragraph", "html": "For a consequential meeting, practice the opening once from four cues: result, agenda, roles, and first question. A recording can reveal whether it is too long or unclear. Then use the agenda as a reference and facilitate the people in the room. Reading a prepared speech makes it harder to respond to changes, interruptions, or useful questions." },
+    { "type": "heading", "level": 2, "text": "Common ways meeting openings lose focus" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Starting with a lengthy status update before saying what the group must accomplish." },
+      { "text": "Calling for discussion without naming the question, outcome, or decision owner." },
+      { "text": "Treating attendance as agreement when essential roles or perspectives are missing." },
+      { "text": "Using an opening activity that consumes time without supporting the meeting’s purpose." },
+      { "text": "Promising to finish more work than the available time can support." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "How long should a meeting opening be?", "includeInToc": true },
+    { "type": "paragraph", "html": "Use only the time needed to make the purpose and process clear. For a familiar recurring meeting, this may be under a minute. A new, sensitive, or high-stakes decision can justify a longer opening if it prevents confusion later." },
+    { "type": "heading", "level": 3, "text": "Should I introduce everyone at the start of a meeting?", "includeInToc": true },
+    { "type": "paragraph", "html": "Introduce people when they do not know each other or when roles materially affect the discussion. In a familiar team, a full round of introductions may be unnecessary; name the roles and decision authority relevant to the work instead." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "A clear opening works best when the agenda already tells people how the group will make progress.", "label": "Use the Meeting Agenda Template", "url": "/blog/interview-meeting-preparation/meeting-agenda-template/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops an optional speaking and recording tool. The facilitation approach works with any appropriate meeting, conferencing, and documentation system." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "University of Minnesota Extension. <a href=\"https://extension.umn.edu/community-news-and-insights/eight-ps-effective-facilitation-planning-and-preparation\">“Eight Ps of Effective Facilitation Planning and Preparation.”</a>" },
+      { "text": "University of Minnesota Extension. <a href=\"https://extension.umn.edu/leadership-and-civic-engagement/planning-effective-meeting-agenda\">“Planning an Effective Meeting Agenda.”</a>" }
+    ] }
+  ]
+}

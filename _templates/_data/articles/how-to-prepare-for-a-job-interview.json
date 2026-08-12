@@ -8,11 +8,11 @@
   "category": "Interview & Meeting Preparation",
   "date": "2026-08-09",
   "dateDisplay": "August 9, 2026",
-  "modified": "2026-08-10",
+  "modified": "2026-08-12",
   "keywords": ["how to prepare for a job interview", "job interview preparation", "interview preparation checklist", "behavioral interview preparation"],
   "mentions": ["job interview preparation", "behavioral interview", "STAR method", "mock interview"],
   "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
-  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 10, 2026" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
   "seo": {
     "title": "How to Prepare for a Job Interview: A Practical Plan",
     "description": "Prepare for a job interview: research the role, choose evidence, practice answers aloud, ask useful questions, and handle logistics.",
@@ -28,7 +28,7 @@
   "content": [
     { "type": "paragraph", "html": "Prepare for a job interview by connecting three things: what the employer needs, evidence from your own work, and the questions you need answered before deciding whether the role fits. Then practice explaining that connection aloud. This approach is more useful than trying to memorize a perfect response for every possible question." },
     { "type": "paragraph", "html": "Start several days ahead when possible. Research the organization and role, select a small set of accurate examples, rehearse concise answers with a person or recording, and confirm the interview format and logistics. MIT Career Advising similarly recommends researching the target organization, practicing, and planning ahead. <a href=\"https://capd.mit.edu/channels/interview/\">Read MIT’s interview guidance</a>." },
-    { "type": "paragraph", "html": "This guide covers preparation for a standard job interview. If your conversation is on a call, pair it with the <a href=\"/blog/interview-meeting-preparation/video-interview-checklist/\">video interview checklist</a>. For a professional conversation that is not a hiring interview, use <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-meeting/\">How to Prepare for a Meeting</a>." },
+    { "type": "paragraph", "html": "This guide covers preparation for a standard job interview. Use <a href=\"/blog/interview-meeting-preparation/\">Interview &amp; Meeting Preparation</a> to choose the right guide; add the <a href=\"/blog/interview-meeting-preparation/video-interview-checklist/\">video interview checklist</a> for a call, <a href=\"/blog/interview-meeting-preparation/star-method-behavioral-interviews/\">STAR Method preparation</a> for behavioral questions, and <a href=\"/blog/interview-meeting-preparation/tell-me-about-yourself-interview-answer/\">the interview-introduction guide</a> for the opening question. For a professional conversation that is not a hiring interview, use <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-meeting/\">How to Prepare for a Meeting</a>." },
     { "type": "toc", "title": "In this guide" },
     { "type": "heading", "level": 2, "text": "Use a four-part interview preparation plan" },
     { "type": "list", "style": "principles", "items": [

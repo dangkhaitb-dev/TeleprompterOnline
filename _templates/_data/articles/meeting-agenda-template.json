@@ -1,0 +1,63 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "meeting-agenda-template",
+  "answer": "A useful meeting agenda states the result the group needs, the outcome and process for each item, who leads it, how much time it has, and what preparation is expected. Use the agenda to help people decide whether they need to attend, prepare the right input, and leave with clear next steps.",
+  "title": "Meeting Agenda Template: A Practical Format for Decisions and Next Steps",
+  "shortName": "Meeting Agenda Template",
+  "category": "Interview & Meeting Preparation",
+  "date": "2026-08-12",
+  "dateDisplay": "August 12, 2026",
+  "modified": "2026-08-12",
+  "keywords": ["meeting agenda template", "team meeting agenda template", "how to write a meeting agenda", "effective meeting agenda"],
+  "mentions": ["meeting agenda", "meeting outcomes", "decision making", "action items"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
+  "seo": { "title": "Meeting Agenda Template: A Practical Format for Decisions and Next Steps", "description": "Use a practical meeting agenda template with a purpose, item outcomes, process, owner, timebox, pre-work, decisions, and action items.", "image": "https://solprompter.com/media/blog/meeting-agenda-template/hero.webp" },
+  "hero": { "src": "/media/blog/meeting-agenda-template/hero.webp", "alt": "Meeting leader reviewing a concise agenda with a team at a table", "width": 1672, "height": 941 },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "Use a meeting agenda as a working plan for how a group will make progress, not as a list of subjects to mention. State the meeting’s result, give every item an outcome and realistic timebox, identify the process and owner, and reserve time to record decisions and next steps." },
+    { "type": "paragraph", "html": "The University of Minnesota Extension recommends defining results, choosing the topics and outcomes that support them, deciding who makes decisions and how, allocating time, planning participation, and closing with next steps. <a href=\"https://extension.umn.edu/leadership-and-civic-engagement/planning-effective-meeting-agenda\">Read its agenda-planning guidance</a>. The template below translates those choices into a practical format." },
+    { "type": "paragraph", "html": "This article provides the document and design layer. For facilitation during the meeting, use <a href=\"/blog/interview-meeting-preparation/how-to-lead-a-meeting/\">How to Lead a Meeting</a>; for the first few minutes, use <a href=\"/blog/interview-meeting-preparation/how-to-start-a-meeting/\">How to Start a Meeting</a>." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Write the result before the agenda items" },
+    { "type": "paragraph", "html": "Start with a sentence that completes: “By the end of this meeting, we will…” The result should be observable: choose an approach, identify risks, agree on a plan, or assign owners. “Discuss the project” is a topic, not a result. If you cannot name an outcome that requires real-time work, an asynchronous update may be better." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Weak", "text": "“Project status meeting.”" },
+      { "title": "Usable", "text": "“Decide whether to run the September pilot, identify the two launch risks, and assign owners for the next actions.”" }
+    ] },
+    { "type": "heading", "level": 2, "text": "Copy this meeting agenda template" },
+    { "type": "paragraph", "html": "Copy the structure below into the calendar invitation, shared document, or meeting note. Remove fields that do not serve a short, low-stakes meeting; retain the outcome, ownership, and next-step fields whenever the group needs to make progress." },
+    { "type": "code", "language": "text", "text": "MEETING\nTitle:\nDate, time, and time zone:\nFacilitator:\nDecision owner:\nNote taker:\n\nPURPOSE\nWhy are we meeting?\n\nRESULT BY THE END\nWe will…\n\nPRE-WORK\nWhat to read, review, or bring — and why.\n\nAGENDA\n1. Item:\n   Outcome: inform / discuss / decide\n   Lead:\n   Process: silent review / round-robin / options review / decision\n   Timebox:\n\n2. Item:\n   Outcome:\n   Lead:\n   Process:\n   Timebox:\n\nCLOSE\nDecisions made:\nActions: owner + due date:\nOpen questions and next route:\nNext check-in:" },
+    { "type": "heading", "level": 2, "text": "Give every item an outcome, process, owner, and timebox" },
+    { "type": "paragraph", "html": "A useful agenda tells attendees what is expected of them. Label each item with the result it needs and how the group will work. An item that asks people to decide needs a decision owner and criteria; an item that only shares information may need a short update and no discussion at all." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Outcome", "text": "Use words such as inform, clarify, generate options, recommend, or decide. Avoid a bare subject label." },
+      { "title": "Process", "text": "Specify whether people will read silently, hear a short frame, give a round-robin response, compare options, vote, or receive a decision." },
+      { "title": "Owner", "text": "Name the item lead and the final decision owner when they are different." },
+      { "title": "Timebox", "text": "Make the time available visible. If the agenda does not fit, reduce scope before the meeting." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Send pre-work people can act on" },
+    { "type": "paragraph", "html": "Do not attach material without explaining what the reader should do with it. Say which decision or discussion it supports, what needs close review, and what can be skimmed. Participants can then use <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-meeting/\">the Meeting Preparation checklist</a> to turn the agenda into a relevant personal prep list." },
+    { "type": "heading", "level": 2, "text": "Use the agenda during the meeting" },
+    { "type": "paragraph", "html": "Open by restating the result, then use the agenda as a visible agreement about priority and process. At the end of a timebox, name the current state: ready to decide, needs one more question, or needs more work. Choose deliberately whether to extend, assign follow-up, defer the item, or remove a lower-priority topic." },
+    { "type": "paragraph", "html": "A facilitator may use a short outline to practice the opening before the meeting. Once the meeting begins, attention belongs on the people and the work, not on reading a script. The product is optional and not required for this process." },
+    { "type": "heading", "level": 2, "text": "Close the agenda with a record of progress" },
+    { "type": "paragraph", "html": "The last part of the agenda is a delivery mechanism. Capture decisions, actions with named owners and dates, open questions, and the next route for deferred work. This makes the meeting useful after the call ends and prevents a later summary from turning an idea into a commitment." },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "How far in advance should I send a meeting agenda?", "includeInToc": true },
+    { "type": "paragraph", "html": "Send it early enough for people to review relevant pre-work and raise a conflict or missing item. The right lead time depends on the complexity, attendees, time zones, and decision stakes. For a short recurring meeting, a shared agenda may be updated continuously." },
+    { "type": "heading", "level": 3, "text": "Does every meeting need all of these agenda fields?", "includeInToc": true },
+    { "type": "paragraph", "html": "No. Scale the format to the stakes. A five-minute coordination check may need only an outcome and actions; a consequential decision needs purpose, evidence, decision rule, participants, and a clear record. The fields are prompts for useful design, not paperwork for its own sake." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "Once an agenda makes the outcome and process visible, begin the meeting by aligning the group around it.", "label": "Read How to Start a Meeting", "url": "/blog/interview-meeting-preparation/how-to-start-a-meeting/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops an optional speaking and recording tool. The agenda format works with any calendar, notes, conferencing, or work-management system." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "University of Minnesota Extension. <a href=\"https://extension.umn.edu/leadership-and-civic-engagement/planning-effective-meeting-agenda\">“Planning an Effective Meeting Agenda.”</a>" },
+      { "text": "MIT Human Resources. <a href=\"https://hr.mit.edu/learning-topics/meetings/articles/agendas\">“How and Why to Use a Meeting Agenda.”</a>" }
+    ] }
+  ]
+}

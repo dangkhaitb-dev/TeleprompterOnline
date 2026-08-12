@@ -1,0 +1,68 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "tell-me-about-yourself-interview-answer",
+  "answer": "Answer ‘Tell me about yourself’ with a brief, professional introduction that connects your current direction, a few relevant experiences, and the reason this role makes sense now. Keep the focus on information the interviewer can use, then pause so the conversation can continue naturally.",
+  "title": "How to Answer ‘Tell Me About Yourself’ in a Job Interview",
+  "shortName": "Tell Me About Yourself",
+  "category": "Interview & Meeting Preparation",
+  "date": "2026-08-12",
+  "dateDisplay": "August 12, 2026",
+  "modified": "2026-08-12",
+  "keywords": ["tell me about yourself interview answer", "how to answer tell me about yourself", "tell me about yourself job interview", "interview introduction"],
+  "mentions": ["job interview introduction", "interview answers", "career narrative", "interview practice"],
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
+  "seo": { "title": "How to Answer ‘Tell Me About Yourself’ in a Job Interview", "description": "Answer ‘Tell me about yourself’ with a concise present-past-future introduction that connects your relevant experience to the job without sounding memorized.", "image": "https://solprompter.com/media/blog/tell-me-about-yourself-interview-answer/hero.webp" },
+  "hero": { "src": "/media/blog/tell-me-about-yourself-interview-answer/hero.webp", "alt": "Job candidate practicing an interview introduction in a home office", "width": 1672, "height": 941 },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "‘Tell me about yourself’ is an invitation to give the interviewer a useful professional starting point, not a request for your full biography. A clear answer briefly explains where you are now, identifies a relevant thread from your experience, and connects that direction to the role you are discussing." },
+    { "type": "paragraph", "html": "Indeed notes that this open-ended question often appears at the beginning of an in-person or video interview. <a href=\"https://in.indeed.com/career-advice/interviewing/interview-question-tell-me-about-yourself\">See its overview</a>. Your answer should make the next question easier: it should reveal what you do, what you have learned, and why the role is a sensible conversation to have." },
+    { "type": "paragraph", "html": "For the rest of the interview workflow, use <a href=\"/blog/interview-meeting-preparation/how-to-prepare-for-a-job-interview/\">How to Prepare for a Job Interview</a>. If the interviewer asks for an example, shift to a truthful <a href=\"/blog/interview-meeting-preparation/star-method-behavioral-interviews/\">STAR story</a> rather than extending this introduction." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Use a present-past-future structure" },
+    { "type": "paragraph", "html": "A simple present-past-future structure keeps the answer focused without making it sound like a formula. Start with your current role, area of study, or professional direction. Select one or two past experiences that demonstrate a capability relevant to this job. End with the future-facing reason you are interested in this opportunity." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Present", "text": "Name your current work, study, or professional focus in language the interviewer can understand." },
+      { "title": "Past", "text": "Choose only the experience that establishes the most relevant skill, subject knowledge, or progression." },
+      { "title": "Future", "text": "Connect the role’s actual work to what you hope to contribute and learn next. Avoid generic praise of the employer." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Build the answer from the job description" },
+    { "type": "paragraph", "html": "Before drafting, underline the responsibilities and capabilities that repeat in the posting. Pick one or two that your background can honestly support. Then remove the details that do not help the interviewer understand that connection. A focused answer is stronger than an exhaustive timeline." },
+    { "type": "quote", "text": "“I currently coordinate customer research for a small product team, where I turn interview findings into priorities for design and engineering. Earlier, I worked in support, which taught me to spot recurring customer problems and explain them clearly. I am interested in this role because it combines that customer insight with the cross-functional planning described in the job.”" },
+    { "type": "paragraph", "html": "The example is a structure, not a script to copy. Replace every claim with your own accurate experience and the employer’s stated needs. If you are changing fields, name the transferable skill and the direction you are taking without trying to hide the transition." },
+    { "type": "heading", "level": 2, "text": "Choose the right amount of detail" },
+    { "type": "paragraph", "html": "Aim for a concise opening that lets the interviewer choose the next area to explore. In many interviews, 45 to 90 seconds is enough. Use fewer details when the interviewer asks an informal opener and a little more context when the role requires a specific background. Watch for the natural handoff: once your point is clear, stop and invite the next question." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Use professional information relevant to the role, not unrelated personal history." },
+      { "text": "Name outcomes or learning when they help establish credibility; do not add unsupported metrics." },
+      { "text": "Explain career changes directly and positively instead of over-defending them." },
+      { "text": "Do not repeat the résumé line by line; give it a useful throughline." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Practice without sounding memorized" },
+    { "type": "paragraph", "html": "Write a short outline with three cues—present, relevant past, and why this role—then say it aloud several times. Record one rehearsal if it helps you notice where the answer becomes vague, overly detailed, or too formal. Change the wording between takes while keeping the facts stable. This makes it easier to sound responsive in the real conversation." },
+    { "type": "paragraph", "html": "Do not read a prepared answer in a live interview. Reading makes it harder to notice the interviewer’s reaction, adjust to their question, and have a genuine exchange. Use an optional practice tool only before the interview, not as a hidden aid during it." },
+    { "type": "heading", "level": 2, "text": "Adapt it to common situations" },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Early career", "text": "Lead with your field of study, project, placement, volunteer work, or part-time experience that best demonstrates readiness for the role." },
+      { "title": "Career change", "text": "Name the direction clearly, connect transferable experience to the new work, and show the learning or evidence behind the change." },
+      { "title": "Experienced candidate", "text": "Focus on the current scope of your work, a relevant progression or achievement, and the problem this role would let you work on." },
+      { "title": "Video interview", "text": "Keep the same content, but test the setup and practice looking at the interviewer or lens naturally. Use the <a href=\"/blog/interview-meeting-preparation/video-interview-checklist/\">Video Interview Checklist</a> for the technical routine." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "Should I mention personal details when answering ‘Tell me about yourself’?", "includeInToc": true },
+    { "type": "paragraph", "html": "Mention them only if they provide relevant context and you are comfortable sharing them. The question is usually a professional opener, so center the answer on your work, learning, interests, and direction related to the role." },
+    { "type": "heading", "level": 3, "text": "What if I have little direct experience?", "includeInToc": true },
+    { "type": "paragraph", "html": "Use the most relevant evidence you do have: coursework, a project, volunteer work, customer-facing work, a portfolio, or a transferable responsibility. Be honest about the stage you are at, then make the connection to the role clear." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "After a strong opening, be ready to show the interviewer one specific example of how you work.", "label": "Prepare STAR Stories for Behavioral Questions", "url": "/blog/interview-meeting-preparation/star-method-behavioral-interviews/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops an optional speaking-practice tool. The advice is designed for truthful preparation and responsive conversation, not for reading a hidden answer during an interview." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Indeed. <a href=\"https://in.indeed.com/career-advice/interviewing/interview-question-tell-me-about-yourself\">“Interview Question: ‘Tell Me About Yourself’.”</a>" },
+      { "text": "Harvard FAS Mignone Center for Career Success. <a href=\"https://careerservices.fas.harvard.edu/resources/interviewing/\">“Interviewing.”</a>" }
+    ] }
+  ]
+}

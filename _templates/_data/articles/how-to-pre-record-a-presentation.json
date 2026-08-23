@@ -7,7 +7,7 @@
   "title": "How to Pre-Record a Presentation",
   "date": "2026-08-08",
   "dateDisplay": "August 8, 2026",
-  "modified": "2026-08-10",
+  "modified": "2026-08-23",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -15,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 10, 2026"
+    "updatedDisplay": "August 23, 2026"
   },
   "category": "Speaking on Camera",
   "shortName": "How to Pre-Record a Presentation",
@@ -331,6 +331,8 @@
       "type": "list",
       "style": "bullets",
       "items": [
+        { "text": "Use <a href=\"/blog/video-creation-workflow/how-to-edit-a-talking-head-video/\">How to Edit a Talking-Head Video</a> to turn selected takes into a clear final cut." },
+        { "text": "Use the <a href=\"/blog/video-creation-workflow/video-publishing-checklist/\">Video Publishing Checklist</a> to review captions, export, upload, and the viewer-facing version." },
         { "text": "Explore the <a href=\"/blog/speaking-on-camera/\">Speaking on Camera</a> collection before your rehearsal." },
         { "text": "Use the <a href=\"/blog/how-to-speak-confidently-on-camera/\">camera confidence practice plan</a> before a high-stakes presentation." },
         { "text": "Review <a href=\"/blog/where-to-look-when-speaking-on-camera/\">where to look</a> and <a href=\"/blog/how-to-sound-natural-on-camera/\">how to manage pace, pauses, and emphasis</a> for the speaker portions." },

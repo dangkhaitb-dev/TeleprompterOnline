@@ -8,11 +8,11 @@
   "category": "Interview & Meeting Preparation",
   "date": "2026-08-09",
   "dateDisplay": "August 9, 2026",
-  "modified": "2026-08-12",
+  "modified": "2026-08-23",
   "keywords": ["video interview checklist", "video interview setup", "how to prepare for a video interview", "Zoom interview checklist"],
   "mentions": ["video interview", "remote interview", "camera setup", "audio test"],
   "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
-  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 23, 2026" },
   "seo": {
     "title": "Video Interview Checklist: Technical Setup and Delivery",
     "description": "Use this video interview checklist to test audio, camera, lighting, connection, meeting controls, delivery, and a simple backup plan before you join.",
@@ -54,6 +54,7 @@
     { "type": "heading", "level": 2, "text": "Prepare your delivery, not a script to read" },
     { "type": "paragraph", "html": "Review the job description, your examples, and questions for the employer before the call. During the live interview, listen to the full question, pause when you need to think, and answer in your own words. Do not read prepared answers from a screen. It can pull your eyes away from the conversation and make it harder to respond to follow-up questions." },
     { "type": "paragraph", "html": "Practice the first minute aloud: greeting, a concise introduction if invited, and the transition into conversation. Then rehearse a few true examples from bullet-point outlines, not a word-for-word text. Short recording and review loops can help you notice pace, eye line, and sound; <a href=\"/blog/how-to-speak-confidently-on-camera/\">the on-camera practice plan</a> uses that approach." },
+    { "type": "paragraph", "html": "For practice before the interview, you can paste a short outline into <a href=\"/\">SolPrompter</a>, rehearse your opening or STAR story aloud, record a practice take, and review one improvement at a time. Close it before the live interview: do not use a teleprompter or hidden script to read answers during the conversation." },
     { "type": "list", "style": "bullets", "items": [
       { "text": "Look toward the lens while making a key point, then look back at the interviewer’s image while listening." },
       { "text": "Let the interviewer finish, especially when audio delay makes a pause feel longer than it is." },

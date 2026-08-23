@@ -1,0 +1,89 @@
+{
+  "$schema": "../schemas/blog-article.schema.json",
+  "published": true,
+  "slug": "video-pre-production-checklist-talking-head-videos",
+  "answer": "Plan a talking-head video before recording: define one viewer and outcome, choose the format and runtime, prepare the spoken and visual plan, list what the shoot needs, and test the actual setup. A short plan keeps recording time focused on delivery rather than decisions you could have made earlier.",
+  "title": "Video Pre-Production Checklist for Talking-Head Videos",
+  "shortName": "Video Pre-Production Checklist",
+  "category": "Video Creation Workflow",
+  "date": "2026-08-23",
+  "dateDisplay": "August 23, 2026",
+  "modified": "2026-08-23",
+  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 23, 2026" },
+  "keywords": ["video pre-production checklist", "how to plan a talking-head video", "talking-head video planning", "video shoot checklist"],
+  "mentions": ["talking-head video", "shot list", "video script", "pre-production"],
+  "seo": {
+    "title": "Video Pre-Production Checklist for Talking-Head Videos",
+    "description": "Plan a talking-head video with a practical checklist for audience, outcome, script, visuals, equipment, timing, and a technical test.",
+    "image": "https://solprompter.com/media/blog/video-pre-production-checklist-talking-head-videos/hero.webp"
+  },
+  "hero": { "src": "/media/blog/video-pre-production-checklist-talking-head-videos/hero.webp", "alt": "Video creator adjusting a camera on a tripod beside a microphone and a simple shot list", "width": 1672, "height": 941 },
+  "cta": { "label": "Open SolPrompter", "url": "/" },
+  "content": [
+    { "type": "paragraph", "html": "Plan a talking-head video before recording: define one viewer and outcome, choose the format and runtime, prepare the spoken and visual plan, list what the shoot needs, and test the actual setup. The plan can fit on one page. Its job is to remove avoidable decisions from the recording session." },
+    { "type": "paragraph", "html": "This guide covers pre-production only. For the spoken draft, use the <a href=\"/blog/talking-head-video-script-template/\">Talking-Head Video Script Template</a>; for a full recording workflow, continue with <a href=\"/blog/how-to-pre-record-a-presentation/\">How to Pre-Record a Presentation</a>." },
+    { "type": "toc", "title": "In this guide" },
+    { "type": "heading", "level": 2, "text": "Start with one viewer and one outcome" },
+    { "type": "paragraph", "html": "Write two sentences before you decide on a camera angle: “This video is for…” and “After watching, they can…”. The outcome should be observable—a choice, action, or understanding—not simply that the viewer has seen the video." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Name the viewer’s starting point and the question the video answers." },
+      { "text": "Choose one useful outcome for this video, rather than trying to cover a whole subject." },
+      { "text": "Decide where the video will appear and what the viewer can realistically do next." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Set the format and time budget" },
+    { "type": "paragraph", "html": "Choose the required orientation, destination, deadline, and approximate runtime before drafting. Reserve time for demonstrations, screen changes, pauses, or a closing card; spoken words do not occupy the entire runtime. A timed rehearsal is more useful than a generic words-per-minute target. <a href=\"/blog/teleprompter-script-word-count/\">Use the script timing guide</a> to calculate a budget from your own delivery." },
+    { "type": "heading", "level": 2, "text": "Make a spoken plan and a visual plan" },
+    { "type": "paragraph", "html": "A direct-to-camera video may need only a short list of visual beats, while a tutorial or demonstration may need a fuller audio/visual plan. Keep the words you intend to say separate from notes about what the viewer should see. That separation makes it easier to judge whether a visual actually explains something or merely fills time." },
+    { "type": "paragraph", "html": "The Defense Information School distinguishes between simple scripts and formats that coordinate visuals with audio. Use the simpler format when the visuals are incidental; add a visual column or shot list when a screen, object, or cut changes what the audience needs to understand. <a href=\"https://pavilion.dinfos.edu/How-To/Article/2379830/how-to-compose-format-a-script/\">Defense Information School script-format guidance</a>." },
+    { "type": "list", "style": "principles", "items": [
+      { "title": "Spoken plan", "text": "The hook, explanation, examples, transitions, and close." },
+      { "title": "Visual plan", "text": "The screen, object, demonstration, cutaway, or on-screen phrase that makes a specific point clearer." },
+      { "title": "Shot list", "text": "A practical record of the shots, setup, location, and status when the shoot needs more than one setup." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Build a small shot list" },
+    { "type": "paragraph", "html": "For a simple talking-head video, a shot list may be only the main camera framing plus two or three planned cutaways. For a more involved shoot, record the scene, shot type, location, needed prop or screen, and whether the shot is complete. Adobe’s shot-list guide explains that listing setups helps a crew capture the coverage an editor needs and reduces wasted time when the setup changes. <a href=\"https://www.adobe.com/uk/creativecloud/video/discover/shot-list.html\">Adobe: How to make a shot list</a>." },
+    { "type": "heading", "level": 2, "text": "Prepare the recording setup" },
+    { "type": "paragraph", "html": "List the items that must work together: camera or phone, power, storage, microphone, headphones, lighting, background, script display, and any prop or screen recording. Then decide what must be in frame and what must stay out of it. The goal is not a universal equipment list; it is a setup you can repeat." },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Frame a short sample at the intended distance and eye line." },
+      { "text": "Record and listen to a few sentences through headphones." },
+      { "text": "Check the actual script or outline on the display you will use." },
+      { "text": "Put the next section, supporting visual, and backup power or storage within reach." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Pre-production checklist" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "The intended viewer, one outcome, destination, and deadline are clear." },
+      { "text": "The runtime includes time for visual beats and a natural close." },
+      { "text": "The spoken draft or outline has been read aloud." },
+      { "text": "Every planned visual supports a specific spoken point." },
+      { "text": "The shot list covers the required camera setups and supporting shots." },
+      { "text": "A short test confirms framing, sound, script visibility, and the location." }
+    ] },
+    { "type": "heading", "level": 2, "text": "Use this one-page video brief" },
+    { "type": "paragraph", "html": "Put these decisions in one working document before the shoot: viewer and outcome; destination and deadline; orientation and planned runtime; spoken outline; visual beats; main shot and supporting coverage; location; equipment and power; people or permissions; and the short test you will run. This is not paperwork for its own sake. It gives a solo creator the same practical reference a small crew needs when recording starts." },
+    { "type": "paragraph", "html": "Indiana University South Bend describes pre-production as setting the objective, target audience and concept; visualizing the video with a script or storyboard; building a shot list; checking equipment and props; and scouting the location. Use that list as a decision prompt, then scale it down to the complexity of your video. <a href=\"https://southbend.iu.edu/ocm/videography.html\">Indiana University South Bend videography guidance</a>." },
+    { "type": "heading", "level": 2, "text": "Plan framing, light, sound, and coverage together" },
+    { "type": "paragraph", "html": "The main shot should make the speaker easy to see and hear. Decide where the camera sits, where the speaker looks, what appears behind them, and where the main light and microphone will be before recording the full script. Then list only the supporting coverage that answers a viewer need: a close-up of an object, a screen demonstration, or a cutaway that lets you remove a reset cleanly." },
+    { "type": "paragraph", "html": "Do not add B-roll because a list says every video needs it. Add it when the viewer needs to inspect something the main frame cannot explain. If a visual is essential, name the precise spoken line it supports and make sure the shot is captured before the setup changes." },
+    { "type": "heading", "level": 2, "text": "Run a 60-second technical test" },
+    { "type": "paragraph", "html": "Record roughly one minute in the planned location, at the planned time of day, with the intended camera, microphone, framing, and script display. Play it back once for sound and once for picture. Check for clipping, echo, unreadable notes, unwanted background activity, focus changes, and a frame that becomes awkward when you speak. Correct the system, then start the real take." },
+    { "type": "heading", "level": 2, "text": "Frequently asked questions" },
+    { "type": "heading", "level": 3, "text": "Do I need a shot list for a talking-head video?", "includeInToc": true },
+    { "type": "paragraph", "html": "Usually yes, but it can be short. Name the main talking-head framing and any planned screen, object, or cutaway shot. A more detailed list is useful only when several locations, people, or setups make it easy to miss coverage." },
+    { "type": "heading", "level": 3, "text": "What is the difference between a storyboard and a shot list?", "includeInToc": true },
+    { "type": "paragraph", "html": "A storyboard shows a sequence visually; a shot list records what must be captured, often with shot type, location, and status. A simple talking-head project may need neither a drawn storyboard nor a detailed grid, but it should still name the visuals that support its spoken points." },
+    { "type": "heading", "level": 3, "text": "How long should pre-production take?", "includeInToc": true },
+    { "type": "paragraph", "html": "Take the time needed to remove decisions that would interrupt recording. A short update may need one focused planning session and a technical test; a multi-location or demonstration-heavy video needs enough time to coordinate people, assets, permissions, and coverage." },
+    { "type": "heading", "level": 2, "text": "Next step" },
+    { "type": "endnote", "text": "Once the plan is settled, record the message in manageable sections and review the result before you begin editing.", "label": "How to Pre-Record a Presentation", "url": "/blog/how-to-pre-record-a-presentation/" },
+    { "type": "heading", "level": 2, "text": "Editorial disclosure" },
+    { "type": "paragraph", "html": "SolPrompter publishes this guide and develops an optional teleprompter for preparing and delivering scripts. The checklist is tool-neutral and can be used with any camera, editor, or publishing platform." },
+    { "type": "heading", "level": 2, "text": "References" },
+    { "type": "list", "style": "bullets", "items": [
+      { "text": "Defense Information School. <a href=\"https://pavilion.dinfos.edu/How-To/Article/2379830/how-to-compose-format-a-script/\">“How to Compose / Format a Script.”</a>" },
+      { "text": "Indiana University South Bend. <a href=\"https://southbend.iu.edu/ocm/videography.html\">“Videography.”</a>" },
+      { "text": "Adobe. <a href=\"https://www.adobe.com/uk/creativecloud/video/discover/shot-list.html\">“How to Make a Shot List.”</a>" }
+    ] }
+  ]
+}

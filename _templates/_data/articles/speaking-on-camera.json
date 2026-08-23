@@ -7,7 +7,7 @@
   "title": "Speaking on Camera: A Practical Guide for Beginners",
   "date": "2026-08-08",
   "dateDisplay": "August 8, 2026",
-  "modified": "2026-08-10",
+  "modified": "2026-08-23",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -15,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 10, 2026"
+    "updatedDisplay": "August 23, 2026"
   },
   "category": "Guides",
   "shortName": "Speaking on Camera",
@@ -58,6 +58,10 @@
     {
       "type": "paragraph",
       "html": "When the problem is message design rather than delivery, use <a href=\"/blog/script-writing-for-speaking/\">Script Writing for Speaking</a> to plan the audience, outline, timing, and a suitable script format before you rehearse on camera."
+    },
+    {
+      "type": "paragraph",
+      "html": "For a complete project path beyond delivery, use the <a href=\"/blog/video-creation-workflow/video-pre-production-checklist-talking-head-videos/\">Video Pre-Production Checklist</a>, then <a href=\"/blog/video-creation-workflow/how-to-edit-a-talking-head-video/\">edit the talking-head video</a> and follow the <a href=\"/blog/video-creation-workflow/video-publishing-checklist/\">publishing checklist</a>."
     },
     {
       "type": "toc",

@@ -9,11 +9,11 @@
   "category": "Script Writing for Speaking",
   "date": "2026-08-09",
   "dateDisplay": "August 9, 2026",
-  "modified": "2026-08-10",
+  "modified": "2026-08-23",
   "keywords": ["talking head video script template", "talking head script", "video script template", "how to write a talking head video"],
   "mentions": ["talking-head video", "video script", "teleprompter", "on-camera delivery"],
   "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
-  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 10, 2026" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 23, 2026" },
   "seo": {
     "title": "Talking-Head Video Script Template: Hook, Value, Close",
     "description": "Copy a talking-head video script template for a clear hook, useful explanation, visual beats, and a specific close—then rehearse it for natural delivery.",
@@ -29,6 +29,7 @@
   "content": [
     { "type": "paragraph", "html": "A talking-head video script needs a clear promise, a useful explanation, and a close that tells the viewer what to do with the information. Copy the template below, replace the bracketed prompts with your subject, and rehearse it aloud before you record. Write for one viewer, not for a page." },
     { "type": "paragraph", "html": "This is a structure for a direct-to-camera video. It does not replace the teleprompter-formatting guidance in <a href=\"/blog/how-to-write-a-teleprompter-script/\">How to Write a Teleprompter Script</a>, or the delivery practice in <a href=\"/blog/speaking-on-camera/\">Speaking on Camera</a>." },
+    { "type": "paragraph", "html": "Before you fill in the template, use the <a href=\"/blog/video-creation-workflow/video-pre-production-checklist-talking-head-videos/\">Video Pre-Production Checklist</a> to choose the viewer, outcome, timing, and planned visuals." },
     { "type": "toc", "title": "In this guide" },
     { "type": "heading", "level": 2, "text": "Copy this talking-head video script template" },
     { "type": "paragraph", "html": "Use this as a fill-in framework. The sections have different jobs, so avoid using the hook to explain everything or the close to introduce a new idea." },

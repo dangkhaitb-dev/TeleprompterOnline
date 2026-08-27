@@ -1,6 +1,6 @@
 /* workspaces.css — Workspaces script library. Ported from the demo
    workspaces.html (Drive-style app-bar + flat sidebar + welcome + script grid),
-   stripped of FreeDub bits, .ws-* namespaced, tokenized, mobile-first, no blur. */
+   .ws-* namespaced, tokenized, mobile-first, no blur. */
 
 .ws-body {
   min-height: 100vh;

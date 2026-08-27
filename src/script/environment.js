@@ -1,5 +1,5 @@
 /**
- * Environment Configuration for Downloader Project
+ * Environment configuration for SolPrompter
  * Centralized configuration management
  */
 
@@ -96,7 +96,7 @@ const environment = {
         webName: 'default',
 
         // Application metadata
-        name: 'Video Downloader',
+        name: 'SolPrompter',
         version: '1.0.0'
     },
 

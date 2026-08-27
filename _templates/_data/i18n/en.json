@@ -1,8 +1,8 @@
 {
   "header": {
-    "logoText": "FreeDub.com",
-    "logoAriaLabel": "FreeDub",
-    "menuAriaLabel": "FreeDub menu",
+    "logoText": "SolPrompter",
+    "logoAriaLabel": "SolPrompter",
+    "menuAriaLabel": "SolPrompter menu",
     "menuIconAriaLabel": "Menu icon",
     "closeMenuAriaLabel": "Close menu",
     "premiumAriaLabel": "License options",
@@ -56,7 +56,7 @@
     "convertButton": "Convert"
   },
   "footer": {
-    "tagline": "&copy; 2026 FreeDub | Professional AI Subtitle Generator with Integrated Native Voices for Voice Dubbing",
+    "tagline": "&copy; 2026 SolPrompter | Free online teleprompter for natural presentations and professional video recording",
     "links": [
       {
         "href": "/about",

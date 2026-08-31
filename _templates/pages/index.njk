@@ -67,7 +67,7 @@ eleventyComputed:
                 <form class="composer" id="composerForm" novalidate
                       data-msg-empty="{{ pageData.messages.errorEmpty }}"
                       data-msg-read="{{ pageData.messages.errorRead }}">
-                    <input type="file" id="file-input" accept=".md,.markdown,.txt,.docx" hidden>
+                    <input type="file" id="file-input" accept=".txt,.md,.markdown,.fountain,.text,.docx,.json,text/plain,application/json,application/vnd.openxmlformats-officedocument.wordprocessingml.document" hidden>
                     <div class="textarea-container">
                         <label class="visually-hidden" for="paste-textarea">{{ pageData.hero.placeholder }}</label>
                         <textarea id="paste-textarea" class="editor-textarea" placeholder="{{ pageData.hero.placeholder }}"></textarea>

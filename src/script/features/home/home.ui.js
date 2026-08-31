@@ -168,13 +168,20 @@ export function initHomeUI() {
   };
 
   const loadFileIntoTextarea = async (file) => {
+    let text;
     try {
-      textarea.value = await readTextFile(file);
-      textarea.focus();
-      clearError();
+      text = await readTextFile(file);
     } catch {
       showError(messages.read);
+      return;
     }
+    textarea.value = text;
+    textarea.focus();
+    clearError();
+    // A file upload is already an explicit "start" intent. Submit it as soon
+    // as the contents are available so users go straight into the teleprompter
+    // instead of having to click Start a second time.
+    await submitScript();
   };
 
   textarea.addEventListener('input', clearError);

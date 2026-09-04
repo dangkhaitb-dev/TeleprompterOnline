@@ -185,8 +185,9 @@ export function initPanelDrag({ stage, panel, handle, resizeHandle, onMove } = {
 
   // Mobile-only control: horizontal drag resizes width symmetrically about
   // the panel's center (left/right move together, staying centered), while
-  // vertical drag resizes height with the top edge pinned (panel is no
-  // longer freely draggable on mobile, so its top position never moves).
+  // vertical drag resizes height with the top edge pinned. The panel is still
+  // freely draggable via the drag handle, so `top` here is wherever the user
+  // last dropped it.
   if (resizeHandle) {
     let symResize = null;
     on(resizeHandle, 'pointerdown', (event) => {

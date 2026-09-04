@@ -5,7 +5,7 @@ import {
   applyCameraStartupState,
   applyPendingCameraPreviewState,
   applyCameraPreviewState,
-  createMobileStudioTabs,
+  createMobileStudioBar,
   createStudioMediaSettingsHandler,
   createStudioModeController,
 } from './studio-mode.ui.js';
@@ -138,53 +138,19 @@ describe('studio mode controller', () => {
     expect(setMicEnabled).not.toHaveBeenCalled();
   });
 
-  it('maps the mobile Prompter and Record tabs to the shared studio mode', () => {
+  it('shows the Play or Record panel for the current studio mode', () => {
     document.body.innerHTML = `
-      <button class="m-tab active" data-tab="tools" aria-selected="true" tabindex="0">Prompter</button>
-      <button class="m-tab" data-tab="main" aria-selected="false" tabindex="-1">Record</button>
-      <div class="m-tab-panel active" data-panel="tools"></div>
-      <div class="m-tab-panel" data-panel="main"></div>
+      <div class="m-mode-panel active" data-panel="tools"></div>
+      <div class="m-mode-panel" data-panel="main"></div>
     `;
-    const studioMode = { setMode: vi.fn() };
-    const tabs = createMobileStudioTabs({ root: document, studioMode });
+    const bar = createMobileStudioBar({ root: document });
 
-    document.querySelector('[data-tab="main"]').click();
-    expect(studioMode.setMode).toHaveBeenLastCalledWith('record');
-    expect(document.querySelector('[data-tab="main"]').getAttribute('aria-selected')).toBe('true');
+    bar.syncFromMode('record');
     expect(document.querySelector('[data-panel="main"]').classList.contains('active')).toBe(true);
+    expect(document.querySelector('[data-panel="tools"]').classList.contains('active')).toBe(false);
 
-    tabs.syncFromMode('normal');
-    expect(document.querySelector('[data-tab="tools"]').getAttribute('aria-selected')).toBe('true');
+    bar.syncFromMode('normal');
     expect(document.querySelector('[data-panel="tools"]').classList.contains('active')).toBe(true);
-
-    tabs.destroy();
-  });
-
-  it('supports keyboard navigation between mobile tabs', () => {
-    document.body.innerHTML = `
-      <button class="m-tab active" data-tab="tools" aria-selected="true" tabindex="0">Prompter</button>
-      <button class="m-tab" data-tab="main" aria-selected="false" tabindex="-1">Record</button>
-      <div class="m-tab-panel active" data-panel="tools"></div>
-      <div class="m-tab-panel" data-panel="main"></div>
-    `;
-    const studioMode = { setMode: vi.fn() };
-    const tabs = createMobileStudioTabs({ root: document, studioMode });
-    const prompterTab = document.querySelector('[data-tab="tools"]');
-    const recordTab = document.querySelector('[data-tab="main"]');
-    const documentKeyDown = vi.fn();
-    document.addEventListener('keydown', documentKeyDown);
-
-    prompterTab.focus();
-    prompterTab.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
-
-    expect(document.activeElement).toBe(recordTab);
-    expect(recordTab.getAttribute('aria-selected')).toBe('true');
-    expect(recordTab.tabIndex).toBe(0);
-    expect(prompterTab.tabIndex).toBe(-1);
-    expect(studioMode.setMode).toHaveBeenLastCalledWith('record');
-    expect(documentKeyDown).not.toHaveBeenCalled();
-
-    document.removeEventListener('keydown', documentKeyDown);
-    tabs.destroy();
+    expect(document.querySelector('[data-panel="main"]').classList.contains('active')).toBe(false);
   });
 });

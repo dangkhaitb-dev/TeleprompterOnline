@@ -57,10 +57,11 @@ import {
   applyCameraStartupState,
   applyPendingCameraPreviewState,
   applyCameraPreviewState,
-  createMobileStudioTabs,
+  createMobileStudioBar,
   createStudioMediaSettingsHandler,
   createStudioModeController,
 } from './components/studio-mode.ui.js';
+import { bindPressedToggleProxy } from './components/pressed-toggle-proxy.ui.js';
 import { createVoiceLanguagePreflight } from './components/voice-language-preflight.js';
 import { shouldShareAndroidCaptureAudio } from './components/voice-scroll-input-policy.js';
 import { createColorPicker } from './components/color-picker.ui.js';
@@ -219,19 +220,17 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const recordControls = root.querySelector('.record-controls');
   const cameraToggle = $('toggleCamera');
   const micToggle = $('toggleMic');
-  const studioModeControl = $('studioModeControl');
-  const studioModeControlHome = studioModeControl && studioModeControl.parentNode;
-  const studioModeControlHomeNext = studioModeControl && studioModeControl.nextSibling;
-  const mirrorControlEl = $('mirrorControl');
+  const cameraModeControl = $('cameraModeControl');
   const speedControlEl = speedControl;
   const settingsControlEl = $('settingsControl');
-  const mobileRecordModeTab = root.querySelector('.m-tab[data-tab="main"]');
+  const mirrorControlEl = $('mirrorControl');
   const tourCopy = copy.firstVisitTour;
   // Document order — restore walks this reversed so each node's original next
-  // sibling is already back in place before we re-insert it.
+  // sibling is already back in place before we re-insert it. Layout stays in
+  // the hidden desktop toolbar on phones; a Settings switch proxies it.
   const phoneMovable = [
-    recordControls, headerPlayButton, mirrorControlEl,
-    layoutControl, speedControlEl, settingsControlEl,
+    recordControls, headerPlayButton, cameraModeControl, mirrorControlEl,
+    speedControlEl, settingsControlEl,
   ].filter(Boolean).map((el) => ({ el, parent: el.parentNode, next: el.nextSibling }));
 
   // A desktop switch, mobile Record tab, and an immediate Record click share
@@ -243,15 +242,15 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
   const requestCurrentRecordingMediaReady = () => (
     requestRecordingMediaReady(studioModeRevision)
   );
-  let mobileStudioTabs = null;
+  let mobileStudioBar = null;
   const studioMode = createStudioModeController({
     app,
-    toggleButton: studioModeControl,
+    toggleButton: cameraModeControl,
     playButton: headerPlayButton,
     recordButton,
     onModeChange: (mode) => {
       studioModeRevision += 1;
-      mobileStudioTabs?.syncFromMode(mode);
+      mobileStudioBar?.syncFromMode(mode);
       if (mode !== 'record') {
         cancelRecordCountdown();
         controller?.cancel();
@@ -278,26 +277,25 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
         });
     },
   });
-  mobileStudioTabs = createMobileStudioTabs({ root, studioMode });
-  mobileStudioTabs.syncFromMode(studioMode.getMode());
-  cleanups.push(() => mobileStudioTabs.destroy());
+  mobileStudioBar = createMobileStudioBar({ root });
+  mobileStudioBar.syncFromMode(studioMode.getMode());
+  // Phone Settings row mirrors the real Layout toggle button.
+  const layoutSettingToggle = $('toggleLayoutSetting');
+  cleanups.push(bindPressedToggleProxy({
+    checkbox: layoutSettingToggle,
+    button: layoutSettingToggle && $(layoutSettingToggle.dataset.proxyFor),
+  }));
   cleanups.push(() => studioMode.destroy());
 
   function applyPhoneLayout() {
     if (!mPanelMain || !mPanelTools || !mSharedTools) return;
     if (phoneViewport.matches) {
       if (mStudioBar) mStudioBar.setAttribute('aria-hidden', 'false');
-      if (studioModeControl && studioModeControlHome) {
-        const anchor = studioModeControlHomeNext && studioModeControlHomeNext.parentNode === studioModeControlHome
-          ? studioModeControlHomeNext
-          : null;
-        studioModeControlHome.insertBefore(studioModeControl, anchor);
-      }
       if (recordControls) mPanelMain.appendChild(recordControls);
       if (headerPlayButton) mPanelTools.appendChild(headerPlayButton);
-      [layoutControl, speedControlEl, mirrorControlEl, settingsControlEl]
+      [cameraModeControl, mirrorControlEl, speedControlEl, settingsControlEl]
         .forEach((el) => { if (el) mSharedTools.appendChild(el); });
-      mobileStudioTabs.syncFromMode(studioMode.getMode());
+      mobileStudioBar.syncFromMode(studioMode.getMode());
     } else {
       if (mStudioBar) mStudioBar.setAttribute('aria-hidden', 'true');
       phoneMovable.slice().reverse().forEach(({ el, parent, next }) => {
@@ -308,10 +306,6 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       // Camera mode owns Layout inside the panel control bar. A phone/desktop
       // round trip must restore that placement instead of its initial toolbar home.
       setLayoutControlInPanel(app.classList.contains('cam-on'));
-
-      if (studioModeControl && headerPlayButton) {
-        headerPlayButton.parentNode.insertBefore(studioModeControl, headerPlayButton);
-      }
     }
   }
   applyPhoneLayout();
@@ -722,8 +716,8 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
 
   function setLayoutControlInPanel(inPanel) {
     if (!layoutControl) return;
-    // On phones the layout toggle lives in the centered record bar, not the
-    // panel control-bar — don't let the cam-on hop pull it back out.
+    // On phones the layout toggle is hidden (Settings proxies it) — skip the
+    // cam-on hop so the desktop restore path still finds it at its home.
     if (phoneViewport.matches) return;
     if (inPanel && controlBarActions) {
       controlBarActions.insertBefore(layoutControl, panelEditButton || controlBarActions.firstChild);
@@ -1249,6 +1243,11 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
       const labelText = playing ? (copy.pauseAria || 'Pause scrolling') : (copy.playAria || 'Start scrolling');
       headerPlayButton.setAttribute('aria-label', labelText);
       headerPlayButton.setAttribute('title', labelText);
+    }
+    // Playback (Play/reading) mode: khi pause scroll thì hiện rõ record-controls,
+    // chỉ mờ khi đang cuộn. Recording tự quản record-paused qua nút Pause riêng.
+    if (playbackOnlyActive) {
+      app.classList.toggle('record-paused', !playing);
     }
   }
 
@@ -2634,8 +2633,7 @@ export function initTeleprompterUI(workspace, { root = document, onExit } = {}) 
     playButton: headerPlayButton,
     speedButton: speedControl,
     scrollMenu: speedMenu,
-    desktopRecordModeButton: studioModeControl,
-    mobileRecordModeButton: mobileRecordModeTab,
+    desktopRecordModeButton: cameraModeControl,
     recordButton,
     panelEditButton,
     isRecordModeActive: () => !tornDown && studioMode.getMode() === 'record',

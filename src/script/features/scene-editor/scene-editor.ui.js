@@ -20,7 +20,7 @@ import {
   SAVE_STATUS_TIMEOUT_MS,
   TOAST_TIMEOUT_MS,
 } from '../../constants/media.js';
-import { waveformSvg } from './components/icons.js';
+import { ICON_BACK, waveformSvg } from './components/icons.js';
 import { createExportMenu } from './components/export-menu.ui.js';
 import { createExportStatusPopup } from '../../components/export-status-popup.js';
 import {
@@ -49,6 +49,8 @@ function shellTemplate(copy) {
           </span>
           <span class="shared-brand-text">SolPrompter</span>
         </button>
+        <span class="se-header-divider" aria-hidden="true"></span>
+        <button class="back-btn" type="button" data-role="back">${ICON_BACK}<span>${copy.back || 'Back'}</span></button>
       </div>
       <div class="se-header-actions" data-role="header-actions"></div>
       <button class="se-menu-btn" type="button" data-role="menu-toggle" aria-label="Open menu">
@@ -69,7 +71,7 @@ function shellTemplate(copy) {
 
 export async function mountSceneEditor(container, opts = {}) {
   garbageCollectRecordingsZipArtifacts().catch(() => {});
-  const { workspaceId, onRecordScene, copy = {}, pendingSave } = opts;
+  const { workspaceId, onBack, onRecordScene, copy = {}, pendingSave } = opts;
   const ac = new AbortController();
   const { signal } = ac;
   const urls = new Set();
@@ -417,7 +419,7 @@ export async function mountSceneEditor(container, opts = {}) {
     const [scene] = exportableScenes(scenes);
     if (!scene) { showToast(copy.noExport || 'No video to export'); return; }
     exporting = true;
-    exportMenu.setBusy(true, copy.preparingExport || 'Preparing…');
+    exportMenu.setBusy(true, copy.preparingExport || 'Loading…');
     try {
       const blob = scene.durationMetadataFixed
         ? scene.blob
@@ -467,13 +469,25 @@ export async function mountSceneEditor(container, opts = {}) {
   }
 
   // --- shell events -------------------------------------------------------
-  q('logo').addEventListener('click', (e) => {
-    e.preventDefault();
+  const leaveViewerFullscreen = () => {
     const fsEl = document.fullscreenElement || document.webkitFullscreenElement;
     if (fsEl && (fsEl === viewer || viewer.contains(fsEl))) {
       exitFullscreen().catch(() => {});
     }
+  };
+
+  q('logo').addEventListener('click', (e) => {
+    e.preventDefault();
+    leaveViewerFullscreen();
     window.location.href = '/workspaces';
+  }, { signal });
+
+  // Back returns to the teleprompter this editor was opened from; without a
+  // host callback fall back to the workspaces list like the logo does.
+  q('back').addEventListener('click', () => {
+    leaveViewerFullscreen();
+    if (typeof onBack === 'function') onBack();
+    else window.location.href = '/workspaces';
   }, { signal });
 
   // --- mobile drawer ------------------------------------------------------

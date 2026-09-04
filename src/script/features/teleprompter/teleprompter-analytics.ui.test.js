@@ -83,13 +83,10 @@ describe('Teleprompter analytics taxonomy', () => {
 
     expect(document.querySelector('[data-action="Prompter"]')).toBeNull();
     expect(document.querySelector('#closePanel')).toBeNull();
-    expect(document.querySelector('#studioModeControl')).not.toBeNull();
-    expect(document.querySelector('#studioModeControl .studio-record-glyph')?.textContent)
-      .toContain('REC');
-    const tabs = [...document.querySelectorAll('.m-tab')];
-    expect(tabs.map((tab) => tab.dataset.tab)).toEqual(['tools', 'main']);
-    expect(tabs[0].classList.contains('active')).toBe(true);
-    expect(tabs[0].getAttribute('aria-selected')).toBe('true');
-    expect(document.querySelector('#mSharedTools')).not.toBeNull();
+    expect(document.querySelector('#studioModeControl')).toBeNull();
+    expect(document.querySelector('.toolbar-shell #cameraModeControl')?.getAttribute('aria-pressed')).toBe('false');
+    expect(document.querySelector('.m-tab')).toBeNull();
+    expect(document.querySelector('#mSharedTools .m-mode-panel[data-panel="tools"]')?.classList.contains('active')).toBe(true);
+    expect(document.querySelector('#settingsMainView #toggleLayoutSetting')).not.toBeNull();
   });
 });

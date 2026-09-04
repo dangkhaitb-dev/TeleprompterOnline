@@ -141,8 +141,6 @@
   },
   "toolbar": {
     "studioAria": "Studio controls",
-    "normalMode": "REC Mode",
-    "recordMode": "REC Mode",
     "switchToNormalAria": "Turn record mode off",
     "switchToRecordAria": "Turn record mode on",
     "prompter": "Prompter",
@@ -153,6 +151,7 @@
     "notchTitle": "Keep eye contact natural",
     "layout": "Layout",
     "layoutAria": "Toggle layout guides",
+    "camera": "Camera",
     "speed": "Scroll mode",
     "speedAria": "Scroll mode: fixed speed at 110 words per minute",
     "speedTitle": "Change scroll mode",
@@ -265,6 +264,8 @@
     "backHome": "Back to home"
   },
   "sceneEditor": {
+    "back": "Back",
+    "preparingExport": "Loading…",
     "loading": "Finalizing recording…",
     "loadError": "The editor could not be opened.",
     "retry": "Try again",

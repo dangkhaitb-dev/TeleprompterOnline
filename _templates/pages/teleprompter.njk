@@ -287,22 +287,19 @@ lang: en
     <!-- Shared floating studio toolbar -->
     <div class="toolbar-shell">
       <div class="toolbar" role="toolbar" aria-label="{{ pageData.toolbar.studioAria }}">
-        <button
-          class="item studio-mode-control"
-          id="studioModeControl"
-          type="button"
-          aria-pressed="false"
-          aria-label="{{ pageData.toolbar.switchToRecordAria }}"
-          data-normal-label="REC Mode"
-          data-record-label="REC Mode"
-          data-switch-to-normal="{{ pageData.toolbar.switchToNormalAria }}"
-          data-switch-to-record="{{ pageData.toolbar.switchToRecordAria }}"
-        >
-          <svg class="studio-record-glyph" width="90" height="34" viewBox="0 0 90 34" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <rect x="0" y="0" width="90" height="34" rx="10" fill="currentColor"/>
-            <circle cx="15" cy="17" r="6" fill="var(--tp-record-btn)"/>
-            <text x="28" y="21" fill="var(--tp-icon-fg)" font-family="inherit" font-size="11" font-weight="800" letter-spacing="-.2">REC Mode</text>
-          </svg>
+        <!-- Camera: the single Record-mode switch (desktop toolbar; phones move it
+             into #mSharedTools). Label stays "Camera" in both modes. -->
+        <button class="item" id="cameraModeControl" type="button" aria-pressed="false" aria-label="{{ pageData.toolbar.switchToRecordAria }}" title="{{ pageData.toolbar.switchToRecordAria }}" data-normal-label="{{ pageData.toolbar.camera }}" data-record-label="{{ pageData.toolbar.camera }}" data-switch-to-normal="{{ pageData.toolbar.switchToNormalAria }}" data-switch-to-record="{{ pageData.toolbar.switchToRecordAria }}">
+          <div class="icon-wrap">
+            <div class="action-btn">
+              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
+                <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
+                <path d="M16.5 15.5l1.2-2h4.6l1.2 2H26a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h2.5Z" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="20" cy="21" r="3.2" stroke="var(--tp-icon-fg)" stroke-width="1.8"/>
+              </svg>
+            </div>
+          </div>
+          <span class="label">{{ pageData.toolbar.camera }}</span>
         </button>
 
         <div class="divider" aria-hidden="true"></div>
@@ -474,7 +471,16 @@ lang: en
       <!-- Main View -->
       <div class="settings-view" id="settingsMainView">
         <div class="popup-title">{{ pageData.settingsMenu.title }}</div>
-        
+
+        <!-- Phone only: Layout moved here from the studio bar. The switch
+             proxies the real #layoutControl button. -->
+        <div class="settings-phone-tools" id="settingsPhoneTools">
+          <label class="settings-row">
+            <span class="settings-row-title">{{ pageData.toolbar.layout }}</span>
+            <span class="settings-switch"><input type="checkbox" id="toggleLayoutSetting" data-proxy-for="layoutControl" aria-label="{{ pageData.toolbar.layoutAria }}"><span class="settings-switch-track"></span></span>
+          </label>
+        </div>
+
         <!-- Main Setting: Countdown (Always outside) -->
         <label class="settings-row">
           <span class="settings-row-title">{{ pageData.settingsMenu.countdown }}</span>
@@ -603,14 +609,10 @@ lang: en
     <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
     <div class="m-studio-bar" id="mStudioBar" aria-hidden="true">
-      <div class="m-tabs" role="tablist">
-        <button type="button" class="m-tab active" id="mTabPrompter" data-tab="tools" role="tab" aria-controls="mPanelTools" aria-selected="true" tabindex="0" title="{{ pageData.toolbar.prompter }}">{{ pageData.toolbar.prompter }}</button>
-        <button type="button" class="m-tab" id="mTabRecord" data-tab="main" role="tab" aria-controls="mPanelMain" aria-selected="false" tabindex="-1" title="{{ pageData.record.record }}">{{ pageData.record.record }}</button>
-      </div>
       <div class="m-shared-tools" id="mSharedTools">
-        <div class="m-tab-panels">
-          <div class="m-tab-panel active" id="mPanelTools" data-panel="tools" role="tabpanel" aria-labelledby="mTabPrompter"></div>
-          <div class="m-tab-panel" id="mPanelMain" data-panel="main" role="tabpanel" aria-labelledby="mTabRecord"></div>
+        <div class="m-mode-panels">
+          <div class="m-mode-panel active" id="mPanelTools" data-panel="tools"></div>
+          <div class="m-mode-panel" id="mPanelMain" data-panel="main"></div>
         </div>
       </div>
     </div>

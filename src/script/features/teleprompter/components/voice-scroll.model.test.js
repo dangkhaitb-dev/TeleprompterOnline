@@ -7,6 +7,7 @@ import {
   viKey,
   foldDiacritics,
   createPIDController,
+  tokenizeSpoken,
 } from './voice-scroll.model.js';
 
 function createMatcherState(script, cursor = -1) {
@@ -318,6 +319,97 @@ describe('Voice Scroll Model matching algorithm', () => {
       opening.length + skipped.length + nearestChunk.length
         + betweenRepeats.length + nearestChunk.length - 1
     );
+  });
+  describe('replayed transcript at a language boundary in repeated text', () => {
+    const vietnamese = 'Khi êm ấm thì bên nhau dễ lắm, cái khó là chịu bỏ qua khi người kia lỡ sai và cùng nắm tay đi qua những đoạn gập ghềnh.';
+    const english = ' No one has to be perfect, we just have to try for each other and appreciate the days we still have together.';
+    const script = (vietnamese + english).repeat(3);
+    const spokenVietnamese = tokenizeSpoken(vietnamese);
+    const lastVietnameseIndex = spokenVietnamese.length - 1;
+
+    function readVietnamese() {
+      let state = createMatcherState(script);
+      let stream = [];
+      for (const token of spokenVietnamese) {
+        stream = [...stream, token];
+        state = feedTranscript(stream, 1, true, state);
+      }
+      expect(state.cursor).toBe(lastVietnameseIndex);
+      return { state, stream };
+    }
+
+    it('does not jump to the next paragraph when the recognizer shrinks and re-emits an interim', () => {
+      let { state, stream } = readVietnamese();
+      const shrunk = stream.slice(0, -6);
+      state = feedTranscript(shrunk, 1, true, state);
+      expect(state.missStreak).toBe(1);
+
+      // Nothing new was spoken; the same words simply came back.
+      state = feedTranscript([...shrunk, ...stream.slice(-6)], 1, true, state);
+      expect(state.cursor).toBe(lastVietnameseIndex);
+
+      // Speech in a language the recognizer cannot decode must not move it either.
+      state = feedTranscript([...stream, 'nâu', 'quần'], 1, true, state);
+      expect(state.cursor).toBe(lastVietnameseIndex);
+    });
+
+    it('still follows the reader into the next identical short paragraph after undecodable speech', () => {
+      // Korean-length sentence (10 words) so the whole paragraph fits inside the replay window.
+      const korean = '좋은 아침입니다 오늘은 메모 없이 짧은 연설을 준비하는 방법에 대해';
+      const shortScript = (korean + english).repeat(3);
+      const koreanTokens = tokenizeSpoken(korean);
+      const unitLength = createMatcherState(korean + english).words.length;
+      let state = createMatcherState(shortScript);
+      let stream = [];
+      for (const token of koreanTokens) {
+        stream = [...stream, token];
+        state = feedTranscript(stream, 1, true, state);
+      }
+      expect(state.cursor).toBe(koreanTokens.length - 1);
+      for (const noise of ['그것', '저기', '무엇', '이제', '거기', '어디', '그럼', '아마']) {
+        stream = [...stream, noise];
+        state = feedTranscript(stream, 1, true, state);
+      }
+      expect(state.cursor).toBe(koreanTokens.length - 1);
+
+      // Reader reaches the second paragraph, which starts with the same words.
+      for (const token of koreanTokens) {
+        stream = [...stream, token];
+        state = feedTranscript(stream, 1, true, state);
+      }
+      expect(state.cursor).toBe(unitLength + koreanTokens.length - 1);
+    });
+
+    it('still recovers a real paragraph skip that happens right after a replay', () => {
+      const unique = ' Sáng nay trời mưa nhỏ, con đường ướt và vắng, tôi đi bộ ra chợ mua bó rau.';
+      const skipScript = vietnamese + english + unique;
+      const skipTarget = tokenizeSpoken(unique).slice(0, 8);
+      let state = createMatcherState(skipScript);
+      let stream = [];
+      for (const token of spokenVietnamese) {
+        stream = [...stream, token];
+        state = feedTranscript(stream, 1, true, state);
+      }
+      state = feedTranscript([...stream, ...stream.slice(-3)], 3, false, state);
+      expect(state.cursor).toBe(lastVietnameseIndex);
+      for (const token of skipTarget) {
+        stream = [...stream, token];
+        state = feedTranscript(stream, 1, true, state);
+      }
+      const englishLength = tokenizeSpoken(english).length;
+      expect(state.cursor).toBe(spokenVietnamese.length + englishLength + skipTarget.length - 1);
+    });
+
+    it('does not jump when a final re-emits already matched words followed by noise', () => {
+      let { state, stream } = readVietnamese();
+      const duplicated = [...stream, ...stream.slice(-4)];
+      state = feedTranscript(duplicated, 4, false, state);
+      expect(state.cursor).toBe(lastVietnameseIndex);
+      expect(state.missStreak).toBe(1);
+
+      state = feedTranscript([...duplicated, 'nâu'], 1, true, state);
+      expect(state.cursor).toBe(lastVietnameseIndex);
+    });
   });
 });
 

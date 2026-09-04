@@ -109,51 +109,16 @@ export function createStudioMediaSettingsHandler({
   };
 }
 
-export function createMobileStudioTabs({ root = document, studioMode } = {}) {
-  const tabs = [...root.querySelectorAll('.m-tab')];
-  const panels = [...root.querySelectorAll('.m-tab-panel')];
-
-  function select(target, { syncMode = true } = {}) {
-    tabs.forEach((tab) => {
-      const active = tab.dataset.tab === target;
-      tab.classList.toggle('active', active);
-      tab.setAttribute('aria-selected', String(active));
-      tab.tabIndex = active ? 0 : -1;
-    });
-    panels.forEach((panel) => {
-      panel.classList.toggle('active', panel.dataset.panel === target);
-    });
-    if (syncMode) studioMode?.setMode(target === 'main' ? RECORD_MODE : NORMAL_MODE);
-  }
-
-  const listeners = tabs.map((tab, index) => {
-    const handleClick = () => select(tab.dataset.tab);
-    const handleKeyDown = (event) => {
-      let nextIndex = null;
-      if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
-      if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
-      if (event.key === 'Home') nextIndex = 0;
-      if (event.key === 'End') nextIndex = tabs.length - 1;
-      if (nextIndex === null) return;
-      event.preventDefault();
-      event.stopPropagation();
-      tabs[nextIndex].focus();
-      select(tabs[nextIndex].dataset.tab);
-    };
-    tab.addEventListener('click', handleClick);
-    tab.addEventListener('keydown', handleKeyDown);
-    return () => {
-      tab.removeEventListener('click', handleClick);
-      tab.removeEventListener('keydown', handleKeyDown);
-    };
-  });
-
+// Phone studio bar: no tab strip. The shared Camera button (moved in from the
+// desktop toolbar) flips studio mode; the Play / Record panels follow that mode.
+export function createMobileStudioBar({ root = document } = {}) {
+  const panels = [...root.querySelectorAll('.m-mode-panel')];
   return {
     syncFromMode(mode) {
-      select(mode === RECORD_MODE ? 'main' : 'tools', { syncMode: false });
-    },
-    destroy() {
-      listeners.forEach((remove) => remove());
+      const target = mode === RECORD_MODE ? 'main' : 'tools';
+      panels.forEach((panel) => {
+        panel.classList.toggle('active', panel.dataset.panel === target);
+      });
     },
   };
 }

@@ -109,6 +109,18 @@
   background: var(--se-border);
 }
 
+/* The editor is forced light while the teleprompter page may be in dark theme,
+   so the shared .back-btn (which reads --tp-* tokens) would pick up a dark
+   hover pill. Pin it to the editor's own light tokens — same look as the
+   teleprompter's light-mode back button. */
+.se .back-btn {
+  color: var(--se-muted);
+}
+
+.se .back-btn:hover {
+  background: var(--se-hover);
+}
+
 .se-header-actions {
   height: 36px;
   display: flex;
@@ -202,6 +214,33 @@
 .se-export-button:disabled {
   opacity: 0.6;
   cursor: default;
+}
+
+/* Busy state: swap the download glyph for a spinner so a near-instant
+   download still gives visible "it started" feedback. */
+.se-export-button.is-loading {
+  opacity: 0.85;
+  cursor: progress;
+}
+
+.se-export-button.is-loading > svg {
+  display: none;
+}
+
+.se-export-spinner {
+  flex: none;
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--se-brand-ink);
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: se-spin 0.7s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .se-export-spinner {
+    animation-duration: 1.6s;
+  }
 }
 
 /* ---------- Empty / audio preview ---------- */

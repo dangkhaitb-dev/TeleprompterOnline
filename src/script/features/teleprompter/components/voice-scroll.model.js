@@ -485,6 +485,39 @@ function searchForwardRecovery(buf, contextTokens, start, ctx) {
   return null;
 }
 
+// Chrome may shrink and re-emit an interim, or finalize a segment that repeats
+// words already delivered. Those tokens look "fresh" to the stream counter but
+// were already matched at the cursor. In repeated text the nearest forward
+// occurrence of the same phrase is the next paragraph, so treating a replay as
+// a skipped paragraph would leap over everything in between. Drop the leading
+// tokens that align with the text ending at the cursor; whatever remains is
+// what the reader actually said since the last match.
+const REPLAY_END_SLACK = 1;
+const REPLAY_MIN_TOKENS = 2;
+
+function dropTokensAlreadyRead(buf, anchor, ctx) {
+  if (buf.length < REPLAY_MIN_TOKENS || anchor < 0) return buf;
+  let replayed = 0;
+  for (let len = buf.length; len >= REPLAY_MIN_TOKENS && !replayed; len--) {
+    const prefix = buf.slice(0, len);
+    const prefixFold = prefix.map(foldDiacritics);
+    const wts = recencyWeights(len);
+    const matchCtx = createMatchCtx(prefix, false);
+    const needed = Math.max(REPLAY_MIN_TOKENS, Math.ceil(len * MATCH.RECOVERY_MIN_DENSITY));
+    for (let end = anchor; end >= Math.max(0, anchor - REPLAY_END_SLACK); end--) {
+      const start = Math.max(0, end - len - REPLAY_END_SLACK + 1);
+      const trace = alignLastMatch(prefix, prefixFold, wts, start, end, ctx, matchCtx);
+      // The newest hit must land exactly on the window end. A short paragraph
+      // whose start merely fits inside the window is new reading, not a replay.
+      if (trace && trace.matched >= needed && trace.pos === end) {
+        replayed = len;
+        break;
+      }
+    }
+  }
+  return replayed ? buf.slice(replayed) : buf;
+}
+
 export function refineSpoken(tokens, ctx) {
   const recent = tokens.slice(-Math.ceil(MATCH.BUF * 1.6));
   const dedup = [];
@@ -577,7 +610,7 @@ export function findBestEnd(
   // being treated as permission to jump.
   if ((ctx.missStreak || 0) >= MATCH.RECOVERY_AFTER_MISSES) {
     const recovery = searchForwardRecovery(
-      recoveryTokens,
+      dropTokensAlreadyRead(recoveryTokens, anchor, ctx),
       recoveryContextTokens,
       anchor + 1,
       ctx
@@ -609,9 +642,10 @@ export function feedTranscript(allTokens, reachTokens, tailPartial, ctx) {
   }
   const curDrift = Math.max(0, Math.min(streamLen - lastMatchStreamLen, MATCH.DRIFT_MAX));
   const freshStreamTokens = Math.max(0, streamLen - lastMatchStreamLen);
-  const recoveryTokens = refined.slice(
-    -Math.min(refined.length, freshStreamTokens, MATCH.RECOVERY_MAX_TOKENS)
-  );
+  // slice(-0) would return the whole buffer, turning an old transcript into
+  // recovery input. No fresh tokens means no recovery candidates.
+  const recoveryCount = Math.min(refined.length, freshStreamTokens, MATCH.RECOVERY_MAX_TOKENS);
+  const recoveryTokens = recoveryCount > 0 ? refined.slice(-recoveryCount) : [];
   const recoveryContextEnd = Math.max(0, refined.length - recoveryTokens.length);
   const recoveryContextTokens = refined.slice(
     Math.max(0, recoveryContextEnd - MATCH.CONTEXT_WORDS),

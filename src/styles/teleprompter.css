@@ -4499,16 +4499,16 @@ html.theme-instant *::after {
   /* Circular white-ring record button (icon only). Idle-scoped: during
      record-dim the button reverts to its pill, floated bottom-right. */
   .app:not(.record-dim) #mPanelMain #recordButton {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     padding: 0;
     border: 2px solid var(--tp-page-text);
     border-radius: 50%;
     background: transparent;
   }
   .app:not(.record-dim) #mPanelMain #recordButton .record-dot {
-    width: 38px;
-    height: 38px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     background: var(--tp-record-btn);
     display: block;
@@ -4517,8 +4517,8 @@ html.theme-instant *::after {
 
   /* Play → circular border container like the record button. */
   .app:not(.record-dim) #mPanelTools .header-play-button {
-    width: 52px;
-    height: 52px;
+    width: 48px;
+    height: 48px;
     padding: 0;
     border: 2px solid var(--tp-page-text);
     border-radius: 50%;
@@ -4529,8 +4529,8 @@ html.theme-instant *::after {
     justify-content: center;
   }
   .app:not(.record-dim) #mPanelTools .header-play-button svg {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
     color: var(--tp-page-text);
   }
   .app:not(.record-dim) #mPanelTools .header-play-button .header-play-label { display: none; }

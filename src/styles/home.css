@@ -360,6 +360,27 @@ body.home {
   display: none;
 }
 
+/* Trustpilot sits after the first hero viewport, keeping the primary composer
+   focused while preserving a stable 52px slot for the async iframe. */
+.trustpilot-widget-wrap {
+  width: 100%;
+  min-height: 52px;
+  margin: clamp(1rem, 2vw, 1.5rem) auto 0;
+  display: flex;
+  justify-content: center;
+}
+
+.trustpilot-widget-wrap .trustpilot-widget {
+  width: 100%;
+  min-height: 52px;
+}
+
+.trustpilot-widget-wrap--after-hero {
+  max-width: 40rem;
+  padding: 0 clamp(1.25rem, 4vw, 2rem) clamp(2rem, 4vw, 3rem);
+  box-sizing: border-box;
+}
+
 /* ===== HERO PREVIEW ===== */
 .hero-preview {
   position: relative;

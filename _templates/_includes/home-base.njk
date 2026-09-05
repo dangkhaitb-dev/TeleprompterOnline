@@ -37,6 +37,9 @@
     {%- endif %}
     <title>{{ pageData.seo.title }}</title>
     {% include "partials/head-icons.njk" %}
+    {%- if pageKey == 'index' %}
+    <script type="text/javascript" src="https://widget.trustpilot.com/bootstrap/v5/tp.widget.bootstrap.min.js" async></script>
+    {%- endif %}
     {%- if pageKey == 'about' %}
     <link rel="stylesheet" href="/src/styles/about.css">
     {%- endif %}

@@ -201,7 +201,7 @@
   flex: 1;
   flex-direction: column;
   min-height: 0;
-  padding: 0 16px 16px;
+  padding: 0 12px 16px;
 }
 
 .ws-workspace-switcher {
@@ -376,6 +376,26 @@
 
 .ws-content {
   padding: 26px 40px 56px;
+}
+
+.ws-sidebar .ws-trustpilot-widget {
+  width: 100%;
+  min-width: 220px;
+  min-height: 52px;
+  margin: 0 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.ws-sidebar .ws-trustpilot-widget .trustpilot-widget {
+  width: 100%;
+  min-width: 220px;
+  min-height: 52px;
+}
+
+.ws-sidebar .ws-credits-card--free {
+  margin-bottom: 16px;
 }
 
 .ws-content-header {

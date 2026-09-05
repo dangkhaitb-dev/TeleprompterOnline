@@ -92,7 +92,6 @@
       },
       "featureList": [{% for f in sc.featureList %}"{{ f | jsonString | safe }}"{% if not loop.last %}, {% endif %}{% endfor %}],
       "image": { "@id": "{{ canonicalUrl }}#primary-image" },
-      "brand": { "@id": "{{ home }}#brand" },
       "creator": { "@id": "{{ home }}#organization" },
       "provider": { "@id": "{{ home }}#organization" },
       "mainEntityOfPage": { "@id": "{{ canonicalUrl }}#webpage" },

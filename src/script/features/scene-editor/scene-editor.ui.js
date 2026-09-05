@@ -37,6 +37,7 @@ import { ensureWebmDuration } from '../../utils/webm-duration.js';
 import { createFirstVisitTour } from '../teleprompter/components/first-visit-tour.ui.js';
 import { getItem, setItem } from '../../utils/storage.js';
 import { LS_SE_FIRST_VISIT_TOUR } from '../../utils/storage-keys.js';
+import { initTrustpilotWidget } from '../../components/trustpilot-widget.js';
 
 function shellTemplate(copy) {
   return `
@@ -63,6 +64,11 @@ function shellTemplate(copy) {
       <div class="se-preview-stage">
         <section class="se-viewer" data-role="viewer" aria-label="${copy.preview || 'Media preview'}">
         </section>
+        <div class="se-trustpilot-widget" aria-label="Trustpilot reviews">
+          <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6a6c96244209f0fe0f6fa514" data-style-height="52px" data-style-width="100%" data-token="8e8851a3-28ca-4a66-934f-979f299b9a80">
+            <a href="https://www.trustpilot.com/review/solprompter.com" target="_blank" rel="noopener">Trustpilot</a>
+          </div>
+        </div>
       </div>
     </main>
     <div class="se-toast" data-role="toast" role="status" aria-live="polite"></div>
@@ -127,6 +133,7 @@ export async function mountSceneEditor(container, opts = {}) {
   const q = (role) => root.querySelector(`[data-role="${role}"]`);
   const viewer = q('viewer');
   const toastEl = q('toast');
+  initTrustpilotWidget(root.querySelector('.trustpilot-widget'));
 
   // --- toast --------------------------------------------------------------
   const showToast = (message) => {

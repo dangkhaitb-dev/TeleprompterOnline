@@ -191,6 +191,18 @@
   gap: 20px;
 }
 
+.se-trustpilot-widget {
+  width: 100%;
+  min-height: 52px;
+  display: flex;
+  justify-content: center;
+}
+
+.se-trustpilot-widget .trustpilot-widget {
+  width: 100%;
+  min-height: 52px;
+}
+
 .se-viewer {
   width: 100%;
   aspect-ratio: 16 / 9;

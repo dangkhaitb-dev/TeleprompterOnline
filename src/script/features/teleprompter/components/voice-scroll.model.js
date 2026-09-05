@@ -33,8 +33,9 @@ export const CREEP = Object.freeze({
 });
 
 export const TPCOM_PID = Object.freeze({
-  kp: 1.2, ki: 0.05, kd: 0.95,
-  deadzone: 0.1, velocitySmoothness: 0.85, integralLeakage: 0.6,
+  kp: 4, ki: 0, kd: 1.2,
+  deadzone: 0.1, velocitySmoothness: 0.94, integralLeakage: 0.6,
+  minimumVelocity: 64, maximumVelocity: 240, maximumAcceleration: 360,
 });
 
 // A long pause between speech-recognition results must not be treated as one
@@ -757,12 +758,33 @@ export function createPIDController(params = TPCOM_PID) {
       // derivative term alternate between a large and a tiny step every
       // frame — the visible "stutter" at auto-scroll startup.
       const velocityBlend = 1 - Math.pow(params.velocitySmoothness, dt * 60);
+      const previousVelocity = s.currentVelocity;
       s.currentVelocity += (output - s.currentVelocity) * velocityBlend;
+      const maximumAcceleration = Math.max(0, Number(params.maximumAcceleration) || Infinity);
+      const maximumVelocityChange = maximumAcceleration * dt;
+      s.currentVelocity = Math.max(
+        previousVelocity - maximumVelocityChange,
+        Math.min(previousVelocity + maximumVelocityChange, s.currentVelocity),
+      );
 
       if (s.currentVelocity * error <= 0) {
         s.currentVelocity = 0;
         s.integralError = 0;
         return { position: s.currentValue, settled: false };
+      }
+
+      // Very short word-to-word targets otherwise spend several seconds in
+      // an asymptotic tail below half a CSS pixel per 60 Hz frame. Although
+      // scrollTop retains the fraction, rasterized text appears to pause and
+      // jump between pixels. Keep the final glide just above that perceptual
+      // floor, then let the target-crossing guard land on the exact position.
+      const minimumVelocity = Math.max(0, Number(params.minimumVelocity) || 0);
+      if (Math.abs(s.currentVelocity) < minimumVelocity) {
+        s.currentVelocity = Math.sign(error) * minimumVelocity;
+      }
+      const maximumVelocity = Math.max(minimumVelocity, Number(params.maximumVelocity) || Infinity);
+      if (Math.abs(s.currentVelocity) > maximumVelocity) {
+        s.currentVelocity = Math.sign(s.currentVelocity) * maximumVelocity;
       }
 
       const nextValue = s.currentValue + s.currentVelocity * dt;

@@ -432,6 +432,42 @@ describe('Voice Scroll PID animation', () => {
     expect(Math.max(...deltas) / Math.min(...deltas)).toBeLessThan(4);
   });
 
+  it.each([
+    { refreshRate: 60, target: 20, maximumDuration: 400, maximumFrameDelta: 4 },
+    { refreshRate: 120, target: 20, maximumDuration: 400, maximumFrameDelta: 2 },
+    { refreshRate: 60, target: 120, maximumDuration: 1300, maximumFrameDelta: 4 },
+    { refreshRate: 120, target: 120, maximumDuration: 1300, maximumFrameDelta: 2 },
+    { refreshRate: 60, target: 360, maximumDuration: 2300, maximumFrameDelta: 4 },
+    { refreshRate: 120, target: 360, maximumDuration: 2300, maximumFrameDelta: 2 },
+  ])('keeps $refreshRate Hz motion visible through a $target px correction', ({
+    refreshRate,
+    target,
+    maximumDuration,
+    maximumFrameDelta,
+  }) => {
+    const pid = createPIDController();
+    const frameDuration = 1000 / refreshRate;
+    pid.setTarget(target, true, 0);
+    pid.tick(0);
+
+    let previousPosition = 0;
+    let result;
+    const visibleFrameDeltas = [];
+    const maximumFrames = Math.ceil(maximumDuration / frameDuration);
+    for (let frame = 1; frame <= maximumFrames; frame++) {
+      result = pid.tick(frame * frameDuration);
+      const delta = result.position - previousPosition;
+      previousPosition = result.position;
+      if (!result.settled) visibleFrameDeltas.push(delta);
+      if (result.settled) break;
+    }
+
+    expect(result.settled).toBe(true);
+    expect(previousPosition).toBe(target);
+    expect(visibleFrameDeltas.every((delta) => delta >= 0.5)).toBe(true);
+    expect(Math.max(...visibleFrameDeltas)).toBeLessThanOrEqual(maximumFrameDelta + 1e-9);
+  });
+
   it('animates smoothly when recognition re-anchors to an earlier paragraph', () => {
     const pid = createPIDController();
     pid.setTarget(100, true, 600);

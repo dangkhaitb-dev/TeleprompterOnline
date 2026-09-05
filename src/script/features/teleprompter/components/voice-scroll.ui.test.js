@@ -1,7 +1,11 @@
 // @vitest-environment jsdom
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { initVoiceScrollUI, paintWords } from './voice-scroll.ui.js';
+import {
+  getVoiceScrollTargetWordIndex,
+  initVoiceScrollUI,
+  paintWords,
+} from './voice-scroll.ui.js';
 
 function setVisualRows(wordElements, rowIndexes) {
   wordElements.forEach((word, index) => {
@@ -71,6 +75,25 @@ describe('Voice Scroll browser integration', () => {
     infoSpy.mockRestore();
     vi.unstubAllGlobals();
     document.body.replaceChildren();
+  });
+
+  it('keeps the scroll target one visual row ahead of the spoken cursor', () => {
+    const line = document.createElement('p');
+    const words = Array.from({ length: 6 }, (_, index) => {
+      const el = document.createElement('span');
+      line.appendChild(el);
+      Object.defineProperty(el, 'offsetTop', {
+        configurable: true,
+        value: Math.floor(index / 2) * 40,
+      });
+      return { el };
+    });
+
+    expect(getVoiceScrollTargetWordIndex(words, 0)).toBe(2);
+    expect(getVoiceScrollTargetWordIndex(words, 1)).toBe(2);
+    expect(getVoiceScrollTargetWordIndex(words, 2)).toBe(4);
+    expect(getVoiceScrollTargetWordIndex(words, 3)).toBe(4);
+    expect(getVoiceScrollTargetWordIndex(words, 5)).toBe(5);
   });
 
   it('starts recognition and dims only rows the matcher has fully consumed', async () => {

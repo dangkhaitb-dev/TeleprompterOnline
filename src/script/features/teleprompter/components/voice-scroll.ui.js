@@ -230,6 +230,12 @@ function getVisualRowBounds(words, index) {
   return { start, end };
 }
 
+export function getVoiceScrollTargetWordIndex(words, spokenIndex) {
+  if (!words[spokenIndex]) return spokenIndex;
+  const currentRowEnd = getVisualRowBounds(words, spokenIndex).end;
+  return Math.min(words.length - 1, currentRowEnd + 1);
+}
+
 export function paintWords(words, displayIndex, prevDisplayIndex) {
   if (displayIndex === prevDisplayIndex || !words[displayIndex]) return;
 
@@ -337,9 +343,12 @@ function createCreepEngine(
     if (target > info.creepIndex && words[target]) {
       controller.updateCreepIndex(target);
       if (surface) {
-        // Update PID target without snap (smooth continuation)
+        // Keep optimistic creep on the same one-row visual lead as confirmed
+        // speech. Targeting its raw word could pull the viewport backward when
+        // that word still belongs to the row behind the current lead.
+        const targetIndex = getVoiceScrollTargetWordIndex(words, target);
         pid.setTarget(
-          scrollTarget(words[target].el, surface, getReadingLineOffset),
+          scrollTarget(words[targetIndex].el, surface, getReadingLineOffset),
           false,
         );
         scrollEngine.ensureRunning();
@@ -558,7 +567,8 @@ export function initVoiceScrollUI({
         // Scroll to word
         const surface = getSurface();
         if (!surface) return;
-        const target = scrollTarget(words[newCursor].el, surface, getReadingLineOffset);
+        const targetIndex = getVoiceScrollTargetWordIndex(words, newCursor);
+        const target = scrollTarget(words[targetIndex].el, surface, getReadingLineOffset);
         
         // ASR remains the source of truth for the reading position. A manual
         // gesture can temporarily move the viewport anywhere, but a confirmed

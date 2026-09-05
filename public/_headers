@@ -12,3 +12,9 @@ https://solprompter.pages.dev/*
 
 https://*.solprompter.pages.dev/*
   X-Robots-Tag: noindex
+
+https://solprompter.com/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+
+https://www.solprompter.com/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains

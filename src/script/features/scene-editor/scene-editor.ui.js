@@ -65,6 +65,7 @@ function shellTemplate(copy) {
         <section class="se-viewer" data-role="viewer" aria-label="${copy.preview || 'Media preview'}">
         </section>
         <div class="se-trustpilot-widget" aria-label="Trustpilot reviews">
+          <p class="se-trustpilot-prompt">${copy.reviewPrompt || 'Enjoyed your recording? Rate SolPrompter on Trustpilot.'}</p>
           <div class="trustpilot-widget" data-locale="en-US" data-template-id="56278e9abfbbba0bdcd568bc" data-businessunit-id="6a6c96244209f0fe0f6fa514" data-style-height="52px" data-style-width="100%" data-token="8e8851a3-28ca-4a66-934f-979f299b9a80">
             <a href="https://www.trustpilot.com/review/solprompter.com" target="_blank" rel="noopener">Trustpilot</a>
           </div>

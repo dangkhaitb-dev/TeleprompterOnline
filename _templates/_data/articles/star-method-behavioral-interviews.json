@@ -8,11 +8,11 @@
   "category": "Interview & Meeting Preparation",
   "date": "2026-08-12",
   "dateDisplay": "August 12, 2026",
-  "modified": "2026-08-23",
+  "modified": "2026-09-05",
   "keywords": ["STAR method interview", "behavioral interview questions", "STAR interview method", "how to answer behavioral interview questions"],
   "mentions": ["STAR method", "behavioral interviews", "interview stories", "mock interview"],
   "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
-  "review": { "by": "the SolPrompter team", "updatedDisplay": "August 23, 2026" },
+  "review": { "by": "the SolPrompter team", "updatedDisplay": "September 5, 2026" },
   "seo": { "title": "STAR Method for Behavioral Interview Questions: Prepare Clear, True Stories", "description": "Use the STAR method for behavioral interview questions: select true examples, focus on your actions, show results accurately, and practice adaptable answers.", "image": "https://solprompter.com/media/blog/star-method-behavioral-interviews/hero.webp" },
   "hero": { "src": "/media/blog/star-method-behavioral-interviews/hero.webp", "alt": "Job candidate organizing interview story notes using the STAR method", "width": 1672, "height": 941 },
   "cta": { "label": "Open SolPrompter", "url": "/" },
@@ -74,8 +74,7 @@
     { "type": "paragraph", "html": "SolPrompter publishes this guide and develops an optional tool for rehearsing spoken material. STAR is a preparation framework; it does not replace truthful, responsive conversation in an interview." },
     { "type": "heading", "level": 2, "text": "References" },
     { "type": "list", "style": "bullets", "items": [
-      { "text": "Harvard FAS Mignone Center for Career Success. <a href=\"https://careerservices.fas.harvard.edu/blog/2024/10/01/6-mock-interview-questions-and-how-to-answer-them/\">“6 Mock Interview Questions and How to Answer Them.”</a>" },
-      { "text": "Harvard FAS Mignone Center for Career Success. <a href=\"https://careerservices.fas.harvard.edu/blog/2024/08/13/what-is-the-best-way-to-answer-an-interview-question-about-a-time-you-failed/\">“What Is the Best Way To Answer an Interview Question About a Time You Failed?”</a>" }
+      { "text": "Harvard FAS Mignone Center for Career Success. <a href=\"https://careerservices.fas.harvard.edu/blog/2024/10/01/6-mock-interview-questions-and-how-to-answer-them/\">“6 Mock Interview Questions and How to Answer Them.”</a>" }
     ] }
   ]
 }

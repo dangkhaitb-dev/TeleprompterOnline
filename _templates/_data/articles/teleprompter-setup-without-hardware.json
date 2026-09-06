@@ -7,7 +7,7 @@
   "title": "How to Set Up a Teleprompter Without Special Hardware",
   "date": "2026-08-01",
   "dateDisplay": "August 1, 2026",
-  "modified": "2026-08-10",
+  "modified": "2026-09-05",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -15,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 10, 2026"
+    "updatedDisplay": "September 5, 2026"
   },
   "category": "Teleprompter Guides",
   "shortName": "How to Set Up a Teleprompter Without Special Hardware",
@@ -700,7 +700,7 @@
           "text": "Chen, M. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">“Conveying Conversational Cues Through Video.”</a> Stanford University."
         },
         {
-          "text": "Chen, M. <a href=\"https://aperture.stanford.edu/papers/eye_contact/paper.pdf\">“Leveraging the Asymmetric Sensitivity of Eye Contact for Videoconferencing.”</a> CHI, 2002."
+          "text": "Chen, M. <a href=\"https://graphics.stanford.edu/papers/eye_contact/\">“Leveraging the Asymmetric Sensitivity of Eye Contact for Videoconferencing.”</a> CHI, 2002."
         },
         {
           "text": "SolPrompter. <a href=\"https://solprompter.com/teleprompter-guide\">“How to Use SolPrompter.”</a>"

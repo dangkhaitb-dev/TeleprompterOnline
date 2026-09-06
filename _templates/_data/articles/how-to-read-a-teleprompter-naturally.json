@@ -7,7 +7,7 @@
   "title": "How to Read a Teleprompter Naturally Without Looking Like You’re Reading",
   "date": "2026-08-01",
   "dateDisplay": "August 1, 2026",
-  "modified": "2026-08-10",
+  "modified": "2026-09-05",
   "author": {
     "type": "Organization",
     "name": "The SolPrompter Team",
@@ -15,7 +15,7 @@
   },
   "review": {
     "by": "the SolPrompter team",
-    "updatedDisplay": "August 10, 2026"
+    "updatedDisplay": "September 5, 2026"
   },
   "category": "Teleprompter Guides",
   "shortName": "How to Read a Teleprompter Naturally Without Looking Like You’re Reading",
@@ -100,7 +100,7 @@
     },
     {
       "type": "paragraph",
-      "html": "Research on videoconferencing has shown that camera placement changes the visual cues viewers receive and that people can be sensitive to gaze that appears above, below, or beside the expected eye line. This does not produce one universal camera distance, but it supports placing the active reading area close to the lens and checking the result on video. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">Stanford dissertation</a> and <a href=\"https://aperture.stanford.edu/papers/eye_contact/paper.pdf\">CHI paper</a>."
+      "html": "Research on videoconferencing has shown that camera placement changes the visual cues viewers receive and that people can be sensitive to gaze that appears above, below, or beside the expected eye line. This does not produce one universal camera distance, but it supports placing the active reading area close to the lens and checking the result on video. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">Stanford dissertation</a> and <a href=\"https://graphics.stanford.edu/papers/eye_contact/\">CHI paper</a>."
     },
     {
       "type": "heading",
@@ -798,7 +798,7 @@
           "text": "Chen, M. <a href=\"https://graphics.stanford.edu/~miltchen/thesis.pdf\">“Conveying Conversational Cues Through Video.”</a> Stanford University."
         },
         {
-          "text": "Chen, M. <a href=\"https://aperture.stanford.edu/papers/eye_contact/paper.pdf\">“Leveraging the Asymmetric Sensitivity of Eye Contact for Videoconferencing.”</a> CHI, 2002."
+          "text": "Chen, M. <a href=\"https://graphics.stanford.edu/papers/eye_contact/\">“Leveraging the Asymmetric Sensitivity of Eye Contact for Videoconferencing.”</a> CHI, 2002."
         },
         {
           "text": "Narisi, S. <a href=\"https://uark.pressbooks.pub/journalismgsp/chapter/broadcast/\">“Broadcast Writing.”</a> University of Arkansas."

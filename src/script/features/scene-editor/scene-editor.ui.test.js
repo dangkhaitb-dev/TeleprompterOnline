@@ -54,6 +54,7 @@ describe('Scene Editor First Visit Tour', () => {
     teardown = await mountSceneEditor(container, {
       workspaceId: 'ws-1',
       copy: {
+        reviewPrompt: 'Tell us how we did on Trustpilot.',
         tour: {
           label: 'Test Editor Tour',
           skip: 'Skip Test',
@@ -68,6 +69,8 @@ describe('Scene Editor First Visit Tour', () => {
     expect(overlay).not.toBeNull();
     expect(popup).not.toBeNull();
     expect(popup.textContent).toContain('Click here to export');
+    expect(container.querySelector('.se-trustpilot-prompt')?.textContent)
+      .toContain('Tell us how we did on Trustpilot.');
 
     // Click skip to close
     const skipBtn = popup.querySelector('.first-visit-tour-skip');

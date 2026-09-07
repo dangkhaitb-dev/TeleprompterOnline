@@ -51,6 +51,35 @@ describe('initPanelDrag resize handles', () => {
     controller.destroy();
   });
 
+  it('leaves the stored position untouched when the window resizes while the panel is hidden', () => {
+    const stage = document.getElementById('stage');
+    const panel = document.getElementById('panel');
+    const dragHandle = document.getElementById('drag');
+
+    // Simulate a panel the user already positioned by hand.
+    panel.style.left = '120px';
+    panel.style.top = '80px';
+
+    stage.getBoundingClientRect = () => ({ left: 0, top: 60, width: 900, height: 600 });
+    // Notch mode hides the panel (display:none) → getBoundingClientRect is 0×0.
+    panel.getBoundingClientRect = () => ({ left: 0, top: 0, width: 0, height: 0 });
+
+    const raf = globalThis.requestAnimationFrame;
+    const caf = globalThis.cancelAnimationFrame;
+    globalThis.requestAnimationFrame = (cb) => { cb(); return 1; };
+    globalThis.cancelAnimationFrame = () => {};
+
+    const controller = initPanelDrag({ stage, panel, handle: dragHandle });
+    dom.window.dispatchEvent(new dom.window.Event('resize'));
+
+    expect(panel.style.left).toBe('120px');
+    expect(panel.style.top).toBe('80px');
+
+    controller.destroy();
+    globalThis.requestAnimationFrame = raf;
+    globalThis.cancelAnimationFrame = caf;
+  });
+
   it('resizes width symmetrically and height from the bottom when the sync-resize handle is dragged', () => {
     const stage = document.getElementById('stage');
     const panel = document.getElementById('panel');

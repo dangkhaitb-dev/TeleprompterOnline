@@ -262,6 +262,12 @@ export function initPanelDrag({ stage, panel, handle, resizeHandle, onMove } = {
     resizeRaf = requestAnimationFrame(() => {
       resizeRaf = 0;
       const metrics = measureMetrics();
+      // Skip while the panel is hidden. Notch mode sets the panel to
+      // display:none and requests fullscreen; the fullscreen change fires a
+      // resize event, at which point the hidden panel measures as a 0×0 rect.
+      // Re-clamping against that would snap the stored position to the stage
+      // corner, so the panel reappears misaligned once notch is turned off.
+      if (metrics.panelWidth === 0 && metrics.panelHeight === 0) return;
       applyPosition(metrics.panelLeft, metrics.panelTop, metrics);
     });
   };

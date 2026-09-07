@@ -102,8 +102,11 @@ body.tp button,
   pointer-events: auto;
 }
 
+/* Đang record (kể cả mirror-on): vẫn hiện mờ mờ thay vì ẩn hẳn — hover chỉ
+   để giữ nguyên mức mờ, không phải điều kiện để hiện. */
 .app.record-dim.mirror-on .app-header .record-controls {
-  opacity: 0;
+  opacity: .6;
+  filter: saturate(.9) brightness(.96);
 }
 
 .app.record-dim .app-header:hover .record-controls {
@@ -977,13 +980,52 @@ html[data-theme="dark"] .app .prompt-box {
 /* Make action icons (except mic/camera) inside the floating toolbar larger */
 .toolbar-shell .item:has(.action-btn) .icon-wrap,
 .toolbar-shell .item .action-btn {
-  width: 40px;
-  height: 40px;
+  width: 46px;
+  height: 46px;
 }
 
 .toolbar-shell .item .action-btn svg {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
+}
+
+/* Record (REC) is a landscape lockup — keep aspect ratio, size by height. */
+.toolbar-shell #cameraModeControl .icon-wrap,
+.toolbar-shell #cameraModeControl .action-btn {
+  width: auto;
+}
+
+.toolbar-shell #cameraModeControl .action-btn svg {
+  width: auto;
+  height: 40px;
+}
+
+/* Record dot: neutral gray at rest, red when record mode is active. */
+#cameraModeControl .rec-dot {
+  fill: var(--tp-square-bg);
+  transition: fill 0.15s ease;
+}
+
+/* Record active: no background — the icon lights up to full contrast against
+   the toolbar surface (near-white on the dark studio toolbar, ink on light) and
+   the dot turns red (recording). */
+.toolbar-shell #cameraModeControl.selected .action-btn svg,
+.toolbar-shell #cameraModeControl.selected:hover .action-btn svg,
+#mSharedTools #cameraModeControl.selected .action-btn svg {
+  color: var(--tp-page-text);
+}
+
+#cameraModeControl.selected .rec-dot {
+  fill: var(--tp-record);
+}
+
+/* Floating toolbar: the active state lives on the icon only — labels stay
+   neutral (Records, Mirror, Notch… all behave the same). */
+.toolbar-shell .item.selected .label,
+.toolbar-shell .item.active .label,
+#mSharedTools .item.selected .label,
+#mSharedTools .item.active .label {
+  color: var(--tp-gray-text);
 }
 
 /* Camera (Record-mode switch) is hidden while reading/recording — the floating
@@ -993,8 +1035,8 @@ html[data-theme="dark"] .app .prompt-box {
 }
 
 .toolbar-shell .item .scroll-action-icon {
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
 }
 
 
@@ -1479,6 +1521,18 @@ html[data-theme="dark"] .quick-menu {
   background: var(--tp-surface);
 }
 
+/* Auto Scroll is the premium mode — gold frame (distinct from the blue
+   selected/active state) plus a soft tinted surface. */
+.scroll-mode-option:has(#speedModeAuto) {
+  background: var(--tp-premium-soft);
+  border-color: var(--tp-premium-border);
+}
+
+.scroll-mode-option:has(#speedModeAuto):hover {
+  background: var(--tp-premium-soft);
+  border-color: var(--tp-premium);
+}
+
 .scroll-mode-choice {
   width: 100%;
   display: grid;
@@ -1519,15 +1573,23 @@ html[data-theme="dark"] .quick-menu {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: var(--tp-record);
-  color: var(--tp-white);
+  gap: 4px;
+  background: var(--tp-premium-gradient);
+  color: var(--tp-premium-ink);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 800;
   line-height: 1;
-  padding: 5px 8px;
+  padding: 5px 9px;
   border-radius: var(--radius-sm);
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45), 0 1px 3px var(--tp-premium-soft);
+}
+
+.badge-new::before {
+  content: "\2726";
+  font-size: 10px;
+  line-height: 1;
 }
 
 .scroll-choice-radio {
@@ -2983,6 +3045,13 @@ html[data-theme="dark"] .mff-more-left {
   color: var(--tp-white);
 }
 
+/* The menu is portaled to <body>; .notch-prompter (its stacking context) is
+   z-index:1000, so the notch variant must outrank it or it opens hidden behind
+   the notch panel. */
+.font-size-menu--notch {
+  z-index: 1100;
+}
+
 .font-size-menu--dark .font-size-custom-input,
 .font-size-menu--notch .font-size-custom-input {
   border-color: rgba(255, 255, 255, 0.16);
@@ -3032,6 +3101,105 @@ html[data-theme="dark"] .mff-more-left {
   font-style: normal;
   color: var(--tp-page-text);
   opacity: 0.72;
+}
+
+/* Drag-to-size slider — lives between the custom input and the presets. */
+.font-size-slider-row {
+  display: flex;
+  align-items: center;
+  margin: 0 0 6px;
+  padding: 2px 6px 8px;
+  border-bottom: 1px solid var(--tp-divider);
+}
+
+.font-size-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 16px;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.font-size-slider::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 999px;
+  background: linear-gradient(
+    to right,
+    var(--tp-blue) 0 var(--fs-fill, 50%),
+    var(--tp-surface-hover) var(--fs-fill, 50%) 100%
+  );
+}
+
+.font-size-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  margin-top: -6px;
+  border: 2px solid var(--tp-blue);
+  border-radius: 50%;
+  background: var(--tp-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.font-size-slider:active::-webkit-slider-thumb {
+  cursor: grabbing;
+  transform: scale(1.14);
+}
+
+.font-size-slider::-moz-range-track {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--tp-surface-hover);
+}
+
+.font-size-slider::-moz-range-progress {
+  height: 4px;
+  border-radius: 999px;
+  background: var(--tp-blue);
+}
+
+.font-size-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border: 2px solid var(--tp-blue);
+  border-radius: 50%;
+  background: var(--tp-surface);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  cursor: grab;
+}
+
+.font-size-slider:focus-visible::-webkit-slider-thumb {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tp-blue) 30%, transparent);
+}
+
+.font-size-slider:focus-visible::-moz-range-thumb {
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--tp-blue) 30%, transparent);
+}
+
+.font-size-menu--dark .font-size-slider::-webkit-slider-runnable-track,
+.font-size-menu--notch .font-size-slider::-webkit-slider-runnable-track {
+  background: linear-gradient(
+    to right,
+    var(--tp-blue) 0 var(--fs-fill, 50%),
+    rgba(255, 255, 255, 0.16) var(--fs-fill, 50%) 100%
+  );
+}
+
+.font-size-menu--dark .font-size-slider::-moz-range-track,
+.font-size-menu--notch .font-size-slider::-moz-range-track {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.font-size-menu--dark .font-size-slider::-webkit-slider-thumb,
+.font-size-menu--notch .font-size-slider::-webkit-slider-thumb,
+.font-size-menu--dark .font-size-slider::-moz-range-thumb,
+.font-size-menu--notch .font-size-slider::-moz-range-thumb {
+  background: var(--tp-control-bar-bg);
 }
 
 .font-size-menu button {
@@ -4464,6 +4632,11 @@ html.theme-instant *::after {
   #mSharedTools .item .icon-wrap,
   #mSharedTools .item .action-btn { width: 44px; height: 44px; }
   #mSharedTools .item .action-btn svg { width: 44px; height: 44px; }
+
+  /* Record (REC) landscape lockup keeps aspect ratio here too. */
+  #mSharedTools #cameraModeControl .icon-wrap,
+  #mSharedTools #cameraModeControl .action-btn { width: auto; }
+  #mSharedTools #cameraModeControl .action-btn svg { width: auto; height: 40px; }
 
   #mSharedTools #settingsControl .icon-wrap,
   #mSharedTools #settingsControl .action-btn {

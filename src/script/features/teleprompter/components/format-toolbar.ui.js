@@ -33,6 +33,7 @@ export function initFormatToolbar({
   const fontSizeControlGroups = Array.from(root.querySelectorAll('.font-size-control'));
   const fontSizeGroupsByControl = new Map(fontSizeControls.map((control) => [control, control.closest('.font-size-control')]));
   const fontSizeMenus = new Map(fontSizeControlGroups.map((group) => [group, group.querySelector('.font-size-menu')]));
+  const fontSizeSliders = new Map(fontSizeControlGroups.map((group) => [group, group.querySelector('.font-size-slider')]));
   const lineHeightSelects = Array.from(root.querySelectorAll('.format-toolbar .ft-line-height, #notchEditLineHeight'));
   const alignButtons = Array.from(root.querySelectorAll('.format-toolbar .ft-align, #notchEditToolbar .notch-edit-align'));
 
@@ -57,12 +58,44 @@ export function initFormatToolbar({
     return Number.isFinite(size) && size > 0 ? String(size) : '';
   }
 
+  function updateSlider(slider, size) {
+    const num = Number.parseFloat(size);
+    if (!slider || !Number.isFinite(num)) return;
+    const min = Number.parseFloat(slider.min) || 0;
+    const max = Number.parseFloat(slider.max) || 100;
+    const clamped = Math.min(Math.max(num, min), max);
+    // Never reassign .value on the slider being dragged — writing back the same
+    // value mid-drag resets the native thumb and makes the drag stutter. Only
+    // repaint the fill; the browser already owns the thumb position.
+    if (Number.parseFloat(slider.value) !== clamped) slider.value = String(clamped);
+    const pct = max > min ? ((clamped - min) / (max - min)) * 100 : 0;
+    slider.style.setProperty('--fs-fill', `${pct}%`);
+  }
+
+  // Live size preview while dragging the slider: resize the whole surface on the
+  // next frame (cheap — style only, no DOM rewrite / no persistence). One paint
+  // per frame keeps the drag smooth; the full, selection-aware commit + save
+  // runs once on the slider's `change` (release). Skipped when a selection is
+  // active so a range-scoped resize isn't previewed as a whole-surface change.
+  let sliderPreviewRaf = 0;
+  let sliderPreviewPx = '';
+  function previewFontSizeLive(px) {
+    sliderPreviewPx = px;
+    if (sliderPreviewRaf) return;
+    sliderPreviewRaf = requestAnimationFrame(() => {
+      sliderPreviewRaf = 0;
+      surfaces.forEach((surface) => { surface.style.fontSize = `${sliderPreviewPx}px`; });
+    });
+  }
+  cleanups.push(() => { if (sliderPreviewRaf) cancelAnimationFrame(sliderPreviewRaf); });
+
   function setFontSizeValue(control, value) {
     const size = normalizeFontSize(value) || control.defaultValue || '';
     control.value = size;
     const group = fontSizeGroupsByControl.get(control) || control.closest('.font-size-control');
     const label = group?.querySelector('.font-size-value');
     if (label) label.textContent = size ? `${size}px` : '';
+    if (group && size) updateSlider(fontSizeSliders.get(group), size);
   }
 
   function closeFontSizeMenus(except = null) {
@@ -536,6 +569,23 @@ export function initFormatToolbar({
   fontSizeControlGroups.forEach((group) => {
     const toggle = group.querySelector('.font-size-trigger');
     const menu = fontSizeMenus.get(group);
+    const slider = fontSizeSliders.get(group);
+    const groupInput = group.querySelector('.ft-font-size, #notchEditFontSize');
+    // Dragging previews the size in every control and live-resizes the surface
+    // (rAF-throttled, no DOM rewrite); the full commit + save runs once on
+    // release via the number input's change.
+    on(slider, 'input', () => {
+      const px = normalizeFontSize(slider.value);
+      if (!px) return;
+      fontSizeControls.forEach((control) => { setFontSizeValue(control, px); });
+      if (!isSelectionActive()) previewFontSizeLive(px);
+    });
+    on(slider, 'change', () => {
+      const px = normalizeFontSize(slider.value);
+      if (!px || !groupInput) return;
+      groupInput.value = px;
+      groupInput.dispatchEvent(new Event('change', { bubbles: true }));
+    });
     on(toggle, 'click', () => toggleFontSizeMenu(group));
     on(menu, 'click', (event) => {
       const option = event.target.closest('[data-font-size]');

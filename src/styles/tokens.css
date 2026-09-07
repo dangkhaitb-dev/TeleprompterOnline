@@ -112,12 +112,15 @@
   --license-warning: #9a6700;
   --license-warning-soft: #fff7d6;
 
-  /* ===== Teleprompter studio palette (ported verbatim from the demo :root).
-     Light values are the default; dark overrides live in the [data-theme="dark"]
-     block below. hex allowed here (tokens.css is exempt from color-no-hex). ===== */
-  --tp-green: #75dd28;
-  --tp-green-dark: #5ea500;
-  --tp-green-light: #eaf8dc;
+  /* ===== Teleprompter studio palette (ported from the demo :root).
+     Primary accent is a soft Docker-family blue (#458ee6) rather than the
+     original lime green. Token names kept as --tp-green* for compatibility across
+     the ~30 call sites; they now carry blue values. Light values are the default;
+     dark overrides live in the [data-theme="dark"] block below.
+     hex allowed here (tokens.css is exempt from color-no-hex). ===== */
+  --tp-green: #458ee6;
+  --tp-green-dark: #2b74cf;
+  --tp-green-light: #eaf3fc;
   --tp-square-bg: #a5a7ad;
   --tp-scroll-icon: #a5a6ac;
   --tp-icon-fg: #ffffff;
@@ -128,6 +131,14 @@
   --tp-record: #ef4d62;
   --tp-record-btn: #ff5454;
   --tp-record-dot: #ffcdcd;
+
+  /* Premium accent (gold) — for the "Premium" badge and its highlighted frame. */
+  --tp-premium: #b8860b;
+  --tp-premium-strong: #8a5a00;
+  --tp-premium-border: #e3b23c;
+  --tp-premium-soft: #fbf1d9;
+  --tp-premium-gradient: linear-gradient(135deg, #f6d365 0%, #d4a017 100%);
+  --tp-premium-ink: #4a3200;
   --tp-top-border: #3f3f40;
   --tp-page-bg: #ffffff;
   --tp-page-text: #303136;
@@ -172,8 +183,8 @@
   --tp-panel-light-bar: #f1f2f3;
   --tp-panel-light-icon: #1a1c20;
   --tp-panel-light-label: #6a6f77;
-  --tp-notch-active-fg: #16330a;
-  --tp-green-active-bg: rgba(117, 221, 40, 0.22);
+  --tp-notch-active-fg: #0d3b6b;
+  --tp-green-active-bg: rgba(69, 142, 230, 0.16);
   --tp-hue-gradient: linear-gradient(to right, #ff0000, #ffff00, #00ff00, #00ffff, #0000ff, #ff00ff, #ff0000);
 
   /* Countdown / prompter font scale (tokens so large screens can scale). */
@@ -194,13 +205,13 @@
   --se-card-bg: #ffffff;
   --se-faint: #a5a8aa;
   --se-scrollbar-thumb: #d9dadb;
-  --se-green: #5da42f;
-  --se-green-hover: #55992b;
+  --se-green: #458ee6;
+  --se-green-hover: #2b74cf;
   --se-blue: #4598e7;
   --se-blue-hover: #2e7fd4;
-  --se-brand: #8edb4d;
-  --se-brand-hover: #75dd28;
-  --se-brand-ink: #17181b;
+  --se-brand: #458ee6;
+  --se-brand-hover: #2b74cf;
+  --se-brand-ink: #ffffff;
   --se-danger: #ef4d62;
   --se-record-dot: #e5484d;
   --se-viewer-bg: #161616;
@@ -214,10 +225,10 @@
   --se-sidebar-width: 165px;
   --se-column-gap: 24px;
 
-  /* Trim editor (accent + track surfaces). Green matches --se-green. */
-  --se-trim-accent: #5da42f;
-  --se-trim-accent-tint: #eaf3e2;
-  --se-trim-track-bg: #e8ebe5;
+  /* Trim editor (accent + track surfaces). Accent matches --se-green (blue). */
+  --se-trim-accent: #458ee6;
+  --se-trim-accent-tint: #eaf3fc;
+  --se-trim-track-bg: #e6ebf2;
   --se-trim-tick: #c7c9c4;
   --se-trim-frame-divider: rgb(255 255 255 / 42%);
   --se-trim-shade: rgb(32 35 30 / 42%);
@@ -229,8 +240,8 @@
   --se-media-letterbox: #111;
   --se-audio-gradient: linear-gradient(180deg, #173c4c 0%, #4d8f99 45%, #8b8074 75%, #6c5e51 100%);
   --se-audio-kicker: #aeb1a7;
-  --se-waveform-art: #d8f999;
-  --se-waveform-canvas: #5da42f;
+  --se-waveform-art: #bcdcf8;
+  --se-waveform-canvas: #458ee6;
   --se-media-badge-bg: #191a17;
   --se-scene-empty-bg: #fbfbfb;
   --se-record-pill-bg: #ffffff;
@@ -358,11 +369,19 @@
   --text: #f3f5f8;
   --text-muted: #9aa3b0;
   --border: #262c36;
-  --accent: #8edb4d;
+  --accent: #458ee6;
   --accent-contrast: #0c0e12;
 
   /* Teleprompter studio — dark overrides (verbatim from the demo). */
-  --tp-green-light: rgba(117, 221, 40, 0.18);
+  --tp-green-light: rgba(69, 142, 230, 0.18);
+
+  /* Premium accent (gold) — dark overrides. */
+  --tp-premium: #e3b23c;
+  --tp-premium-strong: #f0c65a;
+  --tp-premium-border: #a97d1e;
+  --tp-premium-soft: rgba(227, 178, 60, 0.12);
+  --tp-premium-gradient: linear-gradient(135deg, #f6d365 0%, #cf9d1f 100%);
+  --tp-premium-ink: #2a1d00;
   --tp-gray-text: #a3a6ad;
   --tp-divider: #2c2d33;
   --tp-sidebar-bg: #26272c;
@@ -392,7 +411,7 @@
   --se-card-bg: #1d1e23;
   --se-faint: #7c7f84;
   --se-scrollbar-thumb: #3a3b41;
-  --se-trim-accent-tint: rgb(93 164 47 / 25%);
+  --se-trim-accent-tint: rgb(69 142 230 / 25%);
   --se-trim-track-bg: #333333;
   --se-trim-tick: #55565a;
   --se-trim-playhead-line: #f2f2f2;

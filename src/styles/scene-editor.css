@@ -19,13 +19,13 @@
   --se-card-bg: #ffffff;
   --se-faint: #a5a8aa;
   --se-scrollbar-thumb: #d9dadb;
-  --se-green: #5da42f;
-  --se-green-hover: #55992b;
+  --se-green: #458ee6;
+  --se-green-hover: #2b74cf;
   --se-blue: #4598e7;
   --se-blue-hover: #2e7fd4;
-  --se-brand: #8edb4d;
-  --se-brand-hover: #75dd28;
-  --se-brand-ink: #17181b;
+  --se-brand: #458ee6;
+  --se-brand-hover: #2b74cf;
+  --se-brand-ink: #ffffff;
   --se-danger: #ef4d62;
   --se-record-dot: #e5484d;
   --se-viewer-bg: #161616;
@@ -148,13 +148,13 @@
   font-weight: 800;
   cursor: pointer;
   border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(142, 219, 77, 0.15), 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 2px rgba(69, 142, 230, 0.18), 0 1px 1px rgba(0, 0, 0, 0.05);
   transition: background 160ms ease, transform 120ms ease, box-shadow 160ms ease;
 }
 
 .se-export-button:hover {
   background: var(--se-brand-hover);
-  box-shadow: 0 2px 8px rgba(117, 221, 40, 0.25);
+  box-shadow: 0 2px 8px rgba(69, 142, 230, 0.28);
 }
 
 .se-export-button:active {

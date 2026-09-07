@@ -1291,7 +1291,7 @@ body.home {
   height: 8px;
   background: var(--tp-green);
   border-radius: var(--radius-pill);
-  box-shadow: 0 0 0 4px rgba(117, 221, 40, 0.25);
+  box-shadow: 0 0 0 4px rgba(69, 142, 230, 0.25);
   display: inline-block;
 }
 
@@ -1532,7 +1532,7 @@ body.home {
   font-weight: 800;
   font-size: 0.95rem;
   cursor: pointer;
-  box-shadow: 0 4px 12px rgba(117, 221, 40, 0.22);
+  box-shadow: 0 4px 12px rgba(69, 142, 230, 0.22);
 }
 
 .remote-dial {

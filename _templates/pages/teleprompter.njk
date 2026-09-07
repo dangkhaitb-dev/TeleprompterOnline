@@ -60,9 +60,10 @@ lang: en
     <div class="format-toolbar" id="formatToolbar" role="toolbar" aria-label="{{ pageData.format.toolbarAria }}">
       <div class="font-size-control">
         <button class="font-size-trigger" type="button" aria-label="{{ pageData.format.fontSizeLabel }}" aria-expanded="false"><span class="font-size-value">24px</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button>
-        <div class="font-size-menu" role="listbox" hidden>
+        <div class="font-size-menu" hidden>
           <label class="font-size-custom-input"><span>{{ pageData.format.customFontSize }}</span><input id="fontSizeSelect" class="ft-font-size" type="number" min="0" step="any" inputmode="decimal" value="24" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}"><em>px</em></label>
-          {%- for s in pageData.format.fontSizes %}<button type="button" role="option" data-font-size="{{ s.value }}">{{ s.label }}</button>{% endfor %}
+          <div class="font-size-slider-row"><input class="font-size-slider" type="range" min="10" max="250" step="1" value="24" aria-label="{{ pageData.format.fontSizeLabel }}" title="{{ pageData.format.fontSizeLabel }}"></div>
+          {%- for s in pageData.format.fontSizes %}<button type="button" data-font-size="{{ s.value }}">{{ s.label }}</button>{% endfor %}
         </div>
       </div>
       <span class="ft-divider"></span>
@@ -148,9 +149,10 @@ lang: en
   <div class="format-toolbar mobile-format-toolbar" id="mobileFormatToolbar" role="toolbar" aria-label="{{ pageData.format.toolbarAria }}">
     <div class="font-size-control">
       <button class="font-size-trigger" type="button" aria-label="{{ pageData.format.fontSizeLabel }}" aria-expanded="false"><span class="font-size-value">24px</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button>
-      <div class="font-size-menu" role="listbox" hidden>
+      <div class="font-size-menu" hidden>
         <label class="font-size-custom-input"><span>{{ pageData.format.customFontSize }}</span><input class="ft-font-size" type="number" min="0" step="any" inputmode="decimal" value="24" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}"><em>px</em></label>
-        {%- for s in pageData.format.fontSizes %}<button type="button" role="option" data-font-size="{{ s.value }}">{{ s.label }}</button>{% endfor %}
+        <div class="font-size-slider-row"><input class="font-size-slider" type="range" min="10" max="250" step="1" value="24" aria-label="{{ pageData.format.fontSizeLabel }}" title="{{ pageData.format.fontSizeLabel }}"></div>
+        {%- for s in pageData.format.fontSizes %}<button type="button" data-font-size="{{ s.value }}">{{ s.label }}</button>{% endfor %}
       </div>
     </div>
     <span class="ft-divider"></span>
@@ -291,26 +293,25 @@ lang: en
       <div class="toolbar" role="toolbar" aria-label="{{ pageData.toolbar.studioAria }}">
         <!-- Camera: the single Record-mode switch (desktop toolbar; phones move it
              into #mSharedTools). Label stays "Camera" in both modes. -->
-        <button class="item" id="cameraModeControl" type="button" aria-pressed="false" aria-label="{{ pageData.toolbar.switchToRecordAria }}" title="{{ pageData.toolbar.switchToRecordAria }}" data-normal-label="{{ pageData.toolbar.camera }}" data-record-label="{{ pageData.toolbar.camera }}" data-switch-to-normal="{{ pageData.toolbar.switchToNormalAria }}" data-switch-to-record="{{ pageData.toolbar.switchToRecordAria }}">
+        <button class="item" id="cameraModeControl" type="button" aria-pressed="false" aria-label="{{ pageData.toolbar.switchToRecordAria }}" title="{{ pageData.toolbar.switchToRecordAria }}" data-normal-label="{{ pageData.toolbar.records }}" data-record-label="{{ pageData.toolbar.records }}" data-switch-to-normal="{{ pageData.toolbar.switchToNormalAria }}" data-switch-to-record="{{ pageData.toolbar.switchToRecordAria }}">
           <div class="icon-wrap">
             <div class="action-btn">
-              <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
-                <path d="M16.5 15.5l1.2-2h4.6l1.2 2H26a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H14a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h2.5Z" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
-                <circle cx="20" cy="21" r="3.2" stroke="var(--tp-icon-fg)" stroke-width="1.8"/>
+              <svg width="51" height="34" viewBox="0 0 60 40" fill="none" aria-hidden="true">
+                <path d="M14.5 11.5H11a1.6 1.6 0 0 0-1.6 1.6V16M49 11.5h3.5a1.6 1.6 0 0 1 1.6 1.6V16M9.4 24v3a1.6 1.6 0 0 0 1.6 1.6h3.5M54.1 24v3a1.6 1.6 0 0 1-1.6 1.6H49" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <circle class="rec-dot" cx="19" cy="20" r="3.6"/>
+                <text x="25.5" y="24.3" font-family="Arial, -apple-system, system-ui, sans-serif" font-size="11.5" font-weight="800" letter-spacing="0.3" fill="currentColor">REC</text>
               </svg>
             </div>
           </div>
-          <span class="label">{{ pageData.toolbar.camera }}</span>
+          <span class="label">{{ pageData.toolbar.records }}</span>
         </button>
 
         <button class="item" id="mirrorControl" type="button" aria-pressed="false" aria-label="{{ pageData.toolbar.mirrorAria }}" title="{{ pageData.toolbar.mirrorAria }}">
           <div class="icon-wrap">
             <div class="action-btn">
               <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
-                <path d="M18.5 13V28.5H12 L18.5 13Z" fill="none" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
-                <path d="M21.5 13V28.5H28 L21.5 13Z" fill="var(--tp-icon-fg)" fill-opacity="0.5" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M17.73 14.84 Q18.5 13 18.5 15 L18.5 26.5 Q18.5 28.5 16.5 28.5 L14 28.5 Q12 28.5 12.77 26.66 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <path d="M22.27 14.84 Q21.5 13 21.5 15 L21.5 26.5 Q21.5 28.5 23.5 28.5 L26 28.5 Q28 28.5 27.23 26.66 Z" fill="currentColor" fill-opacity="0.5" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
               </svg>
             </div>
           </div>
@@ -321,9 +322,8 @@ lang: en
           <div class="icon-wrap">
             <div class="action-btn">
               <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
-                <path d="M11 13h4v2.5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V13h4" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M13 22.5h14M16 26.5h8" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M11 13h4v2.5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V13h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M13 22.5h14M16 26.5h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </div>
           </div>
@@ -334,8 +334,7 @@ lang: en
           <div class="icon-wrap">
             <div class="action-btn">
               <svg width="34" height="34" viewBox="0 0 40 40" fill="none" aria-hidden="true">
-                <rect x="8" y="8" width="24" height="24" rx="6" fill="currentColor"/>
-                <path d="M13 13h4M13 13v4M27 13h-4M27 13v4M13 27h4M13 27v-4M27 27h-4M27 27v-4" stroke="var(--tp-icon-fg)" stroke-width="1.8" stroke-linecap="round"/>
+                <path d="M13 13h4M13 13v4M27 13h-4M27 13v4M13 27h4M13 27v-4M27 27h-4M27 27v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
               </svg>
             </div>
           </div>
@@ -648,9 +647,10 @@ lang: en
       <div class="notch-edit-toolbar" id="notchEditToolbar" role="toolbar" aria-label="{{ pageData.notch.toolbarAria }}">
         <div class="font-size-control notch-font-size-control">
           <button class="font-size-trigger" type="button" aria-label="{{ pageData.format.fontSizeLabel }}" aria-expanded="false"><span class="font-size-value">24px</span><svg aria-hidden="true" viewBox="0 0 16 16"><path d="m4 6 4 4 4-4"/></svg></button>
-          <div class="font-size-menu" role="listbox" hidden>
+          <div class="font-size-menu" hidden>
             <label class="font-size-custom-input"><span>{{ pageData.format.customFontSize }}</span><input class="notch-edit-select" id="notchEditFontSize" type="number" min="0" step="any" inputmode="decimal" value="24" title="{{ pageData.format.fontSizeLabel }}" aria-label="{{ pageData.format.fontSizeLabel }}"><em>px</em></label>
-            {%- for s in pageData.notch.fontSizes %}<button type="button" role="option" data-font-size="{{ s.value }}">{{ s.label }}</button>{% endfor %}
+            <div class="font-size-slider-row"><input class="font-size-slider" type="range" min="10" max="250" step="1" value="24" aria-label="{{ pageData.format.fontSizeLabel }}" title="{{ pageData.format.fontSizeLabel }}"></div>
+            {%- for s in pageData.notch.fontSizes %}<button type="button" data-font-size="{{ s.value }}">{{ s.label }}</button>{% endfor %}
           </div>
         </div>
         <span class="notch-edit-divider" aria-hidden="true"></span>

@@ -547,6 +547,13 @@ body.home {
   list-style: none;
 }
 
+/* Keep the icons beside the copyright: the bottom-right corner belongs to the
+   fixed feedback button. */
+.footer-bottom .footer-social {
+  margin-right: auto;
+  margin-left: 0.75rem;
+}
+
 .footer-social-link {
   display: inline-flex;
   align-items: center;

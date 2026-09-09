@@ -362,6 +362,69 @@
   line-height: 1.7;
 }
 
+.about-connect {
+  padding-top: 0;
+  padding-bottom: clamp(4.5rem, 11vw, 8rem);
+}
+
+.about-connect-list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid var(--about-rule);
+  list-style: none;
+}
+
+.about-connect-list li {
+  border-bottom: 1px solid var(--about-rule);
+}
+
+.about-connect-list a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 0.35rem 1rem;
+  padding-block: 1.5rem;
+  color: var(--ink);
+  text-decoration: none;
+  transition: color var(--dur-fast) var(--ease-out);
+}
+
+.about-connect-name {
+  font-size: clamp(1.6rem, 6vw, 2.3rem);
+  font-weight: 600;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.about-connect-handle {
+  grid-column: 1;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.01em;
+}
+
+.about-connect-arrow {
+  grid-row: 1;
+  grid-column: 2;
+  font-size: 1.1rem;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+
+.about-connect-list a:hover {
+  color: var(--brand-soft);
+}
+
+.about-connect-list a:hover .about-connect-arrow {
+  transform: translate(0.25rem, -0.25rem);
+}
+
+.about-connect-list a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
 .about-final {
   padding-block: clamp(5.5rem, 12vw, 9rem);
   background: var(--brand);
@@ -574,6 +637,26 @@
     padding-left: 0;
   }
 
+  .about-connect-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .about-connect-list a {
+    padding: 2rem 2rem 2.5rem;
+  }
+
+  .about-connect-list li {
+    border-right: 1px solid var(--about-rule);
+  }
+
+  .about-connect-list li:last-child {
+    border-right: 0;
+  }
+
+  .about-connect-list li:first-child a {
+    padding-left: 0;
+  }
+
   .about-roadmap-chapters article {
     grid-template-columns: 9rem minmax(16rem, 0.75fr) minmax(0, 1.25fr);
     gap: clamp(2rem, 5vw, 5rem);
@@ -588,6 +671,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .about-connect-arrow {
+    transition: none;
+  }
+
+  .about-connect-list a:hover .about-connect-arrow {
+    transform: none;
+  }
+
   .about-text-link,
   .about-final-cta {
     transition: none;

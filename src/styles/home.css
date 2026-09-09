@@ -537,6 +537,60 @@ body.home {
   color: var(--ink);
 }
 
+/* Official social channels — shared by every footer variant */
+.footer-social {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.footer-social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-pill);
+  color: var(--ink-muted);
+  transition:
+    color var(--dur-fast) var(--ease-out),
+    border-color var(--dur-fast) var(--ease-out),
+    background-color var(--dur-fast) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out);
+}
+
+.footer-social-link:hover,
+.footer-social-link:focus-visible {
+  border-color: var(--brand);
+  background-color: var(--brand);
+  color: var(--home-bg);
+  transform: translateY(-2px);
+}
+
+.footer-social-link:active {
+  transform: translateY(0);
+}
+
+.footer-social-icon {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-social-link {
+    transition: none;
+  }
+
+  .footer-social-link:hover,
+  .footer-social-link:focus-visible,
+  .footer-social-link:active {
+    transform: none;
+  }
+}
+
 /* ===== DRAG OVERLAY (darken only — no backdrop blur) ===== */
 .drag-overlay {
   position: fixed;

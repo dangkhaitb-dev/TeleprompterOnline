@@ -14,6 +14,7 @@ lang: en
 {%- set home = site.url + '/' -%}
 {%- set socialImage = site.url + (simplePage.seo.ogImage or '') -%}
 {%- from "partials/logo.njk" import brandLogo -%}
+{%- from "partials/social-links.njk" import socialLinks -%}
 {%- set logoSvg = brandLogo('currentColor') -%}
 
 <a class="skip-link" href="#page-content">Skip to content</a>
@@ -218,6 +219,7 @@ lang: en
             <a href="{{ link.url }}" class="footer-link{% if isCurrent %} footer-link-current{% endif %}"{% if isCurrent %} aria-current="page"{% endif %}>{{ link.label }}</a>
             {%- endfor %}
         </div>
+        {{ socialLinks(site.social) }}
         <div class="footer-copyright">{{ pageData.footer.copyright }}</div>
     </div>
 </footer>

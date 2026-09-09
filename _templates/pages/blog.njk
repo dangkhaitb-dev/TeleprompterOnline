@@ -6,6 +6,7 @@ lang: en
 ---
 {%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
 {%- from "partials/logo.njk" import brandLogo -%}
+{%- from "partials/social-links.njk" import socialLinks -%}
 {%- from "partials/blog-listing.njk" import blogListing -%}
 {%- set logoSvg = brandLogo('currentColor') -%}
 
@@ -103,6 +104,7 @@ lang: en
             <a href="{{ link.url }}" class="footer-link{% if link.label == 'Blog' %} footer-link-current{% endif %}"{% if link.label == 'Blog' %} aria-current="page"{% endif %}>{{ link.label }}</a>
             {%- endfor %}
         </div>
+        {{ socialLinks(site.social) }}
         <div class="footer-copyright">{{ pageData.footer.copyright }}</div>
     </div>
 </footer>

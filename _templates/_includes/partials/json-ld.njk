@@ -22,6 +22,7 @@
       "@id": "{{ home }}#organization",
       "name": "{{ site.name | jsonString | safe }}",
       "url": "{{ home }}",
+      "sameAs": [{% for channel in site.social %}"{{ channel.url }}"{% if not loop.last %}, {% endif %}{% endfor %}],
       "description": "{{ sc.orgDescription | jsonString | safe }}",
       "logo": {
         "@type": "ImageObject",

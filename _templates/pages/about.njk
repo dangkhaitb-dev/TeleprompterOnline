@@ -7,6 +7,7 @@ lang: en
 {%- set pageData = i18nPages['about']['en'] -%}
 {%- set chrome = i18nPages['index']['en'] -%}
 {%- from "partials/logo.njk" import brandLogo -%}
+{%- from "partials/social-links.njk" import socialLinks -%}
 {%- set logoSvg = brandLogo('currentColor') -%}
 
 <!-- NAV -->
@@ -209,6 +210,30 @@ lang: en
         </div>
     </section>
 
+    {%- set social = pageData.social %}
+    <section class="about-section about-connect" id="follow">
+        <div class="about-shell">
+            <div class="about-section-intro">
+                <header class="about-section-heading">
+                    <p class="about-kicker">{{ social.eyebrow }}</p>
+                    <h2>{{ social.title }}</h2>
+                </header>
+                <p>{{ social.description }}</p>
+            </div>
+            <ul class="about-connect-list">
+                {%- for channel in site.social %}
+                <li>
+                    <a href="{{ channel.url }}" target="_blank" rel="noopener me">
+                        <span class="about-connect-name">{{ channel.label }}</span>
+                        <span class="about-connect-handle">{{ channel.handle }}</span>
+                        <span class="about-connect-arrow" aria-hidden="true">↗</span>
+                    </a>
+                </li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </section>
+
     <section class="about-final" id="start">
         <div class="about-shell about-final-grid">
             <div>
@@ -248,6 +273,7 @@ lang: en
         </div>
         <div class="footer-bottom">
             <p class="footer-copyright">{{ chrome.footer.copyright }}</p>
+            {{ socialLinks(site.social) }}
         </div>
     </div>
 </footer>

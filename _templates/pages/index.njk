@@ -11,6 +11,7 @@ eleventyComputed:
 ---
 <!-- Generated from the shared language registry and localized index data. -->
 {%- set pageData = i18nPages[pageKey][lang] or i18nPages[pageKey]['en'] -%}
+{%- from "partials/social-links.njk" import socialLinks -%}
 
 <!-- NAV -->
 <header class="nav">
@@ -578,6 +579,7 @@ eleventyComputed:
         </div>
         <div class="footer-bottom">
             <p class="footer-copyright">{{ pageData.footer.copyright }}</p>
+            {{ socialLinks(site.social) }}
         </div>
     </div>
 </footer>

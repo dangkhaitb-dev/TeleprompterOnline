@@ -11,6 +11,7 @@ lang: en
 {%- set pageData = i18nPages['blog'][lang] or i18nPages['blog']['en'] -%}
 {%- set canonical = site.url + '/blog/' + (article.slug if article.flatUrl else article.categorySlug + '/' + article.slug) + '/' -%}
 {%- from "partials/logo.njk" import brandLogo -%}
+{%- from "partials/social-links.njk" import socialLinks -%}
 {%- set logoSvg = brandLogo('currentColor') -%}
 
 <a class="skip-link" href="#article-content">{{ pageData.skipToArticle }}</a>
@@ -194,6 +195,7 @@ lang: en
             <a href="{{ link.url }}" class="footer-link{% if link.label == 'Blog' %} footer-link-current{% endif %}"{% if link.label == 'Blog' %} aria-current="page"{% endif %}>{{ link.label }}</a>
             {%- endfor %}
         </div>
+        {{ socialLinks(site.social) }}
         <div class="footer-copyright">{{ pageData.footer.copyright }}</div>
     </div>
 </footer>

@@ -7,6 +7,7 @@ lang: en
 {%- set pageData = i18nPages['pricing']['en'] -%}
 {%- set chrome = i18nPages['index']['en'] -%}
 {%- from "partials/logo.njk" import brandLogo -%}
+{%- from "partials/social-links.njk" import socialLinks -%}
 {%- set logoSvg = brandLogo('currentColor') -%}
 
 <!-- NAV -->
@@ -176,6 +177,7 @@ lang: en
         </div>
         <div class="footer-bottom">
             <p class="footer-copyright">{{ chrome.footer.copyright }}</p>
+            {{ socialLinks(site.social) }}
         </div>
     </div>
 </footer>

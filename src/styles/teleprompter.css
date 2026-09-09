@@ -596,13 +596,17 @@ html[data-theme="dark"] .app .prompt-box {
   background: var(--tp-panel-bg-dark-60);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+  /* KHÔNG box-shadow: bóng đen mờ trên nền camera gần đen chỉ tạo ra các
+     "viền" bo tròn đồng tâm (gradient rất nhạt bị quantize 8-bit), không hề
+     tách được panel khỏi nền. Nền panel tối 60% + control-bar đen đã đủ
+     tương phản khi camera sáng. */
+  box-shadow: none;
   /* Above the header so a panel dragged into its band remains fully usable. */
   z-index: 46;
 }
 
-/* While dragging, promote the panel to its own layer so the 60px shadow is
- * painted once and moved by the compositor instead of repainted per move. */
+/* While dragging, promote the panel to its own layer so its translucent
+ * background is composited instead of repainted against the camera per move. */
 .panel.is-dragging {
   will-change: transform;
 }
@@ -2607,6 +2611,18 @@ html[data-theme="dark"] .settings-group-content {
     padding: 8px 14px;
   }
 
+  /* Scrollbar của prompt-box đã được style (::-webkit-scrollbar) nên trình
+     duyệt dựng scrollbar cổ điển: chiếm 7px layout + luôn hiện thành một vạch
+     dọc sát lề phải, trông như đường phân cách padding/nội dung. Màn cảm ứng
+     cuộn bằng ngón nên bỏ hẳn, trả 7px lại cho vùng chữ — giống .teleprompter
+     và .notch-scroll vốn đã ẩn scrollbar. */
+  .app .prompt-box {
+    scrollbar-width: none;
+  }
+
+  .app .prompt-box::-webkit-scrollbar {
+    display: none;
+  }
 }
 /* ===== Format toolbar trên app-header (chế độ edit, chưa record) ===== */
 .format-toolbar {

@@ -1890,46 +1890,6 @@ body.home {
   line-height: 1.6;
 }
 
-/* "Launched on StartupBase" badge — sits under the footer blurb, lifting on
-   hover like the social icons so the whole footer reacts the same way. */
-.footer-launch-badge {
-  display: inline-block;
-  margin-top: 1.25rem;
-  border-radius: var(--radius-md);
-  transition:
-    transform var(--dur-fast) var(--ease-out),
-    opacity var(--dur-fast) var(--ease-out);
-}
-
-.footer-launch-badge img {
-  display: block;
-  width: auto;
-  max-width: 100%;
-  height: 55px;
-}
-
-.footer-launch-badge:hover,
-.footer-launch-badge:focus-visible {
-  transform: translateY(-2px);
-  opacity: 0.9;
-}
-
-.footer-launch-badge:active {
-  transform: translateY(0);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .footer-launch-badge {
-    transition: none;
-  }
-
-  .footer-launch-badge:hover,
-  .footer-launch-badge:focus-visible,
-  .footer-launch-badge:active {
-    transform: none;
-  }
-}
-
 .footer-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -563,6 +563,9 @@ eleventyComputed:
             <div class="footer-brand">
                 <a href="/" class="brand" aria-label="SolPrompter home"><img src="/logo.webp" alt="SolPrompter logo" width="28" height="28" loading="lazy" decoding="async" style="display: block;"><span class="footer-logo-text">{{ pageData.footer.brand }}</span></a>
                 <p class="footer-desc">{{ pageData.footer.description }}</p>
+                {%- if site.launchBadge %}
+                <a class="footer-launch-badge" href="{{ site.launchBadge.url }}" target="_blank" rel="noopener"><img src="{{ site.launchBadge.imageSrc }}" alt="{{ site.launchBadge.alt }}" width="{{ site.launchBadge.width }}" height="{{ site.launchBadge.height }}" loading="lazy" decoding="async"></a>
+                {%- endif %}
             </div>
             <div class="footer-cols">
                 {%- for column in pageData.footer.columns %}

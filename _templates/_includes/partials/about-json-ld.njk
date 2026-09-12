@@ -1,0 +1,74 @@
+{#- The About page is the canonical evidence page for the organization that
+    authors and publishes the blog. Keep its @id aligned with all site schema. -#}
+{%- if pageKey == 'about' and pageData.entity -%}
+{%- set entity = pageData.entity -%}
+{%- set base = site.url -%}
+{%- set home = base + '/' -%}
+{%- set canonical = base + pageData.seo.canonical -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "{{ canonical }}#organization",
+      "name": "{{ entity.organizationName | jsonString | safe }}",
+      "alternateName": "{{ site.name | jsonString | safe }}",
+      "url": "{{ canonical }}",
+      "description": "{{ entity.organizationDescription | jsonString | safe }}",
+      "logo": { "@id": "{{ home }}#logo" },
+      "sameAs": [{% for channel in site.social %}"{{ channel.url }}"{% if not loop.last %}, {% endif %}{% endfor %}],
+      "brand": { "@id": "{{ home }}#brand" },
+      "knowsAbout": [{% for topic in entity.knowsAbout %}"{{ topic | jsonString | safe }}"{% if not loop.last %}, {% endif %}{% endfor %}],
+      "mainEntityOfPage": { "@id": "{{ canonical }}#webpage" }
+    },
+    {
+      "@type": "ImageObject",
+      "@id": "{{ home }}#logo",
+      "url": "{{ base }}{{ entity.logoUrl }}",
+      "contentUrl": "{{ base }}{{ entity.logoUrl }}",
+      "caption": "{{ entity.logoCaption | jsonString | safe }}"
+    },
+    {
+      "@type": "Brand",
+      "@id": "{{ home }}#brand",
+      "name": "{{ site.name | jsonString | safe }}",
+      "url": "{{ home }}",
+      "logo": { "@id": "{{ home }}#logo" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "{{ home }}#website",
+      "url": "{{ home }}",
+      "name": "{{ site.name | jsonString | safe }}",
+      "publisher": { "@id": "{{ canonical }}#organization" }
+    },
+    {
+      "@type": "AboutPage",
+      "@id": "{{ canonical }}#webpage",
+      "url": "{{ canonical }}",
+      "name": "{{ entity.webpageName | jsonString | safe }}",
+      "description": "{{ pageData.seo.description | jsonString | safe }}",
+      "isPartOf": { "@id": "{{ home }}#website" },
+      "mainEntity": { "@id": "{{ canonical }}#organization" },
+      "about": { "@id": "{{ home }}#application" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebApplication",
+      "@id": "{{ home }}#application",
+      "name": "{{ site.name | jsonString | safe }}",
+      "url": "{{ home }}",
+      "description": "{{ entity.applicationDescription | jsonString | safe }}",
+      "applicationCategory": "{{ entity.applicationCategory | jsonString | safe }}",
+      "applicationSubCategory": "{{ entity.applicationSubCategory | jsonString | safe }}",
+      "operatingSystem": "{{ entity.operatingSystem | jsonString | safe }}",
+      "isAccessibleForFree": true,
+      "creator": { "@id": "{{ canonical }}#organization" },
+      "provider": { "@id": "{{ canonical }}#organization" },
+      "inLanguage": "en"
+    }
+  ]
+}
+</script>
+{%- endif -%}

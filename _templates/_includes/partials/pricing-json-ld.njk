@@ -26,7 +26,7 @@
       "name": "{{ s.title | jsonString | safe }}",
       "description": "{{ s.description | jsonString | safe }}",
       "isPartOf": { "@id": "{{ home }}#website" },
-      "publisher": { "@id": "{{ home }}#organization" },
+      "publisher": { "@id": "{{ base }}/about#organization" },
       "about": { "@id": "{{ canonicalUrl }}#product" },
       "mainEntity": { "@id": "{{ canonicalUrl }}#product" },
       "inLanguage": "{{ langCode }}"
@@ -49,7 +49,7 @@
           "price": "{{ plan.amount | jsonString | safe }}",
           "priceCurrency": "{{ ps.currency | jsonString | safe }}",
           "availability": "https://schema.org/InStock",
-          "seller": { "@id": "{{ home }}#organization" }
+          "seller": { "@id": "{{ base }}/about#organization" }
         }{% if not loop.last %},{% endif %}
         {%- endfor %}
         {%- for plan in pageData.plans.items %}{% if plan.ctaOffer %},
@@ -61,7 +61,7 @@
           "price": "{{ plan.ctaOffer.amount | jsonString | safe }}",
           "priceCurrency": "{{ ps.currency | jsonString | safe }}",
           "availability": "https://schema.org/InStock",
-          "seller": { "@id": "{{ home }}#organization" }
+          "seller": { "@id": "{{ base }}/about#organization" }
         }{% endif %}{%- endfor %}
       ]
     },

@@ -12,7 +12,7 @@
   "modified": "2026-08-10",
   "keywords": ["presentation script template", "how to write a presentation script", "presentation speaker notes", "recorded presentation script"],
   "mentions": ["presentation script", "speaker notes", "teleprompter"],
-  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "author": { "type": "Organization", "name": "SolPrompter", "url": "/about" },
   "review": { "by": "the SolPrompter team", "updatedDisplay": "August 10, 2026" },
   "seo": {
     "title": "Presentation Script Template for Live and Recorded Talks",

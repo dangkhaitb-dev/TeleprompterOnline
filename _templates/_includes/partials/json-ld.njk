@@ -11,6 +11,7 @@
 {%- set sc = pageData.schema -%}
 {%- set base = site.url -%}
 {%- set home = base + "/" -%}
+{%- set organizationId = base + "/about#organization" -%}
 {%- set canonicalUrl = base + (s.canonical or "/") -%}
 {%- set langCode = lang or 'en' -%}
     <script type="application/ld+json">
@@ -19,9 +20,10 @@
   "@graph": [
     {
       "@type": "Organization",
-      "@id": "{{ home }}#organization",
-      "name": "{{ site.name | jsonString | safe }}",
-      "url": "{{ home }}",
+      "@id": "{{ organizationId }}",
+      "name": "SolPrompter",
+      "alternateName": "{{ site.name | jsonString | safe }}",
+      "url": "{{ base }}/about",
       "sameAs": [{% for channel in site.social %}"{{ channel.url }}"{% if not loop.last %}, {% endif %}{% endfor %}],
       "description": "{{ sc.orgDescription | jsonString | safe }}",
       "logo": {
@@ -31,7 +33,8 @@
         "contentUrl": "{{ base }}{{ sc.logoUrl }}",
         "caption": "{{ sc.logoCaption | jsonString | safe }}"
       },
-      "brand": { "@id": "{{ home }}#brand" }
+      "brand": { "@id": "{{ home }}#brand" },
+      "mainEntityOfPage": { "@id": "{{ base }}/about#webpage" }
     },
     {
       "@type": "Brand",
@@ -48,7 +51,7 @@
       "name": "{{ site.name | jsonString | safe }}",
       "alternateName": [{% for n in sc.alternateNames %}"{{ n | jsonString | safe }}"{% if not loop.last %}, {% endif %}{% endfor %}],
       "description": "{{ sc.websiteDescription | jsonString | safe }}",
-      "publisher": { "@id": "{{ home }}#organization" }
+      "publisher": { "@id": "{{ organizationId }}" }
     },
     {
       "@type": "WebPage",
@@ -57,7 +60,7 @@
       "name": "{{ (sc.webpageName or s.title) | jsonString | safe }}",
       "description": "{{ s.description | jsonString | safe }}",
       "isPartOf": { "@id": "{{ home }}#website" },
-      "publisher": { "@id": "{{ home }}#organization" },
+      "publisher": { "@id": "{{ organizationId }}" },
       "about": { "@id": "{{ canonicalUrl }}#application" },
       "mainEntity": { "@id": "{{ canonicalUrl }}#application" },
       "primaryImageOfPage": {
@@ -93,8 +96,8 @@
       },
       "featureList": [{% for f in sc.featureList %}"{{ f | jsonString | safe }}"{% if not loop.last %}, {% endif %}{% endfor %}],
       "image": { "@id": "{{ canonicalUrl }}#primary-image" },
-      "creator": { "@id": "{{ home }}#organization" },
-      "provider": { "@id": "{{ home }}#organization" },
+      "creator": { "@id": "{{ organizationId }}" },
+      "provider": { "@id": "{{ organizationId }}" },
       "mainEntityOfPage": { "@id": "{{ canonicalUrl }}#webpage" },
       "inLanguage": "{{ langCode }}"
     },

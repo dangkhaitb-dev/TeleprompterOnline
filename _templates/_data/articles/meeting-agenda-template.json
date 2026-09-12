@@ -11,7 +11,7 @@
   "modified": "2026-08-12",
   "keywords": ["meeting agenda template", "team meeting agenda template", "how to write a meeting agenda", "effective meeting agenda"],
   "mentions": ["meeting agenda", "meeting outcomes", "decision making", "action items"],
-  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "author": { "type": "Organization", "name": "SolPrompter", "url": "/about" },
   "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
   "seo": { "title": "Meeting Agenda Template: A Practical Format for Decisions and Next Steps", "description": "Use a practical meeting agenda template with a purpose, item outcomes, process, owner, timebox, pre-work, decisions, and action items.", "image": "https://solprompter.com/media/blog/meeting-agenda-template/hero.webp" },
   "hero": { "src": "/media/blog/meeting-agenda-template/hero.webp", "alt": "Meeting leader reviewing a concise agenda with a team at a table", "width": 1672, "height": 941 },

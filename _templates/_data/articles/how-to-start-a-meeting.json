@@ -11,7 +11,7 @@
   "modified": "2026-08-12",
   "keywords": ["how to start a meeting", "meeting opening", "how to open a meeting", "meeting introduction"],
   "mentions": ["meeting opening", "meeting facilitation", "meeting agenda", "decision rules"],
-  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "author": { "type": "Organization", "name": "SolPrompter", "url": "/about" },
   "review": { "by": "the SolPrompter team", "updatedDisplay": "August 12, 2026" },
   "seo": { "title": "How to Start a Meeting: A Clear Opening That Creates Focus", "description": "Start a meeting with a short opening that states the result, agenda, roles, participation method, decision rule, and first step without wasting time.", "image": "https://solprompter.com/media/blog/how-to-start-a-meeting/hero.webp" },
   "hero": { "src": "/media/blog/how-to-start-a-meeting/hero.webp", "alt": "Meeting facilitator opening a focused discussion with a remote team", "width": 1672, "height": 941 },

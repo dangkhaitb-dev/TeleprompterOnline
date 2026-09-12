@@ -67,14 +67,15 @@ lang: en
                             "dateModified": "{{ article.modified }}",
                             "author": {
                                 "@type": "{{ article.author.type }}",
+                                "@id": "{{ site.url }}/about#organization",
                                 "name": "{{ article.author.name | jsonString | safe }}",
                                 "url": "{{ site.url }}{{ article.author.url }}"
                             },
                             "publisher": {
                                 "@type": "Organization",
-                                "@id": "{{ home }}#organization",
-                                "name": "{{ site.name }}",
-                                "url": "{{ home }}"
+                                "@id": "{{ site.url }}/about#organization",
+                                "name": "SolPrompter",
+                                "url": "{{ site.url }}/about"
                             },
                             "articleSection": "{{ (article.category or 'Product') | jsonString | safe }}",
                             {%- if article.keywords %}

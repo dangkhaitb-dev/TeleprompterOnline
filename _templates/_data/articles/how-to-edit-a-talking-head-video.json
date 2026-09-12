@@ -9,7 +9,7 @@
   "date": "2026-08-23",
   "dateDisplay": "August 23, 2026",
   "modified": "2026-08-23",
-  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "author": { "type": "Organization", "name": "SolPrompter", "url": "/about" },
   "review": { "by": "the SolPrompter team", "updatedDisplay": "August 23, 2026" },
   "keywords": ["how to edit a talking-head video", "talking-head video editing workflow", "edit talking-head videos", "video editing checklist"],
   "mentions": ["talking-head video", "video captions", "assembly cut", "video editing"],

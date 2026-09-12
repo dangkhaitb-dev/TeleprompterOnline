@@ -1,10 +1,10 @@
 {
   "seo": {
-    "title": "About SolPrompter | A Smarter AI Teleprompter",
-    "description": "Learn about SolPrompter, a free online AI teleprompter built to make presenting, recording and maintaining natural eye contact easier on every device.",
+    "title": "About SolPrompter",
+    "description": "Meet SolPrompter, the organization behind a free browser-based teleprompter and practical publishing resource for speaking clearly on camera.",
     "canonical": "/about",
-    "ogTitle": "About SolPrompter — Present Naturally",
-    "ogDescription": "Discover why SolPrompter was created and how we are building a more natural, accessible and complete teleprompter experience.",
+    "ogTitle": "About SolPrompter",
+    "ogDescription": "Meet SolPrompter, the organization behind our free online teleprompter, editorial guides, and official social channels.",
     "ogType": "website",
     "ogImage": "/og-solprompter.png"
   },
@@ -14,34 +14,34 @@
   },
   "hero": {
     "eyebrow": "About SolPrompter",
-    "title": "Present Naturally. Stay Focused.",
-    "description": "SolPrompter is an online AI teleprompter built to help people speak confidently, maintain natural eye contact and create professional videos without complicated software."
+    "title": "The Team Behind SolPrompter",
+    "description": "SolPrompter builds and publishes a browser-based teleprompter for people who want to prepare a message, speak clearly on camera, and record without complicated software."
   },
   "why": {
     "eyebrow": "Why We Built SolPrompter",
-    "title": "Teleprompters Should Adapt to You",
+    "title": "A Teleprompter Should Support the Speaker",
     "paragraphs": [
-      "Most teleprompter tools expect presenters to follow a fixed scrolling speed, constantly adjust controls or combine several different applications to write, present and record.",
-      "We believe the teleprompter should adapt to the speaker—not the other way around.",
-      "SolPrompter was created to make presenting feel more natural. AI Voice Scroll follows your speaking pace, Notch Mode keeps your script close to the camera and remote control lets you manage the presentation without interrupting your recording.",
-      "Everything is designed to help you focus less on the software and more on the message you want to deliver."
+      "Speaking to a camera is already demanding. A presenter is thinking about the message, the lens, the pace, and the recording while trying to sound like themselves.",
+      "We believe the teleprompter should adapt to the speaker, not ask the speaker to adapt to the tool.",
+      "That is why SolPrompter brings voice-following scroll, a camera-adjacent reading mode, remote control, scripts, and recording into one browser workspace.",
+      "SolPrompter also publishes practical guides on scripts, meetings, interviews, presentations, and speaking on camera. The product and the editorial work share one aim: make prepared communication easier to deliver naturally."
     ]
   },
   "mission": {
     "eyebrow": "Our Mission",
     "title": "Make Professional Presenting Accessible",
-    "description": "Our mission is to build a powerful, easy-to-use teleprompter that works for everyone—from first-time creators recording on a phone to professional teams managing studio productions.",
+    "description": "We build a practical teleprompter for people who need to communicate well, from a first recording on a phone to repeatable work for a team or studio.",
     "items": [
-      { "title": "Natural Delivery", "description": "Help presenters speak at their own pace without sounding rushed, robotic or overly rehearsed." },
-      { "title": "Better Eye Contact", "description": "Place scripts closer to the camera so presentations feel more direct, confident and human." },
-      { "title": "Simple Technology", "description": "Turn advanced teleprompter features into an interface that feels clear and comfortable on every device." },
-      { "title": "Accessible Creation", "description": "Make professional presenting and recording tools available without unnecessary barriers, distracting advertising or branded watermarks." }
+      { "title": "Natural Delivery", "description": "Help presenters control their pace and wording without sounding rushed, robotic, or over-rehearsed." },
+      { "title": "Better Eye Contact", "description": "Keep the script near the camera so the viewer receives the attention that prepared delivery is meant to create." },
+      { "title": "Practical Technology", "description": "Turn useful teleprompter controls into a clear browser experience that works across common devices." },
+      { "title": "Open Access", "description": "Keep a capable presenting and recording workflow available without ads or a branded watermark on the finished video." }
     ]
   },
   "differences": {
     "eyebrow": "What Makes SolPrompter Different",
-    "title": "More Than a Scrolling Script",
-    "description": "SolPrompter brings the complete presentation workflow into one connected workspace.",
+    "title": "A Connected Speaking Workflow",
+    "description": "SolPrompter is designed around the work before, during, and after a take, rather than a single scrolling control.",
     "items": [
       { "title": "AI Voice Scroll", "description": "The script follows your speech instead of forcing you to match a fixed scrolling speed." },
       { "title": "Notch Teleprompter Mode", "description": "A compact reading area can be positioned close to the camera to reduce visible eye movement." },
@@ -53,20 +53,20 @@
   },
   "principles": {
     "eyebrow": "Our Product Principles",
-    "title": "Designed Around the Presenter",
+    "title": "How We Make Product Decisions",
     "items": [
-      { "title": "Simple by Default", "description": "Essential actions should be immediately understandable without tutorials, complex settings or a long setup process." },
-      { "title": "Powerful When Needed", "description": "Advanced controls should remain available without making the everyday experience feel complicated." },
-      { "title": "Natural Over Robotic", "description": "Technology should support the presenter’s speaking rhythm, eye movement and delivery rather than making the presentation feel mechanical." },
-      { "title": "Useful on Every Device", "description": "Mobile users should receive a complete and thoughtful experience—not a reduced desktop interface squeezed onto a smaller screen." },
-      { "title": "Focused and Distraction-Free", "description": "The interface should keep attention on the script, camera and audience instead of unnecessary visual elements." },
-      { "title": "Respect for Your Content", "description": "Your scripts and recordings belong to you. SolPrompter is designed to help you create without placing a branded watermark over your work." }
+      { "title": "Simple by Default", "description": "The essential action should be clear before a person has read a tutorial or opened a long settings panel." },
+      { "title": "Capable When Needed", "description": "More advanced controls should be available when they solve a real delivery or recording problem." },
+      { "title": "Natural Delivery First", "description": "Technology should support a presenter’s rhythm, eye line, and attention instead of making delivery feel mechanical." },
+      { "title": "Useful Across Devices", "description": "A phone, tablet, laptop, and desktop each need a considered workflow, not the same interface squeezed into a smaller screen." },
+      { "title": "Focused Workspaces", "description": "The interface should direct attention to the script, camera, and audience instead of advertisements or decorative noise." },
+      { "title": "Respect for Your Work", "description": "Scripts and recordings are the presenter’s work. SolPrompter is built without a branded watermark over exported videos." }
     ]
   },
   "audiences": {
     "eyebrow": "Who We Build For",
-    "title": "For Anyone with Something to Say",
-    "description": "SolPrompter is made for people who want to communicate clearly without memorizing every word.",
+    "title": "For People Preparing to Speak",
+    "description": "SolPrompter is for people who want a clear, prepared delivery without memorizing every word or managing a complicated production setup.",
     "items": [
       { "title": "Content Creators", "description": "Record TikTok videos, YouTube videos, Shorts, Reels and talking-head content with a smoother delivery." },
       { "title": "Teachers and Educators", "description": "Create online lessons, course videos and educational presentations while staying focused on the camera." },
@@ -78,42 +78,60 @@
   },
   "commitment": {
     "eyebrow": "Our Current Commitment",
-    "title": "A Free and Focused Experience",
+    "title": "What We Offer Today",
     "paragraphs": [
-      "SolPrompter is currently free to use and is being built without distracting advertisements or branded video watermarks.",
-      "We want people to experience the complete product, understand how it improves their workflow and help shape what SolPrompter becomes next.",
-      "As the platform grows, our priority will remain the same: provide a clear, reliable and valuable experience for presenters and creators."
+      "SolPrompter is currently free to use. It is built without distracting advertisements or a branded watermark on exported video.",
+      "We publish product updates and practical guides so people can understand how the tool works, decide whether it fits their workflow, and prepare a better delivery.",
+      "As the product develops, we will keep the same standard: a clear, reliable experience that earns a place in a presenter’s work."
     ]
   },
   "future": {
     "eyebrow": "The Future of SolPrompter",
-    "title": "Building the Complete Presentation Workspace",
+    "title": "Developing the Presentation Workspace",
     "paragraphs": [
-      "Our vision extends beyond basic teleprompter scrolling.",
-      "We are building SolPrompter as a complete workspace where users can prepare scripts, present naturally, control sessions remotely, record high-quality video and manage their content from one place.",
-      "Future development will continue to focus on intelligent automation, better collaboration, cross-device workflows and tools that reduce the time between writing an idea and recording the final take.",
-      "Every feature should solve a real presentation problem—not simply add another setting to the interface."
+      "The work extends beyond basic teleprompter scrolling.",
+      "We are developing SolPrompter as one workspace for preparing a script, presenting it naturally, controlling a session remotely, recording a take, and managing the resulting work.",
+      "Future work will focus on useful automation, collaboration, and cross-device workflows that reduce the gap between writing an idea and recording it clearly.",
+      "A feature belongs in SolPrompter when it solves a real presentation problem and makes the workflow easier to trust."
     ]
   },
   "ecosystem": {
     "eyebrow": "Built for Modern Creators",
-    "title": "A Focused Tool for Confident Delivery",
+    "title": "Product and Editorial Work in One Place",
     "paragraphs": [
-      "SolPrompter is built for creators, presenters and digital professionals who want to deliver their message with clarity and confidence.",
-      "It brings together the essentials of a practical presentation workflow: preparing a script, presenting naturally, recording high-quality video and managing content in one place.",
-      "Every decision is guided by simplicity, thoughtful design and technology that stays out of the way."
+      "SolPrompter creates a product and a public library of practical guidance for creators, presenters, educators, and professionals.",
+      "The guides cover the same work the product supports: writing a script for speaking, preparing a meeting or interview, delivering to camera, and publishing a finished video.",
+      "This page is the official source for the organization behind that work and for its public channels."
     ]
   },
   "social": {
     "eyebrow": "Follow Along",
-    "title": "Where to Find SolPrompter",
-    "description": "Product updates, new features and short guides on speaking to camera are posted on our official channels."
+    "title": "Official SolPrompter Channels",
+    "description": "X, Instagram, and YouTube below are the official profiles for SolPrompter. We use them for product updates and short, practical guidance on presenting and speaking to camera."
   },
   "finalCta": {
     "eyebrow": "Your Message Deserves a Confident Delivery",
-    "title": "Start Presenting with SolPrompter",
+    "title": "Start With Your Next Message",
     "description": "Add your script, choose how you want it to scroll and focus on delivering your message naturally.",
     "cta": { "label": "Open SolPrompter", "url": "/" },
-    "supporting": "Currently free to use · No ads · No watermark"
+    "supporting": "Free to use · No ads · No watermark"
+  },
+  "entity": {
+    "organizationName": "SolPrompter",
+    "organizationDescription": "SolPrompter builds a free browser-based teleprompter and publishes practical guidance for scripts, presentations, meetings, interviews, and speaking on camera.",
+    "webpageName": "About SolPrompter",
+    "logoUrl": "/logo.webp",
+    "logoCaption": "SolPrompter",
+    "knowsAbout": [
+      "Online teleprompters",
+      "Teleprompter scripts",
+      "Speaking on camera",
+      "Video presentations",
+      "Meeting and interview preparation"
+    ],
+    "applicationDescription": "SolPrompter is a free browser-based teleprompter for preparing scripts, presenting naturally, and recording video.",
+    "applicationCategory": "MultimediaApplication",
+    "applicationSubCategory": "Online Teleprompter",
+    "operatingSystem": "Any operating system with a modern web browser"
   }
 }

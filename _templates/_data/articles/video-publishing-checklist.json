@@ -9,7 +9,7 @@
   "date": "2026-08-23",
   "dateDisplay": "August 23, 2026",
   "modified": "2026-08-23",
-  "author": { "type": "Organization", "name": "The SolPrompter Team", "url": "/about" },
+  "author": { "type": "Organization", "name": "SolPrompter", "url": "/about" },
   "review": { "by": "the SolPrompter team", "updatedDisplay": "August 23, 2026" },
   "keywords": ["video publishing checklist", "video upload checklist", "publish a video", "video export captions upload"],
   "mentions": ["video publishing", "video captions", "video export", "YouTube upload"],

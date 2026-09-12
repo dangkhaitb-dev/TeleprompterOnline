@@ -44,14 +44,14 @@
       "publisher": { "@id": "{{ canonical }}#organization" }
     },
     {
-      "@type": "AboutPage",
+      "@type": ["AboutPage", "ProfilePage"],
       "@id": "{{ canonical }}#webpage",
       "url": "{{ canonical }}",
       "name": "{{ entity.webpageName | jsonString | safe }}",
       "description": "{{ pageData.seo.description | jsonString | safe }}",
       "isPartOf": { "@id": "{{ home }}#website" },
       "mainEntity": { "@id": "{{ canonical }}#organization" },
-      "about": { "@id": "{{ home }}#application" },
+      "about": { "@id": "{{ canonical }}#organization" },
       "inLanguage": "en"
     },
     {

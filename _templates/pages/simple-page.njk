@@ -52,13 +52,15 @@ lang: en
                     "dateModified": "{{ simplePage.article.dateModified }}",
                     "author": {
                         "@type": "Organization",
+                        "@id": "{{ site.url }}/about#organization",
                         "name": "{{ simplePage.article.author.name | jsonString | safe }}",
                         "url": "{{ site.url }}{{ simplePage.article.author.url }}"
                     },
                     "publisher": {
                         "@type": "Organization",
+                        "@id": "{{ site.url }}/about#organization",
                         "name": "{{ site.name }}",
-                        "url": "{{ home }}"
+                        "url": "{{ site.url }}/about"
                     },
                     "isPartOf": { "@id": "{{ home }}#website" },
                     "inLanguage": "en"

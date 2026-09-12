@@ -40,8 +40,9 @@ lang: en
             "inLanguage": "en-US",
             "publisher": {
                 "@type": "Organization",
+                "@id": "{{ site.url }}/about#organization",
                 "name": "{{ site.name }}",
-                "url": "{{ site.url }}"
+                "url": "{{ site.url }}/about"
             },
             "blogPost": [
                 {%- for article in blogArticles %}
@@ -56,9 +57,11 @@ lang: en
                     "dateModified": "{{ article.modified }}",
                     "author": {
                         "@type": "{{ article.author.type }}",
+                        "@id": "{{ site.url }}/about#organization",
                         "name": "{{ article.author.name | jsonString | safe }}",
                         "url": "{{ site.url }}{{ article.author.url }}"
-                    }
+                    },
+                    "publisher": { "@id": "{{ site.url }}/about#organization" }
                 }{% if not loop.last %},{% endif %}
                 {%- endfor %}
             ]

@@ -42,7 +42,7 @@ lang: en
             "name": "{{ category.name | jsonString | safe }}",
             "description": "{{ pageData.seo.categoryDescriptionPrefix | jsonString | safe }}{{ category.name | jsonString | safe }}{{ pageData.seo.categoryDescriptionSuffix | jsonString | safe }}",
             "url": "{{ site.url }}/blog/{{ category.slug }}/",
-            "isPartOf": { "@id": "{{ site.url }}/blog/#blog" },
+            "isPartOf": { "@id": "{{ site.url }}/blog#blog" },
             "mainEntity": {
                 "@type": "ItemList",
                 "itemListElement": [
